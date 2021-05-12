@@ -1,0 +1,315 @@
+
+#videos {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #000;
+    right: 0;
+    float: right !important;
+}
+
+.doctor-videos {
+	height: 85vh !important;
+}
+
+#subscriber {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+	
+}
+
+#screenpreview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+	min-height: 500px
+}
+
+#publisher {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 30px;
+    left: 10px;
+    z-index: 100;
+    border: 3px solid white;
+    border-radius: 3px;
+}
+
+#patient-inf-on-video {
+    position: absolute;
+    width: 300px;
+    top: 220px;
+    left: 10px;
+    z-index: 100;
+    background: rgba(0,0,0,0.8);
+    color:#fff;
+    border: 3px solid white;
+    border-radius: 3px;
+}
+
+#actionOptions {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: 10px;
+    z-index: 100;
+	text-align: center;
+	padding: 5px 0 0 0;
+	background: rgba(0,0,0,0.8)
+}
+
+#actionOptions .icon i {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    color: #777;
+    background-color: #DDD;
+    border-radius: 50%;
+}
+
+#loader {
+    position: absolute;
+    padding-top: 45px;    
+    background: #FFF;
+}
+
+.loader {
+    /*border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+	animation: spin 2s linear infinite;
+    border-radius: 50%;*/
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    
+}
+
+.loader-message{
+	
+    position: absolute;
+    top: 50%;
+    left: 40%;
+}
+
+/* Over wite page body class */
+.page-body {
+	padding : 0px;
+	margin : 0px;
+}
+
+.page-wrapper {
+    margin-left: 0px;
+}
+
+.appointment-data{
+    width: 50%;
+    float: left;
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+    left: 0;
+}
+
+.admin-video-div{
+    width: 50% !important; 
+    float: left !important;
+}
+
+.apnt-user {
+    margin: 70px 0 00px 0;
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    border-radius: 0px;
+}
+
+.apnt-user .user-container {
+    position: absolute;
+    top: -43px;
+    left: 20px;
+    min-height: 0px;
+    background: none;
+}
+
+.apnt-user .info {
+    padding-top: 30px;
+}
+
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+}
+
+.apnt-user .img span {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    color: #eee;
+    font-size: 48px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #005eb8;
+}
+
+.user-container .picture img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.user-container .picture {
+    padding: 0 10px 0 0;
+}
+
+
+
+
+@media screen and (max-width:823px){
+	.top_name{
+		left: 0;
+        font-size: 9px;
+        position: relative;
+        
+    }
+    .top_name p{ 
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: unset;
+        max-width: 100%;
+    }
+
+    .page-hdr-mobile {
+        display: none;
+    }
+
+    .page-hdr {
+        background: #005eb8 !important;
+    }
+
+    #loader {
+        position: relative;
+        padding-top: 0;
+    }
+    .loader {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        top: 25%;
+        left: 0;
+    }
+    .loader-message {
+        position: relative;
+        top: 30%;
+        left: 0;
+    }
+    #actionOptions .icon.pl-5 {
+        padding-left: 1rem !important;
+    }
+    #publisher {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width:568px){
+	.top_name{
+		left: 34%;
+		top: 24px;
+	}
+}
+
+@media screen and (max-width:414px){
+    
+    .top_name{
+		left: 0;
+		top: 0;
+	}
+    .appointment-data {
+        width: 100%;
+        position: relative;
+        overflow-y: hidden;
+    }
+    #videos {
+        position: relative;
+        width: 100% !important;
+        right: unset;
+        float: left !important;
+    }
+    #publisher {
+        width: 70px;
+        height: 70px;
+    }
+    
+}
+
+@media screen and (max-width:320px){
+	.top_name{
+		top:0;
+	}
+	.top_name span{
+		margin-left: 0 !important;
+        border-left: 0 !important;
+        padding-left: 0 !important;
+        width: 100%;
+        display: block;
+	}
+}
+
+.OT_root.OT_subscriber{
+    display: inline-block;
+}
+
+.OT_root.OT_subscriber {
+    float: left !important;
+  }
+  .OT_root.OT_subscriber:first-child:nth-last-child(1) {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .OT_root.OT_subscriber:first-child:nth-last-child(2),
+  .OT_root.OT_subscriber:first-child:nth-last-child(2) ~ .OT_root.OT_subscriber {
+    width: 50% !important;
+    height: 100% !important;
+  }
+  .OT_root.OT_subscriber:first-child:nth-last-child(3),
+  .OT_root.OT_subscriber:first-child:nth-last-child(3) ~ .OT_root.OT_subscriber,
+  .OT_root.OT_subscriber:first-child:nth-last-child(4),
+  .OT_root.OT_subscriber:first-child:nth-last-child(4) ~ .OT_root.OT_subscriber {
+    width: 50% !important;
+    height: 50% !important;
+  }
+  .OT_root.OT_subscriber:first-child:nth-last-child(5),
+  .OT_root.OT_subscriber:first-child:nth-last-child(5) ~ .OT_root.OT_subscriber,
+  .OT_root.OT_subscriber:first-child:nth-last-child(6),
+  .OT_root.OT_subscriber:first-child:nth-last-child(6) ~ .OT_root.OT_subscriber {
+    width: 33.33% !important;
+    height: 50% !important;
+  }
+  .OT_root.OT_subscriber:first-child:nth-last-child(7),
+  .OT_root.OT_subscriber:first-child:nth-last-child(7) ~ .OT_root.OT_subscriber,
+  .OT_root.OT_subscriber:first-child:nth-last-child(8),
+  .OT_root.OT_subscriber:first-child:nth-last-child(8) ~ .OT_root.OT_subscriber,
+  .OT_root.OT_subscriber:first-child:nth-last-child(9),
+  .OT_root.OT_subscriber:first-child:nth-last-child(9) ~ .OT_root.OT_subscriber
+  {
+    width: 33.33% !important;
+    height: 33.33% !important;
+  }

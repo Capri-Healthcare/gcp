@@ -1,0 +1,544 @@
+[04-Aug-2020 16:17:23 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 526
+[04-Aug-2020 16:17:23 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 527
+[04-Aug-2020 16:17:23 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 532
+[04-Aug-2020 16:17:23 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 547
+[04-Aug-2020 16:17:23 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 548
+[04-Aug-2020 16:17:23 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 553
+[04-Aug-2020 16:19:59 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 526
+[04-Aug-2020 16:19:59 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 527
+[04-Aug-2020 16:19:59 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 532
+[04-Aug-2020 16:23:29 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 526
+[04-Aug-2020 16:23:29 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 527
+[04-Aug-2020 16:23:29 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 532
+[04-Aug-2020 16:24:03 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 526
+[04-Aug-2020 16:24:03 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 527
+[04-Aug-2020 16:24:03 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 532
+[04-Aug-2020 16:24:38 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 522
+[04-Aug-2020 16:24:38 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 523
+[04-Aug-2020 16:24:38 Asia/Calcutta] PHP Notice:  Undefined index: report in D:\xampp7.1.8\htdocs\private-practice\Upload\admin\app\views\appointment\appointment_form.tpl.php on line 528
+[06-Aug-2020 14:26:41 Asia/Calcutta] PHP Fatal error:  Uncaught Error: Call to undefined method Appointment::getAppointmentByImages() in D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\app\http\controllers\AppointmentController.php:110
+Stack trace:
+#0 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\core\action.php(28): AppointmentController->indexView()
+#1 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\core\router.php(50): Action->execute(Object(Repository), Array)
+#2 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\core\router.php(40): Router->dispatch(Array)
+#3 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\bootstrap.php(66): Router->route('appointment/vie...', 'GET')
+#4 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\startup.php(63): require_once('D:\\xampp7.1.8\\h...')
+#5 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\index.php(37): launch()
+#6 {main}
+  thrown in D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\app\http\controllers\AppointmentController.php on line 110
+[06-Aug-2020 14:42:10 Asia/Calcutta] PHP Fatal error:  Uncaught Error: Call to undefined method Patient::getAppointmentImages() in D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\app\http\controllers\PatientController.php:112
+Stack trace:
+#0 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\core\action.php(28): PatientController->indexView()
+#1 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\core\router.php(50): Action->execute(Object(Repository), Array)
+#2 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\core\router.php(40): Router->dispatch(Array)
+#3 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\bootstrap.php(66): Router->route('patient/view', 'GET')
+#4 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\builder\startup.php(63): require_once('D:\\xampp7.1.8\\h...')
+#5 D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\index.php(37): launch()
+#6 {main}
+  thrown in D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\app\http\controllers\PatientController.php on line 112
+[06-Aug-2020 14:42:32 Asia/Calcutta] PHP Notice:  Trying to get property of non-object in D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\app\http\models\Patient.php on line 147
+[06-Aug-2020 14:43:13 Asia/Calcutta] PHP Notice:  Trying to get property of non-object in D:\xampp7.1.8\htdocs\privatepractice\Upload\admin\app\http\models\Patient.php on line 147
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-18169037285e0f1b885e008.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-967969335e0f1b885f332.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15402065955e0f1b886d344.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1269114305e0f1b889aa4f.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:22 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-19047557375e0f1b889bb14.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-10420804785e0f1b889efff.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-14986370945e0f1b88a0011.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15245782795e0f1b88a8462.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15241643955e0f1b88b0157.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-623588825e0f1b88c522b.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-20288955055e0f1b88ca515.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-5175326295e0f1b88d26f8.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-11427749815e0f1b88ea78d.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-10093157275e0f1b88ec622.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-4496731875e0f3599bbdad.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-2009625285f35481706ab3.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-3474141025f35482504659.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-12856618105f35482d3a094.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-4809396195f35493b48240.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-16583622275f3549588f333.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-20699542415f3549803f006.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-13789215255f354aee926c4.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:23 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-19054152945f354b1fe8661.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-11076049995f354b926f507.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-9952550555f8962d7a5cab.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15545624915f8962f00e539.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-2060062395f8d57ea002c3.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-14789442615f9c0e32cea72.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-6167242225fa3cbfb22c74.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-17739776195fa3d8d64552f.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-8282766345fa52a13cf9c2.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1469460505fa568ee7feff.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-18576235855fb6960471a96.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-160336526960196be128b15.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-71696591660196ed4ae3e9.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-22902736060197101c1997.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-9387376976082b3fb2f4b2.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-9573333046082b3fb35740.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:24 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-16288028426082b3fbbab54.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:25 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:25 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:25 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-16917582546082c413b3e25.jpeg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:25 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:25 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:25 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-8057403536082ceb8e713a.jpeg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:33 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 104
+[12-May-2021 07:46:33 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 104
+[12-May-2021 07:46:33 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1126153191609b79c8f240e.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 104
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-18169037285e0f1b885e008.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-967969335e0f1b885f332.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15402065955e0f1b886d344.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1269114305e0f1b889aa4f.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-19047557375e0f1b889bb14.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:48 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-10420804785e0f1b889efff.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-14986370945e0f1b88a0011.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15245782795e0f1b88a8462.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15241643955e0f1b88b0157.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-623588825e0f1b88c522b.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-20288955055e0f1b88ca515.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-5175326295e0f1b88d26f8.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-11427749815e0f1b88ea78d.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-10093157275e0f1b88ec622.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-4496731875e0f3599bbdad.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-2009625285f35481706ab3.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-3474141025f35482504659.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-12856618105f35482d3a094.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-4809396195f35493b48240.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-16583622275f3549588f333.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-20699542415f3549803f006.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-13789215255f354aee926c4.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-19054152945f354b1fe8661.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-11076049995f354b926f507.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-9952550555f8962d7a5cab.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15545624915f8962f00e539.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-2060062395f8d57ea002c3.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:49 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-14789442615f9c0e32cea72.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-6167242225fa3cbfb22c74.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-17739776195fa3d8d64552f.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-8282766345fa52a13cf9c2.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1469460505fa568ee7feff.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-18576235855fb6960471a96.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-160336526960196be128b15.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-71696591660196ed4ae3e9.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-22902736060197101c1997.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-9387376976082b3fb2f4b2.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-9573333046082b3fb35740.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-16288028426082b3fbbab54.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-16917582546082c413b3e25.jpeg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-8057403536082ceb8e713a.jpeg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:46:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1126153191609b79c8f240e.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-18169037285e0f1b885e008.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:50 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:50 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:50 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-967969335e0f1b885f332.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15402065955e0f1b886d344.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1269114305e0f1b889aa4f.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-19047557375e0f1b889bb14.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-10420804785e0f1b889efff.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-14986370945e0f1b88a0011.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15245782795e0f1b88a8462.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15241643955e0f1b88b0157.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-623588825e0f1b88c522b.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-20288955055e0f1b88ca515.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-5175326295e0f1b88d26f8.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-11427749815e0f1b88ea78d.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-10093157275e0f1b88ec622.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-4496731875e0f3599bbdad.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-2009625285f35481706ab3.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-3474141025f35482504659.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-12856618105f35482d3a094.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-4809396195f35493b48240.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-16583622275f3549588f333.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-20699542415f3549803f006.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-13789215255f354aee926c4.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-19054152945f354b1fe8661.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-11076049995f354b926f507.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:51 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-9952550555f8962d7a5cab.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-15545624915f8962f00e539.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-2060062395f8d57ea002c3.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-14789442615f9c0e32cea72.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-6167242225fa3cbfb22c74.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-17739776195fa3d8d64552f.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-8282766345fa52a13cf9c2.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1469460505fa568ee7feff.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-18576235855fb6960471a96.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-160336526960196be128b15.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-71696591660196ed4ae3e9.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-22902736060197101c1997.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-9387376976082b3fb2f4b2.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-9573333046082b3fb35740.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-16288028426082b3fbbab54.jpg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-16917582546082c413b3e25.jpeg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-8057403536082ceb8e713a.jpeg): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1126153191609b79c8f240e.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20

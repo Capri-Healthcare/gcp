@@ -1,0 +1,12 @@
+{
+    "require": {
+        "league/omnipay": "^3.0",
+        "omnipay/paypal": "^3.0",
+        "omnipay/stripe": "^3.1",
+        "opentok/opentok": "4.4.x",
+        "twilio/sdk": "^6.10",
+        "docusign/esign-client": "^5.5",
+        "intervention/image": "^2.5",
+        "dompdf/dompdf": "^0.8.6"
+    }
+}
