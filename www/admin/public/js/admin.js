@@ -211,9 +211,9 @@
                 reportDropzone.removeFile(file);
             });
 
-            reportDropzone.on("error", function(file, message) { 
+            reportDropzone.on("error", function(file, message) {
                 toastr.error('Error', message);
-                reportDropzone.removeFile(file); 
+                reportDropzone.removeFile(file);
             });
         },
     });
@@ -275,7 +275,22 @@
             }
         });
     }
-    
+
+
+     function removeOpticianDocument(referral_list_id,id, filename) {
+         $.ajax({
+             type: 'POST',
+             url: 'index.php?route=optician-referral/report/removeReport',
+             data: {id: referral_list_id, name: filename, _token: $('#token').val()},
+             error: function() {
+                 toastr.error('Error', 'File could not be deleted. Please try again...');
+             },
+             success: function(data) {
+                 toastr.success('', 'File Deleted Succefully.');
+                 $('#report-delete-div-'+id).remove();
+             }
+         });
+     }
     function moveImageToReport(image_id) {
 
         $.ajax({
@@ -364,13 +379,81 @@
                 $.unblockUI();
             });
 
-            this.on("error", function(file, message) { 
+            this.on("error", function(file, message) {
                 toastr.error('Error', message);
-                this.removeFile(file); 
+                this.removeFile(file);
             });
         },
     });
 
+
+     $("#optician-referral-upload").dropzone({
+         addRemoveLinks: true,
+         acceptedFiles: "image/*,application/pdf",
+         maxFilesize: 5,
+         autoProcessQueue: false,
+         dictDefaultMessage: 'Drop files here or click here to upload <br /><br /> Only Image or PDF',
+         init: function() {
+             var reportDropzone = this;
+             $('#reports-modal').on('click', '.upload-report', function (e) {
+                 e.preventDefault();
+                 if (reportDropzone.files.length <= 0) {
+                     toastr.error('Error', 'Please select file to upload.');
+                     return false;
+                 }
+
+                 $('body').block({
+                     message: '<div class="font-14"><div class="icon-refresh spinner mr-2 d-inline-block"></div>Uploading ...</div>',
+                     baseZ: 2000,
+                     overlayCSS: { backgroundColor: '#fff', opacity: 0.8, cursor: 'wait' },
+                     css: { border: 0, padding: '10px 15px', color: '#333', width: 'auto', backgroundColor: 'transparent' }
+                 });
+                 reportDropzone.processQueue();
+             });
+
+             this.on("sending", function(file, xhr, formData) {
+                 formData.append("id", $('.optician-refrrel-id').val());
+                 formData.append("_token", $('#token').val());
+             });
+
+             this.on("success", function(file, xhr) {
+                 var response = JSON.parse(xhr);
+                 if (response.error === false) {
+                     var optician_refrrel_id = $('.optician-refrrel-id').val()
+                     if (response.ext === "pdf") {
+                         $('.report-container').append('<div class="report-image report-pdf">'+
+                             '<a href="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'" class="open-pdf">'+
+                             '<img class="img-thumbnail" src="../public/images/pdf.png" alt="">'+
+                             '<span>'+$('#reports-modal input[name=report_name]').val()+'</span>'+
+                             '</a>'+
+                             '<input type="hidden" name="report_name" value="'+response.name+'">'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                             '</div>');
+                     } else {
+                         $('.report-container').append('<div class="report-image">'+
+                             '<a data-fancybox="gallery" href="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'">'+
+                             '<img class="img-thumbnail" src="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'" alt="">'+
+                             '<span>'+$('#reports-modal input[name=report_name]').val()+'</span>'+
+                             '</a>'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                             '<input type="hidden" name="report_name" value="'+response.name+'">'+
+                             '</div>');
+                     }
+                     toastr.success('Uploaded Succefully', 'Document uploaded Succefully.');
+                 } else {
+                     toastr.error('Upload Error', response.message);
+                 }
+                 reportDropzone.removeFile(file);
+                 $('#reports-modal').modal('hide');
+                 $.unblockUI();
+             });
+
+             this.on("error", function(file, message) {
+                 toastr.error('Error', message);
+                 this.removeFile(file);
+             });
+         },
+     });
     //
     /*$('body').on('click', '.report-delete', function () {
         var ele = $(this).parent('.report-image'),
@@ -387,8 +470,24 @@
 
         removeReport(appointment_id, report_id, report_name);
     });
-	
-	
+
+
+     $('#delete-optician-referral').on('click', function(){
+         var referral_list_id = $("#appointment_id").val();
+         var id = $("#report_id").val();
+         var filename = $("#report_name").val();
+
+         removeOpticianDocument(referral_list_id, id, filename);
+     });
+
+     $('#delete-optician-referral').on('click', function(){
+         var referral_list_id = $("#appointment_id").val();
+         var id = $("#report_id").val();
+         var name = $("#report_name").val();
+
+         removeReport(appointment_id, report_id, report_name);
+     });
+
 	$('.report-delete-action').on('click', function(){
 		$('#appointment_id').val($(this).data('appointment_id'));
 		$('#report_id').val($(this).data('report_id'));
@@ -557,7 +656,7 @@
     
     //*************************************************
     //Full Screen  ************************************
-    //************************************************* 
+    //*************************************************
     function launchIntoFullscreen(element) {
         if (element.requestFullscreen) {
             element.requestFullscreen();

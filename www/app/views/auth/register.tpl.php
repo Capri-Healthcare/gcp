@@ -49,9 +49,16 @@
                 </div>
                 <div class="col-md-6">
                     <div class="input-box form-optician_shop_name">
-                        <input type="text" name="optician_shop_name" id="register-optician-shop-name">
-                        <label for="register-optician-shop-name"><?php echo $lang['text_optician_shop_name']; ?> <em> *</em></label>
-                        <span><?php echo $lang['text_optician_shop_name_error']; ?></span>
+                        <input type="text" name="optician_shop_name" id="register-optician-practice-name">
+                        <label for="register-optician-practice-name"><?php echo $lang['text_optician_practice_name']; ?> <em> *</em></label>
+                        <span><?php echo $lang['text_optician_practice_name_error']; ?></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-box form-optician_shop_name">
+                        <input type="text" name="optician_register_number" id="register-register-number">
+                        <label for="register-register-number"><?php echo $lang['text_optician_register_number']; ?> <em> *</em></label>
+                        <span><?php echo $lang['text_optician_register_number_error']; ?></span>
                     </div>
                 </div>
                 <div class="col-md-6">

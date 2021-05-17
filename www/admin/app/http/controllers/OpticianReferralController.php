@@ -1,266 +1,413 @@
 <?php
 
 /**
-* Optician Referral Controller
-*/
+ * Optician Referral Controller
+ */
 class OpticianReferralController extends Controller
 {
-	/**
-	* Optician Referral index method
-	* This method will be called on blog list view
-	**/
-	public function index()
-	{
-		$this->load->model('commons');
-		$data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
-		/**
-		* Get all blogs data from DB using blog model 
-		**/
-		$this->load->model('blog');
-		$data['result'] = $this->model_blog->allBlogs();
-		/* Set confirmation message if page submitted before */
-		if (isset($this->session->data['message'])) {
-			$data['message'] = $this->session->data['message'];
-			unset($this->session->data['message']);
-		}
+    /**
+     * Optician Referral index method
+     * This method will be called on blog list view
+     **/
+    public function index()
+    {
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+        /**
+         * Get all optician referral data from DB using optician referral model
+         **/
+        $this->load->model('opticianreferral');
 
-		$data['page_title'] = 'Optician Referral';
-		$data['page_add'] = $this->user_agent->hasPermission('blog/add') ? true:false;
-		$data['page_edit'] = $this->user_agent->hasPermission('blog/edit') ? true:false;
-		$data['page_delete'] = $this->user_agent->hasPermission('blog/delete') ? true:false;
+        $data['period']['start'] = $this->url->get('start');
+        $data['period']['end'] = $this->url->get('end');
 
-		$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-		$data['action_delete'] = URL_ADMIN.DIR_ROUTE.'blog/delete';
+        /* Set confirmation message if page submitted before */
+        if (isset($this->session->data['message'])) {
+            $data['message'] = $this->session->data['message'];
+            unset($this->session->data['message']);
+        }
 
-		/*Render Blog view*/
-		$this->response->setOutput($this->load->view('blog/blog_list', $data));
-	}
-	/**
-	* Blog index add method
-	* This method will be called on Blog add
-	**/
-	public function indexAdd()
-	{
-		$this->load->model('commons');
-		$data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+        if (!empty($data['period']['start']) && !empty($data['period']['end'])) {
+            $data['period']['start'] = date_format(date_create($data['period']['start'].'00:00:00'), "Y-m-d H:i:s");
+            $data['period']['end'] = date_format(date_create($data['period']['end'].'23:59:59'), "Y-m-d H:i:s");
+        } else {
+            $data['period']['start'] = date('Y-m-d '.'00:00:00');
+            $data['period']['end'] = date('Y-m-d '.'23:59:59');
+        }
 
-		/* Set empty data to array */
-		$data['result'] =  NULL;
-		/* Set confirmation message if page submitted before */
-		if (isset($this->session->data['message'])) {
-			$data['message'] = $this->session->data['message'];
-			unset($this->session->data['message']);
-		}
-		$this->load->model('blog');
-		$data['categories'] = $this->model_blog->allCategory();
-		$categories = array();
-		if (!empty($data['categories'])) {
-			foreach ($data['categories'] as $value){
-				$categories[$value['parent']][] = $value;
-			}
+        $data['result'] = $this->model_opticianreferral->getOpticianReferrals($data['period']);
 
-			$data['categories'] = $this->createCategoryArray($categories, $categories[0]);
-			$data['categories'] = $this->createCategoryHTML($data['categories']);
-		} else {
-			$data['categories'] = "";
-		}
-		
-		/* Set page title */
-		$data['page_title'] = 'New Blog';
+        $data['page_title'] = 'Optician Referral';
+        $data['page_add'] = $this->user_agent->hasPermission('optician-referral/add') ? true : false;
+        $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true : false;
+        $data['page_delete'] = $this->user_agent->hasPermission('optician-referral/delete') ? true : false;
+        $data['page_view'] = $this->user_agent->hasPermission('optician-referral/view') ? true : false;
 
-		$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-		$data['action'] = URL_ADMIN.DIR_ROUTE.'blog/add';
-		/*Render Blog add view*/
-		$this->response->setOutput($this->load->view('blog/blog_form', $data));
-	}
-	/**
-	* Blog index edit method
-	* This method will be called on Blog Edit view
-	**/
-	public function indexEdit()
-	{
-		/**
-		* Check if id exist in url if not exist then redirect to blog list view 
-		**/
-		$id = (int)$this->url->get('id');
-		if (empty($id) || !is_int($id)) {
-			$this->url->redirect('blogs');
-		}
-		/**
-		* Call getBlog method from Blog model to get data from DB for single blog
-		* If blog does not exist then redirect it to blog list view
-		**/
-		$this->load->model('blog');
-		$data['result']  = $this->model_blog->getBlog($id);
-		if (empty($data['result'])) {
-			$this->session->data['message'] = array('alert' => 'warning', 'value' => 'Blog does not exist in database!');
-			$this->url->redirect('blogs');
-		}
+        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
+        $data['action_delete'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/delete';
 
-		$this->load->model('commons');
-		$data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
-		$data['categories'] = $this->model_blog->allCategoryWithCheck($id);
+        /*Render optician referral view*/
+        $this->response->setOutput($this->load->view('optician_referral/optician_referral_list', $data));
+    }
 
-		$categories = array();
-		if (!empty($data['categories'])) {
-			foreach ($data['categories'] as $value){
-				$categories[$value['parent']][] = $value;
-			}
+    /**
+     * Optician Referral index add method
+     * This method will be called on Optician Referral add
+     **/
+    public function indexAdd()
+    {
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
-			$data['categories'] = $this->createCategoryArray($categories, $categories[0]);
-			$data['categories'] = $this->createCategoryHTML($data['categories']);
-		} else {
-			$data['categories'] = "";
-		}
-		/* Set confirmation message if page submitted before */
-		if (isset($this->session->data['message'])) {
-			$data['message'] = $this->session->data['message'];
-			unset($this->session->data['message']);
-		}
+        /* Set empty data to array */
+        $data['result'] = NULL;
+        /* Set confirmation message if page submitted before */
+        if (isset($this->session->data['message'])) {
+            $data['message'] = $this->session->data['message'];
+            unset($this->session->data['message']);
+        }
+        $this->load->model('opticianreferral');
 
-		$data['page_title'] = 'Edit Blog';
-		$data['comment_edit'] = $this->user_agent->hasPermission('comment/edit') ? true:false;
-		$data['comment_list'] = $this->user_agent->hasPermission('comment') ? true:false;
-		if ($data['comment_list']) {
-			$data['comments'] = $this->model_blog->getComments($id);
-		}
-		
-		$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-		$data['action'] = URL_ADMIN.DIR_ROUTE.'blog/edit';
-		/*Render Blog edit view*/
-		$this->response->setOutput($this->load->view('blog/blog_form', $data));
-	}
+        /* Set page title */
+        $data['page_title'] = 'New Optician Referral';
 
-	protected function createCategoryHTML($categories)
-	{
-		$data = '<ul class="category-list list-style-none">';
-		foreach($categories as $value){
-			if(isset($value['sub'])) {
-				$data .= '<div class="custom-control custom-checkbox mb-3">
-				<input type="checkbox" name="blog[category][]" class="custom-control-input" value="'.$value['id'].'" id="category-'.$value['id'].'" '.$value['status'].'>
-				<label class="custom-control-label" for="category-'.$value['id'].'"><p>'.$value['name'].'</p></label>
-				</div>' .$this->createCategoryHTML($value['sub']);
-			}else{
-				$data .= '<li><div class="custom-control custom-checkbox mb-3">
-				<input type="checkbox" name="blog[category][]" class="custom-control-input" value="'.$value['id'].'" id="category-'.$value['id'].'" '.$value['status'].'>
-				<label class="custom-control-label" for="category-'.$value['id'].'"><p>'.$value['name'].'</p></label>
-				</div>';
-			}
-		}
-		return $data.'</ul>';
-	}
+        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/add';
 
-	protected function createCategoryArray(&$list, $parent)
-	{
-		$tree = array();
-		foreach ($parent as $k=>$l){
-			if(isset($list[$l['id']])){
-				$l['sub'] = $this->createCategoryArray($list, $list[$l['id']]);
-			}
-			$tree[] = $l;
-		}
-		return $tree;
-	}
-	/**
-	 * Blog index action method
-	 * This method will be called on blog submit/save view
-	**/
-	public function indexAction()
-	{
-		/**
-		 * Check if from is submitted or not 
-		**/
-		if (!isset($_POST['submit'])) {
-			$this->url->redirect('blogs');
-		}
-		
-		$data = $this->url->post;
-		$this->load->controller('common');
-		if ($this->controller_common->validateToken($data['_token'])){
-			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Security token is missing!');
-			$this->url->redirect('blogs');
-		}
+        /*Render Optician Referral add view*/
+        $this->response->setOutput($this->load->view('optician_referral/optician_referral_form', $data));
+    }
 
-		if ($validate_field = $this->validateField($data['blog'])) {
-			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter valid '.implode(", ",$validate_field).'!');
-			if (!empty($data['blog']['id'])) {
-				$this->url->redirect('blog/edit&id='.$data['blog']['id']);
-			} else {
-				$this->url->redirect('blog/add');
-			}
-		}
+    /**
+     * Optician Referral index edit method
+     * This method will be called on Optician Referral Edit view
+     **/
+    public function indexEdit()
+    {
+        /**
+         * Check if id exist in url if not exist then redirect to Optician Referral list view
+         **/
+        $id = (int)$this->url->get('id');
+        if (empty($id) || !is_int($id)) {
+            $this->url->redirect('optician-referral');
+        }
+        /**
+         * Call getOptician Referral method from Optician Referral model to get data from DB for single Optician Referral
+         * If Optician Referral does not exist then redirect it to Optician Referral list view
+         **/
+        $this->load->model('opticianreferral');
+        $data['result'] = $this->model_opticianreferral->getOpticianReferral($id);
+        $data['reports'] = $this->model_opticianreferral->getOpticianReferralDocumnet($id);
+        if (empty($data['result'])) {
+            $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Optician Referral does not exist in database!');
+            $this->url->redirect('optician-referral');
+        }
 
-		$data['blog']['datetime'] = date('Y-m-d H:i:s');
-		$this->load->model('blog');
-		if (!empty($data['blog']['id'])) {
-			$this->model_blog->updateBlog($data['blog']);
-			$this->session->data['message'] = array('alert' => 'success', 'value' => 'Blog updated successfully.');
-		}
-		else {
-			$data['blog']['user_id'] = $this->session->data['user_id'];
-			$data['blog']['id'] = $this->model_blog->createBlog($data['blog']);
-			$data['blog']['url'] = $this->controller_common->url_slug($data['blog']['title']);
-			$count = $this->model_blog->checkUrlinDb($data['blog']);
-			if ($count) {
-				$data['blog']['url'] = $data['blog']['url'].'-'.$data['blog']['id'];
-				$this->model_blog->updateBlogUrl($data['blog']);
-			} else {
-				$this->model_blog->updateBlogUrl($data['blog']);
-			}
-			$this->session->data['message'] = array('alert' => 'success', 'value' => 'Blog created successfully.');
-		}
-		$this->url->redirect('blog/edit&id='.$data['blog']['id']);
-	}
-	/**
-	* Blog index delete method
-	* This method will be called on blog delete action
-	**/
-	public function indexDelete()
-	{
-		$this->load->controller('common');
-		if ($this->controller_common->validateToken($this->url->post('_token'))) {
-			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Security token is missing!');
-			$this->url->redirect('blogs');
-		}
 
-		/**
-		* Check if from is submitted or not 
-		**/
-		if (!isset($_POST['delete']) || empty($this->url->post('id')) ) {
-			$this->url->redirect('blogs');
-		}
-		/**
-		* Call delete method
-		**/
-		$this->load->model('blog');
-		$result = $this->model_blog->deleteBlog($this->url->post('id'));
-		$this->session->data['message'] = array('alert' => 'success', 'value' => 'Blog deleted successfully.');
-		$this->url->redirect('blogs');
-	}
 
-	protected function validateField($data)
-	{
-		$error = [];
-		$error_flag = false;
-		if ($this->controller_common->validateText($data['title'])) {
-			$error_flag = true;
-			$error['title'] = 'Blog Title!';
-		}
+        $data['page_documents'] = $this->user_agent->hasPermission('optician-referral/documents') ? true:false;
+        $data['page_document_upload'] = $this->user_agent->hasPermission('optician-referral/reportUpload') ? true:false;
+        $data['page_document_remove'] = $this->user_agent->hasPermission('optician-referral/removeReport') ? true:false;
 
-		if ($this->controller_common->validateText($data['author'])) {
-			$error_flag = true;
-			$error['author'] = 'Author Name!';
-		}
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
-		if ($this->controller_common->validateText($data['short_post'])) {
-			$error_flag = true;
-			$error['short_post'] = 'Short Description!';
-		}
 
-		if ($error_flag) {
-			return $error;
-		} else {
-			return false;
-		}
-	}
+        /* Set confirmation message if page submitted before */
+        if (isset($this->session->data['message'])) {
+            $data['message'] = $this->session->data['message'];
+            unset($this->session->data['message']);
+        }
+
+        $data['page_title'] = 'Edit Optician Referral';
+
+
+        $data['token'] = hash(  'sha512', TOKEN . TOKEN_SALT);
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/edit';
+
+        /*Render Optician Referral edit view*/
+        $this->response->setOutput($this->load->view('optician_referral/optician_referral_edit_form', $data));
+    }
+
+    public function indexView()
+    {
+        /**
+         * Check if id exist in url if not exist then redirect to list view
+         **/
+        $id = (int)$this->url->get('id');
+        if (empty($id) || !is_int($id)) {
+            $this->url->redirect('optician-referral');
+        }
+        $data = $this->url->get;
+        //print_r($data);exit;
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+
+        $this->load->model('opticianreferral');
+        $data['result'] = $this->model_opticianreferral->getOpticianReferral($id);
+        $data['reports'] = $this->model_opticianreferral->getOpticianReferralDocumnet($id);
+
+
+        if (!$data['result']) {
+            $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Optician Referral does not exist in database!');
+            $this->url->redirect('optician-referral');
+        }
+
+        $this->load->model('user');
+        $data['user'] = $this->model_user->getUser($data['result']['created_by']);
+
+        $data['page_title'] = 'Optician Referral View';
+        $data['page_add'] = $this->user_agent->hasPermission('optician-referral/add') ? true:false;
+        $data['page_view'] = $this->user_agent->hasPermission('optician-referral/view') ? true:false;
+        $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true:false;
+        $data['page_delete'] = $this->user_agent->hasPermission('optician-referral/delete') ? true:false;
+        $data['page_documents'] = $this->user_agent->hasPermission('optician-referral/documents') ? true:false;
+
+        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
+        $data['action'] = URL_ADMIN.DIR_ROUTE.'optician-referral/edit&id='.$data['result']['id'];
+
+        /*Render Blog edit view*/
+        $this->response->setOutput($this->load->view('optician_referral/optician_referral_view', $data));
+    }
+
+
+    /**
+     * Optician Referral index action method
+     * This method will be called on Optician Referral submit/save view
+     **/
+    public function indexAction()
+    {
+        /**
+         * Check if from is submitted or not
+         **/
+        if (!isset($_POST['submit'])) {
+            $this->url->redirect('optician-referral');
+        }
+
+        $data = $this->url->post;
+        $this->load->controller('common');
+        if ($this->controller_common->validateToken($data['_token'])) {
+            $this->session->data['message'] = array('alert' => 'error', 'value' => 'Security token is missing!');
+            $this->url->redirect('optician-referral');
+        }
+
+        if ($validate_field = $this->validateField($data['referral'])) {
+            $this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter valid ' . implode(", ", $validate_field) . '!');
+            if (!empty($data['referral']['id'])) {
+                $this->url->redirect('optician-referral/edit&id=' . $data['referral']['id']);
+            } else {
+                $this->url->redirect('optician-referral/add');
+            }
+        }
+
+        $this->load->model('opticianreferral');
+
+        if (!empty($data['referral']['id'])) {
+            $data['referral']['user_id'] = $this->session->data['user_id'];
+            if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
+                $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral updated successfully.');
+            }
+            $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not updated successfully.');
+            $this->url->redirect('optician-referral/edit&id=' . $data['referral']['id']);
+        } else {
+            $data['referral']['user_id'] = $this->session->data['user_id'];
+            $this->model_opticianreferral->createOpticianReferral($data['referral']);
+            $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral created successfully.');
+            $this->url->redirect('optician-referral');
+        }
+
+    }
+
+    /**
+     * Optician Referral index delete method
+     * This method will be called on Optician Referral delete action
+     **/
+    public function indexDelete()
+    {
+        $this->load->controller('common');
+        if ($this->controller_common->validateToken($this->url->post('_token'))) {
+            $this->session->data['message'] = array('alert' => 'error', 'value' => 'Security token is missing!');
+            $this->url->redirect('optician-referral');
+        }
+
+        /**
+         * Check if from is submitted or not
+         **/
+        if (!isset($_POST['delete']) || empty($this->url->post('id'))) {
+            $this->url->redirect('optician-referral');
+        }
+        /**
+         * Call delete method
+         **/
+        $this->load->model('opticianreferral');
+        $result = $this->model_opticianreferral->deleteOpticianReferral($this->url->post('id'));
+        $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral deleted successfully.');
+        $this->url->redirect('optician-referral');
+    }
+
+    protected function validateField($data)
+    {
+        $error = [];
+        $error_flag = false;
+        if ($this->controller_common->validateText($data['first_name'])) {
+            $error_flag = true;
+            $error['title'] = 'First Name!';
+        }
+        if ($this->controller_common->validateText($data['last_name'])) {
+            $error_flag = true;
+            $error['title'] = 'Last Name!';
+        }
+        if ($this->controller_common->validateText($data['dob'])) {
+            $error_flag = true;
+            $error['title'] = 'Date of Birth!';
+        }
+        if ($this->controller_common->validateText($data['address_1'])) {
+            $error_flag = true;
+            $error['title'] = 'Address !';
+        }
+        if ($this->controller_common->validateText($data['city'])) {
+            $error_flag = true;
+            $error['title'] = 'City !';
+        }
+        if ($this->controller_common->validateText($data['zip_code'])) {
+            $error_flag = true;
+            $error['title'] = 'City !';
+        }
+        if ($this->controller_common->validateNumeric($data['zip_code'])) {
+            $error_flag = true;
+            $error['title'] = 'Zip Code !';
+        }
+
+        if ($error_flag) {
+            return $error;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * function to check Date format
+     * If matches then good else invalidate
+     **/
+    protected function validateDate($date, $format = 'Y-m-d')
+    {
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) == $date;
+    }
+
+    public function documentUpload()
+    {
+        $data = $this->url->post;
+        $data['user_id'] = $this->session->data['user_id'];
+
+        $file = $this->url->files['file'];
+        $data['ext'] = pathinfo($file['name'], PATHINFO_EXTENSION);
+
+        $data['filedir'] = DIR.'public/uploads/optician-referral/document/' . $data['id'] . '/';
+        $data['file_name'] = 'Doc-'.uniqid(rand()).$data['id'];
+
+        $filesystem = new Filesystem();
+        $result = $filesystem->moveUpload($file, $data);
+
+        if ($result['error'] === false) {
+            $data['file_name'] = $result['name'];
+            $this->load->model('referrallistdocument');
+            $this->model_referrallistdocument->createReferralListDocument($data);
+            $result['ext'] = $data['ext'];
+            echo json_encode($result);
+        } else {
+            echo json_encode($result);
+        }
+    }
+
+    public function documentRemove()
+    {
+        $file = $this->url->post('name');
+        $referral_list_id = $this->url->post('id');
+        if (!is_string($file)) {
+            echo "2";
+            exit();
+        }
+
+        if (!unlink(DIR.'/public/uploads/optician-referral/document/'.$referral_list_id.'/'.$file)) {
+            echo ("Error deleting $file");
+        } else {
+            $data['filename'] = $this->url->post('name');
+            $data['referral_list_id'] = $referral_list_id;
+            $this->load->model('referrallistdocument');
+            $result = $this->model_referrallistdocument->deleteReferralListDocument($data);
+            echo $result;
+        }
+    }
+
+    public function reportsExport(){
+        $id = (int)$this->url->get('id');
+
+        if (empty($id) || !is_int($id)) {
+            $this->session->data['message'] = array('alert' => 'error', 'value' => 'Document id missing.');
+            $this->url->redirect('optician-referral/edit&id='.$id);
+        }
+
+        $export_docs = [];
+
+        $this->load->model('opticianreferral');
+        $export_docs = $this->model_opticianreferral->getOpticianReferralDocumnet($id);
+        $source_dir = DIR . "public/uploads/optician-referral/document/".$id."/";
+
+        if(empty($export_docs)){
+            $this->session->data['message'] = array('alert' => 'error', 'value' => 'Documents not available.');
+            $this->url->redirect('appointment/edit&id='.$id);
+        }
+
+        $document_code = "APNT".str_pad($id, 5, '0', STR_PAD_LEFT);
+        $path = "../public/uploads/optician-referral/document/";
+        $zip_file_path = $path . date('Ymd') . "_" . $document_code . "_reports_export.zip";
+        if (file_exists($zip_file_path)){
+            unlink($zip_file_path);
+        }
+
+        $source_files = [];
+        foreach($export_docs as $doc){
+
+            $filePath     =  $source_dir . $doc['filename'];
+            $relativePath =  'document/' . $doc['filename'];
+
+            $source_files[] = [
+                'filePath' => $filePath,
+                'relativePath' => $relativePath,
+            ];
+
+        }
+
+        $parems = [];
+        $parems['source_files'] = $source_files;
+        $parems['zip_file_path'] = $zip_file_path;
+        $this->createZipFile($parems);
+
+        if (file_exists($zip_file_path)) {
+            header('Content-Type: application/zip');
+            header('Content-Disposition: attachment; filename="'.basename($zip_file_path).'"');
+            header('Content-Length: ' . filesize($zip_file_path));
+
+            flush();
+            readfile($zip_file_path);
+            // delete file
+            unlink($zip_file_path);
+
+        }
+
+    }
+
+
+    public function createZipFile($parems = []){
+        if(!empty($parems['source_files'])){
+            $zip = new \ZipArchive();
+            $zip->open($parems['zip_file_path'], \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+
+            foreach($parems['source_files'] as $image){
+                $zip->addFile($image['filePath'], $image['relativePath']);
+            }
+
+            $zip->close();
+        }
+    }
 }

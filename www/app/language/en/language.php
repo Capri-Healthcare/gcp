@@ -307,9 +307,10 @@ $lang = array(
 	'text_choose_consultation_type' => 'Choose preferd consultation method',
 	'text_consultation_type' => 'Consultation method',
 	'text_gp_practice' => 'GP Practice',
-	'text_optician_shop_name' => 'Optician shop name',
-	'text_optician_shop_name_error' => 'Please Enter Valid Optician Shop Name!',
-
+    'text_optician_practice_name' => 'Optician Practice Name',
+    'text_optician_practice_name_error' => 'Please Enter Valid Optician Practice Name!',
+    'text_optician_register_number' => 'Optician Registration  Number',
+    'text_optician_register_number_error' => 'Please Enter Valid Optician Registration Number!',
 
 
 

@@ -74,4 +74,5 @@ $router->get('test/signWithDocuSign', 'DocusignController@createController');
 $router->get('test/downloadDocuSignDoc', 'DocusignController@downloadDocuSignDoc');
 $router->get('test/checkDocuSignReturn', 'DocusignController@checkDocuSignReturn');
 $router->get('test/document', 'TestTokbox@testDocument');
-$router->get('test/pdf', 'TestTokbox@testPDF'); 
+$router->get('test/pdf', 'TestTokbox@testPDF');
+

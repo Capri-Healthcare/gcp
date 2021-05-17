@@ -39,7 +39,7 @@ class Register extends Model
 	public function createOpticianAccount($data) 
 	{
 		$passwordhash = password_hash($data['password'], PASSWORD_DEFAULT);
-		$query = $this->database->query("INSERT INTO `" . DB_PREFIX . "users` (user_role, `user_name`, `firstname`, `lastname`, `email`, `mobile`, `password`, `optician_shop_name`, `temp_hash`, `status`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ", array(9, $this->database->escape($data['email']), $this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $this->database->escape($data['email']), $this->database->escape($data['mobile']), $this->database->escape($passwordhash), $this->database->escape($data['optician_shop_name']), $this->database->escape($data['temp_hash']), 1, $data['datetime']));
+		$query = $this->database->query("INSERT INTO `" . DB_PREFIX . "users` (user_role, `user_name`, `firstname`, `lastname`, `email`, `mobile`, `password`, `optician_shop_name`,`optician_registration_number`, `temp_hash`, `status`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?) ", array(9, $this->database->escape($data['email']), $this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $this->database->escape($data['email']), $this->database->escape($data['mobile']), $this->database->escape($passwordhash), $this->database->escape($data['optician_shop_name']),  $this->database->escape($data['optician_register_number']),$this->database->escape($data['temp_hash']), 1, $data['datetime']));
 		if (isset($query->num_rows) AND $query->num_rows > 0) {
 			return true;
 		} else {

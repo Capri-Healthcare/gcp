@@ -55,7 +55,7 @@
 			<div class="tab-content pt-4">
 				<div class="tab-pane active" id="appointment-info">
 					<form action="<?php echo $action ?>" method="post">
-					<input type="hidden" name="_token" value="<?php echo $token; ?>">
+					<input type="hidden" name="_token" class="token" value="<?php echo $token; ?>">
 					<input type="hidden" name="form_type" value="appointment_info">
 					<input type="hidden" class="appointment-id" name="appointment[id]" value="<?php echo $result['id'];?>">
 					<div id="apnt-info" class="row">

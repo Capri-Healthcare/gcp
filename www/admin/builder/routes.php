@@ -294,3 +294,15 @@ $router->post('appointment/moveImageToReport', 'AppointmentController@moveImageT
 $router->get('appointment/videoConsultation', 'AppointmentController@startVideoConsultation');
 $router->post('appointment/clinicalNoteUpdate', 'AppointmentController@clinicalNoteUpdate');
 $router->post('appointment/prescriptionUpdate', 'AppointmentController@PrescriptionUpdate');
+
+
+$router->get('optician-referral', 'OpticianReferralController@index');
+$router->get('optician-referral/add', 'OpticianReferralController@indexAdd');
+$router->get('optician-referral/view', 'OpticianReferralController@indexView');
+$router->post('optician-referral/add', 'OpticianReferralController@indexAction');
+$router->get('optician-referral/edit', 'OpticianReferralController@indexEdit');
+$router->post('optician-referral/edit', 'OpticianReferralController@indexAction');
+$router->post('optician-referral/delete', 'OpticianReferralController@indexDelete');
+$router->post('optician-referral/report/reportUpload', 'OpticianReferralController@documentUpload');
+$router->post('optician-referral/report/removeReport', 'OpticianReferralController@documentRemove');
+$router->get('optician-referral/report/reportsExport', 'OpticianReferralController@reportsExport');
