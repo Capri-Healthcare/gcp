@@ -28,11 +28,11 @@ class OpticianReferralController extends Controller
         }
 
         if (!empty($data['period']['start']) && !empty($data['period']['end'])) {
-            $data['period']['start'] = date_format(date_create($data['period']['start'].'00:00:00'), "Y-m-d H:i:s");
-            $data['period']['end'] = date_format(date_create($data['period']['end'].'23:59:59'), "Y-m-d H:i:s");
+            $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
+            $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
         } else {
-            $data['period']['start'] = date('Y-m-d '.'00:00:00');
-            $data['period']['end'] = date('Y-m-d '.'23:59:59');
+            $data['period']['start'] = date('Y-m-d ' . '00:00:00');
+            $data['period']['end'] = date('Y-m-d ' . '23:59:59');
         }
 
         $data['result'] = $this->model_opticianreferral->getOpticianReferrals($data['period']);
@@ -104,10 +104,9 @@ class OpticianReferralController extends Controller
         }
 
 
-
-        $data['page_documents'] = $this->user_agent->hasPermission('optician-referral/documents') ? true:false;
-        $data['page_document_upload'] = $this->user_agent->hasPermission('optician-referral/reportUpload') ? true:false;
-        $data['page_document_remove'] = $this->user_agent->hasPermission('optician-referral/removeReport') ? true:false;
+        $data['page_documents'] = $this->user_agent->hasPermission('optician-referral/documents') ? true : false;
+        $data['page_document_upload'] = $this->user_agent->hasPermission('optician-referral/reportUpload') ? true : false;
+        $data['page_document_remove'] = $this->user_agent->hasPermission('optician-referral/removeReport') ? true : false;
 
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
@@ -122,7 +121,7 @@ class OpticianReferralController extends Controller
         $data['page_title'] = 'Edit Optician Referral';
 
 
-        $data['token'] = hash(  'sha512', TOKEN . TOKEN_SALT);
+        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/edit';
 
         /*Render Optician Referral edit view*/
@@ -154,17 +153,17 @@ class OpticianReferralController extends Controller
         }
 
         $this->load->model('user');
-        $data['user'] = $this->model_user->getUser($data['result']['created_by']);
+        //$data['user'] = $this->model_user->getUser($data['result']['created_by']);
 
         $data['page_title'] = 'Optician Referral View';
-        $data['page_add'] = $this->user_agent->hasPermission('optician-referral/add') ? true:false;
-        $data['page_view'] = $this->user_agent->hasPermission('optician-referral/view') ? true:false;
-        $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true:false;
-        $data['page_delete'] = $this->user_agent->hasPermission('optician-referral/delete') ? true:false;
-        $data['page_documents'] = $this->user_agent->hasPermission('optician-referral/documents') ? true:false;
+        $data['page_add'] = $this->user_agent->hasPermission('optician-referral/add') ? true : false;
+        $data['page_view'] = $this->user_agent->hasPermission('optician-referral/view') ? true : false;
+        $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true : false;
+        $data['page_delete'] = $this->user_agent->hasPermission('optician-referral/delete') ? true : false;
+        $data['page_documents'] = $this->user_agent->hasPermission('optician-referral/documents') ? true : false;
 
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-        $data['action'] = URL_ADMIN.DIR_ROUTE.'optician-referral/edit&id='.$data['result']['id'];
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/edit&id=' . $data['result']['id'];
 
         /*Render Blog edit view*/
         $this->response->setOutput($this->load->view('optician_referral/optician_referral_view', $data));
@@ -204,7 +203,7 @@ class OpticianReferralController extends Controller
 
         if (!empty($data['referral']['id'])) {
             $data['referral']['user_id'] = $this->session->data['user_id'];
-            
+
             if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral updated successfully.');
             } else {
@@ -213,8 +212,13 @@ class OpticianReferralController extends Controller
             $this->url->redirect('optician-referral/edit&id=' . $data['referral']['id']);
         } else {
             $data['referral']['user_id'] = $this->session->data['user_id'];
-            $this->model_opticianreferral->createOpticianReferral($data['referral']);
-            $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral created successfully.');
+            if ($this->model_opticianreferral->createOpticianReferral($data['referral'])) {
+                $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral created successfully.');
+
+            } else {
+
+                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not created successfully.');
+            }
             $this->url->redirect('optician-referral');
         }
 
@@ -267,13 +271,25 @@ class OpticianReferralController extends Controller
             $error_flag = true;
             $error['title'] = 'Address !';
         }
+        if ($this->controller_common->validateText($data['email'])) {
+            $error_flag = true;
+            $error['title'] = 'Email !';
+        }
+        if ($this->controller_common->validateEmail($data['email'])) {
+            $error_flag = true;
+            $error['title'] = 'Email address !';
+        }
+        if ($this->controller_common->validateMobileNumber($data['mobile'])) {
+            $error_flag = true;
+            $error['title'] = 'Mobile number !';
+        }
         if ($this->controller_common->validateText($data['city'])) {
             $error_flag = true;
             $error['title'] = 'City !';
         }
-        if ($this->controller_common->validateText($data['zip_code'])) {
+        if ($this->controller_common->validatePincodeNumber($data['zip_code'])) {
             $error_flag = true;
-            $error['title'] = 'City !';
+            $error['title'] = 'Pincode  !';
         }
         if ($this->controller_common->validateNumeric($data['zip_code'])) {
             $error_flag = true;
@@ -286,6 +302,7 @@ class OpticianReferralController extends Controller
             return false;
         }
     }
+
     /**
      * function to check Date format
      * If matches then good else invalidate
@@ -304,8 +321,8 @@ class OpticianReferralController extends Controller
         $file = $this->url->files['file'];
         $data['ext'] = pathinfo($file['name'], PATHINFO_EXTENSION);
 
-        $data['filedir'] = DIR.'public/uploads/optician-referral/document/' . $data['id'] . '/';
-        $data['file_name'] = 'Doc-'.uniqid(rand()).$data['id'];
+        $data['filedir'] = DIR . 'public/uploads/optician-referral/document/' . $data['id'] . '/';
+        $data['file_name'] = 'Doc-' . uniqid(rand()) . $data['id'];
 
         $filesystem = new Filesystem();
         $result = $filesystem->moveUpload($file, $data);
@@ -330,8 +347,8 @@ class OpticianReferralController extends Controller
             exit();
         }
 
-        if (!unlink(DIR.'/public/uploads/optician-referral/document/'.$referral_list_id.'/'.$file)) {
-            echo ("Error deleting $file");
+        if (!unlink(DIR . '/public/uploads/optician-referral/document/' . $referral_list_id . '/' . $file)) {
+            echo("Error deleting $file");
         } else {
             $data['filename'] = $this->url->post('name');
             $data['referral_list_id'] = $referral_list_id;
@@ -341,37 +358,38 @@ class OpticianReferralController extends Controller
         }
     }
 
-    public function reportsExport(){
+    public function reportsExport()
+    {
         $id = (int)$this->url->get('id');
 
         if (empty($id) || !is_int($id)) {
             $this->session->data['message'] = array('alert' => 'error', 'value' => 'Document id missing.');
-            $this->url->redirect('optician-referral/edit&id='.$id);
+            $this->url->redirect('optician-referral/edit&id=' . $id);
         }
 
         $export_docs = [];
 
         $this->load->model('opticianreferral');
         $export_docs = $this->model_opticianreferral->getOpticianReferralDocumnet($id);
-        $source_dir = DIR . "public/uploads/optician-referral/document/".$id."/";
+        $source_dir = DIR . "public/uploads/optician-referral/document/" . $id . "/";
 
-        if(empty($export_docs)){
+        if (empty($export_docs)) {
             $this->session->data['message'] = array('alert' => 'error', 'value' => 'Documents not available.');
-            $this->url->redirect('appointment/edit&id='.$id);
+            $this->url->redirect('appointment/edit&id=' . $id);
         }
 
-        $document_code = "APNT".str_pad($id, 5, '0', STR_PAD_LEFT);
+        $document_code = "APNT" . str_pad($id, 5, '0', STR_PAD_LEFT);
         $path = "../public/uploads/optician-referral/document/";
         $zip_file_path = $path . date('Ymd') . "_" . $document_code . "_reports_export.zip";
-        if (file_exists($zip_file_path)){
+        if (file_exists($zip_file_path)) {
             unlink($zip_file_path);
         }
 
         $source_files = [];
-        foreach($export_docs as $doc){
+        foreach ($export_docs as $doc) {
 
-            $filePath     =  $source_dir . $doc['filename'];
-            $relativePath =  'document/' . $doc['filename'];
+            $filePath = $source_dir . $doc['filename'];
+            $relativePath = 'document/' . $doc['filename'];
 
             $source_files[] = [
                 'filePath' => $filePath,
@@ -387,7 +405,7 @@ class OpticianReferralController extends Controller
 
         if (file_exists($zip_file_path)) {
             header('Content-Type: application/zip');
-            header('Content-Disposition: attachment; filename="'.basename($zip_file_path).'"');
+            header('Content-Disposition: attachment; filename="' . basename($zip_file_path) . '"');
             header('Content-Length: ' . filesize($zip_file_path));
 
             flush();
@@ -400,12 +418,13 @@ class OpticianReferralController extends Controller
     }
 
 
-    public function createZipFile($parems = []){
-        if(!empty($parems['source_files'])){
+    public function createZipFile($parems = [])
+    {
+        if (!empty($parems['source_files'])) {
             $zip = new \ZipArchive();
             $zip->open($parems['zip_file_path'], \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
 
-            foreach($parems['source_files'] as $image){
+            foreach ($parems['source_files'] as $image) {
                 $zip->addFile($image['filePath'], $image['relativePath']);
             }
 

@@ -128,6 +128,19 @@ class CommonController extends Controller
 			return false;
 		}
 	}
+    //Validate Pincode Number
+    public function validatePincodeNumber($pincode_number)
+    {
+        if (strlen($pincode_number) < 6 ) {
+            return true;
+        }
+        else if ($this->validateNumeric($pincode_number)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 	//Validate Date
 	public function validateDate($date, $format = 'Y-m-d')
 	{

@@ -24,18 +24,14 @@
                 <div class=row>
                     <div class="col-12">
                         <div class="user-avtar">
-                            <?php if (!empty($user['picture'])  && file_exists(DIR.'public/uploads/'.$user['picture'])) { ?>
-                                <img class="img-fluid" src="<?php echo URL.'public/uploads/'.$user['picture']; ?>" alt="">
-                            <?php } else { ?>
-                                <span><?php echo $user['firstname'][0]; ?></span>
-                            <?php } ?>
+                            <span><?php echo $result['first_name'][0]; ?></span>
                         </div>
                     </div>
                 </div>
                 <div class=row>
                     <div class="col-12">
-                        <h3><?php echo $user['user_name']; ?></h3>
-                        <p class="mb-0 font-12"><i class="ti-email"></i> <?php echo $user['email']; ?> <i class="ti-mobile"></i> <?php echo $user['mobile']; ?></p>
+                        <h3><?php echo $result['first_name']; ?></h3>
+                        <p class="mb-0 font-12"><i class="ti-email"></i> <?php echo $result['email']; ?> <i class="ti-mobile"></i> <?php echo $result['mobile']; ?></p>
                     </div>
                 </div>
                 <div class="user-details text-center pt-3">
