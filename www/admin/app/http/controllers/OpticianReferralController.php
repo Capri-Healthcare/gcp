@@ -204,10 +204,12 @@ class OpticianReferralController extends Controller
 
         if (!empty($data['referral']['id'])) {
             $data['referral']['user_id'] = $this->session->data['user_id'];
+            
             if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral updated successfully.');
+            } else {
+                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not updated successfully.');
             }
-            $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not updated successfully.');
             $this->url->redirect('optician-referral/edit&id=' . $data['referral']['id']);
         } else {
             $data['referral']['user_id'] = $this->session->data['user_id'];
