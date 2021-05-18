@@ -191,7 +191,7 @@
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                                     </div>
-                                                    <select name="doctor[status]" class="custom-select" required>
+                                                    <select name="referral[status]" class="custom-select" required>
                                                         <option value="NEW" <?php if ($result['status'] == 'NEW') {
                                                             echo "selected";
                                                         } ?> >NEW

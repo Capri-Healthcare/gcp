@@ -119,7 +119,7 @@
         closeAppointmentSidebar();
     });
     
-    $('body').on('click', '.appointment-sidebar', function () {
+    $('body').on('click', '#appointment-sidebar', function () {
         openAppointmentSidebar();
     });
 

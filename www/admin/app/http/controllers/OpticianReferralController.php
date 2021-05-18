@@ -198,12 +198,47 @@ class OpticianReferralController extends Controller
         }
 
         $this->load->model('opticianreferral');
+        $this->load->model('patient');
 
         if (!empty($data['referral']['id'])) {
             $data['referral']['user_id'] = $this->session->data['user_id'];
 
+            $address['address1'] =  $data['referral']['address_1'];
+            $address['address2'] =  $data['referral']['address_2'];
+            $address['city'] =  $data['referral']['city'];
+            $address['country'] =  "";
+            $address['postal'] =  "";
+
             if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
+
+                if($data['referral']['status'] == 'ACCEPTED')
+                {
+                    if(!$this->model_patient->checkPatientEmail($data['referral']['email'])){
+                        $patient['firstname'] =  $data['referral']['first_name'];
+                        $patient['lastname'] =  $data['referral']['last_name'];
+                        $patient['mail'] =  $data['referral']['email'];
+                        $patient['mobile'] =  $data['referral']['mobile'];
+                        $patient['address'] =  json_encode($address);
+                        $patient['gender'] =  $data['referral']['first_name'];
+                        $patient['dob'] =  $data['referral']['dob'];
+                        $patient['user_id'] =  $data['referral']['user_id'];
+                        $patient['title'] =  $data['referral']['user_id'];
+                        $patient['history'] =  $data['referral']['user_id'];
+                        $patient['other'] =  $data['referral']['user_id'];
+                        $patient['hash'] =  $data['referral']['user_id'];
+                        $patient['datetime'] =  date('Y-m-d H:s:a');
+
+                        $data['id'] = $this->model_patient->createPatient($patient);
+
+                        if(!empty($data['id'])){
+                            $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
+                            $this->url->redirect('appointments&id='. $data['id']);
+                        }
+                    }
+                }
+
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral updated successfully.');
+
             } else {
                 $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not updated successfully.');
             }

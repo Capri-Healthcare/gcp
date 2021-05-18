@@ -13,8 +13,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ti-timer"></i></span>
                     </div>
-                    <input type="text" name="appointment[name]" class="form-control patient-name" placeholder="Enter Name . . ." required>
-                    <input type="hidden" name="appointment[patient_id]" class="form-control patient-id">
+                    <input type="text" name="appointment[name]" value="<?php echo(isset($patient)?$patient['firstname']:'')?>" class="form-control patient-name" placeholder="Enter Name . . ." required>
+                    <input type="hidden" name="appointment[patient_id]" value="<?php echo(isset($patient)?$patient['id']:'')?>" class="form-control patient-id">
                 </div>
             </div>
             <div class="form-group mb-2">
@@ -23,7 +23,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ti-timer"></i></span>
                     </div>
-                    <input type="text" name="appointment[mail]" class="form-control patient-mail" placeholder="Enter Email Address . . ." required>
+                    <input type="text" name="appointment[mail]" value="<?php echo(isset($patient)?$patient['email']:'')?>" class="form-control patient-mail" placeholder="Enter Email Address . . ." required>
                 </div>
             </div>
             <div class="form-group mb-2">
@@ -32,7 +32,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ti-timer"></i></span>
                     </div>
-                    <input type="text" name="appointment[mobile]" class="form-control patient-mobile" placeholder="Enter Mobile Number . . ." required>
+                    <input type="text" name="appointment[mobile]" value="<?php echo(isset($patient)?$patient['mobile']:'')?>" class="form-control patient-mobile" placeholder="Enter Mobile Number . . ." required>
                 </div>
             </div>
             <div class="form-group mb-2">

@@ -26,7 +26,7 @@
                 </ul>
             </div>
             <?php if ($page_add) { ?>
-                <a class="btn btn-primary btn-sm appointment-sidebar"><i class="ti-plus pr-2"></i> New Appointment</a>
+                <a class="btn btn-primary btn-sm appointment-sidebar" id="appointment-sidebar"><i class="ti-plus pr-2"></i> New Appointment</a>
             <?php } ?>
         </div>
     </div>
@@ -158,6 +158,14 @@
 <?php if ($page_delete) { include DIR_VIEW.'common/delete_modal.tpl.php';
 } if ($page_add) { include DIR_ADMIN.'app/views/common/appointment_sidebar.tpl.php'; ?>
 <script type="text/javascript" src="public/js/appointment.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            if(<?php echo(isset($patient)?true:false)?>){
+                document.getElementById('appointment-sidebar').click();
+            }
+        });
+    </script>
 <?php } ?>
 
 <!-- Footer -->

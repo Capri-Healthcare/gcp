@@ -29,7 +29,16 @@ class AppointmentController extends Controller
 			$data['period']['end'] = date('Y-m-d '.'23:59:59');
 		}
 
-		$this->load->model('appointment');
+		// get Patient Detail From id
+
+        $this->load->model('patient');
+        $patient_id = $this->url->get('id');
+
+        if(!empty($patient_id)){
+            $data['patient'] = $this->model_patient->getPatient($patient_id);
+        }
+
+        $this->load->model('appointment');
 		
 		if ($data['common']['user']['role_id'] == '3' && $data['common']['info']['doctor_access'] == '1') {
 			$data['result'] = $this->model_appointment->getAppointments($data['period'], $data['common']['user']['doctor']);
@@ -507,7 +516,7 @@ class AppointmentController extends Controller
 			}
 		}
 
-		$this->url->abs_redirect($_SERVER['HTTP_REFERER']);
+        $this->url->redirect('appointments');
 	}
 	/**
 	* Appointment index delete method
