@@ -1,4 +1,4 @@
-<?php include (DIR_ADMIN.'app/views/common/header.tpl.php'); ?>
+<?php include(DIR_ADMIN . 'app/views/common/header.tpl.php'); ?>
     <link rel="stylesheet" href="public/css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="public/css/custom.css">
     <script src="public/js/jquery.fancybox.min.js"></script>
@@ -9,13 +9,15 @@
                 <div class="breadcrumbs">
                     <ul>
                         <li><a href="<?php echo URL_ADMIN; ?>">Dashboard</a></li>
-                        <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral'; ?>">Optician Referral</a></li>
+                        <li><a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral'; ?>">Optician Referral</a>
+                        </li>
                         <li><?php echo $page_title; ?></li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/view&id='.$result['id']; ?>" class="btn btn-white btn-sm"><i class="ti-calendar text-primary mr-2"></i> View Optician Referral</a>
+                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/view&id=' . $result['id']; ?>"
+                   class="btn btn-white btn-sm"><i class="ti-calendar text-primary mr-2"></i> View Optician Referral</a>
             </div>
         </div>
     </div>
@@ -25,144 +27,259 @@
         <div class="panel-body">
             <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#appointment-info" data-toggle="tab">Optician Referral Info</a>
+                    <a class="nav-link <?php echo (!isset($_GET['document']) ? 'active' : '') ?>" href="#appointment-info" data-toggle="tab">Optician Referral Info</a>
                 </li>
-                <?php if ($page_document_upload || $page_documents) { ?>
+                <?php if ($page_edit) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#appointment-documents" data-toggle="tab">Documents</a>
+                        <a class="nav-link  <?php echo (isset($_GET['document']) ? 'active' : '') ?>" href="#appointment-documents" data-toggle="tab">Documents</a>
                     </li>
                 <?php } ?>
             </ul>
             <div class="tab-content pt-4">
-                <div class="tab-pane active" id="appointment-info">
+                <div class="tab-pane  <?php echo (!isset($_GET['document']) ? 'active' : '') ?>" id="appointment-info">
                     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="<?php echo $token; ?>" id="token">
-                        <input type="hidden" class="optician-refrrel-id" name="referral[id]" value="<?php echo $result['id'];?>">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
+                        <input type="hidden" class="optician-refrrel-id" name="referral[id]"
+                               value="<?php echo $result['id']; ?>">
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>First Name <span class="form-required">*</span></label>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-user"></i></span></div>
-                                                <input type="text" name="referral[first_name]" class="form-control" value="<?php echo $result['first_name'];?>" placeholder="First Name" required>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-user"></i></span></div>
+                                                <input type="text" name="referral[first_name]" class="form-control"
+                                                       value="<?php echo $result['first_name']; ?>"
+                                                       placeholder="First Name" required>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Last Name <span class="form-required">*</span></label>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-user"></i></span></div>
-                                                <input type="text" name="referral[last_name]" class="form-control" value="<?php echo $result['last_name'];?>" placeholder="Last Name" required>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-user"></i></span></div>
+                                                <input type="text" name="referral[last_name]" class="form-control"
+                                                       value="<?php echo $result['last_name']; ?>"
+                                                       placeholder="Last Name" required>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Email <span class="form-required">*</span></label>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-email"></i></span></div>
-                                                <input type="email" name="referral[email]" class="form-control" value="<?php echo $result['email'];?>" placeholder="Email" required>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-email"></i></span></div>
+                                                <input type="email" name="referral[email]" class="form-control"
+                                                       value="<?php echo $result['email']; ?>" placeholder="Email"
+                                                       required>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Mobile <span class="form-required">*</span></label>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-mobile"></i></span></div>
-                                                <input type="text" name="referral[mobile]" class="form-control" maxlength="11" onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))" value="<?php echo $result['mobile'];?>" placeholder="Mobile" required>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-mobile"></i></span></div>
+                                                <input type="text" name="referral[mobile]" class="form-control"
+                                                       maxlength="11"
+                                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+                                                       value="<?php echo $result['mobile']; ?>" placeholder="Mobile"
+                                                       required>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Gender</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                    class="ti-check-box"></i></span>
+                                                </div>
+                                                <select name="referral[gender]" class="custom-select" required>
+                                                    <option value="Male" <?php if ($result['gender'] == 'Male') {
+                                                        echo "selected";
+                                                    } ?> >Male
+                                                    </option>
+                                                    <option value="Female" <?php if ($result['gender'] == 'Female') {
+                                                        echo "selected";
+                                                    } ?> >Female
+                                                    </option>
+                                                    <option value="Other" <?php if ($result['gender'] == 'Other') {
+                                                        echo "selected";
+                                                    } ?> >Other
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>DOB <span class="form-required">*</span></label>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-calendar"></i></span></div>
-                                                <input type="text" name="referral[dob]" class="form-control date" value="<?php echo $result['dob'];?>" required>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-calendar"></i></span></div>
+                                                <input type="text" name="referral[dob]" class="form-control"
+                                                       value="<?php echo $result['dob']; ?>"  max="<?php echo date('Y-m-d')?>" required>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Address 1<span class="form-required">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ti-check-box"></i></span>
                                                 </div>
-                                                <textarea name="referral[address_1]" class="form-control" placeholder="Enter Address" row=3><?php echo $result['address1'];?></textarea>
+                                                <textarea name="referral[address_1]" class="form-control"
+                                                          placeholder="Enter Address"
+                                                          row=3><?php echo $result['address1']; ?></textarea>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Address 2</label>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span></div>
-                                                <textarea name="referral[address_2]" class="form-control" placeholder="Enter Address" row=3><?php echo $result['address2'];?></textarea>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-check-box"></i></span></div>
+                                                <textarea name="referral[address_2]" class="form-control"
+                                                          placeholder="Enter Address"
+                                                          row=3><?php echo $result['address2']; ?></textarea>
 
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>City</label>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-tag"></i></span></div>
-                                                <input type="text" name="referral[city]" class="form-control" value="<?php echo $result['city'];?>" placeholder="Enter City" required>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-tag"></i></span></div>
+                                                <input type="text" name="referral[city]" class="form-control"
+                                                       value="<?php echo $result['city']; ?>" placeholder="Enter City"
+                                                       required>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Zip Code</label>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-tag"></i></span></div>
-                                                <input type="text" name="referral[zip_code]"  maxlength="6"  onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))" class="form-control" value="<?php echo $result['zip_code'];?>" placeholder="Enter Zip Code" required>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-tag"></i></span></div>
+                                                <input type="text" name="referral[zip_code]" maxlength="6"
+                                                       class="form-control" value="<?php echo $result['zip_code']; ?>"
+                                                       placeholder="Enter Zip Code" onkeypress="return alphaNumericValidation(event)" required>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel-footer text-center">
-                                        <button type="submit" name="submit" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Save</button>
-                                    </div>
+                                    <?php if ($page_edit) { ?>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Status</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                    class="ti-check-box"></i></span>
+                                                    </div>
+                                                    <select name="doctor[status]" class="custom-select" required>
+                                                        <option value="NEW" <?php if ($result['status'] == 'NEW') {
+                                                            echo "selected";
+                                                        } ?> >NEW
+                                                        </option>
+                                                        <option value="ACCEPTED" <?php if ($result['status'] == 'ACCEPTED') {
+                                                            echo "selected";
+                                                        } ?> >ACCEPTED
+                                                        </option>
+                                                        <option value="REJECTED" <?php if ($result['status'] == 'REJECTED') {
+                                                            echo "selected";
+                                                        } ?> >REJECTED
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+
+                                </div>
+                                <div class="panel-footer text-center">
+                                    <button type="submit" name="submit" class="btn btn-primary"><i
+                                                class="ti-save-alt pr-2"></i> Save
+                                    </button>
                                 </div>
                             </div>
+
                         </div>
 
                     </form>
                 </div>
 
-                <?php if ($page_document_upload || $page_documents) { ?>
-                    <div class="tab-pane" id="appointment-documents">
-                        <?php if ($page_document_upload) { ?>
-                            <div class="row">
-                                <div class="form-group col-sm-6 ">
-                                    <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload Document</a>
-                                </div>
-                                <div class="form-group col-sm-6 text-right">
-                                    <a class="btn btn-secondary btn-sm" href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/report/reportsExport&id='.$result['id']; ?>"><i class="ti-cloud-down mr-2"></i> Download Document</a>
-                                </div>
+                <?php if ($page_edit) { ?>
+                    <div class="tab-pane  <?php echo (isset($_GET['document']) ? 'active' : '') ?>" id="appointment-documents">
+                        <div class="row">
+                            <div class="form-group col-sm-6 ">
+                                <a class="btn btn-warning btn-sm" data-toggle="modal"
+                                   data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload Document</a>
                             </div>
-                        <?php } if($page_documents) { ?>
-                            <div class="report-container">
-                                <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
-                                    <div class="report-image report-pdf" id="report-delete-div-<?php echo $value['id'] ?>">
-                                        <a href="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id']  . "/". $value['filename']; ?>" class="open-pdf">
-                                            <img src="../public/images/pdf.png" alt="">
-                                            <span><?php echo $value['filename']; ?></span>
-                                        </a>
-                                        <?php if ($page_document_remove) { ?>
-
-                                            <div class="report-delete" data-toggle="tooltip" title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel" data-appointment_id="<?php echo $value['referral_list_id'] ?>" data-report_name="<?php echo $value['filename'] ?>" data-report_id="<?php echo $value['id'] ?>"></a></div>
-
-                                            <input type="hidden" name="report_name" value="<?php echo $value['report']; ?>">
-
-                                        <?php } ?>
-                                    </div>
-                                <?php } else { ?>
-                                    <div class="report-image" id="report-delete-div-<?php echo $value['id'] ?>">
-                                        <a data-fancybox="gallery" href="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id']  . "/". $value['filename']; ?>">
-                                            <img src="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id']  . "/". $value['filename']; ?>" alt="">
-                                            <span><?php echo $value['filename']; ?></span>
-                                        </a>
-                                        <?php if ($page_document_remove) { ?>
-
-                                            <div class="report-delete" data-toggle="tooltip" title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel" data-appointment_id="<?php echo $value['referral_list_id'] ?>" data-report_name="<?php echo $value['filename'] ?>" data-report_id="<?php echo $value['id'] ?>"></a></div>
-
-                                            <input type="hidden" name="report_name" value="<?php echo $value['filename']; ?>">
-
-                                        <?php } ?>
-                                    </div>
-                                <?php } } } ?>
+                            <div class="form-group col-sm-6 text-right">
+                                <a class="btn btn-secondary btn-sm"
+                                   href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/report/reportsExport&id=' . $result['id']; ?>"><i
+                                            class="ti-cloud-down mr-2"></i> Download Document</a>
                             </div>
-                        <?php } ?>
+                        </div>
+                        <div class="report-container">
+                            <?php if (!empty($reports)) {
+                                foreach ($reports as $key => $value) {
+                                    $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION);
+                                    if ($file_ext == "pdf") { ?>
+                                        <div class="report-image report-pdf"
+                                             id="report-delete-div-<?php echo $value['id'] ?>">
+                                            <a href="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . "/" . $value['filename']; ?>"
+                                               class="open-pdf">
+                                                <img src="../public/images/pdf.png" alt="">
+                                                <span><?php echo $value['filename']; ?></span>
+                                            </a>
+                                            <div class="report-delete" data-toggle="tooltip" title="Delete"><a
+                                                        class="ti-close report-delete-action"
+                                                        data-toggle="modal" data-target="#reportDeleteModel"
+                                                        data-appointment_id="<?php echo $value['referral_list_id'] ?>"
+                                                        data-report_name="<?php echo $value['filename'] ?>"
+                                                        data-report_id="<?php echo $value['id'] ?>"></a></div>
+
+                                            <input type="hidden" name="report_name"
+                                                   value="<?php echo $value['report']; ?>">
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="report-image" id="report-delete-div-<?php echo $value['id'] ?>">
+                                            <a data-fancybox="gallery"
+                                               href="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . "/" . $value['filename']; ?>">
+                                                <img src="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . "/" . $value['filename']; ?>"
+                                                     alt="">
+                                                <span><?php echo $value['filename']; ?></span>
+                                            </a>
+                                            <div class="report-delete" data-toggle="tooltip" title="Delete"><a
+                                                        class="ti-close report-delete-action"
+                                                        data-toggle="modal" data-target="#reportDeleteModel"
+                                                        data-appointment_id="<?php echo $value['referral_list_id'] ?>"
+                                                        data-report_name="<?php echo $value['filename'] ?>"
+                                                        data-report_id="<?php echo $value['id'] ?>"></a></div>
+
+                                            <input type="hidden" name="report_name"
+                                                   value="<?php echo $value['filename']; ?>">
+                                        </div>
+                                    <?php }
+                                }
+                            } ?>
+                        </div>
                     </div>
                 <?php } ?>
 
@@ -181,8 +298,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="media-upload-container" style="max-width: 100%;">
-                        <form action="<?php echo URL_ADMIN.DIR_ROUTE ?>optician-referral/report/reportUpload" class="dropzone" id="optician-referral-upload" method="post" enctype="multipart/form-data">
-                            <div class="fallback"><input name="file" type="file" /></div>
+                        <form action="<?php echo URL_ADMIN . DIR_ROUTE ?>optician-referral/report/reportUpload"
+                              class="dropzone" id="optician-referral-upload" method="post"
+                              enctype="multipart/form-data">
+                            <div class="fallback"><input name="file" type="file"/></div>
                         </form>
                     </div>
                 </div>
@@ -210,7 +329,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-primary" id="delete-optician-referral" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-primary" id="delete-optician-referral" data-dismiss="modal">
+                        Yes
+                    </button>
                 </div>
             </div>
 
@@ -225,7 +346,9 @@
             'hideOnContentClick': false,
             'type': 'iframe'
         });
+
     </script>
 
+    <script type="text/javascript" src="public/js/optician.js"></script>
     <!-- Footer -->
-<?php include (DIR_ADMIN.'app/views/common/footer.tpl.php'); ?>
+<?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>

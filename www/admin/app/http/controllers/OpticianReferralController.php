@@ -35,7 +35,7 @@ class OpticianReferralController extends Controller
             $data['period']['end'] = date('Y-m-d ' . '23:59:59');
         }
 
-        $data['result'] = $this->model_opticianreferral->getOpticianReferrals($data['period']);
+        $data['result'] = $this->model_opticianreferral->getOpticianReferrals($data['period'],$this->session->data['user_id'],$data['common']['user']['role']);
 
         $data['page_title'] = 'Optician Referral';
         $data['page_add'] = $this->user_agent->hasPermission('optician-referral/add') ? true : false;
@@ -103,10 +103,8 @@ class OpticianReferralController extends Controller
             $this->url->redirect('optician-referral');
         }
 
+        $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true : false;
 
-        $data['page_documents'] = $this->user_agent->hasPermission('optician-referral/documents') ? true : false;
-        $data['page_document_upload'] = $this->user_agent->hasPermission('optician-referral/reportUpload') ? true : false;
-        $data['page_document_remove'] = $this->user_agent->hasPermission('optician-referral/removeReport') ? true : false;
 
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
@@ -153,14 +151,14 @@ class OpticianReferralController extends Controller
         }
 
         $this->load->model('user');
-        //$data['user'] = $this->model_user->getUser($data['result']['created_by']);
+        $data['user'] = $this->model_user->getUser($data['result']['created_by']);
 
         $data['page_title'] = 'Optician Referral View';
         $data['page_add'] = $this->user_agent->hasPermission('optician-referral/add') ? true : false;
         $data['page_view'] = $this->user_agent->hasPermission('optician-referral/view') ? true : false;
         $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true : false;
-        $data['page_delete'] = $this->user_agent->hasPermission('optician-referral/delete') ? true : false;
-        $data['page_documents'] = $this->user_agent->hasPermission('optician-referral/documents') ? true : false;
+        $data['page_delete'] = false;
+        $data['page_documents'] = true;
 
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/edit&id=' . $data['result']['id'];
@@ -212,14 +210,14 @@ class OpticianReferralController extends Controller
             $this->url->redirect('optician-referral/edit&id=' . $data['referral']['id']);
         } else {
             $data['referral']['user_id'] = $this->session->data['user_id'];
-            if ($this->model_opticianreferral->createOpticianReferral($data['referral'])) {
+            $opticianID = $this->model_opticianreferral->createOpticianReferral($data['referral']);
+            if (!empty($opticianID)) {
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral created successfully.');
-
+                $this->url->redirect('optician-referral/edit&id='.$opticianID.'&document=true');
             } else {
-
                 $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not created successfully.');
+                $this->url->redirect('optician-referral');
             }
-            $this->url->redirect('optician-referral');
         }
 
     }
@@ -287,13 +285,9 @@ class OpticianReferralController extends Controller
             $error_flag = true;
             $error['title'] = 'City !';
         }
-        if ($this->controller_common->validatePincodeNumber($data['zip_code'])) {
+        if ($this->controller_common->validateText($data['zip_code'])) {
             $error_flag = true;
             $error['title'] = 'Pincode  !';
-        }
-        if ($this->controller_common->validateNumeric($data['zip_code'])) {
-            $error_flag = true;
-            $error['title'] = 'Zip Code !';
         }
 
         if ($error_flag) {

@@ -585,19 +585,24 @@
 
     //Filter date picker
     $('.filter-date').datepicker({
-        dateFormat: $('.common_date_format').val()
+        dateFormat: $('.common_date_format').val(),
+
     });
 
     //Filter date picker
     $('.date').datepicker({
-        dateFormat: $('.common_date_format').val()
+        dateFormat: $('.common_date_format').val(),
+        maxDate: new Date()
     });
+
+
+
     
     //********************************************
     //Listing Table ******************************
     //********************************************
 
-    var dataTable = $('.datatable-table').DataTable({
+    var dataTable = $('.datatable-table').dataTable({
         aLengthMenu: [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
         iDisplayLength: 10,
         pagingType: 'full_numbers',
@@ -634,6 +639,10 @@
         }
     });
 
+     $('.status').on('change', function(e) {
+         dataTable.fnFilter(e.currentTarget.value);
+     });
+
     $(".export-button .print").on("click", function(e) {
         e.preventDefault(); dataTable.button(0).trigger()
     });
@@ -668,6 +677,8 @@
             element.msRequestFullscreen();
         }
     }
+
+
 
     function exitFullscreen() {
         if (document.exitFullscreen) {

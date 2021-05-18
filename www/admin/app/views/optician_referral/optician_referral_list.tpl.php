@@ -15,7 +15,15 @@
                 <i class="ti-filter text-danger pr-2"></i>
                 <input type="text" class="table-date-range">
             </div>
-			<?php if ($page_add) { ?>
+            <div class="btn btn-white btn-sm text-left mr-2">
+                <i class="ti-filter text-danger pr-2"></i>
+                <select class="status" style="border: 0px;">
+                    <option value="NEW" selected>New</option>
+                    <option value="ACCEPTED">ACCEPTED</option>
+                    <option value="REJECTED">REJECTED</option>
+                </select>
+            </div>
+       	<?php if ($page_add) { ?>
 				<a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/add'; ?>" class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> New Optician Referral</a>
 			<?php } ?>
 		</div>
@@ -31,14 +39,13 @@
 						<th>First name</th>
 						<th>Last name</th>
 						<th>DOB</th>
-						<th>Address 1</th>
-						<th>Address 2</th>
+						<th>Mobile</th>
+						<th>Email</th>
 						<th>City</th>
-						<th>Zip code</th>
 						<th>Status</th>
 <!--						<th>Created By</th>-->
 						<th>Created Date</th>
-						<?php if ($page_delete || $page_edit) { ?>
+						<?php if ($page_delete || $page_edit || $page_view) { ?>
 							<th></th>
 						<?php } ?>
 					</tr>
@@ -51,14 +58,13 @@
 							<td><?php echo $value['first_name']; ?></td>
 							<td><?php echo $value['last_name']; ?></td>
 							<td><?php echo date_format(date_create($value['dob']), $common['info']['date_format']); ?></td>
-							<td><?php echo $value['address1']; ?></td>
-							<td><?php echo $value['address2']; ?></td>
+							<td><?php echo $value['mobile']; ?></td>
+							<td><?php echo $value['email']; ?></td>
 							<td><?php echo $value['city']; ?></td>
-							<td><?php echo $value['zip_code']; ?></td>
 							<td><?php echo $value['status']; ?></td>
 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
 							<td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
-							<?php if ($page_delete || $page_edit) { ?>
+							<?php if ($page_delete || $page_edit || $page_view) { ?>
 								<td class="table-action">
                                     <div class="dropdown d-inline-block">
                                         <a class="text-primary edit dropdown-toggle" data-toggle="dropdown"><i class="ti-more"></i></a>
@@ -113,9 +119,11 @@
             });
 
             $('.table-date-range').on('apply.daterangepicker', function(ev, picker) {
-                window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>optician-referral'+'&start='+picker.startDate.format('YYYY-MM-DD')+'&end='+picker.endDate.format('YYYY-MM-DD'));
+                var status = $(".status").val();
+                window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>optician-referral'+'&status='+status+'&start='+picker.startDate.format('YYYY-MM-DD')+'&end='+picker.endDate.format('YYYY-MM-DD'));
             });
         });
+
     </script>
 <?php
 if ($page_delete) { include DIR_VIEW.'common/delete_modal.tpl.php'; }

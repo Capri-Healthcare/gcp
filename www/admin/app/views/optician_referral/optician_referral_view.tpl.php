@@ -24,14 +24,15 @@
                 <div class=row>
                     <div class="col-12">
                         <div class="user-avtar">
-                            <span><?php echo $result['first_name'][0]; ?></span>
+                            <span><?php echo $user['firstname'][0]; ?></span>
                         </div>
                     </div>
                 </div>
                 <div class=row>
                     <div class="col-12">
-                        <h3><?php echo $result['first_name']; ?></h3>
-                        <p class="mb-0 font-12"><i class="ti-email"></i> <?php echo $result['email']; ?> <i class="ti-mobile"></i> <?php echo $result['mobile']; ?></p>
+                        <h3><?php echo $user['firstname']." ".$user['lastname']; ?></h3>
+                        <h6><?php echo $user['optician_shop_name']; ?> | <?php echo $user['optician_registration_number']; ?></h6>
+                        <p class="mb-0 font-12"><i class="ti-email"></i> <?php echo $user['email']; ?> | <i class="ti-mobile"></i> <?php echo $user['mobile']; ?></p>
                     </div>
                 </div>
                 <div class="user-details text-center pt-3">
@@ -68,6 +69,18 @@
                                     <tr>
                                         <td>Last Name</td>
                                         <td class="text-dark"><?php echo $result['last_name']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td class="text-dark"><?php echo $result['gender']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile</td>
+                                        <td class="text-dark"><?php echo $result['mobile']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td class="text-dark"><?php echo $result['email']; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Date Of Birth</td>
