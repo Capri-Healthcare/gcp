@@ -103,8 +103,8 @@
                     format: $('.common_daterange_format').val(),
                     separator: " => ",
                 },
-                startDate: "<?php echo date_format(date_create($period['start']), $common['info']['date_format']); ?>",
-                endDate: "<?php echo date_format(date_create($period['end']), $common['info']['date_format']); ?>",
+                startDate: moment().subtract(6, 'days'),
+                endDate: moment(),
                 ranges: {
                     'Today': [moment(), moment()],
                     'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
