@@ -7,7 +7,7 @@ class OpticianReferral extends Model
 {
     public function getOpticianReferrals($period,$id,$role)
     {
-        $arr_role = ['Secretary','Admin'];
+        $arr_role = ['Med. Secretary','Admin'];
 
         if(in_array($role,$arr_role))
         {

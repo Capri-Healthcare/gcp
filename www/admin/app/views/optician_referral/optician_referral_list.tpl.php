@@ -1,7 +1,7 @@
 <?php include (DIR_ADMIN.'app/views/common/header.tpl.php'); ?>
 <div class="page-title">
 	<div class="row align-items-center">
-		<div class="col-sm-6">
+		<div class="col-sm-5">
 			<h2 class="page-title-text d-inline-block"><?php echo $page_title; ?></h2>
 			<div class="breadcrumbs d-inline-block">
 				<ul>
@@ -10,7 +10,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-sm-6 text-right">
+		<div class="col-sm-7 text-right">
             <div class="btn btn-white btn-sm text-left mr-2">
                 <i class="ti-filter text-danger pr-2"></i>
                 <input type="text" class="table-date-range">
