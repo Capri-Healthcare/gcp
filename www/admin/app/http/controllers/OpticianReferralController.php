@@ -42,6 +42,9 @@ class OpticianReferralController extends Controller
         $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true : false;
         $data['page_delete'] = $this->user_agent->hasPermission('optician-referral/delete') ? true : false;
         $data['page_view'] = $this->user_agent->hasPermission('optician-referral/view') ? true : false;
+        $data['page_document_upload'] = $this->user_agent->hasPermission('optician-referral/report/reportUpload') ? true : false;
+        $data['page_document_upload'] = $this->user_agent->hasPermission('optician-referral/report/removeReport') ? true : false;
+        $data['page_document_export'] = $this->user_agent->hasPermission('optician-referral/report/reportsExport') ? true : false;
 
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action_delete'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/delete';

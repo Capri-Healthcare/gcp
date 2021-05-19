@@ -468,6 +468,12 @@ class UserController extends Controller
 				'optician-referral/edit' => 'Optician Referral Edit',
 				'optician-referral/delete' => 'Optician Referral Delete',
 				'optician-referral/view' => 'Optician Referral View'),
+			'Optician Referral Other' => array(
+				'optician-referral/report/reportUpload' => 'Optician Referral Upload Document',
+				'optician-referral/report/removeReport' => 'Optician Referral Remove Document',
+				'optician-referral/report/reportsExport' => 'Optician Referral Export Document',
+				'1' => '',
+				'2' => ''),
 			'Invoice' => array('invoices' => 'Invoice List',
 				'invoice/add' => 'Invoice Add',
 				'invoice/edit' => 'Invoice Edit',
