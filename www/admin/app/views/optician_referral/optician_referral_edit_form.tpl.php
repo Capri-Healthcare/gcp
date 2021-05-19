@@ -182,7 +182,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php if ($page_edit) { ?>
+                                    <?php if ($result['status'] == 'NEW' && in_array($common['user']['role'],constant('USER_ROLE'))) { ?>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Status</label>
@@ -246,7 +246,7 @@
                                             <a href="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . "/" . $value['filename']; ?>"
                                                class="open-pdf">
                                                 <img src="../public/images/pdf.png" alt="">
-                                                <span><?php echo $value['filename']; ?></span>
+                                                <span><?php echo $value['name']; ?></span>
                                             </a>
                                             <div class="report-delete" data-toggle="tooltip" title="Delete"><a
                                                         class="ti-close report-delete-action"
@@ -256,7 +256,7 @@
                                                         data-report_id="<?php echo $value['id'] ?>"></a></div>
 
                                             <input type="hidden" name="report_name"
-                                                   value="<?php echo $value['report']; ?>">
+                                                   value="<?php echo $value['filename']; ?>">
                                         </div>
                                     <?php } else { ?>
                                         <div class="report-image" id="report-delete-div-<?php echo $value['id'] ?>">
@@ -264,7 +264,7 @@
                                                href="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . "/" . $value['filename']; ?>">
                                                 <img src="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . "/" . $value['filename']; ?>"
                                                      alt="">
-                                                <span><?php echo $value['filename']; ?></span>
+                                                <span><?php echo $value['name']; ?></span>
                                             </a>
                                             <div class="report-delete" data-toggle="tooltip" title="Delete"><a
                                                         class="ti-close report-delete-action"
@@ -297,6 +297,15 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        <label>Document Name</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ti-tag"></i></span>
+                            </div>
+                            <input type="text" name="document_name" class="form-control" placeholder="Enter Document Name">
+                        </div>
+                    </div>
                     <div class="media-upload-container" style="max-width: 100%;">
                         <form action="<?php echo URL_ADMIN . DIR_ROUTE ?>optician-referral/report/reportUpload"
                               class="dropzone" id="optician-referral-upload" method="post"

@@ -7,9 +7,8 @@ class OpticianReferral extends Model
 {
     public function getOpticianReferrals($period,$id,$role)
     {
-        $arr_role = ['Secretary','Admin'];
 
-        if(in_array($role,$arr_role))
+        if(in_array($role,constant('USER_ROLE')))
         {
         $query = $this->database->query("Select * From `" . DB_PREFIX . "referral_list` WHERE created_at  between '".$period['start']."' AND '".$period['end']."' ORDER BY created_at DESC");
 

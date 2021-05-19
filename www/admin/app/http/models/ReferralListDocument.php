@@ -7,7 +7,7 @@ class ReferralListDocument extends Model
 {
 	public function createReferralListDocument($data)
 	{
-		$query = $this->database->query("INSERT INTO `" . DB_PREFIX . "referral_list_document` (`referral_list_id`, `filename`, `created_by`) VALUES (?, ?, ?) ", array($this->database->escape($data['id']), $this->database->escape($data['file_name']), (int)$data['user_id']));
+		$query = $this->database->query("INSERT INTO `" . DB_PREFIX . "referral_list_document` (`referral_list_id`,`name`, `filename`, `created_by`) VALUES (?, ?, ?,?) ", array($this->database->escape($data['id']), $this->database->escape($data['name']),$this->database->escape($data['file_name']), (int)$data['user_id']));
 		return $query->row;
 	}
 

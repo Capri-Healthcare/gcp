@@ -77,7 +77,7 @@
                                             <?php } ?>
                                         </ul>
                                     </div>
-                                    <?php if ($page_delete) { ?>
+                                    <?php if ($page_delete && $value['status'] == 'NEW' && in_array($common['user']['role'],constant('USER_ROLE'))) { ?>
                                     <a class="table-delete text-danger delete" data-toggle="tooltip" title="Delete">
                                         <i class="ti-trash"></i><input type="hidden" value="<?php echo $value['id'];?>">
                                     </a>

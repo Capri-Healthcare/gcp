@@ -397,6 +397,11 @@
              var reportDropzone = this;
              $('#reports-modal').on('click', '.upload-report', function (e) {
                  e.preventDefault();
+                 if ($('#reports-modal input[name=document_name]').val() === "") {
+                     toastr.error('Error', 'Please Enter document name...');
+                     return false;
+                 }
+
                  if (reportDropzone.files.length <= 0) {
                      toastr.error('Error', 'Please select file to upload.');
                      return false;
@@ -413,6 +418,7 @@
 
              this.on("sending", function(file, xhr, formData) {
                  formData.append("id", $('.optician-refrrel-id').val());
+                 formData.append("name", $('#reports-modal input[name=document_name]').val());
                  formData.append("_token", $('#token').val());
              });
 
@@ -424,7 +430,7 @@
                          $('.report-container').append('<div class="report-image report-pdf">'+
                              '<a href="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'" class="open-pdf">'+
                              '<img class="img-thumbnail" src="../public/images/pdf.png" alt="">'+
-                             '<span>'+$('#reports-modal input[name=report_name]').val()+'</span>'+
+                             '<span>'+$('#reports-modal input[name=document_name]').val()+'</span>'+
                              '</a>'+
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
                              '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
@@ -433,7 +439,7 @@
                          $('.report-container').append('<div class="report-image">'+
                              '<a data-fancybox="gallery" href="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'">'+
                              '<img class="img-thumbnail" src="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'" alt="">'+
-                             '<span>'+$('#reports-modal input[name=report_name]').val()+'</span>'+
+                             '<span>'+$('#reports-modal input[name=document_name]').val()+'</span>'+
                              '</a>'+
                              '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
