@@ -141,6 +141,14 @@ class Patient extends Model
 		//$query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `address` = ?, `bloodgroup` = ?, `gender` = ?, `dob` = ?, `history` = ?, `other` = ?, `status` = ? WHERE `id` = ?" , array($data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'],$data['bloodgroup'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['status'], $data['id']));
 	}
 
+    public function updatePatientGCPStatus($data)
+    {
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `is_glaucoma_required` = ?,`gcp_followup_frequency` = ?
+		WHERE `id` = ?", array($this->database->escape($data['is_glaucoma_required']),$data['gcp_followup_frequency'], (int)$data['id']));
+
+        //$query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `address` = ?, `bloodgroup` = ?, `gender` = ?, `dob` = ?, `history` = ?, `other` = ?, `status` = ? WHERE `id` = ?" , array($data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'],$data['bloodgroup'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['status'], $data['id']));
+    }
+
 	public function getSearchedPatient($data)
 	{
 		$query = $this->database->query("SELECT id, CONCAT(firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%".$data."%' LIMIT 5");

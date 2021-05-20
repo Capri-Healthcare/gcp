@@ -226,8 +226,8 @@ class OpticianReferralController extends Controller
                         $patient['dob'] =  $data['referral']['dob'];
                         $patient['user_id'] =  $data['referral']['user_id'];
                         $patient['title'] =  $data['referral']['user_id'];
-                        $patient['history'] =  $data['referral']['user_id'];
-                        $patient['other'] =  $data['referral']['user_id'];
+                        $patient['history'] = " ";
+                        $patient['other'] = " ";
                         $patient['hash'] =  $data['referral']['user_id'];
                         $patient['datetime'] =  date('Y-m-d H:s:a');
 

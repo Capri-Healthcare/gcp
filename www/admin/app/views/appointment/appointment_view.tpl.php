@@ -163,6 +163,20 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>Glaucoma Care Plan Require</td>
+                                        <td>
+                                            <?php echo $result['is_glaucoma_required']?>
+                                        </td>
+                                    </tr>
+                                    <?php if($result['is_glaucoma_required'] == 'YES') {?>
+                                    <tr>
+                                        <td>GCP Followup Frequency</td>
+                                        <td>
+                                            <?php echo $result['gcp_followup_frequency']?>
+                                        </td>
+                                    </tr>
+                                    <?php }?>
+                                    <tr>
                                         <td>Doctor Note</td>
                                         <td><?php echo $result['doctor_note']; ?></td>
                                     </tr>
