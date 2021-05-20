@@ -43,7 +43,7 @@ class AppointmentController extends Controller
         if ($data['common']['user']['role_id'] == '3' && $data['common']['info']['doctor_access'] == '1') {
             $data['result'] = $this->model_appointment->getAppointments($data['period'], $data['common']['user']['doctor']);
         } else {
-            $data['result'] = $this->model_appointment->getAppointments($data['period']);
+            $data['result'] = $this->model_appointment->getAppointments($data['period'],null,$data['common']['user']['role']);
         }
 
         $data['doctors'] = $this->model_commons->getAppointmentDoctors();

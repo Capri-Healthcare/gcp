@@ -5,7 +5,7 @@
  */
 class Patient extends Model
 {
-	public function getPatients($period, $doctor = NULL)
+	public function getPatients($period, $doctor = NULL,$role)
 	{
 		if ($doctor) {
 			$data = $this->getPatientDoctorIDs($doctor);
@@ -16,8 +16,16 @@ class Patient extends Model
 				return false;
 			}
 		} else {
-			$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE status = 1 ORDER BY `date_of_joining` DESC");
-			
+
+            if($role != null && $role == constant('USER_ROLE_NAME')){
+
+                $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE status = 1 AND is_glaucoma_required = 'YES' ORDER BY `date_of_joining` DESC");
+
+            }else{
+
+                $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE status = 1 ORDER BY `date_of_joining` DESC");
+            }
+
 			return $query->rows;
 		}
 	}

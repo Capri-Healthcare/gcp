@@ -32,7 +32,7 @@ class PatientController extends Controller
 		if ($data['common']['user']['role_id'] == "3" && $data['common']['info']['doctor_access'] == '1') {
 			$data['result'] = $this->model_patient->getPatients($data['period'], $data['common']['user']['doctor']);
 		} else {
-			$data['result'] = $this->model_patient->getPatients($data['period']);
+			$data['result'] = $this->model_patient->getPatients($data['period'],null,$data['common']['user']['role']);
 		}
 
 		/* Set confirmation message if page submitted before */
