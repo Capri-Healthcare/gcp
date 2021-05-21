@@ -110,7 +110,7 @@
 								</tr>
 								<tr>
 									<td>GP Practice</td>
-									<td><?php echo isset($result['gp_practice']) ? $gp_practices[$result['gp_practice']] : ''; ?></td>
+									<td><?php echo $result['gp_practice'] != 0 ? $gp_practices[$result['gp_practice']] : ''; ?></td>
 								</tr>
 								<tr>
 									<td>GP Address</td>
@@ -136,6 +136,36 @@
 										<td class="text-success">Confirmed</td>
 									<?php } ?>
 								</tr>
+                                <tr>
+                                    <td>Glaucoma Care Plan Require</td>
+                                    <td>
+                                        <?php echo $result['is_glaucoma_required']?>
+                                    </td>
+                                </tr>
+                                <?php if($result['is_glaucoma_required'] == 'YES') {?>
+                                    <tr>
+                                        <td>GCP Followup Frequency</td>
+                                        <td>
+                                            <?php echo $result['gcp_followup_frequency']?>
+                                        </td>
+                                    </tr>
+                                <?php }?>
+                                <?php if($result['is_glaucoma_required'] == 'YES') {?>
+                                    <tr>
+                                        <td>First Payment</td>
+                                        <td>
+                                            <?php echo $result['first_payment']?>
+                                        </td>
+                                    </tr>
+                                <?php }?>
+                                <?php if($result['is_glaucoma_required'] == 'YES') {?>
+                                    <tr>
+                                        <td>Regular Payment</td>
+                                        <td>
+                                            <?php echo $result['regular_payment']?>
+                                        </td>
+                                    </tr>
+                                <?php }?>
 								<tr>
 									<td>Status</td>
 									<?php if ($result['status'] == '0') { ?>

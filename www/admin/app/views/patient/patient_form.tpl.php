@@ -244,6 +244,60 @@
 							</div>
 						</div>
 						<?php if (!empty($result['id'])) { ?>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Glaucoma Care Plan Require<span class="form-required">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                    </div>
+                                    <select name="patient[gcp_required]" class="custom-select" id="gcp_required" required>
+                                        <option value="">Select GCP</option>
+                                        <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>YES</option>
+                                        <option value="NO" <?php echo ($result['is_glaucoma_required'] == 'NO') ? "Selected" : "" ?>>NO</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-md-6" style="display:<?php  echo ($result['is_glaucoma_required'] == 'YES') ? "block" : "none" ?>" id="gcp_followup_frequency">
+                                <div class="form-group">
+                                    <label>GCP Followup Frequency<span class="form-required">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                        </div>
+                                        <select name="patient[followup]" id="id_gcp_followup_frequency" class="custom-select" <?php  echo ($result['is_glaucoma_required'] == 'YES') ? "required" : "" ?>>
+                                            <option value="">Select Followup</option>
+                                            <?php foreach (constant('FOLLOW_UP_DROPDOWN') as $key => $followup) { ?>
+                                                <option value="<?php echo $key ?>" <?php echo ($result['gcp_followup_frequency'] == $key) ? "Selected" : "" ?>><?php echo $followup; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="first_payment" style="display:<?php  echo ($result['is_glaucoma_required'] == 'YES') ? "block" : "none" ?>">
+                                <div class="form-group">
+                                    <label>First Payment <span class="form-required">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-money"></i></span>
+                                        </div>
+                                        <input type="text" name="patient[first_payment]" class="form-control first_payment" value="<?php echo $result['first_payment']; ?>" placeholder="First Payment" <?php  echo ($result['is_glaucoma_required'] == 'YES') ? "required" : "" ?>>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="regular_payment" style="display:<?php  echo ($result['is_glaucoma_required'] == 'YES') ? "block" : "none" ?>">
+                                <div class="form-group">
+                                    <label>Regular Payment <span class="form-required">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-money"></i></span>
+                                        </div>
+                                        <input type="text" name="patient[regular_payment]" class="form-control regular_payment" value="<?php echo $result['regular_payment']; ?>" placeholder="Regular Payment" <?php  echo ($result['is_glaucoma_required'] == 'YES') ? "required" : "" ?>>
+                                    </div>
+                                </div>
+                            </div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Status</label>
@@ -454,4 +508,33 @@
 	</div>
 </form>
 <!-- Footer -->
+    <script>
+        $("#gcp_required").on('change',function () {
+            if($('option:selected',this).text() == "NO"){
+                $("#id_gcp_followup_frequency").val("").change();
+
+
+                $(".first_payment").val("").change();
+                $(".regular_payment").val("").change();
+
+
+                $("#id_gcp_followup_frequency").prop('required',true);
+                $("#gcp_followup_frequency").hide();
+                $("#first_payment").hide();
+                $("#regular_payment").hide();
+
+                $(".first_payment").prop('required',false);
+                $(".regular_payment").prop('required',false);
+                $("#id_gcp_followup_frequency").prop('required',false);
+
+            }else{
+                $("#gcp_followup_frequency").show();
+                $("#first_payment").show();
+                $("#regular_payment").show();
+                $(".first_payment").prop('required',true);
+                $(".regular_payment").prop('required',true);
+
+            }
+        })
+    </script>
 <?php include (DIR_ADMIN.'app/views/common/footer.tpl.php'); ?>
