@@ -463,4 +463,25 @@ class OpticianReferralController extends Controller
             $zip->close();
         }
     }
+
+    public function demoPdf(){
+
+        $id = (int)$this->url->get('id');
+
+        ob_start();
+
+        include DIR_APP.'views/pdf/dd_demo_pdf_2.tpl.php';
+
+        $html = ob_get_clean();
+
+        if(ob_get_length() > 0) {
+            ob_end_flush();
+        }
+
+        $html_array = array('html' => $html);
+//        echo print_r($html_array['html']);
+//        exit();
+        $pdf = new PDF();
+        $pdf->createPDF($html_array);
+    }
 }
