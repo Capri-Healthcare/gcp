@@ -28,6 +28,7 @@ $lang = array(
 	'text_follow_us' => 'Follow Us',
 	'text_my_account' => 'My Account',
 	'text_profile' => 'Profile',
+	'text_glaucoma' => 'Glaucoma Care Plan',
 	'text_have_an_query' => 'Have an Query?',
 	'text_want_to_clarify' => 'Want to Clarify?',
 	'text_emergency_number' => 'Emergency Number',

@@ -33,6 +33,12 @@ $router->get('user/appointment', 'UserController@getAppointment');
 $router->get('user/prescription', 'UserController@getPrescription');
 $router->get('user/request', 'UserController@request');
 $router->get('user/profile', 'UserController@profile');
+
+$router->get('user/glaucoma', 'UserController@glaucomacarplan');
+$router->post('user/glaucoma/documentUpload', 'UserController@documentUpload');
+$router->post('user/glaucoma/documentremove', 'UserController@deletePatientDDIDocument');
+$router->get('pdf-demo', 'UserController@demoPdf');
+
 $router->post('user/profile', 'UserController@profileUpdate');
 $router->get('user/profile/password', 'UserController@changePassword');
 $router->post('user/profile/password', 'UserController@profileUpdatePassword');

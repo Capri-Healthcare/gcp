@@ -209,4 +209,15 @@ class User extends Model
 		
 		return $gp_practice_arr;
 	}
+    public function updatePatientDDIDocument($data)
+    {
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `ddi_image` = ? WHERE `id` = ?", array($data['ddi_image'], (int)$data['id']));
+
+    }
+
+
+    public function deletePatientDDIDocument($data)
+    {
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `ddi_image` = ? WHERE `id` = ?", array(null, (int)$data['id']));
+    }
 }

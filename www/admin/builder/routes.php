@@ -306,5 +306,3 @@ $router->post('optician-referral/delete', 'OpticianReferralController@indexDelet
 $router->post('optician-referral/report/reportUpload', 'OpticianReferralController@documentUpload');
 $router->post('optician-referral/report/removeReport', 'OpticianReferralController@documentRemove');
 $router->get('optician-referral/report/reportsExport', 'OpticianReferralController@reportsExport');
-
-$router->get('pdf-demo', 'OpticianReferralController@demoPdf');

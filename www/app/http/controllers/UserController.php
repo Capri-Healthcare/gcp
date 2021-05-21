@@ -721,4 +721,125 @@ class UserController extends Controller {
 			return true;
 		}
 	}
+
+    public function glaucomacarplan()
+    {
+        if (!$this->user_agent->isLogged()) {
+            $this->url->redirect('login');
+        }
+        /**
+         * Get service page data from DB
+         **/
+        $this->load->model('user');
+        $this->load->controller('common');
+        $data = array();
+        $data = array_merge($data, $this->controller_common->index());
+
+        $data['page']['page_title'] = $data['lang']['text_glaucoma'];
+        $data['page']['meta_tag'] = $data['page']['page_title'].' | ' .$data['siteinfo']['name'];
+        $data['page']['meta_description'] = $data['page']['page_title'].', '.$data['siteinfo']['name'];
+
+        $data['page']['breadcrumbs'] = array();
+        $data['page']['breadcrumbs'][] = array(
+            'label' => $data['lang']['text_home'],
+            'link' => URL.DIR_ROUTE.'home',
+        );
+        $data['page']['breadcrumbs'][] = array(
+            'label' => $data['page']['page_title'],
+            'link' => '#',
+        );
+
+        $data['header'] = $this->controller_common->getHeader($data['page'], 'header-5');
+        $data['footer'] = $this->controller_common->getFooter(NULL, 'footer-1');
+        $data['user_data'] = $this->model_user->getUserData($this->session->data['user_id']);
+        $data['user_data']['history'] = json_decode($data['user_data']['history'], true);
+        $data['user_data']['address'] = json_decode($data['user_data']['address'], true);
+        $data['gp_practices'] = $this->model_user->getGpPractice();
+
+        $data['history'] = $this->medicalHistoryData();
+
+
+        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
+
+        $data['active'] = 'glaucoma';
+        $data['title'] = $data['page']['page_title'];
+
+        $data['user_page'] = $this->load->view('user/glaucoma_car_plan', $data);
+
+        if (!empty($this->session->data['success'])) {
+            $data['success'] = $this->session->data['success'];
+            unset($this->session->data['success']);
+        }
+        if (!empty($this->session->data['error'])) {
+            $data['error'] = $this->session->data['error'];
+            unset($this->session->data['error']);
+        }
+
+        $this->response->setOutput($this->load->view('user/user_main', $data));
+    }
+    public function documentUpload()
+    {
+        $data = $this->url->post;
+
+        $file = $this->url->files['file'];
+        $data['ext'] = pathinfo($file['name'], PATHINFO_EXTENSION);
+
+        $data['filedir'] = DIR . 'public/uploads/patient/document/' . $data['id'] . '/';
+        $data['file_name'] = 'Doc-' . uniqid(rand()) . $data['id'];
+
+        $filesystem = new Filesystem();
+        $result = $filesystem->moveUpload($file, $data);
+
+        if ($result['error'] === false) {
+            $data['ddi_image'] = $result['name'];
+
+            $this->load->model('user');
+            $this->model_user->updatePatientDDIDocument($data);
+            $result['ext'] = $data['ext'];
+            echo json_encode($result);
+        } else {
+            echo json_encode($result);
+        }
+    }
+
+    public function deletePatientDDIDocument()
+    {
+        $file = $this->url->post('name');
+        $referral_list_id = $this->url->post('id');
+        if (!is_string($file)) {
+            echo "2";
+            exit();
+        }
+
+        if (!unlink(DIR . 'public/uploads/patient/document/' . $referral_list_id . '/' . $file)) {
+            echo("Error deleting $file");
+        } else {
+            $data['id'] = $referral_list_id;
+
+            $this->load->model('user');
+            $result =  $this->model_user->deletePatientDDIDocument($data);
+
+        }
+    }
+
+    public function demoPdf(){
+
+        $id = (int)$this->url->get('id');
+
+        ob_start();
+
+        include DIR_APP.'views/pdf/dd_demo_pdf_2.tpl.php';
+
+        $html = ob_get_clean();
+
+        if(ob_get_length() > 0) {
+            ob_end_flush();
+        }
+
+        $html_array = array('html' => $html);
+//        echo print_r($html_array['html']);
+//        exit();
+        $pdf = new PDF();
+        $pdf->createPDF($html_array);
+    }
 }

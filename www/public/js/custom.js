@@ -638,6 +638,94 @@
         },
     });
 
+     $("#optician-referral-upload").dropzone({
+         addRemoveLinks: true,
+         acceptedFiles: "image/*",
+         maxFilesize: 1,
+         maxFiles:1,
+         autoProcessQueue: false,
+         dictDefaultMessage: 'Drop files here or click here to upload <br /><br /> Only Image',
+         init: function() {
+             var reportDropzone = this;
+             $('#reports-modal').on('click', '.upload-report', function (e) {
+                 e.preventDefault();
+                 if (reportDropzone.files.length <= 0) {
+                     toastr.error('Error', 'Please select file to upload.');
+                     return false;
+                 }
+
+                 $('body').block({
+                     message: '<div class="font-14"><div class="icon-refresh spinner mr-2 d-inline-block"></div>Uploading ...</div>',
+                     baseZ: 2000,
+                     overlayCSS: { backgroundColor: '#fff', opacity: 0.8, cursor: 'wait' },
+                     css: { border: 0, padding: '10px 15px', color: '#333', width: 'auto', backgroundColor: 'transparent' }
+                 });
+                 reportDropzone.processQueue();
+             });
+
+             this.on("sending", function(file, xhr, formData) {
+                 formData.append("id", $('.patient-id').val());
+                 formData.append("_token", $('#token').val());
+             });
+
+             this.on("success", function(file, xhr) {
+                 var response = JSON.parse(xhr);
+                 if (response.error === false) {
+
+                     var patient_id = $('.patient-id').val();
+                     $('#report-delete-div-'+patient_id).remove();
+                     $('.report-container').append('<div class="report-image" id="report-delete-div-'+patient_id+'">'+
+                         '<a data-fancybox="gallery" href="../public/uploads/patient/document/'+patient_id+'/'+response.name+'">'+
+                         '<img class="img-thumbnail" src="../public/uploads/patient/document/'+patient_id+'/'+response.name+'" alt="">'+
+                         '<span>'+response.name+'</span>'+
+                         '</a>'+
+                         '<div class="ddi-report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel"  data-patient-id="'+patient_id+'" data-file-name="'+response.name+'"></a></div>'+
+                         '<input type="hidden" name="report_name" id="report_name" value="'+response.name+'">'+
+                         '</div>');
+
+                     toastr.success('Uploaded Succefully', 'Document uploaded Succefully.');
+                 } else {
+                     toastr.error('Upload Error', response.message);
+                 }
+                 reportDropzone.removeFile(file);
+                 $('#reports-modal').modal('hide');
+                 $.unblockUI();
+             });
+
+             this.on("error", function(file, message) {
+                 toastr.error('Error', message);
+                 this.removeFile(file);
+             });
+         },
+     });
+
+     $('.report-delete-action').on('click', function(){
+         $('#patient_id').val($(this).data('patient-id'));
+     });
+
+
+     $('#delete-ddi-image').on('click', function(){
+         var patient_id = $("#patient_id").val();
+         var name = $("#report_name").val();
+
+         removeDDIDocument(patient_id,name);
+     });
+
+     function removeDDIDocument(id,name) {
+         $.ajax({
+             type: 'POST',
+             url: 'index.php?route=user/glaucoma/documentremove',
+             data: {id: id,name:name},
+             error: function() {
+                 toastr.error('Error', 'File could not be deleted. Please try again...');
+             },
+             success: function(data) {
+                 toastr.success('Success', 'File Deleted Succefully.');
+                 $('#report-delete-div-'+id).remove();
+             }
+         });
+     }
+
 	$('body').on('click', '.report-delete', function () {
         var ele = $(this).parent('.report-image'),
         id = $('.appointment-id').val(),

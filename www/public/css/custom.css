@@ -1,4 +1,4 @@
-.report-container .report-delete, .report-container .attachment-delete, .attachment-container .report-delete, .attachment-container .attachment-delete {
+.report-container .report-delete,.report-container .ddi-report-delete, .report-container .attachment-delete, .attachment-container .report-delete, .attachment-container .attachment-delete {
     position: absolute;
     top: -10px;
     right: -10px;
@@ -12,16 +12,20 @@
     border-radius: 50%;
 }
 
-.report-container .report-delete {
-    border: 0;
-    line-height: 16px;
+
+report-container .report-delete {
+	border: 0;
+	line-height: 16px;
 }
 
 .report-container .report-delete a{
-    color: #fff;
-    display: inline-block;
-    vertical-align: middle;
-    border: 0;
+	color: #fff;
+	display: inline-block;
+	vertical-align: middle;
+	border: 0;
+}
+.report-delete-action{
+  height: 100% !important;
 }
 
 .dropzone,
