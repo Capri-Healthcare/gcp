@@ -764,7 +764,7 @@ class UserController extends Controller {
         $data['active'] = 'glaucoma';
         $data['title'] = $data['page']['page_title'];
 
-        $data['user_page'] = $this->load->view('user/glaucoma_car_plan', $data);
+        $data['user_page'] = $this->load->view('user/glaucoma_care_plan', $data);
 
         if (!empty($this->session->data['success'])) {
             $data['success'] = $this->session->data['success'];
