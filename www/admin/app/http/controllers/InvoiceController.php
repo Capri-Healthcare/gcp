@@ -285,8 +285,8 @@ class InvoiceController extends Controller
 		$this->load->controller('common');
 		if ($validate_field = $this->validateField($data)) {
 			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter/select valid '.implode(", ",$validate_field).'!');
-			exit();
-			if (!empty($data['invoice']['user_id'])) {
+
+			if (!empty($data['invoice']['id'])) {
 				$this->url->redirect('invoice/edit&id='.$data['invoice']['id']);
 			} else {
 				$this->url->redirect('invoice/add');
@@ -467,7 +467,7 @@ class InvoiceController extends Controller
 			$error_flag = true;
 			$error['name'] = 'Name';
 		}
-		if ($this->controller_common->validateText($data['invoice']['method'])) {
+		if ($this->controller_common->validateNumeric($data['invoice']['method'])) {
 			$error_flag = true;
 			$error['method'] = 'Payment method';
 		}
