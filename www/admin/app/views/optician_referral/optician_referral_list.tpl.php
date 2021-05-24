@@ -53,15 +53,17 @@
 				<tbody>
 
 					<?php if (!empty($result)) { foreach ($result as $key => $value) { ?>
-						<tr>
-							<td><?php echo $key+1; ?></td>
-							<td><?php echo $value['first_name']; ?></td>
-							<td><?php echo $value['last_name']; ?></td>
-							<td><?php echo date_format(date_create($value['dob']), $common['info']['date_format']); ?></td>
-							<td><?php echo $value['mobile']; ?></td>
-							<td><?php echo $value['email']; ?></td>
-							<td><?php echo $value['city']; ?></td>
-							<td><?php echo $value['status']; ?></td>
+
+
+                      	<tr style="cursor: pointer">
+							<td class="clickable-row"><?php echo $key+1; ?></td>
+							<td class="clickable-row"><?php echo $value['first_name']; ?></td>
+							<td class="clickable-row"><?php echo $value['last_name']; ?></td>
+							<td class="clickable-row"><?php echo date_format(date_create($value['dob']), $common['info']['date_format']); ?></td>
+							<td class="clickable-row"><?php echo $value['mobile']; ?></td>
+							<td class="clickable-row"><?php echo $value['email']; ?></td>
+							<td class="clickable-row"><?php echo $value['city']; ?></td>
+							<td class="clickable-row"><?php echo $value['status']; ?></td>
 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
 							<td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
 							<?php if ($page_delete || $page_edit || $page_view) { ?>
@@ -70,7 +72,7 @@
                                         <a class="text-primary edit dropdown-toggle" data-toggle="dropdown"><i class="ti-more"></i></a>
                                         <ul class="dropdown-menu dropdown-menu-right export-button">
                                             <?php if ($page_view) { ?>
-                                                <li> <a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/view&id='.$value['id'];?>"><i class="ti-eye"></i>&nbsp;View</a></li>
+                                                <li> <a id="pageview" href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/view&id='.$value['id'];?>"><i class="ti-eye"></i>&nbsp;View</a></li>
                                             <?php }?>
                                             <?php if ($page_edit) { ?>
                                                 <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/edit&id='.$value['id'];?>" class="text-primary edit" data-toggle="tooltip" title="Edit"><i class="ti-pencil-alt"></i>&nbsp;Edit</a></li>
@@ -85,6 +87,7 @@
 								</td>
 							<?php } ?>
 						</tr>
+                    </a>
 					<?php } } ?>
 				</tbody>
 			</table>
@@ -124,6 +127,9 @@
             });
         });
 
+        $(".clickable-row").click(function() {
+            window.location = $("#pageview").attr("href");
+        });
     </script>
 <?php
 if ($page_delete) { include DIR_VIEW.'common/delete_modal.tpl.php'; }

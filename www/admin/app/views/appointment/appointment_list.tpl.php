@@ -51,16 +51,16 @@
                 </thead>
                 <tbody>
                     <?php if (!empty($result)) { foreach ($result as $key => $value) { ?>
-                        <tr>
-                            <td><?php echo $common['info']['appointment_prefix'].str_pad($value['id'], 5, '0', STR_PAD_LEFT); ?></td>
-                            <td>
+                        <tr style="cursor: pointer">
+                            <td class="clickable-row"><?php echo $common['info']['appointment_prefix'].str_pad($value['id'], 5, '0', STR_PAD_LEFT); ?></td>
+                            <td class="clickable-row">
                                 <a class="m-0 text-primary"><?php echo $value['name'];?></a>
                                 <p class="m-0"><?php echo $value['email']; ?></p>
                                 <p class="m-0"><?php echo $value['mobile']; ?></p>
                             </td>
-                            <td><?php echo date_format(date_create($value['date']), $common['info']['date_format']).' AT '.$value['time']; ?></td>
-                            <td>Dr. <?php echo $value['doctor']; ?></td>
-                            <td>
+                            <td class="clickable-row"><?php echo date_format(date_create($value['date']), $common['info']['date_format']).' AT '.$value['time']; ?></td>
+                            <td class="clickable-row">Dr. <?php echo $value['doctor']; ?></td>
+                            <td class="clickable-row">
                                 <div class="video_call_icon pull-left col-12 pl-0">
                                     <?php echo CONSULTATION_TYPE[$value['consultation_type']]; ?>
                                 </div>
@@ -74,7 +74,7 @@
                                     </div>
                                 <?php } ?>
                             </td>
-                            <td>
+                            <td class="clickable-row">
                                 <?php if ($value['status'] == 1) {                                    
                                     echo '<span class="label label-warning">In process</span>';
                                 } elseif ($value['status'] == 2) {
@@ -97,7 +97,7 @@
                                             <a class="text-primary edit dropdown-toggle" data-toggle="dropdown"><i class="ti-more"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right export-button">
                                                 <?php if ($page_view) { ?>
-                                                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/view&id='.$value['id'];?>"><i class="ti-layout-media-center-alt pr-2"></i>View</a></li>
+                                                    <li><a id="pageview" href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/view&id='.$value['id'];?>"><i class="ti-layout-media-center-alt pr-2"></i>View</a></li>
                                                 <?php } if ($page_edit) { ?>
                                                     <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/edit&id='.$value['id'];?>"><i class="ti-pencil-alt pr-2"></i>Edit</a></li>
                                                 <?php } if (!empty($value['invoice_id']) && $invoice_view) { ?>
@@ -153,6 +153,11 @@
             window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>appointments'+'&start='+picker.startDate.format('YYYY-MM-DD')+'&end='+picker.endDate.format('YYYY-MM-DD'));
         });
     });
+
+    $(".clickable-row").click(function() {
+        window.location = $("#pageview").attr("href");
+    });
+
 </script>
 
 <?php if ($page_delete) { include DIR_VIEW.'common/delete_modal.tpl.php';

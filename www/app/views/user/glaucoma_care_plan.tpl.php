@@ -2,7 +2,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-6 p-5">
-                <center><a href="<?php echo URL.DIR_ROUTE ?>pdf-demo" class="btn btn-primary">Download DDI Form</a></center>
+                <center><a href="<?php echo URL.DIR_ROUTE ?>pdf-demo" class="btn btn-primary" target="_blank" >Download  Direct Debit  Form</a></center>
             </div>
             <div class="col-md-6 p-5">
                 <center> <a class="btn btn-warning" data-toggle="modal"

@@ -11,7 +11,7 @@
                 <label>Name <span class="form-required">*</span></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ti-timer"></i></span>
+                        <span class="input-group-text"><i class="ti-user"></i></span>
                     </div>
                     <input type="text" name="appointment[name]" value="<?php echo(isset($patient)?$patient['firstname']:'')?>" class="form-control patient-name" placeholder="Enter Name . . ." required>
                     <input type="hidden" name="appointment[patient_id]" value="<?php echo(isset($patient)?$patient['id']:'')?>" class="form-control patient-id">
@@ -21,7 +21,7 @@
                 <label>Email Address <span class="form-required">*</span></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ti-timer"></i></span>
+                        <span class="input-group-text"><i class="ti-email"></i></span>
                     </div>
                     <input type="text" name="appointment[mail]" value="<?php echo(isset($patient)?$patient['email']:'')?>" class="form-control patient-mail" placeholder="Enter Email Address . . ." required>
                 </div>
@@ -30,7 +30,7 @@
                 <label>Mobile Number <span class="form-required">*</span></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ti-timer"></i></span>
+                        <span class="input-group-text"><i class="ti-mobile"></i></span>
                     </div>
                     <input type="text" name="appointment[mobile]" value="<?php echo(isset($patient)?$patient['mobile']:'')?>" class="form-control patient-mobile" placeholder="Enter Mobile Number . . ." required>
                 </div>
@@ -39,7 +39,7 @@
                 <label>Doctor <span class="form-required">*</span></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ti-timer"></i></span>
+                        <span class="input-group-text"><i class="ti-user"></i></span>
                     </div>
                     <select name="appointment[doctor]" class="custom-select apnt-doctor" required>
                         <option value="">Select Doctor</option>
@@ -54,7 +54,7 @@
                 <label>Date <span class="form-required">*</span></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ti-timer"></i></span>
+                        <span class="input-group-text"><i class="ti-calendar"></i></span>
                     </div>
                     <input type="text" name="appointment[date]" class="form-control apnt-date" value="" placeholder="Select Date . . ." required autocomplete="off">
                 </div>

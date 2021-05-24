@@ -48,6 +48,9 @@
 						<?php } if ($page_sendmail) { ?>
 							<li><a href="#patient-sendmail" class="<?php echo isset($email_type) ? 'active' : ''?>" data-toggle="tab"><i class="ti-email"></i> <span>Send Email</span></a></li>
 						<?php } ?>
+                        <?php if($result['is_glaucoma_required'] == 'YES') {?>
+                            <li><a href="#patient-direct-debit" data-toggle="tab"><i class="ti-folder"></i> <span>Direct Debit Form</span></a></li>
+                        <?php }?>
 					</ul>
 				</div>
 			</div>
@@ -694,6 +697,31 @@
 					</div>
 				</div>
 			</div>
+            <?php if($result['is_glaucoma_required'] == 'YES') { ?>
+                <div class="tab-pane fade" id="patient-direct-debit">
+                    <div class="panel panel-default">
+                        <div class="panel-head">
+                            <div class="panel-title">Direct Debit Form</div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="report-container">
+                                <?php  if(!empty($result['ddi_image'])) {?>
+
+                                    <div class="report-image">
+                                        <a data-fancybox="gallery" href="../public/uploads/patient/document/<?php echo $result['id'] ?>/<?php echo $result['ddi_image']; ?>">
+                                            <img src="../public/uploads/patient/document/<?php echo $result['id'] ?>/<?php echo $result['ddi_image']; ?>" alt="<?php echo $result['ddi_image']; ?>" class="blur_img">
+                                            <span><?php echo $result['ddi_image']; ?></span>
+                                        </a>
+                                    </div>
+
+                                    <?php 	} else { ?>
+                                    <p class="text-center">Image is not available</p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
 		</div>
 	</div>
 </div>
