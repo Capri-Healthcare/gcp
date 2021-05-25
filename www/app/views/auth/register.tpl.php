@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="input-box  form-bot-check">
+                    <div class="input-box  form-input form-bot-check">
                         <input type="number" name="bot-check" id="register-bot" >
                         <label for="register-bot"><?php echo $lang['text_what_is'].' '.rand(1,10).' '.$lang['text_plus'].' '. rand(1,10); ?> = <em> *</em></label>
                         <span><?php echo $lang['text_what_is_error']; ?></span>

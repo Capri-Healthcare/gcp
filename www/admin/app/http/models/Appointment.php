@@ -370,17 +370,18 @@ class Appointment extends Model
             if ($images->num_rows > 0) {
                 foreach ($images->rows as $doc) {
                 //  Create folder if its not exist
-                 $report_folder = DIR . "public/uploads/appointment/reports/" . $data['id'];
+                 $report_folder = DIR . "public/uploads/appointment/images/" . $data['id'];
                 if (!file_exists($report_folder)) {
                     mkdir($report_folder, 0777, true);
                 }
                     $source_path = DIR . "public/uploads/optician-referral/document/" . $doc['referral_list_id'] . '/' . $doc['filename'];
                     $destination_path = $report_folder . '/' . $doc['filename'];
                     copy($source_path, $destination_path);
-                    $this->database->query("INSERT INTO `" . DB_PREFIX . "appointment_images` (`name`, `description`, `filename`, `appointment_id`, `patient_id`, `user_id`) VALUES (?, ?, ?, ?, ?, ?)", array($doc['name'], $doc['filename'], $data['id'], $data['id']['patient_id'], $data['user_id']));
+                    $this->database->query("INSERT INTO `" . DB_PREFIX . "appointment_images` (`name`, `filename`, `appointment_id`, `patient_id`, `user_id`) VALUES (?, ?, ?, ?, ?)", array($doc['name'], $doc['filename'], $data['id'],$data['patient_id'], $data['user_id']));
 
                 }
             }
+
         }
     }
 
