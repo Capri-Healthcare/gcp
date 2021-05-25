@@ -1,0 +1,130 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.wrapper{
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.logo_right{
+    text-align: right;
+}
+
+p{
+    margin: 0 0 10px;
+}
+
+.address_block{
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    margin: 0 0 20px;
+}
+
+
+.address_block address{
+    margin: 0;
+}
+
+input.name_input{
+    border-bottom: 1px solid #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 65%;
+    margin: 0 0 30px;
+}
+
+input.name_input.width_auto{
+    width: 20%;
+}
+
+input.name_input.margin_null{
+    margin: 0 0 10px;
+}
+
+input.full_input{
+    width: 100%;
+    border-bottom: 1px solid #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin: 0 0 10px;
+}
+
+label{
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.code_block input {
+    width: 12.5%;
+    height: 50px;
+    background-color: transparent;
+    border: 1px solid #000;
+    line-height: 50px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    color: #000;
+    margin: 0 0 10px -5px;
+}
+
+.splitter {
+    padding: 0 5px;
+    color: #000;
+    font-size: 24px;
+    margin: 0 8px;
+}
+
+.code_block.reference input{
+    width: 8%;
+}
+
+.code_block.identification_number input{
+    width: 16.66%;
+}
+
+.code_block.identification_number {
+    float: none;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.payment_box{
+    padding-right: 20px;
+    margin: 0 0 10px;
+}
+
+.payment_box label{
+    display: inline-block;
+    width: auto;
+}
+
+.payment_box .input_symbol{
+    float: right;
+    text-align: right;
+}
+
+.payment_box .input_symbol input.name_input.margin_null{
+    width: 50%;
+}
+
+.left_sec{
+    display: flex;
+    align-items: center;
+}
+
+.list_block{
+    padding: 0;
+}
+
+.list_block li{
+    list-style: none;
+    background: url(images/bullet.png) no-repeat left 5px;
+    padding: 0 0 0 25px;
+    margin: 0 0 15px;
+}
