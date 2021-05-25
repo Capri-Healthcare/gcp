@@ -22,6 +22,13 @@ class Commons extends Model
         return $query->row;
     }
 
+    public function getReferrals($id)
+    {
+        $query = $this->database->query("Select * From `" . DB_PREFIX . "referral_list` WHERE status = 'NEW' AND created_by = '" . $id . "' ORDER BY created_at DESC ");
+        return $query->rows;
+    }
+
+
     public function getSiteInfo()
     {
         return $this->user_agent->getInfo();
@@ -71,6 +78,8 @@ class Commons extends Model
     public function createAdminMenu()
     {
         $data['user'] = $this->user_agent->getUserData();
+        $referrals = $this->getReferrals($this->session->data['user_id']);
+
         $tree = array();
         $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "menu` WHERE `status` = ? ORDER BY `priority` DESC", array(1));
         $list = $query->rows;
@@ -111,14 +120,20 @@ class Commons extends Model
                         $active = '';
                     }
                     if (!in_array($data['user']['role'], constant('USER_ROLE'))) {
-                        if($value['name'] == 'Referrals')
-                        {
-                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' .$value['icon'] . '"></i><span>' ."My ".$value['name'] . '</span></a></li>';
-                        }else{
-                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' .$value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
+                        if ($value['name'] == 'Referrals') {
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . "My " . $value['name'] . '</span></a></li>';
+                        } else {
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
                         }
                     } else {
-                        $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
+                        if ($value['name'] == 'Referrals') {
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'].'&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">'.count($referrals).'</span></span></a></li>';
+
+                        } else {
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
+
+                        }
+
                     }
                 }
             }

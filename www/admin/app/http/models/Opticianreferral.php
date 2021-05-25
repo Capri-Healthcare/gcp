@@ -20,6 +20,7 @@ class Opticianreferral extends Model
         return $query->rows;
     }
 
+
     public function allOpticianReferral()
     {
         $query = $this->database->query("Select * From `" . DB_PREFIX . "referral_list` ORDER BY created_at DESC ");
