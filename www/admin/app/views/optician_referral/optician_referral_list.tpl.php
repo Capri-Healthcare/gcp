@@ -36,6 +36,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
+						<th>Optician</th>
 						<th>First name</th>
 						<th>Last name</th>
 						<th>DOB</th>
@@ -57,6 +58,7 @@
 
                       	<tr style="cursor: pointer">
 							<td class="clickable-row"><?php echo $key+1; ?></td>
+							<td class="clickable-row"><?php echo $value['optician_name']; ?></td>
 							<td class="clickable-row"><?php echo $value['first_name']; ?></td>
 							<td class="clickable-row"><?php echo $value['last_name']; ?></td>
 							<td class="clickable-row"><?php echo date_format(date_create($value['dob']), $common['info']['date_format']); ?></td>

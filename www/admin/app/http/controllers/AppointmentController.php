@@ -513,6 +513,8 @@ class AppointmentController extends Controller
             $data['appointment']['consultation_type'] = 'face_to_face';
             $data['appointment']['id'] = $this->model_appointment->createAppointment($data['appointment']);
             if ($data['appointment']['id']) {
+                $this->model_appointment->moveimagefromopticiantoappointment($data['appointment']);
+
                 $mail_result = $this->appointmentMail($data['appointment']['id'], 'newappointment');
                 // if ($data['user']['role_id'] == '3') {
                 // 	$this->model_appointment->createPatientDoctor($data);

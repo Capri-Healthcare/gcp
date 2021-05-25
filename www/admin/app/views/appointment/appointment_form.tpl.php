@@ -130,7 +130,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Glaucoma Care Plan Require<span class="form-required">*</span></label>
+                                    <label>Glaucoma Care Plan Required<span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-check-box"></i></span>
