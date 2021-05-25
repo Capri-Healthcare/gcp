@@ -40,3 +40,4 @@ define('TOKEN_SALT', 'rg(uyO0?I9uq5mx-hh4>V-XCPQ?Dx80{n7|?K?pU;-2WldDIOElXOvzT>p
 define('USER_ROLE', ['Med. Secretary', 'Admin','GCP Secretary']);
 define('USER_ROLE_NAME', 'GCP Secretary');
 define('FOLLOW_UP_DROPDOWN', ['W' => 'Weekly', '1' => '1 month', '2' => '2 month', '3' => '3 month', '4' => '4 month', '5' => '5 month']);
+define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Rejected']);

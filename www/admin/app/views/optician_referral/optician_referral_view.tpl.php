@@ -38,12 +38,12 @@
                 <div class="user-details text-center pt-3">
                     
                     <ul class="v-menu text-left pt-0 nav d-block">
-                        <li><a href="#appointment-info" class="active" data-toggle="tab"><i class="ti-info-alt"></i> <span>Optician Referral</span></a></li>
+                        <li><a href="#appointment-info" class="active" data-toggle="tab"><i class="ti-info-alt"></i> <span>Referral Details</span></a></li>
                        <?php  if ($page_documents) { ?>
-                            <li><a href="#appointment-documents" data-toggle="tab"><i class="ti-calendar"></i> <span>Documents</span></a></li>
+                            <li><a href="#appointment-documents" data-toggle="tab"><i class="ti-calendar"></i> <span>Scan & Reports</span></a></li>
                       <?php } ?>
                         <?php if ($page_edit) { ?>
-                            <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/edit&id='.$result['id']; ?>"><i class="ti-pencil-alt"></i> <span>Edit Optician Referral</span></a></li>
+                            <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/edit&id='.$result['id']; ?>"><i class="ti-pencil-alt"></i> <span>Edit Referral Details</span></a></li>
                         <?php }  ?>
                     </ul>
                 </div>
@@ -55,7 +55,7 @@
             <div class="tab-pane fade <?php echo !isset($doc_type) ? 'show active' : ''; ?>" id="appointment-info">
                 <div class="panel panel-default">
                     <div class="panel-head">
-                        <div class="panel-title">Optician Referral Info</div>
+                        <div class="panel-title">Referral Details</div>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -100,7 +100,7 @@
                                         <td class="text-dark"><?php echo $result['city'];?></td>
                                     </tr>
                                     <tr>
-                                        <td>Zip Code</td>
+                                        <td>Post Code</td>
                                         <td><?php echo $result['zip_code']; ?></td>
                                     </tr>
                                     <tr>

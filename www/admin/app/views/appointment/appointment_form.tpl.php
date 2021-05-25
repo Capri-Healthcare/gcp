@@ -41,7 +41,7 @@
                 <?php }
                 if ($page_document_upload || $page_documents) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#appointment-documents" data-toggle="tab">Documents</a>
+                        <a class="nav-link" href="#appointment-documents" data-toggle="tab">Scans & Reports</a>
                     </li>
                 <?php }
                 if ($invoice_view || $invoice_add) { ?>
@@ -54,7 +54,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#appointment-pre-consultation-requirement" data-toggle="tab">Pre-consultation
-                        requirement</a>
+                        requirements</a>
                 </li>
             </ul>
             <div class="tab-content pt-4">

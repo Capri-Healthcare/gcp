@@ -158,7 +158,7 @@
 								</div>
 							</div>
 						</div-->
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label>Do you/the patient have any disabilities? <span class="form-required">*</span></label>
 								<div class="input-group">
@@ -172,7 +172,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-12">
 							<div class="form-group">
 								<label>Please provide disabilities details</label>
 								<div class="input-group">
@@ -431,7 +431,7 @@
 										<span class="input-group-text"><i class="ti-check-box"></i></span>
 									</div>
 									<!--input type="text" name="patient[medical_insurers_name]" <?php echo $insurance_field_readonly ?> class="form-control" id="medical_insurers_name" value="<?php echo $result['medical_insurers_name']; ?>" placeholder="Enter Medical insurers name"-->
-									<select name="patient[medical_insurers_name]" id="" class="custom-select">
+									<select name="patient[medical_insurers_name]" id="medical_insurers_name" class="custom-select">
 										<option value="">Select Medical insurers name</option>
 										<?php if (!empty(MEDICALE_INSURANCE_COMPANIES)) { 
 												foreach (MEDICALE_INSURANCE_COMPANIES as $insurance_company_code => $insurance_company_name) { ?>

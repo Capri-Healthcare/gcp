@@ -37,7 +37,7 @@ class OpticianReferralController extends Controller
 
         $data['result'] = $this->model_opticianreferral->getOpticianReferrals($data['period'],$this->session->data['user_id'],$data['common']['user']['role']);
 
-        $data['page_title'] = 'Optician Referral';
+        $data['page_title'] = 'Referrals';
         $data['page_add'] = $this->user_agent->hasPermission('optician-referral/add') ? true : false;
         $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true : false;
         $data['page_delete'] = $this->user_agent->hasPermission('optician-referral/delete') ? true : false;
@@ -72,7 +72,7 @@ class OpticianReferralController extends Controller
         $this->load->model('opticianreferral');
 
         /* Set page title */
-        $data['page_title'] = 'New Optician Referral';
+        $data['page_title'] = 'Refer a patient';
 
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/add';
@@ -119,7 +119,7 @@ class OpticianReferralController extends Controller
             unset($this->session->data['message']);
         }
 
-        $data['page_title'] = 'Edit Optician Referral';
+        $data['page_title'] = 'Edit Referral Details';
 
 
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
@@ -156,7 +156,7 @@ class OpticianReferralController extends Controller
         $this->load->model('user');
         $data['user'] = $this->model_user->getUser($data['result']['created_by']);
 
-        $data['page_title'] = 'Optician Referral View';
+        $data['page_title'] = 'Referral Details';
         $data['page_add'] = $this->user_agent->hasPermission('optician-referral/add') ? true : false;
         $data['page_view'] = $this->user_agent->hasPermission('optician-referral/view') ? true : false;
         $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true : false;
@@ -325,7 +325,7 @@ class OpticianReferralController extends Controller
         }
         if ($this->controller_common->validateText($data['zip_code'])) {
             $error_flag = true;
-            $error['title'] = 'Pincode  !';
+            $error['title'] = 'Post Code  !';
         }
 
         if ($error_flag) {

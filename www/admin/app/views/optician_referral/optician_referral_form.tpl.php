@@ -154,14 +154,14 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Zip Code</label>
+                                                <label>Post Code</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                                     class="ti-tag"></i></span></div>
                                                     <input type="text" name="referral[zip_code]" maxlength="6"
                                                            class="form-control"
                                                            value="<?php echo $result['zip_code']; ?>"
-                                                           placeholder="Enter Zip Code" onkeypress="return alphaNumericValidation(event)"
+                                                           placeholder="Enter Post Code" onkeypress="return alphaNumericValidation(event)"
                                                            equired>
                                                 </div>
                                             </div>
@@ -170,7 +170,7 @@
                                     </div>
                                     <div class="panel-footer text-center">
                                         <button type="submit" name="submit" class="btn btn-primary"><i
-                                                    class="ti-save-alt pr-2"></i> Save
+                                                    class="ti-save-alt pr-2"></i> Next
                                         </button>
                                     </div>
                                 </div>

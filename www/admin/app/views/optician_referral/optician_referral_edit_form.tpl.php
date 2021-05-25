@@ -17,7 +17,7 @@
             </div>
             <div class="col-sm-6 text-right">
                 <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/view&id=' . $result['id']; ?>"
-                   class="btn btn-white btn-sm"><i class="ti-calendar text-primary mr-2"></i> View Optician Referral</a>
+                   class="btn btn-white btn-sm"><i class="ti-calendar text-primary mr-2"></i> View Referral Details</a>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                 </li>
                 <?php if ($page_edit) { ?>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo (isset($_GET['document']) ? 'active' : '') ?>" href="#appointment-documents" data-toggle="tab">Documents</a>
+                        <a class="nav-link  <?php echo (isset($_GET['document']) ? 'active' : '') ?>" href="#appointment-documents" data-toggle="tab">Scans & Reports</a>
                     </li>
                 <?php } ?>
             </ul>
@@ -172,13 +172,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Zip Code</label>
+                                            <label>Post Code</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                                 class="ti-tag"></i></span></div>
                                                 <input type="text" name="referral[zip_code]" maxlength="6"
                                                        class="form-control" value="<?php echo $result['zip_code']; ?>"
-                                                       placeholder="Enter Zip Code" onkeypress="return alphaNumericValidation(event)" required>
+                                                       placeholder="Enter Post Code" onkeypress="return alphaNumericValidation(event)" required>
                                             </div>
                                         </div>
                                     </div>
@@ -230,11 +230,11 @@
                                 <a class="btn btn-warning btn-sm" data-toggle="modal"
                                    data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload Document</a>
                             </div>
-                            <div class="form-group col-sm-6 text-right">
-                                <a class="btn btn-secondary btn-sm"
-                                   href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/report/reportsExport&id=' . $result['id']; ?>"><i
-                                            class="ti-cloud-down mr-2"></i> Download Document</a>
-                            </div>
+<!--                            <div class="form-group col-sm-6 text-right">-->
+<!--                                <a class="btn btn-secondary btn-sm"-->
+<!--                                   href="--><?php //echo URL_ADMIN . DIR_ROUTE . 'optician-referral/report/reportsExport&id=' . $result['id']; ?><!--"><i-->
+<!--                                            class="ti-cloud-down mr-2"></i> Download Document</a>-->
+<!--                            </div>-->
                         </div>
                         <div class="report-container">
                             <?php if (!empty($reports)) {

@@ -18,13 +18,13 @@
             <div class="btn btn-white btn-sm text-left mr-2">
                 <i class="ti-filter text-danger pr-2"></i>
                 <select class="status" style="border: 0px;">
-                    <option value="NEW" selected>New</option>
-                    <option value="ACCEPTED">ACCEPTED</option>
-                    <option value="REJECTED">REJECTED</option>
+                    <?php foreach (constant('STATUS') as $key => $status) { ?>
+                        <option value="<?php echo $key ?>"><?php echo $status; ?></option>
+                    <?php } ?>
                 </select>
             </div>
        	<?php if ($page_add) { ?>
-				<a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/add'; ?>" class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> New Optician Referral</a>
+				<a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/add'; ?>" class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create Referral</a>
 			<?php } ?>
 		</div>
 	</div>
@@ -45,7 +45,7 @@
 						<th>City</th>
 						<th>Status</th>
 <!--						<th>Created By</th>-->
-						<th>Created Date</th>
+						<th>Date Submited</th>
 						<?php if ($page_delete || $page_edit || $page_view) { ?>
 							<th></th>
 						<?php } ?>
