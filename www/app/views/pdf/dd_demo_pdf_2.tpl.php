@@ -1,146 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--html lang="en"-->
 <head>
-    <title>Direct Debit</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!--    <link rel="stylesheet" href="--><?php //echo URL."public/css/pdf_style.css";?><!--">-->
-<!--    <link rel="stylesheet" href="--><?php //echo URL."public/css/responsive.css";?><!--">-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-   <style>
-       body{
-           font-family: 'Open Sans', sans-serif;
-       }
-
-       .wrapper{
-           padding: 40px;
-           box-sizing: border-box;
-       }
-
-       .logo_right{
-           text-align: right;
-       }
-
-       p{
-           margin: 0 0 10px;
-       }
-
-       .address_block{
-           padding: 5px 10px;
-           box-sizing: border-box;
-           border: 1px solid #000;
-           margin: 0 0 20px;
-       }
-
-
-       .address_block address{
-           margin: 0;
-       }
-
-       input.name_input{
-           border-bottom: 1px solid #000;
-           border-top: none;
-           border-left: none;
-           border-right: none;
-           width: 65%;
-           margin: 0 0 30px;
-       }
-
-       input.name_input.width_auto{
-           width: 20%;
-       }
-
-       input.name_input.margin_null{
-           margin: 0 0 10px;
-       }
-
-       input.full_input{
-           width: 100%;
-           border-bottom: 1px solid #000;
-           border-top: none;
-           border-left: none;
-           border-right: none;
-           margin: 0 0 10px;
-       }
-
-       label{
-           display: block;
-           width: 100%;
-           text-align: left;
-       }
-
-       .code_block input {
-           width: 12.5%;
-           height: 50px;
-           background-color: transparent;
-           border: 1px solid #000;
-           line-height: 50px;
-           text-align: center;
-           font-size: 24px;
-           font-weight: 400;
-           color: #000;
-           margin: 0 0 10px -5px;
-       }
-
-       .splitter {
-           padding: 0 5px;
-           color: #000;
-           font-size: 24px;
-           margin: 0 8px;
-       }
-
-       .code_block.reference input{
-           width: 8%;
-       }
-
-       .code_block.identification_number input{
-           width: 16.66%;
-       }
-
-       .code_block.identification_number {
-           float: none;
-           display: inline-block;
-           text-align: center;
-           width: 100%;
-       }
-
-       .payment_box{
-           padding-right: 20px;
-           margin: 0 0 10px;
-       }
-
-       .payment_box label{
-           display: inline-block;
-           width: auto;
-       }
-
-       .payment_box .input_symbol{
-           float: right;
-           text-align: right;
-       }
-
-       .payment_box .input_symbol input.name_input.margin_null{
-           width: 50%;
-       }
-
-       .left_sec{
-           display: flex;
-           align-items: center;
-       }
-
-       .list_block{
-           padding: 0;
-       }
-
-       .list_block li{
-           list-style: none;
-           background: url(images/bullet.png) no-repeat left 5px;
-           padding: 0 0 0 25px;
-           margin: 0 0 15px;
-       }
-   </style>
+    <!--title>Direct Debit</title-->
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" -->
+    <link rel="stylesheet" href="<?php echo URL.'public/css/dd_pdf_style.css'; ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo URL.'public/css/dd_pdf_responsive.css'; ?>" type="text/css">
+    <!--link rel="preconnect" href="https://fonts.gstatic.com"-->
+    <!--link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet"-->
 </head>
 <body>
 
@@ -309,8 +175,8 @@
         </div>
     </div>
 </section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script-->
+<!--script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script-->
+<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script-->
 </body>
 </html>

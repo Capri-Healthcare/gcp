@@ -1,0 +1,50 @@
+@media screen and (max-width: 1199px){
+    h3{
+        font-size: 18px;
+    }
+    p{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1023px){
+    .logo_right {
+        text-align: left;
+    }
+    .address_block .logo_right{
+        text-align: right;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .address_block .logo_right{
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 567px){
+    .logo_right {
+        margin: 10px 0 0;
+    }
+    .payment_box .input_symbol {
+        float: none;
+        text-align: left;
+    }
+    .payment_box .input_symbol input.name_input.margin_null {
+        width: 100%;
+        display: inline-block;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .wrapper{
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .code_block input{
+        width: 11.5%;
+    }
+}
