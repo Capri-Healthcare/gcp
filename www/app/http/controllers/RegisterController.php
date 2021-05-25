@@ -96,7 +96,7 @@ class RegisterController extends Controller
 		$this->load->model('register');
 		if ($user = $this->model_register->checkOpticianUserExist($data['email'])) { 
 			$this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_account_already_exist_login_now_or_use_forgot_password_to_reset_password']);
-			$this->url->redirect('/admin');
+			$this->url->redirect('register');
 		} else {
 			/**
 			* Unique hash value for email verification
