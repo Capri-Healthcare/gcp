@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--html lang="en"-->
+<html lang="en">
 <head>
-    <!--title>Direct Debit</title-->
-    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" -->
+    <title>Direct Debit</title>
+    <link rel="stylesheet" href="<?php echo URL.'public/css/bootstrap.min.css'; ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo URL.'public/css/dd_pdf_style.css'; ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo URL.'public/css/dd_pdf_responsive.css'; ?>" type="text/css">
     <!--link rel="preconnect" href="https://fonts.gstatic.com"-->
