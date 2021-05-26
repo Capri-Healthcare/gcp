@@ -45,13 +45,12 @@
                         <?php if ($page_notes) { ?>
                             <li><a href="#appointment-records" data-toggle="tab"><i class="ti-calendar"></i> <span>Examination Notes</span></a></li>
                         <?php } if ($page_documents) { ?>
-                            <li><a href="#appointment-documents" data-toggle="tab"><i class="ti-calendar"></i> <span>Documents</span></a></li>
+                            <li><a href="#appointment-documents" data-toggle="tab"><i class="ti-calendar"></i> <span>Scans & Reports</span></a></li>
                         <?php } if ($page_prescriptions) { ?>
                             <li><a href="#appointment-prescription" data-toggle="tab"><i class="ti-clipboard"></i> <span>Prescription</span></a></li>
                         <?php } if ($invoice_view || $invoice_add) { ?>
                             <li><a href="#appointment-invoice" data-toggle="tab"><i class="ti-receipt"></i> <span>Invoice</span></a></li>
                         <?php } ?>
-                            <li><a href="#appointment-suporting-images" data-toggle="tab"><i class="ti-receipt"></i> <span>Images</span></a></li>
                             <li><a href="#appointment-pre-consultation-requirement" data-toggle="tab"><i class="ti-receipt"></i> <span>Pre-consultation requirement</span></a></li>
                         <?php if ($page_edit) { ?>
                             <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/edit&id='.$result['id']; ?>"><i class="ti-pencil-alt"></i> <span>Edit Appointment</span></a></li>
@@ -347,13 +346,14 @@
                 <div class="tab-pane fade" id="appointment-documents">
                     <div class="panel panel-default">
                         <div class="panel-head">
-                            <div class="panel-title">Documents/Reports</div>
-                            <div class="panel-title text-right">
-                                <a class="btn btn-secondary btn-sm" href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/reportsExport&id='.$result['id']; ?>"><i class="ti-cloud-down mr-2"></i> Download Documents/Reports</a>
-                            </div>
+                            <div class="panel-title">Scans & Reports</div>
+    <!--                            <div class="panel-title text-right">-->
+    <!--                                <a class="btn btn-secondary btn-sm" href="--><?php //echo URL_ADMIN.DIR_ROUTE.'appointment/reportsExport&id='.$result['id']; ?><!--"><i class="ti-cloud-down mr-2"></i> Download Documents/Reports</a>-->
+    <!--                            </div>-->
                         </div>
                         <div class="panel-body">
                             <div class="report-container">
+
                                 <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                     <div class="report-image report-pdf">
                                         <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/'.$value['report']; ?>" class="open-pdf font-12" style="display: block;">
@@ -474,33 +474,7 @@
                     </div>
                 </div>
             <?php } ?>
-                <div class="tab-pane fade" id="appointment-suporting-images">
-                    <div class="panel panel-default">
-                        <div class="panel-head">
-                            <div class="panel-title">Images</div>
-                            <div class="panel-title text-right">
-                                <a class="btn btn-secondary btn-sm" href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/imagesExport&id='.$result['id']; ?>"><i class="ti-cloud-down mr-2"></i> Download Images</a>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="report-container">
-                            <?php 
-                                if(!empty($appointment_images)) {
-                                    foreach($appointment_images AS $image) { ?>
-                                    <div class="report-image">
-                                        <a data-fancybox="gallery" href="../public/uploads/appointment/images/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>">
-                                            <img src="../public/uploads/appointment/images/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>" alt="<?php echo $image['name']; ?>" class="blur_img">
-                                            <span><?php echo $image['name']; ?></span>
-                                        </a>
-                                    </div>
-                            <?php 	} 
-                                } else { ?>
-                                    <p class="text-center">Image is not available</p>
-                            <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
 
             <div class="tab-pane fade" id="appointment-pre-consultation-requirement">

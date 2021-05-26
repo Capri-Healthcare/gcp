@@ -39,9 +39,7 @@
 						<th>Optician</th>
 						<th>First name</th>
 						<th>Last name</th>
-						<th>DOB</th>
 						<th>Mobile</th>
-						<th>Email</th>
 						<th>City</th>
 						<th>Status</th>
 <!--						<th>Created By</th>-->
@@ -61,11 +59,9 @@
 							<td class="clickable-row"><?php echo $value['optician_name']; ?></td>
 							<td class="clickable-row"><?php echo $value['first_name']; ?></td>
 							<td class="clickable-row"><?php echo $value['last_name']; ?></td>
-							<td class="clickable-row"><?php echo date_format(date_create($value['dob']), $common['info']['date_format']); ?></td>
 							<td class="clickable-row"><?php echo $value['mobile']; ?></td>
-							<td class="clickable-row"><?php echo $value['email']; ?></td>
 							<td class="clickable-row"><?php echo $value['city']; ?></td>
-							<td class="clickable-row"><?php echo $value['status']; ?></td>
+							<td class="clickable-row"><?php echo ucfirst($value['status']); ?></td>
 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
 							<td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
 							<?php if ($page_delete || $page_edit || $page_view) { ?>

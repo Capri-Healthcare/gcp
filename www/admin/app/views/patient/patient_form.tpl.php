@@ -158,6 +158,8 @@
 								</div>
 							</div>
 						</div-->
+                        <div class="col-md-3">
+                        </div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label>Do you/the patient have any disabilities? <span class="form-required">*</span></label>
@@ -172,7 +174,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-12">
+						<div class="col-md-9">
 							<div class="form-group">
 								<label>Please provide disabilities details</label>
 								<div class="input-group">
@@ -357,12 +359,12 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label>Postal/Zip Code</label>
+						<label>Postal Code</label>
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="ti-pin"></i></span>
 							</div>
-							<input type="text" name="patient[address][postal]" class="form-control" value="<?php echo $result['address']['postal']; ?>" placeholder="Enter Postal/Zip Code . . .">
+							<input type="text" name="patient[address][postal]" class="form-control" value="<?php echo $result['address']['postal']; ?>" placeholder="Enter Postal Code . . .">
 						</div>
 					</div>
 				</div>

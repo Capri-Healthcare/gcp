@@ -113,41 +113,41 @@
                             <?php   }
                                 } else { ?>
                             <div class="page-hdr-desktop">
-                                <div class="page-search">
-                                <a href="<?php echo URL_ADMIN.DIR_ROUTE.'send/email&email_type=videocallinvitation';?>" class="" style="width: 150px; padding: 9px 20px; font-size: 12px; color: #FFF; border-radius: 40px; border: 1px solid #FFF; transition: all .4s;"><i class="ti-plus"></i> Invite Patient</a>
-                                </div>
+<!--                                <div class="page-search">-->
+<!--                                <a href="--><?php //echo URL_ADMIN.DIR_ROUTE.'send/email&email_type=videocallinvitation';?><!--" class="" style="width: 150px; padding: 9px 20px; font-size: 12px; color: #FFF; border-radius: 40px; border: 1px solid #FFF; transition: all .4s;"><i class="ti-plus"></i> Invite Patient</a>-->
+<!--                                </div>-->
                                 <div class="page-menu">
                                     <a href="<?php echo URL_ADMIN; ?>" class="animated icon"><i class="ti-home"></i></a>
                                 </div>
-                                <div class="page-menu menu-dropdown-wrapper menu-quick-links">
-                                    <a class="icon"><i class="ti-view-grid font-14"></i></a>
-                                    <div class="menu-dropdown menu-dropdown-right menu-dropdown-push-right">
-                                        <div class="arrow arrow-right"></div> 
-                                        <div class="menu-dropdown-inner">
-                                            <div class="menu-dropdown-head">Quick Links</div>
-                                            <div class="menu-dropdown-body p-0">
-                                                <div class="row m-0 box">
-                                                    <div class="col-6 p-0 box">
-                                                        <a href="<?php echo URL_ADMIN.DIR_ROUTE.'patient/add'; ?>"><i class="ti-heart-broken"></i><span>New Patient</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-6 p-0 box">
-                                                        <a href="<?php echo URL_ADMIN.DIR_ROUTE.'appointments'; ?>"><i class="ti-calendar"></i><span>New Appointment</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-6 p-0 box">
-                                                        <a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/add'; ?>"><i class="ti-receipt"></i><span>New Invoice</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-6 p-0 box">
-                                                        <a href="<?php echo URL_ADMIN.DIR_ROUTE.'expense/add'; ?>"><i class="ti-rocket"></i><span>New Expense</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="page-menu menu-dropdown-wrapper menu-quick-links">-->
+<!--                                    <a class="icon"><i class="ti-view-grid font-14"></i></a>-->
+<!--                                    <div class="menu-dropdown menu-dropdown-right menu-dropdown-push-right">-->
+<!--                                        <div class="arrow arrow-right"></div> -->
+<!--                                        <div class="menu-dropdown-inner">-->
+<!--                                            <div class="menu-dropdown-head">Quick Links</div>-->
+<!--                                            <div class="menu-dropdown-body p-0">-->
+<!--                                                <div class="row m-0 box">-->
+<!--                                                    <div class="col-6 p-0 box">-->
+<!--                                                        <a href="--><?php //echo URL_ADMIN.DIR_ROUTE.'patient/add'; ?><!--"><i class="ti-heart-broken"></i><span>New Patient</span>-->
+<!--                                                        </a>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="col-6 p-0 box">-->
+<!--                                                        <a href="--><?php //echo URL_ADMIN.DIR_ROUTE.'appointments'; ?><!--"><i class="ti-calendar"></i><span>New Appointment</span>-->
+<!--                                                        </a>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="col-6 p-0 box">-->
+<!--                                                        <a href="--><?php //echo URL_ADMIN.DIR_ROUTE.'invoice/add'; ?><!--"><i class="ti-receipt"></i><span>New Invoice</span>-->
+<!--                                                        </a>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="col-6 p-0 box">-->
+<!--                                                        <a href="--><?php //echo URL_ADMIN.DIR_ROUTE.'expense/add'; ?><!--"><i class="ti-rocket"></i><span>New Expense</span>-->
+<!--                                                        </a>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="page-menu menu-dropdown-wrapper menu-user">
                                     <a class="user-link"><div class="icon"><i class="ti-user"></i></div></a>
                                     <div class="menu-dropdown menu-dropdown-right menu-dropdown-push-right">

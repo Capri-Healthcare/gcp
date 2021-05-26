@@ -50,9 +50,6 @@
                     </li>
                 <?php } ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#appointment-suporting-images" data-toggle="tab">Images</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#appointment-pre-consultation-requirement" data-toggle="tab">Pre-consultation
                         requirements</a>
                 </li>
@@ -135,20 +132,28 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-check-box"></i></span>
                                         </div>
-                                        <select name="appointment[gcp_required]" class="custom-select" id="gcp_required" required>
+                                        <select name="appointment[gcp_required]" class="custom-select" id="gcp_required"
+                                                required>
                                             <option value="">Select GCP</option>
-                                            <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>YES</option>
-                                            <option value="NO" <?php echo ($result['is_glaucoma_required'] == 'NO') ? "Selected" : "" ?>>NO</option>
+                                            <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
+                                                YES
+                                            </option>
+                                            <option value="NO" <?php echo ($result['is_glaucoma_required'] == 'NO') ? "Selected" : "" ?>>
+                                                NO
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group" style="display:<?php  echo ($result['is_glaucoma_required'] == 'YES') ? "block" : "none" ?>" id="gcp_followup_frequency">
+                                <div class="form-group"
+                                     style="display:<?php echo ($result['is_glaucoma_required'] == 'YES') ? "block" : "none" ?>"
+                                     id="gcp_followup_frequency">
                                     <label>GCP Followup Frequency<span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-check-box"></i></span>
                                         </div>
-                                        <select name="appointment[followup]" id="id_gcp_followup_frequency" class="custom-select">
+                                        <select name="appointment[followup]" id="id_gcp_followup_frequency"
+                                                class="custom-select">
                                             <option value="">Select Followup</option>
                                             <?php foreach (constant('FOLLOW_UP_DROPDOWN') as $key => $followup) { ?>
                                                 <option value="<?php echo $key ?>" <?php echo ($result['gcp_followup_frequency'] == $key) ? "Selected" : "" ?>><?php echo $followup; ?></option>
@@ -1090,11 +1095,11 @@
                                        data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload
                                         Document/Report</a>
                                 </div>
-                                <div class="form-group col-sm-6 text-right">
-                                    <a class="btn btn-secondary btn-sm"
-                                       href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointment/reportsExport&id=' . $result['id']; ?>"><i
-                                                class="ti-cloud-down mr-2"></i> Download Document/Report</a>
-                                </div>
+<!--                                <div class="form-group col-sm-6 text-right">-->
+<!--                                    <a class="btn btn-secondary btn-sm"-->
+<!--                                       href="--><?php //echo URL_ADMIN . DIR_ROUTE . 'appointment/reportsExport&id=' . $result['id']; ?><!--"><i-->
+<!--                                                class="ti-cloud-down mr-2"></i> Download Document/Report</a>-->
+<!--                                </div>-->
                             </div>
                         <?php }
                         if ($page_documents) { ?>
@@ -1177,46 +1182,6 @@
                         </div>
                     </div>
                 <?php } ?>
-                <div class="tab-pane" id="appointment-suporting-images">
-                    <div class="row">
-                        <div class="form-group col-sm-12 text-right">
-                            <a class="btn btn-secondary btn-sm"
-                               href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointment/imagesExport&id=' . $result['id']; ?>"><i
-                                        class="ti-cloud-down mr-2"></i> Download Images</a>
-                        </div>
-                    </div>
-
-                    <div class="report-container">
-                        <?php
-                        if (!empty($appointment_images)) {
-                            foreach ($appointment_images as $image) { ?>
-                                <div class="report-image">
-                                    <a data-fancybox="gallery"
-                                       href="../public/uploads/appointment/images/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>">
-                                        <img src="../public/uploads/appointment/images/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>"
-                                             alt="<?php echo $image['name']; ?>" class="blur_img">
-                                        <span><?php echo $image['name']; ?></span>
-                                    </a>
-                                    <?php if ($image['move_to_report'] == 'N') { ?>
-                                        <div class="move-image-to-report" data-toggle="tooltip" title="Move to report"
-                                             id="move-image-to-report-div-<?php echo $image['id'] ?>">
-                                            <a href="javascript:;"
-                                               class="fas fa-expand-arrows-alt move-image-to-report-action"
-                                               style="display: flex; align-items: center;justify-content: center;"
-                                               data-toggle="modal" data-target="#moveImageToReportModel"
-                                               data-image_id="<?php echo $image['id'] ?>"></a>
-                                        </div>
-                                        <input type="hidden" name="image_name"
-                                               value="<?php echo $image['filename']; ?>">
-                                    <?php } ?>
-
-                                </div>
-                            <?php }
-                        } else { ?>
-                            <p class="text-center">Image is not available</p>
-                        <?php } ?>
-                    </div>
-                </div>
 
                 <div class="tab-pane" id="appointment-pre-consultation-requirement">
                     <form action="<?php echo $action ?>" method="post">
@@ -1426,11 +1391,11 @@
             'type': 'iframe'
         });
 
-        $("#gcp_required").on('change',function () {
-            if($('option:selected',this).text() == "NO"){
+        $("#gcp_required").on('change', function () {
+            if ($('option:selected', this).text() == "NO") {
                 $("#id_gcp_followup_frequency").val("").change();
                 $("#gcp_followup_frequency").hide();
-            }else{
+            } else {
                 $("#gcp_followup_frequency").show()
             }
         })

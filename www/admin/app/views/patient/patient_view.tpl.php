@@ -34,7 +34,7 @@
 						<?php if ($page_notes) { ?>
 							<li><a href="#patient-notes" data-toggle="tab"><i class="ti-files"></i> <span>Examination Notes</span></a></li>
 						<?php } if ($page_documents) { ?>
-							<li><a href="#patient-documents" data-toggle="tab"><i class="ti-archive"></i> <span>Documents</span></a></li>
+							<li><a href="#patient-documents" data-toggle="tab"><i class="ti-archive"></i> <span>Scans & Reports</span></a></li>
 						<?php } if ($page_prescriptions) { ?>
 							<li><a href="#patient-prescription" data-toggle="tab"><i class="ti-notepad"></i> <span>Prescription</span></a></li>
 						<?php } if ($page_appointments) { ?>
@@ -557,7 +557,7 @@
 			<div class="tab-pane fade" id="patient-documents">
 				<div class="panel panel-default">
 					<div class="panel-head">
-						<div class="panel-title">Documents/Reports</div>  
+						<div class="panel-title">Scans & Reports</div>
 					</div>
 					<div class="panel-body">
 						<?php if (!empty($reports)) { ?>

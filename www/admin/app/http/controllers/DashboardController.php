@@ -11,6 +11,7 @@ class DashboardController extends Controller
 	**/
 	public function index()
 	{
+
 		$this->load->model('commons');
 		$data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
@@ -158,6 +159,8 @@ class DashboardController extends Controller
 
 	protected function pharmacistDashboard($common)
 	{
+        echo "pharmacistDashboard";
+        exit();
 		$data['common'] = $common;
 		$this->load->model('dashboard');
 		$data['doctors'] = $this->model_dashboard->getDoctors();
@@ -187,6 +190,7 @@ class DashboardController extends Controller
 
 	protected function employeeDashbaord($common)
 	{
+
 		$data['common'] = $common;
 		$this->load->model('dashboard');
 		$data['notices'] = $this->model_dashboard->getNotices();
@@ -198,8 +202,15 @@ class DashboardController extends Controller
 			unset($this->session->data['message']);
 		}
 		
-		/*Render dahsboard view*/
-		$this->response->setOutput($this->load->view('dashboard/dashboard_employee', $data));
+		if($common['user']['role'] == 'GCP Secretary'){
+            $this->url->redirect('patients');
+        }
+        if($common['user']['role'] == 'Med. Secretary'){
+            $this->url->redirect('patients');
+        }
+        if($common['user']['role'] == 'Optometrist'){
+            $this->url->redirect('optician-referral');
+        }
 	}
 
 	public function formatChartDataWithMonth($data)

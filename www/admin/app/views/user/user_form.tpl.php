@@ -256,12 +256,12 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Postal/Zip Code</label>
+								<label>PostalCode</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ti-pin"></i></span>
 									</div>
-									<input type="text" name="user[address][postal]" class="form-control" value="<?php echo $result['address']['postal']; ?>" placeholder="Enter Postal/Zip Code . . .">
+									<input type="text" name="user[address][postal]" class="form-control" value="<?php echo $result['address']['postal']; ?>" placeholder="Enter Postal Code . . .">
 								</div>
 							</div>
 						</div>

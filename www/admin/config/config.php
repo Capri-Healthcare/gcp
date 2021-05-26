@@ -38,6 +38,7 @@ define('TOKEN', 'oQ913wsl6{WBlk#5jV5%VYExlFaIomj&75ZZ~(W3GREN#n)(jJp2QY7gugD))3L
 define('TOKEN_SALT', 'rg(uyO0?I9uq5mx-hh4>V-XCPQ?Dx80{n7|?K?pU;-2WldDIOElXOvzT>p9P1zvN');
 
 define('USER_ROLE', ['Med. Secretary', 'Admin','GCP Secretary']);
+define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist','GCP Secretary']);
 define('USER_ROLE_NAME', 'GCP Secretary');
 define('FOLLOW_UP_DROPDOWN', ['W' => 'Weekly', '1' => '1 month', '2' => '2 month', '3' => '3 month', '4' => '4 month', '5' => '5 month']);
 define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Rejected']);

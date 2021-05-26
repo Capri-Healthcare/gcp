@@ -386,12 +386,12 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Postal/ZIP Code</label>
+								<label>Postal Code</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ti-pin"></i></span>
 									</div>
-									<input type="text" name="info[address][postal]" class="form-control" value="<?php echo $siteinfo['address']['postal']; ?>" placeholder="Enter Postal/ZIP Code . . .">
+									<input type="text" name="info[address][postal]" class="form-control" value="<?php echo $siteinfo['address']['postal']; ?>" placeholder="Enter Postal Code . . .">
 								</div>
 							</div>
 						</div>

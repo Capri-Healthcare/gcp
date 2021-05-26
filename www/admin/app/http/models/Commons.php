@@ -123,15 +123,24 @@ class Commons extends Model
                         if ($value['name'] == 'Referrals') {
                             $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . "My " . $value['name'] . '</span></a></li>';
                         } else {
-                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
+                            if ($value['name'] == 'Dashboard' && in_array($data['user']['role'], constant('DASHBOARD_NOT_SHOW'))) {
+
+                            } else {
+                                $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
+
+                            }
                         }
                     } else {
                         if ($value['name'] == 'Referrals') {
-                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'].'&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">'.count($referrals).'</span></span></a></li>';
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . count($referrals) . '</span></span></a></li>';
 
                         } else {
-                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
+                            if ($value['name'] == 'Dashboard' && in_array($data['user']['role'], constant('DASHBOARD_NOT_SHOW'))) {
 
+                            } else {
+                                $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
+
+                            }
                         }
 
                     }

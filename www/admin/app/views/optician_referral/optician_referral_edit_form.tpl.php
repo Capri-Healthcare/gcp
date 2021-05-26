@@ -163,7 +163,7 @@
                                             <label>City</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
-                                                                class="ti-tag"></i></span></div>
+                                                                class="ti-map-alt"></i></span></div>
                                                 <input type="text" name="referral[city]" class="form-control"
                                                        value="<?php echo $result['city']; ?>" placeholder="Enter City"
                                                        required>
@@ -175,7 +175,7 @@
                                             <label>Post Code</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
-                                                                class="ti-tag"></i></span></div>
+                                                                class="ti-pin"></i></span></div>
                                                 <input type="text" name="referral[zip_code]" maxlength="6"
                                                        class="form-control" value="<?php echo $result['zip_code']; ?>"
                                                        placeholder="Enter Post Code" onkeypress="return alphaNumericValidation(event)" required>

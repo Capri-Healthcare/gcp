@@ -370,7 +370,7 @@ class Appointment extends Model
             if ($images->num_rows > 0) {
                 foreach ($images->rows as $doc) {
                 //  Create folder if its not exist
-                 $report_folder = DIR . "public/uploads/appointment/images/" . $data['id'];
+                 $report_folder = DIR . "public/uploads/appointment/reports/" . $data['id'];
                 if (!file_exists($report_folder)) {
                     mkdir($report_folder, 0777, true);
                 }
