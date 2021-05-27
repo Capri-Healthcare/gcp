@@ -55,13 +55,13 @@
 
 
                       	<tr style="cursor: pointer">
-							<td class="clickable-row"><?php echo $key+1; ?></td>
-							<td class="clickable-row"><?php echo $value['optician_name']; ?></td>
-							<td class="clickable-row"><?php echo $value['first_name']; ?></td>
-							<td class="clickable-row"><?php echo $value['last_name']; ?></td>
-							<td class="clickable-row"><?php echo $value['mobile']; ?></td>
-							<td class="clickable-row"><?php echo $value['city']; ?></td>
-							<td class="clickable-row"><?php echo ucfirst($value['status']); ?></td>
+							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $key+1; ?></td>
+							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $value['optician_name']; ?></td>
+							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $value['first_name']; ?></td>
+							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $value['last_name']; ?></td>
+							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $value['mobile']; ?></td>
+							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $value['city']; ?></td>
+							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo ucfirst($value['status']); ?></td>
 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
 							<td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
 							<?php if ($page_delete || $page_edit || $page_view) { ?>
@@ -70,7 +70,7 @@
                                         <a class="text-primary edit dropdown-toggle" data-toggle="dropdown"><i class="ti-more"></i></a>
                                         <ul class="dropdown-menu dropdown-menu-right export-button">
                                             <?php if ($page_view) { ?>
-                                                <li> <a id="pageview" href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/view&id='.$value['id'];?>"><i class="ti-eye"></i>&nbsp;View</a></li>
+                                                <li> <a class="pageview<?php echo $key+1?>" href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/view&id='.$value['id'];?>"><i class="ti-eye"></i>&nbsp;View</a></li>
                                             <?php }?>
                                             <?php if ($page_edit) { ?>
                                                 <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/edit&id='.$value['id'];?>" class="text-primary edit" data-toggle="tooltip" title="Edit"><i class="ti-pencil-alt"></i>&nbsp;Edit</a></li>
@@ -125,8 +125,8 @@
             });
         });
 
-        $(".clickable-row").click(function() {
-            window.location = $("#pageview").attr("href");
+        $(".clickable-row").click(function(e) {
+            window.location = $(".pageview"+e.currentTarget.getAttribute('data-count')).attr("href");
         });
     </script>
 <?php

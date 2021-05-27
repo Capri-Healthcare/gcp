@@ -140,7 +140,7 @@
 									<?php } ?>
 								</tr>
                                 <tr>
-                                    <td>Glaucoma Care Plan Require</td>
+                                    <td>Glaucoma Care Plan Required</td>
                                     <td>
                                         <?php echo $result['is_glaucoma_required']?>
                                     </td>

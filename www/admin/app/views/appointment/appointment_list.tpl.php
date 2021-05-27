@@ -52,15 +52,15 @@
                 <tbody>
                     <?php if (!empty($result)) { foreach ($result as $key => $value) { ?>
                         <tr style="cursor: pointer">
-                            <td class="clickable-row"><?php echo $common['info']['appointment_prefix'].str_pad($value['id'], 5, '0', STR_PAD_LEFT); ?></td>
-                            <td class="clickable-row">
+                            <td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $common['info']['appointment_prefix'].str_pad($value['id'], 5, '0', STR_PAD_LEFT); ?></td>
+                            <td class="clickable-row" data-count="<?php echo $key+1; ?>">
                                 <a class="m-0 text-primary"><?php echo $value['name'];?></a>
                                 <p class="m-0"><?php echo $value['email']; ?></p>
                                 <p class="m-0"><?php echo $value['mobile']; ?></p>
                             </td>
-                            <td class="clickable-row"><?php echo date_format(date_create($value['date']), $common['info']['date_format']).' AT '.$value['time']; ?></td>
-                            <td class="clickable-row">Dr. <?php echo $value['doctor']; ?></td>
-                            <td class="clickable-row">
+                            <td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo date_format(date_create($value['date']), $common['info']['date_format']).' AT '.$value['time']; ?></td>
+                            <td class="clickable-row" data-count="<?php echo $key+1; ?>">Dr. <?php echo $value['doctor']; ?></td>
+                            <td>
                                 <div class="video_call_icon pull-left col-12 pl-0">
                                     <?php echo CONSULTATION_TYPE[$value['consultation_type']]; ?>
                                 </div>
@@ -74,7 +74,7 @@
                                     </div>
                                 <?php } ?>
                             </td>
-                            <td class="clickable-row">
+                            <td class="clickable-row" data-count="<?php echo $key+1; ?>">
                                 <?php if ($value['status'] == 1) {                                    
                                     echo '<span class="label label-warning">In process</span>';
                                 } elseif ($value['status'] == 2) {
@@ -97,7 +97,7 @@
                                             <a class="text-primary edit dropdown-toggle" data-toggle="dropdown"><i class="ti-more"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right export-button">
                                                 <?php if ($page_view) { ?>
-                                                    <li><a id="pageview" href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/view&id='.$value['id'];?>"><i class="ti-layout-media-center-alt pr-2"></i>View</a></li>
+                                                    <li><a class="pageview<?php echo $key+1?>" href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/view&id='.$value['id'];?>"><i class="ti-layout-media-center-alt pr-2"></i>View</a></li>
                                                 <?php } if ($page_edit) { ?>
                                                     <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/edit&id='.$value['id'];?>"><i class="ti-pencil-alt pr-2"></i>Edit</a></li>
                                                 <?php } if (!empty($value['invoice_id']) && $invoice_view) { ?>
@@ -154,8 +154,8 @@
         });
     });
 
-    $(".clickable-row").click(function() {
-        window.location = $("#pageview").attr("href");
+    $(".clickable-row").click(function(e) {
+        window.location = $(".pageview"+e.currentTarget.getAttribute('data-count')).attr("href");
     });
 
 </script>
