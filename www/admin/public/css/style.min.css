@@ -17967,8 +17967,8 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .menu ul li.active>a {
-	color: #000;
-	background-color: #FFF
+	color: #FFF;
+	background-color: #005eb8
 }
 
 .menu ul li.active>a::after {
@@ -18293,7 +18293,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 #logo img {
-	max-height: 40px
+	max-width: 100px
 }
 
 .logo-icon {
