@@ -31,7 +31,10 @@
 					<ul class="v-menu text-left pt-3 nav d-block">
 						<li><a href="#patient-info" class="<?php echo !isset($email_type) ? 'active' : ''?>" data-toggle="tab"><i class="ti-info-alt"></i> <span>Patient Info</span></a></li>
 						<li><a href="#additional-information" data-toggle="tab"><i class="ti-info-alt"></i> <span>Additional Information</span></a></li>
-						<?php if ($page_notes) { ?>
+                        <?php if($result['is_glaucoma_required'] == 'YES') {?>
+                            <li><a href="#patient-direct-debit" data-toggle="tab"><i class="ti-folder"></i> <span>Glaucoma Care Plan</span></a></li>
+                        <?php }?>
+                        <?php if ($page_notes) { ?>
 							<li><a href="#patient-notes" data-toggle="tab"><i class="ti-files"></i> <span>Examination Notes</span></a></li>
 						<?php } if ($page_documents) { ?>
 							<li><a href="#patient-documents" data-toggle="tab"><i class="ti-archive"></i> <span>Scans & Reports</span></a></li>
@@ -48,9 +51,6 @@
 						<?php } if ($page_sendmail) { ?>
 							<li><a href="#patient-sendmail" class="<?php echo isset($email_type) ? 'active' : ''?>" data-toggle="tab"><i class="ti-email"></i> <span>Send Email</span></a></li>
 						<?php } ?>
-                        <?php if($result['is_glaucoma_required'] == 'YES') {?>
-                            <li><a href="#patient-direct-debit" data-toggle="tab"><i class="ti-folder"></i> <span>Direct Debit Form</span></a></li>
-                        <?php }?>
 					</ul>
 				</div>
 			</div>
@@ -139,20 +139,6 @@
 										<td class="text-success">Confirmed</td>
 									<?php } ?>
 								</tr>
-                                <tr>
-                                    <td>Glaucoma Care Plan Required</td>
-                                    <td>
-                                        <?php echo $result['is_glaucoma_required']?>
-                                    </td>
-                                </tr>
-                                <?php if($result['is_glaucoma_required'] == 'YES') {?>
-                                    <tr>
-                                        <td>GCP Followup Frequency</td>
-                                        <td>
-                                            <?php echo $result['gcp_followup_frequency']?>
-                                        </td>
-                                    </tr>
-                                <?php }?>
                                 <?php if($result['is_glaucoma_required'] == 'YES') {?>
                                     <tr>
                                         <td>First Payment</td>
@@ -701,9 +687,27 @@
                 <div class="tab-pane fade" id="patient-direct-debit">
                     <div class="panel panel-default">
                         <div class="panel-head">
-                            <div class="panel-title">Direct Debit Form</div>
+                            <div class="panel-title">Glaucoma Care Plan</div>
                         </div>
                         <div class="panel-body">
+                            <table class="table table-striped patient-table">
+                                <tbody>
+                                <tr>
+                                    <td>Glaucoma Care Plan Required</td>
+                                    <td>
+                                        <?php echo $result['is_glaucoma_required']?>
+                                    </td>
+                                </tr>
+                                <?php if($result['is_glaucoma_required'] == 'YES') {?>
+                                    <tr>
+                                        <td>GCP Followup Frequency</td>
+                                        <td>
+                                            <?php echo $result['gcp_followup_frequency']?>
+                                        </td>
+                                    </tr>
+                                <?php }?>
+                                </tbody>
+                            </table>
                             <div class="report-container">
                                 <?php  if(!empty($result['ddi_image'])) {?>
 
