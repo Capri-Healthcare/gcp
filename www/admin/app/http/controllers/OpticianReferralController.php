@@ -214,7 +214,7 @@ class OpticianReferralController extends Controller
 
             if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
 
-                if($data['referral']['status'] == 'ACCEPTED')
+                if(trim($data['referral']['status']) == 'ACCEPTED')
                 {
                     if(!$this->model_patient->checkPatientEmail($data['referral']['email'])){
                         $patient['firstname'] =  $data['referral']['first_name'];
@@ -222,10 +222,10 @@ class OpticianReferralController extends Controller
                         $patient['mail'] =  $data['referral']['email'];
                         $patient['mobile'] =  $data['referral']['mobile'];
                         $patient['address'] =  json_encode($address);
-                        $patient['gender'] =  $data['referral']['first_name'];
+                        $patient['gender'] =  $data['referral']['gender'];
                         $patient['dob'] =  $data['referral']['dob'];
                         $patient['user_id'] =  $data['referral']['user_id'];
-                        $patient['title'] =  $data['referral']['user_id'];
+                        $patient['title'] =  "Mr.";
                         $patient['history'] = " ";
                         $patient['other'] = " ";
                         $patient['hash'] =  $data['referral']['user_id'];

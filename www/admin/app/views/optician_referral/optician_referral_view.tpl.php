@@ -118,7 +118,7 @@
                 <div class="tab-pane fade" id="appointment-documents">
                     <div class="panel panel-default">
                         <div class="panel-head">
-                            <div class="panel-title">Documents</div>
+                            <div class="panel-title">Scan & Reports</div>
                         </div>
                         <div class="panel-body">
                             <div class="report-container">

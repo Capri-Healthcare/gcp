@@ -31,7 +31,10 @@
 					<ul class="v-menu text-left pt-3 nav d-block">
 						<li><a href="#patient-info" class="<?php echo !isset($email_type) ? 'active' : ''?>" data-toggle="tab"><i class="ti-info-alt"></i> <span>Patient Info</span></a></li>
 						<li><a href="#additional-information" data-toggle="tab"><i class="ti-info-alt"></i> <span>Additional Information</span></a></li>
-						<?php if ($page_notes) { ?>
+                        <?php if($result['is_glaucoma_required'] == 'YES') {?>
+                            <li><a href="#patient-direct-debit" data-toggle="tab"><i class="ti-folder"></i> <span>Glaucoma Care Plan</span></a></li>
+                        <?php }?>
+                        <?php if ($page_notes) { ?>
 							<li><a href="#patient-notes" data-toggle="tab"><i class="ti-files"></i> <span>Examination Notes</span></a></li>
 						<?php } if ($page_documents) { ?>
 							<li><a href="#patient-documents" data-toggle="tab"><i class="ti-archive"></i> <span>Scans & Reports</span></a></li>
@@ -42,15 +45,11 @@
 						<?php } if ($page_invoices) { ?>
 							<li><a href="#patient-invoice" data-toggle="tab"><i class="ti-receipt"></i> <span>Invoices</span></a></li>
 						<?php } ?>
-                            <li><a href="#appointment-suporting-images" data-toggle="tab"><i class="ti-receipt"></i> <span>Images</span></a></li>
-						<?php if ($page_edit) { ?>
+              			<?php if ($page_edit) { ?>
 							<li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'patient/edit&id='.$result['id']; ?>"><i class="ti-pencil-alt"></i> <span>Edit Patient</span></a></li>
 						<?php } if ($page_sendmail) { ?>
 							<li><a href="#patient-sendmail" class="<?php echo isset($email_type) ? 'active' : ''?>" data-toggle="tab"><i class="ti-email"></i> <span>Send Email</span></a></li>
 						<?php } ?>
-                        <?php if($result['is_glaucoma_required'] == 'YES') {?>
-                            <li><a href="#patient-direct-debit" data-toggle="tab"><i class="ti-folder"></i> <span>Direct Debit Form</span></a></li>
-                        <?php }?>
 					</ul>
 				</div>
 			</div>
@@ -139,20 +138,6 @@
 										<td class="text-success">Confirmed</td>
 									<?php } ?>
 								</tr>
-                                <tr>
-                                    <td>Glaucoma Care Plan Require</td>
-                                    <td>
-                                        <?php echo $result['is_glaucoma_required']?>
-                                    </td>
-                                </tr>
-                                <?php if($result['is_glaucoma_required'] == 'YES') {?>
-                                    <tr>
-                                        <td>GCP Followup Frequency</td>
-                                        <td>
-                                            <?php echo $result['gcp_followup_frequency']?>
-                                        </td>
-                                    </tr>
-                                <?php }?>
                                 <?php if($result['is_glaucoma_required'] == 'YES') {?>
                                     <tr>
                                         <td>First Payment</td>
@@ -560,25 +545,22 @@
 						<div class="panel-title">Scans & Reports</div>
 					</div>
 					<div class="panel-body">
-						<?php if (!empty($reports)) { ?>
+						<?php if (!empty($appointment_images)) { ?>
 							<div class="report-container">
-								<?php foreach ($reports as $key => $value) {  $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
-									<div class="report-image report-pdf">
-										<a href="../public/uploads/reports/<?php echo $value['report']; ?>" class="open-pdf">
-											<img src="../public/images/pdf.png" alt="Reports">
-											<span><?php echo $value['name']; ?></span>
-											<p><?php echo date_format(date_create($value['date_of_joining']), $common['info']['date_format']); ?></p>
-										</a>
-									</div>
-								<?php } else { ?>
-									<div class="report-image">
-										<a data-fancybox="gallery" href="../public/uploads/reports/<?php echo $value['report']; ?>">
-											<img src="../public/uploads/reports/<?php echo $value['report']; ?>" alt="Reports">
-											<span><?php echo $value['name']; ?></span>
-											<p><?php echo date_format(date_create($value['date_of_joining']), $common['info']['date_format']); ?></p>
-										</a>
-									</div>
-								<?php } } ?>
+                                <?php
+                                if(!empty($appointment_images)) {
+                                    foreach($appointment_images AS $image) { ?>
+                                        <div class="report-image">
+                                            <a data-fancybox="gallery" href="../public/uploads/appointment/reports/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>">
+                                                <img src="../public/uploads/appointment/reports/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>" alt="<?php echo $image['name']; ?>" class="blur_img">
+                                                <span><?php echo $image['name']; ?></span>
+                                                <p><?php echo date_format(date_create($image['created']), $common['info']['date_format']); ?></p>
+                                            </a>
+                                        </div>
+                                    <?php 	}
+                                } else { ?>
+                                    <p class="text-center">Image is not available</p>
+                                <?php } ?>
 							</div>
 						<?php } else { ?>
 							<p class="text-danger text-center">No Documents Found !!!</p>
@@ -672,52 +654,66 @@
 					</div>
 				</div>
 			<?php } ?>
-			<div class="tab-pane fade" id="appointment-suporting-images">
-				<div class="panel panel-default">
-					<div class="panel-head">
-						<div class="panel-title">Images</div>
-					</div>
-					<div class="panel-body">
-						<div class="report-container">
-						<?php 
-							if(!empty($appointment_images)) {
-								foreach($appointment_images AS $image) { ?>
-								<div class="report-image">
-									<a data-fancybox="gallery" href="../public/uploads/appointment/images/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>">
-										<img src="../public/uploads/appointment/images/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>" alt="<?php echo $image['name']; ?>" class="blur_img">
-										<span><?php echo $image['name']; ?></span>
-										<p><?php echo date_format(date_create($image['created']), $common['info']['date_format']); ?></p>
-									</a>
-								</div>
-						<?php 	} 
-							} else { ?>
-								<p class="text-center">Image is not available</p>
-						<?php } ?>
-						</div>
-					</div>
-				</div>
-			</div>
+<!--			<div class="tab-pane fade" id="appointment-suporting-images">-->
+<!--				<div class="panel panel-default">-->
+<!--					<div class="panel-head">-->
+<!--						<div class="panel-title">Images</div>-->
+<!--					</div>-->
+<!--					<div class="panel-body">-->
+<!--						<div class="report-container">-->
+
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
             <?php if($result['is_glaucoma_required'] == 'YES') { ?>
                 <div class="tab-pane fade" id="patient-direct-debit">
                     <div class="panel panel-default">
                         <div class="panel-head">
-                            <div class="panel-title">Direct Debit Form</div>
+                            <div class="panel-title">Direct Debit form</div>
                         </div>
                         <div class="panel-body">
-                            <div class="report-container">
-                                <?php  if(!empty($result['ddi_image'])) {?>
+                            <table class="table table-striped patient-table">
+                                <tbody>
+                                <tr>
+                                    <td>Glaucoma Care Plan Required</td>
+                                    <td>
+                                        <?php echo $result['is_glaucoma_required']?>
+                                    </td>
+                                </tr>
+                                <?php if($result['is_glaucoma_required'] == 'YES') {?>
+                                    <tr>
+                                        <td>GCP Followup Frequency</td>
+                                        <td>
+                                            <?php echo constant('FOLLOW_UP_DROPDOWN')[$result['gcp_followup_frequency']]?>
+                                        </td>
+                                    </tr>
+                                <?php }?>
 
-                                    <div class="report-image">
-                                        <a data-fancybox="gallery" href="../public/uploads/patient/document/<?php echo $result['id'] ?>/<?php echo $result['ddi_image']; ?>">
-                                            <img src="../public/uploads/patient/document/<?php echo $result['id'] ?>/<?php echo $result['ddi_image']; ?>" alt="<?php echo $result['ddi_image']; ?>" class="blur_img">
-                                            <span><?php echo $result['ddi_image']; ?></span>
-                                        </a>
-                                    </div>
+                                <tr>
+                                    <td>Direct Debit form</td>
+                                    <td>
+                                        <div class="report-container">
+                                            <?php  if(!empty($result['ddi_image'])) {?>
 
-                                    <?php 	} else { ?>
-                                    <p class="text-center">Image is not available</p>
-                                <?php } ?>
-                            </div>
+                                                <div class="report-image">
+                                                    <a data-fancybox="gallery" href="../public/uploads/patient/document/<?php echo $result['id'] ?>/<?php echo $result['ddi_image']; ?>">
+                                                        <img src="../public/uploads/patient/document/<?php echo $result['id'] ?>/<?php echo $result['ddi_image']; ?>" alt="<?php echo $result['ddi_image']; ?>" class="blur_img">
+                                                        <span><?php echo $result['ddi_image']; ?></span>
+                                                        <center><a href="../public/uploads/patient/document/<?php echo $result['id'] ?>/<?php echo $result['ddi_image']; ?>" class="btn btn-primary" download="<?php echo $result['ddi_image'];?>">Download</a></center>
+                                                    </a>
+                                                </div>
+
+                                            <?php 	} else { ?>
+                                                <p class="text-center">Image is not available</p>
+                                            <?php } ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+
                         </div>
                     </div>
                 </div>
