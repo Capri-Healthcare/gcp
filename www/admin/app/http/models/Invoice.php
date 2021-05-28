@@ -5,12 +5,17 @@
 */
 class Invoice extends Model
 {
-	public function allInvoices($period, $user = NULL)
+	public function allInvoices($period, $user = NULL,$role = Null)
 	{
 		if ($user != NULL) {
 			$query = $this->database->query("SELECT i.*, a.appointment_id AS appointment_unique, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '".$period['start']."' AND '".$period['end']."' AND i.doctor_id = '".$user['doctor']."' ORDER BY i.invoicedate DESC");
 		} else {
-			$query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '".$period['start']."' AND '".$period['end']."' ORDER BY i.invoicedate DESC");
+		    if($role['role'] == constant('DASHBOARD_NOT_SHOW')[1]){
+                $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '".$period['start']."' AND '".$period['end']."' AND i.user_id = '".$role['user_id']."' ORDER BY i.invoicedate DESC");
+
+            }else{
+                $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '".$period['start']."' AND '".$period['end']."' ORDER BY i.invoicedate DESC");
+            }
 		}
 		return $query->rows;
 	}

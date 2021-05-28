@@ -29,6 +29,7 @@
 		<input type="hidden" name="hidden_employer" id="hidden_employer" value="<?php echo $result['employer']; ?>">
 		<div class="panel-body">
 			<div class="row">
+                <?php if(in_array($common['user']['role'],constant('USER_ROLE'))) {?>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="col-form-label">Patient Name <span class="form-required">*</span></label>
@@ -72,6 +73,7 @@
 						</div>
 					</div>
 				</div>
+                <?php }?>
 				<div class="col-md-3">
 					<div class="form-group">
 						<label class="col-form-label">Invoice Date <span class="form-required">*</span></label>

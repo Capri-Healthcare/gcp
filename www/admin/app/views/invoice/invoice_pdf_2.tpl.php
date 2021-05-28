@@ -106,7 +106,8 @@
 									<tbody>
 										<tr>
 											<td>
-											<?php 
+											<?php
+                                            if (in_array($result['common']['user']['role'], constant('USER_ROLE'))) {
 												if(isset($result['medical_insurers_name']) AND !empty($result['medical_insurers_name'])){	?>
 													<div class="meta pl-30 pr-30" style="border:0px;">
 														<div class="title"><?php echo "Policy details"; ?></div>
@@ -117,7 +118,7 @@
 														<div class="text"><?php echo "Authorisation number: " . $result['authorisation_number']; ?></div>
 														<div class="text"><?php echo "Employer: " . $result['employer']; ?></div>
 													</div>
-											<?php } ?>
+											<?php } } ?>
 											<td>
 										<tr>
 									</tbody>

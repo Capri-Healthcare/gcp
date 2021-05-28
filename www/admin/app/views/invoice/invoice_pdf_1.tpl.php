@@ -97,16 +97,18 @@
 					<?php } } ?>
 					<tr class="total">
 						<td rowspan="5" colspan="3" class="blank">
-							<?php 
-								if(isset($result['medical_insurers_name']) AND !empty($result['medical_insurers_name'])){
-									echo "<b>Policy details</b>";
-									echo "<br>"."Medical insurers name: " . $result['medical_insurers_name'];
-									echo "<br>"."Ploicyholder's name: " . $result['policyholders_name'];
-									echo "<br>"."Membership number: " . $result['membership_number'];
-									echo "<br>"."Scheme name: " . $result['scheme_name'];
-									echo "<br>"."Authorisation number: " . $result['authorisation_number'];
-									echo "<br>"."Employer: " . $result['employer'];
-								}
+							<?php
+                            if (in_array($result['common']['user']['role'], constant('USER_ROLE'))) {
+                                if (isset($result['medical_insurers_name']) and !empty($result['medical_insurers_name'])) {
+                                    echo "<b>Policy details</b>";
+                                    echo "<br>" . "Medical insurers name: " . $result['medical_insurers_name'];
+                                    echo "<br>" . "Ploicyholder's name: " . $result['policyholders_name'];
+                                    echo "<br>" . "Membership number: " . $result['membership_number'];
+                                    echo "<br>" . "Scheme name: " . $result['scheme_name'];
+                                    echo "<br>" . "Authorisation number: " . $result['authorisation_number'];
+                                    echo "<br>" . "Employer: " . $result['employer'];
+                                }
+                            }
 							?>	
 						</td>
 						<td class="title">Sub Total</td>
