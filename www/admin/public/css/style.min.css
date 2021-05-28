@@ -17967,8 +17967,8 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .menu ul li.active>a {
-	color: #FFF;
-	background-color: #005eb8
+	color: #000;
+	background-color: #f1f1f1;
 }
 
 .menu ul li.active>a::after {

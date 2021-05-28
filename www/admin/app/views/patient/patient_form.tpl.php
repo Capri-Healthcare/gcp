@@ -283,7 +283,7 @@
                                     <label>First Payment <span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-money"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-pound-sign"></i></span>
                                         </div>
                                         <input type="text" name="patient[first_payment]" class="form-control first_payment" value="<?php echo $result['first_payment']; ?>" placeholder="First Payment" <?php  echo ($result['is_glaucoma_required'] == 'YES') ? "required" : "" ?>>
                                     </div>
@@ -294,7 +294,7 @@
                                     <label>Regular Payment <span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-money"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-pound-sign"></i></span>
                                         </div>
                                         <input type="text" name="patient[regular_payment]" class="form-control regular_payment" value="<?php echo $result['regular_payment']; ?>" placeholder="Regular Payment" <?php  echo ($result['is_glaucoma_required'] == 'YES') ? "required" : "" ?>>
                                     </div>
