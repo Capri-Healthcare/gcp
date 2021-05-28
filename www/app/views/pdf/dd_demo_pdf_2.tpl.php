@@ -2,181 +2,360 @@
 <html lang="en">
 <head>
     <title>Direct Debit</title>
-    <link rel="stylesheet" href="<?php echo URL.'public/css/bootstrap.min.css'; ?>" type="text/css">
-    <link rel="stylesheet" href="<?php echo URL.'public/css/dd_pdf_style.css'; ?>" type="text/css">
-    <link rel="stylesheet" href="<?php echo URL.'public/css/dd_pdf_responsive.css'; ?>" type="text/css">
-    <!--link rel="preconnect" href="https://fonts.gstatic.com"-->
-    <!--link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet"-->
+	<style>
+		.small_text_12{
+			font-size: 13px;
+		}
+		.small_text_14{
+			font-size: 14px;
+		}
+		.heading_text_12{
+			font-size: 13px;
+			font-weight: bold;
+		}
+		.heading_text_18{
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.heading_text_14{
+			font-size: 14px;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
-
-<section class="wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-lg-6">
-                <a href="javascript:void(0);">
-                    <img src="<?php echo URL."public/images/logo.jpg";?>" alt="Unusual & Unique Hotels of the world" title="Unusual & Unique Hotels of the world" />
-                </a>
-            </div>
-            <div class="col-md-12 col-lg-6 logo_right">
-                <a href="javascript:void(0);">
-                    <img src="<?php echo URL."public/images/logo1.jpg";?>" alt="Direct Debit" title="Direct Debit" />
-                </a>
-                <h3>Instruction to your Bank or <br/> Building Society to pay by Direct Debit</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-lg-6">
-                <p>Please fill in the whole form using a ballpoint pen and send it to:</p>
-                <div class="address_block">
-                    <address>
-                        <strong>The Unusual Company Ltd <br/>
-                            43 John Bunn Mill <br/>
-                            Coxes Lock <br/>
-                            Bourneside Road <br/>
-                            Addlestone <br/>
-                            Surrey <br/>
-                            KT15 2JX
-                        </strong>
-                    </address>
-                </div>
-                <div class="address_block">
-                    <label><strong>
-                            Name(s) of Account Holder(s)
-                        </strong></label>
-                    <input type="text" name="name" value="" placeholder="" class="name_input" />
-                </div>
-                <div class="code_block">
-                    <label><strong>Bank or Building Society account number </strong></label>
-                    <input type="text" id="digit-1" name="digit-1" maxlength="1"  />
-                    <input type="text" id="digit-2" name="digit-2"  maxlength="1" />
-                    <input type="text" id="digit-3" name="digit-3"  maxlength="1" />
-                    <input type="text" id="digit-4" name="digit-4"  maxlength="1" />
-                    <input type="text" id="digit-5" name="digit-5"  maxlength="1" />
-                    <input type="text" id="digit-6" name="digit-6"  maxlength="1" />
-                    <input type="text" id="digit-7" name="digit-7"  maxlength="1" />
-                    <input type="text" id="digit-8" name="digit-8"  maxlength="1" />
-                </div>
-                <div class="code_block">
-                    <label><strong>Branch Sort Code </strong></label>
-                    <input type="text" id="digit-1" name="digit-1" maxlength="1"  />
-                    <input type="text" id="digit-2" name="digit-2"  maxlength="1" />
-                    <span class="splitter">&ndash;</span>
-                    <input type="text" id="digit-3" name="digit-3"  maxlength="1" />
-                    <input type="text" id="digit-4" name="digit-4"  maxlength="1" />
-                    <span class="splitter">&ndash;</span>
-                    <input type="text" id="digit-5" name="digit-5"  maxlength="1" />
-                    <input type="text" id="digit-6" name="digit-6"  maxlength="1" />
-                </div>
-                <label><strong> Name and full postal address of your Bank or Building Society </strong></label>
-                <div class="address_block">
-                    <p>To The Manager:</p>
-                    <input type="text" name="name" value="" placeholder="" class="name_input margin_null" /> Bank/Building Society
-                    <br/>
-                    Address: <input type="text" name="name" value="" placeholder="" class="name_input margin_null" />
-                    <input type="text" name="name" value="" placeholder="" class="full_input" />
-                    <input type="text" name="name" value="" placeholder="" class="name_input margin_null" />Postcode <input type="text" name="name" value="" placeholder="" class="name_input margin_null width_auto" />
-                </div>
-                <div class="code_block reference">
-                    <label><strong>Reference Number </strong></label>
-                    <input type="text" id="digit-1" name="digit-1" maxlength="1"  />
-                    <input type="text" id="digit-2" name="digit-2"  maxlength="1" />
-                    <input type="text" id="digit-3" name="digit-3"  maxlength="1" />
-                    <input type="text" id="digit-4" name="digit-4"  maxlength="1" />
-                    <input type="text" id="digit-5" name="digit-5"  maxlength="1" />
-                    <input type="text" id="digit-6" name="digit-6"  maxlength="1" />
-                    <input type="text" id="digit-7" name="digit-7"  maxlength="1" />
-                    <input type="text" id="digit-8" name="digit-8"  maxlength="1" />
-                    <input type="text" id="digit-9" name="digit-9"  maxlength="1" />
-                    <input type="text" id="digit-10" name="digit-10"  maxlength="1" />
-                    <input type="text" id="digit-11" name="digit-11"  maxlength="1" />
-                    <input type="text" id="digit-12" name="digit-12"  maxlength="1" />
-                </div>
-            </div>
-            <div class="col-md-12 col-lg-6">
-                <div class="code_block identification_number">
-                    <label><strong>Originator’s Identification Number</strong></label>
-                    <input type="text" id="digit-1" name="digit-1" maxlength="1"  />
-                    <input type="text" id="digit-2" name="digit-2"  maxlength="1" />
-                    <input type="text" id="digit-3" name="digit-3"  maxlength="1" />
-                    <input type="text" id="digit-4" name="digit-4"  maxlength="1" />
-                    <input type="text" id="digit-5" name="digit-5"  maxlength="1" />
-                    <input type="text" id="digit-6" name="digit-6"  maxlength="1" />
-                </div>
-                <div class="address_block">
-                    <p class="mb-0"><strong>For FastPay Ltd Re The Unusual Company Ltd Official Use Only</strong></p>
-                    <p>This is not part of the instruction to your Bank or Building Society </p>
-                    <div class="payment_box">
-                        <label>First Payment Amount</label>
-                        <div class="input_symbol">
-                            &#163;<input type="text" name="name" value="" placeholder="" class="name_input margin_null width_auto" />
-                        </div>
-                    </div>
-                    <div class="payment_box">
-                        <label>Regular Payment Amount </label>
-                        <div class="input_symbol">
-                            &#163;<input type="text" name="name" value="" placeholder="" class="name_input margin_null width_auto" />
-                        </div>
-                    </div>
-                    <p>Please Note: Our collection will normally take place on or after the 15th day of each calendar month.</p>
-                    <div class="payment_box">
-                        <label>Date of First Payment</label>
-                        <div class="input_symbol">
-                            <input type="text" name="name" value="" placeholder="" class="name_input" />
-                        </div>
-                    </div>
-                </div>
-                <label><strong>Instruction to your Bank or Building Society </strong></label>
-                <p>Please pay FastPay Ltd Re The Unusual Company Ltd Direct Debits from the account detailed in this instruction subject to the safeguards assured by the Direct Debit Guarantee. </p>
-                <p class="mb-3">I understand that this instruction may remain with FastPay Ltd Re The Unusual Company Ltd and, if so, details will be passed electronically to my Bank/Building Society.</p>
-                <div class="address_block">
-                    <p>Signature(s)</p>
-                    <input type="text" name="name" value="" placeholder="" class="full_input" />
-                    <input type="text" name="name" value="" placeholder="" class="full_input" /><br/>
-                    Date
-                </div>
-                <p class="text-center"><small>Banks and Building Societies may not accept Direct Debit instructions <br/> for some types of account.</small></p>
-            </div>
-        </div>
-        <img src="images/cut.jpg" alt="Cut" title="Cut" width="100%" />
-        <label class="text-center"><strong>This Guarantee should be detached and retained by the payer. </strong></label>
-        <div class="address_block">
-            <div class="row">
-                <div class="col-md-6 col-lg-6 left_sec">
-                    <label class="mb-0"><strong>The Direct Debit Guarantee</strong></label>
-                </div>
-                <div class="col-md-6 col-lg-6 logo_right">
-                    <a href="javascript:void(0);">
-                        <img src="images/logo1.jpg" alt="Direct Debit" title="Direct Debit" />
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="list_block">
-                        <li>
-                            This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.
-                        </li>
-                        <li>
-                            If there are any changes to the amount, date or frequency of your Direct Debit, FastPay Ltd re The Unusual Company Ltd will
-                            notify you five working days in advance of your account being debited or as otherwise agreed. If you request FastPay Ltd re The
-                            Unusual Company Ltd to collect a payment, confirmation of the amount and date will be given to you at the time of the request.
-                        </li>
-                        <li>
-                            If an error is made in the payment of your Direct Debit by FastPay Ltd Re The Unusual Company Ltd or your Bank or Building Society, you are entitled to a full and immediate refund of the amount paid from your bank or building society.
-                            <br/>
-                            – If you receive a refund you are not entitled to, you must pay it back when FastPay Ltd re The Unusual Company Ltd asks you to.
-                        </li>
-                        <li>
-                            You can cancel a Direct Debit at any time by simply contacting your Bank or Building Society. Written confirmation may be required. Please also notify us. </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script-->
-<!--script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script-->
-<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script-->
+	<table width="100%">
+		<tr>
+			<td width="50%">
+				<table width="100%">
+					<tr>
+						<td align="left">
+							<img src="<?php echo URL."public/images/logo.jpg";?>" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" width="234" height="119" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="small_text_12">Please fill in the whole form using a ballpoint pen and send it to:</span>
+						</td>
+					</tr>
+					<tr>
+						<td style="border: 1px solid #000; padding: 5px">
+							<span class="heading_text_14">Glaucoma Care Plan Ltd<br></span>
+							<span class="small_text_14">71-75 Shelton Street <br/>
+								Covent Garden, London <br/>
+								United Kingdom, WC2H 9JQ
+							</span>
+						</td>
+					</tr>
+					<tr><td style="height: 15px;"></td></tr>
+					<tr>
+						<td style="border: 1px solid #000; padding: 5px;">
+							<span class="heading_text_14">Name(s) of Account Holder(s)</span><br>
+							<div style="width: 100%; height: 1px; background: #000; margin: 20px 0px;"></div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="heading_text_14">Bank or Building Society account number</span><br>
+							<table width="100%">
+								<tr>
+									<td style="border: 1px solid #000; height: 20px"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="heading_text_14">Branch Sort Code</span><br>
+							<table width="100%">
+								<tr>
+									<td style="border: 1px solid #000; height: 20px" width="12.5%"></td><td style="border: 1px solid #000"></td>
+									<td align="center"> - </td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td align="center"> - </td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="heading_text_14">Name and full postal address of your Bank or Building Society</span><br>
+							<table width="100%">
+								<tr>
+									<td style="border: 1px solid #000; padding: 5px;">
+										<div>
+											<div>
+												<span class="small_text_12">To The Manager: </span><br>
+											</div>
+										</div>
+										<div>
+											<div style="width:63%; float:none; display: inline-block; vertical-align: bottom;">
+												<div style="width: 100%; height: 1px; background: #000; margin: 15px 0px 10px 0px;"></div>
+											</div>
+											<div style="width:36%; float:none; display: inline-block; vertical-align: middle;">
+												<span class="small_text_12">Bank/Building Society</span><br>
+											</div>
+										</div>
+										<div>
+											<div style="width:11%; float:none; display: inline-block; vertical-align: middle;">
+												<span class="small_text_12">Addres</span><br>
+											</div>
+											<div style="width:88%; float:none; display: inline-block; vertical-align: bottom;">
+												<div style="width: 100%; height: 1px; background: #000; margin: 15px 0px 10px 0px;"></div>
+											</div>
+										</div>
+										<div>
+											<div style="width:100%; float:none; display: inline-block; vertical-align: bottom;">
+												<div style="width: 100%; height: 1px; background: #000; margin: 10px 0px 10px 0px;"></div>
+											</div>
+										</div>
+										<div>
+											<div style="width:60%; float:none; display: inline-block; vertical-align: bottom;">
+												<div style="width: 100%; height: 1px; background: #000;"></div>
+											</div>
+											<div style="width:12%; float:none; display: inline-block; vertical-align: bottom;">
+												<span class="small_text_12">Postcode</span><br>
+											</div>
+											<div style="width:25%; float:none; display: inline-block; vertical-align: bottom;">
+												<div style="width: 100%; height: 1px; background: #000;"></div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="heading_text_14">Reference Number</span><br>
+							<table width="100%">
+								<tr>
+									<td style="border: 1px solid #000; height: 20px"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td width="50%">
+				<table width="100%">
+					<tr>
+						<td align="right">
+							<img src="<?php echo URL."public/images/logo1.jpg";?>" alt="Direct Debit" title="Direct Debit" />
+						</td>
+					</tr>
+					<tr><td style="height: 10px;"></td></tr>
+					<tr>
+						<td>
+							<span class="heading_text_18">Instruction to your Bank or Building Society to pay by Direct Debit</span>
+						</td>
+					</tr>
+					<tr><td style="height: 10px;"></td></tr>
+					<tr>
+						<td>
+							<span class="heading_text_14">Originator’s Identification Number</span><br>
+							<table width="100%">
+								<tr>
+									<td style="border: 1px solid #000; height: 20px"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table width="100%">
+								<tr>
+									<td style="border: 1px solid #000; padding: 5px;">
+										<div>
+											<div>
+												<span class="heading_text_12">For FastPay Ltd Re The Unusual Company Ltd Official Use Only</span><br>
+												<span class="small_text_12">This is not part of the instruction to your Bank or Building Society</span>
+											</div>
+										</div>
+										
+										<div style="margin-top: 15px;">
+											<div style="width:45%; float:none; display: inline-block; vertical-align: bottom;">
+												<span class="small_text_14">First Payment Amount</span><br>
+											</div>
+											<div style="width:50%; float:none; display: inline-block; vertical-align: bottom;">
+												&#163; <div style="width: 100%; height: 1px; background: #000;"></div>
+											</div>
+										</div>
+										<div style="margin-top: 0px;">
+											<div style="width:45%; float:none; display: inline-block; vertical-align: bottom;">
+												<span class="small_text_14">Regular Payment Amount</span><br>
+											</div>
+											<div style="width:50%; float:none; display: inline-block; vertical-align: bottom;">
+												&#163; <div style="width: 100%; height: 1px; background: #000;"></div>
+											</div>
+										</div>
+										
+										<div style="margin-top: 15px;">
+											<span class="small_text_14">Please Note: Our collection will normally take place on or after the 15th day of each calendar month.</span>
+										</div>
+										
+										<div style="margin-top: 15px;">
+											<div style="width:45%; float:none; display: inline-block; vertical-align: bottom;">
+												<span class="small_text_14">Date of First Payment</span>
+											</div>
+											<div style="width:50%; float:none; display: inline-block; vertical-align: bottom;">
+												<div style="width: 100%; height: 1px; background: #000;"></div>
+											</div>
+											
+										</div>
+										
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 5px;">
+							<span class="heading_text_14">Instruction to your Bank or Building Society</span><br>
+							<span class="small_text_12">
+									Please pay FastPay Ltd Re Glaucoma Care Plan Ltd Direct Debits from the account detailed in this instruction subject to the safeguards assured by the Direct Debit Guarantee. I understand that this instruction may remain with FastPay Ltd Re The Unusual Company Ltd and, if so, details will be passed To The Manager: electronically to my Bank/Building Society
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table width="100%">
+								<tr>
+									<td style="border: 1px solid #000; padding: 5px;">
+										<div>
+											<div>
+												<span class="small_text_12">Signature(s)  </span><br>
+											</div>
+										</div>
+										
+										<div>
+											<div style="width:100%; float:none; display: inline-block; vertical-align: bottom;">
+												<div style="width: 100%; height: 1px; background: #000; margin: 15px 0px;"></div>
+											</div>
+										</div>
+										
+										<div>
+											<div style="width:100%; float:none; display: inline-block; vertical-align: bottom;">
+												<div style="width: 100%; height: 1px; background: #000; margin: 15px 0px;"></div>
+											</div>
+										</div>
+										
+										<div>
+											<div style="width:8%; float:none; display: inline-block; vertical-align: middle;">
+												<span class="small_text_12">Date</span><br>
+											</div>
+											<div style="width:90%; float:none; display: inline-block; vertical-align: bottom;">
+												<div style="width: 100%; height: 1px; background: #000;"></div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<span class="small_text_12">
+								Banks and Building Societies may not accept Direct Debit instructions for some types of account.
+							</span>
+						</td>
+					</tr>
+				</table>
+			</td>			
+		</tr>
+	</table>
+	
+	<table width="100%">
+		<tr>
+			<td align="center">
+				<img src="<?php echo URL."public/images/cut.jpg";?>" alt="Cut" title="Cut" />
+			</td>
+		</tr>
+		
+		<tr>
+			<td align="center">
+				<span class="heading_text_14">
+					This Guarantee should be detached and retained by the payer
+				</span>
+			</td>
+		</tr>
+		
+		<tr>
+			<td style="border: 1px solid #000;">
+				<table width="100%">
+					<tr>
+						<td align="left">
+							<span class="heading_text_14">The Direct Debit Guarantee</span><br>
+						</td>
+						<td align="right">
+							<img src="<?php echo URL."public/images/logo1.jpg";?>" alt="Direct Debit" title="Direct Debit" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>
+							<div style="width:2%; float:none; display: inline-block; vertical-align:top;">
+								<img src="<?php echo URL."public/images/bullet.png";?>" alt="Direct Debit" title="Direct Debit" />
+							</div>
+							<div style="width:97%; float:none; display: inline-block; vertical-align:top;">
+								<span class="small_text_12">
+									This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.
+								</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>
+							<div style="width:2%; float:none; display: inline-block; vertical-align:top;">
+								<img src="<?php echo URL."public/images/bullet.png";?>" alt="Direct Debit" title="Direct Debit" />
+							</div>
+							<div style="width:97%; float:none; display: inline-block; vertical-align:top;">
+								<span class="small_text_12">
+									If there are any changes to the amount, date or frequency of your Direct Debit, FastPay Ltd re Glaucoma Care Plan Ltd will notify you five working days in advance of your account being debited or as otherwise agreed. If you request FastPay Ltd re Glaucoma Care Plan Ltd to collect a payment, confirmation of the amount and date will be given to you at the time of the request.
+								</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>
+							<div style="width:2%; float:none; display: inline-block; vertical-align:top;">
+								<img src="<?php echo URL."public/images/bullet.png";?>" alt="Direct Debit" title="Direct Debit" />
+							</div>
+							<div style="width:97%; float:none; display: inline-block; vertical-align:top;">
+								<span class="small_text_12">
+									If an error is made in the payment of your Direct Debit by FastPay Ltd Re Glaucoma Care Plan Ltd or your Bank or Building Society, you are entitled to a full and immediate refund of the amount paid from your bank or building society. <br>
+	– If you receive a refund you are not entitled to, you must pay it back when FastPay Ltd re Glaucoma Care Plan Ltd asks you to
+								</span>
+							</div>							
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>
+							<div style="width:2%; float:none; display: inline-block; vertical-align:top;">
+								<img src="<?php echo URL."public/images/bullet.png";?>" alt="Direct Debit" title="Direct Debit" />
+							</div>
+							<div style="width:97%; float:none; display: inline-block; vertical-align:top;">
+								<span class="small_text_12">
+									You can cancel a Direct Debit at any time by simply contacting your Bank or Building Society. Written confirmation may be required. Please also notify us.
+								</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>

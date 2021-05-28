@@ -83,7 +83,7 @@
                                         <td class="text-dark"><?php echo $result['email']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Date Of Birth</td>
+                                        <td>Date of Birth</td>
                                         <td class="text-dark"><?php echo date_format(date_create($result['dob']), $common['info']['date_format']); ?></td>
                                     </tr>
                                     <tr>
