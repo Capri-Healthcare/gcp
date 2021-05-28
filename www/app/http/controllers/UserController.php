@@ -221,7 +221,7 @@ class UserController extends Controller {
 		}
 		
 		$data['html'] = ob_get_clean();
-		
+		$data['name'] = time()."_pdf.pdf";
 		if(ob_get_length() > 0) {
 			ob_end_flush();
 		}

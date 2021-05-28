@@ -208,6 +208,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    <?php } else{ ?>
+                                        <input type="hidden" name="referral[status]" value="<?php echo $result['status'] ?>">
                                     <?php } ?>
 
                                 </div>

@@ -234,6 +234,7 @@ class OpticianReferralController extends Controller
                         $data['id'] = $this->model_patient->createPatient($patient);
 
                         if(!empty($data['id'])){
+                            $this->patientMail($data['id']);
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
                             $this->url->redirect('appointments&id='. $data['id']);
                         }
@@ -462,5 +463,32 @@ class OpticianReferralController extends Controller
 
             $zip->close();
         }
+    }
+
+    public function patientMail($id)
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate('newpatient');
+
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+        $patient = $this->model_patient->getPatient($id);
+
+        $link = '<a href="'.URL.DIR_ROUTE.'contact">Click Here</a>';
+        $password_link = '<a href="'.URL.DIR_ROUTE.'profile/changepassword&id='.$patient['email'].'&code='.$patient['temp_hash'].'">Create Password</a>';
+        $result['template']['message'] = str_replace('{firstname}', $patient['firstname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{name}', $patient['firstname'].' '.$patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{email}', $patient['email'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{mobile}', $patient['mobile'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{password_link}', $password_link, $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+
+        $data['name'] = $patient['firstname'].' '.$patient['lastname'];
+        $data['email'] = $patient['email'];
+        $data['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
+        $data['message'] = $result['template']['message'];
+
+        return $this->controller_mail->sendMail($data);
     }
 }

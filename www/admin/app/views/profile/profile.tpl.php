@@ -17,7 +17,7 @@
 
 <div class="content">
 	<div class="row">
-		<form class="col-sm-7" action="<?php echo URL_ADMIN.DIR_ROUTE.'profile'; ?>" method="post">
+		<form class="col-sm-6" action="<?php echo URL_ADMIN.DIR_ROUTE.'profile'; ?>" method="post">
 			<div class="panel panel-default">
 				<div class="panel-head">
 					<div class="panel-title">Basic Info</div>
@@ -63,7 +63,7 @@
 				</div>
 			</div>
 		</form>
-		<form class="col-sm-5" action="<?php echo URL_ADMIN.DIR_ROUTE.'profile/password'; ?>" method="post">
+		<form class="col-sm-6" action="<?php echo URL_ADMIN.DIR_ROUTE.'profile/password'; ?>" method="post">
 			<input type="hidden" name="_token" value="<?php echo $token; ?>">
 			<input type="hidden" value="<?php echo $result['user_id']; ?>" name="id" >
 			<div class="panel panel-default">
@@ -78,7 +78,6 @@
 					<div class="form-group">
 						<label>Password <span class="form-required">*</span></label>
 						<input type="password" class="form-control" name="new" pattern=".{8,}" title="Minimum 8 word required!" placeholder="**********" required>
-						<span class="form-text">Please enter new password (min 8 words)!</span>
 					</div>
 					<div class="form-group">
 						<label>Confirm Password <span class="form-required">*</span></label>
