@@ -69,7 +69,8 @@
 							</td>
 							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo date_format(date_create($value['date_of_joining']), $common['info']['date_format']); ?></td>
 							<td>
-								<a href="<?php echo URL_ADMIN.DIR_ROUTE.'patient/view&id='.$value['id'].'&email_type=videocallinvitation';?>" class="btn btn-primary btn-sm"><i class="fas fa-video pr-2"></i>Invite now</a>
+<!--								<a href="--><?php //echo URL_ADMIN.DIR_ROUTE.'patient/view&id='.$value['id'].'&email_type=videocallinvitation';?><!--" class="btn btn-primary btn-sm"><i class="fas fa-video pr-2"></i>Invite now</a>-->
+								<a  data-toggle="modal" data-target="#invite-modal" class="btn btn-primary btn-sm"><i class="fas fa-video pr-2"></i>Invite now</a>
 							</td>
 							<?php if ($page_view || $page_edit || $page_delete) { ?>
 								<td class="table-action">
@@ -98,6 +99,23 @@
 		</div>
 	</div>
 </div>
+
+    <div id="invite-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Access Denied</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Your current edition does not support this feature.  Upgrade now.</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 <script>
 	$(document).ready(function () {
 		$('.table-date-range').daterangepicker({

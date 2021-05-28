@@ -35,7 +35,7 @@
 						<tbody>
 							<tr>
 								<td class="info">
-									<div class="logo"><img src="../public/uploads/<?php echo $common['info']['logo']; ?>" alt="logo"></div>
+									<div class="logo"><img src="../public/images/gcp_logo.png" alt="logo"></div>
 									<div class="name"><?php echo $common['info']['legal_name']; ?></div>
 									<div class="text"><?php echo $common['info']['address']['address1'].', '.$common['info']['address']['address2'].', '.$common['info']['address']['city'].', '.$common['info']['address']['country'].' - '.$common['info']['address']['postal']; ?></div>
 								</td>

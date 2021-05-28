@@ -308,6 +308,10 @@ class OpticianReferralController extends Controller
             $error_flag = true;
             $error['title'] = 'Address !';
         }
+        if ($data['gender'] == null) {
+            $error_flag = true;
+            $error['title'] = 'Gender !';
+        }
         if ($this->controller_common->validateText($data['email'])) {
             $error_flag = true;
             $error['title'] = 'Email !';

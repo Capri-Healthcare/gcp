@@ -12,7 +12,7 @@
 				<tbody>
 					<tr>
 						<td class="info">
-							<div class="logo"><img src="<?php echo URL.'public/uploads/'.$result['info']['logo']; ?>" alt="logo"></div>
+							<div class="logo"><img src="<?php echo URL.'public/images/gcp_logo.png'; ?>" alt="logo"></div>
 							<div class="name"><?php echo $result['info']['legal_name']; ?></div>
 							<div class="text"><?php echo $result['info']['address']['address1'].', '.$result['info']['address']['address2'].', '.$result['info']['address']['city'].', '.$result['info']['address']['country'].' - '.$result['info']['address']['postal']; ?></div>
 						</td>
