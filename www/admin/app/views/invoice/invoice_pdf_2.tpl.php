@@ -12,7 +12,7 @@
 				<tbody>
 					<tr>
 						<td class="info">
-							<div class="logo"><img src="<?php echo URL.'public/uploads/'.$result['info']['logo']; ?>" alt="logo"></div>
+							<div class="logo"><img src="<?php echo URL.'public/images/gcp_logo.png'; ?>" alt="logo"></div>
 							<div class="name"><?php echo $result['info']['legal_name']; ?></div>
 							<div class="text"><?php echo $result['info']['address']['address1'].', '.$result['info']['address']['address2'].', '.$result['info']['address']['city'].', '.$result['info']['address']['country'].' - '.$result['info']['address']['postal']; ?></div>
 						</td>
@@ -106,7 +106,8 @@
 									<tbody>
 										<tr>
 											<td>
-											<?php 
+											<?php
+                                            if (in_array($result['common']['user']['role'], constant('USER_ROLE'))) {
 												if(isset($result['medical_insurers_name']) AND !empty($result['medical_insurers_name'])){	?>
 													<div class="meta pl-30 pr-30" style="border:0px;">
 														<div class="title"><?php echo "Policy details"; ?></div>
@@ -117,7 +118,7 @@
 														<div class="text"><?php echo "Authorisation number: " . $result['authorisation_number']; ?></div>
 														<div class="text"><?php echo "Employer: " . $result['employer']; ?></div>
 													</div>
-											<?php } ?>
+											<?php } } ?>
 											<td>
 										<tr>
 									</tbody>

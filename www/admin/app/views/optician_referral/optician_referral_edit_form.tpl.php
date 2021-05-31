@@ -192,22 +192,16 @@
                                                                     class="ti-check-box"></i></span>
                                                     </div>
                                                     <select name="referral[status]" class="custom-select" required>
-                                                        <option value="NEW" <?php if ($result['status'] == 'NEW') {
-                                                            echo "selected";
-                                                        } ?> >NEW
-                                                        </option>
-                                                        <option value="ACCEPTED" <?php if ($result['status'] == 'ACCEPTED') {
-                                                            echo "selected";
-                                                        } ?> >ACCEPTED
-                                                        </option>
-                                                        <option value="REJECTED" <?php if ($result['status'] == 'REJECTED') {
-                                                            echo "selected";
-                                                        } ?> >REJECTED
-                                                        </option>
+                                                        <?php foreach (constant('STATUS') as $key => $status) { ?>
+                                                            <option value="<?php echo $key ?>" <?php echo($result['status'] == $key)?'selected':''?>><?php echo $status; ?></option>
+                                                        <?php } ?>
+
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
+                                    <?php } else{ ?>
+                                        <input type="hidden" name="referral[status]" value="<?php echo $result['status'] ?>">
                                     <?php } ?>
 
                                 </div>

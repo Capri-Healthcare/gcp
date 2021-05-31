@@ -28,7 +28,7 @@ class Pdf
 		$this->dompdf->setPaper('letter');
 		$this->dompdf->render();
 		// Output the generated PDF to Browser
-		$this->dompdf->stream("invoice.pdf", array("Attachment" => false));
+		$this->dompdf->stream($data['name'], array("Attachment" => false));
 	}
 
 	public function saveInvoicePDF($data)

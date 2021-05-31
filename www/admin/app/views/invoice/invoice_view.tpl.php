@@ -35,7 +35,7 @@
 						<tbody>
 							<tr>
 								<td class="info">
-									<div class="logo"><img src="../public/uploads/<?php echo $common['info']['logo']; ?>" alt="logo"></div>
+									<div class="logo"><img src="../public/images/gcp_logo.png" alt="logo"></div>
 									<div class="name"><?php echo $common['info']['legal_name']; ?></div>
 									<div class="text"><?php echo $common['info']['address']['address1'].', '.$common['info']['address']['address2'].', '.$common['info']['address']['city'].', '.$common['info']['address']['country'].' - '.$common['info']['address']['postal']; ?></div>
 								</td>
@@ -120,16 +120,18 @@
 							<?php } } ?>
 							<tr class="total">
 								<td rowspan="5" colspan="3" class="blank">
-									<?php 
-										if(isset($result['medical_insurers_name']) AND !empty($result['medical_insurers_name'])){
-											echo "<b>Policy details</b>";
-											echo "<br>"."Medical insurers name: " . $result['medical_insurers_name'];
-											echo "<br>"."Ploicyholder's name: " . $result['policyholders_name'];
-											echo "<br>"."Membership number: " . $result['membership_number'];
-											echo "<br>"."Scheme name: " . $result['scheme_name'];
-											echo "<br>"."Authorisation number: " . $result['authorisation_number'];
-											echo "<br>"."Employer: " . $result['employer'];
-										}
+									<?php
+                                    if (in_array($common['user']['role'], constant('USER_ROLE'))) {
+                                        if (isset($result['medical_insurers_name']) and !empty($result['medical_insurers_name'])) {
+                                            echo "<b>Policy details</b>";
+                                            echo "<br>" . "Medical insurers name: " . $result['medical_insurers_name'];
+                                            echo "<br>" . "Ploicyholder's name: " . $result['policyholders_name'];
+                                            echo "<br>" . "Membership number: " . $result['membership_number'];
+                                            echo "<br>" . "Scheme name: " . $result['scheme_name'];
+                                            echo "<br>" . "Authorisation number: " . $result['authorisation_number'];
+                                            echo "<br>" . "Employer: " . $result['employer'];
+                                        }
+                                    }
 									?>									
 								</td>
 								<td class="title">Sub Total</td>

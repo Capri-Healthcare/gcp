@@ -82,14 +82,15 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Gender</label>
+                                                <label>Gender<span class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                                     </div>
                                                     <select name="referral[gender]" class="custom-select" required>
-                                                        <option value="Male" selected>Male
+                                                        <option value="" selected>Select Gender</option>
+                                                        <option value="Male">Male
                                                         </option>
                                                         <option value="Female">Female
                                                         </option>
@@ -141,7 +142,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>City</label>
+                                                <label>City<span class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                                     class="ti-map-alt"></i></span></div>
@@ -154,7 +155,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Post Code</label>
+                                                <label>Post Code<span class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                                     class="ti-pin"></i></span></div>

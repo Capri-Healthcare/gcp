@@ -10,7 +10,7 @@
             <img src="<?php echo URL; ?>public/images/loader.gif" style="width:100%">
         </div>
         <div class="loader-message" style="margin:0 auto; width=100%">
-            <h4>Video will start once the doctor joins consultation</h4>
+            <h4>The video call will start once the doctor joins the consultation.</h4>
         </div>
 	</div>
 
