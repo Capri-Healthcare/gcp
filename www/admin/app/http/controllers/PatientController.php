@@ -407,7 +407,9 @@ class PatientController extends Controller
 		$data = $this->url->get;
 		$this->load->model('patient');
 		if(isset($data['term'])){
-			$result = $this->model_patient->getSearchedPatient($data['term']);
+            $this->load->model('commons');
+            $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+			$result = $this->model_patient->getSearchedPatient($data['term'],$data['common']['user']['role']);
 		}
 
 		if(isset($data['email'])){
