@@ -66,6 +66,17 @@ class User extends Model
 		}
 	}
 
+    public function checkUserRole($id)
+    {
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE `user_role` = ".$id);
+
+        if ($query->num_rows > 0) {
+            return $query->row;
+        } else{
+            return false;
+        }
+    }
+
 	public function updateUser($data)
 	{
 		$address = isset($data['address']) ? $data['address'] : '';
