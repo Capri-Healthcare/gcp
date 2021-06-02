@@ -252,7 +252,7 @@ class Appointment extends Model
 
     public function getReports($id)
     {
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "reports` WHERE `appointment_id` = ?", array((int)$id));
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointment_images` WHERE `appointment_id` = ? ORDER BY name ASC ", array((int)$id));
         if ($query->num_rows > 0) {
             return $query->rows;
         } else {

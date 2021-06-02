@@ -138,6 +138,7 @@ $router->get('invoice/edit', 'InvoiceController@indexEdit');
 $router->post('invoice/edit', 'InvoiceController@indexAction');
 $router->post('invoice/delete', 'InvoiceController@indexDelete');
 $router->post('addpayment', 'InvoiceController@invoicePayment');
+$router->get('autogenrateinvoice', 'InvoiceController@autoGenrateInvoice');
 $router->get('expenses', 'ExpenseController@index');
 $router->get('expense/add', 'ExpenseController@indexAdd');
 $router->post('expense/add', 'ExpenseController@indexAction');

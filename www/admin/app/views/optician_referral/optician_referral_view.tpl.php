@@ -75,7 +75,7 @@
                                         <td class="text-dark"><?php echo $result['gender']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Mobile</td>
+                                        <td>Phone/Mobile number</td>
                                         <td class="text-dark"><?php echo $result['mobile']; ?></td>
                                     </tr>
                                     <tr>

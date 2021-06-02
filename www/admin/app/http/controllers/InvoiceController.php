@@ -617,4 +617,19 @@ class InvoiceController extends Controller
         }
         return array('html' => $html, 'result' => $result);
     }
+
+    public function autoGenrateInvoice()
+    {
+        $startDate = null;
+        $dueDate = null;
+        $patient_name = null;
+        $patient_mobile = null;
+        $patient_email = null;
+        $doctor_id = null;
+        $payment_method = 1;
+        $payment_status = "Unpaid";
+        $invoice_status = 0;
+
+      echo "Hello";
+    }
 }

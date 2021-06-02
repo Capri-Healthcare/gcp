@@ -70,7 +70,7 @@
 									<td><?php echo $result['email']; ?></td>
 								</tr>
 								<tr>
-									<td>Mobile Number</td>
+									<td>Phone/Mobile number</td>
 									<td><?php echo $result['mobile']; ?></td>
 								</tr>
 								<tr>
@@ -110,6 +110,11 @@
 									<td>NHS Hostpital Number</td>
 									<td><?php echo $result['nhs_hospital_number']; ?></td>
 								</tr>
+
+                                <tr>
+                                    <td>GP Name</td>
+                                    <td><?php echo $result['gp_name']; ?></td>
+                                </tr>
 								<tr>
 									<td>GP Practice</td>
 									<td><?php echo $result['gp_practice'] != 0 ? $gp_practices[$result['gp_practice']] : ''; ?></td>

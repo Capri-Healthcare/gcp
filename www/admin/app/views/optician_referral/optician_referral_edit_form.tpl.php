@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Mobile <span class="form-required">*</span></label>
+                                            <label>Phone/Mobile number<span class="form-required">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                                 class="ti-mobile"></i></span></div>
@@ -274,7 +274,13 @@
                                 }
                             } ?>
                         </div>
+                        <div class="panel-footer text-center">
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral'; ?>" class="btn btn-primary"><i
+                                    class="ti-save-alt pr-2"></i> Submit
+                            </a>
+                        </div>
                     </div>
+
                 <?php } ?>
 
             </div>
@@ -297,7 +303,12 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ti-tag"></i></span>
                             </div>
-                            <input type="text" name="document_name" class="form-control" placeholder="Enter Document Name">
+                            <select  class="form-control" name="document_name">
+                                <option value="">Select Document Type</option>
+                                <?php foreach (constant('DOCUMENT_NAME') as $key => $status) { ?>
+                                    <option value="<?php echo $key ?>"><?php echo $status; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
                     <div class="media-upload-container" style="max-width: 100%;">

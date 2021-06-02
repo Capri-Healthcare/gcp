@@ -1106,11 +1106,11 @@
                             <div class="report-container">
                                 <?php if (!empty($reports)) {
                                     foreach ($reports as $key => $value) {
-                                        $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION);
+                                        $file_ext = pathinfo($value['name'], PATHINFO_EXTENSION);
                                         if ($file_ext == "pdf") { ?>
                                             <div class="report-image report-pdf"
                                                  id="report-delete-div-<?php echo $value['id'] ?>">
-                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['report']; ?>"
+                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>"
                                                    class="open-pdf">
                                                     <img src="../public/images/pdf.png" alt="">
                                                     <span><?php echo $value['name']; ?></span>
@@ -1121,19 +1121,19 @@
                                                                 class="ti-close report-delete-action"
                                                                 data-toggle="modal" data-target="#reportDeleteModel"
                                                                 data-appointment_id="<?php echo $value['appointment_id'] ?>"
-                                                                data-report_name="<?php echo $value['report'] ?>"
+                                                                data-report_name="<?php echo $value['filename'] ?>"
                                                                 data-report_id="<?php echo $value['id'] ?>"></a></div>
 
                                                     <input type="hidden" name="report_name"
-                                                           value="<?php echo $value['report']; ?>">
+                                                           value="<?php echo $value['name']; ?>">
 
                                                 <?php } ?>
                                             </div>
                                         <?php } else { ?>
                                             <div class="report-image" id="report-delete-div-<?php echo $value['id'] ?>">
                                                 <a data-fancybox="gallery"
-                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['report']; ?>">
-                                                    <img src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['report']; ?>"
+                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>">
+                                                    <img src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>"
                                                          alt="">
                                                     <span><?php echo $value['name']; ?></span>
                                                 </a>
@@ -1143,11 +1143,11 @@
                                                                 class="ti-close report-delete-action"
                                                                 data-toggle="modal" data-target="#reportDeleteModel"
                                                                 data-appointment_id="<?php echo $value['appointment_id'] ?>"
-                                                                data-report_name="<?php echo $value['report'] ?>"
+                                                                data-report_name="<?php echo $value['filename'] ?>"
                                                                 data-report_id="<?php echo $value['id'] ?>"></a></div>
 
                                                     <input type="hidden" name="report_name"
-                                                           value="<?php echo $value['report']; ?>">
+                                                           value="<?php echo $value['name']; ?>">
 
                                                 <?php } ?>
                                             </div>

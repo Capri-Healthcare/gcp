@@ -304,34 +304,34 @@ class OpticianReferralController extends Controller
             $error_flag = true;
             $error['title'] = 'Date of Birth!';
         }
-        if ($this->controller_common->validateText($data['address_1'])) {
-            $error_flag = true;
-            $error['title'] = 'Address !';
-        }
+//        if ($this->controller_common->validateText($data['address_1'])) {
+//            $error_flag = true;
+//            $error['title'] = 'Address !';
+//        }
         if ($data['gender'] == null) {
             $error_flag = true;
             $error['title'] = 'Gender !';
         }
-        if ($this->controller_common->validateText($data['email'])) {
-            $error_flag = true;
-            $error['title'] = 'Email !';
-        }
-        if ($this->controller_common->validateEmail($data['email'])) {
-            $error_flag = true;
-            $error['title'] = 'Email address !';
-        }
+//        if ($this->controller_common->validateText($data['email'])) {
+//            $error_flag = true;
+//            $error['title'] = 'Email !';
+//        }
+//        if ($this->controller_common->validateEmail($data['email'])) {
+//            $error_flag = true;
+//            $error['title'] = 'Email address !';
+//        }
         if ($this->controller_common->validateMobileNumber($data['mobile'])) {
             $error_flag = true;
             $error['title'] = 'Mobile number !';
         }
-        if ($this->controller_common->validateText($data['city'])) {
-            $error_flag = true;
-            $error['title'] = 'City !';
-        }
-        if ($this->controller_common->validateText($data['zip_code'])) {
-            $error_flag = true;
-            $error['title'] = 'Post Code  !';
-        }
+//        if ($this->controller_common->validateText($data['city'])) {
+//            $error_flag = true;
+//            $error['title'] = 'City !';
+//        }
+//        if ($this->controller_common->validateText($data['zip_code'])) {
+//            $error_flag = true;
+//            $error['title'] = 'Post Code  !';
+//        }
 
         if ($error_flag) {
             return $error;

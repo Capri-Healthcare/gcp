@@ -104,7 +104,7 @@
                                         <td class="text-dark"><?php echo $result['email']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Mobile Number</td>
+                                        <td>Phone/Mobile Number</td>
                                         <td class="text-dark"><?php echo $result['mobile']; ?></td>
                                     </tr>
                                     <tr>
@@ -353,16 +353,19 @@
                         </div>
                         <div class="panel-body">
                             <div class="report-container">
-
-                                <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                     <div class="report-image report-pdf">
-                                        <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/'.$value['report']; ?>" class="open-pdf font-12" style="display: block;">
+                                        <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/'.$value['filename']; ?>" class="open-pdf font-12" style="display: block;">
                                             <img class="img-thumbnail" src="../public/images/pdf.png" alt="">
+                                            <span><?php echo $value['name']; ?></span>
                                         </a>
                                     </div>
                                 <?php } else {?>
                                     <div class="report-image">
-                                        <a data-fancybox="gallery" href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/'. $value['report']; ?>"><img class="img-thumbnail" src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/'.$value['report']; ?>" alt=""></a>
+                                        <a data-fancybox="gallery" href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/'. $value['filename']; ?>">
+                                            <img class="img-thumbnail" src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/'.$value['filename']; ?>" alt="">
+                                            <span><?php echo $value['name']; ?></span>
+                                        </a>
                                     </div>
                                 <?php } } } else { ?>
                                     <p class="text-danger text-center">No documents found !!!</p>

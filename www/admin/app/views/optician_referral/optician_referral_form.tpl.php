@@ -56,19 +56,19 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Email <span class="form-required">*</span></label>
+                                                <label>Email</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                                     class="ti-email"></i></span></div>
                                                     <input type="email" name="referral[email]" class="form-control"
                                                            value="<?php echo $result['email']; ?>" placeholder="Email"
-                                                           required>
+                                                           >
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Mobile <span class="form-required">*</span></label>
+                                                <label>Phone/Mobile number <span class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                                     class="ti-mobile"></i></span></div>
@@ -108,14 +108,14 @@
                                                                     class="ti-calendar"></i></span></div>
                                                     <input type="date" name="referral[dob]" class="form-control"
                                                            value="<?php echo $result['dob']; ?>"
-                                                           max="<?php echo date('Y-m-d') ?>" required>
+                                                           max="<?php echo date('Y-m-d') ?>">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Address 1<span class="form-required">*</span></label>
+                                                <label>Address 1</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
@@ -142,20 +142,19 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>City<span class="form-required">*</span></label>
+                                                <label>City</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                                     class="ti-map-alt"></i></span></div>
                                                     <input type="text" name="referral[city]" class="form-control"
                                                            value="<?php echo $result['city']; ?>"
-                                                           placeholder="Enter City"
-                                                           required>
+                                                           placeholder="Enter City">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Post Code<span class="form-required">*</span></label>
+                                                <label>Post Code</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                                     class="ti-pin"></i></span></div>
@@ -163,7 +162,7 @@
                                                            class="form-control"
                                                            value="<?php echo $result['zip_code']; ?>"
                                                            placeholder="Enter Post Code" onkeypress="return alphaNumericValidation(event)"
-                                                           equired>
+                                                    >
                                                 </div>
                                             </div>
                                         </div>

@@ -51,7 +51,7 @@
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<label class="col-form-label">Patient Mobile No.</label>
+						<label class="col-form-label">Patient Phone/Mobile number<span class="form-required">*</span></label>
 						<div class="input-group">
 							<div class="input-group-prepend"><span class="input-group-text"><i class="ti-mobile"></i></span></div>
 							<input type="text" name="invoice[mobile]" class="form-control patient-mobile" value="<?php echo $result['mobile']; ?>" placeholder="Enter Patient Mobile No . . .">

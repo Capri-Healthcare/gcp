@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Phone Number <span class="form-required">*</span></label>
+                        <label>Phone/Mobile number :<span class="form-required">*</span></label>
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i class="ti-mobile"></i></span></div>
                             <input type="text" class="form-control" name="phone" placeholder="Enter Supplier Phone Number . . ." required>

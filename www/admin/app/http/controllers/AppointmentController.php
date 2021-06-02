@@ -923,7 +923,6 @@ class AppointmentController extends Controller
 
     public function moveImageToReport()
     {
-
         $image_id = $this->url->post('image_id');
         if (!is_numeric($image_id)) {
             echo "Invalid image id";

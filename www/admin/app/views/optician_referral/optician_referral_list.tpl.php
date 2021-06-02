@@ -61,7 +61,7 @@
 							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $value['last_name']; ?></td>
 							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $value['mobile']; ?></td>
 							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $value['city']; ?></td>
-							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo ucfirst($value['status']); ?></td>
+							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo constant('STATUS')[$value['status']]; ?></td>
 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
 							<td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
 							<?php if ($page_delete || $page_edit || $page_view) { ?>

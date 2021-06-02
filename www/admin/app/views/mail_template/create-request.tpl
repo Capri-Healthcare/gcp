@@ -32,7 +32,7 @@
                                     <td style="padding: 3px 10px; text-align: left; font-weight: 600;color: #333; font-size: 13px;line-height: 24px;letter-spacing: .5px;font-family: Open Sans,Helvetica,Arial,sans-serif;">{email}</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 3px 10px; text-align: right;color: #555; font-size: 13px;line-height: 24px;letter-spacing: .5px;font-family: Open Sans,Helvetica,Arial,sans-serif;">Mobile</td>
+                                    <td style="padding: 3px 10px; text-align: right;color: #555; font-size: 13px;line-height: 24px;letter-spacing: .5px;font-family: Open Sans,Helvetica,Arial,sans-serif;">Phone/Mobile number :</td>
                                     <td style="padding: 3px 10px; text-align: left; font-weight: 600;color: #333; font-size: 13px;line-height: 24px;letter-spacing: .5px;font-family: Open Sans,Helvetica,Arial,sans-serif;">{mobile}</td>
                                 </tr>
                                 <tr>
