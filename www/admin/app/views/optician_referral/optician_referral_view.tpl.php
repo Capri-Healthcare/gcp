@@ -105,7 +105,7 @@
                                     </tr>
                                     <tr>
                                         <td>Status</td>
-                                        <td><?php echo ucfirst($result['status']); ?></td>
+                                        <td><?php echo constant('STATUS')[$result['status']]; ?></td>
                                     </tr>
                                 </tbody>
                             </table>

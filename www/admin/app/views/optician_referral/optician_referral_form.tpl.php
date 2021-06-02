@@ -82,13 +82,13 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Gender<span class="form-required">*</span></label>
+                                                <label>Gender</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                                     </div>
-                                                    <select name="referral[gender]" class="custom-select" required>
+                                                    <select name="referral[gender]" class="custom-select">
                                                         <option value="" selected>Select Gender</option>
                                                         <option value="Male">Male
                                                         </option>

@@ -216,7 +216,9 @@ class OpticianReferralController extends Controller
 
                 if(trim($data['referral']['status']) == 'ACCEPTED')
                 {
-                    if(!$this->model_patient->checkPatientEmail($data['referral']['email'])){
+                    $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
+
+                    if(!$patient){
                         $patient['firstname'] =  $data['referral']['first_name'];
                         $patient['lastname'] =  $data['referral']['last_name'];
                         $patient['mail'] =  $data['referral']['email'];
@@ -236,8 +238,10 @@ class OpticianReferralController extends Controller
                         if(!empty($data['id'])){
                             $this->patientMail($data['id']);
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
-                            $this->url->redirect('appointments&id='. $data['id']);
+                            $this->url->redirect('patient/edit&id='. $data['id']);
                         }
+                    }else{
+                        $this->url->redirect('patient/edit&id='. $patient['id']);
                     }
                 }
 
