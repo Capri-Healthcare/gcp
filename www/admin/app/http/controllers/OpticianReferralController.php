@@ -215,7 +215,7 @@ class OpticianReferralController extends Controller
             if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
 
                 if (trim($data['referral']['status']) == 'ACCEPTED') {
-                    $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
+                       $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
 
                     if (!$patient) {
                         $patient['firstname'] = $data['referral']['first_name'];
@@ -510,8 +510,8 @@ class OpticianReferralController extends Controller
             return false;
         }
         $this->load->model('user');
-        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[0]);
-        
+        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')['GCP Secretary']);
+
         $referral = $this->model_opticianreferral->getOpticianReferral($id);
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
@@ -532,4 +532,5 @@ class OpticianReferralController extends Controller
 
         return $this->controller_mail->sendMail($data);
     }
+
 }

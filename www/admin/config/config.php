@@ -43,5 +43,5 @@ define('USER_ROLE_NAME', 'GCP Secretary');
 define('FOLLOW_UP_DROPDOWN', ['6' => '6 - Monthly', '12' => '12 Monthly']);
 define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable']);
 define('DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields' => 'Visual fields','OCT' => 'OCT']);
-define('USER_ROLE_ID', ['7']);
+define('USER_ROLE_ID', ['Med. Secretary'=>'7','GCP Secretary'=>'11']);
 define('CC','chetanthumar@gmail.com,sanjay.makwana@tiez.nl');
