@@ -27,16 +27,18 @@
         <div class="panel-body">
             <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
                 <li class="nav-item">
-                    <a class="nav-link <?php echo (!isset($_GET['document']) ? 'active' : '') ?>" href="#appointment-info" data-toggle="tab">Optician Referral Info</a>
+                    <a class="nav-link <?php echo(!isset($_GET['document']) ? 'active' : '') ?>"
+                       href="#appointment-info" data-toggle="tab">Optician Referral Info</a>
                 </li>
                 <?php if ($page_edit) { ?>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo (isset($_GET['document']) ? 'active' : '') ?>" href="#appointment-documents" data-toggle="tab">Scans & Reports</a>
+                        <a class="nav-link  <?php echo(isset($_GET['document']) ? 'active' : '') ?>"
+                           href="#appointment-documents" data-toggle="tab">Scans & Reports</a>
                     </li>
                 <?php } ?>
             </ul>
             <div class="tab-content pt-4">
-                <div class="tab-pane  <?php echo (!isset($_GET['document']) ? 'active' : '') ?>" id="appointment-info">
+                <div class="tab-pane  <?php echo(!isset($_GET['document']) ? 'active' : '') ?>" id="appointment-info">
                     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="<?php echo $token; ?>" id="token">
                         <input type="hidden" class="optician-refrrel-id" name="referral[id]"
@@ -77,7 +79,7 @@
                                                                 class="ti-email"></i></span></div>
                                                 <input type="email" name="referral[email]" class="form-control"
                                                        value="<?php echo $result['email']; ?>" placeholder="Email"
-                                                       required>
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +105,7 @@
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                                 </div>
-                                                <select name="referral[gender]" class="custom-select" required>
+                                                <select name="referral[gender]" class="custom-select">
                                                     <option value="Male" <?php if ($result['gender'] == 'Male') {
                                                         echo "selected";
                                                     } ?> >Male
@@ -127,7 +129,8 @@
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                                 class="ti-calendar"></i></span></div>
                                                 <input type="text" name="referral[dob]" class="form-control"
-                                                       value="<?php echo $result['dob']; ?>"  max="<?php echo date('Y-m-d')?>" required>
+                                                       value="<?php echo $result['dob']; ?>"
+                                                       max="<?php echo date('Y-m-d') ?>" required>
                                             </div>
                                         </div>
                                     </div>
@@ -165,8 +168,7 @@
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                                 class="ti-map-alt"></i></span></div>
                                                 <input type="text" name="referral[city]" class="form-control"
-                                                       value="<?php echo $result['city']; ?>" placeholder="Enter City"
-                                                       required>
+                                                       value="<?php echo $result['city']; ?>" placeholder="Enter City">
                                             </div>
                                         </div>
                                     </div>
@@ -178,11 +180,12 @@
                                                                 class="ti-pin"></i></span></div>
                                                 <input type="text" name="referral[zip_code]" maxlength="6"
                                                        class="form-control" value="<?php echo $result['zip_code']; ?>"
-                                                       placeholder="Enter Post Code" onkeypress="return alphaNumericValidation(event)" required>
+                                                       placeholder="Enter Post Code"
+                                                       onkeypress="return alphaNumericValidation(event)">
                                             </div>
                                         </div>
                                     </div>
-                                    <?php if ($result['status'] == 'NEW' && in_array($common['user']['role'],constant('USER_ROLE'))) { ?>
+                                    <?php if ($result['status'] == 'NEW' && in_array($common['user']['role'], constant('USER_ROLE'))) { ?>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Status</label>
@@ -193,15 +196,16 @@
                                                     </div>
                                                     <select name="referral[status]" class="custom-select" required>
                                                         <?php foreach (constant('STATUS') as $key => $status) { ?>
-                                                            <option value="<?php echo $key ?>" <?php echo($result['status'] == $key)?'selected':''?>><?php echo $status; ?></option>
+                                                            <option value="<?php echo $key ?>" <?php echo ($result['status'] == $key) ? 'selected' : '' ?>><?php echo $status; ?></option>
                                                         <?php } ?>
 
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                    <?php } else{ ?>
-                                        <input type="hidden" name="referral[status]" value="<?php echo $result['status'] ?>">
+                                    <?php } else { ?>
+                                        <input type="hidden" name="referral[status]"
+                                               value="<?php echo $result['status'] ?>">
                                     <?php } ?>
 
                                 </div>
@@ -218,17 +222,19 @@
                 </div>
 
                 <?php if ($page_edit) { ?>
-                    <div class="tab-pane  <?php echo (isset($_GET['document']) ? 'active' : '') ?>" id="appointment-documents">
+                    <div class="tab-pane  <?php echo(isset($_GET['document']) ? 'active' : '') ?>"
+                         id="appointment-documents">
                         <div class="row">
                             <div class="form-group col-sm-6 ">
                                 <a class="btn btn-warning btn-sm" data-toggle="modal"
                                    data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload Document</a>
                             </div>
-<!--                            <div class="form-group col-sm-6 text-right">-->
-<!--                                <a class="btn btn-secondary btn-sm"-->
-<!--                                   href="--><?php //echo URL_ADMIN . DIR_ROUTE . 'optician-referral/report/reportsExport&id=' . $result['id']; ?><!--"><i-->
-<!--                                            class="ti-cloud-down mr-2"></i> Download Document</a>-->
-<!--                            </div>-->
+                            <!--                            <div class="form-group col-sm-6 text-right">-->
+                            <!--                                <a class="btn btn-secondary btn-sm"-->
+                            <!--                                   href="-->
+                            <?php //echo URL_ADMIN . DIR_ROUTE . 'optician-referral/report/reportsExport&id=' . $result['id']; ?><!--"><i-->
+                            <!--                                            class="ti-cloud-down mr-2"></i> Download Document</a>-->
+                            <!--                            </div>-->
                         </div>
                         <div class="report-container">
                             <?php if (!empty($reports)) {
@@ -275,8 +281,9 @@
                             } ?>
                         </div>
                         <div class="panel-footer text-center">
-                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral'; ?>" class="btn btn-primary"><i
-                                    class="ti-save-alt pr-2"></i> Submit
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral'; ?>"
+                               class="btn btn-primary"><i
+                                        class="ti-save-alt pr-2"></i> Submit
                             </a>
                         </div>
                     </div>
@@ -303,9 +310,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ti-tag"></i></span>
                             </div>
-                            <select  class="form-control" name="document_name">
+                            <select class="form-control" name="document_name">
                                 <option value="">Select Document Type</option>
-                                <?php foreach (constant('DOCUMENT_NAME') as $key => $status) { ?>
+                                <?php foreach (constant('FOLLOWUP_DOCUMENT_NAME') as $key => $status) { ?>
                                     <option value="<?php echo $key ?>"><?php echo $status; ?></option>
                                 <?php } ?>
                             </select>
@@ -360,6 +367,7 @@
             'hideOnContentClick': false,
             'type': 'iframe'
         });
+
 
     </script>
 

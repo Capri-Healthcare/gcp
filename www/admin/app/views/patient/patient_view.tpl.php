@@ -683,7 +683,7 @@
                                 <tr>
                                     <td>Glaucoma Care Plan Required</td>
                                     <td>
-                                        <?php echo $result['is_glaucoma_required']?>
+                                        <?php echo constant('GCP_REQUIRE')[$result['is_glaucoma_required']];?>
                                     </td>
                                 </tr>
                                 <?php if($result['is_glaucoma_required'] == 'YES') {?>

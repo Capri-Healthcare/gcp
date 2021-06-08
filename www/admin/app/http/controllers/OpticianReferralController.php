@@ -20,6 +20,8 @@ class OpticianReferralController extends Controller
 
         $data['period']['start'] = $this->url->get('start');
         $data['period']['end'] = $this->url->get('end');
+        $data['period']['status'] = $this->url->get('status');
+
 
         /* Set confirmation message if page submitted before */
         if (isset($this->session->data['message'])) {
@@ -31,9 +33,11 @@ class OpticianReferralController extends Controller
             $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
             $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
         } else {
-            $data['period']['start'] = date('Y-m-d ' . '00:00:00');
-            $data['period']['end'] = date('Y-m-d ' . '23:59:59');
+            $data['period']['start'] = date('Y-m-d');
+            $data['period']['end'] = date('Y-m-d');
         }
+
+
 
         $data['result'] = $this->model_opticianreferral->getOpticianReferrals($data['period'], $this->session->data['user_id'], $data['common']['user']['role']);
 
@@ -217,7 +221,7 @@ class OpticianReferralController extends Controller
                 if (trim($data['referral']['status']) == 'ACCEPTED') {
                        $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
 
-                    if (!$patient) {
+                    if (empty($patient['id'])) {
                         $patient['firstname'] = $data['referral']['first_name'];
                         $patient['lastname'] = $data['referral']['last_name'];
                         $patient['mail'] = $data['referral']['email'];
@@ -232,12 +236,13 @@ class OpticianReferralController extends Controller
                         $patient['hash'] = $data['referral']['user_id'];
                         $patient['datetime'] = date('Y-m-d H:s:a');
 
-                        $data['id'] = $this->model_patient->createPatient($patient);
+                        $data['patientid'] = $this->model_patient->createPatient($patient);
 
-                        if (!empty($data['id'])) {
+                        if (!empty($data['patientid'])) {
+                            $this->model_opticianreferral->updatePatientID($data);
                             $this->patientMail($data['id']);
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
-                            $this->url->redirect('patient/edit&id=' . $data['id']);
+                            $this->url->redirect('patient/edit&id=' . $data['patientid']);
                         }
                     } else {
                         $this->url->redirect('patient/edit&id=' . $patient['id']);
@@ -312,10 +317,10 @@ class OpticianReferralController extends Controller
 //            $error_flag = true;
 //            $error['title'] = 'Address !';
 //        }
-        if ($data['gender'] == null) {
-            $error_flag = true;
-            $error['title'] = 'Gender !';
-        }
+//        if ($data['gender'] == null) {
+//            $error_flag = true;
+//            $error['title'] = 'Gender !';
+//        }
 //        if ($this->controller_common->validateText($data['email'])) {
 //            $error_flag = true;
 //            $error['title'] = 'Email !';
@@ -328,6 +333,7 @@ class OpticianReferralController extends Controller
             $error_flag = true;
             $error['title'] = 'Mobile number !';
         }
+
 //        if ($this->controller_common->validateText($data['city'])) {
 //            $error_flag = true;
 //            $error['title'] = 'City !';

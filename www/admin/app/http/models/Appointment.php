@@ -11,7 +11,7 @@ class Appointment extends Model
     public function getAppointments($period, $doctor = NULL, $role = null)
     {
         if ($doctor == NULL) {
-            if ($role != null && $role == constant('USER_ROLE_NAME')) {
+            if ($role != null && $role == constant('USER_ROLE')[2]) {
                 $query = $this->database->query("SELECT a.*, d.id AS doctor_id, CONCAT(d.firstname, ' ', d.lastname) AS doctor, d.picture AS picture, d.email AS doctor_email, dep.name AS department, user.id AS patient_id FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS dep ON dep.id = a.department_id LEFT JOIN `" . DB_PREFIX . "patients` AS user ON user.email = a.email WHERE a.date between '" . $period['start'] . "' AND '" . $period['end'] . "' AND a.is_glaucoma_required = 'YES' ORDER BY date DESC");
             } else {
                 $query = $this->database->query("SELECT a.*, d.id AS doctor_id, CONCAT(d.firstname, ' ', d.lastname) AS doctor, d.picture AS picture, d.email AS doctor_email, dep.name AS department, user.id AS patient_id FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS dep ON dep.id = a.department_id LEFT JOIN `" . DB_PREFIX . "patients` AS user ON user.email = a.email WHERE a.date between '" . $period['start'] . "' AND '" . $period['end'] . "' ORDER BY date DESC");
@@ -360,29 +360,35 @@ class Appointment extends Model
 
     public function moveimagefromopticiantoappointment($data)
     {
+        if (isset($data['followupid'])) {
+            $images = $this->database->query("SELECT * FROM kk_referral_list_document WHERE followup_id='" . $data['followupid'] . "'");
+        }
+        if (isset($data['referralid'])) {
+            $images = $this->database->query("SELECT * FROM kk_referral_list_document WHERE referral_list_id='" . $data['referralid'] . "'");
 
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "referral_list` WHERE email = '" . $data['mail'] . "'");
-
-        if ($query->num_rows > 0) {
-
-            $images = $this->database->query("SELECT * FROM kk_referral_list_document WHERE referral_list_id='".$query->row['id']."'");
-
-            if ($images->num_rows > 0) {
-                foreach ($images->rows as $doc) {
+        }
+        if ($images->num_rows > 0) {
+            foreach ($images->rows as $doc) {
                 //  Create folder if its not exist
-                 $report_folder = DIR . "public/uploads/appointment/reports/" . $data['id'];
+                $report_folder = DIR . "public/uploads/appointment/reports/" . $data['id'];
                 if (!file_exists($report_folder)) {
                     mkdir($report_folder, 0777, true);
                 }
-                    $source_path = DIR . "public/uploads/optician-referral/document/" . $doc['referral_list_id'] . '/' . $doc['filename'];
-                    $destination_path = $report_folder . '/' . $doc['filename'];
-                    copy($source_path, $destination_path);
-                    $this->database->query("INSERT INTO `" . DB_PREFIX . "appointment_images` (`name`, `filename`, `appointment_id`, `patient_id`, `user_id`) VALUES (?, ?, ?, ?, ?)", array($doc['name'], $doc['filename'], $data['id'],$data['patient_id'], $data['user_id']));
+                if (isset($data['followupid'])) {
+                    $source_path = DIR . "public/uploads/optician-referral/document/" .$data['followupid']. '/' . $doc['filename'];
+                }
+                if (isset($data['referralid'])) {
+                    $source_path = DIR . "public/uploads/optician-referral/document/" . $data['referralid']. '/' . $doc['filename'];
 
                 }
-            }
+                $destination_path = $report_folder . '/' . $doc['filename'];
+                copy($source_path, $destination_path);
+                $this->database->query("INSERT INTO `" . DB_PREFIX . "appointment_images` (`name`, `filename`, `appointment_id`, `patient_id`, `user_id`) VALUES (?, ?, ?, ?, ?)", array($doc['name'], $doc['filename'], $data['id'], $data['patient_id'], $data['user_id']));
 
+            }
         }
+
+
     }
 
     public function getAppointmentByVideoConsultationToken($token)

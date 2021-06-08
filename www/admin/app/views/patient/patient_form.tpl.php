@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <form action="<?php echo $action; ?>" method="post">
+    <form action="<?php echo $action; ?>" method="post" >
         <input type="hidden" name="_token" value="<?php echo $token; ?>">
         <input type="hidden" name="patient[id]" value="<?php echo $result['id']; ?>">
         <div class="panel panel-default">
@@ -116,8 +116,10 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-mobile"></i></span>
                                         </div>
-                                        <input type="text" name="patient[mobile]" class="form-control"
-                                               value="<?php echo $result['mobile']; ?>"
+                                        <input type="text" name="patient[mobile]" class="form-control mobile"
+                                               value="<?php echo $result['mobile']; ?>" maxlength="11"
+                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+
                                                placeholder="Enter Mobile Number . . . " required>
                                     </div>
                                 </div>
@@ -238,32 +240,34 @@
                             <!--								</div>-->
                             <!--							</div>-->
                             <!--						</div>-->
-<!--                            <div class="col-md-9">-->
-<!--                                <div class="form-group">-->
-<!--                                    <label>Please provide disabilities details</label>-->
-<!--                                    <div class="input-group">-->
-<!--                                        <div class="input-group-prepend">-->
-<!--                                            <span class="input-group-text"><i class="ti-check-box"></i></span>-->
-<!--                                        </div>-->
-<!--                                        <input type="text" name="patient[disabilities_details]" class="form-control"-->
-<!--                                               value="--><?php //echo $result['disabilities_details']; ?><!--"-->
-<!--                                               placeholder="Enter disabilities details">-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="col-md-12">-->
-<!--                                <div class="form-group">-->
-<!--                                    <label>Special Requirements (eg other language / other communication method)</label>-->
-<!--                                    <div class="input-group">-->
-<!--                                        <div class="input-group-prepend">-->
-<!--                                            <span class="input-group-text"><i class="ti-check-box"></i></span>-->
-<!--                                        </div>-->
-<!--                                        <input type="text" name="patient[special_requirements]" class="form-control"-->
-<!--                                               value="--><?php //echo $result['special_requirements']; ?><!--"-->
-<!--                                               placeholder="Enter special requirements">-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <!--                            <div class="col-md-9">-->
+                            <!--                                <div class="form-group">-->
+                            <!--                                    <label>Please provide disabilities details</label>-->
+                            <!--                                    <div class="input-group">-->
+                            <!--                                        <div class="input-group-prepend">-->
+                            <!--                                            <span class="input-group-text"><i class="ti-check-box"></i></span>-->
+                            <!--                                        </div>-->
+                            <!--                                        <input type="text" name="patient[disabilities_details]" class="form-control"-->
+                            <!--                                               value="-->
+                            <?php //echo $result['disabilities_details']; ?><!--"-->
+                            <!--                                               placeholder="Enter disabilities details">-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="col-md-12">-->
+                            <!--                                <div class="form-group">-->
+                            <!--                                    <label>Special Requirements (eg other language / other communication method)</label>-->
+                            <!--                                    <div class="input-group">-->
+                            <!--                                        <div class="input-group-prepend">-->
+                            <!--                                            <span class="input-group-text"><i class="ti-check-box"></i></span>-->
+                            <!--                                        </div>-->
+                            <!--                                        <input type="text" name="patient[special_requirements]" class="form-control"-->
+                            <!--                                               value="-->
+                            <?php //echo $result['special_requirements']; ?><!--"-->
+                            <!--                                               placeholder="Enter special requirements">-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>NHS Patient Number</label>
@@ -272,7 +276,8 @@
                                             <span class="input-group-text"><i class="ti-check-box"></i></span>
                                         </div>
                                         <input type="text" name="patient[nhs_patient_number]" class="form-control"
-                                               value="<?php echo $result['nhs_patient_number']; ?>"
+                                               value="<?php echo $result['nhs_patient_number']; ?>" maxlength="10"
+                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
                                                placeholder="NHS Patient Number">
                                     </div>
                                 </div>
@@ -296,14 +301,9 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-hospital"></i></span></div>
-                                        <select name="patient[gp_practice]" class="custom-select">
-                                            <option value="">Select GP Practice</option>
-                                            <?php
-                                            foreach ($gp_practices as $key => $practice) {
-                                                echo '<option value="' . $key . '" ' . (($result['gp_practice'] == $key) ? "selected" : "") . '>' . $practice . '</option>';
-                                            }
-                                            ?>
-                                        </select>
+                                        <input type="text" name="patient[gp_practice]" class="form-control"
+                                               id="gp_practice"
+                                               value="<?php echo $result['gp_practice'] != 0 ? $gp_practices[$result['gp_practice']] : ''; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -314,9 +314,12 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-user"></i></span>
                                         </div>
-                                        <input type="text" name="patient[gp_name]" class="form-control"
+                                        <input type="text" name="patient[gp_name]" class="form-control gcp-name"
                                                value="<?php echo $result['gp_name']; ?>"
                                                placeholder="GP Name">
+                                        <input type="hidden" name="" class="form-control gcp-practice-id"
+                                               value="<?php echo $result['patient_id']; ?>">
+
                                     </div>
                                 </div>
                             </div>
@@ -332,6 +335,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php if (!empty($result['id'])) { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Select hospital for appoinment</label>
+                                        <br/>
+                                        <?php foreach (constant('HOSPITAL_LIST') as $key =>  $list) {?>
+                                        <div class="custom-control custom-radio custom-radio-1 d-inline-block">
+                                            <input type="radio" name="patient[hospital_code]" class="custom-control-input" value="<?php echo $key;?>" id="" checked>
+                                            <label class="custom-control-label" for="prescription_template-template-1">&nbsp;<b><?php echo $list['name']?></b></label>
+                                            <label class="ml-4 mt-1">
+                                                <i class="ti-mobile"></i><?php echo $list['mobile']?> &nbsp;&nbsp;<i class="ti-location-pin"></i><?php echo $list['address']?><br><i class="ti-email"></i>&nbsp;<?php echo $list['email']?>&nbsp;&nbsp;<i class="ti-world"></i>&nbsp;<?php echo $list['web']?></label>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            <?php } ?>
+
                             <?php if (!empty($result['id'])) { ?>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -550,58 +570,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Authorisation Number</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
-                                        </div>
-                                        <input type="text"
-                                               name="patient[authorisation_number]" <?php echo $insurance_field_readonly ?>
-                                               class="form-control" id="authorisation_number"
-                                               value="<?php echo $result['authorisation_number']; ?>"
-                                               placeholder="Enter Authorisation Number">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Corporate/Company Scheme</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                                        class="ti-check-box"></i></span></div>
-                                        <select name="patient[corporate_company_scheme]" <?php echo $insurance_field_readonly ?>
-                                                class="custom-select" id="corporate_company_scheme">
-                                            <option value="">Select</option>
-                                            <option value="Yes" <?php if ($result['corporate_company_scheme'] == 'Yes') {
-                                                echo "selected";
-                                            } ?>>Yes
-                                            </option>
-                                            <option value="No" <?php if ($result['corporate_company_scheme'] == 'No') {
-                                                echo "selected";
-                                            } ?>>No
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Employer</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
-                                        </div>
-                                        <input type="text"
-                                               name="patient[employer]" <?php echo $insurance_field_readonly ?>
-                                               class="form-control" id="employer"
-                                               value="<?php echo $result['employer']; ?>" placeholder="Enter Employer">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
+
                     <div class="tab-pane" id="gcp-care-plan">
                         <div class="row">
                             <div class="col-md-6">
@@ -677,17 +648,21 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+        </div>
                 </div>
             </div>
-            <div class="panel-footer text-center">
-                <button type="submit" name="submit" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Save
-                </button>
-            </div>
+        </div>
+
+        <div class="panel-footer text-center">
+            <button type="submit" name="submit" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Save
+            </button>
+        </div>
         </div>
     </form>
     <!-- Footer -->
     <script>
+
         $("#gcp_required").on('change', function () {
 
             var selectedValue = $('option:selected', this).text();
@@ -718,5 +693,23 @@
 
             }
         })
+
+
+        $("#gp_practice").autocomplete({
+            source: window.origin + "/admin/index.php?route=gppractices/search",
+            minLength: 2,
+            focus: function () {
+                return false;
+            },
+            select: function (event, ui) {
+                $('#gp_practice').val(ui.item.gp_practice_name);
+                return false;
+            }
+        }).autocomplete("instance")._renderItem = function (ul, item) {
+            return $("<li>")
+                .append('<div>' + item.gp_practice_name + '</div>')
+                .appendTo(ul);
+        };
+
     </script>
 <?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>

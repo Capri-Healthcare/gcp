@@ -66,7 +66,7 @@ class PatientController extends Controller
         $this->load->model('patient');
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
-        $data['gp_practices'] = $this->model_patient->getGpPractice();
+        $data['gp_practices'] = $this->model_patient->getALlGpPractice();
 
         if ($data['common']['user']['role_id'] == "3") {
             $data['result'] = $this->model_patient->getPatient($id, $data['common']['user']['doctor']);
@@ -181,7 +181,7 @@ class PatientController extends Controller
         }
 
         $data['history'] = $this->medicalHistoryData();
-        $data['gp_practices'] = $this->model_patient->getGpPractice();
+
 
         if (isset($this->session->data['message'])) {
             $data['message'] = $this->session->data['message'];
@@ -220,7 +220,7 @@ class PatientController extends Controller
         $data['result']['history'] = json_decode($data['result']['history'], true);
         $data['result']['address'] = json_decode($data['result']['address'], true);
         $data['history'] = $this->medicalHistoryData();
-        $data['gp_practices'] = $this->model_patient->getGpPractice();
+        $data['gp_practices'] = $this->model_patient->getALlGpPractice();
 
         if (isset($this->session->data['message'])) {
             $data['message'] = $this->session->data['message'];
@@ -282,13 +282,18 @@ class PatientController extends Controller
 
         $data['datetime'] = date('Y-m-d H:i:s');
         if (!empty($data['id'])) {
+            $gcpID = $this->model_patient->gpPractice($data['gp_practice']);
+            $data['gp_practice'] = $gcpID;
             $result = $this->model_patient->updatePatient($data);
             if ($data['gcp_required'] == 'YES') {
                 $this->gcpMail();
             }
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient updated successfully.');
         } else {
-            if ($this->model_patient->checkPatientEmail($data['mail']) >= 1) {
+            $gcpID = $this->model_patient->gpPractice($data['gp_practice']);
+            $data['gp_practice'] = $gcpID;
+
+            if (!$this->model_patient->checkPatientEmail($data['mail'])) {
                 $this->session->data['message'] = array('alert' => 'error', 'value' => 'Email  \'' . $this->url->post('email') . '\'  already exist in database.');
                 $this->url->redirect('patient/add');
             }
@@ -425,6 +430,15 @@ class PatientController extends Controller
         echo json_encode($result);
     }
 
+    public function searchGpPractices()
+    {
+        $data = $this->url->get;
+        $this->load->model('patient');
+        if (isset($data['term'])) {
+           $result = $this->model_patient->getGpPractice($data['term']);
+        }
+        echo json_encode($result);
+    }
     public function medicalHistoryData()
     {
         return array(

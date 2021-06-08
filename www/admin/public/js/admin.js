@@ -291,6 +291,22 @@
              }
          });
      }
+
+     function removeFollowupDocument(referral_list_id,id,optician_id, filename) {
+         $.ajax({
+             type: 'POST',
+             url: 'index.php?route=follow-up/report/removeReport',
+             data: {id: referral_list_id, name: filename,optician_id:optician_id, _token: $('#token').val()},
+             error: function() {
+                 toastr.error('Error', 'File could not be deleted. Please try again...');
+             },
+             success: function(data) {
+                 toastr.success('', 'File Deleted Succefully.');
+                 $('#report-delete-div-'+id).remove();
+             }
+         });
+     }
+
     function moveImageToReport(image_id) {
 
         $.ajax({
@@ -425,7 +441,7 @@
              this.on("success", function(file, xhr) {
                  var response = JSON.parse(xhr);
                  if (response.error === false) {
-                     var optician_refrrel_id = $('.optician-refrrel-id').val()
+                     var optician_refrrel_id = $('.optician-refrrel-id').val() == undefined ? $('#optician_id').val():$('.optician-refrrel-id').val();
                      if (response.ext === "pdf") {
                          $('.report-container').append('<div class="report-image report-pdf">'+
                              '<a href="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'" class="open-pdf">'+
@@ -486,13 +502,15 @@
          removeOpticianDocument(referral_list_id, id, filename);
      });
 
-     $('#delete-optician-referral').on('click', function(){
+     $('#delete-followup-referral').on('click', function(){
          var referral_list_id = $("#appointment_id").val();
          var id = $("#report_id").val();
-         var name = $("#report_name").val();
+         var optician_id = $("#optician_id").val();
+         var filename = $("#report_name").val();
 
-         removeReport(appointment_id, report_id, report_name);
+         removeFollowupDocument(referral_list_id, id,optician_id,filename);
      });
+
 
 	$('.report-delete-action').on('click', function(){
 		$('#appointment_id').val($(this).data('appointment_id'));
@@ -588,7 +606,6 @@
         yearRange: "-100:+0"
     });
 
-
     //Filter date picker
     $('.filter-date').datepicker({
         dateFormat: $('.common_date_format').val(),
@@ -645,9 +662,7 @@
         }
     });
 
-     $('.status').on('change', function(e) {
-         dataTable.fnFilter(e.currentTarget.value);
-     });
+
 
     $(".export-button .print").on("click", function(e) {
         e.preventDefault(); dataTable.button(0).trigger()
@@ -742,6 +757,8 @@
 			
 		}
 	});
+
+
 });
 
 

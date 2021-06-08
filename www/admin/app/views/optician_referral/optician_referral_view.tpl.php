@@ -43,7 +43,9 @@
                             <li><a href="#appointment-documents" data-toggle="tab"><i class="ti-calendar"></i> <span>Scan & Reports</span></a></li>
                       <?php } ?>
                         <?php if ($page_edit) { ?>
+                            <?php if ($result['status'] == 'NEW') { ?>
                             <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-referral/edit&id='.$result['id']; ?>"><i class="ti-pencil-alt"></i> <span>Edit Referral Details</span></a></li>
+                        <?php }  ?>
                         <?php }  ?>
                     </ul>
                 </div>

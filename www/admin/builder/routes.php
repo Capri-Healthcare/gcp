@@ -32,6 +32,7 @@ $router->post('patient/edit', 'PatientController@indexAction');
 $router->post('patient/delete', 'PatientController@indexDelete');
 $router->post('patient/sendmail', 'PatientController@indexMail'); // 
 $router->get('patient/search', 'PatientController@searchPatient');
+$router->get('gppractices/search', 'PatientController@searchGpPractices');
 $router->get('notes', 'NotesController@index');
 $router->post('note/add', 'NotesController@indexAction');
 $router->post('note/edit', 'NotesController@indexAction');
@@ -304,6 +305,17 @@ $router->post('optician-referral/add', 'OpticianReferralController@indexAction')
 $router->get('optician-referral/edit', 'OpticianReferralController@indexEdit');
 $router->post('optician-referral/edit', 'OpticianReferralController@indexAction');
 $router->post('optician-referral/delete', 'OpticianReferralController@indexDelete');
+
+$router->get('follow-up', 'FollowupController@index');
+$router->get('follow-up/add', 'FollowupController@indexAdd');
+$router->get('follow-up/view', 'FollowupController@indexView');
+$router->post('follow-up/add', 'FollowupController@indexAction');
+$router->get('follow-up/edit', 'FollowupController@indexEdit');
+$router->post('follow-up/edit', 'FollowupController@indexAction');
+$router->post('follow-up/delete', 'FollowupController@indexDelete');
+$router->post('follow-up/report/reportUpload', 'FollowupController@documentUpload');
+$router->post('follow-up/report/removeReport', 'FollowupController@documentRemove');
+
 $router->post('optician-referral/report/reportUpload', 'OpticianReferralController@documentUpload');
 $router->post('optician-referral/report/removeReport', 'OpticianReferralController@documentRemove');
 $router->get('optician-referral/report/reportsExport', 'OpticianReferralController@reportsExport');

@@ -474,6 +474,11 @@ class UserController extends Controller
 				'optician-referral/report/reportsExport' => 'Optician Referral Export Document',
 				'1' => '',
 				'2' => ''),
+            'Followup' => array('follow-up' => 'Followup List',
+                'follow-up/edit' => 'Followup Status',
+                'follow-up/report/reportUpload' => 'Followup Referral Upload Document',
+                'follow-up/report/removeReport' => 'Followup Referral Remove Document',
+                ),
 			'Invoice' => array('invoices' => 'Invoice List',
 				'invoice/add' => 'Invoice Add',
 				'invoice/edit' => 'Invoice Edit',
@@ -693,7 +698,8 @@ class UserController extends Controller
 				'media/upload' => 'Media Upload',
 				'media/delete' => 'Media Delete',
 				'upload/gallery' => 'Gallery Upload',
-				'gallery/delete' => 'Gallery Delete'));
+				'gallery/delete' => 'Gallery Delete'),
+            );
 
 		return $data;
 	}

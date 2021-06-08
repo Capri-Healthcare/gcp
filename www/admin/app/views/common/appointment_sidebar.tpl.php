@@ -15,6 +15,11 @@
                     </div>
                     <input type="text" name="appointment[name]" value="<?php echo(isset($patient)?$patient['firstname']:'')?>" class="form-control patient-name" placeholder="Enter Name . . ." required>
                     <input type="hidden" name="appointment[patient_id]" value="<?php echo(isset($patient)?$patient['id']:'')?>" class="form-control patient-id">
+                    <?php if(isset($_GET['followupid'])) { ?>
+                    <input type="hidden" name="appointment[followupid]" value="<?php echo $_GET['followupid']?>" class="form-control">
+                    <?php } if(isset($_GET['referralid'])) { ?>
+                    <input type="hidden" name="appointment[referralid]" value="<?php echo $_GET['referralid']?>" class="form-control">
+                    <?php } ?>
                 </div>
             </div>
             <div class="form-group mb-2">

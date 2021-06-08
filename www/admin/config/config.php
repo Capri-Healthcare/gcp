@@ -38,10 +38,36 @@ define('TOKEN', 'oQ913wsl6{WBlk#5jV5%VYExlFaIomj&75ZZ~(W3GREN#n)(jJp2QY7gugD))3L
 define('TOKEN_SALT', 'rg(uyO0?I9uq5mx-hh4>V-XCPQ?Dx80{n7|?K?pU;-2WldDIOElXOvzT>p9P1zvN');
 
 define('USER_ROLE', ['Med. Secretary', 'Admin','GCP Secretary']);
+define('USER_FOLLOWUP_MED_ROLE', ['Med. Secretary', 'Admin','Optometrist']);
+define('USER_FOLLOWUP_GCP_ROLE', ['Admin','GCP Secretary']);
 define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist','GCP Secretary']);
-define('USER_ROLE_NAME', 'GCP Secretary');
+
 define('FOLLOW_UP_DROPDOWN', ['6' => '6 - Monthly', '12' => '12 Monthly']);
 define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable']);
+
 define('DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields' => 'Visual fields','OCT' => 'OCT']);
+define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields - Left eye' => 'Visual fields - Left eye','Visual fields - Right eye' => 'Visual fields - Right eye','OCT - Left eye' => 'OCT - Left eye','OCT - Right eye' => 'OCT - Right eye']);
+
 define('USER_ROLE_ID', ['Med. Secretary'=>'7','GCP Secretary'=>'11']);
 define('CC','chetanthumar@gmail.com,sanjay.makwana@tiez.nl');
+define('GCP_REQUIRE', ['YES' => 'Yes','NO' => 'No','OFFER' => 'Offered']);
+
+define('HOSPITAL_LIST', [
+    'SSPBH' => [
+        "name"=>'Spire South Bank Hospital',
+        "mobile" =>'01905350003',
+        "address" =>'139 Bath Road WORCESTER WR5 3YB',
+        "email" =>"hsc@spirehealthcare.com",
+        "web" =>"http://www.spirehealthcare.com/southbank"
+    ],
+    'BTDSH' => [
+        "name"=>'BMI The Droitwich Spa Hospital',
+        "mobile" =>'01905 793333',
+        "address" =>'St Andrews Road DROITWICH WR9 8DN',
+        "email" =>"info@bmihealthcare.co.uk",
+        "web" =>"http://www.bmihealthcare.co.uk"
+    ]
+]);
+
+define('STATUS_PAYMENT', ['PAID' => 'Paid','UNPAID' => 'Unpaid','NOT_SUITABLE' => 'Not suitable']);
+define('STATUS_FOLLOWUP', ['NEW' => 'New','OPTICIAN_REVIEWED' => 'Optician Reviewed','ACCEPTED' => 'Accepted','NOT_SUITABLE' => 'Not suitable']);
