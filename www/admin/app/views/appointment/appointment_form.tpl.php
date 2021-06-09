@@ -63,7 +63,7 @@
                                value="<?php echo $result['id']; ?>">
                         <div id="apnt-info" class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <!--div class="form-group">
                                     <label>Doctor <span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -83,33 +83,43 @@
                                         <input type="hidden" class="apnt-department" name="appointment[department]"
                                                value="<?php echo $result['department_id']; ?>">
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Date <span class="form-required">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-calendar"></i></span>
+                                </div-->
+                                <input type="hidden" class="apnt-department" name="appointment[doctor]"
+                                               value="<?php echo $result['doctor_id']; ?>">
+                                <input type="hidden" class="apnt-department" name="appointment[department]"
+                                               value="<?php echo $result['department_id']; ?>">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Date <span class="form-required">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="ti-calendar"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control apnt-date" name="appointment[date]"
+                                                    placeholder="Select Date . . ."
+                                                    value="<?php echo date_format(date_create($result['date']), $common['info']['date_format']); ?>"
+                                                    required autocomplete="off">
+                                            </div>
                                         </div>
-                                        <input type="text" class="form-control apnt-date" name="appointment[date]"
-                                               placeholder="Select Date . . ."
-                                               value="<?php echo date_format(date_create($result['date']), $common['info']['date_format']); ?>"
-                                               required autocomplete="off">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Time <span class="form-required">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="ti-timer"></i></span>
+                                                </div>
+                                                <input type="text" name="appointment[time]" class="form-control apnt-time"
+                                                    value="<?php echo $result['time']; ?>" readonly>
+                                                <input type="hidden" name="appointment[slot]" class="apnt-slot-time"
+                                                    value="<?php echo $result['slot']; ?>" required>
+                                            </div>
+                                            <div class="apnt-slot"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Time <span class="form-required">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-timer"></i></span>
-                                        </div>
-                                        <input type="text" name="appointment[time]" class="form-control apnt-time"
-                                               value="<?php echo $result['time']; ?>" readonly>
-                                        <input type="hidden" name="appointment[slot]" class="apnt-slot-time"
-                                               value="<?php echo $result['slot']; ?>" required>
-                                    </div>
-                                    <div class="apnt-slot"></div>
-                                </div>
-                                <div class="form-group">
+                                <!--div class="form-group">
                                     <label>Consultation Method <span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -124,24 +134,30 @@
                                             } ?>
                                         </select>
                                     </div>
-                                </div>
+                                </div-->
+                                <input type="hidden" class="apnt-department" name="appointment[consultation_type]"
+                                               value="<?php echo $result['consultation_type']; ?>">
 
-                                <div class="form-group">
-                                    <label>Glaucoma Care Plan Required<span class="form-required">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Glaucoma Care Plan Required<span class="form-required">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                                </div>
+                                                <select name="appointment[gcp_required]" class="custom-select" id="gcp_required"
+                                                        required>
+                                                    <option value="">Select GCP</option>
+                                                    <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
+                                                        YES
+                                                    </option>
+                                                    <option value="NO" <?php echo ($result['is_glaucoma_required'] == 'NO') ? "Selected" : "" ?>>
+                                                        NO
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <select name="appointment[gcp_required]" class="custom-select" id="gcp_required"
-                                                required>
-                                            <option value="">Select GCP</option>
-                                            <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
-                                                YES
-                                            </option>
-                                            <option value="NO" <?php echo ($result['is_glaucoma_required'] == 'NO') ? "Selected" : "" ?>>
-                                                NO
-                                            </option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group"
@@ -158,23 +174,26 @@
                                             <?php foreach (constant('FOLLOW_UP_DROPDOWN') as $key => $followup) { ?>
                                                 <option value="<?php echo $key ?>" <?php echo ($result['gcp_next_appointment'] == $key) ? "Selected" : "" ?>><?php echo $followup; ?></option>
                                             <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Status <span class="form-required">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                            </div>
                                         </div>
-                                        <select name="appointment[status]" class="custom-select" required>
-                                            <option value="">Select appointment status</option>
-                                            <?php if (!empty(APPOINTMENT_STATUS)) {
-                                                foreach (APPOINTMENT_STATUS as $status_id => $status) { ?>
-                                                    <option value="<?php echo $status_id ?>" <?php echo ($result['status'] == $status_id) ? "Selected" : "" ?>><?php echo $status; ?></option>
-                                                <?php }
-                                            } ?>
-                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Status <span class="form-required">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                                </div>
+                                                <select name="appointment[status]" class="custom-select" required>
+                                                    <option value="">Select appointment status</option>
+                                                    <?php if (!empty(APPOINTMENT_STATUS)) {
+                                                        foreach (APPOINTMENT_STATUS as $status_id => $status) { ?>
+                                                            <option value="<?php echo $status_id ?>" <?php echo ($result['status'] == $status_id) ? "Selected" : "" ?>><?php echo $status; ?></option>
+                                                        <?php }
+                                                    } ?>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +234,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <!--div class="form-group">
                                     <label>Reason/Problem</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -234,7 +253,7 @@
                                         <textarea class="form-control"
                                                   name="appointment[doctor_note]"><?php echo $result['doctor_note']; ?></textarea>
                                     </div>
-                                </div>
+                                </div-->
                                 <div class="apnt-user-input">
                                     <div class="form-group">
                                         <label>Patient Name <span class="form-required">*</span></label>
