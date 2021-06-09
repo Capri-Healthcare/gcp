@@ -313,6 +313,7 @@ $router->post('follow-up/add', 'FollowupController@indexAction');
 $router->get('follow-up/edit', 'FollowupController@indexEdit');
 $router->post('follow-up/edit', 'FollowupController@indexAction');
 $router->post('follow-up/delete', 'FollowupController@indexDelete');
+$router->get('follow-up/status', 'FollowupController@statusChange');
 $router->post('follow-up/report/reportUpload', 'FollowupController@documentUpload');
 $router->post('follow-up/report/removeReport', 'FollowupController@documentRemove');
 

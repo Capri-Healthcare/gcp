@@ -41,9 +41,24 @@ define('USER_ROLE', ['Med. Secretary', 'Admin','GCP Secretary']);
 define('USER_FOLLOWUP_MED_ROLE', ['Med. Secretary', 'Admin','Optometrist']);
 define('USER_FOLLOWUP_GCP_ROLE', ['Admin','GCP Secretary']);
 define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist','GCP Secretary']);
+define('USER_ROLE_OPTOMETRIST', 'Optometrist');
 
-define('FOLLOW_UP_DROPDOWN', ['6' => '6 - Monthly', '12' => '12 Monthly']);
-define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable']);
+define('FOLLOW_UP_DROPDOWN', [
+        '1' => '1 Month',
+        '2' => '2 Month',
+        '3' => '3 Month',
+        '4' => '4 Month',
+        '5' => '5 Month',
+        '6' => '6 Month',
+        '7' => '7 Month',
+        '8' => '8 Month',
+        '9' => '9 Month',
+        '10' => '10 Month',
+        '11' => '11 Month',
+        '12' => '12 Month',
+
+]);
+define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable','DRAFT' => 'Draft']);
 
 define('DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields' => 'Visual fields','OCT' => 'OCT']);
 define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields - Left eye' => 'Visual fields - Left eye','Visual fields - Right eye' => 'Visual fields - Right eye','OCT - Left eye' => 'OCT - Left eye','OCT - Right eye' => 'OCT - Right eye']);

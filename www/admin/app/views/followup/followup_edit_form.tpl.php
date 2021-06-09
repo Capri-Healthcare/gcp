@@ -49,7 +49,7 @@
                                     if ($file_ext == "pdf") { ?>
                                         <div class="report-image report-pdf"
                                              id="report-delete-div-<?php echo $value['id'] ?>">
-                                            <a href="../public/uploads/optician-referral/document/<?php echo $followup['optician_id'] . "/" . $value['filename']; ?>"
+                                            <a href="../public/uploads/optician-referral/followup/<?php echo $_GET['id'] . "/" . $value['filename']; ?>"
                                                class="open-pdf">
                                                 <img src="../public/images/pdf.png" alt="">
                                                 <span><?php echo $value['name']; ?></span>
@@ -67,8 +67,8 @@
                                     <?php } else { ?>
                                         <div class="report-image" id="report-delete-div-<?php echo $value['id'] ?>">
                                             <a data-fancybox="gallery"
-                                               href="../public/uploads/optician-referral/document/<?php echo $followup['optician_id'] . "/" . $value['filename']; ?>">
-                                                <img src="../public/uploads/optician-referral/document/<?php echo  $followup['optician_id'] . "/" . $value['filename']; ?>"
+                                               href="../public/uploads/optician-referral/followup/<?php echo $_GET['id'] . "/" . $value['filename']; ?>">
+                                                <img src="../public/uploads/optician-referral/followup/<?php echo  $_GET['id'] . "/" . $value['filename']; ?>"
                                                      alt="">
                                                 <span><?php echo $value['name']; ?></span>
                                             </a>
@@ -86,12 +86,12 @@
                                 }
                             } ?>
                         </div>
-<!--                        <div class="panel-footer text-center">-->
-<!--                            <a href="--><?php //echo URL_ADMIN . DIR_ROUTE . 'optician-referral'; ?><!--"-->
-<!--                               class="btn btn-primary"><i-->
-<!--                                        class="ti-save-alt pr-2"></i> Submit-->
-<!--                            </a>-->
-<!--                        </div>-->
+                        <div class="panel-footer text-center">
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id='.$_GET['id'].'&status=OPTICIAN_REVIEWED'; ?>"
+                               class="btn btn-primary"><i
+                                        class="ti-save-alt pr-2"></i> Submit
+                            </a>
+                        </div>
                     </div>
 
                 <?php } ?>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="media-upload-container" style="max-width: 100%;">
                         <form action="<?php echo URL_ADMIN . DIR_ROUTE ?>follow-up/report/reportUpload"
-                              class="dropzone" id="optician-referral-upload" method="post"
+                              class="dropzone" id="followup-upload" method="post"
                               enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="<?php echo $token; ?>" id="token">
                             <input type="hidden" class="followup-id" name="followup[id]"

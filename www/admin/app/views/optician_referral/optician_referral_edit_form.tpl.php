@@ -281,7 +281,7 @@
                             } ?>
                         </div>
                         <div class="panel-footer text-center">
-                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral'; ?>"
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/edit&id='.$_GET['id'].'&status=NEW'; ?>"
                                class="btn btn-primary"><i
                                         class="ti-save-alt pr-2"></i> Submit
                             </a>

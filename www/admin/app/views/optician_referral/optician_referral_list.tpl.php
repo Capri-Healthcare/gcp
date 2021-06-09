@@ -18,8 +18,9 @@
                 <div class="btn btn-white btn-sm text-left mr-2">
                     <i class="ti-filter text-danger pr-2"></i>
                     <select class="status" style="border: 0px;">
+
                         <?php foreach (constant('STATUS') as $key => $status) { ?>
-                            <option value="<?php echo $key ?>"><?php echo $status; ?></option>
+                            <option value="<?php echo $key ?>" <?php echo ($key == 'DRAFT') ? 'selected' : '' ?>><?php echo $status; ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -50,7 +51,6 @@
                         <th>Status</th>
                         <!--						<th>Created By</th>-->
                         <th>Date Submited</th>
-                        <th></th>
                         <?php if ($page_delete || $page_edit || $page_view) { ?>
                             <th></th>
                         <?php } ?>
@@ -80,8 +80,11 @@
                                     data-count="<?php echo $key + 1; ?>"><?php echo constant('STATUS')[$value['status']]; ?></td>
                                 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
                                 <td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
-                                <?php if($value['status'] == 'ACCEPTED') {?>
-                                    <td><a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id='.$value['patient_id'].'&referralid='.$value['id'] ; ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Book Appointment">&nbsp;Book Appointment</a></td>
+                                <?php if ($value['status'] == 'ACCEPTED') { ?>
+                                    <td>
+                                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&referralid=' . $value['id']; ?>"
+                                           class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                           title="Book Appointment">&nbsp;Book Appointment</a></td>
 
                                 <?php } ?>
 
@@ -97,10 +100,13 @@
                                                                     class="ti-eye"></i>&nbsp;View</a></li>
                                                 <?php } ?>
                                                 <?php if ($page_edit) { ?>
-                                                    <li>
-                                                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/edit&id=' . $value['id']; ?>"
-                                                           class="text-primary edit" data-toggle="tooltip" title="Edit"><i
-                                                                    class="ti-pencil-alt"></i>&nbsp;Edit</a></li>
+                                                    <?php if ($value['status'] == 'DRAFT') { ?>
+                                                        <li>
+                                                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/edit&id=' . $value['id']; ?>"
+                                                               class="text-primary edit" data-toggle="tooltip"
+                                                               title="Edit"><i
+                                                                        class="ti-pencil-alt"></i>&nbsp;Edit</a></li>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </ul>
                                         </div>

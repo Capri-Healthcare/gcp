@@ -49,6 +49,8 @@ class FollowupController extends Controller
     {
         $id = (int)$this->url->get('id');
         $status = $this->url->get('status');
+        $hospitalcode = $this->url->get('hospitalcode');
+
 
         if (empty($id) || !is_int($id)) {
             $this->url->redirect('follow-up');
@@ -61,10 +63,11 @@ class FollowupController extends Controller
             $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Followup does not exist in database!');
             $this->url->redirect('follow-up');
         }
-        $this->load->model('commons');
 
+        $this->load->model('commons');
         $this->load->model('followup');
         $data['reports'] = $this->model_followup->getOpticianReferralDocumnet($id);
+
         /* Set confirmation message if page submitted before */
         if (isset($this->session->data['message'])) {
             $data['message'] = $this->session->data['message'];
@@ -76,17 +79,35 @@ class FollowupController extends Controller
         $data['id'] = $id;
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
 
+
         if (!empty($status)) {
             $data['id'] = $id;
             $data['status'] = $status;
 
-            if ($this->model_followup->updateFollowup($data)) {
-                $this->session->data['message'] = array('alert' => 'success', 'value' => 'Followup updated successfully.');
-            } else {
-                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Followup status not updated successfully.');
-            }
+            if (array_key_exists($status, constant('STATUS_PAYMENT')) && $status != 'NOT_SUITABLE') {
+                if ($this->model_followup->updateFollowup($data)) {
+                    $this->session->data['message'] = array('alert' => 'success', 'value' => 'Followup updated successfully.');
+                } else {
+                    $this->session->data['message'] = array('alert' => 'error', 'value' => 'Followup status not updated successfully.');
+                }
 
+            } else {
+
+                if ($this->model_followup->updateFollowupStatus($data)) {
+                    $this->session->data['message'] = array('alert' => 'success', 'value' => 'Followup updated successfully.');
+                } else {
+                    $this->session->data['message'] = array('alert' => 'error', 'value' => 'Followup status not updated successfully.');
+                }
+            }
             $this->url->redirect('follow-up');
+        } elseif (!empty($hospitalcode)) {
+            $data['id'] = $id;
+            $data['hospitalcode'] = $hospitalcode;
+            $data['status'] = 'ACCEPTED';
+            if ($this->model_followup->updateFollowupStatus($data)) {
+                echo "Followup Successfully updated.";
+                exit();
+            }
         } else {
 
             $this->load->model('commons');
@@ -105,7 +126,7 @@ class FollowupController extends Controller
         $file = $this->url->files['file'];
         $data['ext'] = pathinfo($file['name'], PATHINFO_EXTENSION);
 
-        $data['filedir'] = DIR . 'public/uploads/optician-referral/document/' .$data['id']. '/';
+        $data['filedir'] = DIR . 'public/uploads/optician-referral/followup/' . $data['followup']['id'] . '/';
         $data['file_name'] = 'Doc-' . uniqid(rand()) . $data['id'];
 
         $filesystem = new Filesystem();
@@ -123,17 +144,17 @@ class FollowupController extends Controller
             echo json_encode($result);
         }
     }
+
     public function documentRemove()
     {
         $file = $this->url->post('name');
         $referral_list_id = $this->url->post('id');
-        $optician_id = $this->url->post('optician_id');
         if (!is_string($file)) {
             echo "2";
             exit();
         }
 
-        if (!unlink(DIR . '/public/uploads/optician-referral/document/' . $optician_id . '/' . $file)) {
+        if (!unlink(DIR . '/public/uploads/optician-referral/followup/' . $referral_list_id . '/' . $file)) {
             echo("Error deleting $file");
         } else {
             $data['filename'] = $this->url->post('name');
@@ -143,6 +164,4 @@ class FollowupController extends Controller
             echo $result;
         }
     }
-
-
 }

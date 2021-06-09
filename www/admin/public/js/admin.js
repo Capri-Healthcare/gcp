@@ -476,6 +476,80 @@
              });
          },
      });
+
+     $("#followup-upload").dropzone({
+         addRemoveLinks: true,
+         acceptedFiles: "image/*,application/pdf",
+         maxFilesize: 5,
+         autoProcessQueue: false,
+         dictDefaultMessage: 'Drop files here or click here to upload <br /><br /> Only Image or PDF',
+         init: function() {
+             var reportDropzone = this;
+             $('#reports-modal').on('click', '.upload-report', function (e) {
+                 e.preventDefault();
+                 if ($('#reports-modal select[name=document_name]').val() === "") {
+                     toastr.error('Error', 'Please Enter document name...');
+                     return false;
+                 }
+
+                 if (reportDropzone.files.length <= 0) {
+                     toastr.error('Error', 'Please select file to upload.');
+                     return false;
+                 }
+
+                 $('body').block({
+                     message: '<div class="font-14"><div class="icon-refresh spinner mr-2 d-inline-block"></div>Uploading ...</div>',
+                     baseZ: 2000,
+                     overlayCSS: { backgroundColor: '#fff', opacity: 0.8, cursor: 'wait' },
+                     css: { border: 0, padding: '10px 15px', color: '#333', width: 'auto', backgroundColor: 'transparent' }
+                 });
+                 reportDropzone.processQueue();
+             });
+
+             this.on("sending", function(file, xhr, formData) {
+                 formData.append("id", $('.optician-refrrel-id').val());
+                 formData.append("name", $('#reports-modal select[name=document_name]').val());
+                 formData.append("_token", $('#token').val());
+             });
+
+             this.on("success", function(file, xhr) {
+                 var response = JSON.parse(xhr);
+                 if (response.error === false) {
+                     var followup_id = $('.followup-id').val();
+                     if (response.ext === "pdf") {
+                         $('.report-container').append('<div class="report-image report-pdf">'+
+                             '<a href="../public/uploads/optician-referral/followup/'+followup_id+'/'+response.name+'" class="open-pdf">'+
+                             '<img class="img-thumbnail" src="../public/images/pdf.png" alt="">'+
+                             '<span>'+$('#reports-modal select[name=document_name]').val()+'</span>'+
+                             '</a>'+
+                             '<input type="hidden" name="report_name" value="'+response.name+'">'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                             '</div>');
+                     } else {
+                         $('.report-container').append('<div class="report-image">'+
+                             '<a data-fancybox="gallery" href="../public/uploads/optician-referral/followup/'+followup_id+'/'+response.name+'">'+
+                             '<img class="img-thumbnail" src="../public/uploads/optician-referral/followup/'+followup_id+'/'+response.name+'" alt="">'+
+                             '<span>'+$('#reports-modal select[name=document_name]').val()+'</span>'+
+                             '</a>'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                             '<input type="hidden" name="report_name" value="'+response.name+'">'+
+                             '</div>');
+                     }
+                     toastr.success('Uploaded Succefully', 'Document uploaded Succefully.');
+                 } else {
+                     toastr.error('Upload Error', response.message);
+                 }
+                 reportDropzone.removeFile(file);
+                 $('#reports-modal').modal('hide');
+                 $.unblockUI();
+             });
+
+             this.on("error", function(file, message) {
+                 toastr.error('Error', message);
+                 this.removeFile(file);
+             });
+         },
+     });
     //
     /*$('body').on('click', '.report-delete', function () {
         var ele = $(this).parent('.report-image'),

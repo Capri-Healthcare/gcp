@@ -577,13 +577,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Glaucoma Care Plan Require<span class="form-required">*</span></label>
+                                    <label>Glaucoma Care Plan Require</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-check-box"></i></span>
                                         </div>
                                         <select name="patient[gcp_required]" class="custom-select" id="gcp_required"
-                                                required>
+                                                >
                                             <option value="">Select GCP</option>
                                             <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
                                                 YES

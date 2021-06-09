@@ -137,13 +137,13 @@ class Patient extends Model
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET title = ?, `firstname` = ?, `lastname` = ?, `email` = ?,`mobile` = ?, 
 		`dob` = ?, `gender` = ?,
 		`is_patient_have_any_disabilities` = ?,`special_requirements` = ?, 
-		`address` = ?, `nhs_patient_number` = ?, `gp_name` = ?,`gp_practice` = ?, `gp_address` = ?, `history` = ?, `other` = ?,  `is_glaucoma_required` = ?, `gcp_followup_frequency` = ?,`hospital_code` = ?, `first_payment` = ?, `regular_payment` = ? ,
+		`address` = ?, `nhs_patient_number` = ?, `gp_name` = ?,`gp_practice` = ?, `gp_address` = ?, `history` = ?, `other` = ?,  `is_glaucoma_required` = ?,`hospital_code` = ?, `first_payment` = ?, `regular_payment` = ? ,
 		`how_the_account_is_to_be_settled` = ?, `policyholders_name` = ?, `medical_insurers_name` = ?, `membership_number` = ?, `scheme_name` = ?, `authorisation_number` = ?, 
 		`corporate_company_scheme` = ?, `employer` = ?
 		WHERE `id` = ?",
             array($this->database->escape($data['title']), $this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $data['mail'], $this->database->escape($data['mobile']),
                 $this->database->escape($data['dob']), $this->database->escape($data['gender']), $this->database->escape($data['disabilities_details']), $data['special_requirements'],
-                $data['address'], $data['nhs_patient_number'], $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['history'], $data['other'], $this->database->escape($data['gcp_required']), $this->database->escape($data['followup']),$this->database->escape($data['hospital_code']), $this->database->escape($data['first_payment']), $this->database->escape($data['regular_payment']),
+                $data['address'], $data['nhs_patient_number'], $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['history'], $data['other'], $this->database->escape($data['gcp_required']),$this->database->escape($data['hospital_code']), $this->database->escape($data['first_payment']), $this->database->escape($data['regular_payment']),
                 $data['how_the_account_is_to_be_settled'], $data['policyholders_name'], $data['medical_insurers_name'], $data['membership_number'], $data['scheme_name'],
                 $data['authorisation_number'], $data['corporate_company_scheme'], $this->database->escape($data['employer']),
                 (int)$data['id']));

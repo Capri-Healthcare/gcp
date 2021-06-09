@@ -38,7 +38,6 @@ class OpticianReferralController extends Controller
         }
 
 
-
         $data['result'] = $this->model_opticianreferral->getOpticianReferrals($data['period'], $this->session->data['user_id'], $data['common']['user']['role']);
 
         $data['page_title'] = 'Referrals';
@@ -95,6 +94,9 @@ class OpticianReferralController extends Controller
          * Check if id exist in url if not exist then redirect to Optician Referral list view
          **/
         $id = (int)$this->url->get('id');
+        $status = $this->url->get('status');
+
+
         if (empty($id) || !is_int($id)) {
             $this->url->redirect('optician-referral');
         }
@@ -109,28 +111,42 @@ class OpticianReferralController extends Controller
             $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Optician Referral does not exist in database!');
             $this->url->redirect('optician-referral');
         }
+        if (empty($status)) {
 
-        $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true : false;
-
-
-        $this->load->model('commons');
-        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+            $data['page_edit'] = $this->user_agent->hasPermission('optician-referral/edit') ? true : false;
 
 
-        /* Set confirmation message if page submitted before */
-        if (isset($this->session->data['message'])) {
-            $data['message'] = $this->session->data['message'];
-            unset($this->session->data['message']);
+            $this->load->model('commons');
+            $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+
+
+            /* Set confirmation message if page submitted before */
+            if (isset($this->session->data['message'])) {
+                $data['message'] = $this->session->data['message'];
+                unset($this->session->data['message']);
+            }
+
+            $data['page_title'] = 'Edit Referral Details';
+
+
+            $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
+            $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/edit';
+
+            /*Render Optician Referral edit view*/
+            $this->response->setOutput($this->load->view('optician_referral/optician_referral_edit_form', $data));
+        } else {
+            $referral['id'] = $id;
+            $referral['status'] = $status;
+
+            if ($this->model_opticianreferral->updateStatus($referral)) {
+                $this->referralMail($id);
+                $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral Status Updated.!');
+
+            } else {
+                $this->session->data['message'] = array('alert' => 'danger', 'value' => 'Optician Referral Status Not Updated.!');
+            }
+            $this->url->redirect('optician-referral');
         }
-
-        $data['page_title'] = 'Edit Referral Details';
-
-
-        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-        $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician-referral/edit';
-
-        /*Render Optician Referral edit view*/
-        $this->response->setOutput($this->load->view('optician_referral/optician_referral_edit_form', $data));
     }
 
     public function indexView()
@@ -219,7 +235,7 @@ class OpticianReferralController extends Controller
             if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
 
                 if (trim($data['referral']['status']) == 'ACCEPTED') {
-                       $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
+                    $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
 
                     if (empty($patient['id'])) {
                         $patient['firstname'] = $data['referral']['first_name'];
@@ -259,7 +275,6 @@ class OpticianReferralController extends Controller
             $data['referral']['user_id'] = $this->session->data['user_id'];
             $opticianID = $this->model_opticianreferral->createOpticianReferral($data['referral']);
             if (!empty($opticianID)) {
-                $this->referralMail($opticianID);
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral created successfully.');
                 $this->url->redirect('optician-referral/edit&id=' . $opticianID . '&document=true');
             } else {
@@ -519,6 +534,7 @@ class OpticianReferralController extends Controller
         $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')['GCP Secretary']);
 
         $referral = $this->model_opticianreferral->getOpticianReferral($id);
+
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 

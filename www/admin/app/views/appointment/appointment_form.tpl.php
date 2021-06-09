@@ -147,16 +147,16 @@
                                 <div class="form-group"
                                      style="display:<?php echo ($result['is_glaucoma_required'] == 'YES') ? "block" : "none" ?>"
                                      id="gcp_followup_frequency">
-                                    <label>GCP Followup Frequency<span class="form-required">*</span></label>
+                                    <label>GCP Followup / Next Appointment<span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-check-box"></i></span>
                                         </div>
                                         <select name="appointment[followup]" id="id_gcp_followup_frequency"
                                                 class="custom-select">
-                                            <option value="">Select Followup</option>
+                                            <option value="">Select Month</option>
                                             <?php foreach (constant('FOLLOW_UP_DROPDOWN') as $key => $followup) { ?>
-                                                <option value="<?php echo $key ?>" <?php echo ($result['gcp_followup_frequency'] == $key) ? "Selected" : "" ?>><?php echo $followup; ?></option>
+                                                <option value="<?php echo $key ?>" <?php echo ($result['gcp_next_appointment'] == $key) ? "Selected" : "" ?>><?php echo $followup; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

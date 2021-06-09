@@ -59,6 +59,24 @@ class Followup extends Model
 
     }
 
+    public function updateFollowupStatus($data)
+    {
+
+        if(isset($data['hospitalcode']))
+        {
+            $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `followup_status` = ?,`modified_at` = ?,`hospital_code` = ? WHERE `id` = ?", array($this->database->escape($data['status']), date('Y-m-d H:i:s'),$data['hospitalcode'], $data['id']));
+
+        }else{
+            $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `followup_status` = ?,`modified_at` = ? WHERE `id` = ?", array($this->database->escape($data['status']), date('Y-m-d H:i:s'), $data['id']));
+        }
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     public function getFollowupByID($id)
     {
         $query = $this->database->query("Select f.*,p.email From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE f.id = " . $id);

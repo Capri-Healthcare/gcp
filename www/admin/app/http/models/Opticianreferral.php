@@ -64,6 +64,18 @@ class Opticianreferral extends Model
         }
     }
 
+    public function updateStatus($data)
+    {
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "referral_list` SET `status` = ?,`updated_at` = ? WHERE `id` = ?", array($this->database->escape($data['status']), date('Y-m-d H:i:s'), $data['id']));
+
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     public function createOpticianReferral($data)
     {
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "referral_list` (`first_name`, `last_name`,`mobile`,`email`,`gender`, `dob`, `address1`, `address2`, `city`, `zip_code`,`created_by`,`created_at`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", array($this->database->escape($data['first_name']), $data['last_name'], $this->database->escape($data['mobile']), $this->database->escape($data['email']), $this->database->escape($data['gender']), date("Y-m-d", strtotime($data['dob'])), $this->database->escape($data['address_1']), $this->database->escape($data['address_2']), $this->database->escape($data['city']), $this->database->escape($data['zip_code']), $this->database->escape($data['user_id']), date('Y-m-d H:i:s')));

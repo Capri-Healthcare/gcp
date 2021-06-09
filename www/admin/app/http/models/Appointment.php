@@ -97,7 +97,7 @@ class Appointment extends Model
 
     public function updateAppointment($data)
     {
-        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?,`is_glaucoma_required` = ?,`gcp_followup_frequency`= ? , `slot` = ?, `department_id` = ?, `status` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ? WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['gcp_required'], $data['followup'], $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], (int)$data['id']));
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?,`is_glaucoma_required` = ?,`gcp_next_appointment`= ? , `slot` = ?, `department_id` = ?, `status` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ? WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['gcp_required'], $data['followup'], $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], (int)$data['id']));
 
         if ($query->num_rows > 0) {
             return true;
@@ -361,9 +361,11 @@ class Appointment extends Model
     public function moveimagefromopticiantoappointment($data)
     {
         if (isset($data['followupid'])) {
+
             $images = $this->database->query("SELECT * FROM kk_referral_list_document WHERE followup_id='" . $data['followupid'] . "'");
         }
         if (isset($data['referralid'])) {
+
             $images = $this->database->query("SELECT * FROM kk_referral_list_document WHERE referral_list_id='" . $data['referralid'] . "'");
 
         }
@@ -375,11 +377,11 @@ class Appointment extends Model
                     mkdir($report_folder, 0777, true);
                 }
                 if (isset($data['followupid'])) {
-                    $source_path = DIR . "public/uploads/optician-referral/document/" .$data['followupid']. '/' . $doc['filename'];
+                    $source_path = DIR . "public/uploads/optician-referral/followup/" .$data['followupid']. '/' . $doc['filename'];
                 }
                 if (isset($data['referralid'])) {
-                    $source_path = DIR . "public/uploads/optician-referral/document/" . $data['referralid']. '/' . $doc['filename'];
 
+                    $source_path = DIR . "public/uploads/optician-referral/document/" . $data['referralid']. '/' . $doc['filename'];
                 }
                 $destination_path = $report_folder . '/' . $doc['filename'];
                 copy($source_path, $destination_path);
