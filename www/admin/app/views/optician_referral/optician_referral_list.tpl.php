@@ -82,7 +82,7 @@
                                 <td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
                                 <?php if ($value['status'] == 'ACCEPTED') { ?>
                                     <td>
-                                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&referralid=' . $value['id']; ?>"
+                                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&referralid=' . $value['id'].'&opticianid=' . $value['created_by']; ?>"
                                            class="btn btn-sm btn-primary" data-toggle="tooltip"
                                            title="Book Appointment">&nbsp;Book Appointment</a></td>
 

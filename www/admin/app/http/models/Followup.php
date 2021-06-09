@@ -31,8 +31,7 @@ class Followup extends Model
             if ($data['period']['status'] == null) {
 
                 $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id  WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' ORDER BY created_at DESC ");
-            }
-            else{
+            } else {
                 $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id  WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND payment_status = '" . $data['period']['status'] . "' ORDER BY created_at DESC ");
             }
         }
@@ -62,11 +61,10 @@ class Followup extends Model
     public function updateFollowupStatus($data)
     {
 
-        if(isset($data['hospitalcode']))
-        {
-            $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `followup_status` = ?,`modified_at` = ?,`hospital_code` = ? WHERE `id` = ?", array($this->database->escape($data['status']), date('Y-m-d H:i:s'),$data['hospitalcode'], $data['id']));
+        if (isset($data['hospitalcode'])) {
+            $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `followup_status` = ?,`modified_at` = ?,`hospital_code` = ? WHERE `id` = ?", array($this->database->escape($data['status']), date('Y-m-d H:i:s'), $data['hospitalcode'], $data['id']));
 
-        }else{
+        } else {
             $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `followup_status` = ?,`modified_at` = ? WHERE `id` = ?", array($this->database->escape($data['status']), date('Y-m-d H:i:s'), $data['id']));
         }
         if ($query->num_rows > 0) {
@@ -90,12 +88,13 @@ class Followup extends Model
 
     public function createFollowup($data)
     {
-        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "followup_appointment` (`patient_id`, `due_date`,`payment_status`,`followup_status`,`created_at`) VALUES (?,?,?,?,?)", array($this->database->escape($data['patient_id']), $data['due_date'], $this->database->escape($data['payment_status']), $this->database->escape($data['followup_status']), date('Y-m-d H:i:s')));
+
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "followup_appointment` (`patient_id`,`optician_id`,`due_date`,`created_at`) VALUES (?,?,?,?)", array($this->database->escape($data['patient_id']), $data['optician_id'], $data['due_date'], date('Y-m-d H:i:s')));
 
         if ($query->num_rows > 0) {
-            return $this->database->last_id();
+            return true;
         } else {
-            return $query->row;
+            return false;
         }
     }
 

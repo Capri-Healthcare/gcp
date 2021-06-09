@@ -141,7 +141,7 @@ class Appointment extends Model
 
     public function createAppointment($data)
     {
-        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "appointments` (`name`, `email`, `mobile`, `date`, `time`, `slot`, `department_id`, `status`, `doctor_id`, `patient_id`, `date_of_joining`, `appointment_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['datetime'], $data['appointment_id']));
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "appointments` (`optician_id`,`name`, `email`, `mobile`, `date`, `time`, `slot`, `department_id`, `status`, `doctor_id`, `patient_id`, `date_of_joining`, `appointment_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?) ", array($data['optician_id'],$this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['datetime'], $data['appointment_id']));
 
         if ($query->num_rows > 0) {
             return $this->database->last_id();

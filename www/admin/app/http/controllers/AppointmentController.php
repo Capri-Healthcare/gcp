@@ -43,7 +43,7 @@ class AppointmentController extends Controller
         if ($data['common']['user']['role_id'] == '3' && $data['common']['info']['doctor_access'] == '1') {
             $data['result'] = $this->model_appointment->getAppointments($data['period'], $data['common']['user']['doctor']);
         } else {
-            $data['result'] = $this->model_appointment->getAppointments($data['period'],null,$data['common']['user']['role']);
+            $data['result'] = $this->model_appointment->getAppointments($data['period'], null, $data['common']['user']['role']);
         }
 
         $data['doctors'] = $this->model_commons->getAppointmentDoctors();
@@ -301,7 +301,6 @@ class AppointmentController extends Controller
         $this->load->model('appointment');
         if (!empty($data['appointment']['id'])) {
 
-
             // Update Appointment Info
             if ($data['form_type'] == 'appointment_info') {
 
@@ -332,6 +331,20 @@ class AppointmentController extends Controller
                 }
 
                 $result = $this->model_appointment->updateAppointment($data['appointment']);
+
+
+                if($data['appointment']['gcp_required'] == 'YES')
+                {
+                    $this->load->model('followup');
+                    $followup['patient_id'] = $data['appointment']['patient_id'];
+                    $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
+                    $followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "month", strtotime(date('Y-m-d'))));
+
+                    $this->model_followup->createFollowup($followup);
+
+                }
+
+
                 $this->load->model('patient');
 
                 $patient['id'] = $data['appointment']['patient_id'];
