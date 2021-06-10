@@ -338,7 +338,7 @@ class AppointmentController extends Controller
                     $this->load->model('followup');
                     $followup['patient_id'] = $data['appointment']['patient_id'];
                     $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
-                    $followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "month", strtotime(date('Y-m-d'))));
+                    $followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "days", strtotime(date('Y-m-d'))));
 
                     $this->model_followup->createFollowup($followup);
 

@@ -64,7 +64,7 @@ define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not sui
 define('STATUS_MED_ROLE', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable']);
 
 define('DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields' => 'Visual fields','OCT' => 'OCT']);
-define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields - Left eye' => 'Visual fields - Left eye','Visual fields - Right eye' => 'Visual fields - Right eye','OCT - Left eye' => 'OCT - Left eye','OCT - Right eye' => 'OCT - Right eye']);
+define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter', 'Visual fields - Right eye' => 'Visual fields - Right eye', 'Visual fields - Left eye' => 'Visual fields - Left eye', 'OCT - Right eye' => 'OCT - Right eye', 'OCT - Left eye' => 'OCT - Left eye', 'Fundus - Right eye' => 'Fundus - Right eye', 'Fundus - Left eye' => 'Fundus - Left eye']);
 
 define('USER_ROLE_ID', ['Med. Secretary'=>'7','GCP Secretary'=>'11']);
 define('CC','chetanthumar@gmail.com,sanjay.makwana@tiez.nl');
