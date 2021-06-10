@@ -77,7 +77,7 @@ class Followup extends Model
 
     public function getFollowupByID($id)
     {
-        $query = $this->database->query("Select f.*,p.email From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE f.id = " . $id);
+        $query = $this->database->query("Select f.*,p.email,p.title,p.firstname,p.lastname,p.nhs_patient_number From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE f.id = " . $id);
 
         if ($query->num_rows > 0) {
             return $query->row;

@@ -96,6 +96,10 @@ class FollowupController extends Controller
             if (array_key_exists($status, constant('STATUS_PAYMENT')) && $data['common']['user']['role'] == constant('USER_ROLE_GCP')) {
 
                 if ($this->model_followup->updateFollowup($data)) {
+                    if($status == 'PAID')
+                    {
+                        $this->opticianFollowUpMail($id);
+                    }
                     $this->session->data['message'] = array('alert' => 'success', 'value' => 'Followup updated successfully.');
                 } else {
                     $this->session->data['message'] = array('alert' => 'error', 'value' => 'Followup status not updated successfully.');
@@ -121,6 +125,42 @@ class FollowupController extends Controller
         } else {
             $this->response->setOutput($this->load->view('followup/followup_edit_form', $data));
         }
+    }
+
+    public function opticianFollowUpMail($id)
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate('notification_to_optician_for_follow_up');
+
+
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+
+        $this->load->model('followup');
+        $patient  = $this->model_followup->getFollowupByID($id);
+
+        $this->load->model('user');
+        $optician = $this->model_user->getUser($patient['optician_id']);
+
+        $link = '<a href="' . URL . 'admin">Optom Dashboard</a>';
+        $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{patient fname, lname}', $patient['firstname']." ".$patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{followup_date}', $patient['due_date'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('Optom Dashboard', $link, $result['template']['message']);
+
+        $data['email'] = $optician['email'];
+        $data['cc'] = $patient['email'];
+        $data['subject'] = str_replace('{patient_title}', $patient['title'], $result['template']['subject']);
+        $data['subject'] = str_replace('{patient_fname, lname}', $patient['firstname']." ".$patient['lastname'], $data['subject']);
+        $data['subject'] = str_replace('{nhs_number}', $patient['nhs_patient_number'], $data['subject']);
+        $data['message'] = $result['template']['message'];
+
+        return $this->controller_mail->sendMail($data);
     }
 
     public function documentUpload()

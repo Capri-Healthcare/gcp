@@ -7,21 +7,21 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="input-box">
-                        <input type="text" name="firstname" pattern="[A-Z,a-z, ]*" id="register-first-name" value="test">
+                        <input type="text" name="firstname" pattern="[A-Z,a-z, ]*" id="register-first-name" value="Sanjay">
                         <label for="register-first-name"><?php echo $lang['text_first_name']; ?> <em> *</em></label>
                         <span><?php echo $lang['text_name_error']; ?></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-box">
-                        <input type="text" name="lastname" pattern="[A-Z,a-z, ]*" id="register-last-name" value="test tes">
+                        <input type="text" name="lastname" pattern="[A-Z,a-z, ]*" id="register-last-name" value="Makwana">
                         <label for="register-last-name"><?php echo $lang['text_last_name']; ?> <em> *</em></label>
                         <span><?php echo $lang['text_name_error']; ?></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-box">
-                        <input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="register-email" value="test12345@gmail.com">
+                        <input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="register-email" value="itplanet99@gmail.com">
                         <label for="register-email"><?php echo $lang['text_email_address']; ?> <em> *</em></label>
                         <span><?php echo $lang['text_email_error']; ?></span>
                     </div>

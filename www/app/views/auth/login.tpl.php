@@ -15,6 +15,16 @@
                 <span><?php echo $lang['text_password_error']; ?></span>
                 <a href="<?php echo URL.DIR_ROUTE.'forgot'; ?>" class="forgot-pass"><?php echo $lang['text_forgot_password']; ?>?</a>
             </div>
+            <div class="input-box">
+                <label for="login-role"><?php echo $lang['text_role']; ?> <em> *</em></label>
+                <select class="" name="role" id="login-role" name="role" required>
+                    <option value="" selected>Select Role</option>
+                    <?php foreach (constant('ROLE') as $key => $role) { ?>
+                        <option value="<?php echo $key ?>"><?php echo $role; ?></option>
+                    <?php } ?>
+                </select>
+                <span class=""><?php echo $lang['text_role_error']; ?></span>
+            </div>
             <div class="input-box form-bot-check">
                 <input class="" type="number" name="bot-check" id="login-bot" required>
                 <label class="" for="login-bot"><?php echo $lang['text_what_is'].' '.rand(1,10).' '.$lang['text_plus'].' '. rand(1,10); ?> = <em> *</em></label>

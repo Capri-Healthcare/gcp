@@ -129,34 +129,35 @@ class RegisterController extends Controller
 		$this->load->model('commons');
 		$result = $this->model_commons->getTemplateAndInfo('newopticianuser');
 
+
+
 		$link = '<a href="'.URL.'admin">Click Here</a>';
-		$contact_link = '<a href="'.URL.DIR_ROUTE.'contact">Click Here</a>';
 		$verify_link = '<a href="'.URL.DIR_ROUTE.'register/verify&id='.$data['email'].'&code='.$data['temp_hash'].'">Verify</a>';
 
-		$result['template']['message'] = str_replace('{firstname}', $data['firstname'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{name}', $data['firstname'].' '.$data['lastname'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{email}', $data['email'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{mobile}', $data['mobile'], $result['template']['message']);
+		$result['template']['message'] = str_replace('{user_fname}', $data['firstname'], $result['template']['message']);
+		$result['template']['message'] = str_replace('{user_lname}', $data['lastname'], $result['template']['message']);
 		$result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{contact_link}', $contact_link, $result['template']['message']);
 		
-		$result['template']['message'] = str_replace('{URL}', $link, $result['template']['message']);
-		$result['template']['message'] = str_replace('{username}', $data['email'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{password}', $data['password'], $result['template']['message']);
+		$result['template']['message'] = str_replace('{url}', $link, $result['template']['message']);
+		$result['template']['message'] = str_replace('{user_name}', $data['email'], $result['template']['message']);
+		$result['template']['message'] = str_replace('{user_password}', $data['password'], $result['template']['message']);
 				
 
 		$mail['name'] = $data['firstname'].' '.$data['lastname'];
 		$mail['email'] = $data['email'];
+		$mail['cc'] = constant('CC');
 		$mail['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
 		$mail['message'] = $result['template']['message'];
 
 		$this->load->controller('mail');
 		$mail_result = $this->controller_mail->sendMail($mail);
+
 		if ($mail_result == 1) {
 			//$this->session->data['message'] = array('alert' => 'error', 'value' => 'Success: Message sent successfully.');
 		} else {
 			//$this->session->data['message'] = array('alert' => 'error', 'value' => $mail_result);
 		}
+
 	}
 
 	private function sendMail($data)

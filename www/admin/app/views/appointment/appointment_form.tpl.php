@@ -62,7 +62,7 @@
                         <input type="hidden" class="appointment-id" name="appointment[id]"
                                value="<?php echo $result['id']; ?>">
 
-                        <input type="text" class="appointment-id" name="appointment[optician_id]"
+                        <input type="hidden" class="appointment-id" name="appointment[optician_id]"
                                value="<?php echo $result['optician_id']; ?>">
 
                         <div id="apnt-info" class="row">

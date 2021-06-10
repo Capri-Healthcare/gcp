@@ -262,11 +262,14 @@ class OpticianReferralController extends Controller
                         $data['patientid'] = $this->model_patient->createPatient($patient);
 
                         if (!empty($data['patientid'])) {
+
                             $this->model_opticianreferral->updatePatientID($data);
-                            $this->patientMail($data['id']);
+
+                            $this->patientMail($data['patientid']);
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
                             $this->url->redirect('patient/edit&id=' . $data['patientid']);
                         }
+
                     } else {
                         $this->url->redirect('patient/edit&id=' . $patient['id']);
                     }
@@ -506,6 +509,7 @@ class OpticianReferralController extends Controller
         $this->load->controller('mail');
         $result = $this->controller_mail->getTemplate('newpatient');
 
+
         if (empty($result['template']) || $result['template']['status'] == '0') {
             return false;
         }
@@ -531,14 +535,15 @@ class OpticianReferralController extends Controller
     public function referralMail($id)
     {
         $this->load->controller('mail');
-        $result = $this->controller_mail->getTemplate('newreferraluser');
+        $result = $this->controller_mail->getTemplate('referral_notification_to_medical_secretary');
 
 
         if (empty($result['template']) || $result['template']['status'] == '0') {
             return false;
         }
         $this->load->model('user');
-        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')['GCP Secretary']);
+        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MED')]);
+
 
         $referral = $this->model_opticianreferral->getOpticianReferral($id);
 
@@ -546,17 +551,14 @@ class OpticianReferralController extends Controller
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
         $link = '<a href="' . URL . 'admin">Click Here</a>';
-        $result['template']['message'] = str_replace('{Opto_fname}', $referral['first_name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{Opto_lname}', $referral['last_name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{med_sec_fullname}', $user_data['firstname'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{med_sec_lname}', $user_data['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{Opto_fname, Opto_lname}', $referral['first_name']." ".$referral['last_name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{med_sec_fname, lname}', $user_data['firstname']." ".$user_data['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{URL}', $link, $result['template']['message']);
+        $result['template']['message'] = str_replace('{dashboard login link}', $link, $result['template']['message']);
 
         $data['email'] = $user_data['email'];
         $data['cc'] = $data['common']['user']['email'];
-        $data['subject'] = str_replace('{Opto_fname}', $referral['first_name'], $result['template']['subject']);
-        $data['subject'] = str_replace('{Opto_lname}', $referral['last_name'], $data['subject']);
+        $data['subject'] = str_replace('{Opto_fname, Opto_lname}', $referral['first_name']." ".$referral['last_name'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];
 
         return $this->controller_mail->sendMail($data);
