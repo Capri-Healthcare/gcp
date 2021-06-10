@@ -12,7 +12,18 @@ class User extends Model
 		return $query->rows;
 	}
 
-	public function getAppointmentView($email, $user_id, $id)
+    public function getUser($id)
+    {
+        $query = $this->database->query("SELECT u.*, d.time, d.weekly, d.national, d.appointment_status, d.department_id FROM `" . DB_PREFIX . "users` AS u LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.user_id = u.user_id WHERE u.user_id = ? LIMIT 1", array($this->database->escape($id)));
+        if ($query->num_rows > 0) {
+            return $query->row;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function getAppointmentView($email, $user_id, $id)
 	{
 		$query = $this->database->query("SELECT a.*, CONCAT(firstname, ' ', lastname) AS doctor, d.picture, dp.name AS department FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS dp ON dp.id = a.department_id WHERE (a.email = ? OR a.patient_id = ? ) AND a.id = ? LIMIT 1", array($this->database->escape($email), (int)$user_id, $this->database->escape($id)));
 		return $query->row;

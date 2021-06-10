@@ -15,17 +15,7 @@ class Login extends Model
 		}
 	}
 
-    public function checkAdminUser($data)
-    {
-        $query = $this->database->query( "SELECT `user_id`, `user_role`, `firstname`, `lastname`, `email`, `mobile`, `password`, `status` FROM `" . DB_PREFIX . "users` WHERE `email` = ? AND `user_role` = ? AND `status` = ? LIMIT 1", array($data['email'],$data['role'], 1));
-        if ($query->num_rows) {
-            return $query->row;
-        } else {
-            return false;
-        }
-    }
-
-    public function checkAttempts($email)
+	public function checkAttempts($email)
 	{
 		$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "login_attempts` WHERE `email` = ?", array($this->database->escape($email)));
 		if ($query->num_rows > 0) {
