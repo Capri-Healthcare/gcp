@@ -33,6 +33,14 @@ class FollowupController extends Controller
             $followup['period']['start'] = date_format(date_create(date('Y-m-d') . '00:00:00'), "Y-m-d H:i:s");
             $followup['period']['end'] = date_format(date_create(date('Y-m-d') . '23:59:59'), "Y-m-d H:i:s");
 
+            if( $data['common']['user']['role'] == constant('USER_ROLE_MED'))
+            {
+                $followup['period']['status'] = 'NEW';
+            }
+            else{
+                $followup['period']['status'] = 'PAID';
+            }
+
         }
         $data['result'] = $this->model_followup->getFollowup($followup);
 
@@ -66,6 +74,7 @@ class FollowupController extends Controller
 
         $this->load->model('commons');
         $this->load->model('followup');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
         $data['reports'] = $this->model_followup->getOpticianReferralDocumnet($id);
 
         /* Set confirmation message if page submitted before */
@@ -84,7 +93,8 @@ class FollowupController extends Controller
             $data['id'] = $id;
             $data['status'] = $status;
 
-            if (array_key_exists($status, constant('STATUS_PAYMENT')) && $status != 'NOT_SUITABLE') {
+            if (array_key_exists($status, constant('STATUS_PAYMENT')) && $data['common']['user']['role'] == constant('USER_ROLE_GCP')) {
+
                 if ($this->model_followup->updateFollowup($data)) {
                     $this->session->data['message'] = array('alert' => 'success', 'value' => 'Followup updated successfully.');
                 } else {
@@ -109,10 +119,6 @@ class FollowupController extends Controller
                 exit();
             }
         } else {
-
-            $this->load->model('commons');
-            $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
-
             $this->response->setOutput($this->load->view('followup/followup_edit_form', $data));
         }
     }

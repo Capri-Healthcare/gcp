@@ -42,6 +42,8 @@ define('USER_FOLLOWUP_MED_ROLE', ['Med. Secretary', 'Admin','Optometrist']);
 define('USER_FOLLOWUP_GCP_ROLE', ['Admin','GCP Secretary']);
 define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist','GCP Secretary']);
 define('USER_ROLE_OPTOMETRIST', 'Optometrist');
+define('USER_ROLE_MED', 'Med. Secretary');
+define('USER_ROLE_GCP', 'GCP Secretary');
 
 define('FOLLOW_UP_DROPDOWN', [
         '1' => '1 Month',
@@ -59,6 +61,7 @@ define('FOLLOW_UP_DROPDOWN', [
 
 ]);
 define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable','DRAFT' => 'Draft']);
+define('STATUS_MED_ROLE', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable']);
 
 define('DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields' => 'Visual fields','OCT' => 'OCT']);
 define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields - Left eye' => 'Visual fields - Left eye','Visual fields - Right eye' => 'Visual fields - Right eye','OCT - Left eye' => 'OCT - Left eye','OCT - Right eye' => 'OCT - Right eye']);
@@ -86,3 +89,5 @@ define('HOSPITAL_LIST', [
 
 define('STATUS_PAYMENT', ['PAID' => 'Paid','UNPAID' => 'Unpaid','NOT_SUITABLE' => 'Not suitable']);
 define('STATUS_FOLLOWUP', ['NEW' => 'New','OPTICIAN_REVIEWED' => 'Optician Reviewed','ACCEPTED' => 'Accepted','NOT_SUITABLE' => 'Not suitable']);
+define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
+define('STATUS_FOLLOWUP_NEW', 'NEW');

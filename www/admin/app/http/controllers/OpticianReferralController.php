@@ -33,8 +33,15 @@ class OpticianReferralController extends Controller
             $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
             $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
         } else {
-            $data['period']['start'] = date('Y-m-d');
-            $data['period']['end'] = date('Y-m-d');
+            $data['period']['start'] = date('Y-m-d ' . '00:00:00');
+            $data['period']['end'] = date('Y-m-d ' . '23:59:59');
+            if( $data['common']['user']['role'] == constant('USER_ROLE_MED'))
+            {
+                $followup['period']['status'] = 'NEW';
+            }
+            else{
+                $followup['period']['status'] = 'DRAFT';
+            }
         }
 
 

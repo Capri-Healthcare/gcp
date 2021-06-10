@@ -19,9 +19,15 @@
                     <i class="ti-filter text-danger pr-2"></i>
                     <select class="status" style="border: 0px;">
 
-                        <?php foreach (constant('STATUS') as $key => $status) { ?>
-                            <option value="<?php echo $key ?>" <?php echo ($key == 'DRAFT') ? 'selected' : '' ?>><?php echo $status; ?></option>
-                        <?php } ?>
+                        <?php if ($common['user']['role'] == constant('USER_ROLE_MED')) { ?>
+                            <?php foreach (constant('STATUS_MED_ROLE') as $key => $status) { ?>
+                                <option value="<?php echo $key ?>" <?php echo (isset($_GET['status']) && $key == $_GET['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <?php foreach (constant('STATUS') as $key => $status) { ?>
+                                <option value="<?php echo $key ?>" <?php echo (isset($_GET['status']) && $key == $_GET['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                            <?php } ?>
+                        <?php }?>
                     </select>
                 </div>
                 <?php if ($page_add) { ?>
@@ -82,7 +88,7 @@
                                 <td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
                                 <?php if ($value['status'] == 'ACCEPTED') { ?>
                                     <td>
-                                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&referralid=' . $value['id'].'&opticianid=' . $value['created_by']; ?>"
+                                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&referralid=' . $value['id'] . '&opticianid=' . $value['created_by']; ?>"
                                            class="btn btn-sm btn-primary" data-toggle="tooltip"
                                            title="Book Appointment">&nbsp;Book Appointment</a></td>
 
@@ -140,7 +146,7 @@
                     format: $('.common_daterange_format').val(),
                     separator: " => ",
                 },
-                startDate: moment().subtract(6, 'days'),
+                startDate: moment(),
                 endDate: moment(),
                 ranges: {
                     'Today': [moment(), moment()],
