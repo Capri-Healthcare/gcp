@@ -506,22 +506,23 @@ class OpticianReferralController extends Controller
 
     public function patientMail($id)
     {
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+
         $this->load->controller('mail');
         $result = $this->controller_mail->getTemplate('newpatient');
-
 
         if (empty($result['template']) || $result['template']['status'] == '0') {
             return false;
         }
         $patient = $this->model_patient->getPatient($id);
 
-        $link = '<a href="' . URL . DIR_ROUTE . 'contact">Click Here</a>';
-        $password_link = '<a href="' . URL . DIR_ROUTE . 'profile/changepassword&id=' . $patient['email'] . '&code=' . $patient['temp_hash'] . '">Create Password</a>';
-        $result['template']['message'] = str_replace('{firstname}', $patient['firstname'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{name}', $patient['firstname'] . ' ' . $patient['lastname'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{email}', $patient['email'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{mobile}', $patient['mobile'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{password_link}', $password_link, $result['template']['message']);
+        $password_link = '<a href="' . URL . DIR_ROUTE . 'profile/changepassword&id=' . $patient['email'] . '&code=' . $patient['temp_hash'] . '">Patient Dashboard</a>';
+        $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{patient_fname, patient_lname}', $patient['firstname'] . ' ' . $patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{user_name}', $patient['email'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{user_password}', $patient['mobile'], $result['template']['message']);
+        $result['template']['message'] = str_replace('Patient Dashboard', $password_link, $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
 
         $data['name'] = $patient['firstname'] . ' ' . $patient['lastname'];
@@ -531,7 +532,6 @@ class OpticianReferralController extends Controller
 
         return $this->controller_mail->sendMail($data);
     }
-
     public function referralMail($id)
     {
         $this->load->controller('mail');
@@ -543,7 +543,6 @@ class OpticianReferralController extends Controller
         }
         $this->load->model('user');
         $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MED')]);
-
 
         $referral = $this->model_opticianreferral->getOpticianReferral($id);
 

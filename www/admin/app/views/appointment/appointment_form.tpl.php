@@ -79,9 +79,7 @@
                                                 <option value="<?php echo $value['id']; ?>"
                                                         data-department="<?php echo $value['department_id']; ?>"
                                                         data-weekly="<?php echo htmlspecialchars($value['weekly'], ENT_QUOTES, 'UTF-8'); ?>"
-                                                        data-national="<?php echo htmlspecialchars($value['national'], ENT_QUOTES, 'UTF-8'); ?>" <?php if ($result['doctor_id'] == $value['id']) {
-                                                    echo "selected";
-                                                } ?> ><?php echo $value['name'] . ' (' . $value['department'] . ')'; ?></option>
+                                                        data-national="<?php echo htmlspecialchars($value['national'], ENT_QUOTES, 'UTF-8'); ?>" <?php echo($result['doctor_id'] == $value['id']) ? 'selected':''?> ><?php echo $value['name'] . ' (' . $value['department'] . ')'; ?></option>
                                             <?php } ?>
                                         </select>
                                         <input type="hidden" class="apnt-department" name="appointment[department]"

@@ -44,6 +44,7 @@ define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist','GCP Secretary']);
 define('USER_ROLE_OPTOMETRIST', 'Optometrist');
 define('USER_ROLE_MED', 'Med. Secretary');
 define('USER_ROLE_GCP', 'GCP Secretary');
+define('USER_ROLE_ADMIN', 'Admin');
 
 define('FOLLOW_UP_DROPDOWN', [
         '1' => '1 Month',
@@ -75,14 +76,14 @@ define('HOSPITAL_LIST', [
         "name"=>'Spire South Bank Hospital',
         "mobile" =>'01905350003',
         "address" =>'139 Bath Road WORCESTER WR5 3YB',
-        "email" =>"hsc@spirehealthcare.com",
+        "email" =>"hospital1@mailinator.com",
         "web" =>"http://www.spirehealthcare.com/southbank"
     ],
     'BTDSH' => [
         "name"=>'BMI The Droitwich Spa Hospital',
         "mobile" =>'01905 793333',
         "address" =>'St Andrews Road DROITWICH WR9 8DN',
-        "email" =>"info@bmihealthcare.co.uk",
+        "email" =>"hospital2@mailinator.com",
         "web" =>"http://www.bmihealthcare.co.uk"
     ]
 ]);
@@ -95,4 +96,5 @@ define('HOSPITAL', [
 define('STATUS_PAYMENT', ['PAID' => 'Paid','UNPAID' => 'Unpaid','NOT_SUITABLE' => 'Not suitable']);
 define('STATUS_FOLLOWUP', ['NEW' => 'New','OPTICIAN_REVIEWED' => 'Optician Reviewed','ACCEPTED' => 'Accepted','NOT_SUITABLE' => 'Not suitable']);
 define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
+define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');
 define('STATUS_FOLLOWUP_NEW', 'NEW');

@@ -133,16 +133,13 @@ class RegisterController extends Controller
 		$contact_link = '<a href="'.URL.DIR_ROUTE.'contact">Click Here</a>';
 		$verify_link = '<a href="'.URL.DIR_ROUTE.'register/verify&id='.$data['email'].'&code='.$data['temp_hash'].'">Verify</a>';
 
-		$result['template']['message'] = str_replace('{firstname}', $data['firstname'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{name}', $data['firstname'].' '.$data['lastname'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{email}', $data['email'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{mobile}', $data['mobile'], $result['template']['message']);
+		$result['template']['message'] = str_replace('{user_fname}', $data['firstname'], $result['template']['message']);
+		$result['template']['message'] = str_replace('{user_lname}', $data['lastname'], $result['template']['message']);
 		$result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{contact_link}', $contact_link, $result['template']['message']);
-		
-		$result['template']['message'] = str_replace('{URL}', $link, $result['template']['message']);
-		$result['template']['message'] = str_replace('{username}', $data['email'], $result['template']['message']);
-		$result['template']['message'] = str_replace('{password}', $data['password'], $result['template']['message']);
+
+		$result['template']['message'] = str_replace('{url}', $link, $result['template']['message']);
+		$result['template']['message'] = str_replace('{user_name}', $data['email'], $result['template']['message']);
+		$result['template']['message'] = str_replace('{user_password}', $data['password'], $result['template']['message']);
 				
 
 		$mail['name'] = $data['firstname'].' '.$data['lastname'];

@@ -107,6 +107,10 @@ class FollowupController extends Controller
 
             } else {
 
+                if($status == constant('STATUS_FOLLOWUP_OPTICIAN')){
+                    $this->notificationToMedicalFollowupAppointment($id);
+                }
+
                 if ($this->model_followup->updateFollowupStatus($data)) {
                     $this->session->data['message'] = array('alert' => 'success', 'value' => 'Followup updated successfully.');
                 } else {
@@ -119,6 +123,8 @@ class FollowupController extends Controller
             $data['hospitalcode'] = $hospitalcode;
             $data['status'] = 'ACCEPTED';
             if ($this->model_followup->updateFollowupStatus($data)) {
+                $this->notificationToTheHospitalPatientDetails($id);
+                //$this->notificationToGCPForPatientFollowup($id);
                 echo "Followup Successfully updated.";
                 exit();
             }
@@ -149,7 +155,7 @@ class FollowupController extends Controller
         $link = '<a href="' . URL . 'admin">Optom Dashboard</a>';
         $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
         $result['template']['message'] = str_replace('{patient fname, lname}', $patient['firstname']." ".$patient['lastname'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{followup_date}', $patient['due_date'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y',strtotime($patient['due_date'])), $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('Optom Dashboard', $link, $result['template']['message']);
 
@@ -162,6 +168,109 @@ class FollowupController extends Controller
 
         return $this->controller_mail->sendMail($data);
     }
+
+    public function notificationToMedicalFollowupAppointment($id)
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate('notification_to_medical_secretary_for_follow_up_appointment');
+
+
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+
+        $this->load->model('followup');
+        $patient  = $this->model_followup->getFollowupByID($id);
+
+        $this->load->model('user');
+        $user_med_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MED')]);
+
+
+        $link = '<a href="' . URL . 'admin">Medical Secretary Dashboard</a>';
+        $result['template']['message'] = str_replace('med_sec_fname', $user_med_data['firstname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{med_sec_lname}', $user_med_data['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('Medical Secretary Dashboard', $link, $result['template']['message']);
+
+        $data['name'] = $result['template']['name'];
+        $data['email'] = $user_med_data['email'];
+        $data['cc'] = $patient['email'];
+        $data['subject'] = str_replace('{patient_title}', $patient['title'], $result['template']['subject']);
+        $data['subject'] = str_replace('{patient_fname, lname}', $patient['firstname']." ".$patient['lastname'], $data['subject']);
+        $data['subject'] = str_replace('{nhs_number}', $patient['nhs_patient_number'], $data['subject']);
+        $data['message'] = $result['template']['message'];
+
+        return $this->controller_mail->sendMail($data);
+    }
+
+    public function notificationToTheHospitalPatientDetails($id)
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate('notification_to_the_hospital_for_patient_details');
+
+
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+
+        $this->load->model('followup');
+        $patient  = $this->model_followup->getFollowupByID($id);
+        $patient['address'] = json_decode($patient['address'],true);
+
+        $this->load->model('user');
+        $user_med_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MED')]);
+
+
+        $result['template']['message'] = str_replace('{patient name}', $patient['firstname']." ".$patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{name}', $patient['firstname']." ".$patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{address}', $patient['address']['address1']." ".$patient['address']['address2']." ".$patient['address']['city']." ".$patient['address']['country']." ".$patient['address']['postal'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{mobile}', $patient['mobile'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{email}', $patient['email'], $result['template']['message']);
+
+        $data['name'] = $result['template']['name'];
+        $data['email'] = constant('HOSPITAL_LIST')[$patient['hospital_code']]['email'];
+        $data['cc'] = $patient['email'];
+        $data['subject'] = str_replace('{patient_name}', $patient['firstname']." ".$patient['lastname'], $result['template']['subject']);
+        $data['message'] = $result['template']['message'];
+
+        return $this->controller_mail->sendMail($data);
+    }
+
+    public function notificationToGCPForPatientFollowup($id, $template = 'notification_to_gcp_sec_for_patient_follow_up_coming')
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate($template);
+        $this->load->model('followup');
+        $followup  = $this->model_followup->getFollowupByID($id);
+
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+        $this->load->model('user');
+
+        $optician = $this->model_user->getUser($followup['optician_id']);
+        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_GCP')]);
+
+        $result['template']['message'] = str_replace('{gcp_sec_fname}',$user_data['firstname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('gcp_lname', $optician['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y',strtotime($followup['due_date'])), $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+
+        $data['name'] = $result['template']['name'];
+        $data['email'] = $user_data['email'];
+        $data['subject'] = str_replace('{patient_fname, patient_lname}',$followup['firstname']." ".$followup['lastname'], $result['template']['subject']);
+        $data['message'] = $result['template']['message'];
+
+        return $this->controller_mail->sendMail($data);
+    }
+
 
     public function documentUpload()
     {
