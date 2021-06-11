@@ -90,7 +90,7 @@
                                     <td>
                                         <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&referralid=' . $value['id'] . '&opticianid=' . $value['created_by']; ?>"
                                            class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                           title="Book Appointment">&nbsp;Book Appointment</a></td>
+                                           title="Book Appointment">&nbsp;<?php echo($common['user']['role'] != constant('USER_ROLE_MED')) ?'Book Appointment':'Add to list'?></a></td>
 
                                 <?php } ?>
 

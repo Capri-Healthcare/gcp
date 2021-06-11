@@ -188,7 +188,7 @@
                                     <?php if ($result['status'] == 'NEW' && in_array($common['user']['role'], constant('USER_ROLE'))) { ?>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Status</label>
+                                                <label>Referral status</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
@@ -283,7 +283,7 @@
                         <div class="panel-footer text-center">
                             <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/edit&id='.$_GET['id'].'&status=NEW'; ?>"
                                class="btn btn-primary"><i
-                                        class="ti-save-alt pr-2"></i> Submit
+                                        class="ti-save-alt pr-2"></i> Referral submit
                             </a>
                         </div>
                     </div>

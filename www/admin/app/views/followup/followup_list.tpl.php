@@ -132,7 +132,7 @@
                                         <?php if ($value['followup_status'] == 'ACCEPTED' && $common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[1]) { ?>
                                             <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&followupid=' . $value['id'].'&opticianid=' . $value['optician_id']; ?>"
                                                class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                               title="Book Appointment">&nbsp;Book Appointment</a>
+                                               title="Book Appointment">&nbsp;<?php echo($common['user']['role'] != constant('USER_ROLE_MED')) ?'Book Appointment':'Add to list'?></a>
                                         <?php } ?>
 
                                     <?php } ?>

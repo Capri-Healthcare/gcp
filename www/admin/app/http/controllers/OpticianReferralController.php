@@ -37,10 +37,10 @@ class OpticianReferralController extends Controller
             $data['period']['end'] = date('Y-m-d ' . '23:59:59');
             if( $data['common']['user']['role'] == constant('USER_ROLE_MED'))
             {
-                $followup['period']['status'] = 'NEW';
+                $data['period']['status'] = 'NEW';
             }
             else{
-                $followup['period']['status'] = 'DRAFT';
+                $data['period']['status'] = 'DRAFT';
             }
         }
 

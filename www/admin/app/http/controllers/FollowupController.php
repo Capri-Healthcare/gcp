@@ -203,6 +203,7 @@ class FollowupController extends Controller
         $data['subject'] = str_replace('{nhs_number}', $patient['nhs_patient_number'], $data['subject']);
         $data['message'] = $result['template']['message'];
 
+
         return $this->controller_mail->sendMail($data);
     }
 
