@@ -138,7 +138,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Address 1<span class="form-required">*</span></label>
+                                            <label>Address 1</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ti-check-box"></i></span>
@@ -189,16 +189,18 @@
                                     <?php if ($result['status'] == 'NEW' && in_array($common['user']['role'], constant('USER_ROLE'))) { ?>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Referral status</label>
+                                                <label>Referral status<span class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                                     </div>
                                                     <select name="referral[status]" class="custom-select" required>
+                                                        <option value="">Select Status</option>
                                                         <?php foreach (constant('STATUS') as $key => $status) { ?>
+                                                             <?php if(!in_array($key,[constant('STATUS_DRAFT'),constant('STATUS_NEW')])) {?>
                                                             <option value="<?php echo $key ?>" <?php echo ($result['status'] == $key) ? 'selected' : '' ?>><?php echo $status; ?></option>
-                                                        <?php } ?>
+                                                        <?php } } ?>
 
                                                     </select>
                                                 </div>

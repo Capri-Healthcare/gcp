@@ -63,7 +63,7 @@ define('FOLLOW_UP_DROPDOWN', [
 ]);
 define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable','DRAFT' => 'Draft']);
 define('STATUS_NEW', 'NEW');
-define('STATUS_ACCEPTED', 'NEW');
+define('STATUS_ACCEPTED', 'ACCEPTED');
 define('STATUS_DRAFT', 'DRAFT');
 
 define('STATUS_MED_ROLE', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable']);

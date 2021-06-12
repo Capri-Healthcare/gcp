@@ -276,8 +276,8 @@ class OpticianReferralController extends Controller
                         }
 
                     } else {
-                       // $this->url->redirect('patient/edit&id=' . $patient['id'].'&referral=true');
-                        $this->url->redirect('optician-referral');
+                        $this->url->redirect('patient/edit&id=' . $patient['id'].'&referral=true');
+                        //$this->url->redirect('optician-referral');
                     }
                 }
 

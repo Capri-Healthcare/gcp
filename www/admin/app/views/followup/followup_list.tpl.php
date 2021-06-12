@@ -22,15 +22,17 @@
                             <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_GCP_ROLE'))) { ?>
                                 <?php foreach (constant('STATUS_PAYMENT') as $key => $status) { ?>
 
-                                    <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected':''?>>
+                                    <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>>
                                         <?php echo $status; ?></option>
                                 <?php } ?>
                             <?php } ?>
                             <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MED_ROLE'))) { ?>
                                 <?php foreach (constant('STATUS_FOLLOWUP') as $key => $status) { ?>
-                                    <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected':''?>>
-                                        <?php echo $status; ?></option>
-                                <?php } ?>
+                                    <?php if ($common['user']['role'] == constant('USER_ROLE_OPTOMETRIST') || !in_array($key, [constant('STATUS_NEW')])) { ?>
+                                        <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>>
+                                            <?php echo $status; ?></option>
+                                    <?php }
+                                } ?>
                             <?php } ?>
                         </select>
                     </div>
@@ -60,16 +62,18 @@
                         <th>Gender</th>
                         <th>Date of Birth</th>
                         <th>Due for Followup</th>
-                        <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_GCP_ROLE'))) { ?>
-                            <th>Payment Status</th>
-                        <?php }
-                        if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MED_ROLE'))) { ?>
+                        <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MED_ROLE'))) { ?>
                             <th>Followup Status</th>
                         <?php } ?>
                         <th>Date Submited</th>
-                        <?php if ($page_edit) { ?>
-                            <th>Action</th>
+                        <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_GCP_ROLE'))) { ?>
+                            <th>Payment Status</th>
                         <?php } ?>
+                        <?php if ($common['user']['role'] != constant('USER_ROLE_GCP')) { ?>
+                            <?php if ($page_edit) { ?>
+                                <th>Action</th>
+                            <?php }
+                        } ?>
                     </tr>
                     </thead>
 
@@ -94,14 +98,6 @@
                                 <td class="clickable-row"
                                     data-count="<?php echo $key + 1; ?>"><?php echo date("M Y", strtotime($value['due_date'])); ?>
                                 </td>
-                                <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_GCP_ROLE'))) { ?>
-                                    <td><?php if ($value['payment_status'] == 'UNPAID') {
-                                            echo '<a href="' . URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id'] . '&status=PAID" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Mark as Paid">&nbsp;Mark as paid</a></br></br>';
-                                            echo '<a href="' . URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id'] . '&status=NOT_SUITABLE" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Mark as Not Suitable">&nbsp;Not Suitable</a>';
-                                        } else {
-                                            echo constant('STATUS_PAYMENT')[$value['payment_status']];
-                                        } ?></td>
-                                <?php } ?>
                                 <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MED_ROLE'))) { ?>
                                     <td><?php echo constant('STATUS_FOLLOWUP')[$value['followup_status']]; ?></td>
                                 <?php } ?>
@@ -111,32 +107,44 @@
                                 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
 
                                 <td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
-                                <td class="<?php echo ($common['user']['role'] == constant('USER_ROLE_OPTOMETRIST')) ? 'table-action' : '' ?>">
-                                    <?php if ($page_edit) { ?>
-
-                                        <?php if ($common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[0] && $common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[2] && $value['followup_status'] == 'NEW') { ?>
-                                            <a class="pageview<?php echo $key + 1 ?>"
-                                               href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id']; ?>"
-                                               class="text-primary edit" data-toggle="tooltip"
-                                               title="Edit"><i
-                                                        class="ti-pencil-alt"></i></a>
-                                        <?php } ?>
-
-                                    <?php } ?>
-                                    <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MED_ROLE'))) { ?>
-                                        <?php if ($value['followup_status'] != 'ACCEPTED' && $value['followup_status'] != 'NOT_SUITABLE' && $common['user']['role'] == constant('DASHBOARD_NOT_SHOW')[0]) {
-                                            echo '<a href="#" class="btn btn-sm btn-primary btnHospitalPopup" data-toggle="modal" data-id="' . $value['id'] . '">&nbsp;Select Hospital</a></br></br>';
+                                <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_GCP_ROLE'))) { ?>
+                                    <td><?php if ($value['payment_status'] == 'UNPAID') {
+                                            echo '<a href="' . URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id'] . '&status=PAID" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Mark as Paid">&nbsp;Mark as paid</a></br></br>';
                                             echo '<a href="' . URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id'] . '&status=NOT_SUITABLE" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Mark as Not Suitable">&nbsp;Not Suitable</a>';
-                                        } ?>
+                                        } else {
+                                            echo constant('STATUS_PAYMENT')[$value['payment_status']];
+                                        } ?></td>
+                                <?php } ?>
+                                <?php if ($common['user']['role'] != constant('USER_ROLE_GCP')) { ?>
+                                    <td class="<?php echo ($common['user']['role'] == constant('USER_ROLE_OPTOMETRIST')) ? 'table-action' : '' ?>">
+                                        <?php if ($page_edit) { ?>
 
-                                        <?php if ($value['followup_status'] == 'ACCEPTED' && $common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[1]) { ?>
-                                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&followupid=' . $value['id'].'&opticianid=' . $value['optician_id']; ?>"
-                                               class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                               title="Book Appointment">&nbsp;<?php echo($common['user']['role'] != constant('USER_ROLE_MED')) ?'Book Appointment':'Add to list'?></a>
+
+                                            <?php if ($common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[0] && $common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[2] && $value['followup_status'] == 'NEW') { ?>
+                                                <a class="pageview<?php echo $key + 1 ?>"
+                                                   href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id']; ?>"
+                                                   class="text-primary edit" data-toggle="tooltip"
+                                                   title="Edit"><i
+                                                            class="ti-pencil-alt"></i></a>
+                                            <?php } ?>
+
                                         <?php } ?>
+                                        <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MED_ROLE'))) { ?>
+                                            <?php if ($value['followup_status'] != 'ACCEPTED' && $value['followup_status'] != 'NOT_SUITABLE' && $common['user']['role'] == constant('DASHBOARD_NOT_SHOW')[0]) {
+                                                echo '<a href="#" class="btn btn-sm btn-primary btnHospitalPopup" data-toggle="modal" data-id="' . $value['id'] . '">&nbsp;Select Hospital</a></br></br>';
+                                                echo '<a href="' . URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id'] . '&status=NOT_SUITABLE" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Mark as Not Suitable">&nbsp;Not Suitable</a>';
+                                            } ?>
 
-                                    <?php } ?>
-                                </td>
+                                            <?php if ($value['followup_status'] == 'ACCEPTED' && $common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[1]) { ?>
+                                                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&followupid=' . $value['id'] . '&opticianid=' . $value['optician_id']; ?>"
+                                                   class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                                   title="Book Appointment">&nbsp;<?php echo ($common['user']['role'] != constant('USER_ROLE_MED')) ? 'Book Appointment' : 'Add to list' ?></a>
+                                            <?php } ?>
+
+                                        <?php } ?>
+                                    </td>
+                                <?php } ?>
+
 
                             </tr>
                             </a>
@@ -161,7 +169,8 @@
                                 <?php foreach (constant('HOSPITAL_LIST') as $key => $list) { ?>
                                     <div class="custom-control custom-radio custom-radio-1 d-inline-block">
                                         <input type="radio" name="patient[hospital_code]"
-                                               class="custom-control-input hospital_code" value="<?php echo $key; ?>" id="" checked>
+                                               class="custom-control-input hospital_code" value="<?php echo $key; ?>"
+                                               id="" checked>
                                         <label class="custom-control-label" for="prescription_template-template-1">&nbsp;<b><?php echo $list['name'] ?></b></label>
                                         <label class="ml-4 mt-1">
                                             <i class="ti-mobile"></i><?php echo $list['mobile'] ?> &nbsp;&nbsp;<i
@@ -237,7 +246,7 @@
                 if (hospitalcode != undefined) {
                     $.ajax({
                         type: 'GET',
-                        url: 'index.php?route=follow-up/edit&id='+followupId+'&hospitalcode='+hospitalcode,
+                        url: 'index.php?route=follow-up/edit&id=' + followupId + '&hospitalcode=' + hospitalcode,
                         error: function () {
                             toastr.error('Error', 'Please try again...');
                         },
