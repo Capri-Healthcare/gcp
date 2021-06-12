@@ -335,7 +335,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php if (!empty($result['id'])) { ?>
+                            <?php if (isset($_GET['referral'])) { ?>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Select hospital for appoinment</label>

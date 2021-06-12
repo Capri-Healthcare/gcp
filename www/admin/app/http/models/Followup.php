@@ -10,30 +10,13 @@ class Followup extends Model
 
         if ($data['role'] == constant('DASHBOARD_NOT_SHOW')[0]) {
 
-            if ($data['period']['status'] == null) {
-                $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE payment_status ='PAID' AND followup_status != 'NEW' AND created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' ORDER BY created_at DESC ");
-            } else {
-                $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE payment_status ='PAID' AND followup_status != 'NEW' AND created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND followup_status = '" . $data['period']['status'] . "' ORDER BY created_at DESC ");
-            }
+            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE payment_status ='PAID' AND followup_status != 'NEW' AND created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND followup_status = '" . $data['period']['status'] . "' ORDER BY created_at DESC ");
+
         } elseif ($data['role'] == constant('DASHBOARD_NOT_SHOW')[1]) {
+            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND optician_id ='" . $data['id'] . "' AND payment_status = 'PAID' AND followup_status = '" . $data['period']['status'] . "' ORDER BY created_at DESC ");
 
-
-            if ($data['period']['status'] == null) {
-
-                $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND optician_id ='" . $data['id'] . "' AND payment_status = 'PAID' ORDER BY created_at DESC ");
-
-            } else {
-
-                $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND optician_id ='" . $data['id'] . "' AND payment_status = 'PAID' AND followup_status = '" . $data['period']['status'] . "' ORDER BY created_at DESC ");
-
-            }
         } else {
-            if ($data['period']['status'] == null) {
-
-                $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id  WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' ORDER BY created_at DESC ");
-            } else {
-                $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id  WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND payment_status = '" . $data['period']['status'] . "' ORDER BY created_at DESC ");
-            }
+            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id  WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND payment_status = '" . $data['period']['status'] . "' ORDER BY created_at DESC ");
         }
 
         return $query->rows;

@@ -559,8 +559,7 @@ class PatientController extends Controller
         $data['email'] = $patient['email'];
         $data['subject'] = str_replace('{hospital_name}',constant('HOSPITAL_LIST')[$patient['hospital_code']]['name'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];
-
-
+        
         return $this->controller_mail->sendMail($data);
     }
     public function notificationToHospitalForAppointmentBooking($id)

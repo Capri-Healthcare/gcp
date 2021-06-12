@@ -62,6 +62,10 @@ define('FOLLOW_UP_DROPDOWN', [
 
 ]);
 define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable','DRAFT' => 'Draft']);
+define('STATUS_NEW', 'NEW');
+define('STATUS_ACCEPTED', 'NEW');
+define('STATUS_DRAFT', 'DRAFT');
+
 define('STATUS_MED_ROLE', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable']);
 
 define('DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields' => 'Visual fields','OCT' => 'OCT']);
@@ -98,3 +102,5 @@ define('STATUS_FOLLOWUP', ['NEW' => 'New','OPTICIAN_REVIEWED' => 'Optician Revie
 define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
 define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');
 define('STATUS_FOLLOWUP_NEW', 'NEW');
+define('STATUS_PAYMENT_UNPAID', 'UNPAID');
+define('STATUS_PAYMENT_PAID', 'PAID');

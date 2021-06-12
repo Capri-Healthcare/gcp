@@ -21,11 +21,11 @@
 
                         <?php if ($common['user']['role'] == constant('USER_ROLE_MED')) { ?>
                             <?php foreach (constant('STATUS_MED_ROLE') as $key => $status) { ?>
-                                <option value="<?php echo $key ?>" <?php echo (isset($_GET['status']) && $key == $_GET['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                                <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected':''?>><?php echo $status; ?></option>
                             <?php } ?>
                         <?php } else { ?>
                             <?php foreach (constant('STATUS') as $key => $status) { ?>
-                                <option value="<?php echo $key ?>" <?php echo (isset($_GET['status']) && $key == $_GET['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                                <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected':''?>><?php echo $status; ?></option>
                             <?php } ?>
                         <?php }?>
                     </select>

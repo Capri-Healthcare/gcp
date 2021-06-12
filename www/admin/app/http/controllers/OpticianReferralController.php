@@ -32,15 +32,20 @@ class OpticianReferralController extends Controller
         if (!empty($data['period']['start']) && !empty($data['period']['end'])) {
             $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
             $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
+            $data['dropdown_selected'] = $data['period']['status'];
         } else {
             $data['period']['start'] = date('Y-m-d ' . '00:00:00');
             $data['period']['end'] = date('Y-m-d ' . '23:59:59');
-            if( $data['common']['user']['role'] == constant('USER_ROLE_MED'))
-            {
-                $data['period']['status'] = 'NEW';
-            }
-            else{
-                $data['period']['status'] = 'DRAFT';
+
+            if ($data['common']['user']['role'] == constant('USER_ROLE_MED')) {
+                $data['period']['status'] = constant('STATUS_NEW');
+                $data['dropdown_selected'] = constant('STATUS_NEW');
+            } else if ($data['common']['user']['role'] == constant('USER_ROLE_OPTOMETRIST')) {
+                $data['period']['status'] = constant('STATUS_DRAFT');
+                $data['dropdown_selected'] = constant('STATUS_DRAFT');
+            } else {
+                $data['period']['status'] = constant('STATUS_NEW');
+                $data['dropdown_selected'] = constant('STATUS_NEW');
             }
         }
 
@@ -267,11 +272,12 @@ class OpticianReferralController extends Controller
 
                             $this->patientMail($data['patientid']);
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
-                            $this->url->redirect('patient/edit&id=' . $data['patientid']);
+                            $this->url->redirect('patient/edit&id=' . $data['patientid'].'&referral=true');
                         }
 
                     } else {
-                        $this->url->redirect('patient/edit&id=' . $patient['id']);
+                       // $this->url->redirect('patient/edit&id=' . $patient['id'].'&referral=true');
+                        $this->url->redirect('optician-referral');
                     }
                 }
 
@@ -532,6 +538,7 @@ class OpticianReferralController extends Controller
 
         return $this->controller_mail->sendMail($data);
     }
+
     public function referralMail($id)
     {
         $this->load->controller('mail');
@@ -550,14 +557,14 @@ class OpticianReferralController extends Controller
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
         $link = '<a href="' . URL . 'admin">Click Here</a>';
-        $result['template']['message'] = str_replace('{Opto_fname, Opto_lname}', $referral['first_name']." ".$referral['last_name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{med_sec_fname, lname}', $user_data['firstname']." ".$user_data['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{Opto_fname, Opto_lname}', $referral['first_name'] . " " . $referral['last_name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{med_sec_fname, lname}', $user_data['firstname'] . " " . $user_data['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{dashboard login link}', $link, $result['template']['message']);
 
         $data['email'] = $user_data['email'];
         $data['cc'] = $data['common']['user']['email'];
-        $data['subject'] = str_replace('{Opto_fname, Opto_lname}', $referral['first_name']." ".$referral['last_name'], $result['template']['subject']);
+        $data['subject'] = str_replace('{Opto_fname, Opto_lname}', $referral['first_name'] . " " . $referral['last_name'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];
 
         return $this->controller_mail->sendMail($data);

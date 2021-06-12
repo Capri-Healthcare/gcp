@@ -22,13 +22,13 @@
                             <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_GCP_ROLE'))) { ?>
                                 <?php foreach (constant('STATUS_PAYMENT') as $key => $status) { ?>
 
-                                    <option value="<?php echo $key ?>" <?php echo (isset($_GET['status']) && $key == $_GET['status']) ? 'selected':''?>>
+                                    <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected':''?>>
                                         <?php echo $status; ?></option>
                                 <?php } ?>
                             <?php } ?>
                             <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MED_ROLE'))) { ?>
                                 <?php foreach (constant('STATUS_FOLLOWUP') as $key => $status) { ?>
-                                    <option value="<?php echo $key ?>" <?php echo (isset($_GET['status']) && $key == $_GET['status']) ? 'selected':''?>>
+                                    <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected':''?>>
                                         <?php echo $status; ?></option>
                                 <?php } ?>
                             <?php } ?>
