@@ -62,12 +62,12 @@
                         <input type="hidden" class="appointment-id" name="appointment[id]"
                                value="<?php echo $result['id']; ?>">
 
-                        <input type="text" class="appointment-id" name="appointment[optician_id]"
+                        <input type="hidden" class="appointment-id" name="appointment[optician_id]"
                                value="<?php echo $result['optician_id']; ?>">
 
                         <div id="apnt-info" class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <!--div class="form-group">
                                     <label>Doctor <span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -87,7 +87,11 @@
                                         <input type="hidden" class="apnt-department" name="appointment[department]"
                                                value="<?php echo $result['department_id']; ?>">
                                     </div>
-                                </div>
+                                </div-->
+                                <input type="hidden" class="apnt-department" name="appointment[doctor]"
+                                               value="<?php echo $result['doctor_id']; ?>">
+                                <input type="hidden" class="apnt-department" name="appointment[department]"
+                                               value="<?php echo $result['department_id']; ?>">
                                 <div class="form-group">
                                     <label>Date <span class="form-required">*</span></label>
                                     <div class="input-group">
@@ -113,7 +117,7 @@
                                     </div>
                                     <div class="apnt-slot"></div>
                                 </div>
-                                <div class="form-group">
+                                <!--div class="form-group">
                                     <label>Consultation Method <span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -128,7 +132,9 @@
                                             } ?>
                                         </select>
                                     </div>
-                                </div>
+                                </div-->
+                                <input type="hidden" class="apnt-department" name="appointment[consultation_type]"
+                                               value="<?php echo $result['consultation_type']; ?>">
 
                                 <div class="form-group">
                                     <label>Glaucoma Care Plan Required<span class="form-required">*</span></label>
@@ -219,7 +225,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <!--div class="form-group">
                                     <label>Reason/Problem</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -238,7 +244,7 @@
                                         <textarea class="form-control"
                                                   name="appointment[doctor_note]"><?php echo $result['doctor_note']; ?></textarea>
                                     </div>
-                                </div>
+                                </div-->
                                 <div class="apnt-user-input">
                                     <div class="form-group">
                                         <label>Patient Name <span class="form-required">*</span></label>
@@ -539,551 +545,119 @@
                     </div>
                 <?php }
                 if ($page_notes) { ?>
-                    <!--div class="tab-pane" id="appointment-records">
-						<form action="<?php echo $action ?>" method="post">
-						<input type="hidden" name="_token" value="<?php echo $token; ?>">
-						<input type="hidden" name="form_type" value="appointment_clinical_note">
-						<input type="hidden" class="appointment-id" name="appointment[id]" value="<?php echo $result['id']; ?>">
-						<div class="row clinical-notes">
-							<div class="col-lg-4">
-								<div class="notes-form">
-									<div class="form-group">
-										<label>Problem</label>
-										<div class="input-group">
-											<input type="text" class="form-control" data-name="problem" placeholder="Add Patient Problem . . .">
-											<div class="input-group-append">
-												<span class="input-group-text">Add</span>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label>Observation</label>
-										<div class="input-group">
-											<input type="text" class="form-control" data-name="observation" placeholder="Add Observation. . .">
-											<div class="input-group-append">
-												<span class="input-group-text">Add</span>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label>Diagnosis</label>
-										<div class="input-group">
-											<input type="text" class="form-control" data-name="diagnosis" placeholder="Add Diagnosis . . .">
-											<div class="input-group-append">
-												<span class="input-group-text">Add</span>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label>Test Request/Investigation</label>
-										<div class="input-group">
-											<input type="text" class="form-control" data-name="investigation" placeholder="Add Test Request/Investigation . . .">
-											<div class="input-group-append">
-												<span class="input-group-text">Add</span>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label>Notes/Advice</label>
-										<div class="input-group">
-											<input type="text" class="form-control" data-name="notes" placeholder="Add Notes . . .">
-											<div class="input-group-append">
-												<span class="input-group-text">Add</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-8">
-								<div class="notes-container">
-									<div class="timeline-1 timeline-2">
-										<div class="marker"></div>
-										<div class="item item-left notes-problem">
-											<div class="circle"><i class="ti-help-alt"></i></div>
-											<div class="arrow"></div>
-											<div class="item-content">
-												<div class="title">Problems</div>
-												<div class="descr">
-													<ul>
-														<?php if (!empty($notes['notes']['problem'])) {
-                        foreach ($notes['notes']['problem'] as $key => $value) { ?>
-															<li><?php echo $value; ?><input type="hidden" name="notes[notes][problem][]" value="<?php echo $value; ?>"><span class="ti-close delete"></span></li>
-														<?php }
-                    } ?>
-													</ul>
-												</div> 
-											</div>
-										</div>
-										<div class="item item-left notes-observation">
-											<div class="circle"><i class="ti-panel text-info"></i></div>
-											<div class="arrow"></div>
-											<div class="item-content">
-												<div class="title">Observation</div>
-												<div class="descr">
-													<ul>
-														<?php if (!empty($notes['notes']['observation'])) {
-                        foreach ($notes['notes']['observation'] as $key => $value) { ?>
-															<li><?php echo $value; ?><input type="hidden" name="notes[notes][observation][]" value="<?php echo $value; ?>"><span class="ti-close delete"></span></li>
-														<?php }
-                    } ?>
-													</ul>
-												</div> 
-											</div>
-										</div>
-										<div class="item item-left notes-diagnosis">
-											<div class="circle"><i class="ti-heart-broken text-secondary"></i></div>
-											<div class="arrow"></div>
-											<div class="item-content">
-												<div class="title">Diagnosis</div>
-												<div class="descr">
-													<ul>
-														<?php if (!empty($notes['notes']['diagnosis'])) {
-                        foreach ($notes['notes']['diagnosis'] as $key => $value) { ?>
-															<li><?php echo $value; ?><input type="hidden" name="notes[notes][diagnosis][]" value="<?php echo $value; ?>"><span class="ti-close delete"></span></li>
-														<?php }
-                    } ?>
-													</ul>
-												</div> 
-											</div>
-										</div>
-										<div class="item item-left notes-investigation">
-											<div class="circle"><i class="ti-agenda text-success"></i></div>
-											<div class="arrow"></div>
-											<div class="item-content">
-												<div class="title">Test Request/Investigation</div>
-												<div class="descr">
-													<ul>
-														<?php if (!empty($notes['notes']['investigation'])) {
-                        foreach ($notes['notes']['investigation'] as $key => $value) { ?>
-															<li><?php echo $value; ?><input type="hidden" name="notes[notes][investigation][]" value="<?php echo $value; ?>"><span class="ti-close delete"></span></li>
-														<?php }
-                    } ?>
-													</ul>
-												</div> 
-											</div>
-										</div>
-										<div class="item item-left notes-notes">
-											<div class="circle"><i class="ti-write text-primary"></i></div>
-											<div class="arrow"></div>
-											<div class="item-content">
-												<div class="title">Notes</div>
-												<div class="descr">
-													<ul>
-														<?php if (!empty($notes['notes']['notes'])) {
-                        foreach ($notes['notes']['notes'] as $key => $value) { ?>
-															<li><?php echo $value; ?><input type="hidden" name="notes[notes][notes][]" value="<?php echo $value; ?>"><span class="ti-close delete"></span></li>
-														<?php }
-                    } ?>
-													</ul>
-												</div> 
-											</div>
-										</div>
-									</div>
-								</div>
-								<input type="hidden" name="notes[id]" value="<?php echo $notes['id']; ?>">
-							</div>
-						</div>
-						<div class="panel-footer text-center">
-							<button type="submit" name="submit" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Save</button>
-						</div>
-						</form>
-					</div-->
+                    
                     <div class="tab-pane" id="appointment-records">
                         <div class="form-group mb-2">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <!--  Hrading tabs -->
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" href="#clinical-note-form"
-                                                       data-toggle="tab">Clinical Notes</a>
-                                                </li>
-                                                <?php
-                                                foreach ($finding_forms as $form) { ?>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link"
-                                                           href="#pre-consultation-form-id-<?php echo $form['id'] ?>"
-                                                           data-toggle="tab"><?php echo $form['name'] ?></a>
-                                                    </li>
-                                                <?php } ?>
-                                            </ul>
-                                        </div>
+                                    <label class="d-block mb-2">
+                                        <strong><h4>Summary</h4></strong>
+                                    </label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered medicine-table">
+                                            <thead>
+                                                <tr class="medicine-row">
+                                                    <th style="width: 10%;">CCT RE</th>
+                                                    <th style="width: 10%;">CCT LE</th>
+                                                    <th style="width: 15%;">Highest IOP RE</th>
+                                                    <th style="width: 15%;">Highest IOP LE</th>
+                                                    <th>Allergy</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="medicine-row">
+                                                    <td>5</th>
+                                                    <td>6</th>
+                                                    <td>20</th>
+                                                    <td>18</th>
+                                                    <td> Test Allergy</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
 
+                                    <label class="d-block mb-2">
+                                        <strong><h4>Ocular Examination</h4></strong>
+                                    </label>
+                                    <form action="<?php echo $action ?>" method="post">
+                                        <input type="hidden" name="_token" value="<?php echo $token; ?>">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Patient Name <span class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control apnt-name" name="appointment[name]"
+                                                            value="<?php echo $result['name'] ?>"
+                                                            placeholder="Enter Patient Name . . ." required>
+                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
+                                                            value="<?php echo $result['patient_id'] ?>">
 
-                                    <!--  Foms -->
-                                    <div class="row" style="padding-top:10px">
-                                        <div class="col-md-12 pre-consultation-form">
-                                            <!-- Clinical Note static form -->
-                                            <div class="tab-pane active" id="clinical-note-form">
-                                                <form action="<?php echo $action ?>" method="post">
-                                                    <input type="hidden" name="_token" value="<?php echo $token; ?>">
-                                                    <input type="hidden" name="form_type"
-                                                           value="appointment_clinical_note">
-                                                    <input type="hidden" class="appointment-id" name="appointment[id]"
-                                                           value="<?php echo $result['id']; ?>">
-                                                    <div class="row clinical-notes">
-                                                        <div class="col-lg-4">
-                                                            <div class="notes-form">
-                                                                <div class="form-group">
-                                                                    <label>Problem</label>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control"
-                                                                               data-name="problem"
-                                                                               placeholder="Add Patient Problem . . .">
-                                                                        <div class="input-group-append">
-                                                                            <span class="input-group-text">Add</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Observation</label>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control"
-                                                                               data-name="observation"
-                                                                               placeholder="Add Observation. . .">
-                                                                        <div class="input-group-append">
-                                                                            <span class="input-group-text">Add</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Diagnosis</label>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control"
-                                                                               data-name="diagnosis"
-                                                                               placeholder="Add Diagnosis . . .">
-                                                                        <div class="input-group-append">
-                                                                            <span class="input-group-text">Add</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Test Request/Investigation</label>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control"
-                                                                               data-name="investigation"
-                                                                               placeholder="Add Test Request/Investigation . . .">
-                                                                        <div class="input-group-append">
-                                                                            <span class="input-group-text">Add</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Notes/Advice</label>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control"
-                                                                               data-name="notes"
-                                                                               placeholder="Add Notes . . .">
-                                                                        <div class="input-group-append">
-                                                                            <span class="input-group-text">Add</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-8">
-                                                            <div class="notes-container">
-                                                                <div class="timeline-1 timeline-2">
-                                                                    <div class="marker"></div>
-                                                                    <div class="item item-left notes-problem">
-                                                                        <div class="circle"><i class="ti-help-alt"></i>
-                                                                        </div>
-                                                                        <div class="arrow"></div>
-                                                                        <div class="item-content">
-                                                                            <div class="title">Problems</div>
-                                                                            <div class="descr">
-                                                                                <ul>
-                                                                                    <?php if (!empty($notes['notes']['problem'])) {
-                                                                                        foreach ($notes['notes']['problem'] as $key => $value) { ?>
-                                                                                            <li><?php echo $value; ?>
-                                                                                                <input type="hidden"
-                                                                                                       name="notes[notes][problem][]"
-                                                                                                       value="<?php echo $value; ?>"><span
-                                                                                                        class="ti-close delete"></span>
-                                                                                            </li>
-                                                                                        <?php }
-                                                                                    } ?>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item item-left notes-observation">
-                                                                        <div class="circle"><i
-                                                                                    class="ti-panel text-info"></i>
-                                                                        </div>
-                                                                        <div class="arrow"></div>
-                                                                        <div class="item-content">
-                                                                            <div class="title">Observation</div>
-                                                                            <div class="descr">
-                                                                                <ul>
-                                                                                    <?php if (!empty($notes['notes']['observation'])) {
-                                                                                        foreach ($notes['notes']['observation'] as $key => $value) { ?>
-                                                                                            <li><?php echo $value; ?>
-                                                                                                <input type="hidden"
-                                                                                                       name="notes[notes][observation][]"
-                                                                                                       value="<?php echo $value; ?>"><span
-                                                                                                        class="ti-close delete"></span>
-                                                                                            </li>
-                                                                                        <?php }
-                                                                                    } ?>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item item-left notes-diagnosis">
-                                                                        <div class="circle"><i
-                                                                                    class="ti-heart-broken text-secondary"></i>
-                                                                        </div>
-                                                                        <div class="arrow"></div>
-                                                                        <div class="item-content">
-                                                                            <div class="title">Diagnosis</div>
-                                                                            <div class="descr">
-                                                                                <ul>
-                                                                                    <?php if (!empty($notes['notes']['diagnosis'])) {
-                                                                                        foreach ($notes['notes']['diagnosis'] as $key => $value) { ?>
-                                                                                            <li><?php echo $value; ?>
-                                                                                                <input type="hidden"
-                                                                                                       name="notes[notes][diagnosis][]"
-                                                                                                       value="<?php echo $value; ?>"><span
-                                                                                                        class="ti-close delete"></span>
-                                                                                            </li>
-                                                                                        <?php }
-                                                                                    } ?>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item item-left notes-investigation">
-                                                                        <div class="circle"><i
-                                                                                    class="ti-agenda text-success"></i>
-                                                                        </div>
-                                                                        <div class="arrow"></div>
-                                                                        <div class="item-content">
-                                                                            <div class="title">Test
-                                                                                Request/Investigation
-                                                                            </div>
-                                                                            <div class="descr">
-                                                                                <ul>
-                                                                                    <?php if (!empty($notes['notes']['investigation'])) {
-                                                                                        foreach ($notes['notes']['investigation'] as $key => $value) { ?>
-                                                                                            <li><?php echo $value; ?>
-                                                                                                <input type="hidden"
-                                                                                                       name="notes[notes][investigation][]"
-                                                                                                       value="<?php echo $value; ?>"><span
-                                                                                                        class="ti-close delete"></span>
-                                                                                            </li>
-                                                                                        <?php }
-                                                                                    } ?>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item item-left notes-notes">
-                                                                        <div class="circle"><i
-                                                                                    class="ti-write text-primary"></i>
-                                                                        </div>
-                                                                        <div class="arrow"></div>
-                                                                        <div class="item-content">
-                                                                            <div class="title">Notes</div>
-                                                                            <div class="descr">
-                                                                                <ul>
-                                                                                    <?php if (!empty($notes['notes']['notes'])) {
-                                                                                        foreach ($notes['notes']['notes'] as $key => $value) { ?>
-                                                                                            <li><?php echo $value; ?>
-                                                                                                <input type="hidden"
-                                                                                                       name="notes[notes][notes][]"
-                                                                                                       value="<?php echo $value; ?>"><span
-                                                                                                        class="ti-close delete"></span>
-                                                                                            </li>
-                                                                                        <?php }
-                                                                                    } ?>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <input type="hidden" name="notes[id]"
-                                                                   value="<?php echo $notes['id']; ?>">
-                                                        </div>
                                                     </div>
-                                                    <div class="panel-footer text-center">
-                                                        <button type="submit" name="submit" class="btn btn-primary"><i
-                                                                    class="ti-save-alt pr-2"></i> Save
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <?php
-                                            foreach ($finding_forms as $form) { ?>
-
-                                                <div class="tab-pane"
-                                                     id="pre-consultation-form-id-<?php echo $form['id'] ?>">
-                                                    <form action="<?php echo $action ?>" method="post"
-                                                          enctype="multipart/form-data">
-                                                        <input type="hidden" name="_token"
-                                                               value="<?php echo $token; ?>">
-                                                        <input type="hidden" name="form_type"
-                                                               value="appointment_finding">
-                                                        <input type="hidden" class="appointment-id"
-                                                               name="appointment[id]"
-                                                               value="<?php echo $result['id']; ?>">
-                                                        <input type="hidden" name="finding_form_id"
-                                                               value="<?php echo $form['id']; ?>">
-                                                        <?php
-                                                        $form_details = $formObj->getForm($form['id']);
-                                                        $form_fields = $formObj->getFormField($form['id']);
-                                                        $form_answer = $formObj->getFormAnswer($result['id'], $form['id']);
-                                                        //print_r($form_fields);exit;
-                                                        ?>
-                                                        <!--h1><?php echo $form_details['name'] ?></h1>
-														<br>
-														<h5><?php echo $form_details['description'] ?></h5-->
-                                                        <div class="row">
-
-                                                            <?php foreach ($form_fields as $fields) {
-                                                                $value = isset($form_answer[$fields['id']]) ? $form_answer[$fields['id']] : '';
-                                                                $input_name = 'form[' . $fields['input_type'] . '_' . $fields['id'] . ']';
-                                                                $label = $fields['label'];
-                                                                $placeholder = $fields['placeholder'];
-
-                                                                $required = (($fields['required'] == "requir") ? "required" : "");
-
-                                                                switch ($fields['input_type']) {
-                                                                    case 'heading':
-                                                                        echo '<div class="col-md-12">';
-                                                                        echo '<h3 class="user-ttl">' . $fields['label'] . '</h3>';
-                                                                        echo '</div>';
-                                                                        break;
-
-                                                                    case 'note':
-                                                                        echo '<div class="col-md-12">';
-                                                                        echo '<p class="font-12 mb-10 form-note">' . $fields['note'] . '</p>';
-                                                                        echo '</div>';
-                                                                        break;
-
-                                                                    case 'text':
-                                                                    case 'number':
-                                                                    case 'date':
-                                                                        echo '<div class="col-md-6"><div class="form-group">' .
-                                                                            '<label>' . $label . (!empty($required) ? ' <span class="form-required">*</span>' : '') . '</label>' .
-                                                                            '<div class="input-group">' .
-                                                                            '<input type="' . $fields['input_type'] . '" class="form-control" name="' . $input_name . '" placeholder="' . $placeholder . '"  value="' . $value . '" ' . $required . ' autocomplete="off">' .
-                                                                            '</div>' .
-                                                                            '</div></div>';
-                                                                        break;
-
-                                                                    case 'email':
-                                                                        echo '<div class="col-md-6"><div class="form-group">' .
-                                                                            '<label>' . $label . (!empty($required) ? ' <span class="form-required">*</span>' : '') . '</label>' .
-                                                                            '<div class="input-group">' .
-                                                                            '<input type="' . $fields['input_type'] . '" class="form-control" name="' . $input_name . '" placeholder="' . $placeholder . '"  value="' . $value . '" ' . $required . ' autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">' .
-                                                                            '</div>' .
-                                                                            '</div></div>';
-                                                                        break;
-
-                                                                    case 'textarea':
-                                                                        echo '<div class="col-md-6"><div class="form-group">' .
-                                                                            '<label>' . $label . (!empty($required) ? ' <span class="form-required">*</span>' : '') . '</label>' .
-                                                                            '<div class="input-group">' .
-                                                                            '<textarea type="' . $fields['input_type'] . '" class="form-control" name="' . $input_name . '" placeholder="' . $placeholder . '" ' . $required . ' autocomplete="off">' . $value . '</textarea>' .
-                                                                            '</div>' .
-                                                                            '</div></div>';
-                                                                        break;
-
-                                                                    case 'select':
-                                                                        $options = explode(",", $fields['options']);
-                                                                        $values = explode(",", $fields['values']);
-                                                                        echo '<div class="col-md-6"><div class="form-group">' .
-                                                                            '<label>' . $label . (!empty($required) ? ' <span class="form-required">*</span>' : '') . '</label>' .
-                                                                            '<div class="input-group">' .
-                                                                            '<select name="' . $input_name . '" ' . $required . '>' .
-                                                                            '<option value="">' . $placeholder . '</option>';
-                                                                        foreach ($options as $key => $option) {
-                                                                            $selected = ($value == $values[$key]) ? "Selected" : '';
-                                                                            echo '<option value="' . $values[$key] . '" ' . $selected . '>' . $option . '</option>';
-                                                                        }
-                                                                        echo '</select>';
-                                                                        '</div>' .
-                                                                        '</div></div>';
-                                                                        break;
-
-                                                                    case 'checkbox':
-                                                                        $options = explode(",", $fields['options']);
-                                                                        $values = explode(",", $fields['values']);
-                                                                        $selected_values = explode(",", $value);
-
-                                                                        echo '<div class="col-md-6"><div class="form-group">' .
-                                                                            '<label>' . $label . (!empty($required) ? ' <span class="form-required">*</span>' : '') . '</label>' .
-                                                                            '<div class="input-group">';
-                                                                        foreach ($options as $key => $option) {
-                                                                            $checked = (in_array($values[$key], $selected_values)) ? "Checked" : '';
-                                                                            echo '<div class="col-md-12"><div class="custom-control custom-checkbox font-14 mb-2">';
-                                                                            echo '<input type="' . $fields['input_type'] . '" class="custom-control-input" 
-																						name="' . $input_name . '[]" value="' . $values[$key] . '" 
-																						id="' . $fields['random_number'] . '_checkbox_' . $key . '" ' . $checked . ' ' . $required . '>';
-                                                                            echo '<label class="custom-control-label" for="' . $fields['random_number'] . '_' . $values[$key] . '">' . $option . '</label>';
-                                                                            echo '</div></div>';
-                                                                        }
-                                                                        '</div></div></div>';
-                                                                        break;
-
-                                                                    case 'radio':
-                                                                        $options = explode(",", $fields['options']);
-                                                                        $values = explode(",", $fields['values']);
-
-                                                                        echo '<div class="col-md-6"><div class="form-group">' .
-                                                                            '<label>' . $label . (!empty($required) ? ' <span class="form-required">*</span>' : '') . '</label>' .
-                                                                            '<div class="input-group">';
-                                                                        foreach ($options as $key => $option) {
-                                                                            $checked = ($value == $values[$key]) ? "Checked" : '';
-                                                                            echo '<div class="col-md-12"><div class="custom-control custom-radio font-14 mb-2">';
-                                                                            echo '<input type="' . $fields['input_type'] . '" class="custom-control-input" 
-																							name="' . $input_name . '" value="' . $values[$key] . '" 
-																							id="' . $fields['random_number'] . '_radio_' . $key . '" ' . $checked . ' ' . $required . '>';
-                                                                            echo '<label class="custom-control-label" for="' . $fields['random_number'] . '_' . $values[$key] . '">' . $option . '</label>';
-                                                                            echo '</div></div>';
-                                                                        }
-                                                                        echo '</div></div></div>';
-                                                                        break;
-
-                                                                    case 'file':
-
-                                                                        echo '<div class="col-md-5"><div class="form-group">' .
-                                                                            '<label>' . $label . (!empty($required) ? ' <span class="form-required">*</span>' : '') . '</label>' .
-                                                                            '<div class="input-group">' .
-                                                                            '<input type="' . $fields['input_type'] . '"  
-																				 		name="' . $fields['input_type'] . '_' . $fields['id'] . '" ' . $required . '>' .
-                                                                            '</div>' .
-                                                                            '</div></div>';
-                                                                        echo '<div class="col-md-1">';
-                                                                        if (!empty($value)) {
-                                                                            $image_path = URL . 'public/uploads/appointment/forms/' . $result['id'] . '/' . $form['id'] . '/' . $value;
-                                                                            echo '<a data-fancybox="gallery" href="' . $image_path . '">';
-                                                                            echo '<img class="form_thumb_img" src="' . $image_path . '">';
-                                                                            echo '</a>';
-                                                                        }
-                                                                        echo '</div>';
-
-                                                                        break;
-                                                                }
-                                                            } ?>
-
-                                                        </div>
-                                                        <div class="panel-footer text-center">
-                                                            <button type="submit" name="submit" class="btn btn-primary">
-                                                                <i class="ti-save-alt pr-2"></i> Save
-                                                            </button>
-                                                        </div>
-                                                    </form>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Current event (History)</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control apnt-name" name="appointment[current_event]"
+                                                            value="<?php echo $result['name'] ?>"
+                                                            placeholder="Enter Patient Name . . ." required>
+                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
+                                                            value="<?php echo $result['patient_id'] ?>">
 
-                                            <?php } ?>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Current event (History)</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control apnt-name" name="appointment[current_event]"
+                                                            value="<?php echo $result['name'] ?>"
+                                                            placeholder="Enter Patient Name . . ." required>
+                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
+                                                            value="<?php echo $result['patient_id'] ?>">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Current event (History)</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control apnt-name" name="appointment[current_event]"
+                                                            value="<?php echo $result['name'] ?>"
+                                                            placeholder="Enter Patient Name . . ." required>
+                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
+                                                            value="<?php echo $result['patient_id'] ?>">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Current event (History)</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control apnt-name" name="appointment[current_event]"
+                                                            value="<?php echo $result['name'] ?>"
+                                                            placeholder="Enter Patient Name . . ." required>
+                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
+                                                            value="<?php echo $result['patient_id'] ?>">
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
