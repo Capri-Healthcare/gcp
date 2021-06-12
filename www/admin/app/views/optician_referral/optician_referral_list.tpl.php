@@ -19,8 +19,14 @@
                     <i class="ti-filter text-danger pr-2"></i>
                     <select class="status" style="border: 0px;">
 
-                        <?php foreach (constant('STATUS') as $key => $status) { ?>
-                            <option value="<?php echo $key ?>" <?php echo ($key == 'DRAFT') ? 'selected' : '' ?>><?php echo $status; ?></option>
+                        <?php if ($common['user']['role'] == constant('USER_ROLE_MED')) { ?>
+                            <?php foreach (constant('STATUS_MED_ROLE') as $key => $status) { ?>
+                                <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <?php foreach (constant('STATUS') as $key => $status) { ?>
+                                <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                            <?php } ?>
                         <?php } ?>
                     </select>
                 </div>
@@ -51,6 +57,10 @@
                         <th>Status</th>
                         <!--						<th>Created By</th>-->
                         <th>Date Submited</th>
+                        <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $dropdown_selected == constant('STATUS_ACCEPTED')) { ?>
+
+                            <th>List</th>
+                        <?php }?>
                         <?php if ($page_delete || $page_edit || $page_view) { ?>
                             <th></th>
                         <?php } ?>
@@ -80,12 +90,16 @@
                                     data-count="<?php echo $key + 1; ?>"><?php echo constant('STATUS')[$value['status']]; ?></td>
                                 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
                                 <td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
-                                <?php if ($value['status'] == 'ACCEPTED') { ?>
-                                    <td>
-                                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&referralid=' . $value['id'].'&opticianid=' . $value['created_by']; ?>"
-                                           class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                           title="Book Appointment">&nbsp;Book Appointment</a></td>
+                                <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $dropdown_selected == constant('STATUS_ACCEPTED')) { ?>
 
+                                    <td>
+                                        <?php if ($value['status'] == 'ACCEPTED') { ?>
+                                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointments&id=' . $value['patient_id'] . '&referralid=' . $value['id'] . '&opticianid=' . $value['created_by']; ?>"
+                                               class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                               title="Book Appointment">&nbsp;<?php echo ($common['user']['role'] != constant('USER_ROLE_MED')) ? 'Book Appointment' : 'Add to list' ?></a>
+
+                                        <?php } ?>
+                                    </td>
                                 <?php } ?>
 
                                 <?php if ($page_delete || $page_edit || $page_view) { ?>
@@ -140,7 +154,7 @@
                     format: $('.common_daterange_format').val(),
                     separator: " => ",
                 },
-                startDate: moment().subtract(6, 'days'),
+                startDate: moment(),
                 endDate: moment(),
                 ranges: {
                     'Today': [moment(), moment()],

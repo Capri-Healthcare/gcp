@@ -131,6 +131,12 @@ class User extends Model
 		return $query->rows;
 	}
 
+    public function userRoleByID($id)
+    {
+        $query = $this->database->query("SELECT `id`, `name` FROM `" . DB_PREFIX . "user_role` WHERE id=".$id);
+        return $query->row;
+    }
+
 	public function getRoles()
 	{
 		$query = $this->database->query("SELECT `id`, `name`, `description`, `date_of_joining` FROM `" . DB_PREFIX . "user_role`");

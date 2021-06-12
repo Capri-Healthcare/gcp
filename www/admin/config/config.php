@@ -42,6 +42,9 @@ define('USER_FOLLOWUP_MED_ROLE', ['Med. Secretary', 'Admin','Optometrist']);
 define('USER_FOLLOWUP_GCP_ROLE', ['Admin','GCP Secretary']);
 define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist','GCP Secretary']);
 define('USER_ROLE_OPTOMETRIST', 'Optometrist');
+define('USER_ROLE_MED', 'Med. Secretary');
+define('USER_ROLE_GCP', 'GCP Secretary');
+define('USER_ROLE_ADMIN', 'Admin');
 
 define('FOLLOW_UP_DROPDOWN', [
         '1' => '1 Month',
@@ -59,6 +62,11 @@ define('FOLLOW_UP_DROPDOWN', [
 
 ]);
 define('STATUS', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable','DRAFT' => 'Draft']);
+define('STATUS_NEW', 'NEW');
+define('STATUS_ACCEPTED', 'ACCEPTED');
+define('STATUS_DRAFT', 'DRAFT');
+
+define('STATUS_MED_ROLE', ['NEW' => 'New','ACCEPTED' => 'Accepted','REJECTED' => 'Not suitable']);
 
 define('DOCUMENT_NAME', ['Referral letter' => 'Referral letter','Visual fields' => 'Visual fields','OCT' => 'OCT']);
 define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter', 'Visual fields - Right eye' => 'Visual fields - Right eye', 'Visual fields - Left eye' => 'Visual fields - Left eye', 'OCT - Right eye' => 'OCT - Right eye', 'OCT - Left eye' => 'OCT - Left eye', 'Fundus - Right eye' => 'Fundus - Right eye', 'Fundus - Left eye' => 'Fundus - Left eye']);
@@ -72,17 +80,27 @@ define('HOSPITAL_LIST', [
         "name"=>'Spire South Bank Hospital',
         "mobile" =>'01905350003',
         "address" =>'139 Bath Road WORCESTER WR5 3YB',
-        "email" =>"hsc@spirehealthcare.com",
+        "email" =>"hospital1@mailinator.com",
         "web" =>"http://www.spirehealthcare.com/southbank"
     ],
     'BTDSH' => [
         "name"=>'BMI The Droitwich Spa Hospital',
         "mobile" =>'01905 793333',
         "address" =>'St Andrews Road DROITWICH WR9 8DN',
-        "email" =>"info@bmihealthcare.co.uk",
+        "email" =>"hospital2@mailinator.com",
         "web" =>"http://www.bmihealthcare.co.uk"
     ]
 ]);
 
+define('HOSPITAL', [
+    'SSPBH' => 'Spire South Bank Hospital<br/>Mobile:01905350003<br/>Address:139 Bath Road WORCESTER WR5 3YB<br/>Email:hsc@spirehealthcare.com<br>Web:http://www.spirehealthcare.com/southbank',
+    'BTDSH' => 'BMI The Droitwich Spa Hospital<br/>Mobile:01905 793333<br/>Address:St Andrews Road DROITWICH WR9 8DN<br/>Email:info@bmihealthcare.co.uk,<br>Web:http://www.bmihealthcare.co.uk'
+]);
+
 define('STATUS_PAYMENT', ['PAID' => 'Paid','UNPAID' => 'Unpaid','NOT_SUITABLE' => 'Not suitable']);
 define('STATUS_FOLLOWUP', ['NEW' => 'New','OPTICIAN_REVIEWED' => 'Optician Reviewed','ACCEPTED' => 'Accepted','NOT_SUITABLE' => 'Not suitable']);
+define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
+define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');
+define('STATUS_FOLLOWUP_NEW', 'NEW');
+define('STATUS_PAYMENT_UNPAID', 'UNPAID');
+define('STATUS_PAYMENT_PAID', 'PAID');

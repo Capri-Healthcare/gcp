@@ -50,7 +50,7 @@
                     <select name="appointment[doctor]" class="custom-select apnt-doctor" required>
                         <option value="">Select Doctor</option>
                         <?php foreach ($doctors as $value) { ?>
-                            <option value="<?php echo $value['id']; ?>" data-department="<?php echo $value['department_id']; ?>" data-weekly="<?php echo htmlspecialchars($value['weekly'], ENT_QUOTES, 'UTF-8'); ?>" data-national="<?php echo htmlspecialchars($value['national'], ENT_QUOTES, 'UTF-8'); ?>" <?php echo(count($doctors) < 1)?'selected':''?>><?php echo $value['name'].' (' . $value['department'] . ')'; ?></option>
+                            <option value="<?php echo $value['id']; ?>" data-department="<?php echo $value['department_id']; ?>" data-weekly="<?php echo htmlspecialchars($value['weekly'], ENT_QUOTES, 'UTF-8'); ?>" data-national="<?php echo htmlspecialchars($value['national'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo $value['name'].' (' . $value['department'] . ')'; ?></option>
                         <?php } ?>
                     </select>
                     <input type="hidden" class="apnt-department" name="appointment[department]" value="">

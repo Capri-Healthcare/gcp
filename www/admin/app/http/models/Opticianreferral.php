@@ -15,6 +15,7 @@ class Opticianreferral extends Model
                 $query = $this->database->query("Select r.* ,CONCAT(u.firstname, ' ', u.lastname) AS optician_name  From `" . DB_PREFIX . "referral_list` AS r LEFT  JOIN `" . DB_PREFIX . "users` AS u ON r.created_by = u.user_id WHERE created_at  between '" . $period['start'] . "' AND '" . $period['end'] . "' AND r.status = '" . $period['status'] . "' ORDER BY created_at DESC ,status ASC");
             }
         } else {
+
             $query = $this->database->query("Select r.* ,CONCAT(u.firstname, ' ', u.lastname) AS optician_name  From `" . DB_PREFIX . "referral_list` AS r LEFT  JOIN `" . DB_PREFIX . "users` AS u ON r.created_by = u.user_id WHERE created_at  between '" . $period['start'] . "' AND '" . $period['end'] . "' AND created_by = '" . $id . "' AND r.status = '" . $period['status'] . "' ORDER BY created_at DESC ,status ASC");
 
         }

@@ -71,18 +71,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Email <span class="form-required">*</span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i
-                                                                class="ti-email"></i></span></div>
-                                                <input type="email" name="referral[email]" class="form-control"
-                                                       value="<?php echo $result['email']; ?>" placeholder="Email"
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Phone/Mobile number<span class="form-required">*</span></label>
@@ -94,6 +83,31 @@
                                                        onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
                                                        value="<?php echo $result['mobile']; ?>" placeholder="Mobile"
                                                        required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>DOB <span class="form-required">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-calendar"></i></span></div>
+                                                <input type="text" name="referral[dob]" class="form-control"
+                                                       value="<?php echo $result['dob']; ?>"
+                                                       max="<?php echo date('Y-m-d') ?>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                                                class="ti-email"></i></span></div>
+                                                <input type="email" name="referral[email]" class="form-control"
+                                                       value="<?php echo $result['email']; ?>" placeholder="Email"
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -124,20 +138,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>DOB <span class="form-required">*</span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i
-                                                                class="ti-calendar"></i></span></div>
-                                                <input type="text" name="referral[dob]" class="form-control"
-                                                       value="<?php echo $result['dob']; ?>"
-                                                       max="<?php echo date('Y-m-d') ?>" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Address 1<span class="form-required">*</span></label>
+                                            <label>Address 1</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ti-check-box"></i></span>
@@ -188,16 +189,18 @@
                                     <?php if ($result['status'] == 'NEW' && in_array($common['user']['role'], constant('USER_ROLE'))) { ?>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Status</label>
+                                                <label>Referral status<span class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                                     </div>
                                                     <select name="referral[status]" class="custom-select" required>
+                                                        <option value="">Select Status</option>
                                                         <?php foreach (constant('STATUS') as $key => $status) { ?>
+                                                             <?php if(!in_array($key,[constant('STATUS_DRAFT'),constant('STATUS_NEW')])) {?>
                                                             <option value="<?php echo $key ?>" <?php echo ($result['status'] == $key) ? 'selected' : '' ?>><?php echo $status; ?></option>
-                                                        <?php } ?>
+                                                        <?php } } ?>
 
                                                     </select>
                                                 </div>
@@ -283,7 +286,7 @@
                         <div class="panel-footer text-center">
                             <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/edit&id='.$_GET['id'].'&status=NEW'; ?>"
                                class="btn btn-primary"><i
-                                        class="ti-save-alt pr-2"></i> Submit
+                                        class="ti-save-alt pr-2"></i> Referral submit
                             </a>
                         </div>
                     </div>

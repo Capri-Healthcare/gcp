@@ -310,7 +310,7 @@ $lang = array(
 	'text_gp_practice' => 'GP Practice',
     'text_optician_practice_name' => 'Optician Practice Name',
     'text_optician_practice_name_error' => 'Please Enter Valid Optician Practice Name!',
-    'text_optician_register_number' => 'Optician Registration  Number',
+    'text_optician_register_number' => 'GOC registration',
     'text_optician_register_number_error' => 'Please Enter Valid Optician Registration Number!',
 
 

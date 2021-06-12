@@ -335,15 +335,16 @@ class AppointmentController extends Controller
 
                 if($data['appointment']['gcp_required'] == 'YES')
                 {
+
+                    $this->newpatiengcpMail($data['appointment']['optician_id']);
                     $this->load->model('followup');
                     $followup['patient_id'] = $data['appointment']['patient_id'];
                     $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
                     $followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "days", strtotime(date('Y-m-d'))));
 
-                    $this->model_followup->createFollowup($followup);
+                    $this->notificationToGCPForPatientFollowup($this->model_followup->createFollowup($followup));
 
                 }
-
 
                 $this->load->model('patient');
 
@@ -770,40 +771,93 @@ class AppointmentController extends Controller
         if (empty($result['template']) || $result['template']['status'] == '0') {
             return false;
         }
-
+        $this->load->model('appointment');
+        $this->load->model('user');
         $appointment = $this->model_appointment->getAppointmentView($id);
+        $optician = $this->model_user->getUser($appointment['optician_id']);
+
         $video_consultation_link = " - ";
         if ($appointment['status'] == CONFIRMED_APPOINTMENT_STATUS_ID and $appointment['consultation_type'] == APPOINTMENT_VIDEO_CONSULTATION_TYPE) {
             $video_consultation_link = URL . DIR_ROUTE . 'appointment/openVideoConsultation&token=' . $appointment['video_consultation_token'];
         }
 
-        $link = '<a href="' . URL . '">Click Here</a>';
 
-        $result['template']['message'] = str_replace('{name}', $appointment['name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{appointment_id}', $result['common']['appointment_prefix'] . str_pad($appointment['id'], 4, '0', STR_PAD_LEFT), $result['template']['message']);
-        $result['template']['message'] = str_replace('{email}', $appointment['email'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{mobile}', $appointment['mobile'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{doctor}', $appointment['doctor_name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{date}', $appointment['date'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{time}', $appointment['time'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{link}', $link, $result['template']['message']);
+        $result['template']['message'] = str_replace('{ophth_title}',"", $result['template']['message']);
+        $result['template']['message'] = str_replace('{Ophth_fname, lname}',$appointment['doctor_name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{appt_date}', $appointment['date'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{appt_time}', $appointment['time'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{patient}', $appointment['name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{reason}', $appointment['message'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{status}', APPOINTMENT_STATUS[$appointment['status']], $result['template']['message']);
+        $result['template']['message'] = str_replace('{patient_title}', $appointment['title'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{patient fname, lname}', $appointment['firstname']." ".$appointment['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{appt_loaction}', constant('HOSPITAL')[$appointment['hospital_code']], $result['template']['message']);
 
-        $result['template']['message'] = str_replace('{consultation_method}', CONSULTATION_TYPE[$appointment['consultation_type']], $result['template']['message']);
-        $result['template']['message'] = str_replace('{video_consultation_link}', $video_consultation_link, $result['template']['message']);
 
-        $data['name'] = $appointment['name'];
+        $data['name'] =  $result['template']['name'];
         $data['email'] = $appointment['email'];
-        $data['bcc'] = $appointment['doctor_email'];
-        $data['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
+        $data['cc'] = $appointment['doctor_email'];
+        $data['subject'] = str_replace('{ophth_title}',"", $result['template']['subject']);
+        $data['subject'] = str_replace('{Ophth_fname, lname}',$appointment['doctor_name']." ".$optician['lastname'],$data['subject']);
         $data['message'] = $result['template']['message'];
 
         return $this->controller_mail->sendMail($data);
     }
 
+    public function newpatiengcpMail($id, $template = 'newpatiengcp')
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate($template);
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+
+        $this->load->model('user');
+        $user_med_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MED')]);
+        $user_gcp_sec_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_GCP')]);
+        $optician = $this->model_user->getUser($id);
+        $role = $this->model_user->userRoleByID($optician['user_role']);
+
+        $link = '<a href="' . URL . 'admin">GCP Dashboard</a>';
+        $result['template']['message'] = str_replace('{gcp_fname}',$user_gcp_sec_data['firstname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{gcp_lname}',$user_gcp_sec_data['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('GCP Dashboard', $link, $result['template']['message']);
+
+        $data['email'] = $user_gcp_sec_data['email'];;
+        $data['cc'] = $user_med_data['email'];
+        $data['subject'] = str_replace('{clinic_name}',$result['common']['name'],$result['template']['subject']);
+        $data['message'] = $result['template']['message'];
+
+
+        return $this->controller_mail->sendMail($data);
+    }
+
+    public function notificationToGCPForPatientFollowup($id, $template = 'notification_to_gcp_sec_for_patient_follow_up_coming')
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate($template);
+        $this->load->model('followup');
+        $followup  = $this->model_followup->getFollowupByID($id);
+
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+        $this->load->model('user');
+
+        $optician = $this->model_user->getUser($followup['optician_id']);
+        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_GCP')]);
+
+        $result['template']['message'] = str_replace('{gcp_sec_fname}',$user_data['firstname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('gcp_lname', $optician['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y',strtotime($followup['due_date'])), $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+
+
+        $data['email'] = $user_data['email'];
+        $data['subject'] = str_replace('{patient_fname, patient_lname}',$followup['firstname']." ".$followup['lastname'], $result['template']['subject']);
+        $data['message'] = $result['template']['message'];
+
+        return $this->controller_mail->sendMail($data);
+    }
     public function reportsExport()
     {
         $id = (int)$this->url->get('id');

@@ -24,10 +24,34 @@ class Commons extends Model
 
     public function getReferrals($id)
     {
-        $query = $this->database->query("Select * From `" . DB_PREFIX . "referral_list` WHERE status = 'NEW' AND created_by = '" . $id . "' ORDER BY created_at DESC ");
-        return $query->rows;
+        $data['user'] = $this->user_agent->getUserData($id);
+        if($data['user']['role'] == constant('USER_ROLE_MED'))
+        {
+            $query = $this->database->query("Select count(*) As Total From `" . DB_PREFIX . "referral_list` WHERE status = 'NEW' ORDER BY created_at DESC ");
+            return $query->row['Total'];
+        }
+
     }
 
+    public function getFollowups($id)
+    {
+        $data['user'] = $this->user_agent->getUserData($id);
+        if($data['user']['role'] == constant('USER_ROLE_GCP'))
+        {
+            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE payment_status ='UNPAID' ORDER BY created_at DESC ");
+            return $query->row['Total'];
+        }
+        if($data['user']['role'] == constant('USER_ROLE_MED'))
+        {
+            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE followup_status ='".constant('STATUS_FOLLOWUP_OPTICIAN')."' AND payment_status ='PAID' ORDER BY created_at DESC ");
+            return $query->row['Total'];
+        }
+        if($data['user']['role'] == constant('USER_ROLE_OPTOMETRIST'))
+        {
+            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE optician_id ='" . $id. "' AND followup_status ='".constant('STATUS_FOLLOWUP_NEW')."' AND payment_status ='PAID' ORDER BY created_at DESC ");
+            return $query->row['Total'];
+        }
+    }
 
     public function getSiteInfo()
     {
@@ -79,6 +103,7 @@ class Commons extends Model
     {
         $data['user'] = $this->user_agent->getUserData();
         $referrals = $this->getReferrals($this->session->data['user_id']);
+        $followup = $this->getFollowups($this->session->data['user_id']);
 
         $tree = array();
         $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "menu` WHERE `status` = ? ORDER BY `priority` DESC", array(1));
@@ -125,16 +150,27 @@ class Commons extends Model
                         } else {
                             if ($value['name'] == 'Dashboard' && in_array($data['user']['role'], constant('DASHBOARD_NOT_SHOW'))) {
 
-                            } else {
+                            }
+                            elseif ($value['name'] == 'Followup') {
+                                $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' .$followup. '</span></span></a></li>';
+
+                            }
+                            else {
                                 $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
 
                             }
+
                         }
                     } else {
                         if ($value['name'] == 'Referrals') {
-                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . count($referrals) . '</span></span></a></li>';
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . $referrals . '</span></span></a></li>';
 
-                        } else {
+                        } else if ($value['name'] == 'Followup') {
+
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' .$followup. '</span></span></a></li>';
+
+                        }
+                        else {
                             if ($value['name'] == 'Dashboard' && in_array($data['user']['role'], constant('DASHBOARD_NOT_SHOW'))) {
 
                             } else {

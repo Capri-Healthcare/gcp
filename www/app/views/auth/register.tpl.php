@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="input-box">
-                        <input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="register-email" value="test12345@gmail.com">
+                        <input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="register-email" value="optician@mailinator.com">
                         <label for="register-email"><?php echo $lang['text_email_address']; ?> <em> *</em></label>
                         <span><?php echo $lang['text_email_error']; ?></span>
                     </div>
