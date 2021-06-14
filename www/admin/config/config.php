@@ -92,6 +92,16 @@ define('HOSPITAL_LIST', [
     ]
 ]);
 
+define('OCULAR_EXAMINATION_DROP_DOWNS', [
+    'ALLERGY' => ['1' => '1', '2' => '2'],
+    'VISUAL_ACUITY' => ['1' => '1', '2' => '2'],
+    'INTRAOCULAR_PRESSURE' => ['1' => '1', '2' => '2'],
+    'DIAGNOSIS' => ['1' => '1', '2' => '2'],
+    'OUTCOME' => ['1' => '1', '2' => '2'],
+    'GLAUCOMA_CARE_PLAN_REQUIRED' => ['Yes,' => 'Yes', 'NO' => 'No'],
+
+]);
+
 define('HOSPITAL', [
     'SSPBH' => 'Spire South Bank Hospital<br/>Mobile:01905350003<br/>Address:139 Bath Road WORCESTER WR5 3YB<br/>Email:hsc@spirehealthcare.com<br>Web:http://www.spirehealthcare.com/southbank',
     'BTDSH' => 'BMI The Droitwich Spa Hospital<br/>Mobile:01905 793333<br/>Address:St Andrews Road DROITWICH WR9 8DN<br/>Email:info@bmihealthcare.co.uk,<br>Web:http://www.bmihealthcare.co.uk'

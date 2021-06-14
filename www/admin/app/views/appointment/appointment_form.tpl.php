@@ -582,75 +582,109 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Patient Name <span class="form-required">*</span></label>
+                                                    <label>Current event (History)<span class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ti-user"></i></span>
                                                         </div>
-                                                        <input type="text" class="form-control apnt-name" name="appointment[name]"
-                                                            value="<?php echo $result['name'] ?>"
-                                                            placeholder="Enter Patient Name . . ." required>
-                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
-                                                            value="<?php echo $result['patient_id'] ?>">
-
+                                                        <textarea class="form-control" name="appointment[current_event]" required>
+                                                                <?php echo $result['current_event']; ?>
+                                                        </textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Current event (History)</label>
+                                                    <label>Allergy<span class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ti-user"></i></span>
                                                         </div>
-                                                        <input type="text" class="form-control apnt-name" name="appointment[current_event]"
-                                                            value="<?php echo $result['name'] ?>"
-                                                            placeholder="Enter Patient Name . . ." required>
-                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
-                                                            value="<?php echo $result['patient_id'] ?>">
-
+                                                        <select name="appointment[allergy]" class="custom-select" required>
+                                                            <option value="">Select allergy</option>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo($result['allergy'] == $key) ? 'selected':''?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                
+                                                <div class="form-group">
+                                                    <label>Visual acuity - right<span class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                        </div>
+                                                        <select name="appointment[visual_acuity_right]" class="custom-select" required>
+                                                            <option value="">Select visual acuity</option>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo($result['visual_acuity_right'] == $key) ? 'selected':''?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Current event (History)</label>
+                                                    <label>Intraocular pressure - right<span class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ti-user"></i></span>
                                                         </div>
-                                                        <input type="text" class="form-control apnt-name" name="appointment[current_event]"
-                                                            value="<?php echo $result['name'] ?>"
-                                                            placeholder="Enter Patient Name . . ." required>
-                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
-                                                            value="<?php echo $result['patient_id'] ?>">
-
+                                                        <select name="appointment[intraocular_pressure_right]" class="custom-select" required>
+                                                            <option value="">Select intraocular pressure</option>
+                                                            <?php foreach (constant('INTRAOCULAR_PRESSURE')['VISUAL_ACUITY'] as $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo($result['intraocular_pressure_right'] == $key) ? 'selected':''?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <div class="form-group">
+                                                    <label>Visual acuity - left<span class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                        </div>
+                                                        <select name="appointment[visual_acuity_left]" class="custom-select" required>
+                                                            <option value="">Select visual acuity</option>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo($result['visual_acuity_left'] == $key) ? 'selected':''?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Current event (History)</label>
+                                                    <label>Intraocular pressure - left<span class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ti-user"></i></span>
                                                         </div>
-                                                        <input type="text" class="form-control apnt-name" name="appointment[current_event]"
-                                                            value="<?php echo $result['name'] ?>"
-                                                            placeholder="Enter Patient Name . . ." required>
-                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
-                                                            value="<?php echo $result['patient_id'] ?>">
-
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Current event (History)</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ti-user"></i></span>
-                                                        </div>
-                                                        <input type="text" class="form-control apnt-name" name="appointment[current_event]"
-                                                            value="<?php echo $result['name'] ?>"
-                                                            placeholder="Enter Patient Name . . ." required>
-                                                        <input type="hidden" class="patient-id" name="appointment[patient_id]"
-                                                            value="<?php echo $result['patient_id'] ?>">
-
+                                                        <select name="appointment[intraocular_pressure_left]" class="custom-select" required>
+                                                            <option value="">Select intraocular pressure</option>
+                                                            <?php foreach (constant('INTRAOCULAR_PRESSURE')['VISUAL_ACUITY'] as $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo($result['intraocular_pressure_left'] == $key) ? 'selected':''?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
