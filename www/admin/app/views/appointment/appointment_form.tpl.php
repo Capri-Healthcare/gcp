@@ -544,6 +544,83 @@
                                         </table>
                                     </div>
 
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-md-2">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered medicine-table">
+                                                    <tbody>
+                                                    <tr class="medicine-row center">
+                                                        <td data-date="20-05-2021" style="text-align: center"><b>20-05-2021</b></td>
+                                                    </tr>
+                                                    <tr class="medicine-row center">
+                                                        <td data-date="20-05-2021" style="text-align: center"><b>15-04-2021</b></td>
+                                                    </tr>
+                                                    <tr class="medicine-row center">
+                                                        <td data-date="20-05-2021" style="text-align: center"><b>16-04-2021</b></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label><b>CCT RE : </b></label>
+                                                        <label></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label><b>IOP RE : </b></label>
+                                                        <label></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label><b>Diagnosis : </b></label>
+                                                        <label></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label><b>CCT LE : </b></label>
+                                                        <label></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label><b>IOP LE : </b></label>
+                                                        <label></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="d-block mb-2">
+                                                <strong><h4><b>Treatment:</b></h4></strong>
+                                            </label>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered medicine-table">
+                                                   <thead>
+                                                   <th>Medicine</th>
+                                                   <th>Frequency</th>
+                                                   <th>Start date</th>
+                                                   <th>End date</th>
+                                                   <th>Instruction</th>
+                                                   </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>Medicine 1</td>
+                                                        <td>1-0-1</td>
+                                                        <td>09-06-2021</td>
+                                                        <td>09-06-2025</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Medicine 1</td>
+                                                        <td>1-0-1</td>
+                                                        <td>09-06-2021</td>
+                                                        <td>09-06-2025</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                    </div>
+                                    </div>
                                     <label class="d-block mb-2">
                                         <strong><h4>Ocular Examination</h4></strong>
                                     </label>
@@ -1335,6 +1412,6 @@
 
 
     </script>
-    <script src="<?php echo URL_ADMIN."public/js/examination_chart.js";?>"></script>
+    <script src="<?php echo URL_ADMIN . "public/js/examination_chart.js"; ?>"></script>
     <!-- Footer -->
 <?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>
