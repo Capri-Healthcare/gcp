@@ -272,11 +272,12 @@ class OpticianReferralController extends Controller
 
                             $this->patientMail($data['patientid']);
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
-                            $this->url->redirect('patient/edit&id=' . $data['patientid'].'&referral=true');
+                            $this->url->redirect('patient/edit&id=' . $data['patientid'] . '&referralid=' . $data['referral']['id'] . '&referral=true');
                         }
 
                     } else {
-                        $this->url->redirect('patient/edit&id=' . $patient['id'].'&referral=true');
+                        $this->url->redirect('patient/edit&id=' . $patient['id'] . '&referralid=' . $data['referral']['id'] . '&referral=true');
+
                         //$this->url->redirect('optician-referral');
                     }
                 }
