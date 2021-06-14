@@ -97,7 +97,20 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
     'VISUAL_ACUITY' => ['1' => '1', '2' => '2'],
     'INTRAOCULAR_PRESSURE' => ['1' => '1', '2' => '2'],
     'DIAGNOSIS' => ['1' => '1', '2' => '2'],
-    'OUTCOME' => ['1' => '1', '2' => '2'],
+    'OUTCOME' => [
+            'STABLE' => 'Stable: review with visual fields', 
+            'UNSTABLE' => 'Unstable',
+            'NEED_CHANGE_IN_TREATMENT' => 'Need change in treatment- change medication above',
+            'BOOK_FOR_LASER' => 'Book for laser',
+            'BOOK_FOR_SURGERY' => 'Book for Surgery',
+        ],
+    'FOLLOW_UP_OR_NEXT_APPOINTMENT' => [
+            '1' => '2 months after change in treatment to see the effect',
+            '2' => '2 months after laser appointment',
+            '4' => '4 months',
+            '6' => '6 months',
+            '12' => '12 months',
+        ],
     'GLAUCOMA_CARE_PLAN_REQUIRED' => ['Yes,' => 'Yes', 'NO' => 'No'],
 
 ]);
