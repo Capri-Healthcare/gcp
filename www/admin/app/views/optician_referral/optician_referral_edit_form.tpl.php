@@ -39,7 +39,7 @@
             </ul>
             <div class="tab-content pt-4">
                 <div class="tab-pane  <?php echo(!isset($_GET['document']) ? 'active' : '') ?>" id="appointment-info">
-                    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"  onsubmit="return validateMyForm(event);">
                         <input type="hidden" name="_token" value="<?php echo $token; ?>" id="token">
                         <input type="hidden" class="optician-refrrel-id" name="referral[id]"
                                value="<?php echo $result['id']; ?>">
@@ -80,6 +80,7 @@
                                                                 class="ti-mobile"></i></span></div>
                                                 <input type="text" name="referral[mobile]" class="form-control"
                                                        maxlength="11"
+                                                       id="mobile"
                                                        onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
                                                        value="<?php echo $result['mobile']; ?>" placeholder="Mobile"
                                                        required>
@@ -370,7 +371,16 @@
             'hideOnContentClick': false,
             'type': 'iframe'
         });
+        function validateMyForm(e) {
+            var mobile = $("#mobile").val();
 
+            if (mobile.length < 10 || mobile.length < 11) {
+                toastr.error('Error', 'Mobile number must be 11 digits.');
+                return false
+            }else{
+                return true;
+            }
+        }
 
     </script>
 
