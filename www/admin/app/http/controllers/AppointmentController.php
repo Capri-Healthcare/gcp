@@ -44,7 +44,7 @@ class AppointmentController extends Controller
         if (!empty($referralid)) {
             $this->load->model('opticianreferral');
             $referral = $this->model_opticianreferral->getOpticianReferral($referralid);
-            $data['hospital_code']  =   $referral['hospital_code'];
+            $data['hospital_code'] = $referral['hospital_code'];
         }
 
         $this->load->model('appointment');
@@ -200,6 +200,8 @@ class AppointmentController extends Controller
      **/
     public function indexEdit()
     {
+        $firstChart = $nflChart = $mdChart = $psdChart = [];
+
         /**
          * Check if id exist in url if not exist then redirect to blog list view
          **/
@@ -277,6 +279,35 @@ class AppointmentController extends Controller
 
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'appointment/edit';
+
+        // Set Chart Value
+
+        $firstChart = array(
+            '0' => array("name"=>'RE',"data"=> [1, 2, 3, 4, 5]),
+            '1' => array("name"=>'LE',"data"=> [5, 4, 3, 2, 1])
+        );
+
+        $nflChart = array(
+            '0' => array("name"=>'RE - NFL',"data"=> [1, 2, 3, 4, 5]),
+            '1' => array("name"=>'LE - NFL',"data"=> [5, 4, 3, 2, 1])
+        );
+
+        $mdChart = array(
+            '0' => array("name"=>'RE - MD',"data"=> [1, 2, 3, 4, 5]),
+            '1' => array("name"=>'RE- MD',"data"=> [5, 4, 3, 2, 1])
+        );
+
+        $psdChart = array(
+            '0' => array("name"=>'RE - PSD',"data"=> [1, 2, 3, 4, 5]),
+            '1' => array("name"=>'RE - PSD',"data"=> [5, 4, 3, 2, 1])
+        );
+
+
+        $data['firstChart'] = $firstChart;
+        $data['nflChart'] = $nflChart;
+        $data['mdChart'] = $mdChart;
+        $data['psdChart'] = $psdChart;
+
         /*Render Blog edit view*/
         $this->response->setOutput($this->load->view('appointment/appointment_form', $data));
     }
@@ -343,8 +374,7 @@ class AppointmentController extends Controller
                 $result = $this->model_appointment->updateAppointment($data['appointment']);
 
 
-                if($data['appointment']['gcp_required'] == 'YES')
-                {
+                if ($data['appointment']['gcp_required'] == 'YES') {
 
                     $this->newpatiengcpMail($data['appointment']['optician_id']);
                     $this->load->model('followup');
@@ -389,6 +419,15 @@ class AppointmentController extends Controller
                 $message = "Appointment Prescription updated successfully.";
                 $redirect_to = "edit";
             }
+            // Update Examination Notes
+            if ($data['form_type'] == 'appointment_records') {
+
+                $this->model_appointment->updateExaminationNotes($data['appointment']);
+                $message = "Appointment Examination Note updated successfully.";
+                $redirect_to = "edit";
+
+            }
+
 
             // Update Clinical Note
             if ($data['form_type'] == 'appointment_clinical_note') {
@@ -793,21 +832,21 @@ class AppointmentController extends Controller
         }
 
 
-        $result['template']['message'] = str_replace('{ophth_title}',"", $result['template']['message']);
-        $result['template']['message'] = str_replace('{Ophth_fname, lname}',$appointment['doctor_name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{ophth_title}', "", $result['template']['message']);
+        $result['template']['message'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{appt_date}', $appointment['date'], $result['template']['message']);
         $result['template']['message'] = str_replace('{appt_time}', $appointment['time'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{patient_title}', $appointment['title'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{patient fname, lname}', $appointment['firstname']." ".$appointment['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{patient fname, lname}', $appointment['firstname'] . " " . $appointment['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{appt_loaction}', constant('HOSPITAL')[$appointment['hospital_code']], $result['template']['message']);
 
 
-        $data['name'] =  $result['template']['name'];
+        $data['name'] = $result['template']['name'];
         $data['email'] = $appointment['email'];
         $data['cc'] = $appointment['doctor_email'];
-        $data['subject'] = str_replace('{ophth_title}',"", $result['template']['subject']);
-        $data['subject'] = str_replace('{Ophth_fname, lname}',$appointment['doctor_name']." ".$optician['lastname'],$data['subject']);
+        $data['subject'] = str_replace('{ophth_title}', "", $result['template']['subject']);
+        $data['subject'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'] . " " . $optician['lastname'], $data['subject']);
         $data['message'] = $result['template']['message'];
 
         return $this->controller_mail->sendMail($data);
@@ -828,14 +867,14 @@ class AppointmentController extends Controller
         $role = $this->model_user->userRoleByID($optician['user_role']);
 
         $link = '<a href="' . URL . 'admin">GCP Dashboard</a>';
-        $result['template']['message'] = str_replace('{gcp_fname}',$user_gcp_sec_data['firstname'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{gcp_lname}',$user_gcp_sec_data['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{gcp_fname}', $user_gcp_sec_data['firstname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{gcp_lname}', $user_gcp_sec_data['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('GCP Dashboard', $link, $result['template']['message']);
 
         $data['email'] = $user_gcp_sec_data['email'];;
         $data['cc'] = $user_med_data['email'];
-        $data['subject'] = str_replace('{clinic_name}',$result['common']['name'],$result['template']['subject']);
+        $data['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];
 
 
@@ -847,7 +886,7 @@ class AppointmentController extends Controller
         $this->load->controller('mail');
         $result = $this->controller_mail->getTemplate($template);
         $this->load->model('followup');
-        $followup  = $this->model_followup->getFollowupByID($id);
+        $followup = $this->model_followup->getFollowupByID($id);
 
         if (empty($result['template']) || $result['template']['status'] == '0') {
             return false;
@@ -857,18 +896,19 @@ class AppointmentController extends Controller
         $optician = $this->model_user->getUser($followup['optician_id']);
         $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_GCP')]);
 
-        $result['template']['message'] = str_replace('{gcp_sec_fname}',$user_data['firstname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{gcp_sec_fname}', $user_data['firstname'], $result['template']['message']);
         $result['template']['message'] = str_replace('gcp_lname', $optician['lastname'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y',strtotime($followup['due_date'])), $result['template']['message']);
+        $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y', strtotime($followup['due_date'])), $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
 
 
         $data['email'] = $user_data['email'];
-        $data['subject'] = str_replace('{patient_fname, patient_lname}',$followup['firstname']." ".$followup['lastname'], $result['template']['subject']);
+        $data['subject'] = str_replace('{patient_fname, patient_lname}', $followup['firstname'] . " " . $followup['lastname'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];
 
         return $this->controller_mail->sendMail($data);
     }
+
     public function reportsExport()
     {
         $id = (int)$this->url->get('id');

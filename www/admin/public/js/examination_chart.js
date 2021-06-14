@@ -1,3 +1,4 @@
+var firstChart,nflChart,mdChart,psdChart;
 // Chart
 Highcharts.chart('container', {
 
@@ -36,13 +37,7 @@ Highcharts.chart('container', {
         }
     },
     colors: ['#ff0000', '#00A4EF'],
-    series: [{
-        name: 'RE',
-        data: [1, 2, 3, 4, 5]
-    }, {
-        name: 'LE',
-        data: [2, 3, 3, 4, 5]
-    }],
+    series: firstChart,
 
     responsive: {
         rules: [{
@@ -100,13 +95,7 @@ Highcharts.chart('nfl-chart-container', {
         }
     },
     colors: ['#ff0000', '#00A4EF'],
-    series: [{
-        name: 'RE - NFL',
-        data: [1, 2, 3, 4, 5]
-    }, {
-        name: 'LE - NFL',
-        data: [2, 3, 3, 4, 5]
-    }],
+    series:nflChart,
 
     responsive: {
         rules: [{
@@ -141,7 +130,7 @@ Highcharts.chart('md-chart-container', {
         title: {
             text: ''
         },
-        categories: ['-5', '-4', '-3', '-2', '-1','0'],
+        categories: ['-5', '-4', '-3', '-2', '-1', '0'],
     },
 
     xAxis: {
@@ -163,13 +152,7 @@ Highcharts.chart('md-chart-container', {
         }
     },
     colors: ['#ff0000', '#00A4EF'],
-    series: [{
-        name: 'RE - MD',
-        data: [1, 2, 3, 4, 5]
-    }, {
-        name: 'LE - MD',
-        data: [2, 3, 3, 4, 5]
-    }],
+    series:mdChart,
 
     responsive: {
         rules: [{
@@ -204,7 +187,7 @@ Highcharts.chart('psd-chart-container', {
         title: {
             text: ''
         },
-        categories: ['0', '0.5', '1', '1.5', '2','2.5','3','3.5','4'],
+        categories: ['0', '0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4'],
     },
 
     xAxis: {
@@ -226,13 +209,7 @@ Highcharts.chart('psd-chart-container', {
         }
     },
     colors: ['#ff0000', '#00A4EF'],
-    series: [{
-        name: 'RE - PSD',
-        data: [1, 2, 3, 4, 5]
-    }, {
-        name: 'LE - PSD',
-        data: [2, 3, 3, 4, 5]
-    }],
+    series:psdChart,
 
     responsive: {
         rules: [{

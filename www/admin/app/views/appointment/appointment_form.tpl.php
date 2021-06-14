@@ -550,13 +550,16 @@
                                                 <table class="table table-bordered medicine-table">
                                                     <tbody>
                                                     <tr class="medicine-row center">
-                                                        <td data-date="20-05-2021" style="text-align: center"><b>20-05-2021</b></td>
+                                                        <td data-date="20-05-2021" style="text-align: center"><b>20-05-2021</b>
+                                                        </td>
                                                     </tr>
                                                     <tr class="medicine-row center">
-                                                        <td data-date="20-05-2021" style="text-align: center"><b>15-04-2021</b></td>
+                                                        <td data-date="20-05-2021" style="text-align: center"><b>15-04-2021</b>
+                                                        </td>
                                                     </tr>
                                                     <tr class="medicine-row center">
-                                                        <td data-date="20-05-2021" style="text-align: center"><b>16-04-2021</b></td>
+                                                        <td data-date="20-05-2021" style="text-align: center"><b>16-04-2021</b>
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -594,13 +597,13 @@
                                             </label>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered medicine-table">
-                                                   <thead>
-                                                   <th>Medicine</th>
-                                                   <th>Frequency</th>
-                                                   <th>Start date</th>
-                                                   <th>End date</th>
-                                                   <th>Instruction</th>
-                                                   </thead>
+                                                    <thead>
+                                                    <th>Medicine</th>
+                                                    <th>Frequency</th>
+                                                    <th>Start date</th>
+                                                    <th>End date</th>
+                                                    <th>Instruction</th>
+                                                    </thead>
                                                     <tbody>
                                                     <tr>
                                                         <td>Medicine 1</td>
@@ -618,14 +621,17 @@
                                                     </tr>
                                                     </tbody>
                                                 </table>
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
                                     <label class="d-block mb-2">
                                         <strong><h4>Ocular Examination</h4></strong>
                                     </label>
                                     <form action="<?php echo $action ?>" method="post">
                                         <input type="hidden" name="_token" value="<?php echo $token; ?>">
+                                        <input type="hidden" name="form_type" value="appointment_records">
+                                        <input type="hidden" class="appointment-id" name="appointment[id]" value="<?php echo $result['id']; ?>">
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -638,7 +644,7 @@
                                                         </div>
                                                         <textarea class="form-control" name="appointment[current_event]"
                                                                   required>
-                                                                <?php echo $result['current_event']; ?>
+                                                                <?php echo isset($result['current_event']) ? $result['current_event'] : ''; ?>
                                                         </textarea>
                                                     </div>
                                                 </div>
@@ -656,7 +662,7 @@
                                                             <option value="">Select allergy</option>
                                                             <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
-                                                                    <?php echo ($result['allergy'] == $key) ? 'selected' : '' ?> >
+                                                                    <?php echo (isset($result['allergy']) && $result['allergy'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
                                                                 </option>
                                                             <?php } ?>
@@ -699,9 +705,9 @@
                                                         <select name="appointment[intraocular_pressure_right]"
                                                                 class="custom-select" required>
                                                             <option value="">Select intraocular pressure</option>
-                                                            <?php foreach (constant('INTRAOCULAR_PRESSURE')['VISUAL_ACUITY'] as $value) { ?>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['visual_acuity_right']) && $result['intraocular_pressure_right'] == $key) ? 'selected' : '' ?> >
+                                                                    <?php echo (isset($result['intraocular_pressure_right']) && $result['intraocular_pressure_right'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
                                                                 </option>
                                                             <?php } ?>
@@ -742,7 +748,7 @@
                                                         <select name="appointment[intraocular_pressure_left]"
                                                                 class="custom-select" required>
                                                             <option value="">Select intraocular pressure</option>
-                                                            <?php foreach (constant('INTRAOCULAR_PRESSURE')['VISUAL_ACUITY'] as $value) { ?>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
                                                                     <?php echo ($result['intraocular_pressure_left'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
@@ -811,16 +817,18 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Lens - Right<span class="form-required">*</span></label>
-                                                    <input type="text" class="form-control"
-                                                           name="appointment[lens-rigt]" value="">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[lens_right]"
+                                                           value="<?php echo $result['lens_right']; ?>">
 
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Lens - Left<span class="form-required">*</span></label>
-                                                    <input type="text" class="form-control"
-                                                           name="appointment[lens-left]" value="">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[lens_left]"
+                                                           value="<?php echo $result['lens_left']; ?>">
 
                                                 </div>
                                             </div>
@@ -855,7 +863,8 @@
                                                                 class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <input type="number" class="form-control"
-                                                               name="appointment[nfl_thickness_right]" value="">&nbsp;
+                                                               name="appointment[nfl_thickness_right]"
+                                                               value="<?php echo $result['nfl_thickness_right']; ?>">&nbsp;
                                                         <b>mm</b>
                                                     </div>
                                                 </div>
@@ -866,7 +875,8 @@
                                                                 class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <input type="number" class="form-control"
-                                                               name="appointment[nfl_thickness_left]" value="">&nbsp;
+                                                               name="appointment[nfl_thickness_left]"
+                                                               value="<?php echo $result['nfl_thickness_left']; ?>">&nbsp;
                                                         <b>mm</b>
                                                     </div>
                                                 </div>
@@ -932,7 +942,8 @@
                                                                 class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <input type="number" class="form-control"
-                                                               name="appointment[mean_deviation_right]" value="">&nbsp;
+                                                               name="appointment[mean_deviation_right]"
+                                                               value="<?php echo $result['mean_deviation_right']; ?>">&nbsp;
                                                         <b>dB</b>
                                                     </div>
                                                 </div>
@@ -943,7 +954,8 @@
                                                                 class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <input type="number" class="form-control"
-                                                               name="appointment[mean_deviation_left]" value="">&nbsp;
+                                                               name="appointment[mean_deviation_left]"
+                                                               value="<?php echo $result['mean_deviation_left']; ?>">&nbsp;
                                                         <b>dB</b>
                                                     </div>
                                                 </div>
@@ -965,7 +977,8 @@
                                                                 class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <input type="number" class="form-control"
-                                                               name="appointment[psd_deviation_right]" value="">&nbsp;
+                                                               name="appointment[psd_deviation_right]"
+                                                               value="<?php echo $result['psd_deviation_right']; ?>">&nbsp;
                                                         <b>dB</b>
                                                     </div>
                                                 </div>
@@ -976,7 +989,8 @@
                                                                 class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <input type="number" class="form-control"
-                                                               name="appointment[psd_deviation_left]" value="">&nbsp;
+                                                               name="appointment[psd_deviation_left]"
+                                                               value="<?php echo $result['psd_deviation_left']; ?>">&nbsp;
                                                         <b>dB</b>
                                                     </div>
                                                 </div>
@@ -1014,12 +1028,12 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <!--                                                <label>RE</label>-->
-                                                <!--                                                <input type="checkbox" class="checkbox" name="appointment[re]" value="">-->
-                                                <!--                                                <label>LE</label>-->
-                                                <!--                                                <input type="checkbox" class="checkbox" name="appointment[le]" value="">-->
-                                                <!--                                                <label>Both</label>-->
-                                                <!--                                                <input type="checkbox" class="checkbox" name="appointment[both]" value="">-->
+                                                <label>RE</label>
+                                                <input type="checkbox" class="checkbox" name="appointment[re]" value="re" <?php echo (isset($result['re']) && $result['re'] == 're') ? 'checked' : '' ?>>
+                                                <label>LE</label>
+                                                <input type="checkbox" class="checkbox" name="appointment[le]" value="le" <?php echo (isset($result['re']) && $result['re'] == 'le') ? 'checked' : '' ?>>
+                                                <label>Both</label>
+                                                <input type="checkbox" class="checkbox" name="appointment[both]" value="both" <?php echo (isset($result['re']) && $result['re'] == 'both') ? 'checked' : '' ?>>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -1090,7 +1104,11 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div class="panel-footer text-center">
+                                            <button type="submit" name="submit" class="btn btn-primary"><i
+                                                        class="ti-save-alt pr-2"></i> Save
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -1200,8 +1218,7 @@
                     <form action="<?php echo $action ?>" method="post">
                         <input type="hidden" name="_token" value="<?php echo $token; ?>">
                         <input type="hidden" name="form_type" value="appointment_pre_consultation">
-                        <input type="hidden" class="appointment-id" name="appointment[id]"
-                               value="<?php echo $result['id']; ?>">
+                        <input type="hidden" class="appointment-id" name="appointment[id]" value="<?php echo $result['id']; ?>">
                         <div class="form-group mb-2">
                             <label class="d-block mb-2"><strong><h4>Select pre consultation form for appointment</h4>
                                 </strong></label>
@@ -1410,6 +1427,10 @@
             'type': 'iframe'
         });
 
+        var firstChart = <?php echo json_encode($firstChart)?>;
+        var nflChart = <?php echo json_encode($nflChart)?>;
+        var mdChart = <?php echo json_encode($mdChart)?>;
+        var psdChart =<?php echo json_encode($psdChart)?>;
 
     </script>
     <script src="<?php echo URL_ADMIN . "public/js/examination_chart.js"; ?>"></script>

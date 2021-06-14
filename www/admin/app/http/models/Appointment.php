@@ -100,7 +100,67 @@ class Appointment extends Model
 
     public function updateAppointment($data)
     {
-        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?,`is_glaucoma_required` = ?,`gcp_next_appointment`= ? , `slot` = ?, `department_id` = ?, `status` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ? WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['gcp_required'], $data['followup'], $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], (int)$data['id']));
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], (int)$data['id']));
+
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function updateExaminationNotes($data)
+    {
+
+
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET 
+        `current_event` = ?,
+         `allergy` = ?,
+          `visual_acuity_right` = ?,
+           `intraocular_pressure_right` = ? ,
+           `visual_acuity_left` = ?,
+            `intraocular_pressure_left` = ?,
+             `anterior_chamber_right` = ?,
+              `anterior_chamber_left` = ?, 
+              `lens_right` = ?, 
+              `lens_left` = ?,
+               `nfl_thickness_right` = ?, 
+               `nfl_thickness_left` = ?,
+                mean_deviation_right = ?, 
+                `mean_deviation_left` = ?,
+                 `psd_deviation_right` = ?,
+                  `psd_deviation_left` = ?, 
+                  `diagnosis` = ?,
+                  `re` = ?,
+                  `le` = ?,
+                  `both` = ?,
+                  `outcome` = ?,
+                  `gcp_next_appointment` = ?,
+                  `is_glaucoma_required` = ?  WHERE `id` = ? ", array(
+            $this->database->escape($data['current_event']),
+            $this->database->escape($data['allergy']),
+            $this->database->escape($data['visual_acuity_right']),
+            $this->database->escape($data['intraocular_pressure_right']),
+            $this->database->escape($data['visual_acuity_left']),
+            $data['intraocular_pressure_left'],
+            $data['anterior_chamber_right'],
+            (int)$data['anterior_chamber_left'],
+            $data['lens_right'],
+            $data['lens_left'],
+            (int)$data['nfl_thickness_right'],
+            $data['nfl_thickness_left'],
+            $data['mean_deviation_right'],
+            $data['mean_deviation_left'],
+            $data['psd_deviation_right'],
+            $data['psd_deviation_left'],
+            $data['diagnosis'],
+            isset($data['re']) ? $data['re'] : null,
+            isset($data['le']) ? $data['le'] : null,
+            isset($data['both']) ? $data['both'] : null,
+            $data['outcome'],
+            $data['followup'],
+            $data['gcp_required'],
+            (int)$data['id']));
 
         if ($query->num_rows > 0) {
             return true;
@@ -144,7 +204,7 @@ class Appointment extends Model
 
     public function createAppointment($data)
     {
-        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "appointments` (`optician_id`,`name`, `email`, `mobile`, `date`, `time`, `slot`, `department_id`, `status`, `doctor_id`, `patient_id`, `date_of_joining`, `appointment_id`,`hospital_code`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?) ", array($data['optician_id'],$this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['datetime'], $data['appointment_id'],$data['hospital_code']));
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "appointments` (`optician_id`,`name`, `email`, `mobile`, `date`, `time`, `slot`, `department_id`, `status`, `doctor_id`, `patient_id`, `date_of_joining`, `appointment_id`,`hospital_code`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?) ", array($data['optician_id'], $this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['datetime'], $data['appointment_id'], $data['hospital_code']));
 
         if ($query->num_rows > 0) {
             return $this->database->last_id();
@@ -380,11 +440,11 @@ class Appointment extends Model
                     mkdir($report_folder, 0777, true);
                 }
                 if (isset($data['followupid'])) {
-                    $source_path = DIR . "public/uploads/optician-referral/followup/" .$data['followupid']. '/' . $doc['filename'];
+                    $source_path = DIR . "public/uploads/optician-referral/followup/" . $data['followupid'] . '/' . $doc['filename'];
                 }
                 if (isset($data['referralid'])) {
 
-                    $source_path = DIR . "public/uploads/optician-referral/document/" . $data['referralid']. '/' . $doc['filename'];
+                    $source_path = DIR . "public/uploads/optician-referral/document/" . $data['referralid'] . '/' . $doc['filename'];
                 }
                 $destination_path = $report_folder . '/' . $doc['filename'];
                 copy($source_path, $destination_path);
