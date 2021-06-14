@@ -97,6 +97,7 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
     'VISUAL_ACUITY' => ['1' => '1', '2' => '2'],
     'INTRAOCULAR_PRESSURE' => ['1' => '1', '2' => '2'],
     'DIAGNOSIS' => ['1' => '1', '2' => '2'],
+    'ANTERIOR_CHAMBER' => ['1' => '1', '2' => '2'],
     'OUTCOME' => [
             'STABLE' => 'Stable: review with visual fields', 
             'UNSTABLE' => 'Unstable',

@@ -27,11 +27,11 @@
         <div class="panel-body">
             <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#appointment-info" data-toggle="tab">Appointment Info</a>
+                    <a class="nav-link" href="#appointment-info" data-toggle="tab">Appointment Info</a>
                 </li>
                 <?php if ($page_notes) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#appointment-records" data-toggle="tab">Examination Notes</a>
+                        <a class="nav-link active" href="#appointment-records" data-toggle="tab">Examination Notes</a>
                     </li>
                 <?php }
                 if ($page_prescriptions) { ?>
@@ -55,7 +55,7 @@
                 </li>
             </ul>
             <div class="tab-content pt-4">
-                <div class="tab-pane active" id="appointment-info">
+                <div class="tab-pane" id="appointment-info">
                     <form action="<?php echo $action ?>" method="post">
                         <input type="hidden" name="_token" class="token" value="<?php echo $token; ?>">
                         <input type="hidden" name="form_type" value="appointment_info">
@@ -79,7 +79,7 @@
                                                 <option value="<?php echo $value['id']; ?>"
                                                         data-department="<?php echo $value['department_id']; ?>"
                                                         data-weekly="<?php echo htmlspecialchars($value['weekly'], ENT_QUOTES, 'UTF-8'); ?>"
-                                                        data-national="<?php echo htmlspecialchars($value['national'], ENT_QUOTES, 'UTF-8'); ?>" <?php echo($result['doctor_id'] == $value['id']) ? 'selected':''?> ><?php echo $value['name'] . ' (' . $value['department'] . ')'; ?></option>
+                                                        data-national="<?php echo htmlspecialchars($value['national'], ENT_QUOTES, 'UTF-8'); ?>" <?php echo ($result['doctor_id'] == $value['id']) ? 'selected' : '' ?> ><?php echo $value['name'] . ' (' . $value['department'] . ')'; ?></option>
                                             <?php } ?>
                                         </select>
                                         <input type="hidden" class="apnt-department" name="appointment[department]"
@@ -87,9 +87,9 @@
                                     </div>
                                 </div-->
                                 <input type="hidden" class="apnt-department" name="appointment[doctor]"
-                                               value="<?php echo $result['doctor_id']; ?>">
+                                       value="<?php echo $result['doctor_id']; ?>">
                                 <input type="hidden" class="apnt-department" name="appointment[department]"
-                                               value="<?php echo $result['department_id']; ?>">
+                                       value="<?php echo $result['department_id']; ?>">
                                 <div class="form-group">
                                     <label>Date <span class="form-required">*</span></label>
                                     <div class="input-group">
@@ -124,51 +124,16 @@
                                         <select name="appointment[consultation_type]" class="custom-select" required>
                                             <option value="">Select consultation Method</option>
                                             <?php if (!empty(CONSULTATION_TYPE)) {
-                                                foreach (CONSULTATION_TYPE as $consultation_type_key => $consultation_type_value) { ?>
+                                    foreach (CONSULTATION_TYPE as $consultation_type_key => $consultation_type_value) { ?>
                                                     <option value="<?php echo $consultation_type_key ?>" <?php echo ($result['consultation_type'] == $consultation_type_key) ? "Selected" : "" ?>><?php echo $consultation_type_value; ?></option>
                                                 <?php }
-                                            } ?>
+                                } ?>
                                         </select>
                                     </div>
                                 </div-->
                                 <input type="hidden" class="apnt-department" name="appointment[consultation_type]"
-                                               value="<?php echo $result['consultation_type']; ?>">
+                                       value="<?php echo $result['consultation_type']; ?>">
 
-                                <div class="form-group">
-                                    <label>Glaucoma Care Plan Required<span class="form-required">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
-                                        </div>
-                                        <select name="appointment[gcp_required]" class="custom-select" id="gcp_required"
-                                                required>
-                                            <option value="">Select GCP</option>
-                                            <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
-                                                YES
-                                            </option>
-                                            <option value="NO" <?php echo ($result['is_glaucoma_required'] == 'NO') ? "Selected" : "" ?>>
-                                                NO
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group"
-                                     style="display:<?php echo ($result['is_glaucoma_required'] == 'YES') ? "block" : "none" ?>"
-                                     id="gcp_followup_frequency">
-                                    <label>GCP Followup / Next Appointment<span class="form-required">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
-                                        </div>
-                                        <select name="appointment[followup]" id="id_gcp_followup_frequency"
-                                                class="custom-select">
-                                            <option value="">Select Month</option>
-                                            <?php foreach (constant('FOLLOW_UP_DROPDOWN') as $key => $followup) { ?>
-                                                <option value="<?php echo $key ?>" <?php echo ($result['gcp_next_appointment'] == $key) ? "Selected" : "" ?>><?php echo $followup; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label>Status <span class="form-required">*</span></label>
                                     <div class="input-group">
@@ -543,8 +508,8 @@
                     </div>
                 <?php }
                 if ($page_notes) { ?>
-                    
-                    <div class="tab-pane" id="appointment-records">
+
+                    <div class="tab-pane active" id="appointment-records">
                         <div class="form-group mb-2">
                             <div class="row">
                                 <div class="col-md-12">
@@ -554,22 +519,27 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered medicine-table">
                                             <thead>
-                                                <tr class="medicine-row">
-                                                    <th style="width: 10%;">CCT RE</th>
-                                                    <th style="width: 10%;">CCT LE</th>
-                                                    <th style="width: 15%;">Highest IOP RE</th>
-                                                    <th style="width: 15%;">Highest IOP LE</th>
-                                                    <th>Allergy</th>
-                                                </tr>
+                                            <tr class="medicine-row">
+                                                <th style="width: 10%;">CCT RE</th>
+                                                <th style="width: 10%;">CCT LE</th>
+                                                <th style="width: 15%;">Highest IOP RE</th>
+                                                <th style="width: 15%;">Highest IOP LE</th>
+                                                <th>Allergy</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="medicine-row">
-                                                    <td>5</th>
-                                                    <td>6</th>
-                                                    <td>20</th>
-                                                    <td>18</th>
-                                                    <td> Test Allergy</th>
-                                                </tr>
+                                            <tr class="medicine-row">
+                                                <td>5
+                                                </th>
+                                                <td>6
+                                                </th>
+                                                <td>20
+                                                </th>
+                                                <td>18
+                                                </th>
+                                                <td> Test Allergy
+                                                </th>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -582,12 +552,15 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Current event (History)<span class="form-required">*</span></label>
+                                                    <label>Current event (History)<span
+                                                                class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
                                                         </div>
-                                                        <textarea class="form-control" name="appointment[current_event]" required>
+                                                        <textarea class="form-control" name="appointment[current_event]"
+                                                                  required>
                                                                 <?php echo $result['current_event']; ?>
                                                         </textarea>
                                                     </div>
@@ -598,13 +571,15 @@
                                                     <label>Allergy<span class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
                                                         </div>
-                                                        <select name="appointment[allergy]" class="custom-select" required>
+                                                        <select name="appointment[allergy]" class="custom-select"
+                                                                required>
                                                             <option value="">Select allergy</option>
                                                             <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
-                                                                    <?php echo($result['allergy'] == $key) ? 'selected':''?> >
+                                                                    <?php echo ($result['allergy'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
                                                                 </option>
                                                             <?php } ?>
@@ -615,18 +590,21 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                
+
                                                 <div class="form-group">
-                                                    <label>Visual acuity - right<span class="form-required">*</span></label>
+                                                    <label>Visual acuity - right<span
+                                                                class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
                                                         </div>
-                                                        <select name="appointment[visual_acuity_right]" class="custom-select" required>
+                                                        <select name="appointment[visual_acuity_right]"
+                                                                class="custom-select" required>
                                                             <option value="">Select visual acuity</option>
                                                             <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
-                                                                    <?php echo($result['visual_acuity_right'] == $key) ? 'selected':''?> >
+                                                                    <?php echo (isset($result['visual_acuity_right']) && $result['visual_acuity_right'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
                                                                 </option>
                                                             <?php } ?>
@@ -634,16 +612,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Intraocular pressure - right<span class="form-required">*</span></label>
+                                                    <label>Intraocular pressure - right<span
+                                                                class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
                                                         </div>
-                                                        <select name="appointment[intraocular_pressure_right]" class="custom-select" required>
+                                                        <select name="appointment[intraocular_pressure_right]"
+                                                                class="custom-select" required>
                                                             <option value="">Select intraocular pressure</option>
                                                             <?php foreach (constant('INTRAOCULAR_PRESSURE')['VISUAL_ACUITY'] as $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
-                                                                    <?php echo($result['intraocular_pressure_right'] == $key) ? 'selected':''?> >
+                                                                    <?php echo (isset($result['visual_acuity_right']) && $result['intraocular_pressure_right'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
                                                                 </option>
                                                             <?php } ?>
@@ -652,18 +633,21 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                
+
                                                 <div class="form-group">
-                                                    <label>Visual acuity - left<span class="form-required">*</span></label>
+                                                    <label>Visual acuity - left<span
+                                                                class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
                                                         </div>
-                                                        <select name="appointment[visual_acuity_left]" class="custom-select" required>
+                                                        <select name="appointment[visual_acuity_left]"
+                                                                class="custom-select" required>
                                                             <option value="">Select visual acuity</option>
                                                             <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
-                                                                    <?php echo($result['visual_acuity_left'] == $key) ? 'selected':''?> >
+                                                                    <?php echo (isset($result['visual_acuity_left']) && $result['visual_acuity_left'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
                                                                 </option>
                                                             <?php } ?>
@@ -671,16 +655,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Intraocular pressure - left<span class="form-required">*</span></label>
+                                                    <label>Intraocular pressure - left<span
+                                                                class="form-required">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
                                                         </div>
-                                                        <select name="appointment[intraocular_pressure_left]" class="custom-select" required>
+                                                        <select name="appointment[intraocular_pressure_left]"
+                                                                class="custom-select" required>
                                                             <option value="">Select intraocular pressure</option>
                                                             <?php foreach (constant('INTRAOCULAR_PRESSURE')['VISUAL_ACUITY'] as $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
-                                                                    <?php echo($result['intraocular_pressure_left'] == $key) ? 'selected':''?> >
+                                                                    <?php echo ($result['intraocular_pressure_left'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
                                                                 </option>
                                                             <?php } ?>
@@ -689,6 +676,344 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+                                                <div id="container" class="container">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Anterior Chamber - Right<span class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                        </div>
+                                                        <select name="appointment[anterior_chamber_right]"
+                                                                class="custom-select" required>
+                                                            <option value="">Select anterior chamber</option>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo (isset($result['anterior_chamber_right']) && $result['anterior_chamber_right'] == $key) ? 'selected' : '' ?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Anterior Chamber - Left<span
+                                                                class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                        </div>
+                                                        <select name="appointment[anterior_chamber_left]"
+                                                                class="custom-select" required>
+                                                            <option value="">Select anterior chamber</option>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo (isset($result['anterior_chamber_left']) && $result['anterior_chamber_left'] == $key) ? 'selected' : '' ?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Lens - Right<span class="form-required">*</span></label>
+                                                    <input type="text" class="form-control"
+                                                           name="appointment[lens-rigt]" value="">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Lens - Left<span class="form-required">*</span></label>
+                                                    <input type="text" class="form-control"
+                                                           name="appointment[lens-left]" value="">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Disc (OCT) - Right</label><br>
+                                                    <a data-fancybox="gallery"
+                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                             width="200px" height="100px" alt="">
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Disc (OCT) - Left</label><br>
+                                                    <a data-fancybox="gallery"
+                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                             width="200px" height="100px" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>NFL Thickness - Right<span
+                                                                class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control"
+                                                               name="appointment[nfl_thickness_right]" value="">&nbsp;
+                                                        <b>mm</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>NFL Thickness - Left<span
+                                                                class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control"
+                                                               name="appointment[nfl_thickness_left]" value="">&nbsp;
+                                                        <b>mm</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rowmt-2">
+                                            <div class="col-md-12">
+                                                <div id="nfl-chart-container" class="container">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Fundus - Right</label><br>
+                                                    <a data-fancybox="gallery"
+                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                             width="200px" height="100px" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Fundus - Left</label><br>
+                                                    <a data-fancybox="gallery"
+                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                             width="200px" height="100px" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Visual field test plots - Right</label><br>
+                                                    <a data-fancybox="gallery"
+                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                             width="200px" height="100px" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Visual field test plots - Right</label><br>
+                                                    <a data-fancybox="gallery"
+                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                             width="200px" height="100px" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Mean Deviation - Right<span
+                                                                class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control"
+                                                               name="appointment[mean_deviation_right]" value="">&nbsp;
+                                                        <b>dB</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Mean Deviation - Left<span
+                                                                class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control"
+                                                               name="appointment[mean_deviation_left]" value="">&nbsp;
+                                                        <b>dB</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="rowmt-2">
+                                            <div class="col-md-12">
+                                                <div id="md-chart-container" class="container">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>PSD Deviation - Right<span
+                                                                class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control"
+                                                               name="appointment[psd_deviation_right]" value="">&nbsp;
+                                                        <b>dB</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>PSD Deviation - Left<span
+                                                                class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control"
+                                                               name="appointment[psd_deviation_left]" value="">&nbsp;
+                                                        <b>dB</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="rowmt-2">
+                                            <div class="col-md-12">
+                                                <div id="psd-chart-container" class="container">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Diagnosis<span class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                        </div>
+                                                        <select name="appointment[diagnosis]"
+                                                                class="custom-select" required>
+                                                            <option value="">Select Diagnosis</option>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo (isset($result['diagnosis']) && $result['diagnosis'] == $key) ? 'selected' : '' ?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <!--                                                <label>RE</label>-->
+                                                <!--                                                <input type="checkbox" class="checkbox" name="appointment[re]" value="">-->
+                                                <!--                                                <label>LE</label>-->
+                                                <!--                                                <input type="checkbox" class="checkbox" name="appointment[le]" value="">-->
+                                                <!--                                                <label>Both</label>-->
+                                                <!--                                                <input type="checkbox" class="checkbox" name="appointment[both]" value="">-->
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Outcome<span class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                        </div>
+                                                        <select name="appointment[outcome]"
+                                                                class="custom-select" required>
+                                                            <option value="">Select Outcome</option>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['OUTCOME'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo (isset($result['outcome']) && $result['outcome'] == $key) ? 'selected' : '' ?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Follow up / Next Appointment<span
+                                                                class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                        </div>
+                                                        <select name="appointment[followup]"
+                                                                class="custom-select" required>
+                                                            <option value="">Select Month</option>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo (isset($result['gcp_next_appointment']) && $result['gcp_next_appointment'] == $key) ? 'selected' : '' ?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Glaucoma Care Plan Required<span
+                                                                class="form-required">*</span></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                                        </div>
+                                                        <select name="appointment[gcp_required]" class="custom-select"
+                                                                required>
+                                                            <option value="">Select GCP</option>
+                                                            <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
+                                                                YES
+                                                            </option>
+                                                            <option value="NO" <?php echo ($result['is_glaucoma_required'] == 'NO') ? "Selected" : "" ?>>
+                                                                NO
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </form>
                                 </div>
                             </div>
@@ -705,11 +1030,12 @@
                                        data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload
                                         Document/Report</a>
                                 </div>
-<!--                                <div class="form-group col-sm-6 text-right">-->
-<!--                                    <a class="btn btn-secondary btn-sm"-->
-<!--                                       href="--><?php //echo URL_ADMIN . DIR_ROUTE . 'appointment/reportsExport&id=' . $result['id']; ?><!--"><i-->
-<!--                                                class="ti-cloud-down mr-2"></i> Download Document/Report</a>-->
-<!--                                </div>-->
+                                <!--                                <div class="form-group col-sm-6 text-right">-->
+                                <!--                                    <a class="btn btn-secondary btn-sm"-->
+                                <!--                                       href="-->
+                                <?php //echo URL_ADMIN . DIR_ROUTE . 'appointment/reportsExport&id=' . $result['id']; ?><!--"><i-->
+                                <!--                                                class="ti-cloud-down mr-2"></i> Download Document/Report</a>-->
+                                <!--                                </div>-->
                             </div>
                         <?php }
                         if ($page_documents) { ?>
@@ -992,6 +1318,12 @@
         </div>
     </div>
 
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
     <script>
         $("a.open-pdf").fancybox({
             'frameWidth': 800,
@@ -1001,15 +1333,8 @@
             'type': 'iframe'
         });
 
-        $("#gcp_required").on('change', function () {
-            if ($('option:selected', this).text() == "NO") {
-                $("#id_gcp_followup_frequency").val("").change();
-                $("#gcp_followup_frequency").hide();
-            } else {
-                $("#gcp_followup_frequency").show()
-            }
-        })
-    </script>
 
+    </script>
+    <script src="<?php echo URL_ADMIN."public/js/examination_chart.js";?>"></script>
     <!-- Footer -->
 <?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>
