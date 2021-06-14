@@ -54,6 +54,18 @@ class Opticianreferral extends Model
 
     }
 
+    public function updateReferralHospitalCode($data)
+    {
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "referral_list` SET `hospital_code` = ? WHERE `id` = ?", array($data['hospital_code'], $data['id']));
+
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     public function getOpticianReferral($id)
     {
         $query = $this->database->query("Select * From `" . DB_PREFIX . "referral_list` WHERE id = " . $id);

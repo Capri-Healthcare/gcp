@@ -19,6 +19,8 @@
     <form action="<?php echo $action; ?>" method="post" >
         <input type="hidden" name="_token" value="<?php echo $token; ?>">
         <input type="hidden" name="patient[id]" value="<?php echo $result['id']; ?>">
+        <input type="hidden" name="patient[referral_id]" value="<?php echo isset($_GET['referralid']) ?$_GET['referralid']:'' ?>">
+
         <div class="panel panel-default">
             <div class="panel-body">
                 <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">

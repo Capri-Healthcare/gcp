@@ -282,12 +282,17 @@ class PatientController extends Controller
 
         $data['datetime'] = date('Y-m-d H:i:s');
         if (!empty($data['id'])) {
+
             $gcpID = $this->model_patient->gpPractice($data['gp_practice']);
             $data['gp_practice'] = $gcpID;
             $result = $this->model_patient->updatePatient($data);
             if ($data['gcp_required'] == 'YES') {
                 $this->gcpMail();
             }
+            $referral_data['id'] = $data['referral_id'];
+            $referral_data['hospital_code'] = $data['hospital_code'];
+            $this->load->model('opticianreferral');
+
 
             $this->notificationToPatientForAppointmentBooking($data['id']);
 

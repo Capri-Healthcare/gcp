@@ -32,10 +32,19 @@ class AppointmentController extends Controller
         // get Patient Detail From id
 
         $this->load->model('patient');
+
+
         $patient_id = $this->url->get('id');
+        $referralid = $this->url->get('referralid');
 
         if (!empty($patient_id)) {
             $data['patient'] = $this->model_patient->getPatient($patient_id);
+            $data['hospital_code'] = $data['patient']['hospital_code'];
+        }
+        if (!empty($referralid)) {
+            $this->load->model('opticianreferral');
+            $referral = $this->model_opticianreferral->getOpticianReferral($referralid);
+            $data['hospital_code']  =   $referral['hospital_code'];
         }
 
         $this->load->model('appointment');
@@ -299,6 +308,7 @@ class AppointmentController extends Controller
         $appointment_id = $data['appointment']['id'];
 
         $this->load->model('appointment');
+
         if (!empty($data['appointment']['id'])) {
 
             // Update Appointment Info
@@ -523,6 +533,7 @@ class AppointmentController extends Controller
             $this->model_appointment->updateSideBarAppointment($data['appointment']);
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Appointment updated successfully.');
         } else {
+
             $data['appointment']['appointment_id'] = date('Ymd') . rand(10, 100) . date('his');
             $data['appointment']['consultation_type'] = 'face_to_face';
             $data['appointment']['id'] = $this->model_appointment->createAppointment($data['appointment']);
