@@ -144,7 +144,7 @@ class Appointment extends Model
             $this->database->escape($data['visual_acuity_left']),
             $data['intraocular_pressure_left'],
             $data['anterior_chamber_right'],
-            (int)$data['anterior_chamber_left'],
+            $data['anterior_chamber_left'],
             $data['lens_right'],
             $data['lens_left'],
             (int)$data['nfl_thickness_right'],

@@ -1158,9 +1158,9 @@
                                                 <label>RE</label>
                                                 <input type="checkbox" class="checkbox" name="appointment[re]" value="re" <?php echo (isset($result['re']) && $result['re'] == 're') ? 'checked' : '' ?>>
                                                 <label>LE</label>
-                                                <input type="checkbox" class="checkbox" name="appointment[le]" value="le" <?php echo (isset($result['re']) && $result['re'] == 'le') ? 'checked' : '' ?>>
+                                                <input type="checkbox" class="checkbox" name="appointment[le]" value="le" <?php echo (isset($result['le']) && $result['le'] == 'le') ? 'checked' : '' ?>>
                                                 <label>Both</label>
-                                                <input type="checkbox" class="checkbox" name="appointment[both]" value="both" <?php echo (isset($result['re']) && $result['re'] == 'both') ? 'checked' : '' ?>>
+                                                <input type="checkbox" class="checkbox" name="appointment[both]" value="both" <?php echo (isset($result['both']) && $result['both'] == 'both') ? 'checked' : '' ?>>
                                             </div>
                                         </div>
                                         <div class="row mt-2">

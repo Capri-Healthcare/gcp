@@ -121,10 +121,10 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         ],
     'INTRAOCULAR_PRESSURE' => ['1' => '1', '2' => '2'],
     'DIAGNOSIS' => [
-            'Primary Open angle Glaucoma' => 'Primary Open angle Glaucoma', 
-            'Primary Angle closure Glaucoma' => 'Primary Angle closure Glaucoma',
-            'Ocular Hypertension' => 'Ocular Hypertension',
-            'Glaucoma Suspect' => 'Glaucoma Suspect',
+            'PRIMARY_OPEN_ANGLE_GLAUCOMA' => 'Primary Open angle Glaucoma',
+            'PRIMARY_ANGLE_CLOSURE_GLAUCOMA' => 'Primary Angle closure Glaucoma',
+            'OCULAR_HYPERTENSION' => 'Ocular Hypertension',
+            'GLAUCOMA_SUSPECT' => 'Glaucoma Suspect',
         ],
     'ANTERIOR_CHAMBER' => [
             'FULLY_OPEN_ANGLE' => 'Fully Open angle', 
