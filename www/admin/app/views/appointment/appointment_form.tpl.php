@@ -272,14 +272,14 @@
                                 <table class="table table-bordered medicine-table">
                                     <thead>
                                     <tr class="medicine-row">
-                                        <th style="width: 20%;">Drug Name</th>
-                                        <th>Generic</th>
-                                        <th style="width: 11%;">Frequency</th>
+                                        <th style="width: 25%;">Drug Name</th>
+                                        <!--th>Generic</th-->
+                                        <th style="width: 15%;">Frequency</th>
                                         <!--th style="width: 13%;">Duration</th-->
-                                        <th style="width: 20%;">Instruction</th>
-                                        <th style="width: 20%;">Start date</th>
-                                        <th style="width: 20%;">End date</th>
-                                        <th style="width: 20%;">Eye</th>
+                                        <th style="width: 25%;">Instruction</th>
+                                        <th style="width: 10%;">Start date</th>
+                                        <th style="width: 10%;">End date</th>
+                                        <th style="width: 15%;">Eye</th>
                                         <th style="width: 5%;"></th>
                                     </tr>
                                     </thead>
@@ -293,12 +293,12 @@
                                                            value="<?php echo $value['name'] ?>"
                                                            placeholder="Medicine Name">
                                                 </td>
-                                                <td>
+                                                <!--td>
                                                     <textarea class="form-control prescription-generic"
                                                               name="prescription[medicine][<?php echo $key; ?>][generic]"
                                                               rows="3"
                                                               placeholder="Generic"><?php echo $value['generic'] ?></textarea>
-                                                </td>
+                                                </td-->
                                                 <td>
                                                     <select name="prescription[medicine][<?php echo $key; ?>][dose]"
                                                             class="form-control">
@@ -387,13 +387,13 @@
                                                     <input type="date" class="form-control apnt-date" placeholder="Select Date . . ."
                                                         name="prescription[medicine][<?php echo $key; ?>][start_date]"
                                                         value="<?php echo $value['start_date']; ?>"
-                                                        required autocomplete="off">
+                                                        required autocomplete="off" style="width: 160px;">
                                                 </td>
                                                 <td>
                                                     <input type="date" class="form-control apnt-date" name="prescription[medicine][<?php echo $key; ?>][end_date]"
                                                         placeholder="Select Date . . ."
                                                         value="<?php echo $value['end_date']; ?>"
-                                                        required autocomplete="off">
+                                                        required autocomplete="off" style="width: 160px;">
                                                 </td>
                                                 <td>
                                                     <select name="prescription[medicine][<?php echo $key; ?>][eye]"
@@ -425,11 +425,11 @@
                                                        name="prescription[medicine][0][name]"
                                                        placeholder="Medicine Name">
                                             </td>
-                                            <td>
+                                            <!--td>
                                                 <textarea name="prescription[medicine][0][generic]"
                                                           class="form-control prescription-generic" rows="3"
                                                           placeholder="Generic"></textarea>
-                                            </td>
+                                            </td--->
                                             <td>
                                                 <select name="prescription[medicine][0][dose]" class="form-control">
                                                     <option value="1-0-0">1-0-0</option>
