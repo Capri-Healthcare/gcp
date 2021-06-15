@@ -27,11 +27,11 @@
         <div class="panel-body">
             <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
                 <li class="nav-item">
-                    <a class="nav-link" href="#appointment-info" data-toggle="tab">Appointment Info</a>
+                    <a class="nav-link active" href="#appointment-info" data-toggle="tab">Appointment Info</a>
                 </li>
                 <?php if ($page_notes) { ?>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#appointment-records" data-toggle="tab">Examination Notes</a>
+                        <a class="nav-link" href="#appointment-records" data-toggle="tab">Examination Notes</a>
                     </li>
                 <?php }
                 if ($page_prescriptions) { ?>
@@ -55,7 +55,7 @@
                 </li>
             </ul>
             <div class="tab-content pt-4">
-                <div class="tab-pane" id="appointment-info">
+                <div class="tab-pane active" id="appointment-info">
                     <form action="<?php echo $action ?>" method="post">
                         <input type="hidden" name="_token" class="token" value="<?php echo $token; ?>">
                         <input type="hidden" name="form_type" value="appointment_info">
@@ -573,7 +573,7 @@
                 <?php }
                 if ($page_notes) { ?>
 
-                    <div class="tab-pane active" id="appointment-records">
+                    <div class="tab-pane" id="appointment-records">
                         <div class="form-group mb-2">
                             <div class="row">
                                 <div class="col-md-12">
