@@ -281,36 +281,72 @@ class AppointmentController extends Controller
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'appointment/edit';
 
         // Summary Data
-//        $summary = $this->model_appointment->getPatientCompletedAppointmentCount($data['result']);
-//        echo print_r($summary);
-//        exit();
-        // Set Chart Value
 
-        $firstChart = array(
-            '0' => array("name"=>'RE',"data"=> [1, 2, 3, 4, 5]),
-            '1' => array("name"=>'LE',"data"=> [2, 2, 4, 5, 7])
-        );
+        $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['result']);
+        $summary['appointment_count'] = count($appointment_completed);
 
-        $nflChart = array(
-            '0' => array("name"=>'RE - NFL',"data"=> [1, 2, 3, 4, 5]),
-            '1' => array("name"=>'LE - NFL',"data"=> [2, 2, 4, 5, 7])
-        );
+        if ($summary['appointment_count'] != 0) {
 
-        $mdChart = array(
-            '0' => array("name"=>'RE - MD',"data"=> [1, 2, 3, 4, 5]),
-            '1' => array("name"=>'LE- MD',"data"=> [2, 2, 4, 5, 7])
-        );
+            // Get Last Appointment Data
+            $appointment_last = $this->model_appointment->getLastPatientAppointment($data['result']);
+            $highestIop = $this->model_appointment->getMaxIOPAppointment($data['result']);
 
-        $psdChart = array(
-            '0' => array("name"=>'RE - PSD',"data"=> [1, 2, 3, 4, 5]),
-            '1' => array("name"=>'LE - PSD',"data"=> [2, 2, 4, 5, 7])
-        );
+            $summary['summarykey']['cct_right'] = $appointment_last['cct_right'];
+            $summary['summarykey']['cct_left'] = $appointment_last['cct_left'];
+            $summary['summarykey']['iop_right'] = $highestIop['iop_right'];
+            $summary['summarykey']['iop_left'] = $highestIop['iop_left'];
+            $summary['summarykey']['allergy'] = $appointment_last['allergy'];
 
+            foreach ($appointment_completed as $key => $list) {
 
-        $data['firstChart'] = $firstChart;
-        $data['nflChart'] = $nflChart;
-        $data['mdChart'] = $mdChart;
-        $data['psdChart'] = $psdChart;
+                $summary['appointment']['appointment_date'][$key] = $list['date'];
+
+                $summary['appointment']['data'][$key]['date'] = $list['date'];
+                $summary['appointment']['data'][$key]['data'][] = $list['cct_right'];
+                $summary['appointment']['data'][$key]['data'][] = $list['cct_left'];
+                $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_right'];
+                $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_left'];
+                $summary['appointment']['data'][$key]['data'][] = $list['allergy'];
+
+                // Get Prescription From Appointment id
+                $prescription = $this->model_appointment->getPrescription($list['id']);
+                if ($prescription) {
+                    $summary['appointment']['data'][$key]['prescription'] = $prescription['prescription'];
+                }
+
+                // Preparing Chart Data
+                $intraocularPressureChart[0]['name'] = 'RE';
+                $intraocularPressureChart[1]['name'] = 'LE';
+                $intraocularPressureChart[0]['data'][] = (int)$list['intraocular_pressure_right'];
+                $intraocularPressureChart[1]['data'][] = (int)$list['intraocular_pressure_left'];
+                $intraocularPressureChart[2]['categories'][] = $list['date'];
+
+                $nflThicknessChart[0]['name'] = 'RE';
+                $nflThicknessChart[1]['name'] = 'LE';
+                $nflThicknessChart[0]['data'][] = (int)$list['nfl_thickness_right'];
+                $nflThicknessChart[1]['data'][] = (int)$list['nfl_thickness_left'];
+                $nflThicknessChart[2]['categories'][] = $list['date'];
+
+                $meanDeviationChart[0]['name'] = 'RE';
+                $meanDeviationChart[1]['name'] = 'LE';
+                $meanDeviationChart[0]['data'][] = (int)$list['mean_deviation_right'];
+                $meanDeviationChart[1]['data'][] = (int)$list['mean_deviation_left'];
+                $meanDeviationChart[2]['categories'][] = $list['date'];
+
+                $psdDeviationChart[0]['name'] = 'RE';
+                $psdDeviationChart[1]['name'] = 'LE';
+                $psdDeviationChart[0]['data'][] = (int)$list['psd_deviation_right'];
+                $psdDeviationChart[1]['data'][] = (int)$list['psd_deviation_left'];
+                $psdDeviationChart[2]['categories'][] = $list['date'];
+
+            }
+        }
+
+        $data['summary'] = $summary;
+        $data['intraocularPressureChart'] = $intraocularPressureChart;
+        $data['nflThicknessChart'] = $nflThicknessChart;
+        $data['meanDeviationChart'] = $meanDeviationChart;
+        $data['psdDeviationChart'] = $psdDeviationChart;
 
         /*Render Blog edit view*/
         $this->response->setOutput($this->load->view('appointment/appointment_form', $data));

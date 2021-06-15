@@ -111,32 +111,32 @@ class Appointment extends Model
 
     public function updateExaminationNotes($data)
     {
-
-
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET 
         `current_event` = ?,
-         `allergy` = ?,
-          `visual_acuity_right` = ?,
-           `intraocular_pressure_right` = ? ,
-           `visual_acuity_left` = ?,
-            `intraocular_pressure_left` = ?,
-             `anterior_chamber_right` = ?,
-              `anterior_chamber_left` = ?, 
-              `lens_right` = ?, 
-              `lens_left` = ?,
-               `nfl_thickness_right` = ?, 
-               `nfl_thickness_left` = ?,
-                mean_deviation_right = ?, 
-                `mean_deviation_left` = ?,
-                 `psd_deviation_right` = ?,
-                  `psd_deviation_left` = ?, 
-                  `diagnosis` = ?,
-                  `re` = ?,
-                  `le` = ?,
-                  `both` = ?,
-                  `outcome` = ?,
-                  `gcp_next_appointment` = ?,
-                  `is_glaucoma_required` = ?  WHERE `id` = ? ", array(
+        `allergy` = ?,
+        `visual_acuity_right` = ?,
+        `intraocular_pressure_right` = ? ,
+        `visual_acuity_left` = ?,
+        `intraocular_pressure_left` = ?,
+        `anterior_chamber_right` = ?,
+        `anterior_chamber_left` = ?, 
+        `lens_right` = ?, 
+        `lens_left` = ?,
+        `nfl_thickness_right` = ?, 
+        `nfl_thickness_left` = ?,
+         mean_deviation_right = ?, 
+        `mean_deviation_left` = ?,
+        `psd_deviation_right` = ?,
+        `psd_deviation_left` = ?, 
+        `cct_right` = ?, 
+        `cct_left` = ?, 
+        `diagnosis` = ?,
+        `re` = ?,
+        `le` = ?,
+        `both` = ?,
+        `outcome` = ?,
+        `gcp_next_appointment` = ?,
+        `is_glaucoma_required` = ?  WHERE `id` = ? ", array(
             $this->database->escape($data['current_event']),
             $this->database->escape($data['allergy']),
             $this->database->escape($data['visual_acuity_right']),
@@ -153,6 +153,8 @@ class Appointment extends Model
             $data['mean_deviation_left'],
             $data['psd_deviation_right'],
             $data['psd_deviation_left'],
+            $data['cct_right'],
+            $data['cct_left'],
             $data['diagnosis'],
             isset($data['re']) ? $data['re'] : null,
             isset($data['le']) ? $data['le'] : null,
@@ -726,6 +728,41 @@ class Appointment extends Model
         } else {
             $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "video_consultation_session` WHERE video_consultation_token = '" . $token . "'");
         }
+        if ($query->num_rows > 0) {
+            return $query->row;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function getPatientCompletedAppointment($data)
+    {
+
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='".$data['patient_id']."' AND status ='5' ");
+
+        if ($query->num_rows > 0) {
+            return $query->rows;
+        } else {
+            return false;
+        }
+    }
+
+    public function getLastPatientAppointment($data)
+    {
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='".$data['patient_id']."' AND status ='5' ORDER BY date DESC");
+
+        if ($query->num_rows > 0) {
+            return $query->row;
+        } else {
+            return false;
+        }
+    }
+
+    public function getMaxIOPAppointment($data)
+    {
+        $query = $this->database->query("SELECT MAX(`intraocular_pressure_right`) AS iop_right,MAX(`intraocular_pressure_left`) AS iop_left FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='".$data['patient_id']."' AND status ='5' ORDER BY date DESC");
+
         if ($query->num_rows > 0) {
             return $query->row;
         } else {

@@ -3,7 +3,7 @@ var firstChart,nflChart,mdChart,psdChart;
 Highcharts.chart('container', {
 
     title: {
-        text: ''
+        text: 'Intraocular Pressure'
     },
 
     subtitle: {
