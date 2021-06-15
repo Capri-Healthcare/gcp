@@ -14,7 +14,6 @@ Highcharts.chart('container', {
         title: {
             text: ''
         },
-        categories: ['0', '5', '10', '15', '20', '25', '30'],
     },
 
     xAxis: {
@@ -72,7 +71,6 @@ Highcharts.chart('nfl-chart-container', {
         title: {
             text: ''
         },
-        categories: ['0', '20', '40', '60', '80', '100', '120'],
     },
 
     xAxis: {
@@ -130,7 +128,6 @@ Highcharts.chart('md-chart-container', {
         title: {
             text: ''
         },
-        categories: ['-5', '-4', '-3', '-2', '-1', '0'],
     },
 
     xAxis: {
@@ -187,7 +184,6 @@ Highcharts.chart('psd-chart-container', {
         title: {
             text: ''
         },
-        categories: ['0', '0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4'],
     },
 
     xAxis: {

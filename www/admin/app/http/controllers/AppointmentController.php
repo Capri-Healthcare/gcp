@@ -284,22 +284,22 @@ class AppointmentController extends Controller
 
         $firstChart = array(
             '0' => array("name"=>'RE',"data"=> [1, 2, 3, 4, 5]),
-            '1' => array("name"=>'LE',"data"=> [5, 4, 3, 2, 1])
+            '1' => array("name"=>'LE',"data"=> [2, 2, 4, 5, 7])
         );
 
         $nflChart = array(
             '0' => array("name"=>'RE - NFL',"data"=> [1, 2, 3, 4, 5]),
-            '1' => array("name"=>'LE - NFL',"data"=> [5, 4, 3, 2, 1])
+            '1' => array("name"=>'LE - NFL',"data"=> [2, 2, 4, 5, 7])
         );
 
         $mdChart = array(
             '0' => array("name"=>'RE - MD',"data"=> [1, 2, 3, 4, 5]),
-            '1' => array("name"=>'RE- MD',"data"=> [5, 4, 3, 2, 1])
+            '1' => array("name"=>'LE- MD',"data"=> [2, 2, 4, 5, 7])
         );
 
         $psdChart = array(
             '0' => array("name"=>'RE - PSD',"data"=> [1, 2, 3, 4, 5]),
-            '1' => array("name"=>'RE - PSD',"data"=> [5, 4, 3, 2, 1])
+            '1' => array("name"=>'LE - PSD',"data"=> [2, 2, 4, 5, 7])
         );
 
 

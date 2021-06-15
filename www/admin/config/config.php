@@ -93,11 +93,47 @@ define('HOSPITAL_LIST', [
 ]);
 
 define('OCULAR_EXAMINATION_DROP_DOWNS', [
-    'ALLERGY' => ['1' => '1', '2' => '2'],
-    'VISUAL_ACUITY' => ['1' => '1', '2' => '2'],
+    'ALLERGY' => [
+            'PRESERVATIVES' => 'Preservatives', 
+            'BRIMONIDINE' => 'Brimonidine',
+            'BRINZOLAMIDE' => 'Brinzolamide', 
+            'DORZOLAMIDE' => 'Dorzolamide',
+            'TIMOLOL' => 'Timolol', 
+            'APRACLONIDIBE' => 'Apraclonidibe',
+            'BITAMATOPROST' => 'Bitamatoprost', 
+            'LATANOPROST' => 'Latanoprost', 
+            'TRAVOPROST' => 'Travoprost',
+        ],
+    'VISUAL_ACUITY' => [
+            '1' => '6/4', 
+            '2' => '6/5',
+            '3' => '6/6', 
+            '4' => '6/9',
+            '5' => '6/12', 
+            '6' => '6/18',
+            '7' => '6/24', 
+            '8' => '6/36',
+            '9' => '6/60', 
+            '10' => 'CF',
+            '11' => 'HM', 
+            '12' => 'PL',
+            '13' => 'NPL',
+        ],
     'INTRAOCULAR_PRESSURE' => ['1' => '1', '2' => '2'],
-    'DIAGNOSIS' => ['1' => '1', '2' => '2'],
-    'ANTERIOR_CHAMBER' => ['1' => '1', '2' => '2'],
+    'DIAGNOSIS' => [
+            'Primary Open angle Glaucoma' => 'Primary Open angle Glaucoma', 
+            'Primary Angle closure Glaucoma' => 'Primary Angle closure Glaucoma',
+            'Ocular Hypertension' => 'Ocular Hypertension',
+            'Glaucoma Suspect' => 'Glaucoma Suspect',
+        ],
+    'ANTERIOR_CHAMBER' => [
+            'FULLY_OPEN_ANGLE' => 'Fully Open angle', 
+            'NARROW_BUT_NOT_OCCLUDABLE_ANGLE' => 'Narrow but not occludable angle',
+            'OCCLUDABLE_ANGLE' => 'Occludable angle',
+            'CLOSED_ANGLE' => 'Closed angle',
+            'APPOSITIONAL_CLOSURE_OF_ANGLE' => 'Appositional closure of angle',
+            'SYNAECHIAL_CLOSURE_OF_ANGLE' => 'Synaechial closure of angle'
+        ],
     'OUTCOME' => [
             'STABLE' => 'Stable: review with visual fields', 
             'UNSTABLE' => 'Unstable',

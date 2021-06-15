@@ -543,87 +543,155 @@
                                             </tbody>
                                         </table>
                                     </div>
-
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
                                     <div class="row mt-3 mb-3">
                                         <div class="col-md-2">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered medicine-table">
-                                                    <tbody>
-                                                    <tr class="medicine-row center">
-                                                        <td data-date="20-05-2021" style="text-align: center"><b>20-05-2021</b>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="medicine-row center">
-                                                        <td data-date="20-05-2021" style="text-align: center"><b>15-04-2021</b>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="medicine-row center">
-                                                        <td data-date="20-05-2021" style="text-align: center"><b>16-04-2021</b>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
+                                            <!--  Hrading tabs -->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" href="#past-appointment-20210115" data-toggle="tab">15-01-2021</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#past-appointment-20210605" data-toggle="tab">05-06-2021</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label><b>CCT RE : </b></label>
-                                                        <label></label>
+                                                <div class="col-md-12 pre-consultation-form">
+                                                    <div class="tab-pane active" id="past-appointment-20210115">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered medicine-table">
+                                                                <thead>
+                                                                    <tr class="medicine-row">
+                                                                        <th style="width: 10%;">CCT RE</th>
+                                                                        <th style="width: 10%;">CCT LE</th>
+                                                                        <th style="width: 15%;">IOP RE</th>
+                                                                        <th style="width: 15%;">IOP LE</th>
+                                                                        <th>Allergy</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr class="medicine-row">
+                                                                        <td>5</th>
+                                                                        <td>6</th>
+                                                                        <td>20</th>
+                                                                        <td>18</th>
+                                                                        <td> Test Allergy</th>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <br>
+                                                        <label class="d-block mb-2">
+                                                            <strong><h4>Treatment:</h4></strong>
+                                                        </label>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered medicine-table">
+                                                                <thead>
+                                                                    <th>Medicine</th>
+                                                                    <th>Frequency</th>
+                                                                    <th>Start date</th>
+                                                                    <th>End date</th>
+                                                                    <th>Instruction</th>
+                                                                    <th>Eye</th>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Medicine 1</td>
+                                                                        <td>1-0-1</td>
+                                                                        <td>15-01-2021</td>
+                                                                        <td>14-06-2025</td>
+                                                                        <td></td>
+                                                                        <td>LE</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Medicine 1</td>
+                                                                        <td>1-0-1</td>
+                                                                        <td>15-01-2021</td>
+                                                                        <td>14-06-2025</td>
+                                                                        <td></td>
+                                                                        <td>LE</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label><b>IOP RE : </b></label>
-                                                        <label></label>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label><b>Diagnosis : </b></label>
-                                                        <label></label>
+                                                    <div class="tab-pane" id="past-appointment-20210605">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered medicine-table">
+                                                                <thead>
+                                                                    <tr class="medicine-row">
+                                                                        <th style="width: 10%;">CCT RE</th>
+                                                                        <th style="width: 10%;">CCT LE</th>
+                                                                        <th style="width: 15%;">IOP RE</th>
+                                                                        <th style="width: 15%;">IOP LE</th>
+                                                                        <th>Allergy</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr class="medicine-row">
+                                                                        <td>5</th>
+                                                                        <td>6</th>
+                                                                        <td>20</th>
+                                                                        <td>18</th>
+                                                                        <td> Test Allergy</th>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <br>
+                                                        <label class="d-block mb-2">
+                                                            <strong><h4>Treatment:</h4></strong>
+                                                        </label>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered medicine-table">
+                                                                <thead>
+                                                                    <th>Medicine</th>
+                                                                    <th>Frequency</th>
+                                                                    <th>Start date</th>
+                                                                    <th>End date</th>
+                                                                    <th>Instruction</th>
+                                                                    <th>Eye</th>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Medicine 1</td>
+                                                                        <td>1-0-1</td>
+                                                                        <td>05-06-2021</td>
+                                                                        <td>04-12-2025</td>
+                                                                        <td></td>
+                                                                        <td>LE</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Medicine 1</td>
+                                                                        <td>1-0-1</td>
+                                                                        <td>05-06-2021</td>
+                                                                        <td>04-12-2025</td>
+                                                                        <td></td>
+                                                                        <td>LE</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label><b>CCT LE : </b></label>
-                                                        <label></label>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label><b>IOP LE : </b></label>
-                                                        <label></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <label class="d-block mb-2">
-                                                <strong><h4><b>Treatment:</b></h4></strong>
-                                            </label>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered medicine-table">
-                                                    <thead>
-                                                    <th>Medicine</th>
-                                                    <th>Frequency</th>
-                                                    <th>Start date</th>
-                                                    <th>End date</th>
-                                                    <th>Instruction</th>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>Medicine 1</td>
-                                                        <td>1-0-1</td>
-                                                        <td>09-06-2021</td>
-                                                        <td>09-06-2025</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Medicine 1</td>
-                                                        <td>1-0-1</td>
-                                                        <td>09-06-2021</td>
-                                                        <td>09-06-2025</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
                                     <label class="d-block mb-2">
                                         <strong><h4>Ocular Examination</h4></strong>
                                     </label>
@@ -643,9 +711,7 @@
                                                                         class="ti-user"></i></span>
                                                         </div>
                                                         <textarea class="form-control" name="appointment[current_event]"
-                                                                  required>
-                                                                <?php echo isset($result['current_event']) ? $result['current_event'] : ''; ?>
-                                                        </textarea>
+                                                                  required><?php echo isset($result['current_event']) ? $result['current_event'] : ''; ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -660,7 +726,7 @@
                                                         <select name="appointment[allergy]" class="custom-select"
                                                                 required>
                                                             <option value="">Select allergy</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ALLERGY'] as $key => $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
                                                                     <?php echo (isset($result['allergy']) && $result['allergy'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
@@ -705,7 +771,7 @@
                                                         <select name="appointment[intraocular_pressure_right]"
                                                                 class="custom-select" required>
                                                             <option value="">Select intraocular pressure</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $value) { ?>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
                                                                     <?php echo (isset($result['intraocular_pressure_right']) && $result['intraocular_pressure_right'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
@@ -748,7 +814,7 @@
                                                         <select name="appointment[intraocular_pressure_left]"
                                                                 class="custom-select" required>
                                                             <option value="">Select intraocular pressure</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $value) { ?>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $value) { ?>
                                                                 <option value="<?php echo $key; ?>"
                                                                     <?php echo ($result['intraocular_pressure_left'] == $key) ? 'selected' : '' ?> >
                                                                     <?php echo $value; ?>
