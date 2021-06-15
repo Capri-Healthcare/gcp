@@ -200,7 +200,7 @@ class AppointmentController extends Controller
      **/
     public function indexEdit()
     {
-        $firstChart = $nflChart = $mdChart = $psdChart = [];
+        $firstChart = $nflChart = $mdChart = $psdChart = $summary = [];
 
         /**
          * Check if id exist in url if not exist then redirect to blog list view
@@ -280,6 +280,10 @@ class AppointmentController extends Controller
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'appointment/edit';
 
+        // Summary Data
+//        $summary = $this->model_appointment->getPatientCompletedAppointmentCount($data['result']);
+//        echo print_r($summary);
+//        exit();
         // Set Chart Value
 
         $firstChart = array(
@@ -347,7 +351,8 @@ class AppointmentController extends Controller
 
                 $this->load->model('commons');
                 $data['common'] = $this->model_commons->getSiteInfo();
-                $data['appointment']['date'] = DateTime::createFromFormat($data['common']['date_format'], $data['appointment']['date'])->format('Y-m-d');
+
+                //$data['appointment']['date'] = DateTime::createFromFormat($data['common']['date_format'], $data['appointment']['date'])->format('Y-m-d');
 
                 if ($validate_field = $this->validateField($data['appointment'])) {
                     $this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter/select valid ' . implode(", ", $validate_field) . '!');
@@ -414,8 +419,6 @@ class AppointmentController extends Controller
                         $this->model_appointment->updatePrescription($data);
                     } else {
                         $this->model_appointment->createPrescription($data);
-                        echo print_r($data['prescription']['medicine']);
-                        exit();
                     }
                 }
                 $message = "Appointment Prescription updated successfully.";
