@@ -414,6 +414,8 @@ class AppointmentController extends Controller
                         $this->model_appointment->updatePrescription($data);
                     } else {
                         $this->model_appointment->createPrescription($data);
+                        echo print_r($data['prescription']['medicine']);
+                        exit();
                     }
                 }
                 $message = "Appointment Prescription updated successfully.";

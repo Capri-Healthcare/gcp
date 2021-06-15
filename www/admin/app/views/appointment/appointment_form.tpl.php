@@ -96,9 +96,9 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-calendar"></i></span>
                                         </div>
-                                        <input type="text" class="form-control apnt-date" name="appointment[date]"
+                                        <input type="date" class="form-control apnt-date" name="appointment[date]"
                                                placeholder="Select Date . . ."
-                                               value="<?php echo date_format(date_create($result['date']), $common['info']['date_format']); ?>"
+                                               value="<?php echo $result['date']; ?>"
                                                required autocomplete="off">
                                     </div>
                                 </div>
@@ -384,15 +384,15 @@
                                                             placeholder="Instruction"><?php echo $value['instruction']; ?></textarea>
                                                 </td>
                                                 <td>
-                                                    <input type="text" class="form-control apnt-date" placeholder="Select Date . . ."
+                                                    <input type="date" class="form-control apnt-date" placeholder="Select Date . . ."
                                                         name="prescription[medicine][<?php echo $key; ?>][start_date]"
-                                                        value="<?php echo date_format(date_create($value['start_date']), $common['info']['date_format']); ?>"
+                                                        value="<?php echo $value['start_date']; ?>"
                                                         required autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" class="form-control apnt-date" name="prescription[medicine][<?php echo $key; ?>][end_date]"
+                                                    <input type="date" class="form-control apnt-date" name="prescription[medicine][<?php echo $key; ?>][end_date]"
                                                         placeholder="Select Date . . ."
-                                                        value="<?php echo date_format(date_create($value['end_date']), $common['info']['date_format']); ?>"
+                                                        value="<?php echo $value['end_date']; ?>"
                                                         required autocomplete="off">
                                                 </td>
                                                 <td>
@@ -402,11 +402,11 @@
                                                             echo "selected";
                                                         } ?> >RE
                                                         </option>
-                                                        <option value="RE" <?php if ($value['eye'] == 'RE') {
+                                                        <option value="LE" <?php if ($value['eye'] == 'LE') {
                                                             echo "selected";
                                                         } ?> >LE
                                                         </option>
-                                                        <option value="RE" <?php if ($value['eye'] == 'RE') {
+                                                        <option value="BOTH" <?php if ($value['eye'] == 'BOTH') {
                                                             echo "selected";
                                                         } ?> >Both
                                                         </option>
@@ -461,13 +461,13 @@
                                                           placeholder="Instruction"></textarea>
                                             </td>
                                             <td>
-                                                    <input type="text" class="form-control apnt-date" placeholder="Select Date . . ."
+                                                    <input type="date" class="form-control apnt-date" placeholder="Select Date . . ."
                                                         name="prescription[medicine][<?php echo $key; ?>][start_date]"
                                                         value="<?php echo date_format(date_create($value['start_date']), $common['info']['date_format']); ?>"
                                                         required autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" class="form-control apnt-date" name="prescription[medicine][<?php echo $key; ?>][end_date]"
+                                                    <input type="date" class="form-control apnt-date" name="prescription[medicine][<?php echo $key; ?>][end_date]"
                                                         placeholder="Select Date . . ."
                                                         value="<?php echo date_format(date_create($value['end_date']), $common['info']['date_format']); ?>"
                                                         required autocomplete="off">
@@ -494,7 +494,7 @@
                                         </tr>
                                     <?php } ?>
                                     <tr>
-                                        <td colspan="6">
+                                        <td colspan="8">
                                             <a id="add-medicine" class="font-12 text-primary cursor-pointer">Add
                                                 Medicine</a>
                                             <?php if (!empty($result['prescription_id'])) { ?>
@@ -556,12 +556,15 @@
                                 }
                                 var count = $('.medicine-table .medicine-row:last .prescription-name').attr('name').split('[')[2];
                                 count = parseInt(count.split(']')[0]) + 1;
-                                $(".medicine-row:last").after('<tr class="medicine-row">' +
+
+                                $(".medicine-table .medicine-row:last").after('<tr class="medicine-row">' +
                                     '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name"></td>' +
                                     '<td><textarea class="form-control prescription-generic" name="prescription[medicine][' + count + '][generic]" rows="3" placeholder="Generic"></textarea></td>' +
                                     '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control"><option value="1-0-0">1-0-0</option><option value="1-0-1">1-0-1</option><option value="1-1-1">1-1-1</option><option value="0-0-1">0-0-1</option><option value="0-1-0">0-1-0</option></select></td>' +
-                                    '<td><select name="prescription[medicine][' + count + '][duration]" class="form-control"><option value="1">1 Days</option><option value="2">2 Days</option><option value="3">3 Days</option><option value="4">4 Days</option><option value="5">5 Days</option><option value="6">6 Days</option><option value="8">8 Days</option><option value="10">10 Days</option><option value="15">15 Days</option><option value="20">20 Days</option><option value="30">30 Days</option><option value="60">60 Days</option></select></td>' +
                                     '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instruction"></textarea></td>' +
+                                    '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ."></td>' +
+                                    '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ."></td>' +
+                                    '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">RE</option><option value="LE">LE</option><option value="BOTH">BOTH</option></select></td>' +
                                     '<td><a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a></td>' +
                                     '</tr>');
                             });
@@ -578,7 +581,7 @@
                                         <strong><h4>Summary</h4></strong>
                                     </label>
                                     <div class="table-responsive">
-                                        <table class="table table-bordered medicine-table">
+                                        <table class="table table-bordered">
                                             <thead>
                                             <tr class="medicine-row">
                                                 <th style="width: 10%;">CCT RE</th>
@@ -630,7 +633,7 @@
                                                 <div class="col-md-12 pre-consultation-form">
                                                     <div class="tab-pane active" id="past-appointment-20210115">
                                                         <div class="table-responsive">
-                                                            <table class="table table-bordered medicine-table">
+                                                            <table class="table table-bordered">
                                                                 <thead>
                                                                     <tr class="medicine-row">
                                                                         <th style="width: 10%;">CCT RE</th>
@@ -656,7 +659,7 @@
                                                             <strong><h4>Treatment:</h4></strong>
                                                         </label>
                                                         <div class="table-responsive">
-                                                            <table class="table table-bordered medicine-table">
+                                                            <table class="table table-bordered">
                                                                 <thead>
                                                                     <th>Medicine</th>
                                                                     <th>Frequency</th>
@@ -688,7 +691,7 @@
                                                     </div>
                                                     <div class="tab-pane" id="past-appointment-20210605">
                                                         <div class="table-responsive">
-                                                            <table class="table table-bordered medicine-table">
+                                                            <table class="table table-bordered">
                                                                 <thead>
                                                                     <tr class="medicine-row">
                                                                         <th style="width: 10%;">CCT RE</th>
@@ -714,7 +717,7 @@
                                                             <strong><h4>Treatment:</h4></strong>
                                                         </label>
                                                         <div class="table-responsive">
-                                                            <table class="table table-bordered medicine-table">
+                                                            <table class="table table-bordered">
                                                                 <thead>
                                                                     <th>Medicine</th>
                                                                     <th>Frequency</th>
