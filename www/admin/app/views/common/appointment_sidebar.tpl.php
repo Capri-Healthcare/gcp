@@ -3,7 +3,7 @@
         <div class="sidebar-close"><i class="ti-close"></i></div>
         <h3 class="title">Appointment</h3>
     </div>
-    <form class="sidebar-bdy" action="<?php echo $action_new_appointment; ?>" method="post">
+    <form class="sidebar-bdy" action="<?php echo $action_new_appointment; ?>" method="post"  onsubmit="return validateMyForm(event);">
         <input type="hidden" name="_token" value="<?php echo $token; ?>">
         <div id="apnt-info">
             <input type="hidden" class="apnt-id" name="appointment[id]">
@@ -50,6 +50,7 @@
                         <span class="input-group-text"><i class="ti-mobile"></i></span>
                     </div>
                     <input type="text" name="appointment[mobile]"
+                           id="mobile"
                            value="<?php echo(isset($patient) ? $patient['mobile'] : '') ?>"
                            class="form-control patient-mobile" placeholder="Enter Mobile Number . . ." required>
                 </div>

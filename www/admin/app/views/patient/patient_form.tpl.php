@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <form action="<?php echo $action; ?>" method="post" >
+    <form action="<?php echo $action; ?>" method="post"  onsubmit="return validateMyForm(event);">
         <input type="hidden" name="_token" value="<?php echo $token; ?>">
         <input type="hidden" name="patient[id]" value="<?php echo $result['id']; ?>">
         <input type="hidden" name="patient[referral_id]" value="<?php echo isset($_GET['referralid']) ?$_GET['referralid']:'' ?>">
@@ -118,7 +118,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-mobile"></i></span>
                                         </div>
-                                        <input type="text" name="patient[mobile]" class="form-control mobile"
+                                        <input type="text" name="patient[mobile]" class="form-control mobile" id="mobile"
                                                value="<?php echo $result['mobile']; ?>" maxlength="11"
                                                onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
 
@@ -718,6 +718,17 @@
                 .append('<div>' + item.gp_practice_name + '</div>')
                 .appendTo(ul);
         };
+
+        function validateMyForm(e) {
+            var mobile = $("#mobile").val();
+
+            if (mobile.length < 10 || mobile.length < 11) {
+                toastr.error('Error', 'Mobile number must be 11 digits.');
+                return false
+            }else{
+                return true;
+            }
+        }
 
     </script>
 <?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>

@@ -284,6 +284,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+
+
                                     <?php if (!empty($prescription['prescription'])) {
                                         foreach ($prescription['prescription'] as $key => $value) { ?>
                                             <tr class="medicine-row">
@@ -328,52 +330,52 @@
                                                     <select name="prescription[medicine][<?php echo $key; ?>][duration]"
                                                             class="form-control">
                                                         <option value="1" <?php if ($value['duration'] == '1') {
-                                                            echo "selected";
-                                                        } ?> >1 Days
+                                                    echo "selected";
+                                                } ?> >1 Days
                                                         </option>
                                                         <option value="2" <?php if ($value['duration'] == '2') {
-                                                            echo "selected";
-                                                        } ?> >2 Days
+                                                    echo "selected";
+                                                } ?> >2 Days
                                                         </option>
                                                         <option value="3" <?php if ($value['duration'] == '3') {
-                                                            echo "selected";
-                                                        } ?> >3 Days
+                                                    echo "selected";
+                                                } ?> >3 Days
                                                         </option>
                                                         <option value="4" <?php if ($value['duration'] == '4') {
-                                                            echo "selected";
-                                                        } ?> >4 Days
+                                                    echo "selected";
+                                                } ?> >4 Days
                                                         </option>
                                                         <option value="5" <?php if ($value['duration'] == '5') {
-                                                            echo "selected";
-                                                        } ?> >5 Days
+                                                    echo "selected";
+                                                } ?> >5 Days
                                                         </option>
                                                         <option value="6" <?php if ($value['duration'] == '6') {
-                                                            echo "selected";
-                                                        } ?> >6 Days
+                                                    echo "selected";
+                                                } ?> >6 Days
                                                         </option>
                                                         <option value="8" <?php if ($value['duration'] == '8') {
-                                                            echo "selected";
-                                                        } ?> >8 Days
+                                                    echo "selected";
+                                                } ?> >8 Days
                                                         </option>
                                                         <option value="10" <?php if ($value['duration'] == '10') {
-                                                            echo "selected";
-                                                        } ?> >10 Days
+                                                    echo "selected";
+                                                } ?> >10 Days
                                                         </option>
                                                         <option value="15" <?php if ($value['duration'] == '15') {
-                                                            echo "selected";
-                                                        } ?> >15 Days
+                                                    echo "selected";
+                                                } ?> >15 Days
                                                         </option>
                                                         <option value="20" <?php if ($value['duration'] == '20') {
-                                                            echo "selected";
-                                                        } ?> >20 Days
+                                                    echo "selected";
+                                                } ?> >20 Days
                                                         </option>
                                                         <option value="30" <?php if ($value['duration'] == '30') {
-                                                            echo "selected";
-                                                        } ?> >30 Days
+                                                    echo "selected";
+                                                } ?> >30 Days
                                                         </option>
                                                         <option value="60" <?php if ($value['duration'] == '60') {
-                                                            echo "selected";
-                                                        } ?> >60 Days
+                                                    echo "selected";
+                                                } ?> >60 Days
                                                         </option>
                                                     </select>
                                                 </td-->
@@ -384,16 +386,18 @@
                                                             placeholder="Instruction"><?php echo $value['instruction']; ?></textarea>
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="form-control apnt-date" placeholder="Select Date . . ."
-                                                        name="prescription[medicine][<?php echo $key; ?>][start_date]"
-                                                        value="<?php echo $value['start_date']; ?>"
-                                                        required autocomplete="off">
+                                                    <input type="date" class="form-control apnt-date"
+                                                           placeholder="Select Date . . ."
+                                                           name="prescription[medicine][<?php echo $key; ?>][start_date]"
+                                                           value="<?php echo $value['start_date']; ?>"
+                                                           required autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="form-control apnt-date" name="prescription[medicine][<?php echo $key; ?>][end_date]"
-                                                        placeholder="Select Date . . ."
-                                                        value="<?php echo $value['end_date']; ?>"
-                                                        required autocomplete="off">
+                                                    <input type="date" class="form-control apnt-date"
+                                                           name="prescription[medicine][<?php echo $key; ?>][end_date]"
+                                                           placeholder="Select Date . . ."
+                                                           value="<?php echo $value['end_date']; ?>"
+                                                           required autocomplete="off">
                                                 </td>
                                                 <td>
                                                     <select name="prescription[medicine][<?php echo $key; ?>][eye]"
@@ -461,34 +465,27 @@
                                                           placeholder="Instruction"></textarea>
                                             </td>
                                             <td>
-                                                    <input type="date" class="form-control apnt-date" placeholder="Select Date . . ."
-                                                        name="prescription[medicine][<?php echo $key; ?>][start_date]"
-                                                        value="<?php echo date_format(date_create($value['start_date']), $common['info']['date_format']); ?>"
-                                                        required autocomplete="off">
-                                                </td>
-                                                <td>
-                                                    <input type="date" class="form-control apnt-date" name="prescription[medicine][<?php echo $key; ?>][end_date]"
-                                                        placeholder="Select Date . . ."
-                                                        value="<?php echo date_format(date_create($value['end_date']), $common['info']['date_format']); ?>"
-                                                        required autocomplete="off">
-                                                </td>
-                                                <td>
-                                                    <select name="prescription[medicine][<?php echo $key; ?>][eye]"
-                                                            class="form-control">
-                                                        <option value="RE" <?php if ($value['eye'] == 'RE') {
-                                                            echo "selected";
-                                                        } ?> >RE
-                                                        </option>
-                                                        <option value="RE" <?php if ($value['eye'] == 'RE') {
-                                                            echo "selected";
-                                                        } ?> >LE
-                                                        </option>
-                                                        <option value="RE" <?php if ($value['eye'] == 'RE') {
-                                                            echo "selected";
-                                                        } ?> >Both
-                                                        </option>
-                                                    </select>
-                                                </td>
+                                                <input type="date" class="form-control apnt-date"
+                                                       placeholder="Select Date . . ."
+                                                       name="prescription[medicine][0][start_date]"
+                                                       value="<?php echo date_format(date_create($value['start_date']), $common['info']['date_format']); ?>"
+                                                       required autocomplete="off">
+                                            </td>
+                                            <td>
+                                                <input type="date" class="form-control apnt-date"
+                                                       name="prescription[medicine][0][end_date]"
+                                                       placeholder="Select Date . . ."
+                                                       value="<?php echo date_format(date_create($value['end_date']), $common['info']['date_format']); ?>"
+                                                       required autocomplete="off">
+                                            </td>
+                                            <td>
+                                                <select name="prescription[medicine][0][eye]"
+                                                        class="form-control">
+                                                    <option value="RE">RE</option>
+                                                    <option value="RE">LE</option>
+                                                    <option value="RE">Both</option>
+                                                </select>
+                                            </td>
                                             <td><a class="table-action-button medicine-delete"><i
                                                             class="ti-trash text-danger"></i></a></td>
                                         </tr>
@@ -573,8 +570,10 @@
                 <?php }
                 if ($page_notes) { ?>
 
-                    <div class="tab-pane" id="appointment-records">
-                        <div class="form-group mb-2">
+                <div class="tab-pane" id="appointment-records">
+                    <div class="form-group mb-2">
+                        <?php if ($summary['appointment_count'] != 0) { ?>
+                        <div class="summary">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="d-block mb-2">
@@ -593,23 +592,19 @@
                                             </thead>
                                             <tbody>
                                             <tr class="medicine-row">
-                                                <td>5
-                                                </th>
-                                                <td>6
-                                                </th>
-                                                <td>20
-                                                </th>
-                                                <td>18
-                                                </th>
-                                                <td> Test Allergy
-                                                </th>
+                                                <td><?php echo $summary['summarykey']['cct_right'] ?></td>
+                                                <td><?php echo $summary['summarykey']['cct_left'] ?></td>
+                                                <td><?php echo $summary['summarykey']['iop_right'] ?></td>
+                                                <td><?php echo $summary['summarykey']['iop_left'] ?></td>
+                                                <td><?php echo $summary['summarykey']['allergy'] ?></td>
+
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row mt-3 mb-3">
@@ -617,738 +612,733 @@
                                             <!--  Hrading tabs -->
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link active" href="#past-appointment-20210115" data-toggle="tab">15-01-2021</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#past-appointment-20210605" data-toggle="tab">05-06-2021</a>
-                                                        </li>
-                                                    </ul>
+                                                    <?php if (!empty($summary['appointment']['appointment_date'])) { ?>
+                                                        <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
+                                                            <?php foreach ($summary['appointment']['appointment_date'] as $key => $date) { ?>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link <?php echo ($key == 0) ? 'active' : '' ?>"
+                                                                       href="#past-appointment-<?php echo str_replace('-', '', $date) ?>"
+                                                                       data-toggle="tab"><?php echo date_format(date_create($date), $common['info']['date_format']) ?></a>
+                                                                </li>
+                                                            <?php } ?>
+                                                        </ul>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col-md-12 pre-consultation-form">
-                                                    <div class="tab-pane active" id="past-appointment-20210115">
-                                                        <div class="table-responsive">
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr class="medicine-row">
-                                                                        <th style="width: 10%;">CCT RE</th>
-                                                                        <th style="width: 10%;">CCT LE</th>
-                                                                        <th style="width: 15%;">IOP RE</th>
-                                                                        <th style="width: 15%;">IOP LE</th>
-                                                                        <th>Allergy</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="medicine-row">
-                                                                        <td>5</th>
-                                                                        <td>6</th>
-                                                                        <td>20</th>
-                                                                        <td>18</th>
-                                                                        <td> Test Allergy</th>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <br>
-                                                        <label class="d-block mb-2">
-                                                            <strong><h4>Treatment:</h4></strong>
-                                                        </label>
-                                                        <div class="table-responsive">
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <th>Medicine</th>
-                                                                    <th>Frequency</th>
-                                                                    <th>Start date</th>
-                                                                    <th>End date</th>
-                                                                    <th>Instruction</th>
-                                                                    <th>Eye</th>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Medicine 1</td>
-                                                                        <td>1-0-1</td>
-                                                                        <td>15-01-2021</td>
-                                                                        <td>14-06-2025</td>
-                                                                        <td></td>
-                                                                        <td>LE</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Medicine 1</td>
-                                                                        <td>1-0-1</td>
-                                                                        <td>15-01-2021</td>
-                                                                        <td>14-06-2025</td>
-                                                                        <td></td>
-                                                                        <td>LE</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane" id="past-appointment-20210605">
-                                                        <div class="table-responsive">
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr class="medicine-row">
-                                                                        <th style="width: 10%;">CCT RE</th>
-                                                                        <th style="width: 10%;">CCT LE</th>
-                                                                        <th style="width: 15%;">IOP RE</th>
-                                                                        <th style="width: 15%;">IOP LE</th>
-                                                                        <th>Allergy</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="medicine-row">
-                                                                        <td>5</th>
-                                                                        <td>6</th>
-                                                                        <td>20</th>
-                                                                        <td>18</th>
-                                                                        <td> Test Allergy</th>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <br>
-                                                        <label class="d-block mb-2">
-                                                            <strong><h4>Treatment:</h4></strong>
-                                                        </label>
-                                                        <div class="table-responsive">
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <th>Medicine</th>
-                                                                    <th>Frequency</th>
-                                                                    <th>Start date</th>
-                                                                    <th>End date</th>
-                                                                    <th>Instruction</th>
-                                                                    <th>Eye</th>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Medicine 1</td>
-                                                                        <td>1-0-1</td>
-                                                                        <td>05-06-2021</td>
-                                                                        <td>04-12-2025</td>
-                                                                        <td></td>
-                                                                        <td>LE</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Medicine 1</td>
-                                                                        <td>1-0-1</td>
-                                                                        <td>05-06-2021</td>
-                                                                        <td>04-12-2025</td>
-                                                                        <td></td>
-                                                                        <td>LE</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
+                                                    <?php if (!empty($summary['appointment']['data'])) { ?>
+                                                        <?php foreach ($summary['appointment']['data'] as $key => $list) { ?>
+                                                            <div class="tab-pane <?php echo ($key == 0) ? 'active' : '' ?>"
+                                                                 id="past-appointment-<?php echo str_replace('-', '', $list['date']) ?>">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered">
+                                                                        <thead>
+                                                                        <tr class="medicine-row">
+                                                                            <th style="width: 10%;">CCT RE</th>
+                                                                            <th style="width: 10%;">CCT LE</th>
+                                                                            <th style="width: 15%;">IOP RE</th>
+                                                                            <th style="width: 15%;">IOP LE</th>
+                                                                            <th>Allergy</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr class="medicine-row">
+                                                                            <?php foreach ($list['data'] as $summry_key) { ?>
+                                                                                <td><?php echo $summry_key ?></td>
+                                                                            <?php } ?>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <br>
+                                                                <label class="d-block mb-2">
+                                                                    <strong><h4>Treatment:</h4></strong>
+                                                                </label>
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered">
+                                                                        <thead>
+                                                                        <th>Medicine</th>
+                                                                        <th>Frequency</th>
+                                                                        <th>Start date</th>
+                                                                        <th>End date</th>
+                                                                        <th>Instruction</th>
+                                                                        <th>Eye</th>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <?php foreach (json_decode($list['prescription'], true) as $key => $value) { ?>
+
+                                                                            <tr>
+                                                                                <td><?php echo $value['name']; ?></td>
+                                                                                <td><?php echo $value['dose']; ?></td>
+                                                                                <td><?php echo $value['start_date']; ?></td>
+                                                                                <td><?php echo $value['end_date']; ?></td>
+                                                                                <td><?php echo $value['instruction']; ?></td>
+                                                                                <td><?php echo $value['eye']; ?></td>
+                                                                            </tr>
+                                                                        <?php } ?>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        <?php } ?>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label class="d-block mb-2">
-                                        <strong><h4>Ocular Examination</h4></strong>
-                                    </label>
-                                    <form action="<?php echo $action ?>" method="post">
-                                        <input type="hidden" name="_token" value="<?php echo $token; ?>">
-                                        <input type="hidden" name="form_type" value="appointment_records">
-                                        <input type="hidden" class="appointment-id" name="appointment[id]" value="<?php echo $result['id']; ?>">
+                        </div>
+                    <?php } ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="d-block mb-2">
+                                    <strong><h4>Ocular Examination</h4></strong>
+                                </label>
+                                <form action="<?php echo $action ?>" method="post">
+                                    <input type="hidden" name="_token" value="<?php echo $token; ?>">
+                                    <input type="hidden" name="form_type" value="appointment_records">
+                                    <input type="hidden" class="appointment-id" name="appointment[id]"
+                                           value="<?php echo $result['id']; ?>">
 
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Current event (History)<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Current event (History)<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
                                                                         class="ti-user"></i></span>
-                                                        </div>
-                                                        <textarea class="form-control" name="appointment[current_event]"
-                                                                  required><?php echo isset($result['current_event']) ? $result['current_event'] : ''; ?></textarea>
                                                     </div>
+                                                    <textarea class="form-control" name="appointment[current_event]"
+                                                              required><?php echo isset($result['current_event']) ? $result['current_event'] : ''; ?></textarea>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Allergy<span class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Allergy<span class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
                                                                         class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[allergy]" class="custom-select"
-                                                                required>
-                                                            <option value="">Select allergy</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ALLERGY'] as $key => $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['allergy']) && $result['allergy'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-
-                                                <div class="form-group">
-                                                    <label>Visual acuity - right<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                        class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[visual_acuity_right]"
-                                                                class="custom-select" required>
-                                                            <option value="">Select visual acuity</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['visual_acuity_right']) && $result['visual_acuity_right'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Intraocular pressure - right<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                        class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[intraocular_pressure_right]"
-                                                                class="custom-select" required>
-                                                            <option value="">Select intraocular pressure</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['intraocular_pressure_right']) && $result['intraocular_pressure_right'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-
-                                                <div class="form-group">
-                                                    <label>Visual acuity - left<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                        class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[visual_acuity_left]"
-                                                                class="custom-select" required>
-                                                            <option value="">Select visual acuity</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['visual_acuity_left']) && $result['visual_acuity_left'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Intraocular pressure - left<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                        class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[intraocular_pressure_left]"
-                                                                class="custom-select" required>
-                                                            <option value="">Select intraocular pressure</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo ($result['intraocular_pressure_left'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <div class="col-md-12">
-                                                <div id="container" class="container">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Anterior Chamber - Right<span class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                        class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[anterior_chamber_right]"
-                                                                class="custom-select" required>
-                                                            <option value="">Select anterior chamber</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['anterior_chamber_right']) && $result['anterior_chamber_right'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Anterior Chamber - Left<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                        class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[anterior_chamber_left]"
-                                                                class="custom-select" required>
-                                                            <option value="">Select anterior chamber</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['anterior_chamber_left']) && $result['anterior_chamber_left'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Lens - Right<span class="form-required">*</span></label>
-                                                    <input type="number" class="form-control"
-                                                           name="appointment[lens_right]"
-                                                           value="<?php echo $result['lens_right']; ?>">
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Lens - Left<span class="form-required">*</span></label>
-                                                    <input type="number" class="form-control"
-                                                           name="appointment[lens_left]"
-                                                           value="<?php echo $result['lens_left']; ?>">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Disc (OCT) - Right</label><br>
-                                                    <a data-fancybox="gallery"
-                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                             width="200px" height="100px" alt="">
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Disc (OCT) - Left</label><br>
-                                                    <a data-fancybox="gallery"
-                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                             width="200px" height="100px" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>NFL Thickness - Right<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control"
-                                                               name="appointment[nfl_thickness_right]"
-                                                               value="<?php echo $result['nfl_thickness_right']; ?>">&nbsp;
-                                                        <b>mm</b>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>NFL Thickness - Left<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control"
-                                                               name="appointment[nfl_thickness_left]"
-                                                               value="<?php echo $result['nfl_thickness_left']; ?>">&nbsp;
-                                                        <b>mm</b>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rowmt-2">
-                                            <div class="col-md-12">
-                                                <div id="nfl-chart-container" class="container">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Fundus - Right</label><br>
-                                                    <a data-fancybox="gallery"
-                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                             width="200px" height="100px" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Fundus - Left</label><br>
-                                                    <a data-fancybox="gallery"
-                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                             width="200px" height="100px" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Visual field test plots - Right</label><br>
-                                                    <a data-fancybox="gallery"
-                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                             width="200px" height="100px" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Visual field test plots - Right</label><br>
-                                                    <a data-fancybox="gallery"
-                                                       href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                        <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                             width="200px" height="100px" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Mean Deviation - Right<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control"
-                                                               name="appointment[mean_deviation_right]"
-                                                               value="<?php echo $result['mean_deviation_right']; ?>">&nbsp;
-                                                        <b>dB</b>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Mean Deviation - Left<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control"
-                                                               name="appointment[mean_deviation_left]"
-                                                               value="<?php echo $result['mean_deviation_left']; ?>">&nbsp;
-                                                        <b>dB</b>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="rowmt-2">
-                                            <div class="col-md-12">
-                                                <div id="md-chart-container" class="container">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>PSD Deviation - Right<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control"
-                                                               name="appointment[psd_deviation_right]"
-                                                               value="<?php echo $result['psd_deviation_right']; ?>">&nbsp;
-                                                        <b>dB</b>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>PSD Deviation - Left<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control"
-                                                               name="appointment[psd_deviation_left]"
-                                                               value="<?php echo $result['psd_deviation_left']; ?>">&nbsp;
-                                                        <b>dB</b>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="rowmt-2">
-                                            <div class="col-md-12">
-                                                <div id="psd-chart-container" class="container">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Diagnosis<span class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                        class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[diagnosis]"
-                                                                class="custom-select" required>
-                                                            <option value="">Select Diagnosis</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'] as $key => $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['diagnosis']) && $result['diagnosis'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>RE</label>
-                                                <input type="checkbox" class="checkbox" name="appointment[re]" value="re" <?php echo (isset($result['re']) && $result['re'] == 're') ? 'checked' : '' ?>>
-                                                <label>LE</label>
-                                                <input type="checkbox" class="checkbox" name="appointment[le]" value="le" <?php echo (isset($result['le']) && $result['le'] == 'le') ? 'checked' : '' ?>>
-                                                <label>Both</label>
-                                                <input type="checkbox" class="checkbox" name="appointment[both]" value="both" <?php echo (isset($result['both']) && $result['both'] == 'both') ? 'checked' : '' ?>>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Outcome<span class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                        class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[outcome]"
-                                                                class="custom-select" required>
-                                                            <option value="">Select Outcome</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['OUTCOME'] as $key => $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['outcome']) && $result['outcome'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Follow up / Next Appointment<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                        class="ti-user"></i></span>
-                                                        </div>
-                                                        <select name="appointment[followup]"
-                                                                class="custom-select" required>
-                                                            <option value="">Select Month</option>
-                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'] as $key => $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($result['gcp_next_appointment']) && $result['gcp_next_appointment'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
-                                                                </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Glaucoma Care Plan Required<span
-                                                                class="form-required">*</span></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
-                                                        </div>
-                                                        <select name="appointment[gcp_required]" class="custom-select"
-                                                                required>
-                                                            <option value="">Select GCP</option>
-                                                            <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
-                                                                YES
+                                                    <select name="appointment[allergy]" class="custom-select"
+                                                            required>
+                                                        <option value="">Select allergy</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ALLERGY'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['allergy']) && $result['allergy'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
                                                             </option>
-                                                            <option value="NO" <?php echo ($result['is_glaucoma_required'] == 'NO') ? "Selected" : "" ?>>
-                                                                NO
-                                                            </option>
-                                                        </select>
-                                                    </div>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="panel-footer text-center">
-                                            <button type="submit" name="submit" class="btn btn-primary"><i
-                                                        class="ti-save-alt pr-2"></i> Save
-                                            </button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label>Visual acuity - right<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[visual_acuity_right]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select visual acuity</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['visual_acuity_right']) && $result['visual_acuity_right'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Intraocular pressure - right<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[intraocular_pressure_right]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select intraocular pressure</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['intraocular_pressure_right']) && $result['intraocular_pressure_right'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Visual acuity - left<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[visual_acuity_left]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select visual acuity</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['visual_acuity_left']) && $result['visual_acuity_left'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Intraocular pressure - left<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[intraocular_pressure_left]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select intraocular pressure</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo ($result['intraocular_pressure_left'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div id="container" class="container">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Anterior Chamber - Right<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[anterior_chamber_right]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select anterior chamber</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['anterior_chamber_right']) && $result['anterior_chamber_right'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Anterior Chamber - Left<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[anterior_chamber_left]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select anterior chamber</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['anterior_chamber_left']) && $result['anterior_chamber_left'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Lens - Right<span class="form-required">*</span></label>
+                                                <input type="number" class="form-control"
+                                                       name="appointment[lens_right]"
+                                                       value="<?php echo $result['lens_right']; ?>">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Lens - Left<span class="form-required">*</span></label>
+                                                <input type="number" class="form-control"
+                                                       name="appointment[lens_left]"
+                                                       value="<?php echo $result['lens_left']; ?>">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Disc (OCT) - Right</label><br>
+                                                <a data-fancybox="gallery"
+                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                         width="200px" height="100px" alt="">
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Disc (OCT) - Left</label><br>
+                                                <a data-fancybox="gallery"
+                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                         width="200px" height="100px" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>CCT - Right<span class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[cct_right]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select CCT</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['cct_right']) && $result['cct_right'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>CCT - Left<span class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[cct_left]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select CCT</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['cct_left']) && $result['cct_left'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>NFL Thickness - Right<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[nfl_thickness_right]"
+                                                           value="<?php echo $result['nfl_thickness_right']; ?>">&nbsp;
+                                                    <b>mm</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>NFL Thickness - Left<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[nfl_thickness_left]"
+                                                           value="<?php echo $result['nfl_thickness_left']; ?>">&nbsp;
+                                                    <b>mm</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rowmt-2">
+                                        <div class="col-md-12">
+                                            <div id="nfl-chart-container" class="container">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Fundus - Right</label><br>
+                                                <a data-fancybox="gallery"
+                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                         width="200px" height="100px" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Fundus - Left</label><br>
+                                                <a data-fancybox="gallery"
+                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                         width="200px" height="100px" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Visual field test plots - Right</label><br>
+                                                <a data-fancybox="gallery"
+                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                         width="200px" height="100px" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Visual field test plots - Right</label><br>
+                                                <a data-fancybox="gallery"
+                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
+                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
+                                                         width="200px" height="100px" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Mean Deviation - Right<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[mean_deviation_right]"
+                                                           value="<?php echo $result['mean_deviation_right']; ?>">&nbsp;
+                                                    <b>dB</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Mean Deviation - Left<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[mean_deviation_left]"
+                                                           value="<?php echo $result['mean_deviation_left']; ?>">&nbsp;
+                                                    <b>dB</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rowmt-2">
+                                        <div class="col-md-12">
+                                            <div id="md-chart-container" class="container">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>PSD Deviation - Right<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[psd_deviation_right]"
+                                                           value="<?php echo $result['psd_deviation_right']; ?>">&nbsp;
+                                                    <b>dB</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>PSD Deviation - Left<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[psd_deviation_left]"
+                                                           value="<?php echo $result['psd_deviation_left']; ?>">&nbsp;
+                                                    <b>dB</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rowmt-2">
+                                        <div class="col-md-12">
+                                            <div id="psd-chart-container" class="container">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Diagnosis<span class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[diagnosis]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select Diagnosis</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['diagnosis']) && $result['diagnosis'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>RE</label>
+                                            <input type="checkbox" class="checkbox" name="appointment[re]"
+                                                   value="re" <?php echo (isset($result['re']) && $result['re'] == 're') ? 'checked' : '' ?>>
+                                            <label>LE</label>
+                                            <input type="checkbox" class="checkbox" name="appointment[le]"
+                                                   value="le" <?php echo (isset($result['le']) && $result['le'] == 'le') ? 'checked' : '' ?>>
+                                            <label>Both</label>
+                                            <input type="checkbox" class="checkbox" name="appointment[both]"
+                                                   value="both" <?php echo (isset($result['both']) && $result['both'] == 'both') ? 'checked' : '' ?>>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Outcome<span class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[outcome]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select Outcome</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['OUTCOME'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['outcome']) && $result['outcome'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Follow up / Next Appointment<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[followup]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select Month</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['gcp_next_appointment']) && $result['gcp_next_appointment'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Glaucoma Care Plan Required<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                    class="ti-check-box"></i></span>
+                                                    </div>
+                                                    <select name="appointment[gcp_required]" class="custom-select"
+                                                            required>
+                                                        <option value="">Select GCP</option>
+                                                        <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
+                                                            YES
+                                                        </option>
+                                                        <option value="NO" <?php echo ($result['is_glaucoma_required'] == 'NO') ? "Selected" : "" ?>>
+                                                            NO
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer text-center">
+                                        <button type="submit" name="submit" class="btn btn-primary"><i
+                                                    class="ti-save-alt pr-2"></i> Save
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                <?php }
-                if ($page_document_upload || $page_documents) { ?>
-                    <div class="tab-pane" id="appointment-documents">
-                        <?php if ($page_document_upload) { ?>
-                            <div class="row">
-                                <div class="form-group col-sm-6 ">
-                                    <a class="btn btn-warning btn-sm" data-toggle="modal"
-                                       data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload
-                                        Document/Report</a>
-                                </div>
-                                <!--                                <div class="form-group col-sm-6 text-right">-->
-                                <!--                                    <a class="btn btn-secondary btn-sm"-->
-                                <!--                                       href="-->
-                                <?php //echo URL_ADMIN . DIR_ROUTE . 'appointment/reportsExport&id=' . $result['id']; ?><!--"><i-->
-                                <!--                                                class="ti-cloud-down mr-2"></i> Download Document/Report</a>-->
-                                <!--                                </div>-->
+            <?php }
+            if ($page_document_upload || $page_documents) { ?>
+                <div class="tab-pane" id="appointment-documents">
+                    <?php if ($page_document_upload) { ?>
+                        <div class="row">
+                            <div class="form-group col-sm-6 ">
+                                <a class="btn btn-warning btn-sm" data-toggle="modal"
+                                   data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload
+                                    Document/Report</a>
                             </div>
-                        <?php }
-                        if ($page_documents) { ?>
-                            <div class="report-container">
-                                <?php if (!empty($reports)) {
-                                    foreach ($reports as $key => $value) {
-                                        $file_ext = pathinfo($value['name'], PATHINFO_EXTENSION);
-                                        if ($file_ext == "pdf") { ?>
-                                            <div class="report-image report-pdf"
-                                                 id="report-delete-div-<?php echo $value['id'] ?>">
-                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>"
-                                                   class="open-pdf">
-                                                    <img src="../public/images/pdf.png" alt="">
-                                                    <span><?php echo $value['name']; ?></span>
-                                                </a>
-                                                <?php if ($page_document_remove) { ?>
+                            <!--                                <div class="form-group col-sm-6 text-right">-->
+                            <!--                                    <a class="btn btn-secondary btn-sm"-->
+                            <!--                                       href="-->
+                            <?php //echo URL_ADMIN . DIR_ROUTE . 'appointment/reportsExport&id=' . $result['id']; ?><!--"><i-->
+                            <!--                                                class="ti-cloud-down mr-2"></i> Download Document/Report</a>-->
+                            <!--                                </div>-->
+                        </div>
+                    <?php }
+                    if ($page_documents) { ?>
+                        <div class="report-container">
+                            <?php if (!empty($reports)) {
+                                foreach ($reports as $key => $value) {
+                                    $file_ext = pathinfo($value['name'], PATHINFO_EXTENSION);
+                                    if ($file_ext == "pdf") { ?>
+                                        <div class="report-image report-pdf"
+                                             id="report-delete-div-<?php echo $value['id'] ?>">
+                                            <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>"
+                                               class="open-pdf">
+                                                <img src="../public/images/pdf.png" alt="">
+                                                <span><?php echo $value['name']; ?></span>
+                                            </a>
+                                            <?php if ($page_document_remove) { ?>
 
-                                                    <div class="report-delete" data-toggle="tooltip" title="Delete"><a
-                                                                class="ti-close report-delete-action"
-                                                                data-toggle="modal" data-target="#reportDeleteModel"
-                                                                data-appointment_id="<?php echo $value['appointment_id'] ?>"
-                                                                data-report_name="<?php echo $value['filename'] ?>"
-                                                                data-report_id="<?php echo $value['id'] ?>"></a></div>
+                                                <div class="report-delete" data-toggle="tooltip" title="Delete"><a
+                                                            class="ti-close report-delete-action"
+                                                            data-toggle="modal" data-target="#reportDeleteModel"
+                                                            data-appointment_id="<?php echo $value['appointment_id'] ?>"
+                                                            data-report_name="<?php echo $value['filename'] ?>"
+                                                            data-report_id="<?php echo $value['id'] ?>"></a></div>
 
-                                                    <input type="hidden" name="report_name"
-                                                           value="<?php echo $value['name']; ?>">
+                                                <input type="hidden" name="report_name"
+                                                       value="<?php echo $value['name']; ?>">
 
-                                                <?php } ?>
-                                            </div>
-                                        <?php } else { ?>
-                                            <div class="report-image" id="report-delete-div-<?php echo $value['id'] ?>">
-                                                <a data-fancybox="gallery"
-                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>">
-                                                    <img src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>"
-                                                         alt="">
-                                                    <span><?php echo $value['name']; ?></span>
-                                                </a>
-                                                <?php if ($page_document_remove) { ?>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="report-image" id="report-delete-div-<?php echo $value['id'] ?>">
+                                            <a data-fancybox="gallery"
+                                               href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>">
+                                                <img src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>"
+                                                     alt="">
+                                                <span><?php echo $value['name']; ?></span>
+                                            </a>
+                                            <?php if ($page_document_remove) { ?>
 
-                                                    <div class="report-delete" data-toggle="tooltip" title="Delete"><a
-                                                                class="ti-close report-delete-action"
-                                                                data-toggle="modal" data-target="#reportDeleteModel"
-                                                                data-appointment_id="<?php echo $value['appointment_id'] ?>"
-                                                                data-report_name="<?php echo $value['filename'] ?>"
-                                                                data-report_id="<?php echo $value['id'] ?>"></a></div>
+                                                <div class="report-delete" data-toggle="tooltip" title="Delete"><a
+                                                            class="ti-close report-delete-action"
+                                                            data-toggle="modal" data-target="#reportDeleteModel"
+                                                            data-appointment_id="<?php echo $value['appointment_id'] ?>"
+                                                            data-report_name="<?php echo $value['filename'] ?>"
+                                                            data-report_id="<?php echo $value['id'] ?>"></a></div>
 
-                                                    <input type="hidden" name="report_name"
-                                                           value="<?php echo $value['name']; ?>">
+                                                <input type="hidden" name="report_name"
+                                                       value="<?php echo $value['name']; ?>">
 
-                                                <?php } ?>
-                                            </div>
-                                        <?php }
-                                    }
-                                } ?>
-                            </div>
+                                            <?php } ?>
+                                        </div>
+                                    <?php }
+                                }
+                            } ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            <?php }
+            if ($invoice_view || $invoice_add) { ?>
+                <div class="tab-pane" id="appointment-invoice">
+                    <div class="text-center">
+                        <?php if ($result['invoice_id'] && $invoice_view) { ?>
+                            <p>Invoice is Generated</p>
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/view&id=' . $result['invoice_id']; ?>"
+                               class="btn btn-danger btn-sm" target="_blank"><i
+                                        class="far fa-file-pdf mr-2"></i>View</a>
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/pdf&id=' . $result['invoice_id']; ?>"
+                               class="btn btn-danger btn-sm" target="_blank"><i class="far fa-file-pdf mr-2"></i>PDF</a>
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/print&id=' . $result['invoice_id']; ?>"
+                               class="btn btn-success btn-sm" target="_blank"><i
+                                        class="ti-printer mr-2"></i>Print</a>
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/edit&id=' . $result['invoice_id']; ?>"
+                               class="btn btn-info btn-sm" target="_blank"><i
+                                        class="ti-pencil-alt mr-2"></i>Edit</a>
+                        <?php } elseif ($invoice_add) { ?>
+                            <p>Invoice is not Generated</p>
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/add&appointment=' . $result['id']; ?>"
+                               class="btn btn-primary btn-sm" target="_blank"><i class="ti-plus pr-2"></i>Generate
+                                Invoice Now</a>
                         <?php } ?>
                     </div>
-                <?php }
-                if ($invoice_view || $invoice_add) { ?>
-                    <div class="tab-pane" id="appointment-invoice">
-                        <div class="text-center">
-                            <?php if ($result['invoice_id'] && $invoice_view) { ?>
-                                <p>Invoice is Generated</p>
-                                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/view&id=' . $result['invoice_id']; ?>"
-                                   class="btn btn-danger btn-sm" target="_blank"><i class="far fa-file-pdf mr-2"></i>View</a>
-                                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/pdf&id=' . $result['invoice_id']; ?>"
-                                   class="btn btn-danger btn-sm" target="_blank"><i class="far fa-file-pdf mr-2"></i>PDF</a>
-                                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/print&id=' . $result['invoice_id']; ?>"
-                                   class="btn btn-success btn-sm" target="_blank"><i
-                                            class="ti-printer mr-2"></i>Print</a>
-                                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/edit&id=' . $result['invoice_id']; ?>"
-                                   class="btn btn-info btn-sm" target="_blank"><i
-                                            class="ti-pencil-alt mr-2"></i>Edit</a>
-                            <?php } elseif ($invoice_add) { ?>
-                                <p>Invoice is not Generated</p>
-                                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/add&appointment=' . $result['id']; ?>"
-                                   class="btn btn-primary btn-sm" target="_blank"><i class="ti-plus pr-2"></i>Generate
-                                    Invoice Now</a>
-                            <?php } ?>
-                        </div>
-                    </div>
-                <?php } ?>
+                </div>
+            <?php } ?>
 
                 <div class="tab-pane" id="appointment-pre-consultation-requirement">
                     <form action="<?php echo $action ?>" method="post">
                         <input type="hidden" name="_token" value="<?php echo $token; ?>">
                         <input type="hidden" name="form_type" value="appointment_pre_consultation">
-                        <input type="hidden" class="appointment-id" name="appointment[id]" value="<?php echo $result['id']; ?>">
+                        <input type="hidden" class="appointment-id" name="appointment[id]"
+                               value="<?php echo $result['id']; ?>">
                         <div class="form-group mb-2">
                             <label class="d-block mb-2"><strong><h4>Select pre consultation form for appointment</h4>
                                 </strong></label>
@@ -1557,12 +1547,23 @@
             'type': 'iframe'
         });
 
-        var firstChart = <?php echo json_encode($firstChart)?>;
-        var nflChart = <?php echo json_encode($nflChart)?>;
-        var mdChart = <?php echo json_encode($mdChart)?>;
-        var psdChart =<?php echo json_encode($psdChart)?>;
+        var firstChart = <?php echo json_encode($intraocularPressureChart)?>;
+        var nflChart = <?php echo json_encode($nflThicknessChart)?>;
+        var mdChart = <?php echo json_encode($meanDeviationChart)?>;
+        var psdChart =<?php echo json_encode($psdDeviationChart)?>;
+
+        function validateMyForm(e) {
+            var mobile = $("#mobile").val();
+
+            if (mobile.length < 10 || mobile.length < 11) {
+                toastr.error('Error', 'Mobile number must be 11 digits.');
+                return false
+            } else {
+                return true;
+            }
+        }
 
     </script>
     <script src="<?php echo URL_ADMIN . "public/js/examination_chart.js"; ?>"></script>
     <!-- Footer -->
-<?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>
+    <?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>

@@ -198,17 +198,6 @@
         });
 
 
-        function validateMyForm(e) {
-            var mobile = $("#mobile").val();
-
-            if (mobile.length < 10 || mobile.length < 11) {
-                toastr.error('Error', 'Mobile number must be 11 digits.');
-                return false
-            }else{
-                return true;
-            }
-        }
-
     </script>
 
 
