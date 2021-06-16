@@ -164,6 +164,13 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'PRIMARY_ANGLE_CLOSURE_GLAUCOMA' => 'Primary Angle closure Glaucoma',
         'OCULAR_HYPERTENSION' => 'Ocular Hypertension',
         'GLAUCOMA_SUSPECT' => 'Glaucoma Suspect',
+        'SECONDARY_GLAUCOMA_STEROID_INDUCED' => 'Secondary Glaucoma - Steroid induced',
+        'SECONDARY_GLAUCOMA_UVEITIC' => 'Secondary Glaucoma - Uveitic',
+        'SECONDARY_GLAUCOMA_PSEUDOEXFOLIATION' => 'Secondary Glaucoma - Pseudoexfoliation',
+        'SECONDARY_GLAUCOMA_PIGMENT_DISPERSION' => 'Secondary Glaucoma - Pigment Dispersion',
+        'SECONDARY_GLAUCOMA_TRAUMA' => 'Secondary Glaucoma - Trauma',
+        'SECONDARY_GLAUCOMA_PREV_VR_SURGERY' => 'Secondary Glaucoma - Prev VR Surgery',
+        
     ],
     'ANTERIOR_CHAMBER' => [
         'FULLY_OPEN_ANGLE' => 'Fully Open angle',
@@ -176,9 +183,9 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
     'OUTCOME' => [
         'STABLE' => 'Stable: review with visual fields',
         'UNSTABLE' => 'Unstable',
-        'NEED_CHANGE_IN_TREATMENT' => 'Need change in treatment- change medication above',
-        'BOOK_FOR_LASER' => 'Book for laser',
-        'BOOK_FOR_SURGERY' => 'Book for Surgery',
+        'UNSTABLE_NEED_CHANGE_IN_TREATMENT' => 'Unstable - Need change in treatment- change medication above',
+        'UNSTABLE_BOOK_FOR_LASER' => 'Unstable - Book for laser',
+        'UNSTABLE_BOOK_FOR_SURGERY' => 'Unstable - Book for Surgery',
     ],
     'FOLLOW_UP_OR_NEXT_APPOINTMENT' => [
         '1' => '2 months after change in treatment to see the effect',
@@ -187,7 +194,12 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         '6' => '6 months',
         '12' => '12 months',
     ],
-    'GLAUCOMA_CARE_PLAN_REQUIRED' => ['Yes,' => 'Yes', 'NO' => 'No'],
+    'GLAUCOMA_CARE_PLAN_REQUIRED' => [
+        'YES,' => 'Yes', 
+        'YES_STANDARD_12_MONTHLY' => 'Yes - standard 12 monthly',
+        'YES_EXTRA_6_MONTHLY' => 'Yes - extra 6 monthly',
+        'NO' => 'No'
+    ],
 
 ]);
 
