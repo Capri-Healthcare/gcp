@@ -6,7 +6,10 @@
 class HomeController extends Controller
 {
 	public function index() {
-		$this->getPage();
+		//$this->getPage();
+		$data['header'] = $this->load->view('front/common/header');
+		$data['footer'] = $this->load->view('front/common/footer');
+		$this->response->setOutput($this->load->view('front/home', $data));
 	}
 
 	/**
