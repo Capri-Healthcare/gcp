@@ -1,4 +1,5 @@
 var firstChart,nflChart,mdChart,psdChart;
+
 // Chart
 Highcharts.chart('container', {
 
@@ -17,7 +18,7 @@ Highcharts.chart('container', {
     },
 
     xAxis: {
-        categories: ['1', '2', '3', '4', '5']
+        categories: firstChart[2]['categories']
     },
 
     legend: {
@@ -74,7 +75,7 @@ Highcharts.chart('nfl-chart-container', {
     },
 
     xAxis: {
-        categories: ['1', '2', '3', '4', '5']
+        categories: nflChart[2]['categories']
     },
 
     legend: {
@@ -131,7 +132,7 @@ Highcharts.chart('md-chart-container', {
     },
 
     xAxis: {
-        categories: ['1', '2', '3', '4', '5']
+        categories: mdChart[2]['categories']
     },
     legend: {
         layout: 'vertical',
@@ -187,7 +188,7 @@ Highcharts.chart('psd-chart-container', {
     },
 
     xAxis: {
-        categories: ['1', '2', '3', '4', '5']
+        categories: psdChart[2]['categories']
     },
     legend: {
         layout: 'vertical',

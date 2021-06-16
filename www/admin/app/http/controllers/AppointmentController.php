@@ -209,6 +209,8 @@ class AppointmentController extends Controller
         if (empty($id) || !is_int($id)) {
             $this->url->redirect('appointments');
         }
+        $this->load->model('appointment');
+        $data['reports'] = $this->model_appointment->getReports($id);
 
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
@@ -216,7 +218,7 @@ class AppointmentController extends Controller
          * Call getBlog method from Blog model to get data from DB for single blog
          * If blog does not exist then redirect it to blog list view
          **/
-        $this->load->model('appointment');
+
         if ($data['common']['user']['role_id'] == '3') {
             $data['result'] = $this->model_appointment->getAppointment($id, $data['common']['user']['doctor']);
         } else {
@@ -283,7 +285,7 @@ class AppointmentController extends Controller
         // Summary Data
 
         $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['result']);
-        $summary['appointment_count'] = count($appointment_completed);
+        $summary['appointment_count'] = !empty($appointment_completed)?count($appointment_completed):0;
 
         if ($summary['appointment_count'] != 0) {
 
@@ -319,34 +321,36 @@ class AppointmentController extends Controller
                 $intraocularPressureChart[1]['name'] = 'LE';
                 $intraocularPressureChart[0]['data'][] = (int)$list['intraocular_pressure_right'];
                 $intraocularPressureChart[1]['data'][] = (int)$list['intraocular_pressure_left'];
-                $intraocularPressureChart[2]['categories'][] = $list['date'];
+                $intraocularPressureChart[2]['categories'][] = date_format(date_create($list['date']), 'd-m-Y');
 
                 $nflThicknessChart[0]['name'] = 'RE';
                 $nflThicknessChart[1]['name'] = 'LE';
                 $nflThicknessChart[0]['data'][] = (int)$list['nfl_thickness_right'];
                 $nflThicknessChart[1]['data'][] = (int)$list['nfl_thickness_left'];
-                $nflThicknessChart[2]['categories'][] = $list['date'];
+                $nflThicknessChart[2]['categories'][] = date_format(date_create($list['date']), 'd-m-Y');
 
                 $meanDeviationChart[0]['name'] = 'RE';
                 $meanDeviationChart[1]['name'] = 'LE';
                 $meanDeviationChart[0]['data'][] = (int)$list['mean_deviation_right'];
                 $meanDeviationChart[1]['data'][] = (int)$list['mean_deviation_left'];
-                $meanDeviationChart[2]['categories'][] = $list['date'];
+                $meanDeviationChart[2]['categories'][] = date_format(date_create($list['date']), 'd-m-Y');
 
                 $psdDeviationChart[0]['name'] = 'RE';
                 $psdDeviationChart[1]['name'] = 'LE';
                 $psdDeviationChart[0]['data'][] = (int)$list['psd_deviation_right'];
                 $psdDeviationChart[1]['data'][] = (int)$list['psd_deviation_left'];
-                $psdDeviationChart[2]['categories'][] = $list['date'];
+                $psdDeviationChart[2]['categories'][] = date_format(date_create($list['date']), 'd-m-Y');
 
             }
+
+            $data['intraocularPressureChart'] = $intraocularPressureChart;
+            $data['nflThicknessChart'] = $nflThicknessChart;
+            $data['meanDeviationChart'] = $meanDeviationChart;
+            $data['psdDeviationChart'] = $psdDeviationChart;
+
         }
 
         $data['summary'] = $summary;
-        $data['intraocularPressureChart'] = $intraocularPressureChart;
-        $data['nflThicknessChart'] = $nflThicknessChart;
-        $data['meanDeviationChart'] = $meanDeviationChart;
-        $data['psdDeviationChart'] = $psdDeviationChart;
 
         /*Render Blog edit view*/
         $this->response->setOutput($this->load->view('appointment/appointment_form', $data));

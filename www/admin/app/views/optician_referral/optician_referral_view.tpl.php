@@ -128,12 +128,16 @@
                                     <div class="report-image report-pdf">
                                         <a href="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . '/'.$value['filename']; ?>" class="open-pdf font-12" style="display: block;">
                                             <img class="img-thumbnail" src="../public/images/pdf.png" alt="">
+                                            <span><?php echo $value['name']; ?></span>
                                         </a>
                                     </div>
                                 <?php } else {?>
                                     <div class="report-image">
                                         <a data-fancybox="gallery" href="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . '/'. $value['filename']; ?>">
-                                            <img class="img-thumbnail" src="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . '/'.$value['filename']; ?>" alt=""></a>
+                                            <img class="img-thumbnail" src="../public/uploads/optician-referral/document/<?php echo $value['referral_list_id'] . '/'.$value['filename']; ?>" alt="">
+                                            <span><?php echo $value['name']; ?></span>
+                                        </a>
+
                                     </div>
                                 <?php } } } else { ?>
                                     <p class="text-danger text-center">No documents found !!!</p>

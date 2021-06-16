@@ -573,126 +573,130 @@
                 <div class="tab-pane" id="appointment-records">
                     <div class="form-group mb-2">
                         <?php if ($summary['appointment_count'] != 0) { ?>
-                        <div class="summary">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label class="d-block mb-2">
-                                        <strong><h4>Summary</h4></strong>
-                                    </label>
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                            <tr class="medicine-row">
-                                                <th style="width: 10%;">CCT RE</th>
-                                                <th style="width: 10%;">CCT LE</th>
-                                                <th style="width: 15%;">Highest IOP RE</th>
-                                                <th style="width: 15%;">Highest IOP LE</th>
-                                                <th>Allergy</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr class="medicine-row">
-                                                <td><?php echo $summary['summarykey']['cct_right'] ?></td>
-                                                <td><?php echo $summary['summarykey']['cct_left'] ?></td>
-                                                <td><?php echo $summary['summarykey']['iop_right'] ?></td>
-                                                <td><?php echo $summary['summarykey']['iop_left'] ?></td>
-                                                <td><?php echo $summary['summarykey']['allergy'] ?></td>
+                            <div class="summary">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="d-block mb-2">
+                                            <strong><h4>Summary</h4></strong>
+                                        </label>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr class="medicine-row">
+                                                    <th style="width: 10%;">CCT RE</th>
+                                                    <th style="width: 10%;">CCT LE</th>
+                                                    <th style="width: 15%;">Highest IOP RE</th>
+                                                    <th style="width: 15%;">Highest IOP LE</th>
+                                                    <th>Allergy</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="medicine-row">
+                                                    <td><?php echo $summary['summarykey']['cct_right'] ?></td>
+                                                    <td><?php echo $summary['summarykey']['cct_left'] ?></td>
+                                                    <td><?php echo $summary['summarykey']['iop_right'] ?></td>
+                                                    <td><?php echo $summary['summarykey']['iop_left'] ?></td>
+                                                    <td><?php echo $summary['summarykey']['allergy'] ?></td>
 
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row mt-3 mb-3">
-                                        <div class="col-md-2">
-                                            <!--  Hrading tabs -->
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <?php if (!empty($summary['appointment']['appointment_date'])) { ?>
-                                                        <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
-                                                            <?php foreach ($summary['appointment']['appointment_date'] as $key => $date) { ?>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link <?php echo ($key == 0) ? 'active' : '' ?>"
-                                                                       href="#past-appointment-<?php echo str_replace('-', '', $date) ?>"
-                                                                       data-toggle="tab"><?php echo date_format(date_create($date), $common['info']['date_format']) ?></a>
-                                                                </li>
-                                                            <?php } ?>
-                                                        </ul>
-                                                    <?php } ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="row">
-                                                <div class="col-md-12 pre-consultation-form">
-                                                    <?php if (!empty($summary['appointment']['data'])) { ?>
-                                                        <?php foreach ($summary['appointment']['data'] as $key => $list) { ?>
-                                                            <div class="tab-pane <?php echo ($key == 0) ? 'active' : '' ?>"
-                                                                 id="past-appointment-<?php echo str_replace('-', '', $list['date']) ?>">
-                                                                <div class="table-responsive">
-                                                                    <table class="table table-bordered">
-                                                                        <thead>
-                                                                        <tr class="medicine-row">
-                                                                            <th style="width: 10%;">CCT RE</th>
-                                                                            <th style="width: 10%;">CCT LE</th>
-                                                                            <th style="width: 15%;">IOP RE</th>
-                                                                            <th style="width: 15%;">IOP LE</th>
-                                                                            <th>Allergy</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        <tr class="medicine-row">
-                                                                            <?php foreach ($list['data'] as $summry_key) { ?>
-                                                                                <td><?php echo $summry_key ?></td>
-                                                                            <?php } ?>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                                <br>
-                                                                <label class="d-block mb-2">
-                                                                    <strong><h4>Treatment:</h4></strong>
-                                                                </label>
-                                                                <div class="table-responsive">
-                                                                    <table class="table table-bordered">
-                                                                        <thead>
-                                                                        <th>Medicine</th>
-                                                                        <th>Frequency</th>
-                                                                        <th>Start date</th>
-                                                                        <th>End date</th>
-                                                                        <th>Instruction</th>
-                                                                        <th>Eye</th>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        <?php foreach (json_decode($list['prescription'], true) as $key => $value) { ?>
-
-                                                                            <tr>
-                                                                                <td><?php echo $value['name']; ?></td>
-                                                                                <td><?php echo $value['dose']; ?></td>
-                                                                                <td><?php echo $value['start_date']; ?></td>
-                                                                                <td><?php echo $value['end_date']; ?></td>
-                                                                                <td><?php echo $value['instruction']; ?></td>
-                                                                                <td><?php echo $value['eye']; ?></td>
-                                                                            </tr>
-                                                                        <?php } ?>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-md-2">
+                                                <!--  Hrading tabs -->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <?php if (!empty($summary['appointment']['appointment_date'])) { ?>
+                                                            <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
+                                                                <?php foreach ($summary['appointment']['appointment_date'] as $key => $date) { ?>
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link <?php echo ($key == 0) ? 'active' : '' ?>"
+                                                                           href="#past-appointment-<?php echo str_replace('-', '', $date) ?>"
+                                                                           data-toggle="tab"><?php echo date_format(date_create($date), $common['info']['date_format']) ?></a>
+                                                                    </li>
+                                                                <?php } ?>
+                                                            </ul>
                                                         <?php } ?>
-                                                    <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="row">
+                                                    <div class="col-md-12 pre-consultation-form">
+                                                        <?php if (!empty($summary['appointment']['data'])) { ?>
+                                                            <?php foreach ($summary['appointment']['data'] as $key => $list) { ?>
+                                                                <div class="tab-pane <?php echo ($key == 0) ? 'active' : '' ?>"
+                                                                     id="past-appointment-<?php echo str_replace('-', '', $list['date']) ?>">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-bordered">
+                                                                            <thead>
+                                                                            <tr class="medicine-row">
+                                                                                <th style="width: 10%;">CCT RE</th>
+                                                                                <th style="width: 10%;">CCT LE</th>
+                                                                                <th style="width: 15%;">IOP RE</th>
+                                                                                <th style="width: 15%;">IOP LE</th>
+                                                                                <th>Allergy</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr class="medicine-row">
+                                                                                <?php foreach ($list['data'] as $summry_key) { ?>
+                                                                                    <td><?php echo $summry_key ?></td>
+                                                                                <?php } ?>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <br>
+                                                                    <label class="d-block mb-2">
+                                                                        <strong><h4>Treatment:</h4></strong>
+                                                                    </label>
+                                                                    <div class="table-responsive">
+                                                                        <?php if(!empty($list['prescription'])) { ?>
+                                                                        <table class="table table-bordered">
+                                                                            <thead>
+                                                                            <th>Medicine</th>
+                                                                            <th>Frequency</th>
+                                                                            <th>Start date</th>
+                                                                            <th>End date</th>
+                                                                            <th>Instruction</th>
+                                                                            <th>Eye</th>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <?php foreach (json_decode($list['prescription'], true) as $key => $value) { ?>
+
+                                                                                <tr>
+                                                                                    <td><?php echo $value['name']; ?></td>
+                                                                                    <td><?php echo $value['dose']; ?></td>
+                                                                                    <td><?php echo $value['start_date']; ?></td>
+                                                                                    <td><?php echo $value['end_date']; ?></td>
+                                                                                    <td><?php echo $value['instruction']; ?></td>
+                                                                                    <td><?php echo $value['eye']; ?></td>
+                                                                                </tr>
+                                                                            <?php } ?>
+                                                                            </tbody>
+                                                                        </table>
+                                                                        <?php } else{ ?>
+                                                                            <span>Treatment does not specified.</span>
+                                                                         <?php } ?>
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>
+                                                        <?php } ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php } ?>
+                        <?php } ?>
                         <div class="row">
                             <div class="col-md-12">
                                 <label class="d-block mb-2">
@@ -775,7 +779,7 @@
                                                     <select name="appointment[intraocular_pressure_right]"
                                                             class="custom-select" required>
                                                         <option value="">Select intraocular pressure</option>
-                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $value) { ?>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
                                                                 <?php echo (isset($result['intraocular_pressure_right']) && $result['intraocular_pressure_right'] == $key) ? 'selected' : '' ?> >
                                                                 <?php echo $value; ?>
@@ -817,7 +821,7 @@
                                                     <select name="appointment[intraocular_pressure_left]"
                                                             class="custom-select" required>
                                                         <option value="">Select intraocular pressure</option>
-                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $value) { ?>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
                                                                 <?php echo ($result['intraocular_pressure_left'] == $key) ? 'selected' : '' ?> >
                                                                 <?php echo $value; ?>
@@ -828,15 +832,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <?php if ($summary['appointment_count'] >= 2) { ?>
+                                        <div class="row">
 
-                                        <div class="col-md-12">
-                                            <div id="container" class="container">
+                                            <div class="col-md-12">
+                                                <div id="container" class="container">
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
+                                    <?php } ?>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -907,22 +912,65 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Disc (OCT) - Right</label><br>
-                                                <a data-fancybox="gallery"
-                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                         width="200px" height="100px" alt="">
-                                                </a>
+                                                <div class="report-container">
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                    <?php if($value['name'] == 'OCT - Right eye') {?>
+                                                    <div class="report-image report-pdf">
+                                                        <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                           class="open-pdf font-12" style="display: block;">
+                                                            <img class="img-thumbnail" src="../public/images/pdf.png"
+                                                                 alt="">
+                                                            <span><?php echo $value['name']; ?></span>
+                                                        </a>
+                                                    </div>
+                                                    <?php } } else {?>
+                                                    <?php if($value['name'] == 'OCT - Right eye') {?>
 
+                                                    <div class="report-image">
+                                                        <a data-fancybox="gallery"
+                                                           href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                            <img class="img-thumbnail"
+                                                                 src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                 alt="">
+                                                            <span><?php echo $value['name']; ?></span>
+                                                        </a>
+                                                    </div>
+                                                    <?php } } } } else { ?>
+                                                    <p class="text-danger text-center">No documents found !!!</p>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Disc (OCT) - Left</label><br>
-                                                <a data-fancybox="gallery"
-                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                         width="200px" height="100px" alt="">
-                                                </a>
+                                                <div class="report-container">
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                        <?php if($value['name'] == 'OCT - Left eye') {?>
+                                                            <div class="report-image report-pdf">
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                   class="open-pdf font-12" style="display: block;">
+                                                                    <img class="img-thumbnail" src="../public/images/pdf.png"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } else {?>
+                                                        <?php if($value['name'] == 'OCT - Left eye') {?>
+
+                                                            <div class="report-image">
+                                                                <a data-fancybox="gallery"
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                    <img class="img-thumbnail"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } } } else { ?>
+                                                        <p class="text-danger text-center">No documents found !!!</p>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -996,6 +1044,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php if ($summary['appointment_count'] >= 2) { ?>
                                     <div class="rowmt-2">
                                         <div class="col-md-12">
                                             <div id="nfl-chart-container" class="container">
@@ -1003,26 +1052,71 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php }?>
 
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Fundus - Right</label><br>
-                                                <a data-fancybox="gallery"
-                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                         width="200px" height="100px" alt="">
-                                                </a>
+                                                <div class="report-container">
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                        <?php if($value['name'] == 'Fundus - Right eye') {?>
+                                                            <div class="report-image report-pdf">
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                   class="open-pdf font-12" style="display: block;">
+                                                                    <img class="img-thumbnail" src="../public/images/pdf.png"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } else {?>
+                                                        <?php if($value['name'] == 'Fundus - Right eye') {?>
+
+                                                            <div class="report-image">
+                                                                <a data-fancybox="gallery"
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                    <img class="img-thumbnail"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } } } else { ?>
+                                                        <p class="text-danger text-center">No documents found !!!</p>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Fundus - Left</label><br>
-                                                <a data-fancybox="gallery"
-                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                         width="200px" height="100px" alt="">
-                                                </a>
+                                                <div class="report-container">
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                        <?php if($value['name'] == 'Fundus - Left eye') {?>
+                                                            <div class="report-image report-pdf">
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                   class="open-pdf font-12" style="display: block;">
+                                                                    <img class="img-thumbnail" src="../public/images/pdf.png"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } else {?>
+                                                        <?php if($value['name'] == 'Fundus - Left eye') {?>
+
+                                                            <div class="report-image">
+                                                                <a data-fancybox="gallery"
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                    <img class="img-thumbnail"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } } } else { ?>
+                                                        <p class="text-danger text-center">No documents found !!!</p>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1030,21 +1124,65 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Visual field test plots - Right</label><br>
-                                                <a data-fancybox="gallery"
-                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                         width="200px" height="100px" alt="">
-                                                </a>
+                                                <div class="report-container">
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                        <?php if($value['name'] == 'Visual fields - Right eye') {?>
+                                                            <div class="report-image report-pdf">
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                   class="open-pdf font-12" style="display: block;">
+                                                                    <img class="img-thumbnail" src="../public/images/pdf.png"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } else {?>
+                                                        <?php if($value['name'] == 'Visual fields - Right eye') {?>
+
+                                                            <div class="report-image">
+                                                                <a data-fancybox="gallery"
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                    <img class="img-thumbnail"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } } } else { ?>
+                                                        <p class="text-danger text-center">No documents found !!!</p>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Visual field test plots - Right</label><br>
-                                                <a data-fancybox="gallery"
-                                                   href="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>">
-                                                    <img src="<?php echo URL_ADMIN . "public/images/sondb000.jpg" ?>"
-                                                         width="200px" height="100px" alt="">
-                                                </a>
+                                                <label>Visual field test plots - Left</label><br>
+                                                <div class="report-container">
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                        <?php if($value['name'] == 'Visual fields - Left eye') {?>
+                                                            <div class="report-image report-pdf">
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                   class="open-pdf font-12" style="display: block;">
+                                                                    <img class="img-thumbnail" src="../public/images/pdf.png"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } else {?>
+                                                        <?php if($value['name'] == 'Visual fields - Left eye') {?>
+
+                                                            <div class="report-image">
+                                                                <a data-fancybox="gallery"
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                    <img class="img-thumbnail"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         alt="">
+                                                                    <span><?php echo $value['name']; ?></span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } } } } else { ?>
+                                                        <p class="text-danger text-center">No documents found !!!</p>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1076,6 +1214,7 @@
                                         </div>
                                     </div>
 
+                                    <?php if ($summary['appointment_count'] >= 2) { ?>
                                     <div class="rowmt-2">
                                         <div class="col-md-12">
                                             <div id="md-chart-container" class="container">
@@ -1083,7 +1222,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <?php } ?>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -1111,6 +1250,7 @@
                                         </div>
                                     </div>
 
+                                    <?php if ($summary['appointment_count'] >= 2) { ?>
                                     <div class="rowmt-2">
                                         <div class="col-md-12">
                                             <div id="psd-chart-container" class="container">
@@ -1118,7 +1258,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <?php }?>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -1547,11 +1687,12 @@
             'type': 'iframe'
         });
 
+        <?php if ($summary['appointment_count'] >= 2) { ?>
         var firstChart = <?php echo json_encode($intraocularPressureChart)?>;
         var nflChart = <?php echo json_encode($nflThicknessChart)?>;
         var mdChart = <?php echo json_encode($meanDeviationChart)?>;
         var psdChart =<?php echo json_encode($psdDeviationChart)?>;
-
+       <?php }?>
         function validateMyForm(e) {
             var mobile = $("#mobile").val();
 
