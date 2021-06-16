@@ -39,29 +39,33 @@
 			</table>
 		</div>
 		<div class="item pl-30 pr-30">
-			<table>
-				<thead>
-					<tr>
-						<th>Medicine Name</th>
-						<th>Dose</th>
-						<th>Duration</th>
-						<th>Instruction</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($result['prescription'] as $key => $value) { ?>
-						<tr>
-							<td>
-								<div class="title"><?php echo $value['name']; ?></div>
-								<div class="generic"><?php echo htmlspecialchars_decode($value['generic']); ?></div>
-							</td>
-							<td><p><?php echo $value['dose']; ?></p></td>
-							<td><p><?php echo $value['duration'].' Day'; ?></p></td>
-							<td><p><?php echo $value['instruction']; ?></p></td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
+            <table cellspacing="0">
+                <thead>
+                <tr>
+                    <th style="width: 25%;">Drug Name</th>
+                    <!--th>Generic</th-->
+                    <th style="width: 15%;">Frequency</th>
+                    <!--th style="width: 13%;">Duration</th-->
+                    <th style="width: 25%;">Instruction</th>
+                    <th style="width: 10%;">Start date</th>
+                    <th style="width: 10%;">End date</th>
+                    <th style="width: 15%;">Eye</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($result['prescription'] as $key => $value) { ?>
+
+                    <tr>
+                        <td><?php echo $value['name']; ?></td>
+                        <td><?php echo $value['dose']; ?></td>
+                        <td><?php echo $value['instruction']; ?></td>
+                        <td><?php echo date_format(date_create($value['start_date']),'d-m-Y'); ?></td>
+                        <td><?php echo date_format(date_create($value['end_date']),'d-m-Y'); ?></td>
+                        <td><?php echo $value['eye']; ?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
 		</div>
 	</div>
 	

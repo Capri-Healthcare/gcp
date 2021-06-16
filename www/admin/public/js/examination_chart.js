@@ -1,8 +1,8 @@
-var firstChart,nflChart,mdChart,psdChart;
+var firstChart,nflChart,mdChart,psdChart,categories;
+
 
 // Chart
-Highcharts.chart('container', {
-
+var chartFirstChart = Highcharts.chart('container', {
     title: {
         text: 'Intraocular Pressure'
     },
@@ -18,7 +18,7 @@ Highcharts.chart('container', {
     },
 
     xAxis: {
-        categories: firstChart[2]['categories']
+        categories:categories
     },
 
     legend: {
@@ -56,9 +56,12 @@ Highcharts.chart('container', {
 
 });
 
+chartFirstChart.setSize(0, 300, false);
+
+
 // NFL CHART
 
-Highcharts.chart('nfl-chart-container', {
+var chartnfl = Highcharts.chart('nfl-chart-container', {
 
     title: {
         text: 'NFL Thickness'
@@ -75,7 +78,7 @@ Highcharts.chart('nfl-chart-container', {
     },
 
     xAxis: {
-        categories: nflChart[2]['categories']
+        categories:categories
     },
 
     legend: {
@@ -113,9 +116,11 @@ Highcharts.chart('nfl-chart-container', {
 
 });
 
+chartnfl.setSize(0, 300, false);
+
 // MD CHART
 
-Highcharts.chart('md-chart-container', {
+var chartMD = Highcharts.chart('md-chart-container', {
 
     title: {
         text: 'Mean Deviation'
@@ -132,7 +137,7 @@ Highcharts.chart('md-chart-container', {
     },
 
     xAxis: {
-        categories: mdChart[2]['categories']
+        categories:categories
     },
     legend: {
         layout: 'vertical',
@@ -169,9 +174,11 @@ Highcharts.chart('md-chart-container', {
 
 });
 
+chartMD.setSize(0, 300, false);
+
 // PSD CHART
 
-Highcharts.chart('psd-chart-container', {
+var chartPSD = Highcharts.chart('psd-chart-container', {
 
     title: {
         text: 'PSD Deviation'
@@ -188,7 +195,7 @@ Highcharts.chart('psd-chart-container', {
     },
 
     xAxis: {
-        categories: psdChart[2]['categories']
+        categories:categories
     },
     legend: {
         layout: 'vertical',
@@ -224,3 +231,5 @@ Highcharts.chart('psd-chart-container', {
     }
 
 });
+
+chartPSD.setSize(0, 300, false);

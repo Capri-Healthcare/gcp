@@ -833,7 +833,7 @@
                                     <?php if ($summary['appointment_count'] >= 2) { ?>
                                         <div class="row">
 
-                                            <div class="col-md-12">
+                                            <div class="col-md-8 offset-md-2">
                                                 <div id="container" class="container">
 
                                                 </div>
@@ -1044,7 +1044,7 @@
                                     </div>
                                     <?php if ($summary['appointment_count'] >= 2) { ?>
                                     <div class="rowmt-2">
-                                        <div class="col-md-12">
+                                        <div class="col-md-8 offset-md-2">
                                             <div id="nfl-chart-container" class="container">
 
                                             </div>
@@ -1214,7 +1214,7 @@
 
                                     <?php if ($summary['appointment_count'] >= 2) { ?>
                                     <div class="rowmt-2">
-                                        <div class="col-md-12">
+                                        <div class="col-md-8 offset-md-2">
                                             <div id="md-chart-container" class="container">
 
                                             </div>
@@ -1250,7 +1250,7 @@
 
                                     <?php if ($summary['appointment_count'] >= 2) { ?>
                                     <div class="rowmt-2">
-                                        <div class="col-md-12">
+                                        <div class="col-md-8 offset-md-2">
                                             <div id="psd-chart-container" class="container">
 
                                             </div>
@@ -1690,6 +1690,7 @@
         var nflChart = <?php echo json_encode($nflThicknessChart)?>;
         var mdChart = <?php echo json_encode($meanDeviationChart)?>;
         var psdChart =<?php echo json_encode($psdDeviationChart)?>;
+        var categories =<?php echo json_encode($categories)?>;
        <?php }?>
         function validateMyForm(e) {
             var mobile = $("#mobile").val();
