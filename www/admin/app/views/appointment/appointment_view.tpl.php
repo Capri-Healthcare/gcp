@@ -98,7 +98,7 @@
                             <?php } ?>
                         </div>
                         <div class="panel-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" style="overflow-x: hidden !important;">
                                 <table class="table table-striped patient-table">
                                     <tbody>
                                     <tr>
@@ -181,20 +181,20 @@
                                             } ?>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Glaucoma Care Plan Require</td>
-                                        <td>
-                                            <?php echo $result['is_glaucoma_required'] ?>
-                                        </td>
-                                    </tr>
-                                    <?php if ($result['is_glaucoma_required'] == 'YES') { ?>
-                                        <tr>
-                                            <td>GCP Followup Frequency</td>
-                                            <td>
-                                                <?php echo $result['gcp_followup_frequency'] ?>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
+<!--                                    <tr>-->
+<!--                                        <td>Glaucoma Care Plan Require</td>-->
+<!--                                        <td>-->
+<!--                                            --><?php //echo $result['is_glaucoma_required'] ?>
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    --><?php //if ($result['is_glaucoma_required'] == 'YES') { ?>
+<!--                                        <tr>-->
+<!--                                            <td>GCP Followup Frequency</td>-->
+<!--                                            <td>-->
+<!--                                                --><?php //echo $result['gcp_followup_frequency'] ?>
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                    --><?php //} ?>
                                     <tr>
                                         <td>Doctor Note</td>
                                         <td><?php echo $result['doctor_note']; ?></td>
@@ -217,7 +217,7 @@
                             <?php } */ ?>
                             </div>
                             <div class="panel-body">
-                                <div class="table-responsive">
+                                <div class="table-responsive" style="overflow: hidden">
                                     <table class="table table-striped patient-table">
                                         <tbody>
                                         <tr>
@@ -513,16 +513,8 @@
                                             <td class="text-dark"><?php echo isset($result['diagnosis']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$result['diagnosis']] : '' ?></td>
                                         </tr>
                                         <tr>
-                                            <td>RE</td>
-                                            <td class="text-dark"><?php echo isset($result['re']) ? $result['re'] : '' ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>LE</td>
-                                            <td class="text-dark"><?php echo isset($result['le']) ? $result['le'] : '' ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Both</td>
-                                            <td class="text-dark"><?php echo isset($result['both']) ? $result['both'] : '' ?></td>
+                                            <td>Diagnosis eye</td>
+                                            <td class="text-dark"><?php echo isset($result['diagnosis_eye']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$result['diagnosis_eye']] : '' ?></td>
                                         </tr>
                                         <tr>
                                             <td>Outcome</td>

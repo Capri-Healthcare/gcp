@@ -131,12 +131,9 @@ class Appointment extends Model
         `cct_right` = ?, 
         `cct_left` = ?, 
         `diagnosis` = ?,
-        `re` = ?,
-        `le` = ?,
-        `both` = ?,
         `outcome` = ?,
         `gcp_next_appointment` = ?,
-        `is_glaucoma_required` = ?  WHERE `id` = ? ", array(
+        `is_glaucoma_required` = ?, `diagnosis_eye` = ?  WHERE `id` = ? ", array(
             $this->database->escape($data['current_event']),
             $this->database->escape($data['allergy']),
             $this->database->escape($data['visual_acuity_right']),
@@ -156,12 +153,10 @@ class Appointment extends Model
             $data['cct_right'],
             $data['cct_left'],
             $data['diagnosis'],
-            isset($data['re']) ? $data['re'] : null,
-            isset($data['le']) ? $data['le'] : null,
-            isset($data['both']) ? $data['both'] : null,
             $data['outcome'],
             $data['followup'],
             $data['gcp_required'],
+            $data['diagnosis_eye'],
             (int)$data['id']));
 
         if ($query->num_rows > 0) {

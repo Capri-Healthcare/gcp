@@ -833,7 +833,7 @@
                                     <?php if ($summary['appointment_count'] >= 2) { ?>
                                         <div class="row">
 
-                                            <div class="col-md-8 offset-md-2">
+                                            <div class="col-md-12">
                                                 <div id="container" class="container">
 
                                                 </div>
@@ -1280,15 +1280,25 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>RE</label>
-                                            <input type="checkbox" class="checkbox" name="appointment[re]"
-                                                   value="re" <?php echo (isset($result['re']) && $result['re'] == 're') ? 'checked' : '' ?>>
-                                            <label>LE</label>
-                                            <input type="checkbox" class="checkbox" name="appointment[le]"
-                                                   value="le" <?php echo (isset($result['le']) && $result['le'] == 'le') ? 'checked' : '' ?>>
-                                            <label>Both</label>
-                                            <input type="checkbox" class="checkbox" name="appointment[both]"
-                                                   value="both" <?php echo (isset($result['both']) && $result['both'] == 'both') ? 'checked' : '' ?>>
+                                            <div class="form-group">
+                                                <label>Diagnosis Eye<span class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-user"></i></span>
+                                                    </div>
+                                                    <select name="appointment[diagnosis_eye]"
+                                                            class="custom-select" required>
+                                                        <option value="">Select Diagnosis Eye</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['diagnosis_eye']) && $result['diagnosis_eye'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mt-2">

@@ -195,10 +195,15 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         '12' => '12 months',
     ],
     'GLAUCOMA_CARE_PLAN_REQUIRED' => [
-        'YES,' => 'Yes', 
+        'YES' => 'Yes',
         'YES_STANDARD_12_MONTHLY' => 'Yes - standard 12 monthly',
         'YES_EXTRA_6_MONTHLY' => 'Yes - extra 6 monthly',
         'NO' => 'No'
+    ],
+    'DIAGNOSIS_EYE' => [
+        'RE' => 'Re',
+        'LE' => 'Le',
+        'BOTH' => 'Both',
     ],
 
 ]);
