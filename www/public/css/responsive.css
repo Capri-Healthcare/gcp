@@ -1,0 +1,215 @@
+@media screen and (max-width: 1199px){
+    .banner_overlay ul li{
+        width: 235px;
+        margin: 0px 0 0 68px;
+    }
+    .banner_block{
+        height: 740px;
+    }
+    .banner_overlay h3{
+        font-size: 75px;
+    }
+    .care_right h3{
+        font-size: 35px;
+    }
+    .care_right h6{
+        font-size: 16px;
+    }
+    .care_right p{
+        font-size: 13px;
+    }
+    .patient_left h3{
+        font-size: 34px;
+        margin: 0 0 30px;
+    }
+    .patient_left a{
+        font-size: 16px;
+        padding: 14px 10px;
+        height: 54px;
+    }
+    .patient_block.info_block p{
+        font-size: 13px;
+    }
+    .appointment_sec{
+        height: 700px;
+    }
+    .appointment_right h3{
+        font-size: 45px;
+    }
+    .information_block{
+        padding: 50px 0;
+    }
+    .information_block p{
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 823px){
+    .logo_right {
+        position: absolute;
+        top: 30px;
+        display: block;
+        right: 0;
+        width: 100%;
+    }
+    .navbar{
+        display: inline-block;
+        text-align: left;
+        width: 100%;
+        float: none;
+    }
+    .navbar-collapse{
+        background: #fff;
+        padding: 10px 15px;
+        box-sizing: border-box;
+        z-index: 9;
+        position: relative;
+    }
+    .navbar-nav li a{
+        margin: 0;
+    }
+    .logo{
+        float: right;
+    }
+    .banner_overlay{
+        padding: 10% 40px 0;
+    }
+    .banner_overlay h3 {
+        font-size: 50px;
+    }
+    .banner_overlay p{
+        font-size: 16px;
+    }
+    .banner_overlay ul li {
+        width: 170px;
+        margin: 0px 0 0 45px;
+    }
+    .banner_block {
+        height: 480px;
+    }
+    .block_box{
+        height: 30px;
+    }
+    .care_left{
+        width: 100%;
+    }
+    .care_right{
+        width: 100%;
+    }
+    .care_block{
+        padding: 145px 0 0;
+    }
+    .patient_left{
+        width: 100%;
+        order:2;
+    }
+    .patient_right{
+        width: 100%;
+        margin: 25px 0;
+        order: 1;
+    }
+    .patient_main{
+        display: flex;
+        flex-flow: column;
+    }
+    .appointment_left{
+        width: 100%;
+        margin: 20px 0;
+    }
+    .appointment_sec {
+        height: auto;
+    }
+    .appointment_right{
+        width: 100%;
+        padding: 0;
+    }
+    .information_block {
+        padding: 30px 0;
+    }
+    .footer{
+        padding: 50px 0 30px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .banner_overlay p {
+        font-size: 14px;
+    }
+    .banner_overlay h3 {
+        font-size: 35px;
+    }
+    .banner_block {
+        height: auto;
+    }
+    .banner_overlay ul li:nth-child(2n+1){
+        margin-left: 0;
+    }
+    .banner_overlay ul li {
+        width: 190px;
+        margin: 0px 0 20px 45px;
+    }
+    .care_block {
+        padding: 30px 0 0;
+    }
+    .footer ul{
+        margin: 22px 0 0;
+    }
+}
+
+@media screen and (max-width: 567px){
+    .banner_overlay ul li {
+        width: 100%;
+        margin: 0px 0 20px 0px;
+    }
+    .banner_overlay ul li:first-child {
+        margin: 0 0 20px;
+    }
+    .banner_overlay h3 {
+        font-size: 25px;
+        text-align: center;
+    }
+    .banner_overlay p {
+        font-size: 13px;
+        text-align: center;
+    }
+    .care_right h3 {
+        font-size: 22px;
+        text-align: center;
+    }
+    .care_right h6 {
+        font-size: 14px;
+        text-align: center;
+    }
+    .care_right{
+        margin: 0 0 15px;
+    }
+    .patient_left h3 {
+        font-size: 22px;
+        margin: 0 0 20px;
+        text-align: center;
+    }
+    .appointment_right h3 {
+        font-size: 24px;
+        text-align: center;
+    }
+    .appointment_right p{
+        font-size: 15px;
+        text-align: center;
+    }
+    .information_block p {
+        font-size: 16px;
+    }
+    .information_block {
+        padding: 15px 0;
+    }
+    .footer_logo img{
+        width: 100%;
+    }
+    .care_right p{
+        text-align: center;
+    }
+    .patient_left a{
+        text-align: center;
+        width: 100%;
+    }
+}

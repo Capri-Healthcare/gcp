@@ -757,7 +757,7 @@ class AppointmentController extends Controller
             if ($data['mail']['doc_type'] == "examination-note") {
                 // Generate examination doc
                 $filename = "examination-note.pdf";
-                $filename = str_replace(" ", "-", $result['name']) . 'appointment-examination-notes-letter.pdf';
+                $filename = str_replace(" ", "-", $result['name']) . '-appointment-examination-notes-letter.pdf';
                 $appointment_id = $data['mail']['id'];
                 $this->model_appointment->generateAppointmentExaminationNotesDoc($appointment_id, 'email');
                 $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
