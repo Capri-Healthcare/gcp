@@ -814,7 +814,7 @@
 
                                     <tbody>
                                     <tr>
-                                        <td>Appointment letter</td>
+                                        <td>To Patient</td>
                                         <td> 
                                             <span style="font-size: 16px; margin-right: 15px;">
                                                 <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=appointment&action=download"><i
@@ -827,7 +827,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Examination notes</td>
+                                        <td>Later 2</td>
                                         <td> 
                                             <span style="font-size: 16px; margin-right: 15px;">
                                                 <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=examination-note&action=download"><i

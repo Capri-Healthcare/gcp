@@ -940,27 +940,50 @@ class AppointmentController extends Controller
         $optician = $this->model_user->getUser($appointment['optician_id']);
 
         $video_consultation_link = " - ";
+        $link = '<a href="' . URL .'">Click</a>';
         if ($appointment['status'] == CONFIRMED_APPOINTMENT_STATUS_ID and $appointment['consultation_type'] == APPOINTMENT_VIDEO_CONSULTATION_TYPE) {
             $video_consultation_link = URL . DIR_ROUTE . 'appointment/openVideoConsultation&token=' . $appointment['video_consultation_token'];
         }
 
+        if($template == 'appointmentstatusupdate'){
 
-        $result['template']['message'] = str_replace('{ophth_title}', "", $result['template']['message']);
-        $result['template']['message'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{appt_date}', $appointment['date'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{appt_time}', $appointment['time'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{patient_title}', $appointment['title'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{patient fname, lname}', $appointment['firstname'] . " " . $appointment['lastname'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{appt_loaction}', constant('HOSPITAL')[$appointment['hospital_code']], $result['template']['message']);
+            $result['template']['message'] = str_replace('{appointment_id}', $appointment['appointment_id'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{name}', $appointment['name'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{email}', $appointment['email'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{mobile}', $appointment['mobile'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{doctor}', $result['common']['name'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{date}', $appointment['date'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{reason}', $appointment['message'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{status}', constant('APPOINTMENT_STATUS')[$appointment['status']], $result['template']['message']);
+            $result['template']['message'] = str_replace('{consultation_method}',$appointment['consultation_type'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{video_consultation_link}',$video_consultation_link, $result['template']['message']);
+            $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{time}', $appointment['time'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{link}', $link, $result['template']['message']);
 
+            $data['name'] = $result['template']['name'];
+            $data['email'] = $appointment['email'];
+            $data['cc'] = $appointment['doctor_email'];
+            $data['subject'] = str_replace('{ophth_title}', "", $result['template']['subject']);
+            $data['subject'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'] . " " . $optician['lastname'], $data['subject']);
+            $data['message'] = $result['template']['message'];
 
-        $data['name'] = $result['template']['name'];
-        $data['email'] = $appointment['email'];
-        $data['cc'] = $appointment['doctor_email'];
-        $data['subject'] = str_replace('{ophth_title}', "", $result['template']['subject']);
-        $data['subject'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'] . " " . $optician['lastname'], $data['subject']);
-        $data['message'] = $result['template']['message'];
+        }else{
+            $result['template']['message'] = str_replace('{ophth_title}', "", $result['template']['message']);
+            $result['template']['message'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{appt_date}', $appointment['date'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{appt_time}', $appointment['time'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{patient_title}', $appointment['title'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{patient fname, lname}', $appointment['firstname'] . " " . $appointment['lastname'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{appt_loaction}', constant('HOSPITAL')[$appointment['hospital_code']], $result['template']['message']);
+
+            $data['name'] = $result['template']['name'];
+            $data['email'] = $appointment['email'];
+            $data['cc'] = $appointment['doctor_email'];
+            $data['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
+            $data['message'] = $result['template']['message'];
+        }
 
         return $this->controller_mail->sendMail($data);
     }

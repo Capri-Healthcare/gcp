@@ -25,7 +25,7 @@ class Appointment extends Model
     public function getAppointment($id, $doctor = NULL)
     {
         if ($doctor == NULL) {
-            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email WHERE a.id = '" . (int)$id . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.firstname,pt.lastname,pt.address, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email WHERE a.id = '" . (int)$id . "' LIMIT 1");
         } else {
             $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
         }
@@ -476,82 +476,91 @@ class Appointment extends Model
 
     public function generateAppointmentExaminationNotesDoc($appointment_id, $action)
     {
-        $doc_header_footer = $this->getAppointmentDocHeaderFooter($appointment_id);
+
         $appointment = $this->getAppointment($appointment_id);
-        $this->load->model('form');
-        $formObj = $this->model_form;
-
-        $pdf_body = $appointment_notes = $finding_forms = $clinical_notes = $body = "";
-        $appointment_notes = $this->model_appointment->getClinicalNotes($appointment_id);
-        $finding_forms = $formObj->getFindingFormsByDepartments($appointment['department_id']);
-
-
-        if (!empty($appointment_notes['notes'])) {
-            $clinical_notes = json_decode($appointment_notes['notes'], true);
+        $appointment['address'] = json_decode($appointment['address'], true);
+        $doctor_data = $this->getDoctorData($appointment['doctor_id']);
+        $prescription = $this->model_appointment->getPrescription($appointment_id);
+        if (!empty($prescription)) {
+            $prescription['prescription'] = json_decode($prescription['prescription'], true);
+        } else {
+            $prescription = NULL;
         }
 
+        $body = "";
 
         $body .= "<div style='font-size:13px;  padding-left:20px; padding-right:20px;'>";
-        $body .= "Dear " . (!empty($appointment['gp_name']) ? $appointment['gp_name'] : "GP");
+
+        $body .= "Date of Visit " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
+        $body .= "Date Typed: " . date('d-m-Y');
+
+        $body .= "<br><br><br><br>";
+
+        $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
+        $body .= $appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
+        $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
+
         $body .= "<br><br><br>";
-        $body .= "<div style='text-align:center;'>";
-        $body .= "Name: " . $appointment['name'] . "</br> NHS Number: " . $appointment['nhs_patient_number'] . "</br> Date of Birth: " . $appointment['patient_dob'];
+
+        $body .= "Dear " . ucfirst($appointment['firstname']) . "<br><br>";
+
+        $body .= "<b>Name: </b>".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
+        $body .= "<b>DOB: </b>".date_format(date_create($appointment['patient_dob']), 'd-m-Y'). "<br>";
+        $body .= "<b>Address: </b>".$appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
+        $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
+
+        $body .= "Diagnosis: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
+        $body .= "<br>";
+        $body .= "Current Treatment:<br><br>";
+        $body .= "<table width='100%' border='1'>
+                                       <tr>
+                                            <th>Drug Name</th>
+                                            <!--th>Generic</th-->
+                                            <th>Frequency</th>
+                                            <!--th style='width: 13%;'>Duration</th-->
+                                            <th>Instruction</th>
+                                            <th>Start date</th>
+                                            <th>End date</th>
+                                            <th>Eye</th>
+                                        </tr>";
+
+        if (!empty($prescription)) {
+            foreach ($prescription['prescription'] as $key => $value) {
+                $body .= "<tr>";
+                $body .= "<td>" . $value['name'] . "</td>";
+                $body .= "<td>" . $value['dose'] . "</td>";
+                $body .= "<td>" . $value['instruction'] . "</td>";
+                $body .= "<td>" . date_format(date_create($value['start_date']), 'd-m-Y') . "</td>";
+                $body .= "<td>" . date_format(date_create($value['end_date']), 'd-m-Y') . "</td>";
+                $body .= "<td>" . $value['eye'] . "</td>";
+                $body .= "</tr>";
+            }
+        }else{
+            $body .= "<tr>";
+            $body .= "<td colspan='6' style='text-align: center'>Treatment does not specified.</td>";
+            $body .= "</tr>";
+        }
+        $body .= "</table>";
+        $body .= "<br>";
+
+        $body .= "Follow up: ";
+        $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']] : '';
+
+        $body .= "<br>";
+
+        $body .= str_replace('{Patient: Name}', ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) , "<p style='letter-spacing:0.6px'>Thank you for your kind referral for {Patient: Name} to my private Complex Glaucoma/ Cataract clinic.</p>");
+
+        $body .= "<br><br>";
+
+        $body .= "Kind regards<br>Yours sincerely";
+
+        $body .= "<br><br><br>";
+
+        $body .= "<b>Mr Tarun Sharma</b><br><b>MBBS, MD in Glaucoma, FRCS Ed.</b><br><b>Consultant Ophthalmic Surgeon.</b>";
+
         $body .= "</div>";
 
-
-        // clinical_notes
-        if (!empty($clinical_notes)) {
-            $body .= "<div>";
-            $body .= "<h3 style='margin-bottom: 5px; border-bottom: 1px solid #00000'>Clinical Notes</h3>";
-            foreach ($clinical_notes as $category => $notes) {
-                if (!empty($notes)) {
-                    $body .= "<div style='margin-left:20px;'>";
-                    $body .= "<h4>" . ucfirst($category) . "</h4>";
-                    $body .= "<div style='margin-left:30px;'>";
-                    $body .= "<ui>";
-                    foreach ($notes as $note) {
-                        $body .= "<li>" . $note . "</li>";
-                    }
-                    $body .= "</ui>";
-                    $body .= "</div>";
-                    $body .= "</div>";
-                }
-
-            }
-            $body .= "</div>";
-        }
-        $body .= "<div>";
-        foreach ($finding_forms as $form) {
-            $form_details = $formObj->getForm($form['id']);
-            $form_fields = $formObj->getFormField($form['id']);
-            $form_answer = $formObj->getFormAnswer($appointment_id, $form['id']);
-
-            if (!empty($form_answer)) {
-                $body .= "<h3 style='margin-bottom: 5px; border-bottom: 1px solid #00000'>" . $form_details['name'] . "</h3>";
-                $body .= "<table border=0 style='border: 0px solid black; width:100%; border-collapse: collapse;' cellpadding='3'>";
-                foreach ($form_fields as $fields) {
-                    $answer = isset($form_answer[$fields['id']]) ? $form_answer[$fields['id']] : '';
-                    if (($fields['input_type'] == 'note')) {
-                        //$body .=  $fields['note'];
-                    } else if (($fields['input_type'] == 'heading')) {
-                        //$body .= "<h3 class='mt-2 mb-0'>".$fields['label']." </h3>";
-                    } else if (($fields['input_type'] == 'file')) {
-                        if (!empty($answer)) {
-                            $image_path = URL . 'public/uploads/appointment/forms/' . $appointment_id . '/' . $form['id'] . '/' . $answer;
-                        }
-                        $body .= "<tr><td width='30%' style='font-size: 13px;'>" . $fields['label'] . "</td><td><img class='form_thumb_img' width=100 height=100 src='" . $image_path . "'></td></tr>";
-                    } else {
-                        $body .= "<tr><td width='30%' style='font-size: 13px;'>" . $fields['label'] . "</td><td>" . $answer . "</td></tr>";
-                    }
-                }
-                $body .= "</table>";
-            }
-        }
-        $body .= "</div>";
-
-        $body .= "</div";
-
-        $filename = str_replace(" ", "-", $appointment['name']) . 'appointment-examination-notes-letter.pdf';
+        $filename = str_replace(" ", "-", $appointment['name']) . 'appointment-latter-notes-letter.pdf';
         $this->generatePdfFile($appointment_id, $body, $filename, $action);
     }
 
@@ -653,7 +662,7 @@ class Appointment extends Model
 
         if ($action == "DOWNLOAD") {
             // Output the generated PDF to Browser
-            $dompdf->stream($filename);
+            $dompdf->stream($filename, array("Attachment" => true));
             exit;
             return true;
         } else {
@@ -675,44 +684,85 @@ class Appointment extends Model
 
     public function generateAppointmentDoc($appointment_id, $action)
     {
-
-
         $appointment = $this->getAppointment($appointment_id);
+        $appointment['address'] = json_decode($appointment['address'], true);
         $doctor_data = $this->getDoctorData($appointment['doctor_id']);
+        $prescription = $this->model_appointment->getPrescription($appointment_id);
+        if (!empty($prescription)) {
+            $prescription['prescription'] = json_decode($prescription['prescription'], true);
+        } else {
+            $prescription = NULL;
+        }
 
         $body = "";
 
         $body .= "<div style='font-size:13px;  padding-left:20px; padding-right:20px;'>";
 
-        $body .= "Dear " . $appointment['name'];
+        $body .= "Date of Visit " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
+        $body .= "Date Typed: " . date('d-m-Y');
 
         $body .= "<br><br><br><br>";
 
-        $body .= "This email serves as your official confirmation for appointment from " . NAME;
+        $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
+        $body .= $appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
+        $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
 
         $body .= "<br><br><br>";
 
-        $body .= "<strong>Appointment ID: </strong>APNT-" . str_pad($appointment['id'], 5, '0', STR_PAD_LEFT) . "<br><br>";
-        $body .= "<strong>Name: </strong>" . $appointment['name'] . "<br><br>";
-        $body .= "<strong>Email Address: </strong>" . $appointment['email'] . "<br><br>";
-        $body .= "<strong>Mobile Number: </strong>" . $appointment['mobile'] . "<br><br>";
-        $body .= "<strong>Doctor: </strong>" . $doctor_data['name'] . "<br><br>";
-        $body .= "<strong>Date: </strong>" . $appointment['date'] . " at " . $appointment['time'] . " o'clock" . "<br><br>";
-        $body .= "<strong>Reason/Problem: </strong>" . $appointment['message'];
+        $body .= "Dear " . ucfirst($appointment['firstname']) . "<br>";
+        $body .= "Diagnosis: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
+        $body .= "<br>";
+        $body .= "Current Treatment:<br><br>";
+        $body .= "<table width='100%' border='1'>
+                                       <tr>
+                                            <th>Drug Name</th>
+                                            <!--th>Generic</th-->
+                                            <th>Frequency</th>
+                                            <!--th style='width: 13%;'>Duration</th-->
+                                            <th>Instruction</th>
+                                            <th>Start date</th>
+                                            <th>End date</th>
+                                            <th>Eye</th>
+                                        </tr>";
+
+        if (!empty($prescription)) {
+            foreach ($prescription['prescription'] as $key => $value) {
+                $body .= "<tr>";
+                $body .= "<td>" . $value['name'] . "</td>";
+                $body .= "<td>" . $value['dose'] . "</td>";
+                $body .= "<td>" . $value['instruction'] . "</td>";
+                $body .= "<td>" . date_format(date_create($value['start_date']), 'd-m-Y') . "</td>";
+                $body .= "<td>" . date_format(date_create($value['end_date']), 'd-m-Y') . "</td>";
+                $body .= "<td>" . $value['eye'] . "</td>";
+                $body .= "</tr>";
+            }
+        }else{
+            $body .= "<tr>";
+            $body .= "<td colspan='6' style='text-align: center'>Treatment does not specified.</td>";
+            $body .= "</tr>";
+        }
+        $body .= "</table>";
+        $body .= "<br>";
+
+        $body .= "Follow up: ";
+        $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']] : '';
+
+        $body .= "<br>";
+
+        $body .= str_replace('{GP: Name}', NAME, "<p style='letter-spacing:0.6px'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to {GP: Name} so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>");
+
+        $body .= "<br><br>";
+
+        $body .= "Kind regards<br>Yours sincerely";
 
         $body .= "<br><br><br>";
 
-        $body .= "When we will update your appointment. you can also track your appointment status and details on our website.";
-
-        $body .= "<br><br><br>";
-
-        $body .= "Best Regards," . "<br>";
-        $body .= NAME;
+        $body .= "<b>Mr Tarun Sharma</b><br><b>MBBS, MD in Glaucoma, FRCS Ed.</b><br><b>Consultant Ophthalmic Surgeon.</b>";
 
         $body .= "</div>";
 
         //echo $pdf_body;exit;
-        $filename = strtolower(str_replace(" ", "-", $appointment['name'])) . '-appointment-letter.pdf';
+        $filename = strtolower(str_replace(" ", "-", $appointment['name'])) . '-patient-letter.pdf';
         $this->generatePdfFile($appointment_id, $body, $filename, $action);
     }
 
@@ -734,7 +784,7 @@ class Appointment extends Model
     public function getPatientCompletedAppointment($data)
     {
 
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='".$data['patient_id']."' AND status ='5' ");
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='" . $data['patient_id'] . "' AND status ='5' ");
 
         if ($query->num_rows > 0) {
             return $query->rows;
@@ -745,7 +795,7 @@ class Appointment extends Model
 
     public function getLastPatientAppointment($data)
     {
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='".$data['patient_id']."' AND status ='5' ORDER BY date DESC");
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='" . $data['patient_id'] . "' AND status ='5' ORDER BY date DESC");
 
         if ($query->num_rows > 0) {
             return $query->row;
@@ -756,7 +806,7 @@ class Appointment extends Model
 
     public function getMaxIOPAppointment($data)
     {
-        $query = $this->database->query("SELECT MAX(`intraocular_pressure_right`) AS iop_right,MAX(`intraocular_pressure_left`) AS iop_left FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='".$data['patient_id']."' AND status ='5' ORDER BY date DESC");
+        $query = $this->database->query("SELECT MAX(`intraocular_pressure_right`) AS iop_right,MAX(`intraocular_pressure_left`) AS iop_left FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='" . $data['patient_id'] . "' AND status ='5' ORDER BY date DESC");
 
         if ($query->num_rows > 0) {
             return $query->row;
