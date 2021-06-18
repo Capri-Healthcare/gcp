@@ -7,7 +7,11 @@ class ForgotController extends Controller
 {
 	public function index() 
 	{
-		if ($this->user_agent->isLogged()) {
+		$data['header'] = $this->load->view('front/common/header');
+		$data['footer'] = $this->load->view('front/common/footer');
+		$this->response->setOutput($this->load->view('front/forgot', $data));
+
+		/*if ($this->user_agent->isLogged()) {
 			$this->url->redirect('user/appointments');
 		}
 		$this->load->model('pages');
@@ -41,12 +45,12 @@ class ForgotController extends Controller
 		}
 
 		$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-		$data['active'] = 'forgot';
+		$data['active'] = 'forgot';*/
 		/**
 		* Load Forgot view
 		* Pass data to view
 		**/
-		$this->response->setOutput($this->load->view('auth/forgot', $data));
+		//$this->response->setOutput($this->load->view('auth/forgot', $data));
 	}
 	/**
 	* Forgot controller forgot method

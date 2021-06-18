@@ -11,13 +11,18 @@ class LoginController extends Controller
 	**/
 	public function index()
 	{
+
+		$data['header'] = $this->load->view('front/common/header');
+		$data['footer'] = $this->load->view('front/common/footer');
+		$this->response->setOutput($this->load->view('front/login', $data));
+		
 		if ($this->user_agent->isLogged()) {
 			$this->url->redirect('user/appointment');
 		}
 		/**
 		* Get service page data from DB
 		**/
-		$this->load->model('pages');
+		/*$this->load->model('pages');
 		$this->load->controller('common');
 		$data = array();
 		$data = array_merge($data, $this->controller_common->index());
@@ -52,12 +57,12 @@ class LoginController extends Controller
 		}
 
 		$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-		$data['active'] = 'login';
+		$data['active'] = 'login';*/
 		/**
 		* Load login view
 		* Pass data to view
 		**/
-		$this->response->setOutput($this->load->view('auth/login', $data));
+		//$this->response->setOutput($this->load->view('auth/login', $data));
 	}
 
 	/**

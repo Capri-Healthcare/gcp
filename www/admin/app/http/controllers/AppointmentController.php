@@ -754,21 +754,19 @@ class AppointmentController extends Controller
 
         // Add attachment
         if (isset($data['mail']['doc_type'])) {
-            if ($data['mail']['doc_type'] == "examination-note") {
-                // Generate examination doc
-                $filename = "examination-note.pdf";
-                $filename = str_replace(" ", "-", $result['name']) . 'appointment-examination-notes-letter.pdf';
+            if ($data['mail']['doc_type'] == "to_optom_or_third_party") {
+                // Generate examination doc 
+                $filename = str_replace(" ", "-", $result['name']) . '-appointment-optom-letter.pdf';
                 $appointment_id = $data['mail']['id'];
-                $this->model_appointment->generateAppointmentExaminationNotesDoc($appointment_id, 'email');
+                $this->model_appointment->generateToOptomOrThirdPartyDoc($appointment_id, 'email');
                 $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
             }
 
-            if ($data['mail']['doc_type'] == "appointment") {
+            if ($data['mail']['doc_type'] == "to_patient_or_gp") {
                 // Generate examination doc
-                $filename = "appointment.pdf";
                 $filename = strtolower(str_replace(" ", "-", $result['name'])) . '-appointment-letter.pdf';
                 $appointment_id = $data['mail']['id'];
-                $this->model_appointment->generateAppointmentDoc($appointment_id, 'email');
+                $this->model_appointment->generateToPatientOrGpDoc($appointment_id, 'email');
                 $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
             }
         }
@@ -1569,7 +1567,7 @@ class AppointmentController extends Controller
         }
 
         $doc_type = $this->url->get('doc_type');
-        if (empty($doc_type) || !in_array($doc_type, ['appointment', 'examination-note', 'discharge'])) {
+        if (empty($doc_type) || !in_array($doc_type, ['to_patient_or_gp', 'to_optom_or_third_party', 'discharge'])) {
             echo "Check 1" . $doc_type;
             exit;
             $this->url->redirect('appointment/view&id=' . $appointment_id);
@@ -1585,12 +1583,12 @@ class AppointmentController extends Controller
         $this->load->model('appointment');
 
         if ($action == 'download') {
-            if ($doc_type == 'examination-note') {
-                $this->model_appointment->generateAppointmentExaminationNotesDoc($appointment_id, "DOWNLOAD");
+            if ($doc_type == 'to_optom_or_third_party') {
+                $this->model_appointment->generateToOptomOrThirdPartyDoc($appointment_id, "DOWNLOAD");
             }
 
-            if ($doc_type == 'appointment') {
-                $this->model_appointment->generateAppointmentDoc($appointment_id, "DOWNLOAD");
+            if ($doc_type == 'to_patient_or_gp') {
+                $this->model_appointment->generateToPatientOrGpDoc($appointment_id, "DOWNLOAD");
             }
         }
 

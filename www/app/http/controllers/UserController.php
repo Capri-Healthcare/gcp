@@ -1,5 +1,9 @@
 <?php
 
+
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 /**
 * User Controller
 */
@@ -820,6 +824,27 @@ class UserController extends Controller {
             $result =  $this->model_user->deletePatientDDIDocument($data);
 
         }
+    }
+
+	public function downloadDirectDebitForm(){
+
+        $id = (int)$this->url->get('id');
+
+        ob_start();
+
+        include DIR_APP.'views/pdf/direct_debit_form.tpl.php';
+
+        $html = ob_get_clean();
+
+        if(ob_get_length() > 0) {
+            ob_end_flush();
+        }
+
+        $html_array = array('html' => $html);
+//        echo print_r($html_array['html']);
+//        exit();
+        $pdf = new PDF();
+        $pdf->createPDF($html_array);
     }
 
     public function demoPdf(){

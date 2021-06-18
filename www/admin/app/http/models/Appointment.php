@@ -475,7 +475,7 @@ class Appointment extends Model
         return $query->rows;
     }
 
-    public function generateAppointmentExaminationNotesDoc($appointment_id, $action)
+    public function generateToOptomOrThirdPartyDoc($appointment_id, $action)
     {
 
         $appointment = $this->getAppointment($appointment_id);
@@ -584,14 +584,14 @@ class Appointment extends Model
         $doc_logo = (isset($doctor_data['logo']) and !empty($doctor_data['logo'])) ? $doctor_data['logo'] : $common['info']['logo'];
         $header = "<table style='width:100%' border=0' >" .
             "<tr>" .
-            "<td width='30%'>
-							<img class='img-thumbnail' width=100 height=100 src='" . URL . "public/uploads/" . $doc_logo . "' alt=''>
-						</td>" .
-            "<td align=right>
-							<h4 style='font-size:18px; margin: 0 0 0; color: #333; text-align:right;'><strong>" . $doctor_data['name'] . "</strong></h4>
-							<span style='font-size: 13px; color: #333; text-align:right;'>" . $qualification . " </span> <br/>
-							<span style='font-size: 13px; color: #333; text-align:right;'>" . $position_specility . "</span>
-						</td>" .
+                "<td width='30%'>
+				    <img src='".URL."public/images/logo.jpg' alt='Glaucoma Care Plan' title='Glaucoma Care Plan' width='234' height='119' />
+				</td>" .
+                "<td align=right>
+				    <h4 style='font-size:18px; margin: 0 0 0; color: #333; text-align:right;'><strong>" . $doctor_data['name'] . "</strong></h4>
+					<span style='font-size: 13px; color: #333; text-align:right;'>" . $qualification . " </span> <br/>
+					<span style='font-size: 13px; color: #333; text-align:right;'>" . $position_specility . "</span>
+				</td>" .
             "</tr>" .
             "</table>";
 
@@ -621,7 +621,8 @@ class Appointment extends Model
 
         $doc_header_footer = $this->getAppointmentDocHeaderFooter($appointment_id);
 
-        $pdf_body = "<html>
+        $pdf_body = "<!DOCTYPE html>
+        <html lang='en'>
 		<head>
 		  <style>
 			
@@ -683,7 +684,7 @@ class Appointment extends Model
     }
 
 
-    public function generateAppointmentDoc($appointment_id, $action)
+    public function generateToPatientOrGpDoc($appointment_id, $action)
     {
         $appointment = $this->getAppointment($appointment_id);
         $appointment['address'] = json_decode($appointment['address'], true);

@@ -1,0 +1,426 @@
+body{
+    background: #fff;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.header{
+    padding: 15px 0 6px;
+    box-sizing: border-box;
+}
+
+.navbar{
+    float: right;
+}
+
+.navbar-nav li a{
+    text-transform: uppercase;
+    color: #111111 !important;
+    margin: 0 0 0 25px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.navbar-nav li.active a{
+    color:#005eb8 !important;
+    font-weight: 600;
+}
+
+.navbar-nav li:first-child a{
+    margin: 0;
+}
+
+.logo_right{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.banner_block{
+    background: url("../images/happy-elderly-couple-retirement-home.png") no-repeat center center;
+    position: relative;
+    height: 900px;
+}
+
+.banner_block::after{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: linear-gradient(109.6deg, rgba(72, 179, 243, 0.76) 1.82%, rgba(193, 255, 102, 0.7) 100%);
+}
+
+.banner_overlay{
+    padding: 18% 40px 0;
+    box-sizing: border-box;
+    z-index: 99;
+    position: relative;
+}
+
+.banner_overlay p{
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+.banner_overlay h3{
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 100px;
+    font-weight: 400;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0 0 15px;
+}
+
+.banner_overlay ul{
+    padding: 0;
+    margin: 0;
+}
+
+.banner_overlay ul li{
+    display: inline-block;
+    width: 280px;
+    margin: 0px 0 0 91px;
+}
+
+.banner_overlay ul li:first-child{
+    margin: 0;
+}
+
+.banner_list{
+    background: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 15px 20px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+}
+
+.banner_list h6{
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0 0 20px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.banner_list img{
+    margin: 0 0 15px;
+    width: 100%;
+}
+
+.block_box{
+    width: 100%;
+    background: #ABB561;
+    height: 45px;
+}
+
+.care_block{
+    padding: 170px 0 0;
+    box-sizing: border-box;
+}
+
+.care_main{
+    padding: 0 40px;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+}
+
+.care_left{
+    float: none;
+    display: inline-block;
+    width: 49%;
+    vertical-align: middle;
+}
+
+.care_right{
+    float: none;
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+    margin: 0 0 30px;
+}
+
+.care_left img{
+    width: 100%;
+}
+
+.care_right h3{
+    font-size: 60px;
+    font-weight: 400;
+    color: #48484C;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0 0 5px;
+}
+
+.care_right h6{
+    font-size: 20px;
+    font-weight: 300;
+    color: #000;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0 0 20px;
+}
+
+.care_right p{
+    font-size: 16px;
+    font-weight: 300;
+    color: #000;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+.patient_main{
+    padding: 0 40px;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+}
+
+.patient_left{
+    float: none;
+    display: inline-block;
+    width: 49%;
+    vertical-align: middle;
+}
+
+.patient_right{
+    float: none;
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+    margin: -85px 0 0 -93px;
+}
+
+.patient_right img{
+    width: 100%;
+}
+
+.patient_left h3{
+    color: #1B1C21;
+    font-size: 50px;
+    font-weight: 400;
+    margin: 0 0 60px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.patient_left a{
+    display: inline-block;
+    text-transform: uppercase;
+    color: #9DA748;
+    font-size: 18px;
+    font-weight: 700;
+    border: 2px solid #9DA748;
+    box-sizing: border-box;
+    padding: 18px 10px;
+    height: 63px;
+    width: 198px;
+    text-align: center;
+}
+
+.care_block.about_block{
+    padding: 40px 0 0;
+}
+
+.patient_block.info_block h3{
+    margin: 0 0 12px;
+}
+
+.patient_block.info_block p{
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+}
+
+.appointment_sec{
+    background: url("../images/clinic.png") no-repeat center center;
+    height: 900px;
+    position: relative;
+    margin: 70px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+/* .appointment_sec::after{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: linear-gradient(70.72deg, rgba(0, 90, 145, 0.76) 1.82%, rgba(193, 255, 102, 0.7) 100.2%);
+} */
+
+.appointment_main{
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 9;
+    padding: 0 40px;
+}
+
+.appointment_left{
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    width: 45%;
+}
+
+.appointment_left img{
+    width: 100%;
+}
+
+.appointment_right{
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    width: 54%;
+    padding: 0 0 0 80px;
+}
+
+.appointment_right h3{
+    font-size: 60px;
+    color: #fff;
+    font-weight: 400;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0 0 15px;
+}
+
+.appointment_right p{
+    font-size: 20px;
+    color: #fff;
+    font-weight: 400;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+/* .appointment_main::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background: url("../images/rectangle.png") repeat center center;
+    content: "";
+} */
+
+.information_block{
+    background: #ABB561;
+    padding: 80px 0;
+    box-sizing: border-box;
+}
+
+.information_block p{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+}
+
+.information_block p a{
+    display: inline-block;
+    color: #fff;
+}
+
+.footer{
+    background: #111111;
+    padding: 80px 0 30px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+}
+
+.footer ul{
+    margin: 50px 0 0;
+    padding: 0;
+}
+
+.footer ul li{
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 0 10px;
+}
+
+.footer ul li:first-child{
+    margin: 0;
+}
+
+.my-login-page {
+	background-color: #f7f9fb;
+    padding: 40px 0;
+}
+
+.my-login-page .card-wrapper {
+	width: 400px;
+    margin: 0 auto;
+}
+
+.my-login-page.my-register-page .card-wrapper{
+    width: 680px;
+}
+
+.my-login-page.my-register-page .form-group.main_box{
+    width: 48%;
+    float: none;
+    display: inline-block;
+}
+
+.my-login-page.my-register-page .form-group.main_box:nth-child(2n){
+    float: right;
+}
+
+.my-login-page .card {
+	border-color: transparent;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.my-login-page .card.fat {
+	padding: 10px;
+}
+
+.my-login-page .card .card-title {
+	margin-bottom: 30px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+
+.my-login-page .form-control {
+	border-width: 2.3px;
+}
+
+.my-login-page .form-group label {
+	width: 100%;
+}
+
+.my-login-page .form-group .custom-checkbox{
+    padding-left: 1.5rem;
+}
+
+.my-login-page .btn.btn-block {
+	padding: 12px 10px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    width: 40%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.my-login-page .footer {
+	margin: 40px 0;
+	color: #888;
+	text-align: center;
+}
+
+.my-login-page .form-group .error{
+    color: #f00;
+}
+
+.my-login-page .form-group a{
+    color: #005eb8;
+}

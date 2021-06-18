@@ -38,6 +38,7 @@ $router->get('user/glaucoma', 'UserController@glaucomacarplan');
 $router->post('user/glaucoma/documentUpload', 'UserController@documentUpload');
 $router->post('user/glaucoma/documentremove', 'UserController@deletePatientDDIDocument');
 $router->get('pdf-demo', 'UserController@demoPdf');
+$router->get('download-direct-debit-form', 'UserController@downloadDirectDebitForm');
 
 $router->post('user/profile', 'UserController@profileUpdate');
 $router->get('user/profile/password', 'UserController@changePassword');
