@@ -3,7 +3,7 @@
 /**
  * Invoice Model
  */
-class OpticianInvoice extends Model
+class Opticianinvoice extends Model
 {
     public function allInvoices($period, $user = NULL, $role = Null)
     {
