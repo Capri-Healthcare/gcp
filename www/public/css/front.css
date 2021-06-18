@@ -20,6 +20,11 @@ body{
     font-weight: 400;
 }
 
+.navbar-nav li.active a{
+    color:#005eb8 !important;
+    font-weight: 600;
+}
+
 .navbar-nav li:first-child a{
     margin: 0;
 }
@@ -344,4 +349,78 @@ body{
 
 .footer ul li:first-child{
     margin: 0;
+}
+
+.my-login-page {
+	background-color: #f7f9fb;
+    padding: 40px 0;
+}
+
+.my-login-page .card-wrapper {
+	width: 400px;
+    margin: 0 auto;
+}
+
+.my-login-page.my-register-page .card-wrapper{
+    width: 680px;
+}
+
+.my-login-page.my-register-page .form-group.main_box{
+    width: 48%;
+    float: none;
+    display: inline-block;
+}
+
+.my-login-page.my-register-page .form-group.main_box:nth-child(2n){
+    float: right;
+}
+
+.my-login-page .card {
+	border-color: transparent;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.my-login-page .card.fat {
+	padding: 10px;
+}
+
+.my-login-page .card .card-title {
+	margin-bottom: 30px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+
+.my-login-page .form-control {
+	border-width: 2.3px;
+}
+
+.my-login-page .form-group label {
+	width: 100%;
+}
+
+.my-login-page .form-group .custom-checkbox{
+    padding-left: 1.5rem;
+}
+
+.my-login-page .btn.btn-block {
+	padding: 12px 10px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    width: 40%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.my-login-page .footer {
+	margin: 40px 0;
+	color: #888;
+	text-align: center;
+}
+
+.my-login-page .form-group .error{
+    color: #f00;
+}
+
+.my-login-page .form-group a{
+    color: #005eb8;
 }

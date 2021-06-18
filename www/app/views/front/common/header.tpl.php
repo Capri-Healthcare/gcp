@@ -30,20 +30,14 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo URL; ?>">Home</a>
+                                </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="<?php echo URL.DIR_ROUTE.'login'; ?>">Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Menu 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Menu 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Menu 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Menu 1</a>
+                                    <a class="nav-link" href="<?php echo URL.DIR_ROUTE.'register'; ?>">Register</a>
                                 </li>
                             </ul>
                         </div>

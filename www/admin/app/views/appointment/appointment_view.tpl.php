@@ -814,27 +814,27 @@
 
                                     <tbody>
                                     <tr>
-                                        <td>To Patient</td>
+                                        <td>To Patient / GP</td>
                                         <td> 
                                             <span style="font-size: 16px; margin-right: 15px;">
-                                                <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=appointment&action=download"><i
+                                                <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=to_patient_or_gp&action=download"><i
                                                             class="ti-download"></i></a>
                                             </span>
                                             <span style="font-size: 16px; margin-right: 15px;">
-                                                <a href="index.php?route=appointment/view&id=<?php echo $result['id']; ?>&doc_type=appointment"><i
+                                                <a href="index.php?route=appointment/view&id=<?php echo $result['id']; ?>&doc_type=to_patient_or_gp"><i
                                                             class="ti-email"></i></a>
                                             </span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Later 2</td>
+                                        <td>To Optom / Third Party</td>
                                         <td> 
                                             <span style="font-size: 16px; margin-right: 15px;">
-                                                <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=examination-note&action=download"><i
+                                                <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=to_optom_or_third_party&action=download"><i
                                                             class="ti-download"></i></a>
                                             </span>
                                             <span style="font-size: 16px; margin-right: 15px;">
-                                                <a href="index.php?route=appointment/view&id=<?php echo $result['id']; ?>&doc_type=examination-note"><i
+                                                <a href="index.php?route=appointment/view&id=<?php echo $result['id']; ?>&doc_type=to_optom_or_third_party"><i
                                                             class="ti-email"></i></a>
                                             </span>
                                         </td>
