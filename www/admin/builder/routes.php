@@ -320,3 +320,16 @@ $router->post('follow-up/report/removeReport', 'FollowupController@documentRemov
 $router->post('optician-referral/report/reportUpload', 'OpticianReferralController@documentUpload');
 $router->post('optician-referral/report/removeReport', 'OpticianReferralController@documentRemove');
 $router->get('optician-referral/report/reportsExport', 'OpticianReferralController@reportsExport');
+
+
+$router->get('optician-invoices', 'OpticianInvoiceController@index');
+$router->get('optician/invoice/view', 'OpticianInvoiceController@indexView');
+$router->get('optician/invoice/pdf', 'OpticianInvoiceController@indexPdf');
+$router->post('optician/invoice/sentmail', 'OpticianInvoiceController@indexMail');
+$router->get('optician/invoice/add', 'OpticianInvoiceController@indexAdd');
+$router->post('optician/invoice/add', 'OpticianInvoiceController@indexAction');
+$router->get('optician/invoice/edit', 'OpticianInvoiceController@indexEdit');
+$router->post('optician/invoice/edit', 'OpticianInvoiceController@indexAction');
+$router->post('optician/invoice/delete', 'OpticianInvoiceController@indexDelete');
+$router->post('optician/addpayment', 'OpticianInvoiceController@invoicePayment');
+$router->get('optician/autogenrateinvoice', 'OpticianInvoiceController@autoGenrateInvoice');

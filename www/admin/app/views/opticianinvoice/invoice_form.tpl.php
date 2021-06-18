@@ -7,7 +7,7 @@
             <div class="breadcrumbs d-inline-block">
                 <ul>
                     <li><a href="<?php echo URL_ADMIN; ?>">Dashboard</a></li>
-                    <li><a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoices'; ?>">Invoices</a></li>
+                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician-invoices'; ?>">Optician Invoices</a></li>
                     <li><?php echo $page_title; ?></li>
                 </ul>
             </div>
@@ -34,71 +34,6 @@
         <input type="hidden" name="hidden_employer" id="hidden_employer" value="<?php echo $result['employer']; ?>">
         <div class="panel-body">
             <div class="row">
-                <?php if (in_array($common['user']['role'], constant('USER_ROLE'))) { ?>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-form-label">Patient Name <span class="form-required">*</span></label>
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-user"></i></span>
-                                </div>
-                                <input type="text" name="invoice[name]" class="form-control patient-name"
-                                       value="<?php echo $result['name']; ?>"
-                                       placeholder="Seach Patient Name or Enter . . ." required>
-                                <input type="hidden" name="invoice[patient_id]" class="form-control patient-id"
-                                       value="<?php echo $result['patient_id']; ?>">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="col-form-label">Patient Email Address <span
-                                        class="form-required">*</span></label>
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-email"></i></span>
-                                </div>
-                                <input type="text" name="invoice[email]" id="patient-email"
-                                       class="form-control patient-mail" value="<?php echo $result['email']; ?>"
-                                       placeholder="Enter Patient Email Address . . ." required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="col-form-label">Patient Phone/Mobile number<span
-                                        class="form-required">*</span></label>
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i
-                                                class="ti-mobile"></i></span></div>
-                                <input type="text" name="invoice[mobile]" class="form-control patient-mobile"
-                                       value="<?php echo $result['mobile']; ?>"
-                                       placeholder="Enter Patient Mobile No . . .">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-form-label">Doctor</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i
-                                                class="ti-heart-broken"></i></span></div>
-                                <?php if ($common['user']['role_id'] == '3' && $common['info']['doctor_access'] == '1') { ?>
-                                    <input type="text" name="invoice[doctor]" class="form-control patient-doctor"
-                                           value="<?php echo $common['user']['firstname'] . ' ' . $common['user']['lastname']; ?>"
-                                           placeholder="Search Doctor . . ." readonly>
-                                    <input type="hidden" name="invoice[doctor_id]"
-                                           class="form-control patient-doctor-id"
-                                           value="<?php echo $common['user']['doctor']; ?>" readonly>
-                                <?php } else { ?>
-                                    <input type="text" name="invoice[doctor]" class="form-control patient-doctor"
-                                           value="<?php echo $result['doctor'] ?>" placeholder="Search Doctor . . .">
-                                    <input type="hidden" name="invoice[doctor_id]"
-                                           class="form-control patient-doctor-id"
-                                           value="<?php echo $result['doctor_id']; ?>">
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label class="col-form-label">Invoice Date <span class="form-required">*</span></label>
@@ -210,13 +145,8 @@
                 <table class="table-input">
                     <thead>
                     <tr>
-                        <?php if (in_array($common['user']['role'], constant('USER_ROLE'))) { ?>
-                            <th>Item Name <span class="form-required">*</span></th>
-                            <th>Item Description</th>
-                        <?php } else { ?>
-                            <th>Patient<span class="form-required">*</span></th>
-                            <th>Report Type<span class="form-required">*</span></th>
-                        <?php } ?>
+                        <th>Patient<span class="form-required">*</span></th>
+                        <th>Report Type<span class="form-required">*</span></th>
                         <th>Quantity <span class="form-required">*</span></th>
                         <th>Unit Cost <span class="form-required">*</span></th>
                         <th>Tax</th>
@@ -229,12 +159,24 @@
                         foreach ($result['items'] as $key => $value) { ?>
                             <tr class="item-row">
                                 <td>
-                                        <textarea name="invoice[item][<?php echo $key; ?>][name]" class="item-name"
-                                                  required><?php echo $value['name']; ?></textarea>
+                                    <select name="invoice[item][<?php echo $key; ?>][name]"
+                                            class="item-name form-control"
+                                            required>
+                                        <option value="">Select Patient</option>
+                                        <?php if (!empty($patient)) {
+                                            foreach ($patient as $list) { ?>
+                                                <option value="<?php echo $list['firstname'] . " " . $list['lastname'] ?>" <?php echo ($value['name'] == $list['firstname'] . " " . $list['lastname']) ? 'selected' : '' ?>><?php echo $list['firstname'] . " " . $list['lastname'] ?></option>
+                                            <?php }
+                                        } ?>
+                                    </select>
                                 </td>
                                 <td class="invoice-item">
-                                        <textarea name="invoice[item][<?php echo $key; ?>][descr]"
-                                                  class="item-descr"><?php echo $value['descr']; ?></textarea>
+                                    <select name="invoice[item][<?php echo $key; ?>][descr]" class="item-descr form-control" onchange="reportPrice(event)" data-row="<?php echo $key; ?>">
+                                        <option value="">Select Report Type</option>
+                                        <?php foreach (constant('INVOICE_REPORT_TYPE') as $list) { ?>
+                                            <option value="<?php echo $list['name'] ?>" <?php echo $value['descr'] == $list['name'] ? 'selected' : '' ?> data-price="<?php echo $list['price'] ?>"><?php echo $list['name'] ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </td>
                                 <td class="">
                                     <textarea type="text" name="invoice[item][<?php echo $key; ?>][quantity]"
@@ -283,15 +225,27 @@
                         <?php }
                     } else { ?>
                         <tr class="item-row">
-                            <td class="">
-                                <textarea name="invoice[item][0][name]" class="item-name" required></textarea>
+                            <td>
+                                <select name="invoice[item][0][name]" class="item-name form-control" required>
+                                    <option value="">Select Patient</option>
+                                    <?php if (!empty($patient)) {
+                                        foreach ($patient as $list) { ?>
+                                            <option value="<?php echo $list['firstname'] . " " . $list['lastname'] ?>"><?php echo $list['firstname'] . " " . $list['lastname'] ?></option>
+                                        <?php }
+                                    } ?>
+                                </select>
                             </td>
                             <td class="invoice-item">
-                                <textarea name="invoice[item][0][descr]" class="item-descr"></textarea>
+                                <select name="invoice[item][0][descr]" class="item-descr form-control" onchange="reportPrice(event)" data-row="0">
+                                    <option value="">Select Report Type</option>
+                                    <?php foreach (constant('INVOICE_REPORT_TYPE') as $list) { ?>
+                                        <option value="<?php echo $list['name'] ?>" data-price="<?php echo $list['price'] ?>"><?php echo $list['name'] ?></option>
+                                    <?php } ?>
+                                </select>
                             </td>
                             <td class="">
                                 <textarea type="text" name="invoice[item][0][quantity]" class="item-quantity"
-                                          required>1</textarea>
+                                          required readonly>1</textarea>
                             </td>
                             <td class="">
                                 <textarea type="text" name="invoice[item][0][cost]" class="item-cost"
@@ -315,9 +269,7 @@
                     <tr>
                         <td colspan="3" class="p-2">
                             <div class="add-items d-inline-block">
-                                <a class="btn btn-success btn-sm m-1"><i
-                                            class="icon-plus mr-1"></i>Add Item
-                                </a>
+                                <a class="btn btn-success btn-sm m-1"><i class="icon-plus mr-1"></i>Add Patient</a>
                             </div>
                         </td>
                         <td colspan="2" class="total-line">
@@ -549,10 +501,20 @@
     </div>
 </div>
 <script type="text/javascript">
+
     var isOptician =  <?php echo !in_array($common['user']['role'], constant('USER_ROLE')) ? 0 : 1 ?>;
     var patientOption = null;
     var itemDescriptionOption = null;
-
+    <?php if (!empty($patient)) {
+    foreach ($patient as $list) { ?>
+     patientOption += '<option value="<?php echo $list["firstname"]. " " . $list["lastname"] ?>"><?php echo $list["firstname"]. " " . $list["lastname"] ?></option>';
+    <?php }
+    } ?>
+    <?php if (!empty($patient)) {
+    foreach (constant('INVOICE_REPORT_TYPE')  as $list) { ?>
+    itemDescriptionOption += '<option value="<?php echo $list['name']; ?>" data-price="<?php echo $list['price']; ?>"><?php echo $list['name']; ?></option>';
+    <?php }
+    } ?>
 </script>
 
 <?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>

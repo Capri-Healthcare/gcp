@@ -119,4 +119,15 @@ class Opticianreferral extends Model
             return false;
         }
     }
+
+    public function getOpticianReferralPatient($id)
+    {
+        $query = $this->database->query("Select r.* , p.firstname,p.lastname From `" . DB_PREFIX . "referral_list` AS r LEFT  JOIN `" . DB_PREFIX . "patients` AS p ON r.patient_id = p.id WHERE created_by = '" . $id . "' AND r.status = '".constant('STATUS_ACCEPTED')."' ORDER BY created_at DESC ,status ASC");
+
+        if ($query->num_rows > 0) {
+            return $query->rows;
+        } else {
+            return false;
+        }
+    }
 }

@@ -1611,13 +1611,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Report/Document Name</label>
+                        <label>Document Name</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ti-tag"></i></span>
                             </div>
-                            <input type="text" name="report_name" class="form-control"
-                                   placeholder="Enter Report/Document Name">
+                            <select class="form-control" name="report_name">
+                                <option value="">Select Document Type</option>
+                                <?php foreach (constant('FOLLOWUP_DOCUMENT_NAME') as $key => $status) { ?>
+                                    <option value="<?php echo $key ?>"><?php echo $status; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
                     <div class="media-upload-container" style="max-width: 100%;">

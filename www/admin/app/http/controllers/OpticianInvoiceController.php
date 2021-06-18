@@ -3,7 +3,7 @@
 /**
  * Invoice Controller
  */
-class InvoiceController extends Controller
+class OpticianInvoiceController extends Controller
 {
     /**
      * Invoice index edit method
@@ -14,7 +14,7 @@ class InvoiceController extends Controller
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
-        $this->load->model('invoice');
+        $this->load->model('opticianinvoice');
         $this->load->controller('common');
         $data['period']['start'] = $this->url->get('start');
         $data['period']['end'] = $this->url->get('end');
@@ -28,10 +28,10 @@ class InvoiceController extends Controller
         }
 
         if ($data['common']['user']['role_id'] == '3' && $data['common']['info']['doctor_access'] == '1') {
-            $data['result'] = $this->model_invoice->allInvoices($data['period'], $data['common']['user']);
+            $data['result'] = $this->model_opticianinvoice->allInvoices($data['period'], $data['common']['user']);
         } else {
 
-            $data['result'] = $this->model_invoice->allInvoices($data['period'],null,$data['common']['user']);
+            $data['result'] = $this->model_opticianinvoice->allInvoices($data['period'], null, $data['common']['user']);
         }
 
         /* Set confirmation message if page submitted before */
@@ -41,18 +41,18 @@ class InvoiceController extends Controller
         }
 
         /* Set page title */
-        $data['page_title'] = 'Invoices';
-        $data['page_view'] = $this->user_agent->hasPermission('invoice/view') ? true : false;
-        $data['page_pdf'] = $this->user_agent->hasPermission('invoice/pdf') ? true : false;
-        $data['page_add'] = $this->user_agent->hasPermission('invoice/add') ? true : false;
-        $data['page_edit'] = $this->user_agent->hasPermission('invoice/edit') ? true : false;
-        $data['page_delete'] = $this->user_agent->hasPermission('invoice/delete') ? true : false;
+        $data['page_title'] = 'Optician Invoices';
+        $data['page_view'] = $this->user_agent->hasPermission('optician/invoice/view') ? true : false;
+        $data['page_pdf'] = $this->user_agent->hasPermission('optician/invoice/pdf') ? true : false;
+        $data['page_add'] = $this->user_agent->hasPermission('optician/invoice/add') ? true : false;
+        $data['page_edit'] = $this->user_agent->hasPermission('optician/invoice/edit') ? true : false;
+        $data['page_delete'] = $this->user_agent->hasPermission('optician/invoice/delete') ? true : false;
 
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-        $data['action_delete'] = URL_ADMIN . DIR_ROUTE . 'invoice/delete';
+        $data['action_delete'] = URL_ADMIN . DIR_ROUTE . 'optician/invoice/delete';
 
         /*Render Invoice list view*/
-        $this->response->setOutput($this->load->view('invoice/invoice_list', $data));
+        $this->response->setOutput($this->load->view('opticianinvoice/invoice_list', $data));
     }
 
     public function indexView()
@@ -62,7 +62,7 @@ class InvoiceController extends Controller
          **/
         $id = (int)$this->url->get('id');
         if (empty($id) || !is_int($id)) {
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
 
         /**
@@ -73,21 +73,21 @@ class InvoiceController extends Controller
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
-        $this->load->model('invoice');
+        $this->load->model('opticianinvoice');
         if ($data['common']['user']['role_id'] == '3' && $data['common']['info']['doctor_access'] == '1') {
-            $data['result'] = $this->model_invoice->getInvoiceView($id, $data['common']['user']);
+            $data['result'] = $this->model_opticianinvoice->getInvoiceView($id, $data['common']['user']);
         } else {
-            $data['result'] = $this->model_invoice->getInvoiceView($id);
+            $data['result'] = $this->model_opticianinvoice->getInvoiceView($id);
         }
 
         if (!$data['result']) {
             $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Invoice does not exist in database!');
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
         $data['result']['items'] = json_decode($data['result']['items'], true);
-        $data['method'] = $this->model_invoice->getPaymentMethod();
-        $data['payments'] = $this->model_invoice->getPayments($id);
-        $data['attachments'] = $this->model_invoice->getAttachments($id);
+        $data['method'] = $this->model_opticianinvoice->getPaymentMethod();
+        $data['payments'] = $this->model_opticianinvoice->getPayments($id);
+        $data['attachments'] = $this->model_opticianinvoice->getAttachments($id);
 
         /* Set confirmation message if page submitted before */
         if (isset($this->session->data['message'])) {
@@ -95,13 +95,13 @@ class InvoiceController extends Controller
             unset($this->session->data['message']);
         }
 
-        $data['page_title'] = 'Invoice View';
-        $data['page_edit'] = $this->user_agent->hasPermission('invoice/edit') ? true : false;
-        $data['page_pdf'] = $this->user_agent->hasPermission('invoice/pdf') ? true : false;
-        $data['page_send_mail'] = $this->user_agent->hasPermission('invoice/sentmail') ? true : false;
-        $data['page_addpayment'] = $this->user_agent->hasPermission('addpayment') ? true : false;
+        $data['page_title'] = 'Optician Invoice View';
+        $data['page_edit'] = $this->user_agent->hasPermission('optician/invoice/edit') ? true : false;
+        $data['page_pdf'] = $this->user_agent->hasPermission('optician/invoice/pdf') ? true : false;
+        $data['page_send_mail'] = $this->user_agent->hasPermission('optician/invoice/sentmail') ? true : false;
+        $data['page_addpayment'] = $this->user_agent->hasPermission('optician/addpayment') ? true : false;
 
-        $data['action'] = URL_ADMIN . DIR_ROUTE . 'addpayment';
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician/addpayment';
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
 
         if (!in_array($data['common']['user']['role'], constant('USER_ROLE'))) {
@@ -114,7 +114,7 @@ class InvoiceController extends Controller
             $data['common']['info']['address']['postal'] = $address['postal'];
         }
         /*Render Invoice list view*/
-        $this->response->setOutput($this->load->view('invoice/invoice_view', $data));
+        $this->response->setOutput($this->load->view('opticianinvoice/invoice_view', $data));
     }
 
     public function indexAdd()
@@ -122,13 +122,18 @@ class InvoiceController extends Controller
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
-        $this->load->model('invoice');
-        $data['payment_method'] = $this->model_invoice->getPaymentMethod();
-        $data['taxes'] = $this->model_invoice->getTaxes();
+        $this->load->model('opticianinvoice');
+        $data['payment_method'] = $this->model_opticianinvoice->getPaymentMethod();
+        $data['taxes'] = $this->model_opticianinvoice->getTaxes();
+
+        if (!in_array($data['common']['user']['role'], constant('USER_ROLE'))) {
+            $this->load->model('opticianreferral');
+            $data['patient'] = $this->model_opticianreferral->getOpticianReferralPatient($this->session->data['user_id']);
+        }
 
         if ($this->url->get('appointment')) {
             $data['result'] = NULL;
-            $data['result'] = $this->model_invoice->getAppointmentData($this->url->get('appointment'));
+            $data['result'] = $this->model_opticianinvoice->getAppointmentData($this->url->get('appointment'));
             $data['result']['duedate'] = NULL;
             $data['result']['invoicedate'] = NULL;
             $data['result']['currency'] = NULL;
@@ -156,10 +161,10 @@ class InvoiceController extends Controller
             $data['message'] = $this->session->data['message'];
             unset($this->session->data['message']);
         }
-        $data['page_title'] = 'Invoice Add';
+        $data['page_title'] = 'Optician Invoice Add';
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-        $data['action'] = URL_ADMIN . DIR_ROUTE . 'invoice/add';
-        $this->response->setOutput($this->load->view('invoice/invoice_form', $data));
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician/invoice/add';
+        $this->response->setOutput($this->load->view('opticianinvoice/invoice_form', $data));
     }
 
     /**
@@ -173,7 +178,7 @@ class InvoiceController extends Controller
          **/
         $id = (int)$this->url->get('id');
         if (empty($id) || !is_int($id)) {
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
 
         $this->load->model('commons');
@@ -182,20 +187,25 @@ class InvoiceController extends Controller
          * Call getInvoice method from invoice model to get data from DB for single blog
          * If blog does not exist then redirect it to invoice list view
          **/
-        $this->load->model('invoice');
+        $this->load->model('opticianinvoice');
         if ($data['common']['user']['role_id'] == '3' && $data['common']['info']['doctor_access'] == '1') {
-            $data['result'] = $this->model_invoice->getInvoice($id, $data['common']['user']);
+            $data['result'] = $this->model_opticianinvoice->getInvoice($id, $data['common']['user']);
         } else {
-            $data['result'] = $this->model_invoice->getInvoice($id);
+            $data['result'] = $this->model_opticianinvoice->getInvoice($id);
+        }
+
+        if (!in_array($data['common']['user']['role'], constant('USER_ROLE'))) {
+            $this->load->model('opticianreferral');
+            $data['patient'] = $this->model_opticianreferral->getOpticianReferralPatient($this->session->data['user_id']);
         }
 
         if (!$data['result']) {
             $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Invoice does not exist in database!');
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
 
-        $data['payment_method'] = $this->model_invoice->getPaymentMethod();
-        $data['taxes'] = $this->model_invoice->getTaxes();
+        $data['payment_method'] = $this->model_opticianinvoice->getPaymentMethod();
+        $data['taxes'] = $this->model_opticianinvoice->getTaxes();
 
         /* Set Blog data to array */
         $data['result']['items'] = json_decode($data['result']['items'], true);
@@ -205,25 +215,25 @@ class InvoiceController extends Controller
             $data['message'] = $this->session->data['message'];
             unset($this->session->data['message']);
         }
-        $data['page_title'] = 'Invoice Edit';
+        $data['page_title'] = 'Optician Invoice Edit';
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-        $data['action'] = URL_ADMIN . DIR_ROUTE . 'invoice/edit&id=' . $data['result']['id'];
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'optician/invoice/edit&id=' . $data['result']['id'];
         /*Render invoice edit view*/
-        $this->response->setOutput($this->load->view('invoice/invoice_form', $data));
+        $this->response->setOutput($this->load->view('opticianinvoice/invoice_form', $data));
     }
 
     public function indexMail()
     {
         if (!isset($_POST['submit'])) {
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
         $data = $this->url->post;
         $this->load->controller('common');
 
-        $this->load->model('invoice');
-        $result = $this->model_invoice->getInvoice($data['mail']['id']);
+        $this->load->model('opticianinvoice');
+        $result = $this->model_opticianinvoice->getInvoice($data['mail']['id']);
         if (empty($result)) {
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
 
         $data['mail']['email'] = $result['email'];
@@ -244,10 +254,10 @@ class InvoiceController extends Controller
 
             $this->controller_mail->createMailLog($data['mail']);
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Success: Message sent successfully.');
-            $this->url->redirect('invoice/view&id=' . $result['id']);
+            $this->url->redirect('optician/invoice/view&id=' . $result['id']);
         } else {
             $this->session->data['message'] = array('alert' => 'error', 'value' => $mail_result);
-            $this->url->redirect('invoice/view&id=' . $result['id']);
+            $this->url->redirect('optician/invoice/view&id=' . $result['id']);
         }
     }
 
@@ -258,7 +268,7 @@ class InvoiceController extends Controller
          **/
         $id = (int)$this->url->get('id');
         if (empty($id) || !is_int($id)) {
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
 
         $data = $this->createPDFHTML($id);
@@ -274,7 +284,7 @@ class InvoiceController extends Controller
          **/
         $id = (int)$this->url->get('id');
         if (empty($id) || !is_int($id)) {
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
 
         $data = $this->createPDFHTML($id, 1);
@@ -288,7 +298,7 @@ class InvoiceController extends Controller
          * Check if from is submitted or not
          **/
         if (!isset($_POST['submit'])) {
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
         /**
          * Validate form data
@@ -307,58 +317,64 @@ class InvoiceController extends Controller
             $this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter/select valid ' . implode(", ", $validate_field) . '!');
 
             if (!empty($data['invoice']['id'])) {
-                $this->url->redirect('invoice/edit&id=' . $data['invoice']['id']);
+                $this->url->redirect('optician/invoice/edit&id=' . $data['invoice']['id']);
             } else {
-                $this->url->redirect('invoice/add');
+                $this->url->redirect('optician/invoice/add');
             }
         }
 
         $this->load->model('commons');
         $info = $this->model_commons->getSiteInfo();
+        $data['invoice']['name'] = $info['name'];
+        $data['invoice']['email'] = $info['mail'];
+        $data['invoice']['mobile'] = $info['phone'];
+        $data['invoice']['patient_id'] = 0;
+        $data['invoice']['doctor_id'] = 0;
+        $data['invoice']['doctor'] = "Demo Doctor";
 
         $data['invoice']['item'] = json_encode($data['invoice']['item']);
         $data['invoice']['duedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['duedate'])->format('Y-m-d');
         $data['invoice']['invoicedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['invoicedate'])->format('Y-m-d');
         $data['invoice']['datetime'] = date('Y-m-d H:i:s');
 
-        $this->load->model('invoice');
+        $this->load->model('opticianinvoice');
         if (!empty($data['invoice']['id'])) {
-            $this->model_invoice->updateInvoice($data['invoice']);
-            $this->model_invoice->updateInsurersDetailsInInvoice($data['invoice']['id'], $data['invoice']);
+            $this->model_opticianinvoice->updateInvoice($data['invoice']);
+            $this->model_opticianinvoice->updateInsurersDetailsInInvoice($data['invoice']['id'], $data['invoice']);
             $this->createPDF($data['invoice']['id']);
             if ($data['invoice']['inv_status'] == "1") {
-                $checkMailStatus = $this->model_invoice->checkInvoiceMailStatus($data['invoice']['id']);
+                $checkMailStatus = $this->model_opticianinvoice->checkInvoiceMailStatus($data['invoice']['id']);
                 if ($checkMailStatus == '0') {
                     $this->invoiceMail($data['invoice']['id']);
-                    $this->model_invoice->updateInvoiceMailStatus($data['invoice']['id']);
+                    $this->model_opticianinvoice->updateInvoiceMailStatus($data['invoice']['id']);
                 }
             }
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Invoice updated successfully.');
-            $this->url->redirect('invoice/view&id=' . $data['invoice']['id']);
+            $this->url->redirect('optician/invoice/view&id=' . $data['invoice']['id']);
         } else {
 
             $data['invoice']['user_id'] = $this->session->data['user_id'];
-            $result = $this->model_invoice->createInvoice($data['invoice']);
+            $result = $this->model_opticianinvoice->createInvoice($data['invoice']);
             if ((int)$result) {
-                $this->model_invoice->updateInsurersDetailsInInvoice($result, $data['invoice']);
+                $this->model_opticianinvoice->updateInsurersDetailsInInvoice($result, $data['invoice']);
                 $this->createPDF($result);
                 if ($data['invoice']['inv_status'] == "1") {
-                    $checkMailStatus = $this->model_invoice->checkInvoiceMailStatus($result);
+                    $checkMailStatus = $this->model_opticianinvoice->checkInvoiceMailStatus($result);
                     if ($checkMailStatus == '0') {
                         $this->invoiceMail($result);
-                        $this->model_invoice->updateInvoiceMailStatus($result);
+                        $this->model_opticianinvoice->updateInvoiceMailStatus($result);
                     }
                 }
 
                 if ((int)$result && $data['invoice']['appointment_id']) {
-                    $this->model_invoice->updateInvoiceIdAppointment($result, $data['invoice']['appointment_id']);
+                    $this->model_opticianinvoice->updateInvoiceIdAppointment($result, $data['invoice']['appointment_id']);
                 }
 
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Invoice created successfully.');
-                $this->url->redirect('invoice/view&id=' . $result);
+                $this->url->redirect('optician/invoice/view&id=' . $result);
             } else {
                 $this->session->data['message'] = array('alert' => 'error', 'value' => 'Invoice does not created (Server Error).');
-                $this->url->redirect('invoice/add');
+                $this->url->redirect('ioptician/nvoice/add');
             }
         }
     }
@@ -377,7 +393,7 @@ class InvoiceController extends Controller
          * Check if from is submitted or not
          **/
         if (!isset($_POST['submit'])) {
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
         /**
          * Validate form data
@@ -389,18 +405,18 @@ class InvoiceController extends Controller
         $this->load->controller('common');
         if ($validate_field = $this->validateInvoicePaymentField($data['payment'])) {
             $this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter valid ' . implode(", ", $validate_field) . '!');
-            $this->url->redirect('invoice/view&id=' . $data['payment']['invoice']);
+            $this->url->redirect('optician/invoice/view&id=' . $data['payment']['invoice']);
         }
         $this->load->model('commons');
         $data['common'] = $this->model_commons->getInvoiceData($this->session->data['user_id']);
         $data['payment']['date'] = DateTime::createFromFormat($data['common']['date_format'], $data['payment']['date'])->format('Y-m-d');
 
-        $this->load->model('invoice');
-        $result = $this->model_invoice->addInvoicePayment($data['payment']);
-        $this->model_invoice->invoiceTotal($data['payment']);
+        $this->load->model('opticianinvoice');
+        $result = $this->model_opticianinvoice->addInvoicePayment($data['payment']);
+        $this->model_opticianinvoice->invoiceTotal($data['payment']);
 
         $this->session->data['message'] = array('alert' => 'success', 'value' => 'Payment added successfully');
-        $this->url->redirect('invoice/view&id=' . $data['payment']['invoice']);
+        $this->url->redirect('optician/invoice/view&id=' . $data['payment']['invoice']);
     }
 
     protected function validateInvoicePaymentField($data)
@@ -434,18 +450,18 @@ class InvoiceController extends Controller
         $this->load->controller('common');
         if ($this->controller_common->validateToken($this->url->post('_token'))) {
             $this->session->data['message'] = array('alert' => 'error', 'value' => 'Security token is missing!');
-            $this->url->redirect('invoices');
+            $this->url->redirect('optician-invoices');
         }
         /**
          * Check if from is submitted or not
          **/
         if (!isset($_POST['delete']) || empty($this->url->post('id'))) {
-            $this->url->redirect('invoices');
+            $this->url->redirect('optician-invoices');
         }
-        $this->load->model('invoice');
-        $result = $this->model_invoice->deleteInvoice($this->url->post('id'));
+        $this->load->model('opticianinvoice');
+        $result = $this->model_opticianinvoice->deleteInvoice($this->url->post('id'));
         $this->session->data['message'] = array('alert' => 'success', 'value' => 'Invoice deleted successfully.');
-        $this->url->redirect('invoices');
+        $this->url->redirect('optician-invoices');
     }
 
     private function invoiceMail($id)
@@ -456,7 +472,7 @@ class InvoiceController extends Controller
             return false;
         }
 
-        $invoice = $this->model_invoice->getInvoiceView($id);
+        $invoice = $this->model_opticianinvoice->getInvoiceView($id);
 
         $data['id'] = $result['common']['invoice_prefix'] . str_pad($invoice['id'], 4, '0', STR_PAD_LEFT);
         $site_link = '<a href="' . URL . '">Click Here</a>';
@@ -567,17 +583,17 @@ class InvoiceController extends Controller
         $info = $this->model_commons->getSiteInfo();
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
-        $this->load->model('invoice');
+        $this->load->model('opticianinvoice');
         $user = $this->model_commons->getUserInfo($this->session->data['user_id']);
         if ($user['role_id'] == '3' && $info['doctor_access'] == '1') {
-            $result = $this->model_invoice->getInvoiceView($id, $user);
+            $result = $this->model_opticianinvoice->getInvoiceView($id, $user);
         } else {
-            $result = $this->model_invoice->getInvoiceView($id);
+            $result = $this->model_opticianinvoice->getInvoiceView($id);
         }
-        //$result = $this->model_invoice->getInvoiceView($id);
+        //$result = $this->model_opticianinvoice->getInvoiceView($id);
 
         if (empty($result)) {
-            $this->url->redirect('invoices');
+              $this->url->redirect('optician-invoices');
         }
 
 
@@ -608,20 +624,5 @@ class InvoiceController extends Controller
             ob_end_flush();
         }
         return array('html' => $html, 'result' => $result);
-    }
-
-    public function autoGenrateInvoice()
-    {
-        $startDate = null;
-        $dueDate = null;
-        $patient_name = null;
-        $patient_mobile = null;
-        $patient_email = null;
-        $doctor_id = null;
-        $payment_method = 1;
-        $payment_status = "Unpaid";
-        $invoice_status = 0;
-
-      echo "Hello";
     }
 }

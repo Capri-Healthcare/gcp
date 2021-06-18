@@ -308,7 +308,7 @@ class FormController extends Controller
 		}
 		//$result = $this->model_invoice->getInvoiceView($id);
 		
-		if (empty($result)) { $this->url->redirect('invoices'); }
+		if (empty($result)) { $this->url->redirect('optician/invoice'); }
 
 		$result['items'] = json_decode($result['items'], true);
 		$result['info'] = $info;

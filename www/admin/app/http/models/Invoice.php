@@ -14,10 +14,15 @@ class Invoice extends Model
                 $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.user_id = '" . $role['user_id'] . "' ORDER BY i.invoicedate DESC");
 
             } elseif ($role['role'] == constant('DASHBOARD_NOT_SHOW')[2]) {
-
                 $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.user_id = '" . $role['user_id'] . "' ORDER BY i.invoicedate DESC");
 
-            } else {
+            } elseif ($role['role'] == constant('DASHBOARD_NOT_SHOW')[0]) {
+                $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' ORDER BY i.invoicedate DESC");
+
+//                echo print_r($role);
+//                exit();
+
+            }else {
                 $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' ORDER BY i.invoicedate DESC");
             }
         }

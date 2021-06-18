@@ -329,10 +329,11 @@ class Appointment extends Model
     public function deleteReport($data)
     {
         $user_id = $this->session->data['user_id'];
-        $query = $this->database->query("DELETE FROM `" . DB_PREFIX . "reports` WHERE `report` = ? AND `appointment_id` = ?", array($this->database->escape($data['report']), (int)$data['appointment_id']));
+       $query = $this->database->query("DELETE FROM `" . DB_PREFIX . "reports` WHERE `report` = ? AND `appointment_id` = ?", array($this->database->escape($data['report']), (int)$data['appointment_id']));
 
         // if its image then allow to patient to delete image
         $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointment_images` WHERE appointment_id = '" . (int)$data['appointment_id'] . "' AND `filename` = '" . $data['report'] . "'");
+
         $is_exist = $query->row;
         if (!empty($is_exist)) {
 

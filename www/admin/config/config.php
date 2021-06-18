@@ -193,6 +193,12 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
 
 ]);
 
+define('INVOICE_REPORT_TYPE',[
+    'VISHUL_FIELDS' => ['name' => 'Vishul fields','price' =>'40'],
+    'OCT' => ['name' => 'OCT','price' =>'40'],
+    'VISHUL_FIELDS_AND_OCT' => ['name' => 'Vishul fields and OCT','price' =>'80'],
+]);
+
 define('HOSPITAL', [
     'SSPBH' => 'Spire South Bank Hospital<br/>Mobile:01905350003<br/>Address:139 Bath Road WORCESTER WR5 3YB<br/>Email:hsc@spirehealthcare.com<br>Web:http://www.spirehealthcare.com/southbank',
     'BTDSH' => 'BMI The Droitwich Spa Hospital<br/>Mobile:01905 793333<br/>Address:St Andrews Road DROITWICH WR9 8DN<br/>Email:info@bmihealthcare.co.uk,<br>Web:http://www.bmihealthcare.co.uk'

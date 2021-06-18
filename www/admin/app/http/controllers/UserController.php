@@ -489,6 +489,18 @@ class UserController extends Controller
 				'addpayment' => 'Add Payment',
 				'1' => '',
 				'2' => ''),
+            'Optician Invoice' => array(
+                'optician-invoices' => 'Optician Invoice List',
+                'optician/invoice/add' => 'Optician Invoice Add',
+                'optician/invoice/edit' => 'Optician Invoice Edit',
+                'optician/invoice/delete' => 'Optician Invoice Delete',
+                'optician/invoice/view' => 'Optician Invoice View'),
+            'Optician Invoice Other' => array(
+                'optician/invoice/pdf' => 'Optician Invoice PDF',
+                'optician/invoice/sentmail' => 'Optician Invoice Sendmail',
+                'optician/addpayment' => 'Optician Add Payment',
+                '1' => '',
+                '2' => ''),
 			'Request' => array('request' => 'Request List',
 				'request/edit' => 'Request Edit',
 				'request/delete' => 'Request Delete',

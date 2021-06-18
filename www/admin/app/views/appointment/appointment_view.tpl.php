@@ -234,11 +234,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>Right: </b><?php echo isset($result['visual_acuity_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$result['visual_acuity_right']] : '' ?>
+                                                            <b>RE: </b><?php echo isset($result['visual_acuity_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$result['visual_acuity_right']] : '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>Left: </b><?php echo isset($result['visual_acuity_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$result['visual_acuity_left']] : '' ?>
+                                                            <b>LE: </b><?php echo isset($result['visual_acuity_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$result['visual_acuity_left']] : '' ?>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -250,11 +250,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>Right: </b><?php echo isset($result['intraocular_pressure_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'][$result['intraocular_pressure_right']] : '' ?>
+                                                            <b>RE: </b><?php echo isset($result['intraocular_pressure_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'][$result['intraocular_pressure_right']] : '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>Left: </b><?php echo isset($result['intraocular_pressure_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'][$result['intraocular_pressure_left']] : '' ?>
+                                                            <b>LE: </b><?php echo isset($result['intraocular_pressure_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'][$result['intraocular_pressure_left']] : '' ?>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -281,11 +281,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>Right: </b><?php echo isset($result['anterior_chamber_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'][$result['anterior_chamber_right']] : '' ?>
+                                                            <b>RE: </b><?php echo isset($result['anterior_chamber_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'][$result['anterior_chamber_right']] : '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>Left: </b><?php echo isset($result['anterior_chamber_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'][$result['anterior_chamber_left']] : '' ?>
+                                                            <b>LE: </b><?php echo isset($result['anterior_chamber_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'][$result['anterior_chamber_left']] : '' ?>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -298,11 +298,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>Right: </b><?php echo isset($result['lens_right']) ? $result['lens_right']: '' ?>
+                                                            <b>RE: </b><?php echo isset($result['lens_right']) ? $result['lens_right']: '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>Left: </b><?php echo isset($result['lens_left']) ? $result['lens_left']: '' ?>
+                                                            <b>LE: </b><?php echo isset($result['lens_left']) ? $result['lens_left']: '' ?>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -346,11 +346,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>Right: </b><?php echo isset($result['cct_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_right']] : '' ?>
+                                                            <b>RE: </b><?php echo isset($result['cct_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_right']] : '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>Left: </b><?php echo isset($result['cct_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_left']] : '' ?>
+                                                            <b>LE: </b><?php echo isset($result['cct_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_left']] : '' ?>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -362,11 +362,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>Right: </b><?php echo isset($result['nfl_thickness_right']) ? $result['nfl_thickness_right']." mm" : '' ?>
+                                                            <b>RE: </b><?php echo isset($result['nfl_thickness_right']) ? $result['nfl_thickness_right']." mm" : '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>Left: </b><?php echo isset($result['nfl_thickness_left']) ? $result['nfl_thickness_left']." mm" : '' ?></td>
+                                                            <b>LE: </b><?php echo isset($result['nfl_thickness_left']) ? $result['nfl_thickness_left']." mm" : '' ?></td>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -456,11 +456,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>Right: </b><?php echo isset($result['mean_deviation_right']) ? $result['mean_deviation_right']." db" : '' ?>
+                                                            <b>RE: </b><?php echo isset($result['mean_deviation_right']) ? $result['mean_deviation_right']." db" : '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>Left: </b><?php echo isset($result['mean_deviation_left']) ? $result['mean_deviation_left']." db" : '' ?></td>
+                                                            <b>LE: </b><?php echo isset($result['mean_deviation_left']) ? $result['mean_deviation_left']." db" : '' ?></td>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -485,11 +485,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>Right: </b><?php echo isset($result['psd_deviation_right']) ? $result['psd_deviation_right']." db" : '' ?>
+                                                            <b>RE: </b><?php echo isset($result['psd_deviation_right']) ? $result['psd_deviation_right']." db" : '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>Left: </b><?php echo isset($result['psd_deviation_left']) ? $result['psd_deviation_left']." db" : '' ?></td>
+                                                            <b>LE: </b><?php echo isset($result['psd_deviation_left']) ? $result['psd_deviation_left']." db" : '' ?></td>
                                                         </td>
                                                     </tr>
                                                 </table>

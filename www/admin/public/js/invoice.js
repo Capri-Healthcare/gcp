@@ -1,3 +1,4 @@
+var isOptician;
 var path = $('.site_url').val();
 
 function fourdigits(number) {
@@ -126,32 +127,75 @@ function bind() {
     $("body").on('change', '.discount-type', update_price);
 }
 
+function reportPrice(e) {
+    var price = $(e.currentTarget).find('option:selected').data('price');
+    var rowCost = $(e.currentTarget).data('row');
+    $("textarea[name='invoice[item]["+rowCost+"][cost]']").val(price);
+    update_price()
+}
+
+
 function item_html(count) {
-    var item_html = '<tr class="item-row">'+
-    '<td class="">'+
-    '<textarea name="invoice[item]['+count+'][name]" class="item-name" required></textarea>'+
-    '</td>'+
-    '<td class="invoice-item">'+
-    '<textarea name="invoice[item]['+count+'][descr]" class="item-descr"></textarea>'+
-    '</td>'+
-    '<td class="">'+
-    '<textarea type="text" name="invoice[item]['+count+'][quantity]" class="item-quantity" required>1</textarea>'+
-    '</td>'+
-    '<td class="">'+
-    '<textarea type="text" name="invoice[item]['+count+'][cost]" class="item-cost" required></textarea>'+
-    '</td>'+
-    '<td class="invoice-tax">'+
-    '<input type="hidden" name="invoice[item]['+count+'][taxprice]" class="item-tax-price" value="0" readonly>' +
-    '</td>'+
-    '<td class="">'+
-    '<textarea type="text" name="invoice[item]['+count+'][price]" class="item-total-price" readonly></textarea>'+
-    '<input type="hidden" class="item-price">'+
-    '</td>' +
-    '<td>' +
-    '<a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>' +
-    '<a class="badge badge-danger badge-sm badge-pill delete m-1">Delete</a>' +
-    '</td>' +
-    '</tr>';
+
+    if(isOptician == 0){
+        var item_html = '<tr class="item-row">'+
+            '<td class="">'+
+            '<select name="invoice[item]['+count+'][name]" class="item-name form-control" required>'+
+            '<option value="">Select Patient</option>'+
+            patientOption+
+            '</select>'+
+            '</td>'+
+            '<td class="invoice-item">'+
+            '<select name="invoice[item]['+count+'][descr]" class="item-name form-control" data-row="'+count+'" onchange="reportPrice(event)" required>'+
+            '<option value="">Select Report Type</option>'+
+            itemDescriptionOption+
+            '</select>'+
+            '</td>'+
+            '<td class="">'+
+            '<textarea type="text" name="invoice[item]['+count+'][quantity]" class="item-quantity" required readonly>1</textarea>'+
+            '</td>'+
+            '<td class="">'+
+            '<textarea type="text" name="invoice[item]['+count+'][cost]" class="item-cost" required></textarea>'+
+            '</td>'+
+            '<td class="invoice-tax">'+
+            '<input type="hidden" name="invoice[item]['+count+'][taxprice]" class="item-tax-price" value="0" readonly>' +
+            '</td>'+
+            '<td class="">'+
+            '<textarea type="text" name="invoice[item]['+count+'][price]" class="item-total-price" readonly></textarea>'+
+            '<input type="hidden" class="item-price">'+
+            '</td>' +
+            '<td>' +
+            '<a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>' +
+            '<a class="badge badge-danger badge-sm badge-pill delete m-1">Delete</a>' +
+            '</td>' +
+            '</tr>';
+    }else{
+        var item_html = '<tr class="item-row">'+
+            '<td class="">'+
+            '<textarea name="invoice[item]['+count+'][name]" class="item-name" required></textarea>'+
+            '</td>'+
+            '<td class="invoice-item">'+
+            '<textarea name="invoice[item]['+count+'][descr]" class="item-descr"></textarea>'+
+            '</td>'+
+            '<td class="">'+
+            '<textarea type="text" name="invoice[item]['+count+'][quantity]" class="item-quantity" required>1</textarea>'+
+            '</td>'+
+            '<td class="">'+
+            '<textarea type="text" name="invoice[item]['+count+'][cost]" class="item-cost" required></textarea>'+
+            '</td>'+
+            '<td class="invoice-tax">'+
+            '<input type="hidden" name="invoice[item]['+count+'][taxprice]" class="item-tax-price" value="0" readonly>' +
+            '</td>'+
+            '<td class="">'+
+            '<textarea type="text" name="invoice[item]['+count+'][price]" class="item-total-price" readonly></textarea>'+
+            '<input type="hidden" class="item-price">'+
+            '</td>' +
+            '<td>' +
+            '<a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>' +
+            '<a class="badge badge-danger badge-sm badge-pill delete m-1">Delete</a>' +
+            '</td>' +
+            '</tr>';
+    }
 
     if (count === 0) {
         $(".invoice-items tbody").prepend(item_html);
@@ -311,6 +355,7 @@ $(document).ready(function () {
             toastr.error('One row is compulsory for invoice.', 'Warning');
         }
         bind();
+        update_price()
         return false;
     });
 

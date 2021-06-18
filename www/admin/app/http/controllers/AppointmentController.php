@@ -916,7 +916,7 @@ class AppointmentController extends Controller
             exit();
         }
 
-        if (!unlink(DIR . '/public/uploads/appointment/reports/' . $appointment_id . '/' . $file)) {
+        if (!unlink(DIR . 'public/uploads/appointment/reports/' . $appointment_id . '/' . $file)) {
             echo("Error deleting $file");
         } else {
             $data['report'] = $this->url->post('name');
