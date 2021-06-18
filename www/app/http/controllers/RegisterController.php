@@ -7,8 +7,11 @@ class RegisterController extends Controller
 {
 	public function index() 
 	{
+        $data = array();
 		$data['header'] = $this->load->view('front/common/header');
 		$data['footer'] = $this->load->view('front/common/footer');
+        $this->load->controller('common');
+        $data = array_merge($data, $this->controller_common->index());
 		$this->response->setOutput($this->load->view('front/register', $data));
 
 		if ($this->user_agent->isLogged()) {

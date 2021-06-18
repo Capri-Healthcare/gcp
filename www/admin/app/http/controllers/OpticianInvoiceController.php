@@ -19,6 +19,9 @@ class OpticianInvoiceController extends Controller
         $data['period']['start'] = $this->url->get('start');
         $data['period']['end'] = $this->url->get('end');
         $data['period']['status'] = $this->url->get('status');
+        $data['period']['optician'] = $this->url->get('optician');
+
+        $data['dropdown_optician_selected'] = $this->url->get('optician');
 
         if (!empty($data['period']['start']) && !empty($data['period']['end']) && !$this->controller_common->validateDate($data['period']['start']) && !$this->controller_common->validateDate($data['period']['end'])) {
             $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
@@ -41,6 +44,8 @@ class OpticianInvoiceController extends Controller
         } else {
             $data['result'] = $this->model_opticianinvoice->allInvoices($data['period'], null, $data['common']['user']);
         }
+
+        $data['optician_user'] = $this->model_opticianinvoice->checkUserRole(constant('USER_ROLE_ID')['Optician']);
 
         /* Set confirmation message if page submitted before */
         if (isset($this->session->data['message'])) {
