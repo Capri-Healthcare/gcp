@@ -2,7 +2,7 @@
 <!-- Invoice List Page start -->
 <div class="page-title">
     <div class="row align-items-center">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <h2 class="page-title-text d-inline-block"><?php echo $page_title?></h2>
             <div class="breadcrumbs d-inline-block">
                 <ul>
@@ -11,11 +11,20 @@
                 </ul>
             </div>
         </div>
-        <div class="col-sm-6 text-right">
+        <div class="col-sm-8 text-right">
             <div class="btn btn-white btn-sm text-left mr-2">
                 <i class="ti-filter text-danger pr-2"></i>
                 <input type="text" class="table-date-range">
             </div>
+                <div class="btn btn-white btn-sm text-left mr-2">
+                    <i class="ti-filter text-danger pr-2"></i>
+                    <select class="status" style="border: 0px;">
+                        <?php foreach (constant('STATUS_PAYMENT_INVOIVE') as $key => $status) { ?>
+                                <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>>
+                                    <?php echo $status; ?></option>
+                            <?php } ?>
+                    </select>
+                </div>
             <div class="dropdown d-inline-block mr-2">
                 <a class="btn btn-white btn-sm dropdown-toggle" data-toggle="dropdown"><i class="ti-download text-primary pr-2"></i> Export</a>
                 <ul class="dropdown-menu dropdown-menu-right export-button">
@@ -32,6 +41,10 @@
         </div>
     </div>
 </div>
+    <input type="hidden" id="startDate"
+           value="<?php echo $_GET['start'] ?? date_format(date_create(date('Y-m-d ' . '00:00:00')), 'Y-m-d'); ?>">
+    <input type="hidden" id="endDate"
+           value="<?php echo $_GET['end'] ?? date_format(date_create(date('Y-m-d ' . '23:59:59')), 'Y-m-d'); ?>">
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="table-responsive">
@@ -158,7 +171,13 @@
         });
 
         $('.table-date-range').on('apply.daterangepicker', function(ev, picker) {
-            window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>optician/invoices'+'&start='+picker.startDate.format('YYYY-MM-DD')+'&end='+picker.endDate.format('YYYY-MM-DD'));
+            window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>optician-invoices'+'&start='+picker.startDate.format('YYYY-MM-DD')+'&end='+picker.endDate.format('YYYY-MM-DD'));
+        });
+
+        $('.status').on('change', function (e) {
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+            window.location.replace('<?php echo URL_ADMIN . DIR_ROUTE; ?>optician-invoices' + '&status=' + e.currentTarget.value + '&start=' + startDate + '&end=' + endDate);
         });
 
         var invoiceTable = $('.invoice-table').DataTable({

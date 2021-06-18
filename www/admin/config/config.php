@@ -211,3 +211,14 @@ define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');
 define('STATUS_FOLLOWUP_NEW', 'NEW');
 define('STATUS_PAYMENT_UNPAID', 'UNPAID');
 define('STATUS_PAYMENT_PAID', 'PAID');
+define('STATUS_PAYMENT_INVOIVE', [
+    'PAID' => 'Paid',
+    'UNPAID' => 'Unpaid',
+    'Partially Paid' => 'Partially Paid',
+    'Pending' => 'Pending',
+    'In Process' => 'In Process',
+    'Cancelled' => 'Cancelled',
+    'Other' => 'Other',
+    'Unknown' => 'Unknown',
+ ]
+);
