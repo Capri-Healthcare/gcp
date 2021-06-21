@@ -370,6 +370,14 @@ class OpticianInvoiceController extends Controller
             $data['invoice']['user_id'] = $this->session->data['user_id'];
             $result = $this->model_opticianinvoice->createInvoice($data['invoice']);
             if ((int)$result) {
+
+                foreach(json_decode($data['invoice']['item'],true) as $list){
+                    $followup['optician_invoice_id'] = $result;
+                    $followup['patient_id'] = $list['patient_id'];
+                    $followup['optician_id'] = $this->session->data['user_id'];
+                    $this->model_opticianinvoice->updateInvoiceIdFollowup($followup);
+                }
+
                 $this->model_opticianinvoice->updateInsurersDetailsInInvoice($result, $data['invoice']);
                 $this->createPDF($result);
                 if ($data['invoice']['inv_status'] == "1") {

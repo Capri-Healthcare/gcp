@@ -21,10 +21,8 @@
         <input type="hidden" name="_token" value="<?php echo $common['token']; ?>">
         <input type="hidden" name="invoice[id]" value="<?php echo $result['id']; ?>">
         <input type="hidden" name="invoice[appointment_id]" value="<?php echo $result['appointment_id']; ?>">
-        <input type="hidden" name="hidden_medical_insurers_name" id="hidden_medical_insurers_name"
-               value="<?php echo $result['medical_insurers_name']; ?>">
-        <input type="hidden" name="hidden_policyholders_name" id="hidden_policyholders_name"
-               value="<?php echo $result['policyholders_name']; ?>">
+        <input type="hidden" name="hidden_medical_insurers_name" id="hidden_medical_insurers_name" value="<?php echo $result['medical_insurers_name']; ?>">
+        <input type="hidden" name="hidden_policyholders_name" id="hidden_policyholders_name" value="<?php echo $result['policyholders_name']; ?>">
         <input type="hidden" name="hidden_membership_number" id="hidden_membership_number"
                value="<?php echo $result['membership_number']; ?>">
         <input type="hidden" name="hidden_scheme_name" id="hidden_scheme_name"
@@ -159,16 +157,15 @@
                         foreach ($result['items'] as $key => $value) { ?>
                             <tr class="item-row">
                                 <td>
-                                    <select name="invoice[item][<?php echo $key; ?>][name]"
-                                            class="item-name form-control"
-                                            required>
+                                    <select name="invoice[item][<?php echo $key; ?>][name]" class="item-name form-control" onchange="reportPatient(event)" data-row="<?php echo $key; ?>" required>
                                         <option value="">Select Patient</option>
                                         <?php if (!empty($patient)) {
                                             foreach ($patient as $list) { ?>
-                                                <option value="<?php echo $list['firstname'] . " " . $list['lastname'] ?>" <?php echo ($value['name'] == $list['firstname'] . " " . $list['lastname']) ? 'selected' : '' ?>><?php echo $list['firstname'] . " " . $list['lastname'] ?></option>
+                                                <option value="<?php echo $list['firstname'] . " " . $list['lastname'] ?>" <?php echo ($value['name'] == $list['firstname'] . " " . $list['lastname']) ? 'selected' : '' ?> data-patientid="<?php echo $list['patient_id'] ?>"><?php echo $list['firstname'] . " " . $list['lastname'] ?></option>
                                             <?php }
                                         } ?>
                                     </select>
+                                    <input type="hidden" name="invoice[item][<?php echo $key; ?>][patient_id]" value="<?php echo $value['patient_id']?>">
                                 </td>
                                 <td class="invoice-item">
                                     <select name="invoice[item][<?php echo $key; ?>][descr]" class="item-descr form-control" onchange="reportPrice(event)" data-row="<?php echo $key; ?>">
@@ -184,8 +181,7 @@
                                               required><?php echo $value['quantity']; ?></textarea>
                                 </td>
                                 <td class="">
-                                    <textarea type="text" name="invoice[item][<?php echo $key; ?>][cost]"
-                                              class="item-cost" required><?php echo $value['cost']; ?></textarea>
+                                    <textarea type="text" name="invoice[item][<?php echo $key; ?>][cost]" class="item-cost" required><?php echo $value['cost']; ?></textarea>
                                 </td>
                                 <td class="invoice-tax">
                                     <?php if (!empty($value['tax'])) {
@@ -226,14 +222,15 @@
                     } else { ?>
                         <tr class="item-row">
                             <td>
-                                <select name="invoice[item][0][name]" class="item-name form-control" required>
+                                <select name="invoice[item][0][name]" class="item-name form-control" onchange="reportPatient(event)" data-row="0" required>
                                     <option value="">Select Patient</option>
                                     <?php if (!empty($patient)) {
                                         foreach ($patient as $list) { ?>
-                                            <option value="<?php echo $list['firstname'] . " " . $list['lastname'] ?>"><?php echo $list['firstname'] . " " . $list['lastname'] ?></option>
+                                            <option value="<?php echo $list['firstname'] . " " . $list['lastname'] ?>" data-patientid="<?php echo $list['patient_id'] ?>"><?php echo $list['firstname'] . " " . $list['lastname'] ?></option>
                                         <?php }
                                     } ?>
                                 </select>
+                                <input type="hidden" name="invoice[item][0][patient_id]" value="">
                             </td>
                             <td class="invoice-item">
                                 <select name="invoice[item][0][descr]" class="item-descr form-control" onchange="reportPrice(event)" data-row="0">
@@ -507,7 +504,7 @@
     var itemDescriptionOption = null;
     <?php if (!empty($patient)) {
     foreach ($patient as $list) { ?>
-     patientOption += '<option value="<?php echo $list["firstname"]. " " . $list["lastname"] ?>"><?php echo $list["firstname"]. " " . $list["lastname"] ?></option>';
+     patientOption += '<option value="<?php echo $list["firstname"]. " " . $list["lastname"] ?>" data-patientid="<?php echo $list["patient_id"] ?>"><?php echo $list["firstname"]. " " . $list["lastname"] ?></option>';
     <?php }
     } ?>
     <?php if (!empty($patient)) {
