@@ -490,12 +490,10 @@ class Appointment extends Model
 
         $body = "";
 
-        $body .= "<div style='font-size:13px;  padding-left:20px; padding-right:20px;'>";
+        $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
-        $body .= "Date of Visit " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
-        $body .= "Date Typed: " . date('d-m-Y');
-
-        $body .= "<br><br><br><br>";
+        $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
+        $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
 
         $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         $body .= $appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
@@ -588,9 +586,12 @@ class Appointment extends Model
 				    <img src='".URL."public/images/logo.jpg' alt='Glaucoma Care Plan' title='Glaucoma Care Plan' width='234' height='119' />
 				</td>" .
                 "<td align=right>
-				    <h4 style='font-size:18px; margin: 0 0 0; color: #333; text-align:right;'><strong>" . $doctor_data['name'] . "</strong></h4>
-					<span style='font-size: 13px; color: #333; text-align:right;'>" . $qualification . " </span> <br/>
-					<span style='font-size: 13px; color: #333; text-align:right;'>" . $position_specility . "</span>
+					<div style='text-align:right; color: #333;'>
+						<h4 style='font-size:18px; margin: 0 0 0;'><strong>" . $doctor_data['name'] . "</strong></h4>
+						<span style='font-size: 13px;'>" . $qualification . " </span><br/>
+						<span style='font-size: 13px;'>" . $position_specility . "</span>
+					</div>
+				    
 				</td>" .
             "</tr>" .
             "</table>";
@@ -632,7 +633,7 @@ class Appointment extends Model
                 margin: 150px 30px 50px 30px;
             }
             header {
-                position: fixed; top: -150px; left: 0px; right: 0px; height: 50px;
+                position: fixed; top: -125px; left: 0px; right: 0px; height: 50px;
             }
             footer {
 				position: fixed; bottom: -90px; left: 0px; right: 0px; height: 100px; 
@@ -706,10 +707,10 @@ class Appointment extends Model
 
         $body = "";
 
-        $body .= "<div style='font-size:13px;  padding-left:20px; padding-right:20px;'>";
+        $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
-        $body .= "<strong>Date Typed:</strong> " . date('d-m-Y');
+        $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
 
         $body .= "<br><br><br><br>";
 
@@ -724,7 +725,7 @@ class Appointment extends Model
         $body .= "<strong>Diagnosis:</strong> " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
         $body .= "<br>";
         $body .= "<strong>Current Treatment:</strong><br>";
-        $body .= "<table width='100%' border='1'>
+        $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
                                        <tr>
                                             <th>Drug Name</th>
                                             <th>Frequency</th>
@@ -758,7 +759,7 @@ class Appointment extends Model
 
         $body .= "<br>";
 
-        $body .= str_replace('{GP: Name}', NAME, "<p style='letter-spacing:0.6px'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to {GP: Name} so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>");
+        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to {GP: Name} so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
 
         $body .= "<br><br>";
 
