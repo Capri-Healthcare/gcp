@@ -18,27 +18,41 @@ class OpticianInvoiceController extends Controller
         $this->load->controller('common');
         $data['period']['start'] = $this->url->get('start');
         $data['period']['end'] = $this->url->get('end');
+        $data['period']['status'] = $this->url->get('status');
+        $data['period']['optician'] = $this->url->get('optician');
+
+        $data['dropdown_optician_selected'] = $this->url->get('optician');
 
         if (!empty($data['period']['start']) && !empty($data['period']['end']) && !$this->controller_common->validateDate($data['period']['start']) && !$this->controller_common->validateDate($data['period']['end'])) {
             $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
             $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
+            if (!empty($data['period']['status'])) {
+                $data['dropdown_selected'] = $data['period']['status'];
+            } else {
+                $data['period']['status'] = ucfirst(constant('STATUS_PAYMENT_UNPAID'));
+                $data['dropdown_selected'] = $data['period']['status'];
+            }
         } else {
             $data['period']['start'] = date('Y-m-d ' . '00:00:00');
             $data['period']['end'] = date('Y-m-d ' . '23:59:59');
+            $data['period']['status'] = ucfirst(constant('STATUS_PAYMENT_UNPAID'));
+            $data['dropdown_selected'] = ucfirst(constant('STATUS_PAYMENT_UNPAID'));
         }
 
         if ($data['common']['user']['role_id'] == '3' && $data['common']['info']['doctor_access'] == '1') {
             $data['result'] = $this->model_opticianinvoice->allInvoices($data['period'], $data['common']['user']);
         } else {
-
             $data['result'] = $this->model_opticianinvoice->allInvoices($data['period'], null, $data['common']['user']);
         }
+
+        $data['optician_user'] = $this->model_opticianinvoice->checkUserRole(constant('USER_ROLE_ID')['Optician']);
 
         /* Set confirmation message if page submitted before */
         if (isset($this->session->data['message'])) {
             $data['message'] = $this->session->data['message'];
             unset($this->session->data['message']);
         }
+
 
         /* Set page title */
         $data['page_title'] = 'Optician Invoices';
@@ -62,7 +76,7 @@ class OpticianInvoiceController extends Controller
          **/
         $id = (int)$this->url->get('id');
         if (empty($id) || !is_int($id)) {
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
 
         /**
@@ -82,7 +96,7 @@ class OpticianInvoiceController extends Controller
 
         if (!$data['result']) {
             $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Invoice does not exist in database!');
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
         $data['result']['items'] = json_decode($data['result']['items'], true);
         $data['method'] = $this->model_opticianinvoice->getPaymentMethod();
@@ -178,7 +192,7 @@ class OpticianInvoiceController extends Controller
          **/
         $id = (int)$this->url->get('id');
         if (empty($id) || !is_int($id)) {
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
 
         $this->load->model('commons');
@@ -201,7 +215,7 @@ class OpticianInvoiceController extends Controller
 
         if (!$data['result']) {
             $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Invoice does not exist in database!');
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
 
         $data['payment_method'] = $this->model_opticianinvoice->getPaymentMethod();
@@ -225,7 +239,7 @@ class OpticianInvoiceController extends Controller
     public function indexMail()
     {
         if (!isset($_POST['submit'])) {
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
         $data = $this->url->post;
         $this->load->controller('common');
@@ -233,7 +247,7 @@ class OpticianInvoiceController extends Controller
         $this->load->model('opticianinvoice');
         $result = $this->model_opticianinvoice->getInvoice($data['mail']['id']);
         if (empty($result)) {
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
 
         $data['mail']['email'] = $result['email'];
@@ -268,7 +282,7 @@ class OpticianInvoiceController extends Controller
          **/
         $id = (int)$this->url->get('id');
         if (empty($id) || !is_int($id)) {
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
 
         $data = $this->createPDFHTML($id);
@@ -284,7 +298,7 @@ class OpticianInvoiceController extends Controller
          **/
         $id = (int)$this->url->get('id');
         if (empty($id) || !is_int($id)) {
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
 
         $data = $this->createPDFHTML($id, 1);
@@ -298,7 +312,7 @@ class OpticianInvoiceController extends Controller
          * Check if from is submitted or not
          **/
         if (!isset($_POST['submit'])) {
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
         /**
          * Validate form data
@@ -393,7 +407,7 @@ class OpticianInvoiceController extends Controller
          * Check if from is submitted or not
          **/
         if (!isset($_POST['submit'])) {
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
         /**
          * Validate form data
@@ -593,7 +607,7 @@ class OpticianInvoiceController extends Controller
         //$result = $this->model_opticianinvoice->getInvoiceView($id);
 
         if (empty($result)) {
-              $this->url->redirect('optician-invoices');
+            $this->url->redirect('optician-invoices');
         }
 
 

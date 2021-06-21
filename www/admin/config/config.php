@@ -55,7 +55,7 @@ define('STATUS_MED_ROLE', ['NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' 
 
 define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter', 'Visual fields - Right eye' => 'Visual fields - Right eye', 'Visual fields - Left eye' => 'Visual fields - Left eye', 'OCT - Right eye' => 'OCT - Right eye', 'OCT - Left eye' => 'OCT - Left eye', 'Fundus - Right eye' => 'Fundus - Right eye', 'Fundus - Left eye' => 'Fundus - Left eye']);
 
-define('USER_ROLE_ID', ['Med. Secretary' => '7', 'GCP Secretary' => '11']);
+define('USER_ROLE_ID', ['Med. Secretary' => '7', 'GCP Secretary' => '11','Optician' => '9']);
 define('CC', 'chetanthumar@gmail.com,sanjay.makwana@tiez.nl');
 define('GCP_REQUIRE', ['YES' => 'Yes', 'NO' => 'No', 'OFFER' => 'Offered']);
 
@@ -211,3 +211,14 @@ define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');
 define('STATUS_FOLLOWUP_NEW', 'NEW');
 define('STATUS_PAYMENT_UNPAID', 'UNPAID');
 define('STATUS_PAYMENT_PAID', 'PAID');
+define('STATUS_PAYMENT_INVOIVE', [
+    'PAID' => 'Paid',
+    'UNPAID' => 'Unpaid',
+    'Partially Paid' => 'Partially Paid',
+    'Pending' => 'Pending',
+    'In Process' => 'In Process',
+    'Cancelled' => 'Cancelled',
+    'Other' => 'Other',
+    'Unknown' => 'Unknown',
+ ]
+);

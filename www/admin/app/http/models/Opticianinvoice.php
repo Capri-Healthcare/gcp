@@ -8,13 +8,21 @@ class Opticianinvoice extends Model
     public function allInvoices($period, $user = NULL, $role = Null)
     {
         if ($user != NULL) {
-            $query = $this->database->query("SELECT i.*, a.appointment_id AS appointment_unique, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.doctor_id = '" . $user['doctor'] . "' ORDER BY i.invoicedate DESC");
+            $query = $this->database->query("SELECT i.*, a.appointment_id AS appointment_unique, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.doctor_id = '" . $user['doctor'] . "' AND i.status = '".$period['status']."' ORDER BY i.invoicedate DESC");
         } else {
             if ($role['role'] == constant('DASHBOARD_NOT_SHOW')[1]) {
-                $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.user_id = '" . $role['user_id'] . "' ORDER BY i.invoicedate DESC");
+
+                $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.user_id = '" . $role['user_id'] . "' AND i.status = '".$period['status']."' ORDER BY i.invoicedate DESC");
 
             }else {
-                $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' ORDER BY i.invoicedate DESC");
+                if(!empty($period['optician']))
+                {
+                    $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.status = '".$period['status']."' AND i.user_id = '".$period['optician']."' ORDER BY i.invoicedate DESC");
+
+                }else{
+                    $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.status = '".$period['status']."' ORDER BY i.invoicedate DESC");
+
+                }
             }
         }
         return $query->rows;
@@ -190,6 +198,17 @@ class Opticianinvoice extends Model
 
             return true;
         } else {
+            return false;
+        }
+    }
+
+    public function checkUserRole($id)
+    {
+        $query = $this->database->query("SELECT u.user_id,CONCAT(u.firstname,' ',u.lastname) as fullname FROM `" . DB_PREFIX . "users` as u WHERE u.user_role = ".$id);
+
+        if ($query->num_rows > 0) {
+            return $query->rows;
+        } else{
             return false;
         }
     }
