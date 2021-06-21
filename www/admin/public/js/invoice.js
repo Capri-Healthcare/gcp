@@ -134,16 +134,21 @@ function reportPrice(e) {
     update_price()
 }
 
-
+function reportPatient(e) {
+    var patientid = $(e.currentTarget).find('option:selected').data('patientid');
+    var rowCost = $(e.currentTarget).data('row');
+    $("input[name='invoice[item]["+rowCost+"][patient_id]']").val(patientid);
+}
 function item_html(count) {
 
     if(isOptician == 0){
         var item_html = '<tr class="item-row">'+
             '<td class="">'+
-            '<select name="invoice[item]['+count+'][name]" class="item-name form-control" required>'+
+            '<select name="invoice[item]['+count+'][name]" class="item-name form-control" onchange="reportPatient(event)" data-row="'+count+'"  required>'+
             '<option value="">Select Patient</option>'+
             patientOption+
             '</select>'+
+            '<input type="hidden" name="invoice[item]['+count+'][patient_id]" value="">'+
             '</td>'+
             '<td class="invoice-item">'+
             '<select name="invoice[item]['+count+'][descr]" class="item-name form-control" data-row="'+count+'" onchange="reportPrice(event)" required>'+

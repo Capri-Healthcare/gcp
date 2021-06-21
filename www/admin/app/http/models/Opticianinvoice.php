@@ -154,6 +154,18 @@ class Opticianinvoice extends Model
         }
     }
 
+    public function updateInvoiceIdFollowup($followp)
+    {
+
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `optician_invoice_id` = ? WHERE `patient_id` = ? AND `optician_id` = ? AND optician_invoice_id IS NULL ", array((int)$followp['optician_invoice_id'], (int)$followp['patient_id'],(int)$followp['optician_id']));
+        if ($query->num_rows > 0) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function deleteInvoice($id)
     {
         $this->database->query("DELETE FROM `" . DB_PREFIX . "payments` WHERE `optician_invoice` = ?", array((int)$id));

@@ -122,7 +122,7 @@ class Opticianreferral extends Model
 
     public function getOpticianReferralPatient($id)
     {
-        $query = $this->database->query("Select r.* , p.firstname,p.lastname From `" . DB_PREFIX . "referral_list` AS r LEFT  JOIN `" . DB_PREFIX . "patients` AS p ON r.patient_id = p.id WHERE created_by = '" . $id . "' AND r.status = '".constant('STATUS_ACCEPTED')."' ORDER BY created_at DESC ,status ASC");
+        $query = $this->database->query("Select f.id , p.id AS patient_id,p.firstname,p.lastname From `" . DB_PREFIX . "followup_appointment` AS f JOIN `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE f.optician_id = '" . $id . "' AND f.followup_status = 'ACCEPTED' AND f.optician_invoice_id IS NULL ORDER BY f.created_at DESC");
 
         if ($query->num_rows > 0) {
             return $query->rows;
