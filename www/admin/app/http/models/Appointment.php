@@ -637,6 +637,9 @@ class Appointment extends Model
             footer {
 				position: fixed; bottom: -90px; left: 0px; right: 0px; height: 100px; 
             }
+            body {  
+                font-family: 'Helvetica Neue, Helvetica, Arial, sans-serif';
+            }
 		  </style>
 		</head>
 		<body>
@@ -690,6 +693,11 @@ class Appointment extends Model
         $appointment['address'] = json_decode($appointment['address'], true);
         $doctor_data = $this->getDoctorData($appointment['doctor_id']);
         $prescription = $this->model_appointment->getPrescription($appointment_id);
+
+        $about_doctor = json_decode($doctor_data['about'], true);
+        $qualification = $about_doctor['degree'] . ', ' . $about_doctor['awards'];
+        $position_specility = $about_doctor['position'] . ', ' . $about_doctor['specility'];
+
         if (!empty($prescription)) {
             $prescription['prescription'] = json_decode($prescription['prescription'], true);
         } else {
@@ -700,8 +708,8 @@ class Appointment extends Model
 
         $body .= "<div style='font-size:13px;  padding-left:20px; padding-right:20px;'>";
 
-        $body .= "Date of Visit " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
-        $body .= "Date Typed: " . date('d-m-Y');
+        $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
+        $body .= "<strong>Date Typed:</strong> " . date('d-m-Y');
 
         $body .= "<br><br><br><br>";
 
@@ -711,16 +719,15 @@ class Appointment extends Model
 
         $body .= "<br><br><br>";
 
-        $body .= "Dear " . ucfirst($appointment['firstname']) . "<br>";
-        $body .= "Diagnosis: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
+        $body .= "Dear " . ucfirst($appointment['firstname']);
+        $body .= "<br><br>";
+        $body .= "<strong>Diagnosis:</strong> " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
         $body .= "<br>";
-        $body .= "Current Treatment:<br><br>";
+        $body .= "<strong>Current Treatment:</strong><br>";
         $body .= "<table width='100%' border='1'>
                                        <tr>
                                             <th>Drug Name</th>
-                                            <!--th>Generic</th-->
                                             <th>Frequency</th>
-                                            <!--th style='width: 13%;'>Duration</th-->
                                             <th>Instruction</th>
                                             <th>Start date</th>
                                             <th>End date</th>
@@ -746,7 +753,7 @@ class Appointment extends Model
         $body .= "</table>";
         $body .= "<br>";
 
-        $body .= "Follow up: ";
+        $body .= "<strong>Follow up:</strong> ";
         $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']] : '';
 
         $body .= "<br>";
@@ -757,9 +764,9 @@ class Appointment extends Model
 
         $body .= "Kind regards<br>Yours sincerely";
 
-        $body .= "<br><br><br>";
+        $body .= "<br>";
 
-        $body .= "<b>Mr Tarun Sharma</b><br><b>MBBS, MD in Glaucoma, FRCS Ed.</b><br><b>Consultant Ophthalmic Surgeon.</b>";
+        $body .= $doctor_data['name'] . "<br>" . $qualification . "<br>" . $position_specility;
 
         $body .= "</div>";
 
