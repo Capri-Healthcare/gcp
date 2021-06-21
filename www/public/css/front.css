@@ -357,7 +357,7 @@ body{
 }
 
 .my-login-page .card-wrapper {
-	width: 400px;
+	width: 450px;
     margin: 0 auto;
 }
 
@@ -423,4 +423,44 @@ body{
 
 .my-login-page .form-group a{
     color: #005eb8;
+}
+
+.tab_main{
+    float: none;
+    display: block;
+    width: 100%;
+}
+
+.tab_button {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgb(31 127 216 / 8%);
+    width: 30%;
+    text-align: center;
+    padding: 10px;
+    margin: 0 0px 15px 15px;
+    display: inline-block;
+    float: none;
+    cursor: pointer;
+}
+
+.tab_button:first-child{
+    margin-left: 0;
+}
+
+.tab_button i{
+    color: #005eb8;
+}
+
+.tab_button p{
+    margin: 0;
+    font-size: 13px;
+}
+
+.tab_button:hover{
+    background: #005eb8;
+}
+
+.tab_button:hover p, .tab_button:hover i{
+    color: #fff;
 }

@@ -212,6 +212,11 @@
         text-align: center;
         width: 100%;
     }
+	.tab_button{
+        width: 29%;
+        margin: 0 0px 15px 10px;
+    }
+}
 }
 
 @media screen and (max-width: 425px) {

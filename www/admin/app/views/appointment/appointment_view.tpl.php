@@ -826,19 +826,21 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>To Optom / Third Party</td>
-                                        <td> 
-                                            <span style="font-size: 16px; margin-right: 15px;">
-                                                <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=to_optom_or_third_party&action=download"><i
-                                                            class="ti-download"></i></a>
-                                            </span>
-                                            <span style="font-size: 16px; margin-right: 15px;">
-                                                <a href="index.php?route=appointment/view&id=<?php echo $result['id']; ?>&doc_type=to_optom_or_third_party"><i
-                                                            class="ti-email"></i></a>
-                                            </span>
-                                        </td>
-                                    </tr>
+                                    <?php if($result['optician_id'] > 0 ){ ?>
+                                        <tr>
+                                            <td>To Optom / Third Party</td>
+                                            <td> 
+                                                <span style="font-size: 16px; margin-right: 15px;">
+                                                    <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=to_optom_or_third_party&action=download"><i
+                                                                class="ti-download"></i></a>
+                                                </span>
+                                                <span style="font-size: 16px; margin-right: 15px;">
+                                                    <a href="index.php?route=appointment/view&id=<?php echo $result['id']; ?>&doc_type=to_optom_or_third_party"><i
+                                                                class="ti-email"></i></a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                     <!--tr>
                                         <td>Discharge letter</td>
                                         <td> 

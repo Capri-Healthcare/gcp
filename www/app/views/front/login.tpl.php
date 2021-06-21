@@ -6,6 +6,20 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Login</h4>
+							<div class="tab_main">
+								<div class="tab_button">
+									<i class="fas fa-user-md"></i>
+									<p>I'm a Doctor</p>
+								</div>
+								<div class="tab_button">
+								<i class="fas fa-user-nurse"></i>
+									<p>I'm a Optician</p>
+								</div>
+								<div class="tab_button">
+									<i class="fas fa-procedures"></i>
+									<p>I'm a Patient</p>
+								</div>
+							</div>
 							<form method="POST" class="my-login-validation" novalidate="">
 								<div class="form-group">
 									<label for="email">E-Mail Address <span class="error">*</span></label>

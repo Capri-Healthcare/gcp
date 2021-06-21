@@ -480,8 +480,16 @@ class Appointment extends Model
 
         $appointment = $this->getAppointment($appointment_id);
         $appointment['address'] = json_decode($appointment['address'], true);
+        
         $doctor_data = $this->getDoctorData($appointment['doctor_id']);
+        $about_doctor = json_decode($doctor_data['about'], true);
+        $qualification = $about_doctor['degree'] . ', ' . $about_doctor['awards'];
+        $position_specility = $about_doctor['position'] . ', ' . $about_doctor['specility'];
+
         $prescription = $this->model_appointment->getPrescription($appointment_id);
+        $optician_data = $this->getOpticianDetails($appointment['optician_id']);
+        $optician_address = $about_doctor = json_decode($optician_data['address'], true);;
+
         if (!empty($prescription)) {
             $prescription['prescription'] = json_decode($prescription['prescription'], true);
         } else {
@@ -495,28 +503,30 @@ class Appointment extends Model
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
 
-        $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
-        $body .= $appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
+        $body .= "<br><br><br>";
+
+        $body .= ucfirst($optician_data['firstname']) . " " . ucfirst($optician_data['lastname']) . "<br>";
+        $body .= $optician_address['address']['address1'] . "," . $optician_address['address']['address2'] . "<br>";
         $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
 
         $body .= "<br><br><br>";
 
-        $body .= "Dear " . ucfirst($appointment['firstname']) . "<br><br>";
+        $body .= "Dear " . ucfirst($optician_data['firstname']) . " " . ucfirst($optician_data['lastname']) . "<br><br>";
 
         $body .= "<b>Name: </b>".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         $body .= "<b>DOB: </b>".date_format(date_create($appointment['patient_dob']), 'd-m-Y'). "<br>";
         $body .= "<b>Address: </b>".$appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
         $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
 
-        $body .= "Diagnosis: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
+        $body .= "<br><br><br>";
+
+        $body .= "<strong>Diagnosis:</strong> " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
         $body .= "<br>";
-        $body .= "Current Treatment:<br><br>";
-        $body .= "<table width='100%' border='1'>
+        $body .= "<strong>Current Treatment:</strong><br>";
+        $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
                                        <tr>
                                             <th>Drug Name</th>
-                                            <!--th>Generic</th-->
                                             <th>Frequency</th>
-                                            <!--th style='width: 13%;'>Duration</th-->
                                             <th>Instruction</th>
                                             <th>Start date</th>
                                             <th>End date</th>
@@ -542,24 +552,24 @@ class Appointment extends Model
         $body .= "</table>";
         $body .= "<br>";
 
-        $body .= "Follow up: ";
+        $body .= "<strong>Follow up: </strong>";
         $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']] : '';
 
-        $body .= "<br>";
+        $body .= "<br><br>";
 
-        $body .= str_replace('{Patient: Name}', ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) , "<p style='letter-spacing:0.6px'>Thank you for your kind referral for {Patient: Name} to my private Complex Glaucoma/ Cataract clinic.</p>");
+        $body .= "<p style='letter-spacing:0.6px'>Thank you for your kind referral for ".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname'])." to my private Complex Glaucoma/ Cataract clinic.</p>";
 
         $body .= "<br><br>";
 
         $body .= "Kind regards<br>Yours sincerely";
 
-        $body .= "<br><br><br>";
+        $body .= "<br>";
 
-        $body .= "<b>Mr Tarun Sharma</b><br><b>MBBS, MD in Glaucoma, FRCS Ed.</b><br><b>Consultant Ophthalmic Surgeon.</b>";
+        $body .= $doctor_data['name'] . "<br>" . $qualification . "<br>" . $position_specility;
 
         $body .= "</div>";
 
-        $filename = str_replace(" ", "-", $appointment['name']) . 'appointment-latter-notes-letter.pdf';
+        $filename = str_replace(" ", "-", $appointment['name']) . '-third-party-letter.pdf';
         $this->generatePdfFile($appointment_id, $body, $filename, $action);
     }
 
@@ -715,7 +725,7 @@ class Appointment extends Model
         $body .= "<br><br><br><br>";
 
         $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
-        $body .= $appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
+        $body .= $appointment['address']['address1'] . "," . $appointment['address']['address2'] . "<br>";
         $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
 
         $body .= "<br><br><br>";
@@ -817,6 +827,16 @@ class Appointment extends Model
     public function getMaxIOPAppointment($data)
     {
         $query = $this->database->query("SELECT MAX(`intraocular_pressure_right`) AS iop_right,MAX(`intraocular_pressure_left`) AS iop_left FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='" . $data['patient_id'] . "' AND status ='5' ORDER BY date DESC");
+
+        if ($query->num_rows > 0) {
+            return $query->row;
+        } else {
+            return false;
+        }
+    }
+
+    public function getOpticianDetails($optician_id){
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE user_id ='" . $optician_id . "'");
 
         if ($query->num_rows > 0) {
             return $query->row;
