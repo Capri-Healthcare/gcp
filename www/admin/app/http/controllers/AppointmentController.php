@@ -764,7 +764,7 @@ class AppointmentController extends Controller
 
             if ($data['mail']['doc_type'] == "to_patient_or_gp") {
                 // Generate examination doc
-                $filename = strtolower(str_replace(" ", "-", $result['name'])) . '-appointment-letter.pdf';
+                $filename = strtolower(str_replace(" ", "-", $result['name'])) . '-patient-letter.pdf';
                 $appointment_id = $data['mail']['id'];
                 $this->model_appointment->generateToPatientOrGpDoc($appointment_id, 'email');
                 $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];

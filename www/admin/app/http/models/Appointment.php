@@ -490,12 +490,10 @@ class Appointment extends Model
 
         $body = "";
 
-        $body .= "<div style='font-size:13px;  padding-left:20px; padding-right:20px;'>";
+        $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
-        $body .= "Date of Visit " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
-        $body .= "Date Typed: " . date('d-m-Y');
-
-        $body .= "<br><br><br><br>";
+        $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
+        $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
 
         $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         $body .= $appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
@@ -588,9 +586,12 @@ class Appointment extends Model
 				    <img src='".URL."public/images/logo.jpg' alt='Glaucoma Care Plan' title='Glaucoma Care Plan' width='234' height='119' />
 				</td>" .
                 "<td align=right>
-				    <h4 style='font-size:18px; margin: 0 0 0; color: #333; text-align:right;'><strong>" . $doctor_data['name'] . "</strong></h4>
-					<span style='font-size: 13px; color: #333; text-align:right;'>" . $qualification . " </span> <br/>
-					<span style='font-size: 13px; color: #333; text-align:right;'>" . $position_specility . "</span>
+					<div style='text-align:right; color: #333;'>
+						<h4 style='font-size:18px; margin: 0 0 0;'><strong>" . $doctor_data['name'] . "</strong></h4>
+						<span style='font-size: 13px;'>" . $qualification . " </span><br/>
+						<span style='font-size: 13px;'>" . $position_specility . "</span>
+					</div>
+				    
 				</td>" .
             "</tr>" .
             "</table>";
@@ -632,10 +633,13 @@ class Appointment extends Model
                 margin: 150px 30px 50px 30px;
             }
             header {
-                position: fixed; top: -150px; left: 0px; right: 0px; height: 50px;
+                position: fixed; top: -125px; left: 0px; right: 0px; height: 50px;
             }
             footer {
 				position: fixed; bottom: -90px; left: 0px; right: 0px; height: 100px; 
+            }
+            body {  
+                font-family: 'Helvetica Neue, Helvetica, Arial, sans-serif';
             }
 		  </style>
 		</head>
@@ -690,6 +694,11 @@ class Appointment extends Model
         $appointment['address'] = json_decode($appointment['address'], true);
         $doctor_data = $this->getDoctorData($appointment['doctor_id']);
         $prescription = $this->model_appointment->getPrescription($appointment_id);
+
+        $about_doctor = json_decode($doctor_data['about'], true);
+        $qualification = $about_doctor['degree'] . ', ' . $about_doctor['awards'];
+        $position_specility = $about_doctor['position'] . ', ' . $about_doctor['specility'];
+
         if (!empty($prescription)) {
             $prescription['prescription'] = json_decode($prescription['prescription'], true);
         } else {
@@ -698,10 +707,10 @@ class Appointment extends Model
 
         $body = "";
 
-        $body .= "<div style='font-size:13px;  padding-left:20px; padding-right:20px;'>";
+        $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
-        $body .= "Date of Visit " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
-        $body .= "Date Typed: " . date('d-m-Y');
+        $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
+        $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
 
         $body .= "<br><br><br><br>";
 
@@ -711,16 +720,15 @@ class Appointment extends Model
 
         $body .= "<br><br><br>";
 
-        $body .= "Dear " . ucfirst($appointment['firstname']) . "<br>";
-        $body .= "Diagnosis: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
+        $body .= "Dear " . ucfirst($appointment['firstname']);
+        $body .= "<br><br>";
+        $body .= "<strong>Diagnosis:</strong> " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
         $body .= "<br>";
-        $body .= "Current Treatment:<br><br>";
-        $body .= "<table width='100%' border='1'>
+        $body .= "<strong>Current Treatment:</strong><br>";
+        $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
                                        <tr>
                                             <th>Drug Name</th>
-                                            <!--th>Generic</th-->
                                             <th>Frequency</th>
-                                            <!--th style='width: 13%;'>Duration</th-->
                                             <th>Instruction</th>
                                             <th>Start date</th>
                                             <th>End date</th>
@@ -746,20 +754,20 @@ class Appointment extends Model
         $body .= "</table>";
         $body .= "<br>";
 
-        $body .= "Follow up: ";
+        $body .= "<strong>Follow up:</strong> ";
         $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']] : '';
 
         $body .= "<br>";
 
-        $body .= str_replace('{GP: Name}', NAME, "<p style='letter-spacing:0.6px'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to {GP: Name} so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>");
+        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to {GP: Name} so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
 
         $body .= "<br><br>";
 
         $body .= "Kind regards<br>Yours sincerely";
 
-        $body .= "<br><br><br>";
+        $body .= "<br>";
 
-        $body .= "<b>Mr Tarun Sharma</b><br><b>MBBS, MD in Glaucoma, FRCS Ed.</b><br><b>Consultant Ophthalmic Surgeon.</b>";
+        $body .= $doctor_data['name'] . "<br>" . $qualification . "<br>" . $position_specility;
 
         $body .= "</div>";
 
