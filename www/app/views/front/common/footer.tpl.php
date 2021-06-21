@@ -1,4 +1,3 @@
-<script src="public/js/vendor.min.js"></script>
 <footer class="footer">
     <div class="container">
         <div class="footer_logo">
@@ -25,4 +24,37 @@
         </ul>
     </div>
 </footer>
+
+<!-- Set Confirmation Message on create, update and delete -->
+<!-- Included Scripts -->
+<script src="<?php echo URL.'public/js/vendor.min.js'; ?>"></script>
+<script src="<?php echo URL.'public/js/custom.js'; ?>"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<?php echo "Hello".print_r($this->session->data['message']);?>
+<?php
+if (!empty($this->session->data['message'])) { ?>
+    <!-- Set Confirmation Message on create, update and delete -->
+    <script>
+        /*Set toastr Option*/
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "10000",
+            "hideDuration": "10000",
+            "timeOut": "5000",
+            "extendedTimeOut": "800",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr.<?php echo $this->session->data['message']['alert']; ?>('<?php echo  $this->session->data['message']['value']; ?>', '<?php echo ucfirst($this->session->data['message']['alert']); ?>');
+    </script>
+<?php } ?>
 

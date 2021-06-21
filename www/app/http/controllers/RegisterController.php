@@ -7,16 +7,31 @@ class RegisterController extends Controller
 {
 	public function index() 
 	{
+
+
         $data = array();
 		$data['header'] = $this->load->view('front/common/header');
 		$data['footer'] = $this->load->view('front/common/footer');
+
         $this->load->controller('common');
         $data = array_merge($data, $this->controller_common->index());
-		$this->response->setOutput($this->load->view('front/register', $data));
 
 		if ($this->user_agent->isLogged()) {
 			$this->url->redirect('user/appointments');
 		}
+
+        if (isset($this->session->data['error'])) {
+            $data['error'] = $this->session->data['error'];
+            unset($this->session->data['error']);
+        }
+        if (isset($this->session->data['success'])) {
+            $data['success'] = $this->session->data['success'];
+            unset($this->session->data['success']);
+        }
+
+        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
+        $this->response->setOutput($this->load->view('front/register', $data));
+
 		/**
 		* Get service page data from DB
 		**/
@@ -45,17 +60,7 @@ class RegisterController extends Controller
 		$this->load->model('user');
 		$data['gp_practices'] = $this->model_user->getGpPractice();
 
-		if (isset($this->session->data['error'])) {
-			$data['error'] = $this->session->data['error'];
-			unset($this->session->data['error']);
-		}
-		if (isset($this->session->data['success'])) {
-			$data['success'] = $this->session->data['success'];
-			unset($this->session->data['success']);
-		}
 
-		$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-		$data['active'] = 'register';*/
 		/**
 		* Load register view
 		* Pass data to view
@@ -68,6 +73,7 @@ class RegisterController extends Controller
 	**/
 	public function register() 
 	{
+
 		if ($this->user_agent->isLogged()) {
 			$this->url->redirect('user/appointments');
 		}
@@ -75,7 +81,8 @@ class RegisterController extends Controller
 		* Intilize Url class for post and get request
 		**/
 		$data = $this->url->post;
-		/** 
+
+		/**
 		* Check submit is POST request 
 		* Validaate input field
         **/
@@ -83,7 +90,9 @@ class RegisterController extends Controller
 		$this->load->controller('common');
 		$lang = $this->controller_common->getLanguage();
 		if (!isset($_POST['register']) || !$this->validate($data)) {
+
 			$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_please_enter_valid_data_in_input_box']);
+
 			$this->url->redirect('register');
 		}
 		
@@ -94,7 +103,7 @@ class RegisterController extends Controller
 			$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_security_token_is_missing']);
 			$this->url->redirect('register');
 		}
-		//echo "<pre>"; print_r($data); echo "<br>";exit;
+        //$this->session->data['message']
 		/*Intiate login Model*/
 		/** 
 		* Check if user already registerd or not
@@ -113,20 +122,39 @@ class RegisterController extends Controller
 			* Create user account
 			* Insert value in DB
 			**/
+
 			$data['datetime'] = date('Y-m-d H:i:s');
-			$user = $this->model_register->createOpticianAccount($data);
-			if ($user) {
-				$this->sendOpticianAccountMail($data);
-				/**
-				* Set success message 
-				* Redirect to login page for login
-				**/
-				$this->session->data['message'] = array('alert' => 'success', 'value' => $lang['text_account_created_succefully_check_your_mail_for_more_info']);
-				$this->url->redirect('login');
-			} else {
-				$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_server_error']);
-				$this->url->redirect('register');
-			}
+
+			if($data['register_from'] != 'patient'){
+                $user = $this->model_register->createOpticianAccount($data);
+                if ($user) {
+                    $this->sendOpticianAccountMail($data);
+                    /**
+                     * Set success message
+                     * Redirect to login page for login
+                     **/
+                    $this->session->data['message'] = array('alert' => 'success', 'value' => $lang['text_account_created_succefully_check_your_mail_for_more_info']);
+                    $this->url->redirect('login');
+                } else {
+                    $this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_server_error']);
+                    $this->url->redirect('register');
+                }
+            }else{
+                $user = $this->model_register->createAccount($data);
+                if ($user) {
+                   // $this->sendOpticianAccountMail($data);
+                    /**
+                     * Set success message
+                     * Redirect to login page for login
+                     **/
+                    $this->session->data['message'] = array('alert' => 'success', 'value' => $lang['text_account_created_succefully_check_your_mail_for_more_info']);
+                    $this->url->redirect('login');
+                } else {
+                    $this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_server_error']);
+                    $this->url->redirect('register');
+                }
+            }
+
 			$this->url->redirect('login');
 		}
 	}
@@ -257,19 +285,7 @@ class RegisterController extends Controller
 			* Return false
 			**/
 			return false;
-		} elseif ($data['confirmpassword'] != $data['password']) {
-			/** 
-			* If Password does not match with confirmpassword 
-			* Return false
-			**/
-			return false;
-		} elseif ((strlen(trim($data['optician_shop_name'])) < 2) || (strlen(trim($data['optician_shop_name'])) > 48)) {
-			/** 
-			* If Optician name is not valid ( min 2 character or max 48 ) 
-			* Return false
-			**/
-			return false;
-		} else {
+		}else {
 			/** 
 			* Everything looks good 
 			* Return True

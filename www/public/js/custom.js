@@ -3,15 +3,15 @@
  * @version v3.0
  * @copyright 2020 Pepdev.
  */
- Dropzone.autoDiscover = false;
- $(document).ready(function () {
+Dropzone.autoDiscover = false;
+$(document).ready(function () {
     "use strict";
     //Color Picker
-    
+
     //*************************************************
     //On DOM Load  ************************************
     //*************************************************
-    $(window).on('load',function () {
+    $(window).on('load', function () {
         $('.slider-wrapper').flexslider({
             animation: "fade",
             animationLoop: true,
@@ -51,10 +51,10 @@
         inputBox($(this));
     });
 
-    $(".input-box input, .input-box select, .input-box textarea").each(function() {
+    $(".input-box input, .input-box select, .input-box textarea").each(function () {
         inputBox($(this));
     });
-        
+
     //*************************************************
     //Tooltip  ****************************************
     //*************************************************
@@ -63,7 +63,7 @@
     //*************************************************
     //Menu  *******************************************
     //*************************************************
-    
+
     $('.fixed-on-scroll').scrollToFixed();
 
     $('.fixed-on-scroll-colored-background').scrollToFixed({
@@ -114,7 +114,7 @@
     //*************************************************
     $('.theme-accordion:nth-child(1) .theme-accordion-bdy').slideDown();
     $('.theme-accordion:nth-child(1) .theme-accordion-control .fa').addClass('fa-minus');
-    $('.theme-accordion-hdr').click(function() {
+    $('.theme-accordion-hdr').click(function () {
         $('.theme-accordion-bdy').slideUp();
         $('.theme-accordion-control .fa').removeClass('fa-minus');
         if ($(this).parents('.theme-accordion').find('.theme-accordion-bdy').css('display') == "none") {
@@ -174,7 +174,7 @@
     }, {
         offset: '50%'
     });
-    
+
     //Services Search
     $('input#search-services').keyup(function () {
         var filter = $('#search-services').val().toUpperCase();
@@ -262,8 +262,8 @@
     //Contact Form Validation
     $('#contact-submit').click(function () {
         var clck_invld = 0,
-        mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
-        mob_filter = /^[0-9]*$/;
+            mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
+            mob_filter = /^[0-9]*$/;
         if ($('#contact-subject').val().trim().length < 3) {
             $('#contact-subject').parent('.contact-input').addClass('is-invalid');
             $('#contact-subject').parent('.contact-input').addClass('is-dirty');
@@ -296,15 +296,14 @@
     //Login Form Validation
     $('#login-submit').click(function () {
         var clck_invld = 0,
-        mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
-        bot_number, bot_number_array, total;
+            mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
+            bot_number, bot_number_array, total;
         if ($('#login-bot').val().trim().length < 1) {
-            $('#login-bot').parent('.form-input').addClass('is-invalid');
-            $('#login-bot').parent('.form-input').addClass('is-dirty');
+            $('#login-bot').addClass('is-invalid');
             clck_invld = 1;
             $('#login-bot').focus();
         } else if ($('#login-bot').val().trim().length > 0) {
-            bot_number = $('#login-bot+label').text();
+            bot_number = $('#login-bot-label').text();
             bot_number_array = bot_number.match(/[\d\.]+/g);
             total = 0;
             if (bot_number_array.length > 0) {
@@ -312,28 +311,25 @@
                     total += +element;
                 });
                 if ($('#login-bot').val().trim() !== total.toString()) {
-                    $('#login-bot').parent('.form-input').addClass('is-invalid');
-                    $('#login-bot').parent('.form-input').addClass('is-dirty');
+                    $('#login-bot').addClass('is-invalid');
                     clck_invld = 1;
                     $('#login-bot').focus();
                 }
             } else {
-                $('#login-bot').parent('.form-input').addClass('is-invalid');
-                $('#login-bot').parent('.form-input').addClass('is-dirty');
+                $('#login-bot').addClass('is-invalid');
+                $('#login-bot').addClass('is-dirty');
                 clck_invld = 1;
                 $('#login-bot').focus();
             }
         }
 
         if ($('#login-password').val().trim().length < 4) {
-            $('#login-password').parent('.form-input').addClass('is-invalid');
-            $('#login-password').parent('.form-input').addClass('is-dirty');
+            $('#login-password').addClass('is-invalid');
             clck_invld = 1;
             $('#login-password').focus();
         }
         if (!mail_filter.test($('#login-email').val())) {
-            $('#login-email').parent('.form-input').addClass('is-invalid');
-            $('#login-email').parent('.form-input').addClass('is-dirty');
+            $('#login-email').addClass('is-invalid');
             clck_invld = 1;
             $('#login-email').focus();
         }
@@ -344,17 +340,20 @@
 
     //Register Form Validation
     $('#register-submit').click(function () {
+        var form = $("#register_from").val();
+
+        $('body').find('.form-control').removeClass("is-invalid");
+
         var clck_invld = 0,
-        mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
-        mob_filter = /^[0-9]*$/,
-        bot_number, bot_number_array, total;
+            mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
+            mob_filter = /^[0-9]*$/,
+            bot_number, bot_number_array, total;
         if ($('#register-bot').val().trim().length < 1) {
-            $('#register-bot').parent('.form-input').addClass('is-invalid');
-            $('#register-bot').parent('.form-input').addClass('is-dirty');
+            $('#register-bot').addClass('is-invalid');
             clck_invld = 1;
             $('#register-bot').focus();
         } else if ($('#register-bot').val().trim().length > 0) {
-            bot_number = $('#register-bot+label').text();
+            bot_number = $("#register-bot-label").text();
             bot_number_array = bot_number.match(/[\d\.]+/g);
             total = 0;
             if (bot_number_array.length > 0) {
@@ -362,66 +361,69 @@
                     total += +element;
                 });
                 if ($('#register-bot').val().trim() !== total.toString()) {
-                    $('#register-bot').parent('.form-input').addClass('is-invalid');
-                    $('#register-bot').parent('.form-input').addClass('is-dirty');
+                    $('#register-bot').addClass('is-invalid');
                     clck_invld = 1;
                     $('#register-bot').focus();
                 }
             } else {
-                $('#register-bot').parent('.form-input').addClass('is-invalid');
-                $('#register-bot').parent('.form-input').addClass('is-dirty');
+                $('#register-bot').addClass('is-invalid');
                 clck_invld = 1;
                 $('#register-bot').focus();
             }
         }
 
-        if (!($('#register-confirm-password').val().trim() == $('#register-password').val().trim())) {
-            $('#register-confirm-password').parent('.form-input').addClass('is-invalid');
-            $('#register-confirm-password').parent('.form-input').addClass('is-dirty');
-            clck_invld = 1;
-            $('#register-confirm-password').focus();
-        }
-        if ($('#register-confirm-password').val().trim().length < 6) {
-            $('#register-confirm-password').parent('.form-input').addClass('is-invalid');
-            $('#register-confirm-password').parent('.form-input').addClass('is-dirty');
-            clck_invld = 1;
-            $('#register-confirm-password').focus();
-        }
         if ($('#register-password').val().trim().length < 6) {
-            $('#register-password').parent('.form-input').addClass('is-invalid');
-            $('#register-password').parent('.form-input').addClass('is-dirty');
+            $('#register-password').addClass('is-invalid');
             clck_invld = 1;
             $('#register-password').focus();
         }
         if (!mob_filter.test($('#register-mobile').val())) {
-            $('#register-mobile').parent('.form-input').addClass('is-invalid');
-            $('#register-mobile').parent('.form-input').addClass('is-dirty');
+            $('#register-mobile').addClass('is-invalid');
             clck_invld = 1;
             $('#register-mobile').focus();
         }
-        if ($('#register-mobile').val().trim().length < 4) {
-            $('#register-mobile').parent('.form-input').addClass('is-invalid');
-            $('#register-mobile').parent('.form-input').addClass('is-dirty');
+        if ($('#register-mobile').val().trim().length < 10 || $('#register-mobile').val().trim().length < 11) {
+            $('#register-mobile').addClass('is-invalid');
             clck_invld = 1;
             $('#register-mobile').focus();
         }
         if (!mail_filter.test($('#register-email').val())) {
-            $('#register-email').parent('.form-input').addClass('is-invalid');
-            $('#register-email').parent('.form-input').addClass('is-dirty');
+            $('#register-email').addClass('is-invalid');
             clck_invld = 1;
             $('#register-email').focus();
         }
         if ($('#register-last-name').val().trim().length < 2) {
-            $('#register-last-name').parent('.form-input').addClass('is-invalid');
-            $('#register-last-name').parent('.form-input').addClass('is-dirty');
+            $('#register-last-name').addClass('is-invalid');
             clck_invld = 1;
             $('#register-last-name').focus();
         }
         if ($('#register-first-name').val().trim().length < 2) {
-            $('#register-first-name').parent('.form-input').addClass('is-invalid');
-            $('#register-first-name').parent('.form-input').addClass('is-dirty');
+            $('#register-first-name').addClass('is-invalid');
             clck_invld = 1;
             $('#register-first-name').focus();
+        }
+        if (form == 'optician') {
+            if ($('#register-optician-practice-name').val().trim().length < 2) {
+                $('#register-optician-practice-name').addClass('is-invalid');
+                clck_invld = 1;
+                $('#register-optician-practice-name').focus();
+            }
+            if ($('#register-goc-registration').val().trim().length < 2) {
+                $('#register-goc-registration').addClass('is-invalid');
+                clck_invld = 1;
+                $('#register-goc-registration').focus();
+            }
+            if ($('#register-user-name').val().trim().length < 2) {
+                $('#register-user-name').addClass('is-invalid');
+                clck_invld = 1;
+                $('#register-user-name').focus();
+            }
+        } else {
+            if ($('#gp_practice').val() == '') {
+                $('#gp_practice').addClass('is-invalid');
+                clck_invld = 1;
+                $('#gp_practice').focus();
+            }
         }
         if (clck_invld === 1) {
             return false;
@@ -431,8 +433,8 @@
     //Forgot Password Form Validation
     $('#forgot-submit').click(function () {
         var clck_invld = 0,
-        mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
-        bot_number, bot_number_array, total;
+            mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
+            bot_number, bot_number_array, total;
         if ($('#forgot-bot').val().trim().length < 1) {
             $('#forgot-bot').parent('.form-input').addClass('is-invalid');
             $('#forgot-bot').parent('.form-input').addClass('is-dirty');
@@ -513,8 +515,8 @@
             $('#login-bot').focus();
         } else if ($('#login-bot').val().trim().length > 0) {
             var bot_number = $('#login-bot+label').text(),
-            bot_number_array = bot_number.match(/[\d\.]+/g),
-            total = 0;
+                bot_number_array = bot_number.match(/[\d\.]+/g),
+                total = 0;
             if (bot_number_array.length > 0) {
                 $.each(bot_number_array, function (key, element) {
                     total += +element;
@@ -558,7 +560,7 @@
     //Subscribe Form Validation
     $('#subscribe-submit').click(function () {
         var clck_invld = 0,
-        mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+            mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
         if (!mail_filter.test($('#subscribe-email').val())) {
             $('#subscribe-email').parent('.form-input').addClass('is-invalid');
             $('#subscribe-email').parent('.form-input').addClass('is-dirty');
@@ -569,18 +571,18 @@
             return false;
         }
     });
-	
-	
-	//Dropzone.autoDiscover = false;
+
+
+    //Dropzone.autoDiscover = false;
     $("#appointment-image-upload").dropzone({
         addRemoveLinks: true,
         acceptedFiles: "image/*,application/pdf",
         maxFilesize: 5,
         autoProcessQueue: false,
         dictDefaultMessage: 'Drop files here or click here to upload <br /><br /> Only Image',
-        init: function() {
+        init: function () {
             var appointmentImageDropzone = this;
-			var appointment_id = $('.appointment-id').val();
+            var appointment_id = $('.appointment-id').val();
             $('#appointment-image-upload-modal').on('click', '.upload-appointment-image', function (e) {
                 e.preventDefault();
                 if (appointmentImageDropzone.files.length <= 0) {
@@ -596,31 +598,31 @@
                 $('body').block({
                     message: '<div class="font-14"><div class="icon-refresh spinner mr-2 d-inline-block"></div>Uploading ...</div>',
                     baseZ: 2000,
-                    overlayCSS: { backgroundColor: '#fff', opacity: 0.8, cursor: 'wait' },
-                    css: { border: 0, padding: '10px 15px', color: '#333', width: 'auto', backgroundColor: 'transparent' }
+                    overlayCSS: {backgroundColor: '#fff', opacity: 0.8, cursor: 'wait'},
+                    css: {border: 0, padding: '10px 15px', color: '#333', width: 'auto', backgroundColor: 'transparent'}
                 });
                 appointmentImageDropzone.processQueue();
             });
 
-            this.on("sending", function(file, xhr, formData) {
+            this.on("sending", function (file, xhr, formData) {
                 formData.append("id", appointment_id);
                 formData.append("patient", $('.patient-id').val());
                 formData.append("appointment_image_name", $('#appointment-image-upload-modal input[name=appointment_image_name]').val());
                 formData.append("_token", $('.token').val());
             });
 
-            this.on("success", function(file, xhr) {
+            this.on("success", function (file, xhr) {
                 var response = JSON.parse(xhr);
-				var appointment_image_name = $('#appointment-image-upload-modal input[name=appointment_image_name]').val();
+                var appointment_image_name = $('#appointment-image-upload-modal input[name=appointment_image_name]').val();
                 if (response.error === false) {
-					$('.report-container').append('<div class="report-image">'+
-						'<a data-fancybox="gallery" href="../public/uploads/appointment/images/'+appointment_id+'/'+response.name+'">'+
-						'<img class="blur_img" src="../public/uploads/appointment/images/'+appointment_id+'/'+response.name+'" alt="'+appointment_image_name+'">'+
-						'<span>'+appointment_image_name+'</span>'+
-						'</a>'+
-						'<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="fas fa-times"></a></div>'+
-						'<input type="hidden" name="image_name" value="'+response.name+'">'+
-						'</div>');
+                    $('.report-container').append('<div class="report-image">' +
+                        '<a data-fancybox="gallery" href="../public/uploads/appointment/images/' + appointment_id + '/' + response.name + '">' +
+                        '<img class="blur_img" src="../public/uploads/appointment/images/' + appointment_id + '/' + response.name + '" alt="' + appointment_image_name + '">' +
+                        '<span>' + appointment_image_name + '</span>' +
+                        '</a>' +
+                        '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="fas fa-times"></a></div>' +
+                        '<input type="hidden" name="image_name" value="' + response.name + '">' +
+                        '</div>');
                     toastr.success('Uploaded Succefully', 'Image uploaded Succefully.');
                 } else {
                     toastr.error('Upload Error', response.message);
@@ -631,175 +633,219 @@
                 $.unblockUI();
             });
 
-            this.on("error", function(file, message) { 
+            this.on("error", function (file, message) {
                 toastr.error('Error', message);
-                this.removeFile(file); 
+                this.removeFile(file);
             });
         },
     });
 
-     $("#optician-referral-upload").dropzone({
-         addRemoveLinks: true,
-         acceptedFiles: "image/*",
-         maxFilesize: 1,
-         maxFiles:1,
-         autoProcessQueue: false,
-         dictDefaultMessage: 'Drop files here or click here to upload <br /><br /> Only Image',
-         init: function() {
-             var reportDropzone = this;
-             $('#reports-modal').on('click', '.upload-report', function (e) {
-                 e.preventDefault();
-                 if (reportDropzone.files.length <= 0) {
-                     toastr.error('Error', 'Please select file to upload.');
-                     return false;
-                 }
+    $("#optician-referral-upload").dropzone({
+        addRemoveLinks: true,
+        acceptedFiles: "image/*",
+        maxFilesize: 1,
+        maxFiles: 1,
+        autoProcessQueue: false,
+        dictDefaultMessage: 'Drop files here or click here to upload <br /><br /> Only Image',
+        init: function () {
+            var reportDropzone = this;
+            $('#reports-modal').on('click', '.upload-report', function (e) {
+                e.preventDefault();
+                if (reportDropzone.files.length <= 0) {
+                    toastr.error('Error', 'Please select file to upload.');
+                    return false;
+                }
 
-                 $('body').block({
-                     message: '<div class="font-14"><div class="icon-refresh spinner mr-2 d-inline-block"></div>Uploading ...</div>',
-                     baseZ: 2000,
-                     overlayCSS: { backgroundColor: '#fff', opacity: 0.8, cursor: 'wait' },
-                     css: { border: 0, padding: '10px 15px', color: '#333', width: 'auto', backgroundColor: 'transparent' }
-                 });
-                 reportDropzone.processQueue();
-             });
+                $('body').block({
+                    message: '<div class="font-14"><div class="icon-refresh spinner mr-2 d-inline-block"></div>Uploading ...</div>',
+                    baseZ: 2000,
+                    overlayCSS: {backgroundColor: '#fff', opacity: 0.8, cursor: 'wait'},
+                    css: {border: 0, padding: '10px 15px', color: '#333', width: 'auto', backgroundColor: 'transparent'}
+                });
+                reportDropzone.processQueue();
+            });
 
-             this.on("sending", function(file, xhr, formData) {
-                 formData.append("id", $('.patient-id').val());
-                 formData.append("_token", $('#token').val());
-             });
+            this.on("sending", function (file, xhr, formData) {
+                formData.append("id", $('.patient-id').val());
+                formData.append("_token", $('#token').val());
+            });
 
-             this.on("success", function(file, xhr) {
-                 var response = JSON.parse(xhr);
-                 if (response.error === false) {
+            this.on("success", function (file, xhr) {
+                var response = JSON.parse(xhr);
+                if (response.error === false) {
 
-                     var patient_id = $('.patient-id').val();
-                     $('#report-delete-div-'+patient_id).remove();
-                     $('.report-container').append('<div class="report-image" id="report-delete-div-'+patient_id+'">'+
-                         '<a data-fancybox="gallery" href="../public/uploads/patient/document/'+patient_id+'/'+response.name+'">'+
-                         '<img class="img-thumbnail" src="../public/uploads/patient/document/'+patient_id+'/'+response.name+'" alt="">'+
-                         '<span>'+response.name+'</span>'+
-                         '</a>'+
-                         '<div class="ddi-report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel"  data-patient-id="'+patient_id+'" data-file-name="'+response.name+'"></a></div>'+
-                         '<input type="hidden" name="report_name" id="report_name" value="'+response.name+'">'+
-                         '</div>');
+                    var patient_id = $('.patient-id').val();
+                    $('#report-delete-div-' + patient_id).remove();
+                    $('.report-container').append('<div class="report-image" id="report-delete-div-' + patient_id + '">' +
+                        '<a data-fancybox="gallery" href="../public/uploads/patient/document/' + patient_id + '/' + response.name + '">' +
+                        '<img class="img-thumbnail" src="../public/uploads/patient/document/' + patient_id + '/' + response.name + '" alt="">' +
+                        '<span>' + response.name + '</span>' +
+                        '</a>' +
+                        '<div class="ddi-report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel"  data-patient-id="' + patient_id + '" data-file-name="' + response.name + '"></a></div>' +
+                        '<input type="hidden" name="report_name" id="report_name" value="' + response.name + '">' +
+                        '</div>');
 
-                     toastr.success('Uploaded Succefully', 'Document uploaded Succefully.');
-                 } else {
-                     toastr.error('Upload Error', response.message);
-                 }
-                 reportDropzone.removeFile(file);
-                 $('#reports-modal').modal('hide');
-                 $.unblockUI();
-             });
+                    toastr.success('Uploaded Succefully', 'Document uploaded Succefully.');
+                } else {
+                    toastr.error('Upload Error', response.message);
+                }
+                reportDropzone.removeFile(file);
+                $('#reports-modal').modal('hide');
+                $.unblockUI();
+            });
 
-             this.on("error", function(file, message) {
-                 toastr.error('Error', message);
-                 this.removeFile(file);
-             });
-         },
-     });
+            this.on("error", function (file, message) {
+                toastr.error('Error', message);
+                this.removeFile(file);
+            });
+        },
+    });
 
-     $('.report-delete-action').on('click', function(){
-         $('#patient_id').val($(this).data('patient-id'));
-     });
+    $('.report-delete-action').on('click', function () {
+        $('#patient_id').val($(this).data('patient-id'));
+    });
 
 
-     $('#delete-ddi-image').on('click', function(){
-         var patient_id = $("#patient_id").val();
-         var name = $("#report_name").val();
+    $('#delete-ddi-image').on('click', function () {
+        var patient_id = $("#patient_id").val();
+        var name = $("#report_name").val();
 
-         removeDDIDocument(patient_id,name);
-     });
+        removeDDIDocument(patient_id, name);
+    });
 
-     function removeDDIDocument(id,name) {
-         $.ajax({
-             type: 'POST',
-             url: 'index.php?route=user/glaucoma/documentremove',
-             data: {id: id,name:name},
-             error: function() {
-                 toastr.error('Error', 'File could not be deleted. Please try again...');
-             },
-             success: function(data) {
-                 toastr.success('Success', 'File Deleted Succefully.');
-                 $('#report-delete-div-'+id).remove();
-             }
-         });
-     }
+    function removeDDIDocument(id, name) {
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?route=user/glaucoma/documentremove',
+            data: {id: id, name: name},
+            error: function () {
+                toastr.error('Error', 'File could not be deleted. Please try again...');
+            },
+            success: function (data) {
+                toastr.success('Success', 'File Deleted Succefully.');
+                $('#report-delete-div-' + id).remove();
+            }
+        });
+    }
 
-	$('body').on('click', '.report-delete', function () {
+    $('body').on('click', '.report-delete', function () {
         var ele = $(this).parent('.report-image'),
-        id = $('.appointment-id').val(),
-        filename = ele.find('input[name=image_name]').val();
+            id = $('.appointment-id').val(),
+            filename = ele.find('input[name=image_name]').val();
         removeReport(id, filename);
         ele.remove();
     });
-	function removeReport(id, filename) {
+
+    function removeReport(id, filename) {
         $.ajax({
             type: 'POST',
             url: 'index.php?route=images/appointmentImageRemove',
             data: {id: id, filename: filename},
-            error: function() {
+            error: function () {
                 toastr.error('Error', 'File could not be deleted. Please try again...');
             },
-            success: function(data) {
+            success: function (data) {
                 toastr.success('Success', 'File Deleted Succefully.');
             }
         });
     }
 
-    $('#how_the_account_is_to_be_settled').on('change', function(){
-		
-		var selected_how_the_account_is_to_be_settled = $(this).children("option:selected").val();
-		
-		if(selected_how_the_account_is_to_be_settled == 'Not Applicable' || selected_how_the_account_is_to_be_settled == 'Self Funding'){
-			
-			$('#policyholders_name').attr('disabled', 'disabled');
-			$('#medical_insurers_name').attr('disabled', 'disabled');
-			$('#membership_number').attr('disabled', 'disabled');
-			$('#scheme_name').attr('disabled', 'disabled');
-			$('#authorisation_number').attr('disabled', 'disabled');
-			$('#corporate_company_scheme').attr('disabled', 'disabled');
-			$('#employer').attr('disabled', 'disabled');
-			
-			$('#policyholders_name').val('');
-			$('#medical_insurers_name').val('');
-			$('#membership_number').val('');
-			$('#scheme_name').val('');
-			$('#authorisation_number').val('');
-			$('#corporate_company_scheme').val('');
+    $('#how_the_account_is_to_be_settled').on('change', function () {
+
+        var selected_how_the_account_is_to_be_settled = $(this).children("option:selected").val();
+
+        if (selected_how_the_account_is_to_be_settled == 'Not Applicable' || selected_how_the_account_is_to_be_settled == 'Self Funding') {
+
+            $('#policyholders_name').attr('disabled', 'disabled');
+            $('#medical_insurers_name').attr('disabled', 'disabled');
+            $('#membership_number').attr('disabled', 'disabled');
+            $('#scheme_name').attr('disabled', 'disabled');
+            $('#authorisation_number').attr('disabled', 'disabled');
+            $('#corporate_company_scheme').attr('disabled', 'disabled');
+            $('#employer').attr('disabled', 'disabled');
+
+            $('#policyholders_name').val('');
+            $('#medical_insurers_name').val('');
+            $('#membership_number').val('');
+            $('#scheme_name').val('');
+            $('#authorisation_number').val('');
+            $('#corporate_company_scheme').val('');
             $('#employer').val('');
-			
-			$("#policyholders_name").addClass("readonly_input_class");
-			$("#medical_insurers_name").addClass("readonly_input_class");
-			$("#membership_number").addClass("readonly_input_class");
-			$("#scheme_name").addClass("readonly_input_class");
-			$("#authorisation_number").addClass("readonly_input_class");
-			$("#corporate_company_scheme").addClass("readonly_input_class");
-			$("#employer").addClass("readonly_input_class");
-			
-		} else {
-			$('#policyholders_name').removeAttr('disabled');
-			$('#medical_insurers_name').removeAttr('disabled');
-			$('#membership_number').removeAttr('disabled');
-			$('#scheme_name').removeAttr('disabled');
-			$('#authorisation_number').removeAttr('disabled');
-			$('#corporate_company_scheme').removeAttr('disabled');
-			$('#employer').removeAttr('disabled');
-			
-			$("#policyholders_name").removeClass("readonly_input_class");
-			$("#medical_insurers_name").removeClass("readonly_input_class");
-			$("#membership_number").removeClass("readonly_input_class");
-			$("#scheme_name").removeClass("readonly_input_class");
-			$("#authorisation_number").removeClass("readonly_input_class");
-			$("#corporate_company_scheme").removeClass("readonly_input_class");
-			$("#employer").removeClass("readonly_input_class");
-			
-		}
-	});
+
+            $("#policyholders_name").addClass("readonly_input_class");
+            $("#medical_insurers_name").addClass("readonly_input_class");
+            $("#membership_number").addClass("readonly_input_class");
+            $("#scheme_name").addClass("readonly_input_class");
+            $("#authorisation_number").addClass("readonly_input_class");
+            $("#corporate_company_scheme").addClass("readonly_input_class");
+            $("#employer").addClass("readonly_input_class");
+
+        } else {
+            $('#policyholders_name').removeAttr('disabled');
+            $('#medical_insurers_name').removeAttr('disabled');
+            $('#membership_number').removeAttr('disabled');
+            $('#scheme_name').removeAttr('disabled');
+            $('#authorisation_number').removeAttr('disabled');
+            $('#corporate_company_scheme').removeAttr('disabled');
+            $('#employer').removeAttr('disabled');
+
+            $("#policyholders_name").removeClass("readonly_input_class");
+            $("#medical_insurers_name").removeClass("readonly_input_class");
+            $("#membership_number").removeClass("readonly_input_class");
+            $("#scheme_name").removeClass("readonly_input_class");
+            $("#authorisation_number").removeClass("readonly_input_class");
+            $("#corporate_company_scheme").removeClass("readonly_input_class");
+            $("#employer").removeClass("readonly_input_class");
+
+        }
+    });
 
 });
 
+// Change Register tab
 
+function chnageRegisterForm(e) {
+    $('#register_from').val($(e.currentTarget).data('register'));
+    $(".tab_button").removeClass("active_tab");
+
+    if ($(e.currentTarget).data('register') == 'optician') {
+        $("#register-optician-practice-div").show();
+        $("#register-goc-div").show();
+        $("#register-user-div").show();
+        $("#register-optician-gppractice-div").hide();
+        $(e.currentTarget).addClass("active_tab");
+
+
+    } else {
+        $("#register-optician-practice-div").hide();
+        $("#register-goc-div").hide();
+        $("#register-goc-div").hide();
+        $("#register-user-div").hide();
+        $("#register-optician-gppractice-div").show();
+        $(e.currentTarget).addClass("active_tab");
+
+    }
+}
+
+// Change Login tab
+
+function chnageLoginForm(e) {
+    $('#login_from').val($(e.currentTarget).data('login'));
+    $(".tab_button").removeClass("active_tab");
+
+    if ($(e.currentTarget).data('login') == 'optician' || $(e.currentTarget).data('login') == 'doctor') {
+        $("#login-user-div").show();
+        $("#login-email-div").hide();
+        $(e.currentTarget).addClass("active_tab");
+
+
+    } else {
+        $("#login-user-div").hide();
+        $("#login-email-div").show();
+        $(e.currentTarget).addClass("active_tab");
+
+    }
+}
 
 
 

@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="public/css/style-blue.min.css">
     <link rel="stylesheet" href="public/css/front.css">
     <link rel="stylesheet" href="public/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <style>
+        .active_tab {
+            background-color: #005eb8;
+            color: white;
+        }
+        .active_tab i{
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
