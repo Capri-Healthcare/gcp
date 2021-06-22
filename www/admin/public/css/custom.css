@@ -57,3 +57,17 @@ img.form_thumb_img{
 ::placeholder {
 	color: #fff;
 }
+
+.page-menu .icon i{
+	color: #555;
+}
+
+.page-search input {
+    color: #555;
+    border: 1px solid #555;
+}
+
+.page-search input:focus {
+    color: #555;
+    border-color: #555;
+}
