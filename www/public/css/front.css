@@ -362,7 +362,7 @@ body{
 }
 
 .my-login-page .card-wrapper {
-	width: 450px;
+	width: 600px;
     margin: 0 auto;
 }
 
@@ -448,6 +448,7 @@ body{
     float: none;
     cursor: pointer;
     border: 1px solid #f1f1f1;
+    vertical-align: middle;
 }
 
 .tab_button:first-child{

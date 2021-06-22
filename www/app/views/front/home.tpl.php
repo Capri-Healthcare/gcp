@@ -9,7 +9,7 @@
                 <li>
                     <div class="banner_list">
                         <h6>I'm an Optometrist</h6>
-                        <img src="public/images/optometrist1.png" alt="I'm an Optometrist" title="I'm an Optometrist"/>
+                        <img src="public/images/optometrist1.png" alt="I'm an Optometrist" title="I'm an Optometrist" height=300 />
                         <div class="block_box">I want to refer a patient</div>
                     </div>
                 </li>

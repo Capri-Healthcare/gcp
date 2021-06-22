@@ -10,6 +10,7 @@
 		<link rel="icon" type="image/x-icon" href="<?php echo URL_ADMIN.'public/images/favicon.png'; ?>">
 	<?php } ?>
 	<link rel="stylesheet" href="<?php echo URL_ADMIN.'public/css/style.min.css'; ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo URL_ADMIN.'public/css/custom.css'; ?>" />
 	<script src="<?php echo URL_ADMIN.'public/js/vendor.min.js'; ?>"></script>
 	<script src="<?php echo URL_ADMIN.'public/js/custom.js'; ?>"></script>
 </head>

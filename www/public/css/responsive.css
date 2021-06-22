@@ -164,6 +164,9 @@
     .banner_list h6 {
         min-height: auto; 
     }
+    .tab_button p{
+        min-height: 40px;
+    }
 }
 
 @media screen and (max-width: 567px){
@@ -225,6 +228,9 @@
 	.tab_button{
         width: 29%;
         margin: 0 0px 15px 10px;
+    }
+    .tab_button p{
+        min-height: 60px;
     }
 }
 

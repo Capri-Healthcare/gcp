@@ -66,3 +66,11 @@ img.form_thumb_img{
 .menu-wrapper{
 	top: 77px;
 }
+
+.lgn-logo{
+	background: #fff !important;
+}
+
+.lgn-logo a img{
+	max-height: inherit !important;
+}

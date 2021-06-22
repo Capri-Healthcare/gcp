@@ -9,7 +9,7 @@
                                 <div class="tab_main">
                                     <div class="tab_button active_tab" data-register="optician"
                                          onclick="chnageRegisterForm(event)">
-                                        <i class="fas fa-user-nurse"></i>
+                                         <i class="fas fa-glasses"></i>
                                         <p>I'm an Optometrist</p>
                                     </div>
                                     <div class="tab_button" data-register="patient" onclick="chnageRegisterForm(event)">

@@ -22,14 +22,14 @@
                                     </div-->
                                     <a href="<?php echo URL."admin"; ?>">
                                         <div class="tab_button" data-login="optician">
-                                            <i class="fas fa-procedures"></i>
-                                            <p>I'm a Optician</p>
+                                            <i class="fas fa-glasses"></i>
+                                            <p>I'm an Optometrist</p>
                                         </div>
                                     </a>
                                     <a href="<?php echo URL."admin"; ?>">
-                                        <div class="tab_button" data-login="patient">
-                                            <i class="fas fa-user-nurse"></i>
-                                            <p>I'm a Doctor</p>
+                                        <div class="tab_button" data-login="doctor">
+                                            <i class="fas fa-user-md"></i>
+                                            <p>I'm a Ophthalmologist</p>
                                         </div>
                                     </a>
                                 </div>
