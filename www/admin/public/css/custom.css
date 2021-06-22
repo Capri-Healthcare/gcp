@@ -52,12 +52,12 @@ img.form_thumb_img{
 
 .page-search input {
     color: #555;
-    border: 1px solid #555;
+    border: 1px solid #ddd;
 }
 
 .page-search input:focus {
     color: #555;
-    border-color: #555;
+    border-color: #ddd;
 }
 
 .menu-light #logo{
