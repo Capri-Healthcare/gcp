@@ -31,7 +31,6 @@
 <script src="<?php echo URL.'public/js/custom.js'; ?>"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<?php echo "Hello".print_r($this->session->data['message']);?>
 <?php
 if (!empty($this->session->data['message'])) { ?>
     <!-- Set Confirmation Message on create, update and delete -->
