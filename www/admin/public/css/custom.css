@@ -46,18 +46,6 @@ img.form_thumb_img{
     border-radius: 50%;
 }
 
-::-webkit-input-placeholder {
-	color: #fff;
-}
-
-:-ms-input-placeholder { 
-	color: #fff;
-}
-
-::placeholder {
-	color: #fff;
-}
-
 .page-menu .icon i{
 	color: #555;
 }
@@ -70,4 +58,11 @@ img.form_thumb_img{
 .page-search input:focus {
     color: #555;
     border-color: #555;
+}
+
+.menu-light #logo{
+	border-bottom: none;
+}
+.menu-wrapper{
+	top: 77px;
 }

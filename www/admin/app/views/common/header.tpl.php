@@ -45,7 +45,7 @@
                     <div class="menu"><?php echo $common['admin_menu']; ?></div>
                 </div>
             <?php } ?>
-            <div class="page-hdr">
+            <div class="page-hdr <?php echo $common['theme']['header_color']; ?>">
                 <div class="row align-items-center">
                     <div class="col-4 col-md-7 page-hdr-left">
                         <!-- Logo Container -->
