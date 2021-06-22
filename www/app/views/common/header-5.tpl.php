@@ -47,10 +47,10 @@
                         <div class="user-name patient_right text-right" style="border-bottom:0px;">
                             <div class="menu-dropdown-wrapper">
                                 <a>
-                                    <div class="d-inline-block"><i class="far fa-user-circle" style="color: white;"></i></div>
+                                    <div class="d-inline-block"><i class="far fa-user-circle"></i></div>
                                     <div class="d-inline-block">
-                                        <span class="text-left" style="color: white;"><?php echo $lang['text_hello']; ?></span>
-                                        <h2 style="color: white;"><?php echo $user['name']; ?></h2>
+                                        <span class="text-left"><?php echo $lang['text_hello']; ?></span>
+                                        <h2><?php echo $user['name']; ?></h2>
                                     </div>
                                 </a>
                                 
@@ -73,9 +73,9 @@
                     </div>
                 <?php } else if(isset($doctor_details)){     ?>
                     <div class="user-name patient_right text-right" style="border-bottom:0px;">
-                        <div class="d-inline-block" style="vertical-align: middle"><i class="far fa-user-circle" style="color: white;"></i></div>
+                        <div class="d-inline-block" style="vertical-align: middle"><i class="far fa-user-circle"></i></div>
                         <div class="d-inline-block" style="vertical-align: middle">
-                            <span class="text-left" style="color: white; font-size:16px;"><?php echo $doctor_details['name']; ?></span>
+                            <span class="text-left" style="font-size:16px;"><?php echo $doctor_details['name']; ?></span>
                         </div>
                     </div>
                 <?php } ?>                
