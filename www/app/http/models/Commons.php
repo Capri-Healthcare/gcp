@@ -85,6 +85,7 @@ class Commons extends Model
 	{
 		$query = $this->database->query("SELECT subject, message, status FROM `" . DB_PREFIX . "email_template` WHERE `template` = ? LIMIT 1", array($id));
 		$data['template'] = $query->row;
+
 		$query = $this->database->query("SELECT * FROM  `" . DB_PREFIX . "setting` WHERE `name` = ? LIMIT 1", array('siteinfo'));
 		$data['common'] = json_decode($query->row['data'], true);
 		return $data;
@@ -157,4 +158,39 @@ class Commons extends Model
 			return false;
 		}
 	}
+
+    public function getFollowupforRemainder()
+    {
+        $query = $this->database->query("Select * From `" . DB_PREFIX . "followup_appointment` WHERE followup_status ='".constant('STATUS_FOLLOWUP_IN_QUEUE')."' AND reminder_count = '0' ");
+
+        if ($query->num_rows > 0) {
+            return $query->rows;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function updateFollowupStatus($data)
+    {
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `followup_status` = ?,`reminder_count` = ?,`modified_at` = ? WHERE `id` = ?", array($this->database->escape($data['status']),$data['reminder_count'], date('Y-m-d H:i:s'), $data['id']));
+
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function getFollowupByID($id)
+    {
+        $query = $this->database->query("Select f.*,p.email,p.title,p.firstname,p.lastname,p.nhs_patient_number,p.address,p.mobile,p.hospital_code From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE f.id = " . $id);
+
+        if ($query->num_rows > 0) {
+            return $query->row;
+        } else {
+            return false;
+        }
+    }
 }

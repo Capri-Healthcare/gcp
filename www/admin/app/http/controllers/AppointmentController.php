@@ -487,24 +487,7 @@ class AppointmentController extends Controller
                 $result = $this->model_appointment->updateAppointment($data['appointment']);
 
 
-                if ($data['appointment']['gcp_required'] == 'YES') {
-
-                    $this->newpatiengcpMail($data['appointment']['optician_id']);
-                    $this->load->model('followup');
-                    $followup['patient_id'] = $data['appointment']['patient_id'];
-                    $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
-                    $followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "days", strtotime(date('Y-m-d'))));
-
-                    $this->notificationToGCPForPatientFollowup($this->model_followup->createFollowup($followup));
-
-                }
-
                 $this->load->model('patient');
-
-                $patient['id'] = $data['appointment']['patient_id'];
-                $patient['is_glaucoma_required'] = $data['appointment']['gcp_required'];
-                $patient['gcp_followup_frequency'] = $data['appointment']['followup'];
-                $this->model_patient->updatePatientGCPStatus($patient);
 
                 // Notify patient when status change
                 if ($appointment_details['status'] != $data['appointment']['status']) {
@@ -534,6 +517,24 @@ class AppointmentController extends Controller
             }
             // Update Examination Notes
             if ($data['form_type'] == 'appointment_records') {
+
+                if ($data['appointment']['gcp_required'] == 'YES') {
+
+                    $this->newpatiengcpMail($data['appointment']['optician_id']);
+                    $this->load->model('followup');
+                    $followup['patient_id'] = $data['appointment']['patient_id'];
+                    $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
+                    $followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
+
+                    $this->notificationToGCPForPatientFollowup($this->model_followup->createFollowup($followup));
+
+                }
+
+                $this->load->model('patient');
+                $patient['id'] = $data['appointment']['patient_id'];
+                $patient['is_glaucoma_required'] = $data['appointment']['gcp_required'];
+                $patient['gcp_followup_frequency'] = $data['appointment']['followup'];
+                $this->model_patient->updatePatientGCPStatus($patient);
 
                 $this->model_appointment->updateExaminationNotes($data['appointment']);
                 $message = "Appointment Examination Note updated successfully.";

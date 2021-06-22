@@ -73,7 +73,9 @@ $router->post('images/appointmentImageRemove', 'AppointmentController@appointmen
 $router->post('form/savePreConsultationForm', 'AppointmentController@savePreConsultationForm');
 $router->get('appointment/videoConsultation', 'AppointmentController@startVideoConsultation');
 $router->get('video-consultation', 'AppointmentController@startVideoConsultation');
+
 $router->get('cronjobs/reminderBeforeAppointment', 'CronJobController@reminderBeforeAppointment');
+$router->get('cronjobs/gcp-sec-follow-up-reminder', 'CronJobController@reminderBeforeFollowupReminder');
 
 $router->get('test/tokbox', 'TestTokbox@index');
 $router->get('test/checkDocuSign', 'DocusignController@index');

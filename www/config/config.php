@@ -39,3 +39,4 @@ define('TOKEN_SALT', 'ugK)00e6YMxJ9CfF66L&W1G?EtKC|wJ-?79eYGAYAh7Kl|m2%4OR?b~aq%
 define('ROLE', ['0' => 'Patient','3' => 'Doctor', '7' => 'Med. Secretary', '9' => 'Optometrist', '11' => 'GCP Secretary']);
 define('GP_PRACTICE', ['1' => 'Dovecote Surgery','2' => 'Lordswood House Group Medial Practice', '3' => 'Ridgacre House Surgery ']);
 define('CC','chetanthumar@gmail.com');
+define('STATUS_FOLLOWUP_IN_QUEUE', 'IN_QUEUE');

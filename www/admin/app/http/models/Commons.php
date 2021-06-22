@@ -38,7 +38,7 @@ class Commons extends Model
         $data['user'] = $this->user_agent->getUserData($id);
         if($data['user']['role'] == constant('USER_ROLE_GCP'))
         {
-            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE payment_status ='UNPAID' ORDER BY created_at DESC ");
+            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE payment_status ='UNPAID' AND followup_status != '".constant('STATUS_FOLLOWUP_IN_QUEUE')."' ORDER BY created_at DESC ");
             return $query->row['Total'];
         }
         if($data['user']['role'] == constant('USER_ROLE_MED'))

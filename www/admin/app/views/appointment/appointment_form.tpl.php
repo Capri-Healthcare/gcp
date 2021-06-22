@@ -705,7 +705,10 @@
                                     <input type="hidden" name="form_type" value="appointment_records">
                                     <input type="hidden" class="appointment-id" name="appointment[id]"
                                            value="<?php echo $result['id']; ?>">
-
+                                    <input type="hidden" class="patient-id" name="appointment[patient_id]"
+                                           value="<?php echo $result['patient_id'] ?>">
+                                    <input type="hidden" class="appointment-id" name="appointment[optician_id]"
+                                           value="<?php echo $result['optician_id']; ?>">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
