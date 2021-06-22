@@ -295,6 +295,8 @@ $(document).ready(function () {
 
     //Login Form Validation
     $('#login-submit').click(function () {
+        var form = $("#login_from").val();
+        $('body').find('.form-control').removeClass("is-invalid");
         var clck_invld = 0,
             mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
             bot_number, bot_number_array, total;
@@ -328,11 +330,22 @@ $(document).ready(function () {
             clck_invld = 1;
             $('#login-password').focus();
         }
-        if (!mail_filter.test($('#login-email').val())) {
-            $('#login-email').addClass('is-invalid');
-            clck_invld = 1;
-            $('#login-email').focus();
+        if (form == 'optician' || form == 'doctor') {
+
+            if ($('#login-user-name').val().trim().length < 2) {
+                $('#login-user-name').addClass('is-invalid');
+                clck_invld = 1;
+                $('#login-user-name').focus();
+            }
+        }else{
+            if (!mail_filter.test($('#login-email').val())) {
+                $('#login-email').addClass('is-invalid');
+                clck_invld = 1;
+                $('#login-email').focus();
+            }
         }
+
+
         if (clck_invld === 1) {
             return false;
         }

@@ -55,10 +55,10 @@
                                 </div>
 
                                 <div class="form-group main_box form-bot-check">
-                                    <label for="register-bot"
+                                    <label for="login-bot"
                                            id="login-bot-label"><?php echo $lang['text_what_is'] . ' ' . rand(1, 10) . ' ' . $lang['text_plus'] . ' ' . rand(1, 10); ?>
                                         = <em> *</em></label>
-                                    <input type="number" name="bot-check" class="form-control" id="register-bot"
+                                    <input type="number" name="bot-check" class="form-control" id="login-bot"
                                            required>
                                     <div class="invalid-feedback">
                                         Please enter correct value!

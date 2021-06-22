@@ -16,8 +16,8 @@
                 <a href="<?php echo URL.DIR_ROUTE.'forgot'; ?>" class="forgot-pass"><?php echo $lang['text_forgot_password']; ?>?</a>
             </div>
             <div class="input-box form-bot-check">
-                <input class="" type="number" name="bot-check" id="login-bot" required>
                 <label class="" for="login-bot"><?php echo $lang['text_what_is'].' '.rand(1,10).' '.$lang['text_plus'].' '. rand(1,10); ?> = <em> *</em></label>
+                <input class="" type="number" name="bot-check" id="login-bot" required>
                 <span><?php echo $lang['text_what_is_error']; ?></span>
             </div>
             <div class="form-submit text-center">
