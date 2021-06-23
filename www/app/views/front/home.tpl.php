@@ -8,26 +8,23 @@
             <ul>
                 <li>
                     <div class="banner_list">
-                        <h6>I am an Optometrist</h6>
-                        <img src="public/images/optometrist1.png" alt="Optometrist" title="Optometrist" />
-                        <h6>I want to refer a patient</h6>
-                        <div class="block_box"></div>
+                        <h6>I'm an Optometrist</h6>
+                        <img src="public/images/optometrist1.png" alt="I'm an Optometrist" title="I'm an Optometrist" height=300 />
+                        <div class="block_box">I want to refer a patient</div>
                     </div>
                 </li>
                 <li>
                     <div class="banner_list">
-                        <h6>I am an Optometrist</h6>
-                        <img src="public/images/optometrist2.png" alt="Optometrist" title="Optometrist" />
-                        <h6>I want to refer a patient</h6>
-                        <div class="block_box"></div>
+                        <h6>I'm an Ophthalmologist</h6>
+                        <img src="public/images/optometrist2.png" alt="I'm an Ophthalmologist" title="I'm an Ophthalmologist" height=300 />
+                        <div class="block_box">I want to review a patient</div>
                     </div>
                 </li>
                 <li>
                     <div class="banner_list">
-                        <h6>I am an Optometrist</h6>
-                        <img src="public/images/optometrist3.png" alt="Optometrist" title="Optometrist" />
-                        <h6>I want to refer a patient</h6>
-                        <div class="block_box"></div>
+                        <h6>I'm a Patient</h6>
+                        <img src="public/images/optometrist3.png" alt="I'm a Patient" title="I'm a Patient" height=300 />
+                        <div class="block_box">I want to join glaucoma care plan</div>
                     </div>
                 </li>
             </ul>
@@ -101,8 +98,8 @@
                 <img src="public/images/screenshot.png" alt="Screenshot" title="Screenshot" />
             </div>
             <div class="appointment_right">
-                <h3>Book Your <br/> Appointment <br/> online</h3>
-                <p>Lorem ipsum dolor snsecte  adipiscing elit, sed <br/> diem nonummy nibh euismod tincidunt ut <br/> lacreet dolore magna aliguam erat volutpat.  .</p>
+                <h3>Book Your <br/> Appointment <br/> Online</h3>
+                <p></p>
             </div>
         </div>
     </div>
@@ -110,7 +107,7 @@
 
 <section class="information_block">
     <div class="container">
-        <p>You can call our team at <strong>0121 123 4567</strong> Mon-Fri 9am - 6pm, email us at <a href="">join@glaucomacareplan.co.uk</a> or fill the <a href="">Contact Form</a></p>
+        <p>You can call our team at <strong>0121 426 2030</strong> Mon-Fri 9am - 6pm, email us at <a href="">join@glaucomacareplan.co.uk</a> or fill the <a href="">Contact Form</a></p>
     </div>
 </section>
 

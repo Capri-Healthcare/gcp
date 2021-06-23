@@ -43,10 +43,10 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo URL; ?>">Home</a>
                                 </li>
-                                <li class="nav-item active">
+                                <li class="nav-item <?php echo ($selected_page == 'login') ? 'active' : ''; ?>">
                                     <a class="nav-link" href="<?php echo URL.DIR_ROUTE.'login'; ?>">Login</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item <?php echo ($selected_page == 'register') ? 'active' : ''; ?>">
                                     <a class="nav-link" href="<?php echo URL.DIR_ROUTE.'register'; ?>">Register</a>
                                 </li>
                             </ul>

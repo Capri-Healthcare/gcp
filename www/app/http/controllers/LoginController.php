@@ -13,8 +13,9 @@ class LoginController extends Controller
     {
 
         $data = array();
-        $data['header'] = $this->load->view('front/common/header');
-        $data['footer'] = $this->load->view('front/common/footer');
+        $data['selected_page'] = $this->url->get('route');
+        $data['header'] = $this->load->view('front/common/header', $data);
+        $data['footer'] = $this->load->view('front/common/footer'); 
 
 
         $this->load->controller('common');

@@ -397,3 +397,7 @@ img.form_thumb_img{
     display: inline-block;
     width: auto;
 }
+
+#hdr-wrapper{
+	background-color: #fff;
+}

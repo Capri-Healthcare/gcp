@@ -8,25 +8,37 @@
 							<h4 class="card-title">Login</h4>
                             <center>
                                 <div class="tab_main">
-                                    <div class="tab_button active_tab" data-login="doctor" onclick="chnageLoginForm(event)">
-                                        <i class="fas fa-user-nurse"></i>
-                                        <p>I'm a Doctor</p>
+                                    <div class="tab_button active_tab" data-login="patient" onclick="chnageLoginForm(event)">
+                                    <i class="fas fa-procedures"></i>
+                                        <p>I'm a Patient</p>
                                     </div>
-                                    <div class="tab_button" data-login="optician" onclick="chnageLoginForm(event)">
+                                    <!--div class="tab_button" data-login="optician" onclick="chnageLoginForm(event)">
                                         <i class="fas fa-procedures"></i>
                                         <p>I'm a Optician</p>
                                     </div>
-                                    <div class="tab_button" data-login="patient" onclick="chnageLoginForm(event)">
-                                        <i class="fas fa-procedures"></i>
-                                        <p>I'm a Patient</p>
-                                    </div>
+                                    <div class="tab_button" data-login="doctor" onclick="chnageLoginForm(event)">
+                                        <i class="fas fa-user-nurse"></i>
+                                        <p>I'm a Doctor</p>
+                                    </div-->
+                                    <a href="<?php echo URL."admin"; ?>">
+                                        <div class="tab_button" data-login="optician">
+                                            <i class="fas fa-glasses"></i>
+                                            <p>I'm an Optometrist</p>
+                                        </div>
+                                    </a>
+                                    <a href="<?php echo URL."admin"; ?>">
+                                        <div class="tab_button" data-login="doctor">
+                                            <i class="fas fa-user-md"></i>
+                                            <p>I'm a Ophthalmologist</p>
+                                        </div>
+                                    </a>
                                 </div>
                             </center>
 							<form method="POST"  action="<?php echo URL.DIR_ROUTE; ?>login" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="<?php echo $token; ?>">
-                                <input type="hidden" name="login_from" id="login_from" value="doctor">
+                                <input type="hidden" name="login_from" id="login_from" value="patient">
 
-                                <div class="form-group main_box" id="login-user-div">
+                                <div class="form-group main_box" id="login-user-div" style="display: none">
                                     <label for="username">User name <span class="error">*</span></label>
                                     <input type="text" class="form-control" name="username" id="login-user-name"
                                            value="">
@@ -35,7 +47,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group main_box" id="login-email-div" style="display: none">
+                                <div class="form-group main_box" id="login-email-div">
                                     <label for="email">E-Mail Address <span class="error">*</span></label>
                                     <input id="login-email" type="email" class="form-control" name="email"
                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" required
@@ -71,7 +83,7 @@
 									</button>
 								</div>
 								<div class="mt-4 text-center form-group">
-									Don't have an account? <a href="<?php echo URL.DIR_ROUTE; ?>register">Optician Registration</a>
+									Don't have an account? <a href="<?php echo URL.DIR_ROUTE; ?>register">Registration</a>
 								</div>
 
                                 <div class="text-center form-group">

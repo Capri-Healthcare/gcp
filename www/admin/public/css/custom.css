@@ -46,14 +46,31 @@ img.form_thumb_img{
     border-radius: 50%;
 }
 
-::-webkit-input-placeholder {
-	color: #fff;
+.page-menu .icon i{
+	color: #555;
 }
 
-:-ms-input-placeholder { 
-	color: #fff;
+.page-search input {
+    color: #555;
+    border: 1px solid #ddd;
 }
 
-::placeholder {
-	color: #fff;
+.page-search input:focus {
+    color: #555;
+    border-color: #ddd;
+}
+
+.menu-light #logo{
+	border-bottom: none;
+}
+.menu-wrapper{
+	top: 77px;
+}
+
+.lgn-logo{
+	background: #fff !important;
+}
+
+.lgn-logo a img{
+	max-height: inherit !important;
 }

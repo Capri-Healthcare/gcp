@@ -3,9 +3,6 @@
         width: 235px;
         margin: 0px 0 0 68px;
     }
-    .banner_block{
-        height: 740px;
-    }
     .banner_overlay h3{
         font-size: 75px;
     }
@@ -72,7 +69,7 @@
         float: right;
     }
     .banner_overlay{
-        padding: 10% 40px 0;
+        padding: 3% 40px 0;
     }
     .banner_overlay h3 {
         font-size: 50px;
@@ -88,7 +85,8 @@
         height: 480px;
     }
     .block_box{
-        height: 30px;
+        height: auto;
+        font-size: 12px;
     }
     .care_left{
         width: 100%;
@@ -129,6 +127,12 @@
     .footer{
         padding: 50px 0 30px;
     }
+    .banner_list img{
+        height: auto;
+    }
+    .banner_list h6{
+        min-height: 32px;
+    }
 }
 
 @media screen and (max-width: 767px){
@@ -153,6 +157,15 @@
     }
     .footer ul{
         margin: 22px 0 0;
+    }
+    .block_box {
+        min-height: 40px;
+    }
+    .banner_list h6 {
+        min-height: auto; 
+    }
+    .tab_button p{
+        min-height: 40px;
     }
 }
 
@@ -216,8 +229,11 @@
         width: 29%;
         margin: 0 0px 15px 10px;
     }
+    .tab_button p{
+        min-height: 60px;
+    }
 }
-}
+
 
 @media screen and (max-width: 425px) {
 	.my-login-page .card-wrapper, .my-login-page.my-register-page .card-wrapper {
