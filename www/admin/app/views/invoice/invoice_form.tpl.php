@@ -115,7 +115,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i class="ti-calendar"></i></span>
                             </div>
-                            <input type="text" name="invoice[duedate]" class="form-control date"
+                            <input type="text" name="invoice[duedate]" class="form-control due_date"
                                    value="<?php echo date_format(date_create($result['duedate']), $common['info']['date_format']); ?>"
                                    placeholder="Due Date" required>
                         </div>

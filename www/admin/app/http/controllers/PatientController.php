@@ -146,6 +146,7 @@ class PatientController extends Controller
             // Get email template
             $this->load->controller('mail');
             $result = $this->controller_mail->getTemplate('videocallinvitation');
+
             $email_subject = $email_body = "";
 
             $email_subject = str_replace('{clinic_name}', $data['common']['info']['name'], $result['template']['subject']);
@@ -286,19 +287,17 @@ class PatientController extends Controller
             $gcpID = $this->model_patient->gpPractice($data['gp_practice']);
             $data['gp_practice'] = $gcpID;
             $result = $this->model_patient->updatePatient($data);
-            if ($data['gcp_required'] == 'YES') {
-                $this->gcpMail();
-            }
+
             $referral_data['id'] = $data['referral_id'];
             $referral_data['hospital_code'] = $data['hospital_code'];
             $this->load->model('opticianreferral');
-
+            $this->model_opticianreferral->updateReferralHospitalCode($referral_data);
 
             $this->notificationToPatientForAppointmentBooking($data['id']);
 
            // $this->notificationToHospitalForAppointmentBooking($data['id']);
 
-            $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient updated successfully.');
+            $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient Information updated successfully.');
         } else {
             $gcpID = $this->model_patient->gpPractice($data['gp_practice']);
             $data['gp_practice'] = $gcpID;

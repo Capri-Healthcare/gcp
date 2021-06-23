@@ -914,10 +914,10 @@
                                             <div class="form-group">
                                                 <label>Disc (OCT) - Right</label><br>
                                                 <div class="report-container">
-                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                     <?php if($value['name'] == 'OCT - Right eye') {?>
                                                     <div class="report-image report-pdf">
-                                                        <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                        <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                            class="open-pdf font-12" style="display: block;">
                                                             <img class="img-thumbnail" src="../public/images/pdf.png"
                                                                  alt="">
@@ -929,9 +929,9 @@
 
                                                     <div class="report-image">
                                                         <a data-fancybox="gallery"
-                                                           href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                           href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
                                                             <img class="img-thumbnail"
-                                                                 src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                 src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                  alt="">
                                                             <span><?php echo $value['name']; ?></span>
                                                         </a>
@@ -946,10 +946,10 @@
                                             <div class="form-group">
                                                 <label>Disc (OCT) - Left</label><br>
                                                 <div class="report-container">
-                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'OCT - Left eye') {?>
                                                             <div class="report-image report-pdf">
-                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                    class="open-pdf font-12" style="display: block;">
                                                                     <img class="img-thumbnail" src="../public/images/pdf.png"
                                                                          alt="">
@@ -961,9 +961,9 @@
 
                                                             <div class="report-image">
                                                                 <a data-fancybox="gallery"
-                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
                                                                     <img class="img-thumbnail"
-                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                          alt="">
                                                                     <span><?php echo $value['name']; ?></span>
                                                                 </a>
@@ -1060,10 +1060,10 @@
                                             <div class="form-group">
                                                 <label>Fundus - Right</label><br>
                                                 <div class="report-container">
-                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Fundus - Right eye') {?>
                                                             <div class="report-image report-pdf">
-                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                    class="open-pdf font-12" style="display: block;">
                                                                     <img class="img-thumbnail" src="../public/images/pdf.png"
                                                                          alt="">
@@ -1075,9 +1075,9 @@
 
                                                             <div class="report-image">
                                                                 <a data-fancybox="gallery"
-                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
                                                                     <img class="img-thumbnail"
-                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                          alt="">
                                                                     <span><?php echo $value['name']; ?></span>
                                                                 </a>
@@ -1092,10 +1092,10 @@
                                             <div class="form-group">
                                                 <label>Fundus - Left</label><br>
                                                 <div class="report-container">
-                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Fundus - Left eye') {?>
                                                             <div class="report-image report-pdf">
-                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                    class="open-pdf font-12" style="display: block;">
                                                                     <img class="img-thumbnail" src="../public/images/pdf.png"
                                                                          alt="">
@@ -1107,9 +1107,9 @@
 
                                                             <div class="report-image">
                                                                 <a data-fancybox="gallery"
-                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
                                                                     <img class="img-thumbnail"
-                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                          alt="">
                                                                     <span><?php echo $value['name']; ?></span>
                                                                 </a>
@@ -1126,10 +1126,10 @@
                                             <div class="form-group">
                                                 <label>Visual field test plots - Right</label><br>
                                                 <div class="report-container">
-                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Visual fields - Right eye') {?>
                                                             <div class="report-image report-pdf">
-                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                    class="open-pdf font-12" style="display: block;">
                                                                     <img class="img-thumbnail" src="../public/images/pdf.png"
                                                                          alt="">
@@ -1141,9 +1141,9 @@
 
                                                             <div class="report-image">
                                                                 <a data-fancybox="gallery"
-                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
                                                                     <img class="img-thumbnail"
-                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                          alt="">
                                                                     <span><?php echo $value['name']; ?></span>
                                                                 </a>
@@ -1158,10 +1158,10 @@
                                             <div class="form-group">
                                                 <label>Visual field test plots - Left</label><br>
                                                 <div class="report-container">
-                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['filename'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+                                                    <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Visual fields - Left eye') {?>
                                                             <div class="report-image report-pdf">
-                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                    class="open-pdf font-12" style="display: block;">
                                                                     <img class="img-thumbnail" src="../public/images/pdf.png"
                                                                          alt="">
@@ -1173,9 +1173,9 @@
 
                                                             <div class="report-image">
                                                                 <a data-fancybox="gallery"
-                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>">
+                                                                   href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
                                                                     <img class="img-thumbnail"
-                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['filename']; ?>"
+                                                                         src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
                                                                          alt="">
                                                                     <span><?php echo $value['name']; ?></span>
                                                                 </a>
@@ -1410,7 +1410,7 @@
                                     if ($file_ext == "pdf") { ?>
                                         <div class="report-image report-pdf"
                                              id="report-delete-div-<?php echo $value['id'] ?>">
-                                            <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>"
+                                            <a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['report']; ?>"
                                                class="open-pdf">
                                                 <img src="../public/images/pdf.png" alt="">
                                                 <span><?php echo $value['name']; ?></span>
@@ -1421,7 +1421,7 @@
                                                             class="ti-close report-delete-action"
                                                             data-toggle="modal" data-target="#reportDeleteModel"
                                                             data-appointment_id="<?php echo $value['appointment_id'] ?>"
-                                                            data-report_name="<?php echo $value['filename'] ?>"
+                                                            data-report_name="<?php echo $value['report'] ?>"
                                                             data-report_id="<?php echo $value['id'] ?>"></a></div>
 
                                                 <input type="hidden" name="report_name"
@@ -1432,8 +1432,8 @@
                                     <?php } else { ?>
                                         <div class="report-image" id="report-delete-div-<?php echo $value['id'] ?>">
                                             <a data-fancybox="gallery"
-                                               href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>">
-                                                <img src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['filename']; ?>"
+                                               href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['report']; ?>">
+                                                <img src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . "/" . $value['report']; ?>"
                                                      alt="">
                                                 <span><?php echo $value['name']; ?></span>
                                             </a>
@@ -1443,7 +1443,7 @@
                                                             class="ti-close report-delete-action"
                                                             data-toggle="modal" data-target="#reportDeleteModel"
                                                             data-appointment_id="<?php echo $value['appointment_id'] ?>"
-                                                            data-report_name="<?php echo $value['filename'] ?>"
+                                                            data-report_name="<?php echo $value['report'] ?>"
                                                             data-report_id="<?php echo $value['id'] ?>"></a></div>
 
                                                 <input type="hidden" name="report_name"

@@ -692,6 +692,9 @@
         maxDate: new Date()
     });
 
+     $('.due_date').datepicker({
+         dateFormat: $('.common_date_format').val()
+     });
 
 
     
