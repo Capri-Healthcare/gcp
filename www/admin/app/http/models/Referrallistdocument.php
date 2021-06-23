@@ -15,7 +15,7 @@ class Referrallistdocument extends Model
 
             $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "referral_list_document` (`referral_list_id`, `followup_id`,`name`, `filename`,`created_at`, `created_by`) VALUES (?,?,?,?,?,?)", array($this->database->escape($data['id']), '0', $this->database->escape($data['name']),$this->database->escape($data['file_name']), date('Y-m-d H:i:s'), (int)$data['user_id']));
         }
-        return $query->row;
+        return $this->database->last_id();
 	}
 
 

@@ -8,7 +8,7 @@
             <div class="breadcrumbs d-inline-block">
                 <ul>
                     <li><a href="<?php echo URL_ADMIN; ?>">Dashboard</a></li>
-                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'appointments'; ?>">Optician Referral</a></li>
+                    <li><a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral'; ?>">Optician Referral</a>
                     <li><?php echo $page_title; ?></li>
                 </ul>
             </div>
@@ -32,7 +32,7 @@
                     <div class="col-12">
                         <h3><?php echo $user['firstname']." ".$user['lastname']; ?></h3>
                         <h6><?php echo $user['optician_shop_name']; ?> | <?php echo $user['optician_registration_number']; ?></h6>
-                        <p class="mb-0 font-12"><i class="ti-email"></i> <?php echo $user['email']; ?> | <i class="ti-mobile"></i> <?php echo $user['mobile']; ?></p>
+                        <p class="mb-0 font-12"><i class="ti-email"></i> <?php echo $user['email']; ?> <br/> <i class="ti-mobile"></i> <?php echo $user['mobile']; ?></p>
                     </div>
                 </div>
                 <div class="user-details text-center pt-3">

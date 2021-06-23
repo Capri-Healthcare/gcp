@@ -34,71 +34,69 @@
         <input type="hidden" name="hidden_employer" id="hidden_employer" value="<?php echo $result['employer']; ?>">
         <div class="panel-body">
             <div class="row">
-                <?php if (in_array($common['user']['role'], constant('USER_ROLE'))) { ?>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-form-label">Patient Name <span class="form-required">*</span></label>
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-user"></i></span>
-                                </div>
-                                <input type="text" name="invoice[name]" class="form-control patient-name"
-                                       value="<?php echo $result['name']; ?>"
-                                       placeholder="Seach Patient Name or Enter . . ." required>
-                                <input type="hidden" name="invoice[patient_id]" class="form-control patient-id"
-                                       value="<?php echo $result['patient_id']; ?>">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">Patient Name <span class="form-required">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-user"></i></span>
                             </div>
+                            <input type="text" name="invoice[name]" class="form-control patient-name"
+                                   value="<?php echo $result['name']; ?>"
+                                   placeholder="Seach Patient Name or Enter . . ." required>
+                            <input type="hidden" name="invoice[patient_id]" class="form-control patient-id"
+                                   value="<?php echo $result['patient_id']; ?>">
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="col-form-label">Patient Email Address <span
-                                        class="form-required">*</span></label>
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-email"></i></span>
-                                </div>
-                                <input type="text" name="invoice[email]" id="patient-email"
-                                       class="form-control patient-mail" value="<?php echo $result['email']; ?>"
-                                       placeholder="Enter Patient Email Address . . ." required>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="col-form-label">Patient Email Address <span
+                                    class="form-required">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-email"></i></span>
                             </div>
+                            <input type="text" name="invoice[email]" id="patient-email"
+                                   class="form-control patient-mail" value="<?php echo $result['email']; ?>"
+                                   placeholder="Enter Patient Email Address . . ." required>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="col-form-label">Patient Phone/Mobile number<span
-                                        class="form-required">*</span></label>
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i
-                                                class="ti-mobile"></i></span></div>
-                                <input type="text" name="invoice[mobile]" class="form-control patient-mobile"
-                                       value="<?php echo $result['mobile']; ?>"
-                                       placeholder="Enter Patient Mobile No . . .">
-                            </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="col-form-label">Patient Phone/Mobile number<span
+                                    class="form-required">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                            class="ti-mobile"></i></span></div>
+                            <input type="text" name="invoice[mobile]" class="form-control patient-mobile"
+                                   value="<?php echo $result['mobile']; ?>"
+                                   placeholder="Enter Patient Mobile No . . .">
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-form-label">Doctor</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i
-                                                class="ti-heart-broken"></i></span></div>
-                                <?php if ($common['user']['role_id'] == '3' && $common['info']['doctor_access'] == '1') { ?>
-                                    <input type="text" name="invoice[doctor]" class="form-control patient-doctor"
-                                           value="<?php echo $common['user']['firstname'] . ' ' . $common['user']['lastname']; ?>"
-                                           placeholder="Search Doctor . . ." readonly>
-                                    <input type="hidden" name="invoice[doctor_id]"
-                                           class="form-control patient-doctor-id"
-                                           value="<?php echo $common['user']['doctor']; ?>" readonly>
-                                <?php } else { ?>
-                                    <input type="text" name="invoice[doctor]" class="form-control patient-doctor"
-                                           value="<?php echo $result['doctor'] ?>" placeholder="Search Doctor . . .">
-                                    <input type="hidden" name="invoice[doctor_id]"
-                                           class="form-control patient-doctor-id"
-                                           value="<?php echo $result['doctor_id']; ?>">
-                                <?php } ?>
-                            </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">Doctor</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                            class="ti-heart-broken"></i></span></div>
+                            <?php if ($common['user']['role_id'] == '3' && $common['info']['doctor_access'] == '1') { ?>
+                                <input type="text" name="invoice[doctor]" class="form-control patient-doctor"
+                                       value="<?php echo $common['user']['firstname'] . ' ' . $common['user']['lastname']; ?>"
+                                       placeholder="Search Doctor . . ." readonly>
+                                <input type="hidden" name="invoice[doctor_id]"
+                                       class="form-control patient-doctor-id"
+                                       value="<?php echo $common['user']['doctor']; ?>" readonly>
+                            <?php } else { ?>
+                                <input type="text" name="invoice[doctor]" class="form-control patient-doctor"
+                                       value="<?php echo $result['doctor'] ?>" placeholder="Search Doctor . . .">
+                                <input type="hidden" name="invoice[doctor_id]"
+                                       class="form-control patient-doctor-id"
+                                       value="<?php echo $result['doctor_id']; ?>">
+                            <?php } ?>
                         </div>
                     </div>
-                <?php } ?>
+                </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label class="col-form-label">Invoice Date <span class="form-required">*</span></label>

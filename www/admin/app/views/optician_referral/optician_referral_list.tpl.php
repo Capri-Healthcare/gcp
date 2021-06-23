@@ -56,7 +56,7 @@
                         <th>City</th>
                         <th>Status</th>
                         <!--						<th>Created By</th>-->
-                        <th>Date Submited</th>
+                        <th>Date Submitted</th>
                         <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $dropdown_selected == constant('STATUS_ACCEPTED')) { ?>
 
                             <th>List</th>

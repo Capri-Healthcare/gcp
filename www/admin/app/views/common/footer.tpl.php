@@ -20,7 +20,7 @@
 								"showMethod": "fadeIn",
 								"hideMethod": "fadeOut"
 							}
-							toastr.<?php echo $message['alert']; ?>("<?php echo $message['value']; ?>", "<?php echo ucfirst($message['alert']); ?>");
+							toastr.<?php echo $message['alert']; ?>("<?php echo $message['value']; ?>");
 						</script>
 					<?php } ?>
 				</div>

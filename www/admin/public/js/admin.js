@@ -358,7 +358,7 @@
                 formData.append("id", $('.appointment-id').val());
                 formData.append("email", $('.apnt-email').val());
                 formData.append("patient", $('.patient-id').val());
-                formData.append("report_name", $('#reports-modal input[name=report_name]').val());
+                formData.append("report_name", $('#reports-modal select[name=report_name]').val());
                 formData.append("_token", $('.s_token').val());
             });
 
@@ -370,22 +370,22 @@
                         $('.report-container').append('<div class="report-image report-pdf">'+
                             '<a href="../public/uploads/reports/appointment/'+appointment_id+'/'+response.name+'" class="open-pdf">'+
                             '<img class="img-thumbnail" src="../public/images/pdf.png" alt="">'+
-                            '<span>'+$('#reports-modal input[name=report_name]').val()+'</span>'+
+                            '<span>'+$('#reports-modal select[name=report_name]').val()+'</span>'+
                             '</a>'+
                             '<input type="hidden" name="report_name" value="'+response.name+'">'+
-                            '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                            '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel"  data-appointment_id="" data-report_name="" data-report_id=""></a></div>'+
                             '</div>');
                     } else {
                         $('.report-container').append('<div class="report-image">'+
                             '<a data-fancybox="gallery" href="../public/uploads/appointment/reports/'+appointment_id+'/'+response.name+'">'+
                             '<img class="img-thumbnail" src="../public/uploads/appointment/reports/'+appointment_id+'/'+response.name+'" alt="">'+
-                            '<span>'+$('#reports-modal input[name=report_name]').val()+'</span>'+
+                            '<span>'+$('#reports-modal select[name=report_name]').val()+'</span>'+
                             '</a>'+
-                            '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                            '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel"  data-appointment_id="" data-report_name="" data-report_id=""></a></div>'+
                             '<input type="hidden" name="report_name" value="'+response.name+'">'+
                             '</div>');
                     }
-                    toastr.success('Uploaded Succefully', 'Report uploaded Succefully.');
+                    toastr.success('Uploaded Succefully', 'Report uploaded successfully.');
                 } else {
                     toastr.error('Upload Error', response.message);
                 }
@@ -449,19 +449,19 @@
                              '<span>'+$('#reports-modal select[name=document_name]').val()+'</span>'+
                              '</a>'+
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
-                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action"  data-toggle="modal" data-target="#reportDeleteModel"  data-appointment_id="'+$('.optician-refrrel-id').val()+'" data-report_id="'+response.id+'" data-report_name="'+response.name+'"></a></div>'+
                              '</div>');
                      } else {
-                         $('.report-container').append('<div class="report-image">'+
+                         $('.report-container').append('<div class="report-image" id="report-delete-div-'+response.id+'">'+
                              '<a data-fancybox="gallery" href="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'">'+
                              '<img class="img-thumbnail" src="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'" alt="">'+
                              '<span>'+$('#reports-modal select[name=document_name]').val()+'</span>'+
                              '</a>'+
-                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel" data-appointment_id="'+$('.optician-refrrel-id').val()+'" data-report_id="'+response.id+'" data-report_name="'+response.name+'"></a></div>'+
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
                              '</div>');
                      }
-                     toastr.success('Uploaded Succefully', 'Document uploaded Succefully.');
+                     toastr.success('Uploaded Succefully', ' Document uploaded successfully');
                  } else {
                      toastr.error('Upload Error', response.message);
                  }
@@ -523,19 +523,19 @@
                              '<span>'+$('#reports-modal select[name=document_name]').val()+'</span>'+
                              '</a>'+
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
-                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel"  data-appointment_id="" data-report_name="" data-report_id=""></a></div>'+
                              '</div>');
                      } else {
-                         $('.report-container').append('<div class="report-image">'+
+                         $('.report-container').append('<div class="report-image" id="report-delete-div-'+response.id+'">'+
                              '<a data-fancybox="gallery" href="../public/uploads/optician-referral/followup/'+followup_id+'/'+response.name+'">'+
                              '<img class="img-thumbnail" src="../public/uploads/optician-referral/followup/'+followup_id+'/'+response.name+'" alt="">'+
                              '<span>'+$('#reports-modal select[name=document_name]').val()+'</span>'+
                              '</a>'+
-                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel"  data-appointment_id="" data-report_name="" data-report_id=""></a></div>'+
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
                              '</div>');
                      }
-                     toastr.success('Uploaded Succefully', 'Document uploaded Succefully.');
+                     toastr.success('Uploaded Succefully', 'Document uploaded successfully');
                  } else {
                      toastr.error('Upload Error', response.message);
                  }

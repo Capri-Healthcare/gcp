@@ -83,14 +83,6 @@
 									<td><?php echo $result['gender']; ?></td>
 								</tr>
 								<tr>
-									<td>Marital Status</td>
-									<td><?php echo $result['marital_status']; ?></td>
-								</tr>
-								<tr>
-									<td>Blood Group</td>
-									<td><?php echo $result['bloodgroup']; ?></td>
-								</tr>
-								<tr>
 									<td>Address</td>
 									<td><?php if (!empty($result['address'])) { echo implode(', ', $result['address']); } ?></td>
 								</tr>
@@ -237,7 +229,7 @@
 								<thead>
 									<tr class="table-heading">
 										<th class="table-srno">#</th>
-										<th>DoctorInfo</th>
+										<th>Doctor Info</th>
 										<th>DateTime</th>
 										<th>Status</th>
 										<?php if ($appointment_view) { ?>
@@ -300,7 +292,7 @@
 										<th>Amount</th>
 										<th>Due</th>
 										<th>Status</th>
-										<th>InvoiceDate</th>
+										<th>Invoice Date</th>
 										<?php if ($invoice_view || $invoice_delete) { ?>
 											<th></th>
 										<?php } ?>

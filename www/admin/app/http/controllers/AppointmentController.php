@@ -125,6 +125,7 @@ class AppointmentController extends Controller
             $data['notes'] = NULL;
         }
 
+
         $data['doctors'] = $this->model_appointment->getDoctors();
         if ($data['page_prescriptions']) {
             $data['prescription'] = $this->model_appointment->getPrescription($id);

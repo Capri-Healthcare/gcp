@@ -385,11 +385,19 @@ $(document).ready(function () {
             }
         }
 
-        if ($('#register-password').val().trim().length < 6) {
+        if ($('#register-password').val() == '') {
             $('#register-password').addClass('is-invalid');
+            $(".invalid-password").text('Password is required')
             clck_invld = 1;
             $('#register-password').focus();
         }
+        else if ($('#register-password').val().trim().length < 8) {
+            $('#register-password').addClass('is-invalid');
+            $(".invalid-password").text('Your password needs to be at least 8 characters long.')
+            clck_invld = 1;
+            $('#register-password').focus();
+        }
+
         if (!mob_filter.test($('#register-mobile').val())) {
             $('#register-mobile').addClass('is-invalid');
             clck_invld = 1;

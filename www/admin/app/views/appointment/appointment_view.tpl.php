@@ -1,3 +1,4 @@
+
 <?php include(DIR_ADMIN . 'app/views/common/header.tpl.php'); ?>
     <link rel="stylesheet" href="public/css/jquery.fancybox.min.css">
     <script src="public/js/jquery.fancybox.min.js"></script>
@@ -16,7 +17,6 @@
             <div class="col-sm-6 text-right"></div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-4">
             <div class="panel panel-default">
@@ -37,7 +37,7 @@
                     <div class=row>
                         <div class="col-12">
                             <h3>Dr. <?php echo $result['doctor_name']; ?></h3>
-                            <p class="mb-0 font-12"><i class="ti-email"></i> <?php echo $result['doctor_email']; ?> <i
+                            <p class="mb-0 font-12"><i class="ti-email"></i> <?php echo $result['doctor_email']; ?><br> <i
                                         class="ti-mobile"></i> <?php echo $result['doctor_mobile']; ?></p>
                         </div>
                     </div>

@@ -65,7 +65,7 @@
                         <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MED_ROLE'))) { ?>
                             <th>Followup Status</th>
                         <?php } ?>
-                        <th>Date Submited</th>
+                        <th>Date Submitted</th>
                         <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_GCP_ROLE'))) { ?>
                             <th>Payment Status</th>
                         <?php } ?>

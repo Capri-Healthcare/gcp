@@ -358,7 +358,7 @@
                                 '<input type="hidden" name="report_name" value="'+response.name+'">'+
                                 '</div>');
                         }
-                        toastr.success('File uploaded successfully.', 'Success');
+                        toastr.success('File uploaded successfully.');
                         $('#attach-file').modal('hide');
                     } else {
                         toastr.error(response.message, 'Error');
@@ -379,10 +379,10 @@
 					toastr.error('File could not be deleted', 'Server Error');
 				},
 				success: function(data) {
-					response = JSON.parse(response);
+					response = JSON.parse(data);
                     if (response.error === false) {
                         ele.parents('.attachment-image').remove();
-                        toastr.success(response.message, 'Success');
+                        toastr.success('File deleted successfully');
                     } else {
                         toastr.error(response.message, 'Error');
                     }

@@ -409,8 +409,8 @@ class OpticianReferralController extends Controller
         if ($result['error'] === false) {
             $data['file_name'] = $result['name'];
             $this->load->model('referrallistdocument');
-            $this->model_referrallistdocument->createReferralListDocument($data);
             $result['ext'] = $data['ext'];
+            $result['id'] = $this->model_referrallistdocument->createReferralListDocument($data);;
             echo json_encode($result);
         } else {
             echo json_encode($result);
@@ -426,7 +426,7 @@ class OpticianReferralController extends Controller
             exit();
         }
 
-        if (!unlink(DIR . '/public/uploads/optician-referral/document/' . $referral_list_id . '/' . $file)) {
+        if (!unlink(DIR . 'public/uploads/optician-referral/document/' . $referral_list_id . '/' . $file)) {
             echo("Error deleting $file");
         } else {
             $data['filename'] = $this->url->post('name');
