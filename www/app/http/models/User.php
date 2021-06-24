@@ -38,11 +38,11 @@ class User extends Model
 	public function getRecords($email, $id)
 	{
 		$query = $this->database->query("
-			(SELECT an.id AS id, an.name, an.notes, NULL AS prescription, NULL AS reports, CONCAT(d.firstname, ' ', d.lastname) AS doctor, an.date_of_joining AS date_of_joining, 'Clinical Notes' AS type FROM `" . DB_PREFIX . "appointment_notes` AS an LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = an.doctor_id WHERE an.email = '".$email."' OR an.patient_id = '".$id."' LIMIT 30)
+			(SELECT an.id AS id, an.name, an.notes, NULL AS prescription, NULL AS reports, CONCAT(d.firstname, ' ', d.lastname) AS doctor, an.date_of_joining AS date_of_joining, 'Clinical Notes' AS type, appointment_id as appointment_id FROM `" . DB_PREFIX . "appointment_notes` AS an LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = an.doctor_id WHERE an.email = '".$email."' OR an.patient_id = '".$id."' LIMIT 30)
 			UNION ALL
-			(SELECT p.id AS id, p.name, NULL AS notes, p.prescription, NULL AS reports, CONCAT(d.firstname, ' ', d.lastname) AS doctor, p.date_of_joining AS date_of_joining, 'Prescription' AS type FROM `" . DB_PREFIX . "prescription` AS p LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = p.doctor_id WHERE p.email = '".$email."' OR p.patient_id = '".$id."' LIMIT 30)
+			(SELECT p.id AS id, p.name, NULL AS notes, p.prescription, NULL AS reports, CONCAT(d.firstname, ' ', d.lastname) AS doctor, p.date_of_joining AS date_of_joining, 'Prescription' AS type, appointment_id as appointment_id FROM `" . DB_PREFIX . "prescription` AS p LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = p.doctor_id WHERE p.email = '".$email."' OR p.patient_id = '".$id."' LIMIT 30)
 			UNION ALL
-			(SELECT id AS id, name, NULL AS notes, NULL AS prescription, report, NULL AS doctor, date_of_joining, 'Reports' AS type FROM `" . DB_PREFIX . "reports` WHERE email = '".$email."' OR patient_id = '".$id."' LIMIT 40)
+			(SELECT id AS id, name, NULL AS notes, NULL AS prescription, report, NULL AS doctor, date_of_joining, 'Reports' AS type, appointment_id as appointment_id FROM `" . DB_PREFIX . "reports` WHERE email = '".$email."' OR patient_id = '".$id."' LIMIT 40)
 			ORDER BY date_of_joining DESC
 			");
 		return $query->rows;

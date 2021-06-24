@@ -359,6 +359,7 @@ class UserController extends Controller {
 	public function profileUpdate()
 	{
 		$validateProfile = $this->validateProfile();
+		
 		if (!$validateProfile['status']) {
 			$this->session->data['message'] = array('alert' => 'warning', 'value' => $validateProfile['message']);
 			$this->url->redirect('user/profile');
@@ -675,6 +676,7 @@ class UserController extends Controller {
 
 	protected function validateProfile() 
 	{
+		
 		if ((strlen(trim($this->url->post('firstname'))) < 1) || (strlen(trim($this->url->post('firstname'))) > 52)) {
 			/** 
 			* If Last name is not valid ( min 2 character or max 48 ) 
@@ -703,7 +705,7 @@ class UserController extends Controller {
 			return ['status' => false, 'message' => 'Mobile number is not valid, Mobile number must be 10 digit'];
 			//return false;
 		} else {
-			return true;
+			return ['status' => true, 'message' => ''];
 		}
 	}
 

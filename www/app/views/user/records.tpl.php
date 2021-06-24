@@ -1,5 +1,5 @@
 <div class="row">
-	<?php if (!empty($records)) { foreach ($records as $key => $value) { ?>
+	<?php if (!empty($records)) { foreach ($records as $key => $value) {  ?>
 		<div class="col-md-12 col-lg-12 col-xl-6">
 			<div class="user-card">
 				<div class="card-hdr">
@@ -86,10 +86,10 @@
 								</div>
 								<div class="document">
 									<?php if ($file_ext == "pdf") { ?>
-										<a href="<?php echo URL.'public/uploads/reports/'.$value['reports']; ?>" class="record-pdf" title="<?php echo $value['name']; ?>"><i class="far fa-file-pdf"></i></a>
+										<a href="<?php echo URL.'public/uploads/appointment/reports/'.$value['appointment_id'].'/'.$value['reports']; ?>" class="record-pdf" title="<?php echo $value['name']; ?>"><i class="far fa-file-pdf"></i></a>
 									<?php } else { ?>
-										<a data-fancybox="gallery" href="<?php echo URL.'public/uploads/reports/'.$value['reports']; ?>" class="record-image">
-											<img src="<?php echo URL.'public/uploads/reports/'.$value['reports']; ?>" alt="Documents">
+										<a data-fancybox="gallery" href="<?php echo URL.'public/uploads/appointment/reports/'.$value['appointment_id'].'/'.$value['reports']; ?>" class="record-image">
+											<img src="<?php echo URL.'public/uploads/appointment/reports/'.$value['appointment_id'].'/'.$value['reports']; ?>" alt="Documents">
 										</a>
 									<?php } ?>
 								</div>
