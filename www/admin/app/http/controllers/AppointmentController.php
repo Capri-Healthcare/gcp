@@ -1008,7 +1008,8 @@ class AppointmentController extends Controller
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('GCP Dashboard', $link, $result['template']['message']);
 
-        $data['email'] = $user_gcp_sec_data['email'];;
+        $data['email'] = $user_gcp_sec_data['email'];
+        $data['name'] = $user_gcp_sec_data['firstname'] . ' ' . $user_gcp_sec_data['lastname'];
         $data['cc'] = $user_med_data['email'];
         $data['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];

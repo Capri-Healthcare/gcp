@@ -74,3 +74,7 @@ img.form_thumb_img{
 .lgn-logo a img{
 	max-height: inherit !important;
 }
+
+.form-group input, .form-control, .custom-select, .custom-file-label{
+	z-index: 999;
+}
