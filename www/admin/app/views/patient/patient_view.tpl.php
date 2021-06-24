@@ -350,176 +350,343 @@
 									<div class="timeline-1 timeline-2">
 										<div class="marker"></div>
 										<?php //foreach ($notes as $key => $value) { 
-										 	if (!empty($appointments)) { foreach ($appointments as $key => $value) { 
-											//$value['notes'] = json_decode($value['notes'], true); 
+										 	if (!empty($appointments)) { 
+												foreach ($appointments as $key => $value) { 
+													//echo "<pre>";print_r($value);exit;
+												//$value['notes'] = json_decode($value['notes'], true); 
 
-											$finding_forms = $formObj->getFindingFormsByDepartments($value['department_id']);
-											$doctor_info = $doctorObj->getDoctor($value['doctor_id']);
-											$note_details = $appointmentObj->getClinicalNotes($value['id']);
+												$finding_forms = $formObj->getFindingFormsByDepartments($value['department_id']);
+												$doctor_info = $doctorObj->getDoctor($value['doctor_id']);
+												$note_details = $appointmentObj->getClinicalNotes($value['id']);
 
-											
-											$notes['notes'] = json_decode($note_details['notes'], true);
-											//$notes = $note_details;
-											//print_r($notes);exit;
+												
+												$notes['notes'] = json_decode($note_details['notes'], true);
+												//$notes = $note_details;
+												//print_r($notes);exit;
 										?>
-											<div class="item item-left pb-4">
-												<div class="circle"><img src="<?php echo '../public/uploads/'.$doctor_info['picture']; ?>" alt=""></div>
-												<div class="arrow"></div>
-												<div class="time"><?php echo $doctor_info['title'] . ' '. $doctor_info['firstname'] . ' ' . $doctor_info['lastname'] .' ('.date_format(date_create($value['date']), $common['info']['date_format']).' AT '.$value['time'].')'; ?></div>
-												<div class="item-content">
-													<?php /* foreach ($value['notes'] as $k => $v) { ?>
-														<div class="text-primary pt-1"><?php echo ucfirst($k); ?></div>
-														<div class="descr pt-0">
-															<?php foreach ($v as $s_key => $s_value) { ?>
-																<li><?php echo html_entity_decode($s_value, ENT_QUOTES, 'UTF-8'); ?></li>
-															<?php } ?>
-														</div>
-													<?php } */ ?>
-													<!--div class="text-secondary mt-2 text-right">
-														<a href="<?php echo URL_ADMIN.DIR_ROUTE.'records/pdf&id='.$value['id']; ?>" class="text-primary" target="_blank">PDF/Print</a>
-													</div-->
-													<?php
+												<div class="item item-left pb-4">
+													<div class="circle"><img src="<?php echo '../public/uploads/'.$doctor_info['picture']; ?>" alt=""></div>
+													<div class="arrow"></div>
+													<div class="time"><?php echo $doctor_info['title'] . ' '. $doctor_info['firstname'] . ' ' . $doctor_info['lastname'] .' ('.date_format(date_create($value['date']), $common['info']['date_format']).' AT '.$value['time'].')'; ?></div>
+													<div class="item-content">
 													
-													
-													?>
 													<div class="row">
 														<div class="col-md-12">
-															<ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
-																<li class="nav-item active">
-																	<a class="nav-link active" href="#clinical-note-appointment-id-<?php echo $value['id'] ?>" data-toggle="tab">Clinical Note</a>
-																</li>
-																<?php 
-																	foreach($finding_forms as $form){		 ?>
-																			<li class="nav-item">
-																				<a class="nav-link" href="#pre-consultation-form-id-<?php echo $form['id'] ?>-appointment-id-<?php echo $value['id'] ?>" data-toggle="tab"><?php echo $form['name'] ?></a>
-																			</li>
-																<?php		
-																		} 	?>	
-															</ul>
-														</div>
-													</div>
-													
-													<div class="row">
-														<div class="col-md-12 pre-consultation-form">
-															<div class="tab-pane active mt-3" id="clinical-note-appointment-id-<?php echo $value['id'] ?>">
-																<div class="notes-container">
-																	<div class="timeline-1 timeline-2">
-																		<div class="marker"></div>
-																		<div class="item item-left notes-problem">
-																			<div class="circle"><i class="ti-help-alt"></i></div>
-																			<div class="arrow"></div>
-																			<div class="item-content">
-																				<div class="title">Problems</div>
-																				<div class="descr">
-																					<ul>
-																						<?php if (!empty($notes['notes']['problem'])) { foreach ($notes['notes']['problem'] as $key => $value) { ?>
-																							<li><?php echo htmlspecialchars_decode($value); ?></li>
-																						<?php } } ?>
-																					</ul>
-																				</div> 
-																			</div>
-																		</div>
-																		<div class="item item-left notes-observation">
-																			<div class="circle"><i class="ti-panel text-info"></i></div>
-																			<div class="arrow"></div>
-																			<div class="item-content">
-																				<div class="title">Observation</div>
-																				<div class="descr">
-																					<ul>
-																						<?php if (!empty($notes['notes']['observation'])) { foreach ($notes['notes']['observation'] as $key => $value) { ?>
-																							<li><?php echo htmlspecialchars_decode($value); ?></li>
-																						<?php } } ?>
-																					</ul>
-																				</div> 
-																			</div>
-																		</div>
-																		<div class="item item-left notes-diagnosis">
-																			<div class="circle"><i class="ti-heart-broken text-secondary"></i></div>
-																			<div class="arrow"></div>
-																			<div class="item-content">
-																				<div class="title">Diagnosis</div>
-																				<div class="descr">
-																					<ul>
-																						<?php if (!empty($notes['notes']['diagnosis'])) { foreach ($notes['notes']['diagnosis'] as $key => $value) { ?>
-																							<li><?php echo htmlspecialchars_decode($value); ?></li>
-																						<?php } } ?>
-																					</ul>
-																				</div> 
-																			</div>
-																		</div>
-																		<div class="item item-left notes-investigation">
-																			<div class="circle"><i class="ti-agenda text-success"></i></div>
-																			<div class="arrow"></div>
-																			<div class="item-content">
-																				<div class="title">Test Request/Investigation</div>
-																				<div class="descr">
-																					<ul>
-																						<?php if (!empty($notes['notes']['investigation'])) { foreach ($notes['notes']['investigation'] as $key => $value) { ?>
-																							<li><?php echo htmlspecialchars_decode($value); ?></li>
-																						<?php } } ?>
-																					</ul>
-																				</div> 
-																			</div>
-																		</div>
-																		<div class="item item-left notes-notes">
-																			<div class="circle"><i class="ti-write text-primary"></i></div>
-																			<div class="arrow"></div>
-																			<div class="item-content">
-																				<div class="title">Notes</div>
-																				<div class="descr">
-																					<ul>
-																						<?php if (!empty($notes['notes']['notes'])) { foreach ($notes['notes']['notes'] as $key => $value) { ?>
-																							<li><?php echo $value; ?></li>
-																						<?php } } ?>
-																					</ul>
-																				</div> 
-																			</div>
-																		</div>
-																	</div>
+															<div class="panel-body">
+																<div class="table-responsive" style="overflow: hidden">
+																	<table class="table table-striped patient-table">
+																		<tbody>
+																		<tr>
+																			<td>Current event (History)</td>
+																			<td class="text-dark"><?php echo isset($value['current_event']) ? $value['current_event'] : ''; ?></td>
+																		</tr>
+																		<tr>
+																			<td>Allergy</td>
+																			<td class="text-dark"><?php echo isset($value['allergy']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['ALLERGY'][$value['allergy']] : '' ?></td>
+																		</tr>
+																		<tr>
+																			<td>Visual acuity</td>
+																			<td class="text-dark">
+																				<table style="padding: 0px;">
+																					<tr>
+																						<td width="50%" style="padding:0px;">
+																							<b>RE: </b><?php echo isset($value['visual_acuity_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$value['visual_acuity_right']] : '' ?>
+
+																						</td>
+																						<td width="50%" style="padding:0px;">
+																							<b>LE: </b><?php echo isset($value['visual_acuity_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$value['visual_acuity_left']] : '' ?>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>Intraocular pressure</td>
+																			<td class="text-dark">
+																				<table style="padding: 0px;">
+																					<tr>
+																						<td width="50%" style="padding:0px;">
+																							<b>RE: </b><?php echo isset($value['intraocular_pressure_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'][$value['intraocular_pressure_right']] : '' ?>
+
+																						</td>
+																						<td width="50%" style="padding:0px;">
+																							<b>LE: </b><?php echo isset($value['intraocular_pressure_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'][$value['intraocular_pressure_left']] : '' ?>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+
+																		<tr>
+																			<td colspan="2">
+																				<?php if ($summary['appointment_count'] >= 2) { ?>
+																					<div class="row">
+
+																						<div class="col-md-12">
+																							<div id="container" class="container">
+
+																							</div>
+																						</div>
+																					</div>
+																				<?php } ?>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>Anterior chamber</td>
+																			<td class="text-dark">
+																				<table style="padding: 0px;">
+																					<tr>
+																						<td width="50%" style="padding:0px;">
+																							<b>RE: </b><?php echo isset($value['anterior_chamber_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'][$value['anterior_chamber_right']] : '' ?>
+
+																						</td>
+																						<td width="50%" style="padding:0px;">
+																							<b>LE: </b><?php echo isset($value['anterior_chamber_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'][$value['anterior_chamber_left']] : '' ?>
+																						</td>
+																					</tr>
+																				</table>
+																		</td>
+
+																		</tr>
+																		<tr>
+																			<td>Lens</td>
+																			<td class="text-dark">
+																				<table style="padding: 0px;">
+																					<tr>
+																						<td width="50%" style="padding:0px;">
+																							<b>RE: </b><?php echo isset($value['lens_right']) ? $value['lens_right']: '' ?>
+
+																						</td>
+																						<td width="50%" style="padding:0px;">
+																							<b>LE: </b><?php echo isset($value['lens_left']) ? $value['lens_left']: '' ?>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>Disc (oct)</td>
+																			<td class="text-dark">
+																				<div class="report-container">
+																					<?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+																						<?php if($value['name'] == 'OCT - Right eye' || $value['name'] == 'OCT - Left eye') {?>
+																							<div class="report-image report-pdf">
+																								<a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																								class="open-pdf font-12" style="display: block;">
+																									<img class="img-thumbnail" src="../public/images/pdf.png"
+																										alt="">
+																									<span><?php echo $value['name']; ?></span>
+																								</a>
+																							</div>
+																						<?php } } else {?>
+																						<?php if($value['name'] == 'OCT - Right eye' || $value['name'] == 'OCT - Left eye') {?>
+
+																							<div class="report-image">
+																								<a data-fancybox="gallery"
+																								href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
+																									<img class="img-thumbnail"
+																										src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																										alt="">
+																									<span><?php echo $value['name']; ?></span>
+																								</a>
+																							</div>
+																						<?php } } } } else { ?>
+																						<p class="text-danger text-center">No documents found !!!</p>
+																					<?php } ?>
+																				</div>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>CCT</td>
+																			<td class="text-dark">
+																				<table style="padding: 0px;">
+																					<tr>
+																						<td width="50%" style="padding:0px;">
+																							<b>RE: </b><?php echo isset($value['cct_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$value['cct_right']] : '' ?>
+
+																						</td>
+																						<td width="50%" style="padding:0px;">
+																							<b>LE: </b><?php echo isset($value['cct_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$value['cct_left']] : '' ?>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>NFL thickness</td>
+																			<td class="text-dark">
+																				<table style="padding: 0px;">
+																					<tr>
+																						<td width="50%" style="padding:0px;">
+																							<b>RE: </b><?php echo isset($value['nfl_thickness_right']) ? $value['nfl_thickness_right']." mm" : '' ?>
+
+																						</td>
+																						<td width="50%" style="padding:0px;">
+																							<b>LE: </b><?php echo isset($value['nfl_thickness_left']) ? $value['nfl_thickness_left']." mm" : '' ?></td>
+																						</td>
+																					</tr>
+																				</table>
+
+																			</td>
+																		</tr>
+																		<tr>
+																			<td colspan="2">
+																				<?php if ($summary['appointment_count'] >= 2) { ?>
+																					<div class="rowmt-2">
+																						<div class="col-md-12">
+																							<div id="nfl-chart-container" class="container">
+
+																							</div>
+																						</div>
+																					</div>
+																				<?php }?>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>Fundus</td>
+																			<td class="text-dark">
+																				<div class="report-container">
+																					<?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+																						<?php if($value['name'] == 'Fundus - Right eye' || $value['name'] == 'Fundus - Left eye') {?>
+																							<div class="report-image report-pdf">
+																								<a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																								class="open-pdf font-12" style="display: block;">
+																									<img class="img-thumbnail" src="../public/images/pdf.png"
+																										alt="">
+																									<span><?php echo $value['name']; ?></span>
+																								</a>
+																							</div>
+																						<?php } } else {?>
+																						<?php if($value['name'] == 'Fundus - Right eye' || $value['name'] == 'Fundus - Left eye') {?>
+
+																							<div class="report-image">
+																								<a data-fancybox="gallery"
+																								href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
+																									<img class="img-thumbnail"
+																										src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																										alt="">
+																									<span><?php echo $value['name']; ?></span>
+																								</a>
+																							</div>
+																						<?php } } } } else { ?>
+																						<p class="text-danger text-center">No documents found !!!</p>
+																					<?php } ?>
+																				</div>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>Visual field test plots</td>
+																			<td class="text-dark">
+																				<div class="report-container">
+																					<?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+																						<?php if($value['name'] == 'Visual fields - Right eye' || $value['name'] == 'Visual fields - Left eye') {?>
+																							<div class="report-image report-pdf">
+																								<a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																								class="open-pdf font-12" style="display: block;">
+																									<img class="img-thumbnail" src="../public/images/pdf.png"
+																										alt="">
+																									<span><?php echo $value['name']; ?></span>
+																								</a>
+																							</div>
+																						<?php } } else {?>
+																						<?php if($value['name'] == 'Visual fields - Right eye' || $value['name'] == 'Visual fields - Left eye') {?>
+
+																							<div class="report-image">
+																								<a data-fancybox="gallery"
+																								href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
+																									<img class="img-thumbnail"
+																										src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																										alt="">
+																									<span><?php echo $value['name']; ?></span>
+																								</a>
+																							</div>
+																						<?php } } } } else { ?>
+																						<p class="text-danger text-center">No documents found !!!</p>
+																					<?php } ?>
+																				</div>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>Mean deviation</td>
+																			<td class="text-dark">
+																				<table style="padding: 0px;">
+																					<tr>
+																						<td width="50%" style="padding:0px;">
+																							<b>RE: </b><?php echo isset($value['mean_deviation_right']) ? $value['mean_deviation_right']." db" : '' ?>
+
+																						</td>
+																						<td width="50%" style="padding:0px;">
+																							<b>LE: </b><?php echo isset($value['mean_deviation_left']) ? $value['mean_deviation_left']." db" : '' ?></td>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td colspan="2">
+																				<?php if ($summary['appointment_count'] >= 2) { ?>
+																					<div class="rowmt-2">
+																						<div class="col-md-12">
+																							<div id="md-chart-container" class="container">
+
+																							</div>
+																						</div>
+																					</div>
+																				<?php } ?>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>PSD deviation</td>
+																			<td class="text-dark">
+																				<table style="padding: 0px;">
+																					<tr>
+																						<td width="50%" style="padding:0px;">
+																							<b>RE: </b><?php echo isset($value['psd_deviation_right']) ? $value['psd_deviation_right']." db" : '' ?>
+
+																						</td>
+																						<td width="50%" style="padding:0px;">
+																							<b>LE: </b><?php echo isset($value['psd_deviation_left']) ? $value['psd_deviation_left']." db" : '' ?></td>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td colspan="2">
+																				<?php if ($summary['appointment_count'] >= 2) { ?>
+																					<div class="rowmt-2">
+																						<div class="col-md-12">
+																							<div id="nfl-chart-container" class="container">
+
+																							</div>
+																						</div>
+																					</div>
+																				<?php }?>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>Diagnosis</td>
+																			<td class="text-dark"><?php echo isset($value['diagnosis']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$value['diagnosis']] : '' ?></td>
+																		</tr>
+																		<tr>
+																			<td>Diagnosis eye</td>
+																			<td class="text-dark"><?php echo isset($value['diagnosis_eye']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$value['diagnosis_eye']] : '' ?></td>
+																		</tr>
+																		<tr>
+																			<td>Outcome</td>
+																			<td class="text-dark"><?php echo isset($value['outcome']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['OUTCOME'][$value['outcome']] : '' ?></td>
+																		</tr>
+																		<tr>
+																			<td>Follow up / Next Appointment</td>
+																			<td class="text-dark"><?php echo (isset($value['gcp_next_appointment']) && !empty($value['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$value['gcp_next_appointment']] : '' ?></td>
+																		</tr>
+																		<tr>
+																			<td>Glaucoma Care Plan Required</td>
+																			<td class="text-dark"><?php echo isset($value['is_glaucoma_required']) ? $value['is_glaucoma_required'] : '' ?></td>
+																		</tr>
+																	</table>
 																</div>
 															</div>
-														<?php 
-															foreach($finding_forms as $form){		?>
-																	<div class="tab-pane" id="pre-consultation-form-id-<?php echo $form['id'] ?>-appointment-id-<?php echo $value['id'] ?>">
-																		<?php
-																			$form_details = $formObj->getForm($form['id']);
-																			$form_fields = $formObj->getFormField($form['id']);
-																			$form_answer = $formObj->getFormAnswer($value['id'], $form['id']);
-																			//print_r($form_fields);exit;
-																		?>
-																		<!--h1><?php echo $form_details['name'] ?></h1>
-																		<br>
-																		<h5><?php echo $form_details['description'] ?></h5-->
-																		<div class="row">
-																		
-																		<?php foreach($form_fields as $fields)	{ 	
-																				$answer = isset($form_answer[$fields['id']]) ? $form_answer[$fields['id']] : '';			?>
-																			<div class="col-md-<?php echo (in_array($fields['input_type'], ['heading', 'note'])) ? '12' : '6'; ?>">
-																				<?php	if(($fields['input_type'] == 'note')){	?>
-																							<p class="font-15 mb-2"><?php echo $fields['note'] ?></p>
-																				<?php	} else if(($fields['input_type'] == 'heading')){	?>
-																							<h3 class="mt-2 mb-0"><?php echo $fields['label'] ?></h3>
-																				<?php	} else if(($fields['input_type'] == 'file')){	?>
-																							<h5 class="mb-0"><b><?php echo $fields['label'] ?></b></h5>
-																				<?php 		if(!empty($answer)){
-																								$image_path = '../public/uploads/appointment/forms/' . $result['id'] . '/' . $form['id'] . '/' . $answer;
-																									echo '<div class="col-md-1">';
-																											echo '<a data-fancybox="gallery" href="' .$image_path . '">';
-																												echo '<img class="form_thumb_img" src="' .$image_path . '">';
-																											echo '</a>';
-																									echo '</div>';
-																								}
-																						} else {	?>
-																							<h5 class="mb-0"><b><?php echo $fields['label'] ?></b></h5>
-																							<p class="font-12"><?php echo $answer ?></p>
-																				<?php	}	?>														
-																			</div>
-																		<?php }		?>
-																			
-																		</div>
-																	</div>
-														<?php	
-															}			?>
 														</div>
 													</div>
 
@@ -641,7 +808,9 @@
 								</div>
 								<div class="form-group">
 									<label>Message</label>
-									<textarea name="mail[message]" class="form-control mail-summernote" placeholder="Enter Message . . ."><?php echo $email_body; ?></textarea>
+									<textarea name="mail[message]" class="form-control mail-summernote" placeholder="Enter Message . . .">
+										<?php echo $email_body; ?>
+									</textarea>
 								</div>
 							</div>
 							<div class="panel-footer text-center">
@@ -675,14 +844,14 @@
                                 <tr>
                                     <td>Glaucoma Care Plan Required</td>
                                     <td>
-                                        <?php echo constant('GCP_REQUIRE')[$result['is_glaucoma_required']];?>
+                                        <?php echo isset($result['is_glaucoma_required']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['GLAUCOMA_CARE_PLAN_REQUIRED'][$result['is_glaucoma_required']] : '' ?>
                                     </td>
                                 </tr>
                                 <?php if($result['is_glaucoma_required'] == 'YES') {?>
                                     <tr>
                                         <td>GCP Followup Frequency</td>
                                         <td>
-                                            <?php echo constant('FOLLOW_UP_DROPDOWN')[$result['gcp_followup_frequency']]?>
+											<?php echo isset($result['gcp_followup_frequency']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$result['gcp_followup_frequency']] : '' ?>
                                         </td>
                                     </tr>
                                 <?php }?>

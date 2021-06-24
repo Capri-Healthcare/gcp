@@ -162,7 +162,81 @@ class PatientController extends Controller
             $data['email_subject'] = $email_subject;
             $data['email_body'] = $email_body;
             $data['video_consultation_link'] = $video_consultation_link;
+        } else {
+            $data['email_body'] = "<br><br><br><br><br><br><br><br>
+            Best Regards, <br>
+            Glaucoma Care Plan";
         }
+
+        if ($data['common']['user']['role_id'] == '3') {
+            $data['appointment_result'] = $this->model_appointment->getAppointmentView($id, $data['common']['user']['doctor']);
+        } else {
+            $data['appointment_result'] = $this->model_appointment->getAppointmentView($id);
+        }
+        $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['appointment_result']);
+        $summary['appointment_count'] = !empty($appointment_completed)?count($appointment_completed):0;
+        if ($summary['appointment_count'] != 0) {
+
+            // Get Last Appointment Data
+            $appointment_last = $this->model_appointment->getLastPatientAppointment($data['appointment_result']);
+            $highestIop = $this->model_appointment->getMaxIOPAppointment($data['appointment_result']);
+
+            $summary['summarykey']['cct_right'] = $appointment_last['cct_right'];
+            $summary['summarykey']['cct_left'] = $appointment_last['cct_left'];
+            $summary['summarykey']['iop_right'] = $highestIop['iop_right'];
+            $summary['summarykey']['iop_left'] = $highestIop['iop_left'];
+            $summary['summarykey']['allergy'] = $appointment_last['allergy'];
+
+            foreach ($appointment_completed as $key => $list) {
+
+                $summary['appointment']['appointment_date'][$key] = $list['date'];
+
+                $summary['appointment']['data'][$key]['date'] = $list['date'];
+                $summary['appointment']['data'][$key]['data'][] = $list['cct_right'];
+                $summary['appointment']['data'][$key]['data'][] = $list['cct_left'];
+                $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_right'];
+                $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_left'];
+                $summary['appointment']['data'][$key]['data'][] = $list['allergy'];
+
+                // Get Prescription From Appointment id
+                $prescription = $this->model_appointment->getPrescription($list['id']);
+                if ($prescription) {
+                    $summary['appointment']['data'][$key]['prescription'] = $prescription['prescription'];
+                }
+
+                // Preparing Chart Data
+                $intraocularPressureChart[0]['name'] = 'RE';
+                $intraocularPressureChart[1]['name'] = 'LE';
+                $intraocularPressureChart[0]['data'][] = (int)$list['intraocular_pressure_right'];
+                $intraocularPressureChart[1]['data'][] = (int)$list['intraocular_pressure_left'];
+
+                $nflThicknessChart[0]['name'] = 'RE';
+                $nflThicknessChart[1]['name'] = 'LE';
+                $nflThicknessChart[0]['data'][] = (int)$list['nfl_thickness_right'];
+                $nflThicknessChart[1]['data'][] = (int)$list['nfl_thickness_left'];
+
+                $meanDeviationChart[0]['name'] = 'RE';
+                $meanDeviationChart[1]['name'] = 'LE';
+                $meanDeviationChart[0]['data'][] = (int)$list['mean_deviation_right'];
+                $meanDeviationChart[1]['data'][] = (int)$list['mean_deviation_left'];
+
+
+                $psdDeviationChart[0]['name'] = 'RE';
+                $psdDeviationChart[1]['name'] = 'LE';
+                $psdDeviationChart[0]['data'][] = (int)$list['psd_deviation_right'];
+                $psdDeviationChart[1]['data'][] = (int)$list['psd_deviation_left'];
+                $categories[] = date_format(date_create($list['date']), 'd-m-Y');
+
+            }
+
+            $data['intraocularPressureChart'] = $intraocularPressureChart;
+            $data['nflThicknessChart'] = $nflThicknessChart;
+            $data['meanDeviationChart'] = $meanDeviationChart;
+            $data['psdDeviationChart'] = $psdDeviationChart;
+            $data['categories'] = $categories;
+        }
+
+        $data['summary'] = $summary;
 //echo "<pre>"; print_r($data); exit;
         /*Render User add view*/
         $this->response->setOutput($this->load->view('patient/patient_view', $data));

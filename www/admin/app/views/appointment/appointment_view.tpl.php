@@ -62,8 +62,8 @@
                                 <li><a href="#appointment-invoice" data-toggle="tab"><i class="ti-receipt"></i> <span>Invoice</span></a>
                                 </li>
                             <?php } ?>
-                            <li><a href="#appointment-pre-consultation-requirement" data-toggle="tab"><i
-                                            class="ti-receipt"></i> <span>Pre-consultation requirement</span></a></li>
+                            <!--li><a href="#appointment-pre-consultation-requirement" data-toggle="tab"><i
+                                            class="ti-receipt"></i> <span>Pre-consultation requirement</span></a></li-->
                             <?php if ($page_edit) { ?>
                                 <li>
                                     <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointment/edit&id=' . $result['id']; ?>"><i
@@ -687,8 +687,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Message</label>
-                                        <textarea name="mail[message]" class="form-control mail-summernote"
-                                                  placeholder="Enter Message . . ."></textarea>
+                                        <textarea name="mail[message]" class="form-control mail-summernote" placeholder="Enter Message . . .">
+                                                <br><br><br><br><br><br><br><br>
+                                                Best Regards, <br>
+                                                Glaucoma Care Plan
+                                        </textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Attachment</label>
