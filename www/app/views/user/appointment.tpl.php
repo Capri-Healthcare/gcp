@@ -5,9 +5,9 @@
 				<li class="nav-item">
 					<a class="nav-link active" href="#appointment-info" data-toggle="tab">Appointment Info</a>
 				</li>
-				<li class="nav-item">
+				<!--li class="nav-item">
 					<a class="nav-link" href="#appointment-suporting-images" data-toggle="tab">Images</a>
-				</li>
+				</li-->
 				<?php if(!empty($selected_forms)){ ?>
 					<li class="nav-item">
 						<a class="nav-link" href="#appointment-pre-consultation-requirement" data-toggle="tab">Pre-consultation requirement</a>

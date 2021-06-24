@@ -49,10 +49,10 @@
                         <a class="nav-link" href="#appointment-invoice" data-toggle="tab">Invoice</a>
                     </li>
                 <?php } ?>
-                <li class="nav-item">
+                <!--li class="nav-item">
                     <a class="nav-link" href="#appointment-pre-consultation-requirement" data-toggle="tab">Pre-consultation
                         requirements</a>
-                </li>
+                </li-->
             </ul>
             <div class="tab-content pt-4">
                 <div class="tab-pane active" id="appointment-info">
@@ -87,7 +87,7 @@
                                     </div>
                                 </div-->
                                 <input type="hidden" class="apnt-department" name="appointment[doctor]"
-                                       value="<?php echo $result['doctor_id']; ?>">
+                                       value="<?php echo $result['doctor_id']; ?>"-->
                                 <input type="hidden" class="apnt-department" name="appointment[department]"
                                        value="<?php echo $result['department_id']; ?>">
                                 <div class="form-group">

@@ -208,13 +208,8 @@
                 <table class="table-input">
                     <thead>
                     <tr>
-                        <?php if (in_array($common['user']['role'], constant('USER_ROLE'))) { ?>
-                            <th>Item Name <span class="form-required">*</span></th>
-                            <th>Item Description</th>
-                        <?php } else { ?>
-                            <th>Patient<span class="form-required">*</span></th>
-                            <th>Report Type<span class="form-required">*</span></th>
-                        <?php } ?>
+                        <th>Item Name <span class="form-required">*</span></th>
+                        <th>Item Description</th>
                         <th>Quantity <span class="form-required">*</span></th>
                         <th>Unit Cost <span class="form-required">*</span></th>
                         <th>Tax</th>
@@ -547,7 +542,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    var isOptician =  <?php echo !in_array($common['user']['role'], constant('USER_ROLE')) ? 0 : 1 ?>;
+    var isOptician =  0;
     var patientOption = null;
     var itemDescriptionOption = null;
 

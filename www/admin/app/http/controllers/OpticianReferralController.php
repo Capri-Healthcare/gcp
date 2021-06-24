@@ -41,8 +41,8 @@ class OpticianReferralController extends Controller
                 $data['period']['status'] = constant('STATUS_NEW');
                 $data['dropdown_selected'] = constant('STATUS_NEW');
             } else if ($data['common']['user']['role'] == constant('USER_ROLE_OPTOMETRIST')) {
-                $data['period']['status'] = constant('STATUS_DRAFT');
-                $data['dropdown_selected'] = constant('STATUS_DRAFT');
+                $data['period']['status'] = constant('STATUS_NEW');
+                $data['dropdown_selected'] = constant('STATUS_NEW');
             } else {
                 $data['period']['status'] = constant('STATUS_NEW');
                 $data['dropdown_selected'] = constant('STATUS_NEW');
