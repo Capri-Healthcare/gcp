@@ -22,7 +22,6 @@
         </div>
     </div>
 
-
     <div class="panel panel-default">
         <div class="panel-body">
             <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
@@ -750,7 +749,7 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label>Visual acuity - right<span
+                                                <label>Visual acuity - RE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -770,7 +769,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Intraocular pressure - right<span
+                                                <label>Intraocular pressure RE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -792,7 +791,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Visual acuity - left<span
+                                                <label>Visual acuity - LE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -812,7 +811,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Intraocular pressure - left<span
+                                                <label>Intraocular pressure - LE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -837,7 +836,7 @@
                                         <div class="row">
 
                                             <div class="col-md-12">
-                                                <div id="container" class="container">
+                                                <div id="container" >
 
                                                 </div>
                                             </div>
@@ -846,7 +845,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Anterior Chamber - Right<span
+                                                <label>Anterior Chamber - RE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -868,7 +867,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Anterior Chamber - Left<span
+                                                <label>Anterior Chamber - LE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -892,7 +891,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Lens - Right<span class="form-required">*</span></label>
+                                                <label>Lens - RE<span class="form-required">*</span></label>
                                                 <input type="number" class="form-control"
                                                        name="appointment[lens_right]"
                                                        value="<?php echo $result['lens_right']; ?>">
@@ -901,7 +900,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Lens - Left<span class="form-required">*</span></label>
+                                                <label>Lens - LE<span class="form-required">*</span></label>
                                                 <input type="number" class="form-control"
                                                        name="appointment[lens_left]"
                                                        value="<?php echo $result['lens_left']; ?>">
@@ -912,7 +911,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Disc (OCT) - Right</label><br>
+                                                <label>Disc (OCT) - RE</label><br>
                                                 <div class="report-container">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                     <?php if($value['name'] == 'OCT - Right eye') {?>
@@ -944,7 +943,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Disc (OCT) - Left</label><br>
+                                                <label>Disc (OCT) - LE</label><br>
                                                 <div class="report-container">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'OCT - Left eye') {?>
@@ -978,7 +977,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>CCT - Right<span class="form-required">*</span></label>
+                                                <label>CCT - RE<span class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
@@ -999,7 +998,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>CCT - Left<span class="form-required">*</span></label>
+                                                <label>CCT - LE<span class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
@@ -1022,7 +1021,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>NFL Thickness - Right<span
+                                                <label>NFL Thickness - RE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
@@ -1034,7 +1033,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>NFL Thickness - Left<span
+                                                <label>NFL Thickness - LE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
@@ -1047,8 +1046,8 @@
                                     </div>
                                     <?php if ($summary['appointment_count'] >= 1) { ?>
                                     <div class="rowmt-2">
-                                        <div class="col-md-8 offset-md-2">
-                                            <div id="nfl-chart-container" class="container">
+                                        <div class="col-md-12">
+                                            <div id="nfl-chart-container" >
 
                                             </div>
                                         </div>
@@ -1058,7 +1057,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Fundus - Right</label><br>
+                                                <label>Fundus - RE</label><br>
                                                 <div class="report-container">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Fundus - Right eye') {?>
@@ -1090,7 +1089,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Fundus - Left</label><br>
+                                                <label>Fundus - LE</label><br>
                                                 <div class="report-container">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Fundus - Left eye') {?>
@@ -1124,7 +1123,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Visual field test plots - Right</label><br>
+                                                <label>Visual field test plots - RE</label><br>
                                                 <div class="report-container">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Visual fields - Right eye') {?>
@@ -1156,7 +1155,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Visual field test plots - Left</label><br>
+                                                <label>Visual field test plots - LE</label><br>
                                                 <div class="report-container">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Visual fields - Left eye') {?>
@@ -1191,7 +1190,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Mean Deviation - Right<span
+                                                <label>Mean Deviation - RE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
@@ -1203,7 +1202,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Mean Deviation - Left<span
+                                                <label>Mean Deviation - LE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
@@ -1217,8 +1216,8 @@
 
                                     <?php if ($summary['appointment_count'] >= 1) { ?>
                                     <div class="rowmt-2">
-                                        <div class="col-md-8 offset-md-2">
-                                            <div id="md-chart-container" class="container">
+                                        <div class="col-md-12">
+                                            <div id="md-chart-container" >
 
                                             </div>
                                         </div>
@@ -1227,7 +1226,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>PSD Deviation - Right<span
+                                                <label>PSD Deviation - RE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
@@ -1239,7 +1238,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>PSD Deviation - Left<span
+                                                <label>PSD Deviation - LE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
@@ -1253,8 +1252,8 @@
 
                                     <?php if ($summary['appointment_count'] >= 1) { ?>
                                     <div class="rowmt-2">
-                                        <div class="col-md-8 offset-md-2">
-                                            <div id="psd-chart-container" class="container">
+                                        <div class="col-md-12">
+                                            <div id="psd-chart-container" >
 
                                             </div>
                                         </div>

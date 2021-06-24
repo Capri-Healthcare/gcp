@@ -263,7 +263,7 @@
 
                                         <tr>
                                             <td colspan="2">
-                                                <?php if ($summary['appointment_count'] >= 2) { ?>
+                                                <?php if ($summary['appointment_count'] >= 1) { ?>
                                                     <div class="row">
 
                                                         <div class="col-md-12">
@@ -375,7 +375,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <?php if ($summary['appointment_count'] >= 2) { ?>
+                                                <?php if ($summary['appointment_count'] >= 1) { ?>
                                                     <div class="rowmt-2">
                                                         <div class="col-md-12">
                                                             <div id="nfl-chart-container" class="container">
@@ -468,7 +468,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <?php if ($summary['appointment_count'] >= 2) { ?>
+                                                <?php if ($summary['appointment_count'] >= 1) { ?>
                                                     <div class="rowmt-2">
                                                         <div class="col-md-12">
                                                             <div id="md-chart-container" class="container">
@@ -497,7 +497,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <?php if ($summary['appointment_count'] >= 2) { ?>
+                                                <?php if ($summary['appointment_count'] >= 1) { ?>
                                                     <div class="rowmt-2">
                                                         <div class="col-md-12">
                                                             <div id="nfl-chart-container" class="container">
@@ -885,7 +885,7 @@
             'type': 'iframe'
         });
 
-        <?php if ($summary['appointment_count'] >= 2) { ?>
+        <?php if ($summary['appointment_count'] >= 1) { ?>
         var firstChart = <?php echo json_encode($intraocularPressureChart)?>;
         var nflChart = <?php echo json_encode($nflThicknessChart)?>;
         var mdChart = <?php echo json_encode($meanDeviationChart)?>;
