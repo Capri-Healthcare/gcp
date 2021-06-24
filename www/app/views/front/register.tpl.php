@@ -99,59 +99,6 @@
                                         </div>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-
-                                <div class="form-group main_box">
-                                    <label for="email">E-Mail Address <span class="error">*</span></label>
-                                    <input id="register-email" type="email" class="form-control" name="email"
-                                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" required
-                                           autofocus>
-                                    <div class="invalid-feedback">
-                                        Email is invalid
-                                    </div>
-                                </div>
-
-                                <div class="form-group main_box">
-                                    <label for="mnumber">Mobile Number <span class="error">*</span></label>
-                                    <input id="register-mobile" type="text" class="form-control" maxlength="11"
-                                           name="mobile" pattern="[0-9]*" value=""
-                                           onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-                                           required>
-                                    <div class="invalid-feedback">
-                                        Mobile number is invalid
-                                    </div>
-                                </div>
-
-                                <div class="form-group main_box" id="register-user-div">
-                                    <label for="username">User name <span class="error">*</span></label>
-                                    <input type="text" class="form-control" name="username" id="register-user-name"
-                                           value="">
-                                    <div class="invalid-feedback">
-                                        User name is required
-                                    </div>
-                                </div>
-
-                                <div class="form-group main_box" id="register-optician-gppractice-div" style="display: none">
-                                    <label for="oname">GP Practic<span class="error">*</span></label>
-                                    <select class="form-control" name="gp_practice" id="gp_practice" value="" autofocus>
-                                        <option value="">Select GP Practice</option>
-                                        <?php foreach (constant('GP_PRACTICE') as $key => $list) { ?>
-                                            <option value ="<?php echo $key;?>"><?php echo $list;?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        GP Practice is required
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group main_box">
-                                    <label for="password">Password <span class="error">*</span></label>
-                                    <input type="password" class="form-control" name="password" id="register-password"
-                                           value="" required>
-                                    <div class="invalid-feedback invalid-password">
-
-=======
                                 
                                 <div class="row">
                                     <div class="col-md-12">
@@ -193,7 +140,6 @@
                                         <div class="mt-4 text-center form-group">
                                             Already have an account? <a href="<?php echo URL . DIR_ROUTE; ?>login">Login</a>
                                         </div>
->>>>>>> 93778bc9aafd6c81d557a325f11f312cc4fee466
                                     </div>
                                 </div>
 
