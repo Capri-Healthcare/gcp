@@ -37,7 +37,7 @@ define('LOGGED_IN_SALT', 'Xdb54;55S#CJ33cFq}VdvQvS7O6dfk~uj}C-A>gmie~b9zXI|oO*70
 define('TOKEN', 'oQ913wsl6{WBlk#5jV5%VYExlFaIomj&75ZZ~(W3GREN#n)(jJp2QY7gugD))3L{');
 define('TOKEN_SALT', 'rg(uyO0?I9uq5mx-hh4>V-XCPQ?Dx80{n7|?K?pU;-2WldDIOElXOvzT>p9P1zvN');
 
-define('USER_ROLE', ['Med. Secretary', 'Admin', 'GCP Secretary']);
+define('USER_ROLE', ['Med. Secretary', 'Admin', 'GCP Secretary','Doctor']);
 define('USER_FOLLOWUP_MED_ROLE', ['Med. Secretary', 'Admin', 'Optometrist']);
 define('USER_FOLLOWUP_GCP_ROLE', ['Admin', 'GCP Secretary']);
 define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist', 'GCP Secretary']);
