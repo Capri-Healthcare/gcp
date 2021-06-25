@@ -340,7 +340,7 @@
                     return false;
                 }
 
-                if ($('#reports-modal input[name=report_name]').val() === "") {
+                if ($('#reports-modal select[name=report_name]').val() === "") {
                     toastr.error('Error', 'Enter report/document name...');
                     return false;
                 }
