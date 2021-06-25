@@ -325,7 +325,7 @@
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i class="ti-pin"></i></span>
 												</div>
-												<input type="text" name="doctor[address][pincode]" id="pincode" class="form-control" value="" placeholder="Enter Postal Code . . .">
+												<input type="text" name="doctor[address][pincode]" id="pincode" maxlength="7" class="form-control" value="" placeholder="Enter Postal Code . . ." onkeypress="return alphaNumericValidation(event)">
 											</div>
 										</div>
 									</div>
@@ -619,6 +619,21 @@
 			holidayCheck(ele);
 		});
 	});
+
+    function alphaNumericValidation(e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Alphabets and Numbers.
+        var regex = /^[A-Za-z0-9 ]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        if (!isValid) {
+            return isValid
+        }
+
+        return isValid;
+    }
 </script>
 <!-- Footer -->
 <?php include (DIR_ADMIN.'app/views/common/footer.tpl.php'); ?>

@@ -436,9 +436,9 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ti-pin"></i></span>
                                 </div>
-                                <input type="text" name="patient[address][postal]" class="form-control"
+                                <input type="text" name="patient[address][postal]" maxlength="7" class="form-control"
                                        value="<?php echo $result['address']['postal']; ?>"
-                                       placeholder="Enter Postal Code . . .">
+                                       placeholder="Enter Postal Code . . ."  onkeypress="return alphaNumericValidation(event)">
                             </div>
                         </div>
 
@@ -648,6 +648,19 @@
                 return true;
             }
         }
+        function alphaNumericValidation(e) {
+            var keyCode = e.keyCode || e.which;
 
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            var regex = /^[A-Za-z0-9 ]+$/;
+
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                return isValid
+            }
+
+            return isValid;
+        }
     </script>
 <?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>

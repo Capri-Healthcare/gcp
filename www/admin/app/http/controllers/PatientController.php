@@ -369,7 +369,7 @@ class PatientController extends Controller
 
             $this->notificationToPatientForAppointmentBooking($data['id']);
 
-           // $this->notificationToHospitalForAppointmentBooking($data['id']);
+           //$this->notificationToHospitalForAppointmentBooking($data['id']);
 
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient Information updated successfully.');
         } else {
@@ -627,7 +627,7 @@ class PatientController extends Controller
         $patient = $this->model_patient->getPatient($id);
 
         $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{patient fname, lname}', $patient['firstname'] . ' ' . $patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('patientname', $patient['firstname'] . ' ' . $patient['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{hospital_name}',constant('HOSPITAL_LIST')[$patient['hospital_code']]['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{hospital_address}',constant('HOSPITAL_LIST')[$patient['hospital_code']]['address'], $result['template']['message']);
@@ -637,7 +637,7 @@ class PatientController extends Controller
         $data['email'] = $patient['email'];
         $data['subject'] = str_replace('{hospital_name}',constant('HOSPITAL_LIST')[$patient['hospital_code']]['name'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];
-        
+
         return $this->controller_mail->sendMail($data);
     }
     public function notificationToHospitalForAppointmentBooking($id)
@@ -656,7 +656,7 @@ class PatientController extends Controller
         $patient = $this->model_patient->getPatient($id);
         $patient['address'] = json_decode($patient['address'], true);
 
-        $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
+       // $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
         $result['template']['message'] = str_replace('{patient name}', $patient['firstname'] . ' ' . $patient['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{name}',$patient['firstname'] . ' ' . $patient['lastname'], $result['template']['message']);
@@ -668,7 +668,6 @@ class PatientController extends Controller
         $data['email'] = constant('HOSPITAL_LIST')[$patient['hospital_code']]['email'];
         $data['subject'] = str_replace('{patient_name}',$patient['firstname'] . ' ' . $patient['lastname'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];
-
 
         return $this->controller_mail->sendMail($data);
     }
