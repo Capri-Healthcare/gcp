@@ -523,13 +523,15 @@ class AppointmentController extends Controller
 
                     $this->newpatiengcpMail($data['appointment']['optician_id']);
                     $this->load->model('followup');
+                    $followup['appointment_id'] = $data['appointment']['id'];
                     $followup['patient_id'] = $data['appointment']['patient_id'];
                     $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
                     $followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
 
-                    $this->model_followup->createFollowup($followup);
-                    //$this->notificationToGCPForPatientFollowup();
+                   if($this->model_followup->createFollowup($followup)){
 
+                       //$this->notificationToGCPForPatientFollowup();
+                   }
                 }
 
                 $this->load->model('patient');

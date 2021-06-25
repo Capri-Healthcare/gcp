@@ -7,49 +7,56 @@ class ForgotController extends Controller
 {
 	public function index() 
 	{
+        $data = array();
 		$data['header'] = $this->load->view('front/common/header');
 		$data['footer'] = $this->load->view('front/common/footer');
-		$this->response->setOutput($this->load->view('front/forgot', $data));
 
-		/*if ($this->user_agent->isLogged()) {
-			$this->url->redirect('user/appointments');
-		}
-		$this->load->model('pages');
 		$this->load->controller('common');
-		$data = array();
-		$data = array_merge($data, $this->controller_common->index());
-		$data['page']['page_title'] = $data['lang']['text_forgot_password'];
-		$data['page']['meta_tag'] = $data['page']['page_title'].' | ' .$data['siteinfo']['name'];
-		$data['page']['meta_description'] = $data['page']['page_title'].', '.$data['siteinfo']['name'];
-		
-		$data['page']['breadcrumbs'] = array();
-		$data['page']['breadcrumbs'][] = array(
-			'label' => $data['lang']['text_home'],
-			'link' => URL.DIR_ROUTE.'home',
-		);
-		$data['page']['breadcrumbs'][] = array(
-			'label' => $data['page']['page_title'],
-			'link' => '#',
-		);
 
-		$data['header'] = $this->controller_common->getHeader($data['page'], $data['pagetheme']['other']['header']);
-		$data['footer'] = $this->controller_common->getFooter(NULL, 'footer');
+        $data = array_merge($data, $this->controller_common->index());
 
-		if (isset($this->session->data['error'])) {
-			$data['error'] = $this->session->data['error'];
-			unset($this->session->data['error']);
-		}
-		if (isset($this->session->data['success'])) {
-			$data['success'] = $this->session->data['success'];
-			unset($this->session->data['success']);
-		}
+        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
+        $data['active'] = 'forgot';
 
-		$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-		$data['active'] = 'forgot';*/
-		/**
-		* Load Forgot view
-		* Pass data to view
-		**/
+        $this->response->setOutput($this->load->view('front/forgot', $data));
+
+        /*if ($this->user_agent->isLogged()) {
+            $this->url->redirect('user/appointments');
+        }
+        $this->load->model('pages');
+        $this->load->controller('common');
+        $data = array();
+        $data = array_merge($data, $this->controller_common->index());
+        $data['page']['page_title'] = $data['lang']['text_forgot_password'];
+        $data['page']['meta_tag'] = $data['page']['page_title'].' | ' .$data['siteinfo']['name'];
+        $data['page']['meta_description'] = $data['page']['page_title'].', '.$data['siteinfo']['name'];
+
+        $data['page']['breadcrumbs'] = array();
+        $data['page']['breadcrumbs'][] = array(
+            'label' => $data['lang']['text_home'],
+            'link' => URL.DIR_ROUTE.'home',
+        );
+        $data['page']['breadcrumbs'][] = array(
+            'label' => $data['page']['page_title'],
+            'link' => '#',
+        );
+
+        $data['header'] = $this->controller_common->getHeader($data['page'], $data['pagetheme']['other']['header']);
+        $data['footer'] = $this->controller_common->getFooter(NULL, 'footer');
+
+        if (isset($this->session->data['error'])) {
+            $data['error'] = $this->session->data['error'];
+            unset($this->session->data['error']);
+        }
+        if (isset($this->session->data['success'])) {
+            $data['success'] = $this->session->data['success'];
+            unset($this->session->data['success']);
+        }
+
+        /**
+        * Load Forgot view
+        * Pass data to view
+        **/
 		//$this->response->setOutput($this->load->view('auth/forgot', $data));
 	}
 	/**
@@ -166,7 +173,7 @@ class ForgotController extends Controller
 		$this->load->model('register');
 		if ($this->model_register->checkEmailHash($data)) {
 			
-			$this->load->model('pages');
+
 			$this->load->controller('common');
 
 			$data = array_merge($data, $this->controller_common->index());
@@ -174,8 +181,8 @@ class ForgotController extends Controller
 			$data['page']['meta_tag'] = $data['page']['page_title'].' | ' .$data['siteinfo']['name'];
 			$data['page']['meta_description'] = $data['siteinfo']['name'];
 
-			$data['header'] = $this->controller_common->getHeader($data['page'], $data['pagetheme']['other']['header']);
-			$data['footer'] = $this->controller_common->getFooter(NULL, 'footer');
+            $data['header'] = $this->load->view('front/common/header', $data);
+            $data['footer'] = $this->load->view('front/common/footer');
 
 			$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
 			/**

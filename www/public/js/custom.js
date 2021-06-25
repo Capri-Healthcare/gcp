@@ -453,16 +453,16 @@ $(document).ready(function () {
 
     //Forgot Password Form Validation
     $('#forgot-submit').click(function () {
+        $('body').find('.form-control').removeClass("is-invalid");
         var clck_invld = 0,
             mail_filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
             bot_number, bot_number_array, total;
         if ($('#forgot-bot').val().trim().length < 1) {
-            $('#forgot-bot').parent('.form-input').addClass('is-invalid');
-            $('#forgot-bot').parent('.form-input').addClass('is-dirty');
+            $('#forgot-bot').addClass('is-invalid');
             clck_invld = 1;
             $('#forgot-bot').focus();
         } else if ($('#forgot-bot').val().trim().length > 0) {
-            bot_number = $('#forgot-bot+label').text();
+            bot_number = $('#forgot-bot-label').text();
             bot_number_array = bot_number.match(/[\d\.]+/g);
             total = 0;
             if (bot_number_array.length > 0) {
@@ -470,22 +470,20 @@ $(document).ready(function () {
                     total += +element;
                 });
                 if ($('#forgot-bot').val().trim() !== total.toString()) {
-                    $('#forgot-bot').parent('.form-input').addClass('is-invalid');
-                    $('#forgot-bot').parent('.form-input').addClass('is-dirty');
+                    $('#forgot-bot').addClass('is-invalid');
                     clck_invld = 1;
                     $('#forgot-bot').focus();
                 }
             } else {
-                $('#forgot-bot').parent('.form-input').addClass('is-invalid');
-                $('#forgot-bot').parent('.form-input').addClass('is-dirty');
+                $('#forgot-bot').addClass('is-invalid');
                 clck_invld = 1;
                 $('#forgot-bot').focus();
             }
         }
 
         if (!mail_filter.test($('#forgot-email').val())) {
-            $('#forgot-email').parent('.form-input').addClass('is-invalid');
-            $('#forgot-email').parent('.form-input').addClass('is-dirty');
+            $('#forgot-email').addClass('is-invalid');
+            $('#forgot-email').addClass('is-dirty');
             clck_invld = 1;
             $('#forgot-email').focus();
         }
@@ -498,26 +496,22 @@ $(document).ready(function () {
     $('#change-password-submit').click(function () {
         var clck_invld = 0;
         if (!($('#change-password-confirm').val().trim() == $('#change-password-new').val().trim())) {
-            $('#change-password-confirm').parent('.form-input').addClass('is-invalid');
-            $('#change-password-confirm').parent('.form-input').addClass('is-dirty');
+            $('#change-password-confirm').addClass('is-invalid');
             clck_invld = 1;
             $('#change-password-confirm').focus();
         }
         if ($('#change-password-confirm').val().trim().length < 6) {
-            $('#change-password-confirm').parent('.form-input').addClass('is-invalid');
-            $('#change-password-confirm').parent('.form-input').addClass('is-dirty');
+            $('#change-password-confirm').addClass('is-invalid');
             clck_invld = 1;
             $('#register-confirm-password').focus();
         }
         if ($('#change-password-new').val().trim().length < 6) {
-            $('#change-password-new').parent('.form-input').addClass('is-invalid');
-            $('#change-password-new').parent('.form-input').addClass('is-dirty');
+            $('#change-password-new').addClass('is-invalid');
             clck_invld = 1;
             $('#change-password-new').focus();
         }
         if ($('#change-password-old').val().trim().length < 4) {
-            $('#change-password-old').parent('.form-input').addClass('is-invalid');
-            $('#change-password-old').parent('.form-input').addClass('is-dirty');
+            $('#change-password-old').addClass('is-invalid');
             clck_invld = 1;
             $('#change-password-old').focus();
         }
@@ -528,14 +522,14 @@ $(document).ready(function () {
 
     //Change Password Form Validation
     $('#changepassword-submit').click(function () {
+        $('body').find('.form-control').removeClass("is-invalid");
         var clck_invld = 0;
         if ($('#login-bot').val().trim().length < 1) {
-            $('#login-bot').parent('.form-input').addClass('is-invalid');
-            $('#login-bot').parent('.form-input').addClass('is-dirty');
+            $('#login-bot').addClass('is-invalid');
             clck_invld = 1;
             $('#login-bot').focus();
         } else if ($('#login-bot').val().trim().length > 0) {
-            var bot_number = $('#login-bot+label').text(),
+            var bot_number = $('#reset-bot-label').text(),
                 bot_number_array = bot_number.match(/[\d\.]+/g),
                 total = 0;
             if (bot_number_array.length > 0) {
@@ -543,33 +537,28 @@ $(document).ready(function () {
                     total += +element;
                 });
                 if ($('#login-bot').val().trim() !== total.toString()) {
-                    $('#login-bot').parent('.form-input').addClass('is-invalid');
-                    $('#login-bot').parent('.form-input').addClass('is-dirty');
+                    $('#login-bot').addClass('is-invalid');
                     clck_invld = 1;
                     $('#login-bot').focus();
                 }
             } else {
-                $('#login-bot').parent('.form-input').addClass('is-invalid');
-                $('#login-bot').parent('.form-input').addClass('is-dirty');
+                $('#login-bot').addClass('is-invalid');
                 clck_invld = 1;
                 $('#login-bot').focus();
             }
         }
         if (!($('#changepassword-confirm').val().trim() == $('#changepassword').val().trim())) {
-            $('#changepassword-confirm').parent('.form-input').addClass('is-invalid');
-            $('#changepassword-confirm').parent('.form-input').addClass('is-dirty');
+            $('#changepassword-confirm').addClass('is-invalid');
             clck_invld = 1;
             $('#changepassword-confirm').focus();
         }
         if ($('#changepassword-confirm').val().trim().length < 6) {
-            $('#changepassword-confirm').parent('.form-input').addClass('is-invalid');
-            $('#changepassword-confirm').parent('.form-input').addClass('is-dirty');
+            $('#changepassword-confirm').addClass('is-invalid');
             clck_invld = 1;
             $('#changepassword-confirm').focus();
         }
         if ($('#changepassword').val().trim().length < 6) {
-            $('#changepassword').parent('.form-input').addClass('is-invalid');
-            $('#changepassword').parent('.form-input').addClass('is-dirty');
+            $('#changepassword').addClass('is-invalid');
             clck_invld = 1;
             $('#changepassword-new').focus();
         }

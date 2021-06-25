@@ -558,14 +558,14 @@ class OpticianReferralController extends Controller
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
         $link = '<a href="' . URL . 'admin">Click Here</a>';
-        $result['template']['message'] = str_replace('{Opto_fname, Opto_lname}', $referral['first_name'] . " " . $referral['last_name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{Opto_fname, Opto_lname}', $data['common']['user']['firstname'] . " " . $data['common']['user']['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{med_sec_fname, lname}', $user_data['firstname'] . " " . $user_data['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{dashboard login link}', $link, $result['template']['message']);
 
         $data['email'] = $user_data['email'];
         $data['cc'] = $data['common']['user']['email'];
-        $data['subject'] = str_replace('{Opto_fname, Opto_lname}', $referral['first_name'] . " " . $referral['last_name'], $result['template']['subject']);
+        $data['subject'] = str_replace('{Opto_fname, Opto_lname}', $data['common']['user']['firstname'] . " " . $data['common']['user']['lastname'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];
 
         return $this->controller_mail->sendMail($data);

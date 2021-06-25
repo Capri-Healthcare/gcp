@@ -174,7 +174,7 @@ class RegisterController extends Controller
 		$result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
 
 		$result['template']['message'] = str_replace('{url}', $link, $result['template']['message']);
-		$result['template']['message'] = str_replace('{user_name}', $data['user_name'], $result['template']['message']);
+		$result['template']['message'] = str_replace('{user_name}', $data['username'], $result['template']['message']);
 		$result['template']['message'] = str_replace('{user_password}', $data['password'], $result['template']['message']);
 				
 

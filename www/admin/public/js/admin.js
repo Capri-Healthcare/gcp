@@ -459,7 +459,7 @@
                              '<span>'+$('#reports-modal select[name=document_name]').val()+'</span>'+
                              '</a>'+
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
-                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action"  data-toggle="modal" data-target="#reportDeleteModel"  data-appointment_id="'+$('.optician-refrrel-id').val()+'" data-report_id="'+response.id+'" data-report_name="'+response.name+'"></a></div>'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action"  data-toggle="modal" data-target="#reportDeleteModel"  data-appointment_id="'+$('.optician-refrrel-id').val()+'" data-report_name="'+response.name+'" data-report_id="'+response.id+'"></a></div>'+
                              '</div>');
                      } else {
                          $('.report-container').append('<div class="report-image" id="report-delete-div-'+response.id+'">'+
@@ -467,7 +467,7 @@
                              '<img class="img-thumbnail" src="../public/uploads/optician-referral/document/'+optician_refrrel_id+'/'+response.name+'" alt="">'+
                              '<span>'+$('#reports-modal select[name=document_name]').val()+'</span>'+
                              '</a>'+
-                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel" data-appointment_id="'+$('.optician-refrrel-id').val()+'" data-report_id="'+response.id+'" data-report_name="'+response.name+'"></a></div>'+
+                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel" data-appointment_id="'+$('.optician-refrrel-id').val()+'" data-report_name="'+response.name+'" data-report_id="'+response.id+'"></a></div>'+
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
                              '</div>');
                      }
@@ -597,6 +597,7 @@
 
 
 	$('.report-delete-action').on('click', function(){
+	    alert($(this).data('report_name'))
 		$('#appointment_id').val($(this).data('appointment_id'));
 		$('#report_id').val($(this).data('report_id'));
 		$('#report_name').val($(this).data('report_name'));

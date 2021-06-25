@@ -863,10 +863,11 @@ class UserController extends Controller {
             ob_end_flush();
         }
 
-        $html_array = array('html' => $html);
+        $data['html'] = $html;
+        $data['name'] = "directdebitform.pdf";
 //        echo print_r($html_array['html']);
 //        exit();
         $pdf = new PDF();
-        $pdf->createPDF($html_array);
+        $pdf->createPDF($data);
     }
 }

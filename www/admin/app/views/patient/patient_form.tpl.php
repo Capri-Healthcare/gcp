@@ -487,7 +487,7 @@
                             ?>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Please indicate how the account is to be settled</label>
+                                    <label>Indicate how the account is to be settled</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="ti-check-box"></i></span></div>
