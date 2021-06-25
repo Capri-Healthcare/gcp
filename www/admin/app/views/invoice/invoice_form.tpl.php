@@ -542,7 +542,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    var isOptician =  0;
+    var isOptician =  <?php echo !in_array($common['user']['role'], constant('USER_ROLE')) ? 0 : 1 ?>;
     var patientOption = null;
     var itemDescriptionOption = null;
 
