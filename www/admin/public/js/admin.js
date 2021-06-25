@@ -330,7 +330,7 @@
         acceptedFiles: "image/*,application/pdf",
         maxFilesize: 5,
         autoProcessQueue: false,
-        dictDefaultMessage: 'Drop files here or click here to upload <br /><br /> Only Image or PDF',
+        dictDefaultMessage: 'Drop files here or click here to upload <br /><br /> Only Image',
         init: function() {
             var reportDropzone = this;
             $('#reports-modal').on('click', '.upload-report', function (e) {
@@ -376,6 +376,7 @@
                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel"  data-appointment_id="" data-report_name="" data-report_id=""></a></div>'+
                             '</div>');
                     } else {
+                        var examination = $('#reports-modal select[name=report_name]').find(':selected').attr('data-examination');
                         $('.report-container').append('<div class="report-image">'+
                             '<a data-fancybox="gallery" href="../public/uploads/appointment/reports/'+appointment_id+'/'+response.name+'">'+
                             '<img class="img-thumbnail" src="../public/uploads/appointment/reports/'+appointment_id+'/'+response.name+'" alt="">'+
@@ -384,6 +385,15 @@
                             '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close report-delete-action" data-toggle="modal" data-target="#reportDeleteModel"  data-appointment_id="" data-report_name="" data-report_id=""></a></div>'+
                             '<input type="hidden" name="report_name" value="'+response.name+'">'+
                             '</div>');
+
+                        if(examination != undefined || examination != null){
+                            $('.'+examination).append('<div class="report-image">'+
+                                '<a data-fancybox="gallery" href="../public/uploads/appointment/reports/'+appointment_id+'/'+response.name+'">'+
+                                '<img class="img-thumbnail" src="../public/uploads/appointment/reports/'+appointment_id+'/'+response.name+'" alt="">'+
+                                '<span>'+$('#reports-modal select[name=report_name]').val()+'</span>'+
+                                '</a>'+
+                                '</div>');
+                        }
                     }
                     toastr.success('Uploaded Succefully', 'Report uploaded successfully.');
                 } else {

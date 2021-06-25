@@ -21909,3 +21909,20 @@ select.form-control:not([size]):not([multiple]) {
 .pre-consultation-form>.active {
     display: block;
 }
+.examination-container .report-image a img {
+	width: 140px;
+	height: 140px;
+	padding: 10px
+}
+
+.examination-container .report-image a span{
+	display: block;
+	font-size: 12px;
+	padding: 5px;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #EEE;
+	border-top: 1px solid #EEE
+}

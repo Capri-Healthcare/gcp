@@ -81,7 +81,7 @@
                                             <label for="password">Password <span class="error">*</span></label>
                                             <input type="password" class="form-control" name="password" id="register-password"
                                                 value="" required>
-                                            <div class="invalid-feedback">
+                                            <div class="invalid-feedback invalid-password">
                                                 Password is required
                                             </div>
                                         </div>

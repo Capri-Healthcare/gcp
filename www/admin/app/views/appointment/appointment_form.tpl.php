@@ -912,7 +912,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Disc (OCT) - RE</label><br>
-                                                <div class="report-container">
+                                                <div class="examination-container octrighteye">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                     <?php if($value['name'] == 'OCT - Right eye') {?>
                                                     <div class="report-image report-pdf">
@@ -944,7 +944,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Disc (OCT) - LE</label><br>
-                                                <div class="report-container">
+                                                <div class="examination-container octlefteye">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'OCT - Left eye') {?>
                                                             <div class="report-image report-pdf">
@@ -1058,7 +1058,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Fundus - RE</label><br>
-                                                <div class="report-container">
+                                                <div class="examination-container fundusrighteye">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Fundus - Right eye') {?>
                                                             <div class="report-image report-pdf">
@@ -1090,7 +1090,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Fundus - LE</label><br>
-                                                <div class="report-container">
+                                                <div class="examination-container funduslefteye">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Fundus - Left eye') {?>
                                                             <div class="report-image report-pdf">
@@ -1124,7 +1124,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Visual field test plots - RE</label><br>
-                                                <div class="report-container">
+                                                <div class="examination-container visualfieldsrighteye">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Visual fields - Right eye') {?>
                                                             <div class="report-image report-pdf">
@@ -1156,7 +1156,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Visual field test plots - LE</label><br>
-                                                <div class="report-container">
+                                                <div class="examination-container visualfieldslefteye">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Visual fields - Left eye') {?>
                                                             <div class="report-image report-pdf">
@@ -1621,7 +1621,7 @@
                             <select class="form-control" name="report_name">
                                 <option value="">Select Document Type</option>
                                 <?php foreach (constant('FOLLOWUP_DOCUMENT_NAME') as $key => $status) { ?>
-                                    <option value="<?php echo $key ?>"><?php echo $status; ?></option>
+                                    <option value="<?php echo $key ?>" data-examination="<?php echo trim(str_replace(['-',' '],'',strtolower($key))) ?>"><?php echo $status; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
