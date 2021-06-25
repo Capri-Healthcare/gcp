@@ -20989,6 +20989,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .report-container .report-image,
 .report-container .attachment-image,
+.examination-container .report-image,
 .attachment-container .report-image,
 .attachment-container .attachment-image {
 	position: relative;
@@ -21000,6 +21001,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .report-container .report-image a,
 .report-container .attachment-image a,
+.examination-container .report-image a,
 .attachment-container .report-image a,
 .attachment-container .attachment-image a {
 	display: block;
@@ -21008,6 +21010,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .report-container .report-image a img,
 .report-container .attachment-image a img,
+.examination-container .report-image a img,
 .attachment-container .report-image a img,
 .attachment-container .attachment-image a img {
 	width: 140px;
@@ -21017,6 +21020,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .report-container .report-image a span,
 .report-container .attachment-image a span,
+.examination-container .report-image a span,
 .attachment-container .report-image a span,
 .attachment-container .attachment-image a span {
 	display: block;
@@ -21032,6 +21036,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .report-container .report-image a p,
 .report-container .attachment-image a p,
+.examination-container .report-image a p,
 .attachment-container .report-image a p,
 .attachment-container .attachment-image a p {
 	font-size: 10px;
@@ -21908,21 +21913,4 @@ select.form-control:not([size]):not([multiple]) {
 
 .pre-consultation-form>.active {
     display: block;
-}
-.examination-container .report-image a img {
-	width: 140px;
-	height: 140px;
-	padding: 10px
-}
-
-.examination-container .report-image a span{
-	display: block;
-	font-size: 12px;
-	padding: 5px;
-	max-width: 100%;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-	background-color: #EEE;
-	border-top: 1px solid #EEE
 }
