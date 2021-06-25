@@ -42,7 +42,7 @@
                         <th>Patient</th>
                         <th>DateTime</th>
                         <th>Doctor</th>
-                        <th>Consultation Method</th>
+                        <!--th>Consultation Method</th-->
                         <th>Status</th>
                         <?php if ($page_edit || $page_view || $page_delete || $invoice_view || $invoice_add) { ?>
                             <th></th>
@@ -60,7 +60,7 @@
                             </td>
                             <td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo date_format(date_create($value['date']), $common['info']['date_format']).' AT '.$value['time']; ?></td>
                             <td class="clickable-row" data-count="<?php echo $key+1; ?>">Dr. <?php echo $value['doctor']; ?></td>
-                            <td>
+                            <!--td>
                                 <div class="video_call_icon pull-left col-12 pl-0">
                                     <?php echo CONSULTATION_TYPE[$value['consultation_type']]; ?>
                                 </div>
@@ -73,7 +73,7 @@
                                         </div>
                                     </div>
                                 <?php } ?>
-                            </td>
+                            </td-->
                             <td class="clickable-row" data-count="<?php echo $key+1; ?>">
                                 <?php if ($value['status'] == 1) {                                    
                                     echo '<span class="label label-warning">In process</span>';
