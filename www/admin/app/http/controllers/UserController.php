@@ -453,6 +453,7 @@ class UserController extends Controller
 				'appointment/videoConsultation' => 'Video Consultation',
 				'appointment/clinicalNoteUpdate' => 'Update Clinical Notes',
 				'appointment/moveImageToReport' => 'Move Image to Document'),
+			'Appointment Other2' => array('appointment/letters' => 'Appointment Letters'),
 			'Prescription' => array('prescriptions' => 'Prescription List',
 				'prescription/add' => 'Prescription Add',
 				'prescription/edit' => 'Prescription Edit',
