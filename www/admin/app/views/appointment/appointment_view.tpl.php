@@ -105,14 +105,14 @@
                                         <td>Date & Time</td>
                                         <td class="text-dark"><?php echo date_format(date_create($result['date']), $common['info']['date_format']) . ' at ' . $result['time']; ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>Consultation Method</td>
-                                        <td class="text-dark"><?php echo CONSULTATION_TYPE[$result['consultation_type']]; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Reason/Problem</td>
-                                        <td class="text-dark"><?php echo $result['message']; ?></td>
-                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td>Consultation Method</td>-->
+<!--                                        <td class="text-dark">--><?php //echo CONSULTATION_TYPE[$result['consultation_type']]; ?><!--</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>Reason/Problem</td>-->
+<!--                                        <td class="text-dark">--><?php //echo $result['message']; ?><!--</td>-->
+<!--                                    </tr>-->
                                     <tr>
                                         <td>Patient Name</td>
                                         <td class="text-dark"><?php echo $result['firstname']." ".$result['lastname']; ?></td>
@@ -125,10 +125,10 @@
                                         <td>Phone/Mobile Number</td>
                                         <td class="text-dark"><?php echo $result['mobile']; ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>Bloodgroup</td>
-                                        <td class="text-primary"><?php echo $result['bloodgroup']; ?></td>
-                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td>Bloodgroup</td>-->
+<!--                                        <td class="text-primary">--><?php //echo $result['bloodgroup']; ?><!--</td>-->
+<!--                                    </tr>-->
                                     <tr>
                                         <td>Gender</td>
                                         <td class="text-info"><?php echo $result['gender']; ?></td>
@@ -141,10 +141,10 @@
                                         <td>NHS Patient Number</td>
                                         <td><?php echo $result['nhs_patient_number']; ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>NHS Hostpital Number</td>
-                                        <td><?php echo $result['nhs_hospital_number']; ?></td>
-                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td>NHS Hostpital Number</td>-->
+<!--                                        <td>--><?php //echo $result['nhs_hospital_number']; ?><!--</td>-->
+<!--                                    </tr>-->
                                     <tr>
                                         <td>GP Name</td>
                                         <td><?php echo $result['gp_name']; ?></td>

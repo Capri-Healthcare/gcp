@@ -197,7 +197,7 @@
                                                                     class="ti-check-box"></i></span>
                                                     </div>
                                                     <select name="referral[status]" class="custom-select status" required>
-                                                        <option value="">Select Status</option>
+                                                        <option value="">Please select the status from the list</option>
                                                         <?php foreach (constant('STATUS') as $key => $status) { ?>
                                                              <?php if(!in_array($key,[constant('STATUS_DRAFT'),constant('STATUS_NEW')])) {?>
                                                             <option value="<?php echo $key ?>" <?php echo ($result['status'] == $key) ? 'selected' : '' ?>><?php echo $status; ?></option>

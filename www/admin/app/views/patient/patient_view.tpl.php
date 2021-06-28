@@ -27,7 +27,7 @@
 					<span><?php echo $result['firstname'][0]; ?></span>
 				</div>
 				<div class="user-details text-center pt-3">
-					<h3><?php echo $result['title'].' ' . $result['firstname'].' '.$result['lastname']; ?></h3>
+					<h3><?php echo $result['title'].' ' . ucfirst($result['firstname']).' '.strtolower($result['lastname']); ?></h3>
 					<ul class="v-menu text-left pt-3 nav d-block">
 						<li><a href="#patient-info" class="<?php echo !isset($email_type) ? 'active' : ''?>" data-toggle="tab"><i class="ti-info-alt"></i> <span>Patient Info</span></a></li>
 						<li><a href="#additional-information" data-toggle="tab"><i class="ti-info-alt"></i> <span>Additional Information</span></a></li>
@@ -98,11 +98,6 @@
 									<td>NHS Patient Number</td>
 									<td><?php echo $result['nhs_patient_number']; ?></td>
 								</tr>
-								<tr>
-									<td>NHS Hostpital Number</td>
-									<td><?php echo $result['nhs_hospital_number']; ?></td>
-								</tr>
-
                                 <tr>
                                     <td>GP Name</td>
                                     <td><?php echo $result['gp_name']; ?></td>
@@ -115,18 +110,18 @@
 									<td>GP Address</td>
 									<td><?php echo $result['gp_address']; ?></td>
 								</tr>
-								<tr>
-									<td>Do you/the patient have any disabilities?</td>
-									<td><?php echo $result['is_patient_have_any_disabilities']; ?></td>
-								</tr>
-								<tr>
-									<td>Disabilities details</td>
-									<td><?php echo $result['disabilities_details']; ?></td>
-								</tr>
-								<tr>
-									<td>Special Requirements</td>
-									<td><?php echo $result['special_requirements']; ?></td>
-								</tr>
+<!--								<tr>-->
+<!--									<td>Do you/the patient have any disabilities?</td>-->
+<!--									<td>--><?php //echo $result['is_patient_have_any_disabilities']; ?><!--</td>-->
+<!--								</tr>-->
+<!--								<tr>-->
+<!--									<td>Disabilities details</td>-->
+<!--									<td>--><?php //echo $result['disabilities_details']; ?><!--</td>-->
+<!--								</tr>-->
+<!--								<tr>-->
+<!--									<td>Special Requirements</td>-->
+<!--									<td>--><?php //echo $result['special_requirements']; ?><!--</td>-->
+<!--								</tr>-->
 								<tr>
 									<td>Email Confirmation</td>
 									<?php if ($result['emailconfirmed'] == '0') { ?>
@@ -135,22 +130,6 @@
 										<td class="text-success">Confirmed</td>
 									<?php } ?>
 								</tr>
-                                <?php if($result['is_glaucoma_required'] == 'YES') {?>
-                                    <tr>
-                                        <td>First Payment</td>
-                                        <td>
-                                            <?php echo $result['first_payment']?>
-                                        </td>
-                                    </tr>
-                                <?php }?>
-                                <?php if($result['is_glaucoma_required'] == 'YES') {?>
-                                    <tr>
-                                        <td>Regular Payment</td>
-                                        <td>
-                                            <?php echo $result['regular_payment']?>
-                                        </td>
-                                    </tr>
-                                <?php }?>
 								<tr>
 									<td>Status</td>
 									<?php if ($result['status'] == '0') { ?>
@@ -196,18 +175,18 @@
 									<td>Scheme/Plan Name</td>
 									<td><?php echo $result['scheme_name']; ?></td>
 								</tr>
-								<tr>
-									<td>Authorisation Number</td>
-									<td><?php echo $result['authorisation_number']; ?></td>
-								</tr>
-								<tr>
-									<td>Corporate/Company Scheme</td>
-									<td><?php echo $result['corporate_company_scheme']; ?></td>
-								</tr>
-								<tr>
-									<td>Employer</td>
-									<td><?php echo $result['employer']; ?></td>
-								</tr>
+<!--								<tr>-->
+<!--									<td>Authorisation Number</td>-->
+<!--									<td>--><?php //echo $result['authorisation_number']; ?><!--</td>-->
+<!--								</tr>-->
+<!--								<tr>-->
+<!--									<td>Corporate/Company Scheme</td>-->
+<!--									<td>--><?php //echo $result['corporate_company_scheme']; ?><!--</td>-->
+<!--								</tr>-->
+<!--								<tr>-->
+<!--									<td>Employer</td>-->
+<!--									<td>--><?php //echo $result['employer']; ?><!--</td>-->
+<!--								</tr>-->
 							</tbody>
 						</table>
 					</div>
@@ -836,7 +815,7 @@
                 <div class="tab-pane fade" id="patient-direct-debit">
                     <div class="panel panel-default">
                         <div class="panel-head">
-                            <div class="panel-title">Direct Debit form</div>
+                            <div class="panel-title">GCP form</div>
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped patient-table">
@@ -857,7 +836,7 @@
                                 <?php }?>
 
                                 <tr>
-                                    <td>Direct Debit form</td>
+                                    <td>GCP form</td>
                                     <td>
                                         <div class="report-container">
                                             <?php  if(!empty($result['ddi_image'])) {?>

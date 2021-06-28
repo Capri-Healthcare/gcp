@@ -448,8 +448,33 @@ $(document).ready(function () {
         }
         if (clck_invld === 1) {
             return false;
+        }else{
+            var username = $('#register-user-name').val();
+
+            $.ajax({
+                type: 'get',
+                url: 'index.php?route=register/user&username='+username,
+                async: false,
+                cache: false,
+                error: function () {
+                    toastr.error('Error', 'File could not be deleted. Please try again...');
+                    return false;
+                },
+                success: function (data) {
+                   if(data){
+                       $('#register-user-name').addClass('is-invalid');
+                       $(".invalid-user").text('User name already exists.');
+                       $(this).submit(false);
+                   }else {
+                       return true;
+                   }
+                }
+            });
+
+          return false;
         }
     });
+
 
     //Forgot Password Form Validation
     $('#forgot-submit').click(function () {

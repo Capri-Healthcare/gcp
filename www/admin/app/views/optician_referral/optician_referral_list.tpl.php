@@ -154,8 +154,8 @@
                     format: $('.common_daterange_format').val(),
                     separator: " => ",
                 },
-                startDate: moment(),
-                endDate: moment(),
+                startDate: <?php echo (isset($_GET['start'])) ?  $_GET['start']:'moment()'?>,
+                endDate: <?php echo (isset($_GET['end'])) ?  $_GET['end']:'moment()'?>,
                 ranges: {
                     'Today': [moment(), moment()],
                     'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],

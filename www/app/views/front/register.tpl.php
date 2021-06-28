@@ -72,7 +72,7 @@
                                             <label for="username">Username <span class="error">*</span></label>
                                             <input type="text" class="form-control" name="username" id="register-user-name"
                                                 value="">
-                                            <div class="invalid-feedback">
+                                            <div class="invalid-feedback invalid-user">
                                                 Username is required
                                             </div>
                                         </div>

@@ -704,7 +704,9 @@
     });
 
      $('.due_date').datepicker({
-         dateFormat: $('.common_date_format').val()
+         dateFormat: $('.common_date_format').val(),
+         minDate: new Date()
+
      });
 
 

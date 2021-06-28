@@ -117,7 +117,7 @@
                             </div>
                             <input type="text" name="invoice[duedate]" class="form-control due_date"
                                    value="<?php echo date_format(date_create($result['duedate']), $common['info']['date_format']); ?>"
-                                   placeholder="Due Date" required>
+                                   placeholder="Due Date" min="<?php echo date('Y-m-d')?>" required>
                         </div>
                     </div>
                 </div>
@@ -377,7 +377,7 @@
                             <label>Paid</label>
                         </td>
                         <td colspan="2" class="total-value">
-                            <input type="text" name="invoice[paid]" class="form-transparent paid-amount"
+                            <input type="number" name="invoice[paid]" class="form-transparent paid-amount"
                                    value="<?php echo $result['paid'] ?>">
                         </td>
                     </tr>

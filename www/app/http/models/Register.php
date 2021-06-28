@@ -37,6 +37,16 @@ class Register extends Model
 		}
 	}
 
+    public function checkOpticianUserNameExist($username)
+    {
+
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE `user_name` = ? LIMIT 1 ", array($this->database->escape($username)));
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 	public function createOpticianAccount($data) 
 	{
 		$passwordhash = password_hash($data['password'], PASSWORD_DEFAULT);

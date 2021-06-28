@@ -176,7 +176,7 @@ class PrescriptionController extends Controller
 		$user = $this->model_commons->getUserInfo($this->session->data['user_id']);
 
 		$this->load->model('prescription');
-		if ($user['role_id'] == '3' && $common['info']['doctor_access'] == '1') {
+		if ($user['role_id'] == '3' && $data['common']['info']['doctor_access'] == '1') {
 			$data['result'] = $this->model_prescription->getPrescription($id, $user['doctor']);
 		} else {
 			$data['result'] = $this->model_prescription->getPrescription($id);

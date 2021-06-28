@@ -26,6 +26,7 @@ $router->post('forgot', 'ForgotController@forgot');
 $router->get('profile/changepassword', 'ForgotController@passwordResetPage');
 $router->post('profile/changepassword', 'ForgotController@passwordReset');
 $router->get('register/verify', 'RegisterController@userVerfiy');
+$router->get('register/user', 'RegisterController@checkUserExists');
 $router->get('logout', 'LogoutController@index');
 $router->get('user/dashboard', 'UserController@dashboard');
 $router->get('user/appointments', 'UserController@getAppointments');

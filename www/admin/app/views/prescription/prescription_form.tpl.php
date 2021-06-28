@@ -63,23 +63,23 @@
 			<div class="table-responsive mt-3">
 				<table class="table table-bordered medicine-table">
 					<thead>
-						<tr class="medicine-row">
-							<th style="width: 20%;">Drug Name <span class="form-required">*</span></th>
-							<th>Generic</th>
-							<th style="width: 9%;">Frequency</th>
-							<th style="width: 9%;">Duration <span class="form-required">*</span></th>
-							<th style="width: 25%;">Instruction</th>
-							<th style="width: 5%;"></th>
-						</tr>
+                    <tr class="medicine-row">
+                        <th style="width: 25%;">Drug Name</th>
+                        <!--th>Generic</th-->
+                        <th style="width: 15%;">Frequency</th>
+                        <!--th style="width: 13%;">Duration</th-->
+                        <th style="width: 25%;">Instructions</th>
+                        <th style="width: 10%;">Start date</th>
+                        <th style="width: 10%;">End date</th>
+                        <th style="width: 15%;">Eye</th>
+                        <th style="width: 5%;"></th>
+                    </tr>
 					</thead>
 					<tbody>
 						<?php if (!empty($result['prescription'])) { foreach ($result['prescription'] as $key => $value) { ?>
 							<tr class="medicine-row">
 								<td>
 									<input class="form-control prescription-name" name="prescription[medicine][<?php echo $key; ?>][name]" value="<?php echo $value['name'] ?>" placeholder="Medicine Name" required>
-								</td>
-								<td>
-									<textarea class="form-control prescription-generic" name="prescription[medicine][<?php echo $key; ?>][generic]" rows="3" placeholder="Generic"><?php echo $value['generic'] ?></textarea>
 								</td>
 								<td>
 									<select name="prescription[medicine][<?php echo $key; ?>][dose]" class="form-control">
@@ -90,25 +90,58 @@
 										<option value="0-1-0" <?php if ($value['dose'] == '0-1-0') { echo "selected";} ?> >0-1-0</option>
 									</select>
 								</td>
-								<td>
-									<select name="prescription[medicine][<?php echo $key; ?>][duration]" class="form-control">
-										<option value="1" <?php if ($value['duration'] == '1') { echo "selected";} ?> >1 Days</option>
-										<option value="2" <?php if ($value['duration'] == '2') { echo "selected";} ?> >2 Days</option>
-										<option value="3" <?php if ($value['duration'] == '3') { echo "selected";} ?> >3 Days</option>
-										<option value="4" <?php if ($value['duration'] == '4') { echo "selected";} ?> >4 Days</option>
-										<option value="5" <?php if ($value['duration'] == '5') { echo "selected";} ?> >5 Days</option>
-										<option value="6" <?php if ($value['duration'] == '6') { echo "selected";} ?> >6 Days</option>
-										<option value="8" <?php if ($value['duration'] == '8') { echo "selected";} ?> >8 Days</option>
-										<option value="10" <?php if ($value['duration'] == '10') { echo "selected";} ?> >10 Days</option>
-										<option value="15" <?php if ($value['duration'] == '15') { echo "selected";} ?> >15 Days</option>
-										<option value="20" <?php if ($value['duration'] == '20') { echo "selected";} ?> >20 Days</option>
-										<option value="30" <?php if ($value['duration'] == '30') { echo "selected";} ?> >30 Days</option>
-										<option value="60" <?php if ($value['duration'] == '60') { echo "selected";} ?> >60 Days</option>
-									</select>
-								</td>
+<!--								<td>-->
+<!--									<select name="prescription[medicine][--><?php //echo $key; ?><!--][duration]" class="form-control">-->
+<!--										<option value="1" --><?php //if ($value['duration'] == '1') { echo "selected";} ?><!-- >1 Days</option>-->
+<!--										<option value="2" --><?php //if ($value['duration'] == '2') { echo "selected";} ?><!-- >2 Days</option>-->
+<!--										<option value="3" --><?php //if ($value['duration'] == '3') { echo "selected";} ?><!-- >3 Days</option>-->
+<!--										<option value="4" --><?php //if ($value['duration'] == '4') { echo "selected";} ?><!-- >4 Days</option>-->
+<!--										<option value="5" --><?php //if ($value['duration'] == '5') { echo "selected";} ?><!-- >5 Days</option>-->
+<!--										<option value="6" --><?php //if ($value['duration'] == '6') { echo "selected";} ?><!-- >6 Days</option>-->
+<!--										<option value="8" --><?php //if ($value['duration'] == '8') { echo "selected";} ?><!-- >8 Days</option>-->
+<!--										<option value="10" --><?php //if ($value['duration'] == '10') { echo "selected";} ?><!-- >10 Days</option>-->
+<!--										<option value="15" --><?php //if ($value['duration'] == '15') { echo "selected";} ?><!-- >15 Days</option>-->
+<!--										<option value="20" --><?php //if ($value['duration'] == '20') { echo "selected";} ?><!-- >20 Days</option>-->
+<!--										<option value="30" --><?php //if ($value['duration'] == '30') { echo "selected";} ?><!-- >30 Days</option>-->
+<!--										<option value="60" --><?php //if ($value['duration'] == '60') { echo "selected";} ?><!-- >60 Days</option>-->
+<!--									</select>-->
+<!--								</td>-->
 								<td>
 									<textarea name="prescription[medicine][<?php echo $key; ?>][instruction]" class="form-control" rows="3" placeholder="Instruction"><?php echo $value['instruction']; ?></textarea>
 								</td>
+                                <td>
+                                    <input type="date" class="form-control apnt-date" placeholder="Select Date . . ."
+                                           name="prescription[medicine][<?php echo $key; ?>][start_date]"
+                                           value="<?php echo $value['start_date']; ?>"
+                                           required autocomplete="off" style="width: 160px;">
+                                </td>
+                                <td>
+                                    <input type="date" class="form-control apnt-date" name="prescription[medicine][<?php echo $key; ?>][end_date]"
+                                           placeholder="Select Date . . ."
+                                           value="<?php echo $value['end_date']; ?>"
+                                           required autocomplete="off" style="width: 160px;">
+                                </td>
+                                <td>
+                                    <select name="prescription[medicine][<?php echo $key; ?>][eye]"
+                                            class="form-control">
+                                        <option value="RE" <?php if ($value['eye'] == 'RE') {
+                                            echo "selected";
+                                        } ?> >RE
+                                        </option>
+                                        <option value="LE" <?php if ($value['eye'] == 'LE') {
+                                            echo "selected";
+                                        } ?> >LE
+                                        </option>
+                                        <option value="BOTH" <?php if ($value['eye'] == 'BOTH') {
+                                            echo "selected";
+                                        } ?> >Both
+                                        </option>
+                                        <option value="Other" <?php if ($value['eye'] == 'Other') {
+                                            echo "selected";
+                                        } ?> >Other
+                                        </option>
+                                    </select>
+                                </td>
 								<td>
 									<a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a>
 								</td>
@@ -119,9 +152,6 @@
 									<input class="form-control prescription-name" name="prescription[medicine][0][name]" placeholder="Medicine Name" required>
 								</td>
 								<td>
-									<textarea name="prescription[medicine][0][generic]" class="form-control prescription-generic" rows="3" placeholder="Generic"></textarea>
-								</td>
-								<td>
 									<select name="prescription[medicine][0][dose]" class="form-control">
 										<option value="1-0-0">1-0-0</option>
 										<option value="1-0-1">1-0-1</option>
@@ -130,25 +160,49 @@
 										<option value="0-1-0">0-1-0</option>
 									</select>
 								</td>
-								<td>
-									<select name="prescription[medicine][0][duration]" class="form-control">
-										<option value="1">1 Days</option>
-										<option value="2">2 Days</option>
-										<option value="3">3 Days</option>
-										<option value="4">4 Days</option>
-										<option value="5">5 Days</option>
-										<option value="6">6 Days</option>
-										<option value="8">8 Days</option>
-										<option value="10">10 Days</option>
-										<option value="15">15 Days</option>
-										<option value="20">20 Days</option>
-										<option value="30">30 Days</option>
-										<option value="60">60 Days</option>
-									</select>
-								</td>
+<!--								<td>-->
+<!--									<select name="prescription[medicine][0][duration]" class="form-control">-->
+<!--										<option value="1">1 Days</option>-->
+<!--										<option value="2">2 Days</option>-->
+<!--										<option value="3">3 Days</option>-->
+<!--										<option value="4">4 Days</option>-->
+<!--										<option value="5">5 Days</option>-->
+<!--										<option value="6">6 Days</option>-->
+<!--										<option value="8">8 Days</option>-->
+<!--										<option value="10">10 Days</option>-->
+<!--										<option value="15">15 Days</option>-->
+<!--										<option value="20">20 Days</option>-->
+<!--										<option value="30">30 Days</option>-->
+<!--										<option value="60">60 Days</option>-->
+<!--									</select>-->
+<!--								</td>-->
 								<td>
 									<textarea name="prescription[medicine][0][instruction]" class="form-control" rows="3" placeholder="Instruction"></textarea>
 								</td>
+                                <td>
+                                    <input type="date" class="form-control apnt-date"
+                                           placeholder="Select Date . . ."
+                                           name="prescription[medicine][0][start_date]"
+                                           value="<?php echo date_format(date_create($value['start_date']), $common['info']['date_format']); ?>"
+                                           required autocomplete="off">
+                                </td>
+                                <td>
+                                    <input type="date" class="form-control apnt-date"
+                                           name="prescription[medicine][0][end_date]"
+                                           placeholder="Select Date . . ."
+                                           value="<?php echo date_format(date_create($value['end_date']), $common['info']['date_format']); ?>"
+                                           required autocomplete="off">
+                                </td>
+                                <td>
+                                    <select name="prescription[medicine][0][eye]"
+                                            class="form-control">
+                                        <option value="RE">RE</option>
+                                        <option value="LE">LE</option>
+                                        <option value="Both">Both</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </td>
+
 								<td><a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a></td>
 							</tr>
 						<?php } ?>
@@ -211,13 +265,14 @@
 		var count = $('.medicine-table .medicine-row:last .prescription-name').attr('name').split('[')[2];
 		count = parseInt(count.split(']')[0]) + 1;
 		$(".medicine-row:last").after('<tr class="medicine-row">'+
-			'<td><input class="form-control prescription-name" name="prescription[medicine]['+count+'][name]" value="" placeholder="Medicine Name" required></td>'+
-			'<td><textarea class="form-control prescription-generic" name="prescription[medicine]['+count+'][generic]" rows="3" placeholder="Generic"></textarea></td>'+
-			'<td><select name="prescription[medicine]['+count+'][dose]" class="form-control"><option value="1-0-0">1-0-0</option><option value="1-0-1">1-0-1</option><option value="1-1-1">1-1-1</option><option value="0-0-1">0-0-1</option><option value="0-1-0">0-1-0</option></select></td>'+
-			'<td><select name="prescription[medicine]['+count+'][duration]" class="form-control"><option value="1">1 Days</option><option value="2">2 Days</option><option value="3">3 Days</option><option value="4">4 Days</option><option value="5">5 Days</option><option value="6">6 Days</option><option value="8">8 Days</option><option value="10">10 Days</option><option value="15">15 Days</option><option value="20">20 Days</option><option value="30">30 Days</option><option value="60">60 Days</option></select></td>'+
-			'<td><textarea name="prescription[medicine]['+count+'][instruction]" class="form-control" rows="3" placeholder="Instruction"></textarea></td>'+
-			'<td><a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a></td>'+
-			'</tr>');
+            '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name"></td>' +
+            '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control"><option value="1-0-0">1-0-0</option><option value="1-0-1">1-0-1</option><option value="1-1-1">1-1-1</option><option value="0-0-1">0-0-1</option><option value="0-1-0">0-1-0</option></select></td>' +
+            '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
+            '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ."></td>' +
+            '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ."></td>' +
+            '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">RE</option><option value="LE">LE</option><option value="BOTH">Both</option><option value="OTHER">Other</option></select></td>' +
+            '<td><a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a></td>' +
+            '</tr>');
 	});
 </script>
 <!-- Footer -->
