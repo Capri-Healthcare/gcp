@@ -71,7 +71,7 @@
                                         <div class="form-group main_box" id="register-user-div">
                                             <label for="username">Username <span class="error">*</span></label>
                                             <input type="text" class="form-control" name="username" id="register-user-name"
-                                                value="">
+                                                value="" onfocusout="checkUserName();">
                                             <div class="invalid-feedback invalid-user">
                                                 Username is required
                                             </div>
