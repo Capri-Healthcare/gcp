@@ -334,28 +334,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php if (isset($_GET['referral'])) { ?>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Select hospital for appoinment</label>
-                                        <br/>
-                                        <?php foreach (constant('HOSPITAL_LIST') as $key => $list) { ?>
-                                            <div class="custom-control custom-radio custom-radio-1 d-inline-block">
-                                                <input type="radio" name="patient[hospital_code]"
-                                                    class="custom-control-input hospital_code" value="<?php echo $key; ?>" id="" checked>
-                                                <label class="custom-control-label" for="prescription_template-template-1">&nbsp;<b><?php echo $list['name'] ?></b></label>
-                                                <label class="ml-4 mt-1">
-                                                    <i class="ti-mobile"></i><?php echo $list['mobile'] ?> &nbsp;&nbsp;<i
-                                                            class="ti-email"></i>&nbsp;<?php echo $list['email'] ?>
-                                                    <br><i class="ti-location-pin"></i><?php echo $list['address'] ?><br><i
-                                                            class="ti-world"></i>&nbsp;<?php echo $list['web'] ?>
-                                                </label>
-                                            </div>
-                                            <hr/>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            <?php } ?>
 
                             <?php if (!empty($result['id'])) { ?>
                                 <div class="col-md-6">

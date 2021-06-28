@@ -362,10 +362,10 @@ class PatientController extends Controller
             $data['gp_practice'] = $gcpID;
             $result = $this->model_patient->updatePatient($data);
 
-            $referral_data['id'] = $data['referral_id'];
-            $referral_data['hospital_code'] = $data['hospital_code'];
-            $this->load->model('opticianreferral');
-            $this->model_opticianreferral->updateReferralHospitalCode($referral_data);
+//            $referral_data['id'] = $data['referral_id'];
+//            $referral_data['hospital_code'] = $data['hospital_code'];
+//            $this->load->model('opticianreferral');
+//            $this->model_opticianreferral->updateReferralHospitalCode($referral_data);
 
             $this->notificationToPatientForAppointmentBooking($data['id']);
 

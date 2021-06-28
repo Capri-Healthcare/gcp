@@ -262,6 +262,7 @@ class OpticianReferralController extends Controller
                         $patient['history'] = " ";
                         $patient['other'] = " ";
                         $patient['hash'] = $data['referral']['user_id'];
+                        $patient['hospital_code'] = $data['referral']['hospital_code'] == null ? null :$data['referral']['hospital_code'];
                         $patient['datetime'] = date('Y-m-d H:s:a');
 
                         $data['patientid'] = $this->model_patient->createPatient($patient);
@@ -272,11 +273,11 @@ class OpticianReferralController extends Controller
 
                             $this->patientMail($data['patientid']);
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
-                            $this->url->redirect('patient/edit&id=' . $data['patientid'] . '&referralid=' . $data['referral']['id'] . '&referral=true');
+                            $this->url->redirect('patient/edit&id=' . $data['patientid'] . '&referralid=' . $data['referral']['id']);
                         }
 
                     } else {
-                        $this->url->redirect('patient/edit&id=' . $patient['id'] . '&referralid=' . $data['referral']['id'] . '&referral=true');
+                        $this->url->redirect('patient/edit&id=' . $patient['id'] . '&referralid=' . $data['referral']['id']);
 
                         //$this->url->redirect('optician-referral');
                     }

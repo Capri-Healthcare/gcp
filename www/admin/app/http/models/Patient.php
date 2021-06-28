@@ -118,7 +118,7 @@ class Patient extends Model
 
     public function createPatient($data)
     {
-        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (`title`, `firstname`, `lastname`, `email`, `mobile`, `address`, `gender`, `dob`, `history`, `other`, `temp_hash`, `status`, `user_id`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array($data['title'], $data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['hash'], 1, $data['user_id'], $data['datetime']));
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (`title`, `firstname`, `lastname`, `email`, `mobile`, `address`, `gender`, `dob`, `history`, `other`, `temp_hash`, `status`, `user_id`, `hospital_code`,`date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)", array($data['title'], $data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['hash'], 1, $data['user_id'],$data['hospital_code'], $data['datetime']));
 
         if ($this->database->error()) {
             return false;
@@ -144,7 +144,6 @@ class Patient extends Model
 		`gp_address` = ?,
 		`history` = ?,
 		`other` = ?,
-		`hospital_code` = ?,
 	    `how_the_account_is_to_be_settled` = ?, 
 	    `policyholders_name` = ?, 
 	    `medical_insurers_name` = ?,
@@ -167,7 +166,6 @@ class Patient extends Model
                 $data['gp_address'],
                 $data['history'],
                 $data['other'],
-                isset($data['hospital_code']) ? $this->database->escape($data['hospital_code']):null,
                 $data['how_the_account_is_to_be_settled'],
                 $data['policyholders_name'],
                 $data['medical_insurers_name'],

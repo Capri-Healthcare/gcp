@@ -196,7 +196,7 @@
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                                     </div>
-                                                    <select name="referral[status]" class="custom-select" required>
+                                                    <select name="referral[status]" class="custom-select status" required>
                                                         <option value="">Select Status</option>
                                                         <?php foreach (constant('STATUS') as $key => $status) { ?>
                                                              <?php if(!in_array($key,[constant('STATUS_DRAFT'),constant('STATUS_NEW')])) {?>
@@ -212,6 +212,31 @@
                                                value="<?php echo $result['status'] ?>">
                                     <?php } ?>
 
+                                    <?php if ($result['status'] == 'NEW') { ?>
+                                    <div class="col-md-6 hospital_code_div" style="display: none">
+                                        <div class="form-group">
+                                            <label>Select hospital for appoinment</label>
+                                            <br/>
+                                            <?php foreach (constant('HOSPITAL_LIST') as $key => $list) { ?>
+                                                <div class="custom-control custom-radio custom-radio-1 d-inline-block">
+                                                    <input type="radio" name="referral[hospital_code]"
+                                                           class="custom-control-input hospital_code" value="<?php echo $key; ?>" id="" checked>
+                                                    <label class="custom-control-label" for="prescription_template-template-1">&nbsp;<b><?php echo $list['name'] ?></b></label>
+                                                    <label class="ml-4 mt-1">
+                                                        <i class="ti-mobile"></i><?php echo $list['mobile'] ?> &nbsp;&nbsp;<i
+                                                                class="ti-email"></i>&nbsp;<?php echo $list['email'] ?>
+                                                        <br><i class="ti-location-pin"></i><?php echo $list['address'] ?><br><i
+                                                                class="ti-world"></i>&nbsp;<?php echo $list['web'] ?>
+                                                    </label>
+                                                </div>
+                                                <hr/>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                    <?php } else { ?>
+                                        <input type="hidden" name="referral[hospital_code]"
+                                               value="<?php echo $result['hospital_code'] ?>">
+                                    <?php } ?>
                                 </div>
                                 <div class="panel-footer text-center">
                                     <button type="submit" name="submit" class="btn btn-primary"><i
@@ -381,6 +406,14 @@
                 return true;
             }
         }
+
+        $(".status").on('change',function () {
+            if($(this).val() == 'ACCEPTED'){
+                $(".hospital_code_div").show();
+            }else{
+                $(".hospital_code_div").hide();
+            }
+        })
 
     </script>
 

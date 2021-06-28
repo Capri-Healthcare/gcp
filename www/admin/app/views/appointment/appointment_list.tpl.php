@@ -54,7 +54,7 @@
                         <tr style="cursor: pointer">
                             <td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $common['info']['appointment_prefix'].str_pad($value['id'], 5, '0', STR_PAD_LEFT); ?></td>
                             <td class="clickable-row" data-count="<?php echo $key+1; ?>">
-                                <a class="m-0 text-primary"><?php echo $value['name'];?></a>
+                                <a class="m-0 text-primary"><?php echo $value['patient_fullname'];?></a>
                                 <p class="m-0"><?php echo $value['email']; ?></p>
                                 <p class="m-0"><?php echo $value['mobile']; ?></p>
                             </td>
@@ -98,7 +98,7 @@
                                             <ul class="dropdown-menu dropdown-menu-right export-button">
                                                 <?php if ($page_view) { ?>
                                                     <li><a class="pageview<?php echo $key+1?>" href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/view&id='.$value['id'];?>"><i class="ti-layout-media-center-alt pr-2"></i>View</a></li>
-                                                <?php } if ($page_edit) { ?>
+                                                <?php } if ($page_edit && $value['date'] <= date('Y-m-d', strtotime("-1 weeks", strtotime(date('Y-m-d'))))) { ?>
                                                     <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/edit&id='.$value['id'];?>"><i class="ti-pencil-alt pr-2"></i>Edit</a></li>
                                                 <?php } if (!empty($value['invoice_id']) && $invoice_view) { ?>
                                                     <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$value['invoice_id'];?>"><i class="ti-receipt pr-2"></i>Invoice</a></li>

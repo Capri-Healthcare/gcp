@@ -49,23 +49,28 @@
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-striped">
-						<tr>
-							<th>Medicine Name</th>
-							<th>Dose</th>
-							<th>Duration</th>
-							<th>Instruction</th>
-						</tr>
-						<?php foreach ($result['prescription'] as $s_key => $s_value) { ?>
-							<tr>
-								<td>
-									<p class="text-primary m-0"><?php echo html_entity_decode($s_value['name'], ENT_QUOTES, 'UTF-8'); ?></p>
-									<p class="m-0"><?php echo html_entity_decode($s_value['generic'], ENT_QUOTES, 'UTF-8'); ?></p>
-								</td>
-								<td class="text-center"><p class="font-12"><?php echo $s_value['dose']; ?></p></td>
-								<td class="text-center"><p class="font-12"><?php echo $s_value['duration'].' Day'; ?></p></td>
-								<td class="text-center"><p class="font-12"><?php echo $s_value['instruction']; ?></p></td>
-							</tr>
-						<?php } ?>
+                        <tr>
+                            <th style="width: 25%;">Drug Name</th>
+                            <!--th>Generic</th-->
+                            <th style="width: 15%;">Frequency</th>
+                            <!--th style="width: 13%;">Duration</th-->
+                            <th style="width: 25%;">Instruction</th>
+                            <th style="width: 10%;">Start date</th>
+                            <th style="width: 10%;">End date</th>
+                            <th style="width: 15%;">Eye</th>
+                        </tr>
+                        <?php if (!empty($result['prescription'])) { ?>
+                            <?php foreach ($result['prescription'] as $key => $value) { ?>
+
+                                <tr>
+                                    <td><?php echo $value['name']; ?></td>
+                                    <td><?php echo $value['dose']; ?></td>
+                                    <td><?php echo $value['instruction']; ?></td>
+                                    <td><?php echo date_format(date_create($value['start_date']),'d-m-Y'); ?></td>
+                                    <td><?php echo date_format(date_create($value['end_date']),'d-m-Y'); ?></td>
+                                    <td><?php echo $value['eye']; ?></td>
+                                </tr>
+                            <?php } } ?>
 					</table>
 				</div>
 			</div>

@@ -553,7 +553,6 @@
 
                                 $(".medicine-table .medicine-row:last").after('<tr class="medicine-row">' +
                                     '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name"></td>' +
-                                    '<td><textarea class="form-control prescription-generic" name="prescription[medicine][' + count + '][generic]" rows="3" placeholder="Generic"></textarea></td>' +
                                     '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control"><option value="1-0-0">1-0-0</option><option value="1-0-1">1-0-1</option><option value="1-1-1">1-1-1</option><option value="0-0-1">0-0-1</option><option value="0-1-0">0-1-0</option></select></td>' +
                                     '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instruction"></textarea></td>' +
                                     '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ."></td>' +
@@ -1368,6 +1367,33 @@
                                                             NO
                                                         </option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Doctor note</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-notepad"></i></span>
+                                                    </div>
+                                                    <textarea class="form-control" name="appointment[doctor_note]"><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : ''; ?></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Special condition</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-notepad"></i></span>
+                                                    </div>
+                                                    <textarea class="form-control" name="appointment[special_condition]"><?php echo isset($result['special_condition']) ? $result['special_condition'] : ''; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
