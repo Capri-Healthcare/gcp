@@ -976,14 +976,14 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>CCT - RE<span class="form-required">*</span></label>
+                                                <label>CCT - RE<?php echo ($summary['appointment_count'] != 0) ? '':'<span class="form-required">*</span>' ?></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[cct_right]"
-                                                            class="custom-select" required>
+                                                            class="custom-select"<?php echo ($summary['appointment_count'] != 0) ? '':'required' ?>>
                                                         <option value="">Select CCT</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -997,14 +997,14 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>CCT - LE<span class="form-required">*</span></label>
+                                                <label>CCT - LE<?php echo ($summary['appointment_count'] != 0) ? '':'<span class="form-required">*</span>' ?></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[cct_left]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" <?php echo ($summary['appointment_count'] != 0) ? '':'required' ?>>
                                                         <option value="">Select CCT</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
