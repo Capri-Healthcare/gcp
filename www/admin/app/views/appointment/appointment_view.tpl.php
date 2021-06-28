@@ -528,6 +528,14 @@
                                             <td>Glaucoma Care Plan Required</td>
                                             <td class="text-dark"><?php echo isset($result['is_glaucoma_required']) ? $result['is_glaucoma_required'] : '' ?></td>
                                         </tr>
+                                        <tr>
+                                            <td>Doctor Note</td>
+                                            <td class="text-dark"><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : '' ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Special condition</td>
+                                            <td class="text-dark"><?php echo isset($result['special_condition']) ? $result['special_condition'] : '' ?></td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
