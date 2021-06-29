@@ -161,7 +161,7 @@ class Commons extends Model
 
     public function getFollowupforRemainder()
     {
-        $query = $this->database->query("Select * From `" . DB_PREFIX . "followup_appointment` WHERE followup_status ='".constant('STATUS_FOLLOWUP_IN_QUEUE')."' AND reminder_count = '0' ");
+        $query = $this->database->query("Select f.*,a.is_glaucoma_required From `" . DB_PREFIX . "followup_appointment` as f JOIN `" . DB_PREFIX . "appointments` AS a ON f.appointment_id = a.id WHERE f.followup_status ='".constant('STATUS_FOLLOWUP_IN_QUEUE')."' AND f.reminder_count = '0' ");
 
         if ($query->num_rows > 0) {
             return $query->rows;

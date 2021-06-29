@@ -7,16 +7,18 @@ class Followup extends Model
 {
     public function getFollowup($data)
     {
-
+        // Med Sec Query
         if ($data['role'] == constant('DASHBOARD_NOT_SHOW')[0]) {
 
-            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE payment_status ='PAID' AND followup_status != 'NEW' AND created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND followup_status = '" . $data['period']['status'] . "' ORDER BY created_at DESC ");
+            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE ((payment_status ='PAID' AND followup_status != 'NEW') OR followup_status = 'NON_GCP_FOLLOWUP') AND followup_status = '" . $data['period']['status'] . "' AND created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' ORDER BY created_at DESC ");
 
-        } elseif ($data['role'] == constant('DASHBOARD_NOT_SHOW')[1]) {
+        } // Optician Query
+        elseif ($data['role'] == constant('DASHBOARD_NOT_SHOW')[1]) {
             $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND optician_id ='" . $data['id'] . "' AND payment_status = 'PAID' AND followup_status = '" . $data['period']['status'] . "' ORDER BY created_at DESC ");
 
-        } else {
-            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id  WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND payment_status = '" . $data['period']['status'] . "' AND followup_status != '".constant('STATUS_FOLLOWUP_IN_QUEUE')."'ORDER BY created_at DESC ");
+        } // GCP AND ADMIN Query
+        else {
+            $query = $this->database->query("Select f.*,a.is_glaucoma_required,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id JOIN  `" . DB_PREFIX . "appointments` AS a ON f.appointment_id = a.id WHERE f.created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND f.payment_status = '" . $data['period']['status'] . "' AND f.followup_status != '" . constant('STATUS_FOLLOWUP_IN_QUEUE') . "' AND a.is_glaucoma_required != 'NO'  ORDER BY f.created_at DESC ");
         }
 
         return $query->rows;
@@ -72,13 +74,13 @@ class Followup extends Model
     public function createFollowup($data)
     {
 
-        $query = $this->database->query("Select * From `" . DB_PREFIX . "followup_appointment` WHERE appointment_id = ".$data['appointment_id']);
+        $query = $this->database->query("Select * From `" . DB_PREFIX . "followup_appointment` WHERE appointment_id = " . $data['appointment_id']);
 
         if ($query->num_rows > 0) {
-            $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `appointment_id` = ?,`patient_id` = ? ,`optician_id` = ? ,`due_date` = ? WHERE `id` = ?", array($this->database->escape($data['appointment_id']),$this->database->escape($data['patient_id']),$this->database->escape($data['optician_id']),$this->database->escape($data['due_date']), $query->row['id']));
+            $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `appointment_id` = ?,`patient_id` = ? ,`optician_id` = ? ,`due_date` = ? WHERE `id` = ?", array($this->database->escape($data['appointment_id']), $this->database->escape($data['patient_id']), $this->database->escape($data['optician_id']), $this->database->escape($data['due_date']), $query->row['id']));
             return false;
         } else {
-            $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "followup_appointment` (`patient_id`,`optician_id`,`due_date`,`created_at`,`appointment_id`) VALUES (?,?,?,?,?)", array($this->database->escape($data['patient_id']), $data['optician_id'], $data['due_date'], date('Y-m-d H:i:s'),$data['appointment_id']));
+            $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "followup_appointment` (`patient_id`,`optician_id`,`due_date`,`created_at`,`appointment_id`) VALUES (?,?,?,?,?)", array($this->database->escape($data['patient_id']), $data['optician_id'], $data['due_date'], date('Y-m-d H:i:s'), $data['appointment_id']));
             return $this->database->last_id();
         }
     }

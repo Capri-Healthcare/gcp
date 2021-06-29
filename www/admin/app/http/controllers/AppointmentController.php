@@ -519,7 +519,7 @@ class AppointmentController extends Controller
             // Update Examination Notes
             if ($data['form_type'] == 'appointment_records') {
 
-                if ($data['appointment']['gcp_required'] == 'YES') {
+              //  if ($data['appointment']['gcp_required'] == 'YES') {
 
                     $this->newpatiengcpMail($data['appointment']['optician_id']);
                     $this->load->model('followup');
@@ -532,7 +532,7 @@ class AppointmentController extends Controller
 
                        //$this->notificationToGCPForPatientFollowup();
                    }
-                }
+              //  }
 
                 $this->load->model('patient');
                 $patient['id'] = $data['appointment']['patient_id'];

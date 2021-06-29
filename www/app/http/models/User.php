@@ -231,4 +231,15 @@ class User extends Model
     {
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `ddi_image` = ? WHERE `id` = ?", array(null, (int)$data['id']));
     }
+
+    public function checkUserRole($id)
+    {
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE `user_role` = ".$id);
+
+        if ($query->num_rows > 0) {
+            return $query->row;
+        } else{
+            return false;
+        }
+    }
 }

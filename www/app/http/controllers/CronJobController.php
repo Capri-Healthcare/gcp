@@ -77,25 +77,40 @@ class CronJobController extends Controller
     {
         $this->load->model('commons');
         $result = $this->model_commons->getFollowupforRemainder();
+
         $afterSixWeekDate = date('Y-m-d', strtotime("+6 weeks", strtotime(date('Y-m-d'))));
+        $afterFourWeekDate = date('Y-m-d', strtotime("+4 weeks", strtotime(date('Y-m-d'))));
 
         if (empty($result)) {
             echo "No followup for reminder";
         } else {
             foreach ($result as $followup) {
-                if ($followup['due_date'] <= $afterSixWeekDate) {
-                    $data['id'] = $followup['id'];
-                    $data['status'] = 'NEW';
-                    $data['reminder_count'] = $followup['reminder_count'] + 1;
-                    $this->model_commons->updateFollowupStatus($data);
+                if ($followup['is_glaucoma_required'] != 'NO') {
 
-                    //$this->followupMail($followup['id'], 'notification_to_optician_for_follow_up');
+                    if ($followup['due_date'] <= $afterSixWeekDate) {
+                        $data['id'] = $followup['id'];
+                        $data['status'] = 'NEW';
+                        $data['reminder_count'] = $followup['reminder_count'] + 1;
+                        $this->model_commons->updateFollowupStatus($data);
+
+                        //$this->followupMail($followup['id'], 'notification_to_optician_for_follow_up');
+                    }
+                } else {
+                    if ($followup['due_date'] <= $afterFourWeekDate) {
+                        $data['id'] = $followup['id'];
+                        $data['status'] = 'NON_GCP_FOLLOWUP';
+                        $data['reminder_count'] = $followup['reminder_count'] + 1;
+                        $this->model_commons->updateFollowupStatus($data);
+
+                        $this->followupGCPNoMail($followup['id'], 'notification_to_optician_for_follow_up');
+                    }
                 }
             }
         }
 
     }
 
+    // GCP Required Yes Followup Mail
     public function followupMail($id, $template = 'notification_to_optician_for_follow_up')
     {
         $this->load->model('commons');
@@ -114,7 +129,40 @@ class CronJobController extends Controller
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
 
 
+        $data['name'] = $result['name'];
         $data['email'] = $optician['email'];
+        $data['cc'] = $followup['email'];
+        $data['subject'] = str_replace('{patient_title}', $followup['title'], $result['template']['subject']);
+        $data['subject'] = str_replace('{patient_fname, lname}', $followup['firstname'] . " " . $followup['lastname'], $data['subject']);
+        $data['subject'] = str_replace('{nhs_number}', $followup['nhs_patient_number'], $data['subject']);
+        $data['message'] = $result['template']['message'];
+
+        $this->load->controller('mail');
+        return $this->controller_mail->sendMail($data);
+    }
+
+    // GCP Required No Followup Mail
+
+    public function followupGCPNoMail($id, $template = 'notification_to_optician_for_follow_up')
+    {
+        $this->load->model('commons');
+        $result = $this->model_commons->getTemplateAndInfo($template);
+        $followup = $this->model_commons->getFollowupByID($id);
+        $this->load->model('user');
+        $medsec = $this->model_user->checkUserRole(constant('USER_ROLE_ID')['Med. Secretary']);
+
+
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+        $result['template']['message'] = str_replace('{patient_title}', $followup['title'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{patient fname, lname}', $followup['firstname'] . " " . $followup['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y', strtotime($followup['due_date'])), $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+
+
+        $data['name'] = $result['name'];
+        $data['email'] = $medsec['email'];
         $data['cc'] = $followup['email'];
         $data['subject'] = str_replace('{patient_title}', $followup['title'], $result['template']['subject']);
         $data['subject'] = str_replace('{patient_fname, lname}', $followup['firstname'] . " " . $followup['lastname'], $data['subject']);

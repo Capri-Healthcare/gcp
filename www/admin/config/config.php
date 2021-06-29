@@ -211,7 +211,7 @@ define('HOSPITAL', [
 ]);
 
 define('STATUS_PAYMENT', ['PAID' => 'Paid', 'UNPAID' => 'Unpaid', 'NOT_SUITABLE' => 'Not suitable']);
-define('STATUS_FOLLOWUP', ['NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable']);
+define('STATUS_FOLLOWUP', ['NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable','NON_GCP_FOLLOWUP' => 'Non gcp followup']);
 define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
 define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');
 define('STATUS_FOLLOWUP_NEW', 'NEW');
