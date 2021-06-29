@@ -840,7 +840,14 @@ class AppointmentController extends Controller
                 $booked = '';
             }
 
-            $slot_html .= '<div><input type="radio" name="appointment[time]" id="apnt-time-' . $key . '" value="' . $time . '" required><label for="apnt-time-' . $key . '">' . $time . $booked . '</label></div>';
+            if($count > 0)
+            {
+                $slot_html .= '<div><input type="radio" name="appointment[time]" id="apnt-time-' . $key . '" value="' . $time . '" disabled><label for="apnt-time-' . $key . '" style="background-color:#e9ecef">' . $time . $booked . '</label></div>';
+
+            }else{
+                $slot_html .= '<div><input type="radio" name="appointment[time]" id="apnt-time-' . $key . '" value="' . $time . '" required><label for="apnt-time-' . $key . '">' . $time . $booked . '</label></div>';
+
+            }
             $count = 0;
             $booked = '';
         }
