@@ -222,8 +222,12 @@
                         foreach ($result['items'] as $key => $value) { ?>
                             <tr class="item-row">
                                 <td>
-                                        <textarea name="invoice[item][<?php echo $key; ?>][name]" class="item-name"
-                                                  required><?php echo $value['name']; ?></textarea>
+                                    <select name="invoice[item][<?php echo $key; ?>][name]" class="item-name form-control" onchange="itemPrice(event)" data-row="<?php echo $key; ?>">
+                                        <option value="">Select Item </option>
+                                        <?php foreach (constant('INVOICE_ITEM') as $list) { ?>
+                                            <option value="<?php echo $list['name'] ?>" data-price="<?php echo $list['price'] ?>" <?php echo $value['name'] == $list['name'] ? 'selected' : '' ?>><?php echo $list['name'] ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </td>
                                 <td class="invoice-item">
                                         <textarea name="invoice[item][<?php echo $key; ?>][descr]"
@@ -277,7 +281,12 @@
                     } else { ?>
                         <tr class="item-row">
                             <td class="">
-                                <textarea name="invoice[item][0][name]" class="item-name" required></textarea>
+                                <select name="invoice[item][0][name]" class="item-name form-control" onchange="itemPrice(event)" data-row="0">
+                                    <option value="">Select Item </option>
+                                    <?php foreach (constant('INVOICE_ITEM') as $list) { ?>
+                                        <option value="<?php echo $list['name'] ?>" data-price="<?php echo $list['price'] ?>"><?php echo $list['name'] ?></option>
+                                    <?php } ?>
+                                </select>
                             </td>
                             <td class="invoice-item">
                                 <textarea name="invoice[item][0][descr]" class="item-descr"></textarea>
@@ -545,6 +554,9 @@
     var isOptician =  <?php echo !in_array($common['user']['role'], constant('USER_ROLE')) ? 0 : 1 ?>;
     var patientOption = null;
     var itemDescriptionOption = null;
+    <?php foreach (constant('INVOICE_ITEM')  as $list) { ?>
+    itemDescriptionOption += '<option value="<?php echo $list['name']; ?>" data-price="<?php echo $list['price']; ?>"><?php echo $list['name']; ?></option>';
+    <?php } ?>
 
 </script>
 

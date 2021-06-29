@@ -397,6 +397,18 @@ $(document).ready(function () {
             clck_invld = 1;
             $('#register-password').focus();
         }
+        if ($('#register-confirm-password').val() == '') {
+            $('#register-confirm-password').addClass('is-invalid');
+            $(".invalid-confirm-password").text('Confirm Password is required')
+            clck_invld = 1;
+            $('#register-confirm-password').focus();
+        }
+        else if($('#register-confirm-password').val() != $('#register-password').val()) {
+            $('#register-confirm-password').addClass('is-invalid');
+            $(".invalid-confirm-password").text('Confirm password not match with password.')
+            clck_invld = 1;
+            $('#register-confirm-password').focus();
+        }
 
         if (!mob_filter.test($('#register-mobile').val())) {
             $('#register-mobile').addClass('is-invalid');

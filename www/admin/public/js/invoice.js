@@ -133,6 +133,12 @@ function reportPrice(e) {
     $("textarea[name='invoice[item]["+rowCost+"][cost]']").val(price);
     update_price()
 }
+function itemPrice(e) {
+    var price = $(e.currentTarget).find('option:selected').data('price');
+    var rowCost = $(e.currentTarget).data('row');
+    $("textarea[name='invoice[item]["+rowCost+"][cost]']").val(price);
+    update_price()
+}
 
 function reportPatient(e) {
     var patientid = $(e.currentTarget).find('option:selected').data('patientid');
@@ -177,7 +183,10 @@ function item_html(count) {
     }else{
         var item_html = '<tr class="item-row">'+
             '<td class="">'+
-            '<textarea name="invoice[item]['+count+'][name]" class="item-name" required></textarea>'+
+            '<select name="invoice[item]['+count+'][name]" class="item-name form-control" onchange="itemPrice(event)" data-row="'+count+'"  required>'+
+            '<option value="">Select Item</option>'+
+            itemDescriptionOption+
+            '</select>'+
             '</td>'+
             '<td class="invoice-item">'+
             '<textarea name="invoice[item]['+count+'][descr]" class="item-descr"></textarea>'+
@@ -282,6 +291,7 @@ $(document).ready(function () {
         } else {
             var count = $('.invoice-items table tr.item-row:last .item-name').attr('name').split('[')[2];
             count = parseInt(count.split(']')[0]) + 1;
+            alert(count)
             item_html(count);
         }
         initAutocomplete();

@@ -42,6 +42,7 @@
                                             </div>
                                         </div>
 
+
                                         <div class="form-group main_box">
                                             <label for="email">E-Mail Address <span class="error">*</span></label>
                                             <input id="register-email" type="email" class="form-control" name="email"
@@ -68,14 +69,6 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group main_box" id="register-user-div">
-                                            <label for="username">Username <span class="error">*</span></label>
-                                            <input type="text" class="form-control" name="username" id="register-user-name"
-                                                value="" onfocusout="checkUserName();">
-                                            <div class="invalid-feedback invalid-user">
-                                                Username is required
-                                            </div>
-                                        </div>
 
                                         <div class="form-group main_box">
                                             <label for="password">Password <span class="error">*</span></label>
@@ -83,6 +76,14 @@
                                                 value="" required>
                                             <div class="invalid-feedback invalid-password">
                                                 Password is required
+                                            </div>
+                                        </div>
+                                        <div class="form-group main_box">
+                                            <label for="register-confirm-password"><?php echo $lang['text_confirm_password']; ?> <span class="error">*</span></label>
+                                            <input type="password" class="form-control" name="confirmpassword" id="register-confirm-password"
+                                                   value="" required>
+                                            <div class="invalid-feedback invalid-confirm-password">
+                                                <?php echo $lang['text_password_error']; ?>
                                             </div>
                                         </div>
                                         <div class="form-group main_box" id="register-optician-gppractice-div" style="display: none">
@@ -99,7 +100,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group main_box" id="register-optician-practice-div">
@@ -117,6 +118,15 @@
                                                 id="register-goc-registration" value="" autofocus>
                                             <div class="invalid-feedback">
                                                 GOC registrations is invalid
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group main_box" id="register-user-div">
+                                            <label for="username">Username <span class="error">*</span></label>
+                                            <input type="text" class="form-control" name="username" id="register-user-name"
+                                                   value="" onfocusout="checkUserName();">
+                                            <div class="invalid-feedback invalid-user">
+                                                Username is required
                                             </div>
                                         </div>
 
