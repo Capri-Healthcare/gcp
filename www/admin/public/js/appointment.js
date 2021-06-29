@@ -279,5 +279,32 @@
             }
         });
     });
-    
+
+
 });
+
+function tabClick(e) {
+    var tabtitle = $("#tabtitle").val();
+    $("#tabtitle").val($(e.currentTarget).data('title'));
+    if(tabtitle == 'examination'){
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "10000",
+            "hideDuration": "10000",
+            "timeOut": "4000",
+            "extendedTimeOut": "800",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        toastr.warning('Please click on Save.','Examination Notes');
+    }
+}

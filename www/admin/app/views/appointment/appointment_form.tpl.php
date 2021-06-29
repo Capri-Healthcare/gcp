@@ -24,28 +24,29 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
+            <input type="hidden" id="tabtitle" value="">
             <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#appointment-info" data-toggle="tab">Appointment Info</a>
+                    <a class="nav-link active" href="#appointment-info" data-toggle="tab" data-title="appointment-info" onclick="tabClick(event)">Appointment Info</a>
                 </li>
                 <?php if ($page_notes) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#appointment-records" data-toggle="tab">Examination Notes</a>
+                        <a class="nav-link" href="#appointment-records" data-toggle="tab" data-title="examination" onclick="tabClick(event)">Examination Notes</a>
                     </li>
                 <?php }
                 if ($page_prescriptions) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#appointment-prescription" data-toggle="tab">Prescription</a>
+                        <a class="nav-link" href="#appointment-prescription" data-toggle="tab" data-title="prescription" onclick="tabClick(event)">Prescription</a>
                     </li>
                 <?php }
                 if ($page_document_upload || $page_documents) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#appointment-documents" data-toggle="tab">Scans & Reports</a>
+                        <a class="nav-link" href="#appointment-documents" data-toggle="tab" data-title="scans & reports" onclick="tabClick(event)">Scans & Reports</a>
                     </li>
                 <?php }
                 if ($invoice_view || $invoice_add) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#appointment-invoice" data-toggle="tab">Invoice</a>
+                        <a class="nav-link" href="#appointment-invoice" data-toggle="tab" data-title="invoice" onclick="tabClick(event)">Invoice</a>
                     </li>
                 <?php } ?>
                 <!--li class="nav-item">
@@ -1750,7 +1751,6 @@
                 return true;
             }
         }
-
     </script>
     <script src="<?php echo URL_ADMIN . "public/js/examination_chart.js"; ?>"></script>
     <!-- Footer -->
