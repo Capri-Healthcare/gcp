@@ -154,8 +154,8 @@
                     format: $('.common_daterange_format').val(),
                     separator: " => ",
                 },
-                startDate: <?php echo (isset($_GET['start'])) ?  $_GET['start']:'moment()'?>,
-                endDate: <?php echo (isset($_GET['end'])) ?  $_GET['end']:'moment()'?>,
+                startDate:'<?php echo (isset($_GET['start'])) ? date_format(date_create($_GET['start']), $common['info']['date_format']):date_format(date_create(date('Y-m-d ' . '00:00:00')), 'd-m-Y')?>',
+                endDate: '<?php echo (isset($_GET['end'])) ? date_format(date_create($_GET['end']), $common['info']['date_format']) :date_format(date_create(date('Y-m-d ' . '23:59:59')), 'd-m-Y')?>',
                 ranges: {
                     'Today': [moment(), moment()],
                     'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
