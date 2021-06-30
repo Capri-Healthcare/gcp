@@ -3,28 +3,28 @@
 <section class="banner_block">
     <div class="container">
         <div class="banner_overlay">
-            <p>FOR YOUR EYES ONLY SUB HEADING GHOES HERE</p>
+            <p>FOR YOUR EYES ONLY</p>
             <h3>GLAUCOMA <br/>CARE PLAN</h3>
             <ul>
                 <li>
                     <div class="banner_list">
                         <h6>I'm an Optometrist</h6>
                         <img src="public/images/optometrist1.png" alt="I'm an Optometrist" title="I'm an Optometrist" height=300 />
-                        <div class="block_box">I want to refer a patient</div>
+                        <div class="block_box"><a href="<?php echo URL.DIR_ROUTE.'login'; ?>">I want to refer a patient</a></div>
                     </div>
                 </li>
                 <li>
                     <div class="banner_list">
                         <h6>I'm an Ophthalmologist</h6>
                         <img src="public/images/optometrist2.png" alt="I'm an Ophthalmologist" title="I'm an Ophthalmologist" height=300 />
-                        <div class="block_box">I want to review a patient</div>
+                        <div class="block_box"><a href="<?php echo URL_ADMIN; ?>">I want to review a patient</a></div>
                     </div>
                 </li>
                 <li>
                     <div class="banner_list">
                         <h6>I'm a Patient</h6>
                         <img src="public/images/optometrist3.png" alt="I'm a Patient" title="I'm a Patient" height=300 />
-                        <div class="block_box">I want to join glaucoma care plan</div>
+                        <div class="block_box"><a href="<?php echo URL_ADMIN; ?>">I want to join glaucoma care plan</a></div>
                     </div>
                 </li>
             </ul>

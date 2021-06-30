@@ -18,7 +18,7 @@
 	<div class="lgn-background" style="background-image: url(../public/uploads/<?php echo $theme['lg_background']; ?>);">
 		<div class="lgn-wrapper">
 			<div class="lgn-logo text-center">
-				<a href="<?php echo URL_ADMIN; ?>">
+				<a href="<?php echo URL; ?>">
 					<?php if (!empty($theme['logo']) && file_exists(DIR.'public/uploads/'.$theme['logo'])) { ?>
 						<img src="<?php echo URL.'public/uploads/'.$theme['logo']; ?>" alt="<?php echo $common['name']; ?>">
 					<?php } else { ?>

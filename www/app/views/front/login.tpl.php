@@ -20,7 +20,7 @@
                                         <i class="fas fa-user-nurse"></i>
                                         <p>I'm a Doctor</p>
                                     </div-->
-                                    <a href="<?php echo URL."admin"; ?>">
+                                    <!--a href="<?php echo URL."admin"; ?>">
                                         <div class="tab_button" data-login="optician">
                                             <i class="fas fa-glasses"></i>
                                             <p>I'm an Optometrist</p>
@@ -31,7 +31,7 @@
                                             <i class="fas fa-user-md"></i>
                                             <p>I'm a Ophthalmologist</p>
                                         </div>
-                                    </a>
+                                    </a-->
                                 </div>
                             </center>
 							<form method="POST"  action="<?php echo URL.DIR_ROUTE; ?>login" method="post" enctype="multipart/form-data">

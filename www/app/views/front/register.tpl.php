@@ -87,7 +87,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group main_box" id="register-optician-gppractice-div" style="display: none">
-                                            <label for="oname">GP Practic<span class="error">*</span></label>
+                                            <label for="oname">GP Practice<span class="error">*</span></label>
                                             <select class="form-control" name="gp_practice" id="gp_practice" value="" autofocus>
                                                 <option value="">Select GP Practice</option>
                                                 <?php foreach (constant('GP_PRACTICE') as $key => $list) { ?>
