@@ -725,7 +725,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <textarea class="form-control" name="appointment[current_event]"
-                                                              required><?php echo isset($result['current_event']) ? $result['current_event'] : ''; ?></textarea>
+                                                              required <?php echo $examination_notes_readonly ? 'readonly':''?>><?php echo isset($result['current_event']) ? $result['current_event'] : ''; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -738,7 +738,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[allergy]" class="custom-select"
-                                                            required>
+                                                            required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select allergy</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ALLERGY'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -763,7 +763,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[visual_acuity_right]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select visual acuity</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -783,7 +783,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[intraocular_pressure_right]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select intraocular pressure</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -805,7 +805,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[visual_acuity_left]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select visual acuity</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -825,7 +825,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[intraocular_pressure_left]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select intraocular pressure</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['INTRAOCULAR_PRESSURE'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -859,7 +859,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[anterior_chamber_right]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select anterior chamber</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -881,7 +881,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[anterior_chamber_left]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select anterior chamber</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -900,7 +900,7 @@
                                                 <label>Lens - RE<span class="form-required">*</span></label>
                                                 <input type="number" class="form-control"
                                                        name="appointment[lens_right]"
-                                                       value="<?php echo $result['lens_right']; ?>">
+                                                       value="<?php echo $result['lens_right']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>
 
                                             </div>
                                         </div>
@@ -909,7 +909,7 @@
                                                 <label>Lens - LE<span class="form-required">*</span></label>
                                                 <input type="number" class="form-control"
                                                        name="appointment[lens_left]"
-                                                       value="<?php echo $result['lens_left']; ?>">
+                                                       value="<?php echo $result['lens_left']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>
 
                                             </div>
                                         </div>
@@ -990,7 +990,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[cct_right]"
-                                                            class="custom-select"<?php echo ($summary['appointment_count'] != 0) ? '':'required' ?>>
+                                                            class="custom-select"<?php echo ($summary['appointment_count'] != 0) ? '':'required' ?> <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select CCT</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -1011,7 +1011,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[cct_left]"
-                                                            class="custom-select" <?php echo ($summary['appointment_count'] != 0) ? '':'required' ?>>
+                                                            class="custom-select" <?php echo ($summary['appointment_count'] != 0) ? '':'required' ?> <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select CCT</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -1032,7 +1032,7 @@
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
                                                            name="appointment[nfl_thickness_right]"
-                                                           value="<?php echo $result['nfl_thickness_right']; ?>">&nbsp;
+                                                           value="<?php echo $result['nfl_thickness_right']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>mm</b>
                                                 </div>
                                             </div>
@@ -1044,7 +1044,7 @@
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
                                                            name="appointment[nfl_thickness_left]"
-                                                           value="<?php echo $result['nfl_thickness_left']; ?>">&nbsp;
+                                                           value="<?php echo $result['nfl_thickness_left']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>mm</b>
                                                 </div>
                                             </div>
@@ -1201,7 +1201,7 @@
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
                                                            name="appointment[mean_deviation_right]"
-                                                           value="<?php echo $result['mean_deviation_right']; ?>">&nbsp;
+                                                           value="<?php echo $result['mean_deviation_right']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>dB</b>
                                                 </div>
                                             </div>
@@ -1213,7 +1213,7 @@
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
                                                            name="appointment[mean_deviation_left]"
-                                                           value="<?php echo $result['mean_deviation_left']; ?>">&nbsp;
+                                                           value="<?php echo $result['mean_deviation_left']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>dB</b>
                                                 </div>
                                             </div>
@@ -1237,7 +1237,7 @@
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
                                                            name="appointment[psd_deviation_right]"
-                                                           value="<?php echo $result['psd_deviation_right']; ?>">&nbsp;
+                                                           value="<?php echo $result['psd_deviation_right']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>dB</b>
                                                 </div>
                                             </div>
@@ -1249,7 +1249,7 @@
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
                                                            name="appointment[psd_deviation_left]"
-                                                           value="<?php echo $result['psd_deviation_left']; ?>">&nbsp;
+                                                           value="<?php echo $result['psd_deviation_left']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>dB</b>
                                                 </div>
                                             </div>
@@ -1275,7 +1275,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[diagnosis]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select Diagnosis</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -1296,7 +1296,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[diagnosis_eye]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select Diagnosis Eye</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -1319,7 +1319,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[outcome]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select Outcome</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['OUTCOME'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -1341,7 +1341,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[followup]"
-                                                            class="custom-select" required>
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select Month</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
@@ -1365,7 +1365,7 @@
                                                                     class="ti-check-box"></i></span>
                                                     </div>
                                                     <select name="appointment[gcp_required]" class="custom-select"
-                                                            required>
+                                                            required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select GCP</option>
                                                         <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
                                                             YES
@@ -1388,7 +1388,7 @@
                                                             <span class="input-group-text"><i
                                                                         class="ti-notepad"></i></span>
                                                     </div>
-                                                    <textarea class="form-control" name="appointment[doctor_note]"><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : ''; ?></textarea>
+                                                    <textarea class="form-control" name="appointment[doctor_note]" <?php echo $examination_notes_readonly ? 'readonly':''?>><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : ''; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1400,7 +1400,7 @@
                                                             <span class="input-group-text"><i
                                                                         class="ti-notepad"></i></span>
                                                     </div>
-                                                    <textarea class="form-control" name="appointment[special_condition]"><?php echo isset($result['special_condition']) ? $result['special_condition'] : ''; ?></textarea>
+                                                    <textarea class="form-control" name="appointment[special_condition]" <?php echo $examination_notes_readonly ? 'readonly':''?>><?php echo isset($result['special_condition']) ? $result['special_condition'] : ''; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>

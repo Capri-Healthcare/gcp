@@ -299,6 +299,7 @@ class AppointmentController extends Controller
             $this->url->redirect('appointments');
         }
 
+
         $data['doctors'] = $this->model_appointment->getDoctors();
         $data['prescription'] = $this->model_appointment->getPrescription($id);
         if (!empty($data['prescription'])) {
@@ -419,6 +420,10 @@ class AppointmentController extends Controller
             $data['categories'] = $categories;
         }
 
+        $data['examination_notes_readonly'] = false;
+        if($data['result']['date']  < date('Y-m-d', strtotime("-1 weeks", strtotime(date('Y-m-d'))))){
+            $data['examination_notes_readonly'] = true;
+        }
         $data['summary'] = $summary;
 
         /*Render Blog edit view*/
