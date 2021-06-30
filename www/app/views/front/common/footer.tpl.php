@@ -54,6 +54,9 @@ if (!empty($this->session->data['message'])) { ?>
             "hideMethod": "fadeOut"
         }
         toastr.<?php echo $this->session->data['message']['alert']; ?>('<?php echo  $this->session->data['message']['value']; ?>', '<?php echo ucfirst($this->session->data['message']['alert']); ?>');
+
     </script>
+
+
 <?php } ?>
 

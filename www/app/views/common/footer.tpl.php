@@ -162,7 +162,27 @@
 				"hideMethod": "fadeOut"
 			}
 			toastr.<?php echo $message['alert']; ?>('<?php echo $message['value']; ?>', '<?php echo ucfirst($message['alert']); ?>');
-		</script>
+
+
+        </script>
+
 	<?php } ?>
+    <script>
+        function alphaNumericValidation(e) {
+
+            var keyCode = e.keyCode || e.which;
+
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            var regex = /^[A-Za-z0-9 ]+$/;
+
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                return isValid
+            }
+
+            return isValid;
+        }
+    </script>
 </body>
 </html>

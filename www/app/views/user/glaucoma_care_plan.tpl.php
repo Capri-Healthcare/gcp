@@ -21,7 +21,7 @@
                                     class="ti-close report-delete-action"
                                     data-toggle="modal" data-target="#reportDeleteModel"
                                     data-file-name="<?php echo $user_data['ddi_image'] ?>"
-                                    data-patient-id="<?php echo $user_data['id']; ?>"></a></div>
+                                    data-patient-id="<?php echo $user_data['id']; ?>" style="color: white">X</a></div>
 
                         <input type="hidden" name="report_name" id="report_name" value="<?php echo $user_data['ddi_image']; ?>">
                     </div>

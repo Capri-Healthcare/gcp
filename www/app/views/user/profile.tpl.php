@@ -83,28 +83,19 @@
             <label class="col-form-label"><?php echo $lang['text_blood_group']; ?></label>
         </div>
     </div-->
-    <div class="col-md-4">
-        <div class="input-box">
-            <select name="is_patient_have_any_disabilities">
-                <option value=""><?php echo $lang['text_is_patient_have_any_disabilities']; ?></option>
-                <option value="Yes" <?php if ($user_data['is_patient_have_any_disabilities'] == 'Yes') { echo "selected"; } ?>>Yes</option>
-                <option value="No" <?php if ($user_data['is_patient_have_any_disabilities'] == 'No') { echo "selected"; } ?>>No</option>
-            </select>
-            <label class="col-form-label"><?php echo $lang['text_is_patient_have_any_disabilities']; ?></label>
-        </div>
-    </div>
-    <div class="col-md-12">
-        <div class="input-box">
-            <input type="text" name="disabilities_details" value="<?php echo $user_data['disabilities_details']; ?>">
-            <label class="col-form-label"><?php echo $lang['text_disabilities_details']; ?></label>
-        </div>
-    </div>
-    <div class="col-md-12">
-        <div class="input-box">
-            <input type="text" name="special_requirements" value="<?php echo $user_data['special_requirements']; ?>">
-            <label><?php echo $lang['text_special_requirements']; ?></label>
-        </div>
-    </div>
+
+<!--    <div class="col-md-12">-->
+<!--        <div class="input-box">-->
+<!--            <input type="text" name="disabilities_details" value="--><?php //echo $user_data['disabilities_details']; ?><!--">-->
+<!--            <label class="col-form-label">--><?php //echo $lang['text_disabilities_details']; ?><!--</label>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-12">-->
+<!--        <div class="input-box">-->
+<!--            <input type="text" name="special_requirements" value="--><?php //echo $user_data['special_requirements']; ?><!--">-->
+<!--            <label>--><?php //echo $lang['text_special_requirements']; ?><!--</label>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="col-12">
         <div class="br-dotted-1 mb-4"></div>
     </div>
@@ -134,7 +125,7 @@
     </div>
     <div class="col-md-4">
         <div class="input-box">
-            <input type="text" name="address[postal]" value="<?php echo $user_data['address']['postal']; ?>">
+            <input type="text" name="address[postal]" value="<?php echo $user_data['address']['postal']; ?>" maxlength="7" onkeypress="return alphaNumericValidation(event)">
             <label class="col-form-label"><?php echo $lang['text_postal_code']; ?></label>
         </div>
     </div>
@@ -143,16 +134,16 @@
     </div>
     <div class="col-md-4">
         <div class="input-box">
-            <input type="text" name="nhs_patient_number" value="<?php echo $user_data['nhs_patient_number']; ?>">
+            <input type="number" name="nhs_patient_number" maxlength="10" value="<?php echo $user_data['nhs_patient_number']; ?>">
             <label><?php echo $lang['text_nhs_patient_number']; ?></label>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="input-box">
-            <input type="text" name="nhs_hospital_number" value="<?php echo $user_data['nhs_hospital_number']; ?>">
-            <label><?php echo $lang['text_nhs_hospital_number']; ?></label>
-        </div>
-    </div>
+<!--    <div class="col-md-4">-->
+<!--        <div class="input-box">-->
+<!--            <input type="text" name="nhs_hospital_number" value="--><?php //echo $user_data['nhs_hospital_number']; ?><!--">-->
+<!--            <label>--><?php //echo $lang['text_nhs_hospital_number']; ?><!--</label>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="col-12">
         <div class="br-dotted-1 mb-4"></div>
     </div>
@@ -253,28 +244,19 @@
             <label><?php echo $lang['text_scheme_plan_name']; ?></label>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="input-box">
-            <input type="text" name="authorisation_number" value="<?php echo $user_data['authorisation_number']; ?>" id="authorisation_number" <?php echo $insurance_field_readonly ?> class="<?php echo $input_class; ?>">
-            <label><?php echo $lang['text_authorisation_number']; ?></label>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="input-box">
-            <select name="corporate_company_scheme" id="corporate_company_scheme" $insurance_field_readonly class="<?php echo $input_class; ?>">
-                <option value=""><?php echo $lang['text_corporate_company_scheme']; ?></option>
-                <option value="Yes" <?php if ($user_data['corporate_company_scheme'] == 'Yes') { echo "selected"; } ?>>Yes</option>
-                <option value="No" <?php if ($user_data['corporate_company_scheme'] == 'No') { echo "selected"; } ?>>No</option>
-            </select>
-            <label class="col-form-label"><?php echo $lang['text_corporate_company_scheme']; ?></label>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="input-box">
-            <input type="text" name="employer" value="<?php echo $user_data['employer']; ?>" id="employer" $insurance_field_readonly class="<?php echo $input_class; ?>">
-            <label><?php echo $lang['text_employer']; ?></label>
-        </div>
-    </div>
+<!--    <div class="col-md-4">-->
+<!--        <div class="input-box">-->
+<!--            <input type="text" name="authorisation_number" value="--><?php //echo $user_data['authorisation_number']; ?><!--" id="authorisation_number" --><?php //echo $insurance_field_readonly ?><!-- class="--><?php //echo $input_class; ?><!--">-->
+<!--            <label>--><?php //echo $lang['text_authorisation_number']; ?><!--</label>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="col-md-4">-->
+<!--        <div class="input-box">-->
+<!--            <input type="text" name="employer" value="--><?php //echo $user_data['employer']; ?><!--" id="employer" $insurance_field_readonly class="--><?php //echo $input_class; ?><!--">-->
+<!--            <label>--><?php //echo $lang['text_employer']; ?><!--</label>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <div class="col-12 text-center pb-3">
         <button type="submit" name="submit" class="btn btn-primary btn-shadow btn-pill"><?php echo $lang['text_save']; ?></button>
