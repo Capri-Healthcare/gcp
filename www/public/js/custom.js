@@ -900,8 +900,6 @@ function passwordChanged() {
         $(".invalid-password").text('Your password needs to be at least 8 characters long.');
         return false;
     } else if (strongRegex.test(pwd.value)) {
-        $('#register-password').addClass('valid');
-        $(".invalid-password").text('Strong!')
         return true;
     } else if (mediumRegex.test(pwd.value)) {
         $('#register-password').addClass('is-invalid');
