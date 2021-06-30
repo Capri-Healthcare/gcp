@@ -63,46 +63,6 @@
                                                 Mobile number is invalid
                                             </div>
                                         </div>
-                                        
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-
-                                        <div class="form-group main_box">
-                                            <label for="password">Password <span class="error">*</span></label>
-                                            <input type="password" class="form-control" name="password" id="register-password"
-                                                value="" onkeyup="return passwordChanged();" required>
-                                            <div class="invalid-feedback invalid-password">
-                                                Password is required
-                                            </div>
-                                        </div>
-                                        <div class="form-group main_box">
-                                            <label for="register-confirm-password"><?php echo $lang['text_confirm_password']; ?> <span class="error">*</span></label>
-                                            <input type="password" class="form-control" name="confirmpassword" id="register-confirm-password"
-                                                   value="" required>
-                                            <div class="invalid-feedback invalid-confirm-password">
-                                                <?php echo $lang['text_password_error']; ?>
-                                            </div>
-                                        </div>
-                                        <div class="form-group main_box" id="register-optician-gppractice-div" style="display: none">
-                                            <label for="oname">GP Practice<span class="error">*</span></label>
-                                            <select class="form-control" name="gp_practice" id="gp_practice" value="" autofocus>
-                                                <option value="">Select GP Practice</option>
-                                                <?php foreach (constant('GP_PRACTICE') as $key => $list) { ?>
-                                                    <option value ="<?php echo $key;?>"><?php echo $list;?></option>
-                                                <?php } ?>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                GP Practice is required
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
                                         <div class="form-group main_box" id="register-optician-practice-div">
                                             <label for="oname">Optician Practice Name <span class="error">*</span></label>
                                             <input type="text" class="form-control" name="optician_shop_name"
@@ -120,7 +80,11 @@
                                                 GOC registrations is invalid
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div class="form-group main_box" id="register-user-div">
                                             <label for="username">Username <span class="error">*</span></label>
                                             <input type="text" class="form-control" name="username" id="register-user-name"
@@ -129,7 +93,41 @@
                                                 Username is required
                                             </div>
                                         </div>
+                                        
+                                        <div class="form-group main_box" id="register-optician-gppractice-div" style="display: none">
+                                            <label for="oname">GP Practice<span class="error">*</span></label>
+                                            <select class="form-control" name="gp_practice" id="gp_practice" value="" autofocus>
+                                                <option value="">Select GP Practice</option>
+                                                <?php foreach (constant('GP_PRACTICE') as $key => $list) { ?>
+                                                    <option value ="<?php echo $key;?>"><?php echo $list;?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                GP Practice is required
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group main_box">
+                                            <label for="password">Password <span class="error">*</span></label>
+                                            <input type="password" class="form-control" name="password" id="register-password"
+                                                value="" onkeyup="return passwordChanged();" required>
+                                            <div class="invalid-feedback invalid-password">
+                                                Password is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group main_box">
+                                            <label for="register-confirm-password"><?php echo $lang['text_confirm_password']; ?> <span class="error">*</span></label>
+                                            <input type="password" class="form-control" name="confirmpassword" id="register-confirm-password"
+                                                   value="" required>
+                                            <div class="invalid-feedback invalid-confirm-password">
+                                                <?php echo $lang['text_password_error']; ?>
+                                            </div>
+                                        </div>
                                         <div class="form-group main_box form-bot-check">
                                             <label for="register-bot"
                                                 id="register-bot-label"><?php echo $lang['text_what_is'] . ' ' . rand(1, 10) . ' ' . $lang['text_plus'] . ' ' . rand(1, 10); ?>
@@ -140,7 +138,11 @@
                                                 Please enter correct value!
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div class="form-group m-0">
                                             <button type="submit" id="register-submit" name="register"
                                                     class="btn btn-primary btn-block">

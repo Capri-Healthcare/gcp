@@ -17,7 +17,6 @@ define('CONSULTATION_TYPE', [
 							]);
 define('APPOINTMENT_STATUS', [
 								'1' => 'In Process',
-								'2' => 'Document Requested',
 								'3' => 'Confirmed',
 								'5' => 'Completed',
 								'6' => 'Cancelled',

@@ -371,13 +371,14 @@ body{
 }
 
 .my-login-page.my-register-page .form-group.main_box{
-    width: 48%;
+    width: 46%;
     float: none;
     display: inline-block;
+    margin: 0 10px;
 }
 
 .my-login-page.my-register-page .form-group.main_box:nth-child(2n){
-    float: right;
+    /*float: right; */
 }
 
 .my-login-page .card {
