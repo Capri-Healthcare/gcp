@@ -291,7 +291,6 @@ $(document).ready(function () {
         } else {
             var count = $('.invoice-items table tr.item-row:last .item-name').attr('name').split('[')[2];
             count = parseInt(count.split(']')[0]) + 1;
-            alert(count)
             item_html(count);
         }
         initAutocomplete();
