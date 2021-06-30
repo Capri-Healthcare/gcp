@@ -87,8 +87,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group main_box" id="register-user-div">
                                             <label for="username">Username <span class="error">*</span></label>
-                                            <input type="text" class="form-control" name="username" id="register-user-name"
-                                                   value="">
+                                            <input type="text" class="form-control" name="username" id="register-user-name" value="">
                                             <div class="invalid-feedback invalid-user">
                                                 Username is required
                                             </div>
@@ -108,7 +107,7 @@
                                         </div>
                                         
                                         <div class="form-group main_box">
-                                            <label for="password">Password <span class="error">*</span></label>
+                                            <label for="password">Password <span class="error">*</span>&nbsp;<i class="fa fa-info-circle"  data-toggle="tooltip" data-placement="top" data-html="true" title="<ul><li style='text-align: justify;'>At least 8 characters.</li><li style='text-align: justify;'>A mixture of both uppercase and lowercase letters.</li><li style='text-align: justify;'>A mixture of letters and numbers.</li><li style='text-align: justify;'>Inclusion of at least one special character</li></ul>"></i></label>
                                             <input type="password" class="form-control" name="password" id="register-password"
                                                 value="" onkeyup="return passwordChanged();" required>
                                             <div class="invalid-feedback invalid-password">

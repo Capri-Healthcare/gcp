@@ -20,6 +20,9 @@
         .active_tab i{
             color: white;
         }
+        .tooltip-inner {
+            max-width: 500px !important;
+        }
     </style>
 </head>
 <body>
