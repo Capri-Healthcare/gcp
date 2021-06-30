@@ -182,7 +182,7 @@ function item_html(count) {
             '</tr>';
     }else{
         var item_html = '<tr class="item-row">'+
-            '<td class="">'+
+            '<td class="" tyle="width:20%">'+
             '<select name="invoice[item]['+count+'][name]" class="item-name form-control" onchange="itemPrice(event)" data-row="'+count+'"  required>'+
             '<option value="">Select Item</option>'+
             itemDescriptionOption+

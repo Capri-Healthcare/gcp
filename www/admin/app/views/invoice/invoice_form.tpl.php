@@ -221,7 +221,7 @@
                     <?php if (!empty($result['items'])) {
                         foreach ($result['items'] as $key => $value) { ?>
                             <tr class="item-row">
-                                <td>
+                                <td style="width:20%">
                                     <select name="invoice[item][<?php echo $key; ?>][name]" class="item-name form-control" onchange="itemPrice(event)" data-row="<?php echo $key; ?>">
                                         <option value="">Select Item </option>
                                         <?php foreach (constant('INVOICE_ITEM') as $list) { ?>
@@ -280,7 +280,7 @@
                         <?php }
                     } else { ?>
                         <tr class="item-row">
-                            <td class="">
+                            <td style="width:20%">
                                 <select name="invoice[item][0][name]" class="item-name form-control" onchange="itemPrice(event)" data-row="0">
                                     <option value="">Select Item </option>
                                     <?php foreach (constant('INVOICE_ITEM') as $list) { ?>
