@@ -210,8 +210,8 @@ define('HOSPITAL', [
     'BTDSH' => 'BMI The Droitwich Spa Hospital<br/>Mobile:01905 793333<br/>Address:St Andrews Road DROITWICH WR9 8DN<br/>Email:info@bmihealthcare.co.uk,<br>Web:http://www.bmihealthcare.co.uk'
 ]);
 
-define('STATUS_PAYMENT', ['PAID' => 'Paid', 'UNPAID' => 'Unpaid', 'NOT_SUITABLE' => 'Not suitable']);
-define('STATUS_FOLLOWUP', ['NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable','NON_GCP_FOLLOWUP' => 'Non gcp followup']);
+define('STATUS_PAYMENT', ['All'=>'All','PAID' => 'Paid', 'UNPAID' => 'Unpaid', 'NOT_SUITABLE' => 'Not suitable']);
+define('STATUS_FOLLOWUP', ['All'=>'All','NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable','NON_GCP_FOLLOWUP' => 'Non gcp followup']);
 define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
 define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');
 define('STATUS_FOLLOWUP_NEW', 'NEW');

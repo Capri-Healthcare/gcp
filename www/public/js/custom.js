@@ -337,7 +337,7 @@ $(document).ready(function () {
                 clck_invld = 1;
                 $('#login-user-name').focus();
             }
-        }else{
+        } else {
             if (!mail_filter.test($('#login-email').val())) {
                 $('#login-email').addClass('is-invalid');
                 clck_invld = 1;
@@ -391,25 +391,18 @@ $(document).ready(function () {
             clck_invld = 1;
             $('#register-password').focus();
         }
-        else if ($('#register-password').val().trim().length < 8) {
-            $('#register-password').addClass('is-invalid');
-            $(".invalid-password").text('Your password needs to be at least 8 characters long.')
-            clck_invld = 1;
-            $('#register-password').focus();
-        }
         if ($('#register-confirm-password').val() == '') {
             $('#register-confirm-password').addClass('is-invalid');
             $(".invalid-confirm-password").text('Confirm Password is required')
             clck_invld = 1;
             $('#register-confirm-password').focus();
         }
-        else if($('#register-confirm-password').val() != $('#register-password').val()) {
+        if ($('#register-confirm-password').val() != $('#register-password').val()) {
             $('#register-confirm-password').addClass('is-invalid');
             $(".invalid-confirm-password").text('Confirm password not match with password.')
             clck_invld = 1;
             $('#register-confirm-password').focus();
         }
-
         if (!mob_filter.test($('#register-mobile').val())) {
             $('#register-mobile').addClass('is-invalid');
             clck_invld = 1;
@@ -450,6 +443,8 @@ $(document).ready(function () {
                 $('#register-user-name').addClass('is-invalid');
                 clck_invld = 1;
                 $('#register-user-name').focus();
+            } else if (checkUserName()) {
+                clck_invld = 1;
             }
         } else {
             if ($('#gp_practice').val() == '') {
@@ -458,11 +453,13 @@ $(document).ready(function () {
                 $('#gp_practice').focus();
             }
         }
+        if (!passwordChanged()) {
+            clck_invld = 1;
+        }
         if (clck_invld === 1) {
             return false;
         }
     });
-
 
 
     //Forgot Password Form Validation
@@ -542,7 +539,8 @@ $(document).ready(function () {
             $('#login-bot').addClass('is-invalid');
             clck_invld = 1;
             $('#login-bot').focus();
-        } else if ($('#login-bot').val().trim().length > 0) {
+        }
+        if ($('#login-bot').val().trim().length > 0) {
             var bot_number = $('#reset-bot-label').text(),
                 bot_number_array = bot_number.match(/[\d\.]+/g),
                 total = 0;
@@ -871,28 +869,47 @@ function chnageLoginForm(e) {
     }
 }
 
-function checkUserName(){
-    $('body').find('.form-control').removeClass("is-invalid");
+function checkUserName() {
+
     var username = $('#register-user-name').val();
 
-    $.ajax({
+    var jqXHR =  $.ajax({
         type: 'get',
-        url: 'index.php?route=register/user&username='+username,
-        async: true,
-        cache: false,
-        error: function () {
-            toastr.error('Error', 'File could not be deleted. Please try again...');
-            return false;
-        },
-        success: function (data) {
-            if(data){
-                $('#register-user-name').addClass('is-invalid');
-                $(".invalid-user").text('User name already exists.');
-                $('#register-submit').prop('disabled', true);
-            }else {
-                $('body').find('.form-control').removeClass("is-invalid");
-                $('#register-submit').prop('disabled', false);
-            }
-        }
+        url: 'index.php?route=register/user&username=' + username,
+        async: false,
+        cache: false
     });
+
+    if (jqXHR.responseText) {
+        $('#register-user-name').addClass('is-invalid');
+        $(".invalid-user").text('User name already exists.');
+        return true
+    } else {
+        return false
+    }
+}
+
+function passwordChanged() {
+    var strongRegex = new RegExp("^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+    var mediumRegex = new RegExp("^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    var enoughRegex = new RegExp("(?=.{8,}).*", "g");
+    var pwd = document.getElementById("register-password");
+
+    if (false == enoughRegex.test(pwd.value)) {
+        $('#register-password').addClass('is-invalid');
+        $(".invalid-password").text('Your password needs to be at least 8 characters long.');
+        return false;
+    } else if (strongRegex.test(pwd.value)) {
+        $('#register-password').addClass('valid');
+        $(".invalid-password").text('Strong!')
+        return true;
+    } else if (mediumRegex.test(pwd.value)) {
+        $('#register-password').addClass('is-invalid');
+        $(".invalid-password").text('Medium!');
+        return false;
+    } else {
+        $('#register-password').addClass('is-invalid');
+        $(".invalid-password").text('Weak!')
+        return false;
+    }
 }

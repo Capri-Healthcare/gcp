@@ -31,7 +31,7 @@
                 </li>
                 <?php if ($page_notes) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#appointment-records" data-toggle="tab" data-title="examination" onclick="tabClick(event)">Examination Notes</a>
+                        <a class="nav-link" id="examination" href="#appointment-records" data-toggle="tab" data-title="examination" onclick="tabClick(event)">Examination Notes</a>
                     </li>
                 <?php }
                 if ($page_prescriptions) { ?>
@@ -1636,6 +1636,23 @@
     </div>
     </form>
 
+<!--Examination Confirmmation Popup---->
+    <div class="modal fade" id="modal-examination-popup">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header  alert-warning">
+                    <h4 class="modal-title">Warning</h4>
+                </div>
+                <div class="modal-body">
+                    Did you save the data ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="examinationOk()">No</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <!-- Reports upload modal -->
     <div id="reports-modal" class="modal fade" role="dialog">
         <div class="modal-dialog">

@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="input-box">
-                        <input type="password" name="password" id="register-password" value="123456789">
+                        <input type="password" name="password" id="register-password" value="123456789" >
                         <label for="register-password"><?php echo $lang['text_password']; ?> <em> *</em></label>
                         <span><?php echo $lang['text_password_error']; ?></span>
                     </div>

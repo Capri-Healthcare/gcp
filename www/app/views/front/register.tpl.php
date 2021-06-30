@@ -73,7 +73,7 @@
                                         <div class="form-group main_box">
                                             <label for="password">Password <span class="error">*</span></label>
                                             <input type="password" class="form-control" name="password" id="register-password"
-                                                value="" required>
+                                                value="" onkeyup="return passwordChanged();" required>
                                             <div class="invalid-feedback invalid-password">
                                                 Password is required
                                             </div>
@@ -124,7 +124,7 @@
                                         <div class="form-group main_box" id="register-user-div">
                                             <label for="username">Username <span class="error">*</span></label>
                                             <input type="text" class="form-control" name="username" id="register-user-name"
-                                                   value="" onfocusout="checkUserName();">
+                                                   value="">
                                             <div class="invalid-feedback invalid-user">
                                                 Username is required
                                             </div>
