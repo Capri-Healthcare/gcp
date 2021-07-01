@@ -183,8 +183,8 @@
                 <?php foreach ($history as $key => $value) { ?>
                     <div class="col-md-6 col-lg-4">
                         <div class="custom-control custom-checkbox font-14 mb-2">
-                            <label class="custom-control-label" for="<?php echo $key; ?>"><?php echo $value; ?></label>
                             <input type="checkbox" name="history[]" class="custom-control-input" value="<?php echo $value; ?>" id="<?php echo $key; ?>" <?php if (!empty($user_data['history'])) { foreach ($user_data['history'] as $k => $v) { if ($v == $value) { echo "checked"; } } } ?>>
+                            <label class="custom-control-label" for="<?php echo $key; ?>"><?php echo $value; ?></label>
                         </div>
                     </div>
                 <?php } ?>
