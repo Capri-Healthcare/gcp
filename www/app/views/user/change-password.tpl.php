@@ -14,14 +14,14 @@
                                 <input type="hidden" name="email" value="<?php echo $email; ?>">
                                 <input type="hidden" name="hash" value="<?php echo $hash; ?>">
                                 <div class="form-group">
-                                    <label for="change-password"><?php echo $lang['text_password'] ?> <em>*</em></label>
+                                    <label for="changepassword"><?php echo $lang['text_password'] ?> <em>*</em></label>
                                     <input type="password" name="password" id="changepassword" class="form-control">
                                     <div class="invalid-feedback">
                                         <span><?php echo $lang['text_password_error'] ?></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="change-password-confirm"><?php echo $lang['text_confirm_password'] ?>
+                                    <label for="changepassword-confirm"><?php echo $lang['text_confirm_password'] ?>
                                         <em>*</em></label>
                                     <input type="password" name="confirmpassword" id="changepassword-confirm" class="form-control">
                                     <div class="invalid-feedback">

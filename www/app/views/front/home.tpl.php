@@ -58,7 +58,7 @@
         <div class="patient_main">
             <div class="patient_left">
                 <h3>Our Cases & <br/> <strong>Patient Stories </strong></h3>
-                <a href="">VIEW ALL CASES</a>
+                <a href="<?php echo URL; ?>">VIEW ALL CASES</a>
             </div>
             <div class="patient_right">
                 <img src="public/images/patient-stories.png" alt="Patient Stories" title="Patient Stories" />
@@ -88,7 +88,7 @@
             <div class="patient_left">
                 <h3>Discover <br/> <strong>Glaucoma Care Plan</strong></h3>
                 <p>Our patients are our priority, we offer quality <br/> gloucoma care with a team of <br/> <strong>Ophthalmologists</strong>. More details about our services below</p>
-                <a href="">OUR SERVICES</a>
+                <a href="<?php echo URL; ?>">OUR SERVICES</a>
             </div>
             <div class="patient_right">
                 <img src="public/images/discover.png" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" />
@@ -105,7 +105,6 @@
             </div>
             <div class="appointment_right">
                 <h3>Book Your <br/> Appointment <br/> Online</h3>
-                <p></p>
             </div>
         </div>
     </div>
@@ -113,7 +112,7 @@
 
 <section class="information_block">
     <div class="container">
-        <p>You can call our team at <strong>0121 426 2030</strong> Mon-Fri 9am - 6pm, email us at <a href="">join@glaucomacareplan.co.uk</a> or fill the <a href="">Contact Form</a></p>
+        <p>You can call our team at <strong>0121 426 2030</strong> Mon-Fri 9am - 6pm, email us at <a href="mailto:join@glaucomacareplan.co.uk">join@glaucomacareplan.co.uk</a> or fill the <a href="<?php echo URL; ?>">Contact Form</a></p>
     </div>
 </section>
 

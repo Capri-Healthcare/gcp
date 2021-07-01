@@ -1,23 +1,23 @@
 <footer class="footer">
     <div class="container">
         <div class="footer_logo">
-            <a href="">
+            <a href="<?php echo URL; ?>">
                 <img src="public/images/footer_logo.png" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" />
             </a>
         </div>
         <ul>
             <li>
-                <a href="">
+                <a href="<?php echo URL; ?>">
                     <img src="public/images/facebook.png" alt="Facebook" title="Facebook" />
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="<?php echo URL; ?>">
                     <img src="public/images/twitter.png" alt="Twitter" title="Twitter" />
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="<?php echo URL; ?>">
                     <img src="public/images/linked-in.png" alt="linked-in" title="linked-in" />
                 </a>
             </li>

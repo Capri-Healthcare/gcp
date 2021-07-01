@@ -216,10 +216,10 @@ body{
 .patient_left a{
     display: inline-block;
     text-transform: uppercase;
-    color: #9DA748;
+    color: #545A26;
     font-size: 18px;
     font-weight: 700;
-    border: 2px solid #9DA748;
+    border: 2px solid #545A26;
     box-sizing: border-box;
     padding: 18px 10px;
     height: 63px;
@@ -314,7 +314,7 @@ body{
 } */
 
 .information_block{
-    background: #ABB561;
+    background: #545A26;
     padding: 80px 0;
     box-sizing: border-box;
 }
