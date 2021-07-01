@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="logo">
-                        <a href="">
+                        <a href="<?php echo URL; ?>">
                             <img src="public/images/gcp-logo.png" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" />
                         </a>
                     </div>
