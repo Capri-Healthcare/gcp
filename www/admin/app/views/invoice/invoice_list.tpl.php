@@ -16,6 +16,14 @@
                 <i class="ti-filter text-danger pr-2"></i>
                 <input type="text" class="table-date-range">
             </div>
+            <div class="btn btn-white btn-sm text-left mr-2">
+                <i class="ti-filter text-danger pr-2"></i>
+                <select class="status" style="border: 0px;">
+                        <?php foreach (constant('PAYMENT_STATUS_FILTER_INVOIVE') as $key => $status) { ?>
+                            <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                        <?php } ?>
+                </select>
+            </div>
             <!--div class="dropdown d-inline-block mr-2">
                 <a class="btn btn-white btn-sm dropdown-toggle" data-toggle="dropdown"><i class="ti-download text-primary pr-2"></i> Export</a>
                 <ul class="dropdown-menu dropdown-menu-right export-button">
@@ -32,6 +40,10 @@
         </div>
     </div>
 </div>
+    <input type="hidden" id="startDate"
+           value="<?php echo $_GET['start'] ?? date_format(date_create(date('Y-m-d ' . '00:00:00')), 'Y-m-d'); ?>">
+    <input type="hidden" id="endDate"
+           value="<?php echo $_GET['end'] ?? date_format(date_create(date('Y-m-d ' . '23:59:59')), 'Y-m-d'); ?>">
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="table-responsive">
@@ -158,9 +170,15 @@
         });
 
         $('.table-date-range').on('apply.daterangepicker', function(ev, picker) {
-            window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>invoices'+'&start='+picker.startDate.format('YYYY-MM-DD')+'&end='+picker.endDate.format('YYYY-MM-DD'));
+            var status = $(".status").val();
+            window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>invoices'+'&status=' + status +'&start='+picker.startDate.format('YYYY-MM-DD')+'&end='+picker.endDate.format('YYYY-MM-DD'));
         });
 
+        $('.status').on('change', function (e) {
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+            window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>invoices'+'&status=' + e.currentTarget.value +'&start='+startDate+'&end='+endDate);
+        });
         var invoiceTable = $('.invoice-table').DataTable({
             aLengthMenu: [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
             iDisplayLength: 10,
