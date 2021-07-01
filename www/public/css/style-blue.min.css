@@ -20904,11 +20904,11 @@ h6 {
 }
 
 .label-primary {
-	color: #0054A3
+	color: #003261;
 }
 
 .label-primary::before {
-	background-color: #005eb8
+	background-color: #003261
 }
 
 .label-secondary {
@@ -20920,11 +20920,11 @@ h6 {
 }
 
 .label-success {
-	color: #006149;
+	color: #013220;
 }
 
 .label-success::before {
-	background-color: #006149
+	background-color: #013220
 }
 
 .label-warning {
@@ -24319,7 +24319,7 @@ button.toast-close-button {
 	padding: 0 10px;
 	background-color: #fff;
 	font-size: 15px;
-	color: #777;
+	color: #333;
 	text-align: left;
 	pointer-events: none;
 	cursor: text;

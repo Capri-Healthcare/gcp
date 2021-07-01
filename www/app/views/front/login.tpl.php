@@ -8,7 +8,7 @@
 							<h4 class="card-title">Login</h4>
                             <center>
                                 <div class="tab_main">
-                                    <div class="tab_button active_tab" data-login="patient" onclick="chnageLoginForm(event)">
+                                    <div class="tab_button active_tab" data-login="patient">
                                     <i class="fas fa-procedures"></i>
                                         <p>I'm a Patient</p>
                                     </div>

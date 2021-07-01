@@ -7,15 +7,18 @@
                         <div class="card-body">
                             <center>
                                 <div class="tab_main">
-                                    <div class="tab_button active_tab" data-register="optician"
-                                         onclick="chnageRegisterForm(event)">
-                                         <i class="fas fa-glasses"></i>
-                                        <p>I'm an Optometrist</p>
-                                    </div>
-                                    <div class="tab_button" data-register="patient" onclick="chnageRegisterForm(event)">
-                                        <i class="fas fa-procedures"></i>
-                                        <p>I'm a Patient</p>
-                                    </div>
+                                    <a href="#" onclick="chnageRegisterForm(event)" title="" alt="">
+                                        <div class="tab_button active_tab" data-register="optician">
+                                            <i class="fas fa-glasses"></i>
+                                            <p>I'm an Optometrist</p>
+                                        </div>
+                                    </a>
+                                    <a href="#" onclick="chnageRegisterForm(event)" title="" alt="">
+                                        <div class="tab_button" data-register="patient">
+                                            <i class="fas fa-procedures"></i>
+                                            <p>I'm a Patient</p>
+                                        </div>
+                                    </a>
                                 </div>
                             </center>
                             <form method="post" action="<?php echo URL . DIR_ROUTE . 'register'; ?>">
