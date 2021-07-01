@@ -9,7 +9,7 @@ use Dompdf\Options;
 */
 class UserController extends Controller {
 	/**
-	* User controller construct method 
+	* User controller construct method
 	* it will also called it's parent construct method
 	**/
 	private $user_id;
@@ -56,12 +56,12 @@ class UserController extends Controller {
 		$this->response->setOutput($this->load->view('user/user_main', $data));
 	}
 
-	public function getAppointments() 
+	public function getAppointments()
 	{
 		if (!$this->user_agent->isLogged()) {
 			$this->url->redirect('login');
 		}
-		
+
 		/**
 		* Get service page data from DB
 		**/
@@ -72,7 +72,7 @@ class UserController extends Controller {
 		$data['page']['page_title'] = $data['lang']['text_appointments'];
 		$data['page']['meta_tag'] = $data['page']['page_title'].' | ' .$data['siteinfo']['name'];
 		$data['page']['meta_description'] = $data['page']['page_title']. ' , '.$data['siteinfo']['name'];
-		
+
 		$data['page']['page_section'] = false;
 
 		$data['page']['breadcrumbs'] = array();
@@ -117,7 +117,7 @@ class UserController extends Controller {
 		**/
 		$this->load->model('user');
 		$this->load->controller('common');
-		
+
 		$data = array();
 		$data = array_merge($data, $this->controller_common->index());
 
@@ -126,16 +126,16 @@ class UserController extends Controller {
 			$this->url->redirect('user/appointment');
 		}
 		$data['appointment']['notes'] = $this->model_user->getClinicalNotes($id);
-		
+
 		if (!empty($data['appointment']['notes'])) {
-			$data['appointment']['notes'] = json_decode($data['appointment']['notes']['notes'], true);	
+			$data['appointment']['notes'] = json_decode($data['appointment']['notes']['notes'], true);
 		}
-		
-		
+
+
 		$data['page']['page_title'] = $data['lang']['text_appointment'].' '.$data['lang']['text_view'];
 		$data['page']['meta_tag'] = $data['page']['page_title'].' | ' .$data['siteinfo']['name'];
 		$data['page']['meta_description'] = $data['page']['page_title'].', '.$data['siteinfo']['name'];
-		
+
 		$data['page']['breadcrumbs'] = array();
 		$data['page']['breadcrumbs'][] = array(
 			'label' => $data['lang']['text_home'],
@@ -167,8 +167,8 @@ class UserController extends Controller {
 
 		$data['appointment_images'] = $this->model_user->getAppointmentImages($id);
 
-		
-		// Get PreConsultation Forms by Appointment		
+
+		// Get PreConsultation Forms by Appointment
 		$this->load->model('form');
 		$selected_forms_ids = $this->model_form->getPreConsultationFormsByAppointment($id);
 		$data['selected_forms'] = $this->model_form->getForms($selected_forms_ids);
@@ -198,7 +198,7 @@ class UserController extends Controller {
 		if (empty($id)) {
 			$this->url->redirect('user/appointments');
 		}
-		
+
 		$this->load->controller('common');
 		$data = array();
 		$data = array_merge($data, $this->controller_common->index());
@@ -216,14 +216,14 @@ class UserController extends Controller {
 		$result['prescription'] = json_decode($result['prescription'], true);
 
 		$meta_title = 'Prescription';
-		
+
 		ob_start();
 		if (!empty($common['prescription_template'])) {
 			include DIR_ADMIN.'app/views/prescription/prescription_pdf_'.(int)$common['prescription_template'].'.tpl.php';
 		} else {
 			include DIR_ADMIN.'app/views/prescription/prescription_pdf_1.tpl.php';
 		}
-		
+
 		$data['html'] = ob_get_clean();
 		$data['name'] = time()."_pdf.pdf";
 		if(ob_get_length() > 0) {
@@ -252,7 +252,7 @@ class UserController extends Controller {
 		$data['page']['page_title'] = $data['lang']['text_requests'];
 		$data['page']['meta_tag'] = $data['page']['page_title'].' | ' .$data['siteinfo']['name'];
 		$data['page']['meta_description'] = $data['page']['page_title'].', '.$data['siteinfo']['name'];
-		
+
 		$data['page']['breadcrumbs'] = array();
 		$data['page']['breadcrumbs'][] = array(
 			'label' => $data['lang']['text_home'],
@@ -271,7 +271,7 @@ class UserController extends Controller {
 		$data['active'] = 'request';
 		$data['title'] = $data['page']['page_title'];
 		$data['user_page'] = $this->load->view('user/request', $data);
-		
+
 		/**
 		* Load my appointment view
 		* Pass data to view
@@ -297,7 +297,7 @@ class UserController extends Controller {
 		$data['page']['page_title'] = $data['lang']['text_profile'];
 		$data['page']['meta_tag'] = $data['page']['page_title'].' | ' .$data['siteinfo']['name'];
 		$data['page']['meta_description'] = $data['page']['page_title'].', '.$data['siteinfo']['name'];
-		
+
 		$data['page']['breadcrumbs'] = array();
 		$data['page']['breadcrumbs'][] = array(
 			'label' => $data['lang']['text_home'],
@@ -314,7 +314,7 @@ class UserController extends Controller {
 		$data['user_data']['history'] = json_decode($data['user_data']['history'], true);
 		$data['user_data']['address'] = json_decode($data['user_data']['address'], true);
 		$data['gp_practices'] = $this->model_user->getGpPractice();
-		
+
 		$data['history'] = $this->medicalHistoryData();
 
 		$data['action'] = URL.DIR_ROUTE.'user/profile';
@@ -359,7 +359,7 @@ class UserController extends Controller {
 	public function profileUpdate()
 	{
 		$validateProfile = $this->validateProfile();
-		
+
 		if (!$validateProfile['status']) {
 			$this->session->data['message'] = array('alert' => 'warning', 'value' => $validateProfile['message']);
 			$this->url->redirect('user/profile');
@@ -399,7 +399,7 @@ class UserController extends Controller {
 	/**
 	* Profile edit method for profile edit page
 	**/
-	public function changePassword() 
+	public function changePassword()
 	{
 		if (!$this->user_agent->isLogged()) {
 			$this->url->redirect('login');
@@ -411,11 +411,11 @@ class UserController extends Controller {
 		$this->load->controller('common');
 		$data = array();
 		$data = array_merge($data, $this->controller_common->index());
-		
+
 		$data['page']['page_title'] = $data['lang']['text_change_password'];
 		$data['page']['meta_tag'] = $data['page']['page_title'].' | ' .$data['siteinfo']['name'];
 		$data['page']['meta_description'] = $data['page']['page_title'].', '.$data['siteinfo']['name'];
-		
+
 		$data['page']['breadcrumbs'] = array();
 		$data['page']['breadcrumbs'][] = array(
 			'label' => $data['lang']['text_home'],
@@ -448,7 +448,7 @@ class UserController extends Controller {
 		$this->response->setOutput($this->load->view('user/user_main', $data));
 	}
 
-	public function profileUpdatePassword() 
+	public function profileUpdatePassword()
 	{
 		if (!$this->validateProfilePassword()) {
 			$this->session->data['message'] = array('alert' => 'warning', 'value' => 'Please enter valid password in input box.');
@@ -465,11 +465,11 @@ class UserController extends Controller {
 		$data['user_id'] = $this->session->data['user_id'];
 		$this->load->model('user');
 		$user = $this->model_user->getPassword($data);
-		
+
 		if (password_verify( $data['old'], $user['password'])) {
 			$result = $this->model_user->updatePassword($data);
 			$this->session->data['message'] = array('alert' => 'success', 'value' => 'Account Password updated successfully.');
-			$this->url->Redirect('user/profile/password');   
+			$this->url->Redirect('user/profile/password');
 		} else {
 			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Old Password is Wrong.');
 			$this->url->Redirect('user/profile/password');
@@ -509,7 +509,7 @@ class UserController extends Controller {
 		$this->response->setOutput($this->load->view('user/user_main', $data));
 	}
 
-	public function invoice() 
+	public function invoice()
 	{
 		if (!$this->user_agent->isLogged()) {
 			$this->url->redirect('login');
@@ -531,17 +531,17 @@ class UserController extends Controller {
 
 		$this->load->model('user');
 		$data['result'] = $this->model_user->getInvoice($id, $data['user']);
-		
+
 		if (empty($data['result'])) {
 			$this->url->redirect('user/invoices');
 		}
 		$data['result']['items'] = json_decode($data['result']['items'], true);
 		$data['attachments'] = $this->model_user->getAttachments($data['result']['id']);
 		$data['payments'] = $this->model_user->getPayments($data['result']['id']);
-	
+
 		$data['header'] = $this->controller_common->getHeader($data['page'], 'header-5');
 		$data['footer'] = $this->controller_common->getFooter(NULL, 'footer-1');
-		
+
 		$data['active'] = 'invoices';
 		$data['title'] = $data['page']['page_title'];
 		$data['user_page'] = $this->load->view('user/invoice', $data);
@@ -558,7 +558,7 @@ class UserController extends Controller {
 		if (empty($id)) {
 			$this->url->redirect('user/invoices');
 		}
-		
+
 		$this->load->controller('common');
 		$data = array();
 		$data = array_merge($data, $this->controller_common->index());
@@ -660,7 +660,7 @@ class UserController extends Controller {
 		}
 
 		$common = $data['siteinfo'];
-		
+
 		ob_start();
 		include DIR_ADMIN.'app/views/appointment/records_pdf.tpl.php';
 		$html = ob_get_clean();
@@ -674,31 +674,31 @@ class UserController extends Controller {
 		$pdf->createPDF($string);
 	}
 
-	protected function validateProfile() 
+	protected function validateProfile()
 	{
-		
+
 		if ((strlen(trim($this->url->post('firstname'))) < 1) || (strlen(trim($this->url->post('firstname'))) > 52)) {
-			/** 
-			* If Last name is not valid ( min 2 character or max 48 ) 
+			/**
+			* If Last name is not valid ( min 2 character or max 48 )
 			* Return false
 			**/
 			return ['status' => false, 'message' => 'First name is not valid ( min 2 character or max 48 )'];
 		} elseif ((strlen(trim($this->url->post('lastname'))) < 1) || (strlen(trim($this->url->post('lastname'))) > 52)) {
-			/** 
-			* If Last name is not valid ( min 2 character or max 48 ) 
+			/**
+			* If Last name is not valid ( min 2 character or max 48 )
 			* Return false
 			**/
 			return ['status' => false, 'message' => 'Last name is not valid ( min 2 character or max 48 )'];
 			//return false;
 		} elseif ((strlen($this->url->post('email')) > 96) || !filter_var($this->url->post('email'), FILTER_VALIDATE_EMAIL)) {
-			/** 
+			/**
 			* If email is not valid
 			* Return false
 			**/
 			return ['status' => false, 'message' => 'Email address is not valid'];
 			//return false;
 		} elseif ( (strlen($this->url->post('mobile')) > 10) ) {
-			/** 
+			/**
 			* If email is not valid
 			* Return false
 			**/
@@ -712,14 +712,14 @@ class UserController extends Controller {
 	public function validateProfilePassword()
 	{
 		if (strlen($this->url->post('new')) < 6) {
-			/** 
-			* If Password is not valid ( min 6 character ) 
+			/**
+			* If Password is not valid ( min 6 character )
 			* Return false
 			**/
 			return false;
 		} elseif ($this->url->post('new') != $this->url->post('confirm')) {
-			/** 
-			* If Password does not match with confirmpassword 
+			/**
+			* If Password does not match with confirmpassword
 			* Return false
 			**/
 			return false;
@@ -737,6 +737,7 @@ class UserController extends Controller {
          * Get service page data from DB
          **/
         $this->load->model('user');
+        $data['user_data'] = $this->model_user->getUserData($this->session->data['user_id']);
         $this->load->controller('common');
         $data = array();
         $data = array_merge($data, $this->controller_common->index());
@@ -851,6 +852,9 @@ class UserController extends Controller {
 
     public function demoPdf(){
 
+        $this->load->model('user');
+        $result = $this->model_user->getUserData($this->session->data['user_id']);
+
         $id = (int)$this->url->get('id');
 
         ob_start();
@@ -864,9 +868,9 @@ class UserController extends Controller {
         }
 
         $data['html'] = $html;
+        $data['result'] = $result;
         $data['name'] = "directdebitform.pdf";
-//        echo print_r($html_array['html']);
-//        exit();
+
         $pdf = new PDF();
         $pdf->createPDF($data);
     }

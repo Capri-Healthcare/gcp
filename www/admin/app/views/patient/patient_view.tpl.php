@@ -110,6 +110,14 @@
 									<td>GP Address</td>
 									<td><?php echo $result['gp_address']; ?></td>
 								</tr>
+                                <tr>
+                                    <td>First payment</td>
+                                    <td><?php echo $result['first_payment']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Regular payment</td>
+                                    <td><?php echo $result['regular_payment']; ?></td>
+                                </tr>
 <!--								<tr>-->
 <!--									<td>Do you/the patient have any disabilities?</td>-->
 <!--									<td>--><?php //echo $result['is_patient_have_any_disabilities']; ?><!--</td>-->

@@ -44,6 +44,7 @@ define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist', 'GCP Secretary'])
 define('USER_ROLE_OPTOMETRIST', 'Optometrist');
 define('USER_ROLE_MED', 'Med. Secretary');
 define('USER_ROLE_GCP', 'GCP Secretary');
+define('USER_ROLE_DOCTOR', 'Doctor');
 define('USER_ROLE_ADMIN', 'Admin');
 
 define('STATUS', ['NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable', 'DRAFT' => 'Draft']);

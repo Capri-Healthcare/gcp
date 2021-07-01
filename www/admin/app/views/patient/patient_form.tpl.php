@@ -356,6 +356,34 @@
                                     </div>
                                 </div>
                             <?php } ?>
+                            <div class="col-md-6" style="<?php echo (in_array($common['user']['role'],[constant('USER_ROLE_GCP'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?>">
+                                <div class="form-group">
+                                    <label>First Payment</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-money"></i></span>
+                                        </div>
+                                        <input type="number" name="patient[first_payment]" class="form-control"
+                                               value="<?php echo $result['first_payment']; ?>"
+                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+                                               placeholder="First payment">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="<?php echo (in_array($common['user']['role'],[constant('USER_ROLE_GCP'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?>">
+                            <div class="form-group">
+                                    <label>Regular Payment</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-money"></i></span>
+                                        </div>
+                                        <input type="number" name="patient[regular_payment]" class="form-control"
+                                               value="<?php echo $result['regular_payment']; ?>"
+                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+                                               placeholder="Regular payment">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="patient-address">
@@ -567,38 +595,6 @@
     </form>
     <!-- Footer -->
     <script>
-
-        $("#gcp_required").on('change', function () {
-
-            var selectedValue = $('option:selected', this).text();
-            if (selectedValue.trim() == "NO" || selectedValue.trim() == "OFFER") {
-
-                $("#id_gcp_followup_frequency").val("").change();
-
-
-                $(".first_payment").val("").change();
-                $(".regular_payment").val("").change();
-
-
-                $("#id_gcp_followup_frequency").prop('required', true);
-                $("#gcp_followup_frequency").hide();
-                $("#first_payment").hide();
-                $("#regular_payment").hide();
-
-                $(".first_payment").prop('required', false);
-                $(".regular_payment").prop('required', false);
-                $("#id_gcp_followup_frequency").prop('required', false);
-
-            } else {
-                $("#gcp_followup_frequency").show();
-                $("#first_payment").show();
-                $("#regular_payment").show();
-                $(".first_payment").prop('required', true);
-                $(".regular_payment").prop('required', true);
-
-            }
-        })
-
 
         $("#gp_practice").autocomplete({
             source: window.origin + "/admin/index.php?route=gppractices/search",

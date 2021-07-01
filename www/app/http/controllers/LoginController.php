@@ -130,6 +130,7 @@ class LoginController extends Controller
                      * We are using the password_verify function to avoid timing attacks.
                      **/
                     if (password_verify($password, $user['password'])) {
+
                         $this->model_login->deleteAttempt($email);
                         /**
                          * Start session for user create session varible
