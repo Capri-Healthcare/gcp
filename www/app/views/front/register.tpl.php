@@ -23,7 +23,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group main_box">
-                                            <label for="fname">First Name <span class="error">*</span></label>
+                                            <label for="register-first-name">First Name <span class="error">*</span></label>
                                             <input id="register-first-name" type="text" class="form-control" name="firstname"
                                                 pattern="[A-Z,a-z, ]*" value="" required autofocus>
                                             <input type="hidden" name="_token" value="<?php echo $token; ?>">
@@ -34,7 +34,7 @@
                                         </div>
 
                                         <div class="form-group main_box">
-                                            <label for="lname">Last Name <span class="error">*</span></label>
+                                            <label for="register-last-name">Last Name <span class="error">*</span></label>
                                             <input id="register-last-name" type="text" class="form-control" name="lastname"
                                                 pattern="[A-Z,a-z, ]*" value="" required data-eye>
                                             <div class="invalid-feedback">
@@ -44,7 +44,7 @@
 
 
                                         <div class="form-group main_box">
-                                            <label for="email">E-Mail Address <span class="error">*</span></label>
+                                            <label for="register-email">E-Mail Address <span class="error">*</span></label>
                                             <input id="register-email" type="email" class="form-control" name="email"
                                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" required
                                                 autofocus>
@@ -54,7 +54,7 @@
                                         </div>
 
                                         <div class="form-group main_box">
-                                            <label for="mnumber">Mobile Number <span class="error">*</span></label>
+                                            <label for="register-mobile">Mobile Number <span class="error">*</span></label>
                                             <input id="register-mobile" type="text" class="form-control" maxlength="11"
                                                 name="mobile" pattern="[0-9]*" value=""
                                                 onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
@@ -64,7 +64,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group main_box" id="register-optician-practice-div">
-                                            <label for="oname">Optician Practice Name <span class="error">*</span></label>
+                                            <label for="register-optician-practice-name">Optician Practice Name <span class="error">*</span></label>
                                             <input type="text" class="form-control" name="optician_shop_name"
                                                 id="register-optician-practice-name" value="" autofocus>
                                             <div class="invalid-feedback">
@@ -73,7 +73,7 @@
                                         </div>
 
                                         <div class="form-group main_box" id="register-goc-div">
-                                            <label for="greg">GOC registrations <span class="error">*</span></label>
+                                            <label for="register-goc-registration">GOC registrations <span class="error">*</span></label>
                                             <input type="text" class="form-control" name="optician_register_number"
                                                 id="register-goc-registration" value="" autofocus>
                                             <div class="invalid-feedback">
@@ -86,7 +86,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group main_box" id="register-user-div">
-                                            <label for="username">Username <span class="error">*</span></label>
+                                            <label for="register-user-name">Username <span class="error">*</span></label>
                                             <input type="text" class="form-control" name="username" id="register-user-name" value="">
                                             <div class="invalid-feedback invalid-user">
                                                 Username is required
@@ -94,7 +94,7 @@
                                         </div>
                                         
                                         <div class="form-group main_box" id="register-optician-gppractice-div" style="display: none">
-                                            <label for="oname">GP Practice<span class="error">*</span></label>
+                                            <label for="gp_practice">GP Practice<span class="error">*</span></label>
                                             <select class="form-control" name="gp_practice" id="gp_practice" value="" autofocus>
                                                 <option value="">Select GP Practice</option>
                                                 <?php foreach (constant('GP_PRACTICE') as $key => $list) { ?>
@@ -107,7 +107,7 @@
                                         </div>
                                         
                                         <div class="form-group main_box">
-                                            <label for="password">Password <span class="error">*</span>&nbsp;<i class="fa fa-info-circle"  data-toggle="tooltip" data-placement="top" data-html="true" title="<ul><li style='text-align: justify;'>At least 8 characters.</li><li style='text-align: justify;'>A mixture of both uppercase and lowercase letters.</li><li style='text-align: justify;'>A mixture of letters and numbers.</li><li style='text-align: justify;'>Inclusion of at least one special character</li></ul>"></i></label>
+                                            <label for="register-password">Password <span class="error">*</span>&nbsp;<i class="fa fa-info-circle"  data-toggle="tooltip" data-placement="top" data-html="true" title="<ul><li style='text-align: justify;'>At least 8 characters.</li><li style='text-align: justify;'>A mixture of both uppercase and lowercase letters.</li><li style='text-align: justify;'>A mixture of letters and numbers.</li><li style='text-align: justify;'>Inclusion of at least one special character</li></ul>"></i></label>
                                             <input type="password" class="form-control" name="password" id="register-password"
                                                 value="" onkeyup="return passwordChanged();" required>
                                             <div class="invalid-feedback invalid-password">
