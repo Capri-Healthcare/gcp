@@ -3,16 +3,16 @@
     <div class="row">
         <div class="col-md-4">
             <div class="input-box">
-                <input type="password" name="old" required>
-                <label><?php echo $lang['text_old_password']; ?></label>
+                <input type="password" id="old" name="old" required>
+                <label for="old"><?php echo $lang['text_old_password']; ?></label>
             </div>
             <div class="input-box">
-                <input type="password" name="new" required>
-                <label><?php echo $lang['text_new_password']; ?></label>
+                <input type="password" id="new" name="new" required>
+                <label for="new"><?php echo $lang['text_new_password']; ?></label>
             </div>
             <div class="input-box">
-                <input type="password" name="confirm" required>
-                <label><?php echo $lang['text_confirm_password']; ?></label>
+                <input type="password" id="confirm" name="confirm" required>
+                <label for="confirm"><?php echo $lang['text_confirm_password']; ?></label>
             </div>
             <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
             <div class="text-center pb-3">
