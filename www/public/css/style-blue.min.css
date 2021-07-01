@@ -21278,7 +21278,7 @@ select.form-control:not([size]):not([multiple]) {
 .custom-radio .custom-control-label {
 	display: block;
 	position: relative;
-	color: #777;
+	color: #595959;
 	padding-left: 28px;
 	margin-right: 20px;
 	margin-bottom: 0;
@@ -24820,7 +24820,7 @@ button.toast-close-button {
 
 .user-container .document-container .block .title p {
 	font-size: 12px;
-	color: #AAA;
+	color: #595959;
 	margin: 0
 }
 

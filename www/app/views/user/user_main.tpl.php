@@ -1,4 +1,5 @@
 <?php echo $header; ?>
+<main>
 <div class="user-wrapper">
 	<div>	
 		<div class="row usr-hdr">
@@ -54,4 +55,5 @@
 		</div>
 	</div>
 </div>
+</main>
 <?php echo $footer; ?>
