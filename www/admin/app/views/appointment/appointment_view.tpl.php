@@ -702,8 +702,12 @@
                                         </textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Attachment</label>
-                                        <input type="file" multiple="multiple" name="mail[attach_file][]"/>
+                                        <label>Attachment ?</label>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"  class="custom-control-input" value="1" id="mail_appointment">
+                                            <label class="custom-control-label" for="mailPdf" id="appointment_mail_file_name">No file chosen</label>
+                                        </div>
+                                        <input type="file" id="appointment_mail_attechment" multiple="multiple" name="mail[attach_file][]" style="display: none">
                                     </div>
 
                                     <?php if (isset($doc_type) and !empty($doc_type)) { ?>
@@ -900,6 +904,32 @@
         var psdChart =<?php echo json_encode($psdDeviationChart)?>;
         var categories =<?php echo json_encode($categories)?>;
         <?php }?>
+
+        $('#mail_appointment').change(function() {
+            if(this.checked) {
+               $("#appointment_mail_attechment").click()
+            }else{
+                $("#appointment_mail_file_name").text('No file chosen');
+                $("#appointment_mail_attechment").val(null);
+            }
+
+        });
+
+        document.getElementById('appointment_mail_attechment').onchange = function () {
+            $("#appointment_mail_file_name").text('');
+            if(this.val != ''){
+                $('#mail_appointment').attr('checked', true);
+                for (var i = 0; i < this.files.length; i++)
+                {
+                    var filename = this.files[i].name;
+                    $("#appointment_mail_file_name").append(filename+',');
+
+                }
+            }else{
+                $('#mail_appointment').attr('checked', false);
+            }
+
+        };
 
     </script>
     <script src="<?php echo URL_ADMIN . "public/js/examination_chart.js"; ?>"></script>
