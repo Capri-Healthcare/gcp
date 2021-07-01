@@ -49,4 +49,14 @@ define('FILE_QLT_REDUCE_PERCENT',  [
 										'2'  => '30',
 									]);
 
+// Direct Debit Form Originator’s Identification Number
+define('IDENTIFICATION_NUMBER',[
+    '0'=>'1',
+    '1'=>'2',
+    '2'=>'3',
+    '3'=>'4',
+    '4'=>'5',
+    '5'=>'6',
+])
+
 ?>
