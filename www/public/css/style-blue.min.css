@@ -20920,11 +20920,11 @@ h6 {
 }
 
 .label-success {
-	color: #00c292
+	color: #006149;
 }
 
 .label-success::before {
-	background-color: #00c292
+	background-color: #006149
 }
 
 .label-warning {
@@ -24539,7 +24539,7 @@ button.toast-close-button {
 .user-name span {
 	display: block;
 	font-size: 12px;
-	color: #999
+	color: #575757;
 }
 
 .user-menu-icon {
@@ -24733,7 +24733,7 @@ button.toast-close-button {
 .user-container .card-body .info span {
 	display: block;
 	font-size: 12px;
-	color: #AAA
+	color: #595959;
 }
 
 .user-container .card-body .info p {
@@ -24751,7 +24751,7 @@ button.toast-close-button {
 .user-container .user-info span {
 	display: block;
 	font-size: 12px;
-	color: #AAA
+	color: #595959;
 }
 
 .user-container .user-info .name {
@@ -24763,7 +24763,7 @@ button.toast-close-button {
 
 .user-container .user-info .text {
 	font-size: 14px;
-	color: #777;
+	color: ##4D4D4D;
 	margin: 0
 }
 

@@ -104,8 +104,8 @@
 						<div class="footer-subscribe">
 							<form action="<?php echo URL.DIR_ROUTE; ?>subscribe" method="post">
 								<div class="input-box pb-0">
-									<input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="subscribe-email">
 									<label for="subscribe-email"><?php echo $lang['text_email_address']; ?></label>
+									<input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="subscribe-email">									
 								</div>
 								<div class="footer-subscribe-button">
 									<button type="submit" id="subscribe-submit" name="subscribe" class="btn btn-primary"><?php echo $lang['text_submit']; ?></button>

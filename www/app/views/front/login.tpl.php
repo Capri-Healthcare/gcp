@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class="form-group main_box" id="login-email-div">
-                                    <label for="email">E-Mail Address <span class="error">*</span></label>
+                                    <label for="login-email">E-Mail Address <span class="error">*</span></label>
                                     <input id="login-email" type="email" class="form-control" name="email"
                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" required
                                            autofocus>
@@ -58,7 +58,7 @@
                                 </div>
 
                                 <div class="form-group main_box">
-                                    <label for="password">Password <span class="error">*</span></label>
+                                    <label for="login-password">Password <span class="error">*</span></label>
                                     <input type="password" class="form-control" name="password" id="login-password"
                                            value="" required>
                                     <div class="invalid-feedback">
