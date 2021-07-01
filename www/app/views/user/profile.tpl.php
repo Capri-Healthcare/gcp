@@ -177,21 +177,19 @@
         <div class="br-dotted-1 mb-4 text-dark"></div>
     </div>
     <div class="col-12">
-        <fieldset>
-            <div class="input-type-box">
-                <span><?php echo $lang['text_medical_history']; ?></span>
-                <div class="row">
-                    <?php foreach ($history as $key => $value) { ?>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="custom-control custom-checkbox font-14 mb-2">
-                                <input type="checkbox" name="history[]" class="custom-control-input" value="<?php echo $value; ?>" id="<?php echo $key; ?>" <?php if (!empty($user_data['history'])) { foreach ($user_data['history'] as $k => $v) { if ($v == $value) { echo "checked"; } } } ?>>
-                                <label class="custom-control-label" for="<?php echo $key; ?>"><?php echo $value; ?></label>
-                            </div>
+        <div class="input-type-box">
+            <span><?php echo $lang['text_medical_history']; ?></span>
+            <div class="row">
+                <?php foreach ($history as $key => $value) { ?>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-control custom-checkbox font-14 mb-2">
+                            <input type="checkbox" name="history[]" class="custom-control-input" value="<?php echo $value; ?>" id="<?php echo $key; ?>" <?php if (!empty($user_data['history'])) { foreach ($user_data['history'] as $k => $v) { if ($v == $value) { echo "checked"; } } } ?>>
+                            <label class="custom-control-label" for="<?php echo $key; ?>"><?php echo $value; ?></label>
                         </div>
-                    <?php } ?>
-                </div>
+                    </div>
+                <?php } ?>
             </div>
-        </fieldset>
+        </div>
     </div>
     <div class="col-md-12">
         <div class="input-box">
