@@ -243,3 +243,7 @@ define('PAYMENT_STATUS_FILTER_INVOIVE', [
     ]
 );
 define('PAYMENT_STATUS_FILTER_UNPAID', 'Unpaid');
+
+define('REFERRAL_OPTICIAN_STATUS', ['ALL' => 'ALL','NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable', 'DRAFT' => 'Draft']);
+define('REFERRAL_MED_SEC_STATUS', ['ALL' => 'ALL','NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable']);
+define('STATUS_ALL','ALL');

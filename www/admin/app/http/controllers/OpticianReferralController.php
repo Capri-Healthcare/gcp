@@ -32,21 +32,11 @@ class OpticianReferralController extends Controller
         if (!empty($data['period']['start']) && !empty($data['period']['end'])) {
             $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
             $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
-            $data['dropdown_selected'] = $data['period']['status'];
         } else {
             $data['period']['start'] = date('Y-m-d ' . '00:00:00');
             $data['period']['end'] = date('Y-m-d ' . '23:59:59');
 
-            if ($data['common']['user']['role'] == constant('USER_ROLE_MED')) {
-                $data['period']['status'] = constant('STATUS_NEW');
-                $data['dropdown_selected'] = constant('STATUS_NEW');
-            } else if ($data['common']['user']['role'] == constant('USER_ROLE_OPTOMETRIST')) {
-                $data['period']['status'] = constant('STATUS_NEW');
-                $data['dropdown_selected'] = constant('STATUS_NEW');
-            } else {
-                $data['period']['status'] = constant('STATUS_NEW');
-                $data['dropdown_selected'] = constant('STATUS_NEW');
-            }
+            $data['period']['status'] = constant('STATUS_ALL');
         }
 
 

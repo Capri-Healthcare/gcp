@@ -20,12 +20,12 @@
                     <select class="status" style="border: 0px;">
 
                         <?php if ($common['user']['role'] == constant('USER_ROLE_MED')) { ?>
-                            <?php foreach (constant('STATUS_MED_ROLE') as $key => $status) { ?>
-                                <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                            <?php foreach (constant('REFERRAL_MED_SEC_STATUS') as $key => $status) { ?>
+                                <option value="<?php echo $key ?>" <?php echo ($key ==$period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
                             <?php } ?>
                         <?php } else { ?>
-                            <?php foreach (constant('STATUS') as $key => $status) { ?>
-                                <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                            <?php foreach (constant('REFERRAL_OPTICIAN_STATUS') as $key => $status) { ?>
+                                <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
                             <?php } ?>
                         <?php } ?>
                     </select>

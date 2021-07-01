@@ -7,16 +7,27 @@ class Opticianreferral extends Model
 {
     public function getOpticianReferrals($period, $id, $role)
     {
+        $status = '';
 
-        if (in_array($role, constant('USER_ROLE'))) {
-            if ($period['status'] == null) {
-                $query = $this->database->query("Select r.* ,CONCAT(u.firstname, ' ', u.lastname) AS optician_name  From `" . DB_PREFIX . "referral_list` AS r LEFT  JOIN `" . DB_PREFIX . "users` AS u ON r.created_by = u.user_id WHERE created_at  between '" . $period['start'] . "' AND '" . $period['end'] . "' ORDER BY created_at DESC ,status ASC");
+        if ($period['status'] == constant('STATUS_ALL')) {
+
+            if ($role == constant('USER_ROLE_MED')) {
+                $status = implode("','", array_keys(constant('REFERRAL_MED_SEC_STATUS')));
             } else {
-                $query = $this->database->query("Select r.* ,CONCAT(u.firstname, ' ', u.lastname) AS optician_name  From `" . DB_PREFIX . "referral_list` AS r LEFT  JOIN `" . DB_PREFIX . "users` AS u ON r.created_by = u.user_id WHERE created_at  between '" . $period['start'] . "' AND '" . $period['end'] . "' AND r.status = '" . $period['status'] . "' ORDER BY created_at DESC ,status ASC");
+                $status = implode("','", array_keys(constant('REFERRAL_OPTICIAN_STATUS')));
             }
         } else {
+            $status =  $period['status'];
+        }
 
-            $query = $this->database->query("Select r.* ,CONCAT(u.firstname, ' ', u.lastname) AS optician_name  From `" . DB_PREFIX . "referral_list` AS r LEFT  JOIN `" . DB_PREFIX . "users` AS u ON r.created_by = u.user_id WHERE created_at  between '" . $period['start'] . "' AND '" . $period['end'] . "' AND created_by = '" . $id . "' AND r.status = '" . $period['status'] . "' ORDER BY created_at DESC ,status ASC");
+        if ($role == constant('USER_ROLE_OPTOMETRIST')) {
+
+            $query = $this->database->query("Select r.* ,CONCAT(u.firstname, ' ', u.lastname) AS optician_name  From `" . DB_PREFIX . "referral_list` AS r LEFT  JOIN `" . DB_PREFIX . "users` AS u ON r.created_by = u.user_id WHERE created_at  between '" . $period['start'] . "' AND '" . $period['end'] . "' AND created_by = '" . $id . "' AND r.status IN ('" .$status . "') ORDER BY created_at DESC ,status ASC");
+
+
+        } else {
+            $query = $this->database->query("Select r.* ,CONCAT(u.firstname, ' ', u.lastname) AS optician_name  From `" . DB_PREFIX . "referral_list` AS r LEFT  JOIN `" . DB_PREFIX . "users` AS u ON r.created_by = u.user_id WHERE created_at  between '" . $period['start'] . "' AND '" . $period['end'] . "' AND r.status IN ('" . $status. "') ORDER BY created_at DESC ,status ASC");
+
 
         }
 
@@ -32,7 +43,7 @@ class Opticianreferral extends Model
 
     public function updateOpticianReferral($data)
     {
-        $query = $this->database->query("UPDATE `" . DB_PREFIX . "referral_list` SET `first_name` = ?,  `last_name` = ?,`mobile` = ?,`email` = ?,`gender`= ?, `dob` = ?, `address1` = ?, `address2` = ?, `city` = ?, `updated_by` = ?, `zip_code` = ?,`status` = ?,`hospital_code`= ?,`updated_at` = ? WHERE `id` = ?", array($this->database->escape($data['first_name']), $this->database->escape($data['last_name']), $this->database->escape($data['mobile']), $this->database->escape($data['email']), $this->database->escape($data['gender']), date("Y-m-d", strtotime($data['dob'])), $this->database->escape($data['address_1']), $this->database->escape($data['address_2']), $this->database->escape($data['city']), $this->database->escape($data['user_id']), $this->database->escape($data['zip_code']), $this->database->escape($data['status']),$data['status'] != constant('STATUS_ACCEPTED') ? null : $this->database->escape($data['hospital_code']), date('Y-m-d H:i:s'), $data['id']));
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "referral_list` SET `first_name` = ?,  `last_name` = ?,`mobile` = ?,`email` = ?,`gender`= ?, `dob` = ?, `address1` = ?, `address2` = ?, `city` = ?, `updated_by` = ?, `zip_code` = ?,`status` = ?,`hospital_code`= ?,`updated_at` = ? WHERE `id` = ?", array($this->database->escape($data['first_name']), $this->database->escape($data['last_name']), $this->database->escape($data['mobile']), $this->database->escape($data['email']), $this->database->escape($data['gender']), date("Y-m-d", strtotime($data['dob'])), $this->database->escape($data['address_1']), $this->database->escape($data['address_2']), $this->database->escape($data['city']), $this->database->escape($data['user_id']), $this->database->escape($data['zip_code']), $this->database->escape($data['status']), $data['status'] != constant('STATUS_ACCEPTED') ? null : $this->database->escape($data['hospital_code']), date('Y-m-d H:i:s'), $data['id']));
 
         if ($query->num_rows > 0) {
             return true;

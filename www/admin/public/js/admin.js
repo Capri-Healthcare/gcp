@@ -597,7 +597,6 @@
 
 
 	$('.report-delete-action').on('click', function(){
-	    alert($(this).data('report_name'))
 		$('#appointment_id').val($(this).data('appointment_id'));
 		$('#report_id').val($(this).data('report_id'));
 		$('#report_name').val($(this).data('report_name'));
