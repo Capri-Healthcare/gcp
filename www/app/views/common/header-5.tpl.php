@@ -50,7 +50,7 @@
                                     <div class="d-inline-block"><i class="far fa-user-circle"></i></div>
                                     <div class="d-inline-block">
                                         <span class="text-left"><?php echo $lang['text_hello']; ?></span>
-                                        <h2><?php echo $user['name']; ?></h2>
+                                        <span style="font-size: 16px; font-weight: 600; color: #000; margin: -3px;"><?php echo $user['name']; ?></span>
                                     </div>
                                 </a>
                                 
