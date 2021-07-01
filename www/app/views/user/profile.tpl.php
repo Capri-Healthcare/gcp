@@ -107,7 +107,7 @@
     </div>
     <div class="col-md-4">
         <div class="input-box">
-            <label class="col-form-label" id="address2"><?php echo $lang['text_address_line2']; ?></label>
+            <label class="col-form-label" for="address2"><?php echo $lang['text_address_line2']; ?></label>
             <input type="text" id="address2" name="address[address2]" value="<?php echo $user_data['address']['address2']; ?>">
         </div>
     </div>
@@ -155,8 +155,8 @@
     </div-->
     <div class="col-md-4">
         <div class="input-box">
-            <label><?php echo $lang['text_gp_practice']; ?></label>
-            <select name="gp_practice">
+            <label for="gp_practice"><?php echo $lang['text_gp_practice']; ?></label>
+            <select name="gp_practice" id="gp_practice">
                 <option value="">Select <?php echo $lang['text_gp_practice']; ?></option>
                 <?php 
                     foreach($gp_practices as $key => $practice){
@@ -168,8 +168,8 @@
     </div>
     <div class="col-md-8">
         <div class="input-box">
-            <label><?php echo $lang['text_gp_address']; ?></label>
-            <input type="text" name="gp_address" value="<?php echo $user_data['gp_address']; ?>">
+            <label for="gp_address"><?php echo $lang['text_gp_address']; ?></label>
+            <input type="text" id="gp_address" name="gp_address" value="<?php echo $user_data['gp_address']; ?>">
         </div>
     </div>
     
@@ -193,8 +193,8 @@
     </div>
     <div class="col-md-12">
         <div class="input-box">
-            <label class="col-form-label"><?php echo $lang['text_other_history']; ?></label>
-            <textarea name="other" rows="4"><?php echo $user_data['other']; ?></textarea>
+            <label for="other" class="col-form-label"><?php echo $lang['text_other_history']; ?></label>
+            <textarea id="other" name="other" rows="4"><?php echo $user_data['other']; ?></textarea>
             </div>
     </div>
     
@@ -211,7 +211,7 @@
     ?>
     <div class="col-md-4">
         <div class="input-box">
-            <label class="col-form-label"><?php echo $lang['text_please_indicate_how_the_account_is_to_be_settled']; ?></label>
+            <label class="col-form-label" for="how_the_account_is_to_be_settled"><?php echo $lang['text_please_indicate_how_the_account_is_to_be_settled']; ?></label>
             <select name="how_the_account_is_to_be_settled" id="how_the_account_is_to_be_settled">
                 <option value=""><?php echo $lang['text_please_indicate_how_the_account_is_to_be_settled']; ?></option>
                 <option value="<?php echo $lang['text_not_applicable'] ?>" <?php if ($user_data['how_the_account_is_to_be_settled'] == $lang['text_not_applicable']) { echo "selected"; } ?>><?php echo $lang['text_not_applicable'] ?></option>
@@ -222,25 +222,25 @@
     </div>
     <div class="col-md-4">
         <div class="input-box">
-            <label><?php echo $lang['text_policyholders_name']; ?></label>
+            <label for="policyholders_name"><?php echo $lang['text_policyholders_name']; ?></label>
             <input type="text" name="policyholders_name" value="<?php echo $user_data['policyholders_name']; ?>" id="policyholders_name" <?php echo $insurance_field_readonly ?> class="<?php echo $input_class; ?>">
         </div>
     </div>
     <div class="col-md-4">
         <div class="input-box">
-            <label><?php echo $lang['text_medical_insurers_name']; ?></label>
+            <label for="medical_insurers_name"><?php echo $lang['text_medical_insurers_name']; ?></label>
             <input type="text" name="medical_insurers_name" value="<?php echo $user_data['medical_insurers_name']; ?>" id="medical_insurers_name" <?php echo $insurance_field_readonly ?> class="<?php echo $input_class; ?>">
         </div>
     </div>
     <div class="col-md-4">
         <div class="input-box">
-            <label><?php echo $lang['text_membership_number']; ?></label>
+            <label for="membership_number"><?php echo $lang['text_membership_number']; ?></label>
             <input type="text" name="membership_number" value="<?php echo $user_data['membership_number']; ?>" id="membership_number" <?php echo $insurance_field_readonly ?> class="<?php echo $input_class; ?>">
         </div>
     </div>
     <div class="col-md-4">
         <div class="input-box">
-            <label><?php echo $lang['text_scheme_plan_name']; ?></label>
+            <label for="scheme_name"><?php echo $lang['text_scheme_plan_name']; ?></label>
             <input type="text" name="scheme_name" value="<?php echo $user_data['scheme_name']; ?>" id="scheme_name" <?php echo $insurance_field_readonly ?> class="<?php echo $input_class; ?>">
         </div>
     </div>
