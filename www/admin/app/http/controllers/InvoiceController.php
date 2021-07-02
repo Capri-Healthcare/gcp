@@ -28,14 +28,12 @@ class InvoiceController extends Controller
                 $data['dropdown_selected'] = $data['period']['status'];
             } else {
                 $data['period']['status'] = ucfirst(constant('STATUS_PAYMENT_UNPAID'));
-                $data['dropdown_selected'] = $data['period']['status'];
 
             }
         } else {
             $data['period']['start'] = date('Y-m-d ' . '00:00:00');
             $data['period']['end'] = date('Y-m-d ' . '23:59:59');
-            $data['period']['status'] = ucfirst(constant('PAYMENT_STATUS_FILTER_UNPAID'));
-            $data['dropdown_selected'] = ucfirst(constant('PAYMENT_STATUS_FILTER_UNPAID'));
+            $data['period']['status'] = ucfirst(constant('STATUS_ALL'));
         }
 
         if ($data['common']['user']['role_id'] == '3' && $data['common']['info']['doctor_access'] == '1') {

@@ -166,7 +166,7 @@ function item_html(count) {
             '<textarea type="text" name="invoice[item]['+count+'][quantity]" class="item-quantity" required readonly>1</textarea>'+
             '</td>'+
             '<td class="">'+
-            '<textarea type="text" name="invoice[item]['+count+'][cost]" class="item-cost" required></textarea>'+
+            '<textarea type="text" name="invoice[item]['+count+'][cost]" class="item-cost" required onkeypress="return numericValidation(event)"></textarea>'+
             '</td>'+
             '<td class="invoice-tax">'+
             '<input type="hidden" name="invoice[item]['+count+'][taxprice]" class="item-tax-price" value="0" readonly>' +
@@ -195,7 +195,7 @@ function item_html(count) {
             '<textarea type="text" name="invoice[item]['+count+'][quantity]" class="item-quantity" required>1</textarea>'+
             '</td>'+
             '<td class="">'+
-            '<textarea type="text" name="invoice[item]['+count+'][cost]" class="item-cost" required></textarea>'+
+            '<textarea type="text" name="invoice[item]['+count+'][cost]" class="item-cost" required onkeypress="return numericValidation(event)"></textarea>'+
             '</td>'+
             '<td class="invoice-tax">'+
             '<input type="hidden" name="invoice[item]['+count+'][taxprice]" class="item-tax-price" value="0" readonly>' +
@@ -264,7 +264,21 @@ function update_policy_details(){
         }
     });
 }
- 
+function numericValidation(e) {
+    var keyCode = e.keyCode || e.which;
+
+    //Regex for Valid Characters i.e. Alphabets and Numbers.
+    var regex = /^[0-9]+$/;
+
+    //Validate TextBox value against the Regex.
+    var isValid = regex.test(String.fromCharCode(keyCode));
+    if (!isValid) {
+        return isValid
+    }
+
+    return isValid;
+}
+
 $(document).ready(function () {
     "use strict";
     var tax_html = '', items = [];

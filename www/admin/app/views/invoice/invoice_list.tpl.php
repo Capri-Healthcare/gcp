@@ -20,7 +20,7 @@
                 <i class="ti-filter text-danger pr-2"></i>
                 <select class="status" style="border: 0px;">
                         <?php foreach (constant('PAYMENT_STATUS_FILTER_INVOIVE') as $key => $status) { ?>
-                            <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                            <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
                         <?php } ?>
                 </select>
             </div>

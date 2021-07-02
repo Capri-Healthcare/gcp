@@ -76,7 +76,7 @@ $router->get('appointment/videoConsultation', 'AppointmentController@startVideoC
 $router->get('video-consultation', 'AppointmentController@startVideoConsultation');
 
 $router->get('cronjobs/reminderBeforeAppointment', 'CronJobController@reminderBeforeAppointment');
-$router->get('cronjobs/gcp-sec-follow-up-reminder', 'CronJobController@reminderBeforeFollowupReminder');
+$router->get('cronjobs/follow-up-reminder', 'CronJobController@followupReminder');
 
 $router->get('test/tokbox', 'TestTokbox@index');
 $router->get('test/checkDocuSign', 'DocusignController@index');

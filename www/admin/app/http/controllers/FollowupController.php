@@ -10,8 +10,8 @@ class FollowupController extends Controller
         $this->load->model('followup');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
-        $followup['id'] = $this->session->data['user_id'];
-        $followup['role'] = $data['common']['user']['role'];
+        $data['id'] = $this->session->data['user_id'];
+        $data['role'] = $data['common']['user']['role'];
 
 
         /* Set confirmation message if page submitted before */
@@ -20,37 +20,21 @@ class FollowupController extends Controller
             unset($this->session->data['message']);
         }
 
-        $followup['period']['start'] = $this->url->get('start');
-        $followup['period']['end'] = $this->url->get('end');
-        $followup['period']['status'] = $this->url->get('status');
+        $data['period']['start'] = $this->url->get('start');
+        $data['period']['end'] = $this->url->get('end');
+        $data['period']['status'] = $this->url->get('status');
 
-
-        if (!empty($followup['period']['start']) && !empty($followup['period']['end'])) {
-            $followup['period']['start'] = date_format(date_create($followup['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
-            $followup['period']['end'] = date_format(date_create($followup['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
-            $data['dropdown_selected'] = $followup['period']['status'];
+        if (!empty($data['period']['start']) && !empty($data['period']['end'])) {
+            $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
+            $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
         } else {
-            $followup['period']['start'] = date_format(date_create(date('Y-m-d') . '00:00:00'), "Y-m-d H:i:s");
-            $followup['period']['end'] = date_format(date_create(date('Y-m-d') . '23:59:59'), "Y-m-d H:i:s");
 
-            if ($data['common']['user']['role'] == constant('USER_ROLE_MED')) {
-                $followup['period']['status'] = constant('STATUS_FOLLOWUP_OPTICIAN');
-                $data['dropdown_selected'] = constant('STATUS_FOLLOWUP_OPTICIAN');
-            }
-            else if ($data['common']['user']['role'] == constant('USER_ROLE_OPTOMETRIST')) {
-                $followup['period']['status'] = constant('STATUS_FOLLOWUP_NEW');
-                $data['dropdown_selected'] = constant('STATUS_FOLLOWUP_NEW');
-            }
-            else if ($data['common']['user']['role'] == constant('USER_ROLE_GCP')) {
-                $followup['period']['status'] = constant('STATUS_PAYMENT_UNPAID');
-                $data['dropdown_selected'] = constant('STATUS_PAYMENT_UNPAID');
-            } else {
-                $followup['period']['status'] = constant('STATUS_PAYMENT_PAID');
-                $data['dropdown_selected'] = constant('STATUS_PAYMENT_PAID');
-            }
+            $data['period']['start'] = date_format(date_create(date('Y-m-d') . '00:00:00'), "Y-m-d H:i:s");
+            $data['period']['end'] = date_format(date_create(date('Y-m-d') . '23:59:59'), "Y-m-d H:i:s");
+            $data['period']['status'] = constant('STATUS_ALL');
         }
 
-        $data['result'] = $this->model_followup->getFollowup($followup);
+        $data['result'] = $this->model_followup->getFollowup($data);
 
         $data['page_title'] = 'Follow Up';
         $data['page_edit'] = $this->user_agent->hasPermission('follow-up/edit') ? true : false;

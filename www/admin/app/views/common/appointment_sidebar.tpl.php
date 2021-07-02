@@ -14,7 +14,7 @@
                         <span class="input-group-text"><i class="ti-user"></i></span>
                     </div>
                     <input type="text" name="appointment[name]"
-                           value="<?php echo(isset($patient) ? $patient['firstname'] : '') ?>"
+                           value="<?php echo(isset($patient) ? $patient['firstname']." ".$patient['lastname'] : '') ?>"
                            class="form-control patient-name" placeholder="Enter Name . . ." required>
                     <input type="hidden" name="appointment[patient_id]"
                            value="<?php echo(isset($patient) ? $patient['id'] : '') ?>" class="form-control patient-id">
@@ -113,7 +113,6 @@
             </div>
         </div>
         <div class="sidebar-ftr text-right">
-            <a href="#" class="btn btn-default">View</a>
             <button type="submit" name="submit" class="btn btn-primary">Save</button>
         </div>
     </form>

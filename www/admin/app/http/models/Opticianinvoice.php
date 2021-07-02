@@ -7,20 +7,30 @@ class Opticianinvoice extends Model
 {
     public function allInvoices($period, $user = NULL, $role = Null)
     {
-        if ($user != NULL) {
-            $query = $this->database->query("SELECT i.*, a.appointment_id AS appointment_unique, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.doctor_id = '" . $user['doctor'] . "' AND i.status = '".$period['status']."' ORDER BY i.invoicedate DESC");
-        } else {
-            if ($role['role'] == constant('DASHBOARD_NOT_SHOW')[1]) {
+        $status = '';
+        if ($period['status'] == constant('STATUS_ALL')) {
 
-                $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.user_id = '" . $role['user_id'] . "' AND i.status = '".$period['status']."' ORDER BY i.invoicedate DESC");
+            $status = implode("','", array_keys(constant('PAYMENT_STATUS_FILTER_INVOIVE')));
+
+        } else {
+            $status =  $period['status'];
+        }
+        if ($user != NULL) {
+            $query = $this->database->query("SELECT i.*, a.appointment_id AS appointment_unique, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.doctor_id = '" . $user['doctor'] . "' AND i.status IN ('".$status."') ORDER BY i.invoicedate DESC");
+        } else {
+
+            if ($role['role'] == constant('USER_ROLE_OPTOMETRIST')) {
+
+                $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.user_id = '" . $role['user_id'] . "' AND i.status IN ('".$status."') ORDER BY i.invoicedate DESC");
 
             }else {
+
                 if(!empty($period['optician']))
                 {
-                    $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.status = '".$period['status']."' AND i.user_id = '".$period['optician']."' ORDER BY i.invoicedate DESC");
+                    $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.status = '".$period['status']."' AND i.status IN ('".$status."') ORDER BY i.invoicedate DESC");
 
                 }else{
-                    $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.status = '".$period['status']."' ORDER BY i.invoicedate DESC");
+                    $query = $this->database->query("SELECT i.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor FROM `" . DB_PREFIX . "opt_invoice` AS i LEFT JOIN `" . DB_PREFIX . "appointments` AS a ON a.id = i.appointment_id LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id WHERE i.invoicedate between '" . $period['start'] . "' AND '" . $period['end'] . "' AND i.status IN ('".$status."') ORDER BY i.invoicedate DESC");
 
                 }
             }

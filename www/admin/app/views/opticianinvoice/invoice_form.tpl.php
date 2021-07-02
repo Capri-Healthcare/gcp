@@ -178,17 +178,17 @@
                                 <td class="">
                                     <textarea type="text" name="invoice[item][<?php echo $key; ?>][quantity]"
                                               class="item-quantity"
-                                              required><?php echo $value['quantity']; ?></textarea>
+                                              required onkeypress="return numericValidation(event)"><?php echo $value['quantity']; ?></textarea>
                                 </td>
                                 <td class="">
-                                    <textarea type="text" name="invoice[item][<?php echo $key; ?>][cost]" class="item-cost" required><?php echo $value['cost']; ?></textarea>
+                                    <textarea type="text" name="invoice[item][<?php echo $key; ?>][cost]" class="item-cost" required onkeypress="return numericValidation(event)"><?php echo $value['cost']; ?></textarea>
                                 </td>
                                 <td class="invoice-tax">
                                     <?php if (!empty($value['tax'])) {
                                         foreach ($value['tax'] as $tax_key => $tax_value) { ?>
                                             <p class="badge badge-light badge-sm badge-pill">
                                                 <?php echo $tax_value['name']; ?>
-                                                <input type="text"
+                                                <input type="number"
                                                        name="invoice[item][<?php echo $key ?>][tax][<?php echo $tax_key ?>][tax_price]"
                                                        class="single-tax-price"
                                                        value="<?php echo $tax_value['tax_price']; ?>" readonly>
@@ -208,9 +208,9 @@
                                            class="item-tax-price" value="<?php echo $value['taxprice']; ?>" readonly>
                                 </td>
                                 <td>
-                                    <textarea type="text" name="invoice[item][<?php echo $key; ?>][price]"
+                                    <textarea  name="invoice[item][<?php echo $key; ?>][price]"
                                               class="item-total-price"
-                                              readonly><?php echo $value['price']; ?></textarea>
+                                              readonly onkeypress="return numericValidation(event)"><?php echo $value['price']; ?></textarea>
                                     <input type="hidden" class="item-price" value="<?php echo $value['price']; ?>">
                                 </td>
                                 <td>
@@ -241,20 +241,20 @@
                                 </select>
                             </td>
                             <td class="">
-                                <textarea type="text" name="invoice[item][0][quantity]" class="item-quantity"
-                                          required readonly>1</textarea>
+                                <textarea name="invoice[item][0][quantity]" class="item-quantity"
+                                          required readonly onkeypress="return numericValidation(event)">1</textarea>
                             </td>
                             <td class="">
-                                <textarea type="text" name="invoice[item][0][cost]" class="item-cost"
-                                          required></textarea>
+                                <textarea  name="invoice[item][0][cost]" class="item-cost"
+                                          required onkeypress="return numericValidation(event)"></textarea>
                             </td>
                             <td class="invoice-tax">
                                 <input type="hidden" name="invoice[item][0][taxprice]" class="item-tax-price" value="0"
                                        readonly>
                             </td>
                             <td class="">
-                                <textarea type="text" name="invoice[item][0][price]" class="item-total-price"
-                                          readonly></textarea>
+                                <textarea  name="invoice[item][0][price]" class="item-total-price"
+                                          readonly onkeypress="return numericValidation(event)"></textarea>
                                 <input type="hidden" class="item-price">
                             </td>
                             <td>
@@ -273,7 +273,7 @@
                             <label>Sub Total</label>
                         </td>
                         <td colspan="2" class="total-value">
-                            <input type="text" name="invoice[subtotal]" class="form-transparent sub-total"
+                            <input type="number" name="invoice[subtotal]" class="form-transparent sub-total"
                                    value="<?php echo $result['subtotal'] ?>" readonly>
                         </td>
                     </tr>
@@ -284,7 +284,7 @@
                             <label>Tax</label>
                         </td>
                         <td colspan="2" class="total-value">
-                            <input type="text" name="invoice[tax]" class="form-transparent tax-total"
+                            <input type="number" name="invoice[tax]" class="form-transparent tax-total"
                                    value="<?php echo $result['tax'] ?>" readonly>
                         </td>
                     </tr>
@@ -309,7 +309,7 @@
                             </div>
                         </td>
                         <td colspan="2" class="total-value">
-                            <input type="text" name="invoice[discount]" class="form-transparent discount-total"
+                            <input type="number" name="invoice[discount]" class="form-transparent discount-total"
                                    value="<?php echo $result['discount'] ?>">
                             <input type="hidden" class="discount_amount" name="invoice[discount_value]"
                                    value="<?php echo $result['discount_value'] ?>">
@@ -322,7 +322,7 @@
                             <label>Total</label>
                         </td>
                         <td colspan="2" class="total-value">
-                            <input type="text" name="invoice[amount]" class="form-transparent  total-amount"
+                            <input type="number" name="invoice[amount]" class="form-transparent  total-amount"
                                    value="<?php echo $result['amount'] ?>" readonly>
                         </td>
                     </tr>
@@ -333,8 +333,8 @@
                             <label>Paid</label>
                         </td>
                         <td colspan="2" class="total-value">
-                            <input type="text" name="invoice[paid]" class="form-transparent paid-amount"
-                                   value="<?php echo $result['paid'] ?>">
+                            <input type="number" name="invoice[paid]" class="form-transparent paid-amount"
+                                   value="<?php echo $result['paid'] ?>" onkeypress="return numericValidation(event)">
                         </td>
                     </tr>
                     <tr>

@@ -73,7 +73,7 @@ class CronJobController extends Controller
         return $this->controller_mail->sendMail($data);
     }
 
-    public function reminderBeforeFollowupReminder()
+    public function followupReminder()
     {
         $this->load->model('commons');
         $result = $this->model_commons->getFollowupforRemainder();

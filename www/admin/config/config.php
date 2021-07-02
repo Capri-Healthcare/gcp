@@ -211,8 +211,6 @@ define('HOSPITAL', [
     'BTDSH' => 'BMI The Droitwich Spa Hospital<br/>Mobile:01905 793333<br/>Address:St Andrews Road DROITWICH WR9 8DN<br/>Email:info@bmihealthcare.co.uk,<br>Web:http://www.bmihealthcare.co.uk'
 ]);
 
-define('STATUS_PAYMENT', ['All'=>'All','PAID' => 'Paid', 'UNPAID' => 'Unpaid', 'NOT_SUITABLE' => 'Not suitable']);
-define('STATUS_FOLLOWUP', ['All'=>'All','NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable','NON_GCP_FOLLOWUP' => 'Non gcp followup']);
 define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
 define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');
 define('STATUS_FOLLOWUP_NEW', 'NEW');
@@ -232,6 +230,7 @@ define('STATUS_PAYMENT_INVOIVE', [
 );
 
 define('PAYMENT_STATUS_FILTER_INVOIVE', [
+        'ALL' => 'ALL',
         'Paid' => 'Paid',
         'Unpaid' => 'Unpaid',
         'Partially Paid' => 'Partially Paid',
@@ -244,6 +243,10 @@ define('PAYMENT_STATUS_FILTER_INVOIVE', [
 );
 define('PAYMENT_STATUS_FILTER_UNPAID', 'Unpaid');
 
+define('STATUS_PAYMENT', ['ALL'=>'All','PAID' => 'Paid', 'UNPAID' => 'Unpaid', 'NOT_SUITABLE' => 'Not suitable']);
+define('STATUS_FOLLOWUP', ['ALL'=>'All','NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable','NON_GCP_FOLLOWUP' => 'Non gcp followup']);
+
+define('FOLLOWUP_MED_SEC_STATUS', ['ALL'=>'All','OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable','NON_GCP_FOLLOWUP' => 'Non gcp followup']);
 define('REFERRAL_OPTICIAN_STATUS', ['ALL' => 'ALL','NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable', 'DRAFT' => 'Draft']);
 define('REFERRAL_MED_SEC_STATUS', ['ALL' => 'ALL','NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable']);
 define('STATUS_ALL','ALL');

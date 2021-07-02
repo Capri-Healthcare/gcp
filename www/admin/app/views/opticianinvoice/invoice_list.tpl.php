@@ -33,9 +33,8 @@
                 <div class="btn btn-white btn-sm text-left mr-2">
                     <i class="ti-filter text-danger pr-2"></i>
                     <select class="status" style="border: 0px;">
-                        <?php foreach (constant('STATUS_PAYMENT_INVOIVE') as $key => $status) { ?>
-                            <option value="<?php echo $key ?>" <?php echo ($key == $dropdown_selected) ? 'selected' : '' ?>>
-                                <?php echo $status; ?></option>
+                        <<?php foreach (constant('PAYMENT_STATUS_FILTER_INVOIVE') as $key => $status) { ?>
+                            <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
                         <?php } ?>
                     </select>
                 </div>

@@ -57,7 +57,7 @@
                         <th>Status</th>
                         <!--						<th>Created By</th>-->
                         <th>Date Submitted</th>
-                        <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $dropdown_selected == constant('STATUS_ACCEPTED')) { ?>
+                        <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $period['status'] == constant('STATUS_ACCEPTED')) { ?>
 
                             <th>List</th>
                         <?php }?>
@@ -90,7 +90,7 @@
                                     data-count="<?php echo $key + 1; ?>"><?php echo constant('STATUS')[$value['status']]; ?></td>
                                 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
                                 <td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
-                                <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $dropdown_selected == constant('STATUS_ACCEPTED')) { ?>
+                                <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $period['status']== constant('STATUS_ACCEPTED')) { ?>
 
                                     <td>
                                         <?php if ($value['status'] == 'ACCEPTED') { ?>
