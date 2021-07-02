@@ -597,6 +597,7 @@
                                                     <th style="width: 15%;">Highest IOP RE</th>
                                                     <th style="width: 15%;">Highest IOP LE</th>
                                                     <th>Allergy</th>
+                                                    <th>Diagnosis</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -606,6 +607,7 @@
                                                     <td><?php echo $summary['summarykey']['iop_right'] ?></td>
                                                     <td><?php echo $summary['summarykey']['iop_left'] ?></td>
                                                     <td><?php echo $summary['summarykey']['allergy'] ?></td>
+                                                    <td><?php echo $summary['summarykey']['diagnosis'] ?></td>
 
                                                 </tr>
                                                 </tbody>
@@ -651,6 +653,7 @@
                                                                                 <th style="width: 15%;">IOP RE</th>
                                                                                 <th style="width: 15%;">IOP LE</th>
                                                                                 <th>Allergy</th>
+                                                                                <th>Diagnosis</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -1000,7 +1003,7 @@
                                                         <option value="">Select CCT</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
-                                                                <?php echo (isset($result['cct_right']) && $result['cct_right'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo (isset($result['cct_right']) && $result['cct_right'] == $key || $cct_right == $key) ? 'selected' : '' ?> >
                                                                 <?php echo $value; ?>
                                                             </option>
                                                         <?php } ?>
@@ -1021,7 +1024,7 @@
                                                         <option value="">Select CCT</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
-                                                                <?php echo (isset($result['cct_left']) && $result['cct_left'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo (isset($result['cct_left']) && $result['cct_left'] == $key ||  $cct_left == $key) ? 'selected' : '' ?> >
                                                                 <?php echo $value; ?>
                                                             </option>
                                                         <?php } ?>

@@ -362,12 +362,15 @@ class AppointmentController extends Controller
             // Get Last Appointment Data
             $appointment_last = $this->model_appointment->getLastPatientAppointment($data['result']);
             $highestIop = $this->model_appointment->getMaxIOPAppointment($data['result']);
+            $data['cct_right'] = $appointment_last['cct_right'];
+            $data['cct_left'] = $appointment_last['cct_left'];
 
             $summary['summarykey']['cct_right'] = $appointment_last['cct_right'];
             $summary['summarykey']['cct_left'] = $appointment_last['cct_left'];
             $summary['summarykey']['iop_right'] = $highestIop['iop_right'];
             $summary['summarykey']['iop_left'] = $highestIop['iop_left'];
             $summary['summarykey']['allergy'] = $appointment_last['allergy'];
+            $summary['summarykey']['diagnosis'] = constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment_last['diagnosis']];
 
             foreach ($appointment_completed as $key => $list) {
 
@@ -379,6 +382,7 @@ class AppointmentController extends Controller
                 $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_right'];
                 $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_left'];
                 $summary['appointment']['data'][$key]['data'][] = $list['allergy'];
+                $summary['appointment']['data'][$key]['data'][] = constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$list['diagnosis']];
 
                 // Get Prescription From Appointment id
                 $prescription = $this->model_appointment->getPrescription($list['id']);
