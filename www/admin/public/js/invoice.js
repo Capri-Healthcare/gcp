@@ -168,15 +168,15 @@ function item_html(count) {
             '<td class="">'+
             '<textarea type="text" name="invoice[item]['+count+'][cost]" class="item-cost" required onkeypress="return numericValidation(event)"></textarea>'+
             '</td>'+
-            '<td class="invoice-tax">'+
-            '<input type="hidden" name="invoice[item]['+count+'][taxprice]" class="item-tax-price" value="0" readonly>' +
-            '</td>'+
+            // '<td class="invoice-tax">'+
+            //'<input type="hidden" name="invoice[item]['+count+'][taxprice]" class="item-tax-price" value="0" readonly>' +
+            // '</td>'+
             '<td class="">'+
             '<textarea type="text" name="invoice[item]['+count+'][price]" class="item-total-price" readonly></textarea>'+
             '<input type="hidden" class="item-price">'+
             '</td>' +
             '<td>' +
-            '<a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>' +
+            // '<a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>' +
             '<a class="badge badge-danger badge-sm badge-pill delete m-1">Delete</a>' +
             '</td>' +
             '</tr>';
@@ -197,15 +197,15 @@ function item_html(count) {
             '<td class="">'+
             '<textarea type="text" name="invoice[item]['+count+'][cost]" class="item-cost" required onkeypress="return numericValidation(event)"></textarea>'+
             '</td>'+
-            '<td class="invoice-tax">'+
-            '<input type="hidden" name="invoice[item]['+count+'][taxprice]" class="item-tax-price" value="0" readonly>' +
-            '</td>'+
+            // '<td class="invoice-tax">'+
+            // '<input type="hidden" name="invoice[item]['+count+'][taxprice]" class="item-tax-price" value="0" readonly>' +
+            // '</td>'+
             '<td class="">'+
             '<textarea type="text" name="invoice[item]['+count+'][price]" class="item-total-price" readonly></textarea>'+
             '<input type="hidden" class="item-price">'+
             '</td>' +
             '<td>' +
-            '<a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>' +
+            // '<a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>' +
             '<a class="badge badge-danger badge-sm badge-pill delete m-1">Delete</a>' +
             '</td>' +
             '</tr>';

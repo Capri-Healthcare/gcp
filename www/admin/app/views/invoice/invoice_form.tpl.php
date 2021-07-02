@@ -116,7 +116,7 @@
                             <div class="input-group-prepend"><span class="input-group-text"><i class="ti-calendar"></i></span>
                             </div>
                             <input type="text" name="invoice[duedate]" class="form-control due_date"
-                                   value="<?php echo date_format(date_create($result['duedate']), $common['info']['date_format']); ?>"
+                                   value="<?php echo date('d-m-Y', strtotime("+5 weeks", strtotime(date('Y-m-d')))) ?>"
                                    placeholder="Due Date" min="<?php echo date('Y-m-d')?>" required>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                         <th>Item Description</th>
                         <th>Quantity <span class="form-required">*</span></th>
                         <th>Unit Cost <span class="form-required">*</span></th>
-                        <th>Tax</th>
+<!--                        <th>Tax</th>-->
                         <th>Price</th>
                         <th></th>
                     </tr>
@@ -242,30 +242,30 @@
                                     <textarea type="text" name="invoice[item][<?php echo $key; ?>][cost]"
                                               class="item-cost" required onkeypress="return numericValidation(event)"><?php echo $value['cost']; ?></textarea>
                                 </td>
-                                <td class="invoice-tax">
-                                    <?php if (!empty($value['tax'])) {
-                                        foreach ($value['tax'] as $tax_key => $tax_value) { ?>
-                                            <p class="badge badge-light badge-sm badge-pill">
-                                                <?php echo $tax_value['name']; ?>
-                                                <input type="number"
-                                                       name="invoice[item][<?php echo $key ?>][tax][<?php echo $tax_key ?>][tax_price]"
-                                                       class="single-tax-price"
-                                                       value="<?php echo $tax_value['tax_price']; ?>" readonly>
-                                                <input type="hidden"
-                                                       name="invoice[item][<?php echo $key ?>][tax][<?php echo $tax_key ?>][id]"
-                                                       class="invoice-tax-id" value="<?php echo $tax_value['id']; ?>">
-                                                <input type="hidden"
-                                                       name="invoice[item][<?php echo $key ?>][tax][<?php echo $tax_key ?>][name]"
-                                                       value="<?php echo $tax_value['name']; ?>">
-                                                <input type="hidden" class="invoice-tax-rate"
-                                                       name="invoice[item][<?php echo $key ?>][tax][<?php echo $tax_key ?>][rate]"
-                                                       value="<?php echo $tax_value['rate']; ?>">
-                                            </p>
-                                        <?php }
-                                    } ?>
-                                    <input type="hidden" name="invoice[item][<?php echo $key; ?>][taxprice]"
-                                           class="item-tax-price" value="<?php echo $value['taxprice']; ?>" readonly>
-                                </td>
+<!--                                <td class="invoice-tax">-->
+<!--                                    --><?php //if (!empty($value['tax'])) {
+//                                        foreach ($value['tax'] as $tax_key => $tax_value) { ?>
+<!--                                            <p class="badge badge-light badge-sm badge-pill">-->
+<!--                                                --><?php //echo $tax_value['name']; ?>
+<!--                                                <input type="number"-->
+<!--                                                       name="invoice[item][--><?php //echo $key ?><!--][tax][--><?php //echo $tax_key ?><!--][tax_price]"-->
+<!--                                                       class="single-tax-price"-->
+<!--                                                       value="--><?php //echo $tax_value['tax_price']; ?><!--" readonly>-->
+<!--                                                <input type="hidden"-->
+<!--                                                       name="invoice[item][--><?php //echo $key ?><!--][tax][--><?php //echo $tax_key ?><!--][id]"-->
+<!--                                                       class="invoice-tax-id" value="--><?php //echo $tax_value['id']; ?><!--">-->
+<!--                                                <input type="hidden"-->
+<!--                                                       name="invoice[item][--><?php //echo $key ?><!--][tax][--><?php //echo $tax_key ?><!--][name]"-->
+<!--                                                       value="--><?php //echo $tax_value['name']; ?><!--">-->
+<!--                                                <input type="hidden" class="invoice-tax-rate"-->
+<!--                                                       name="invoice[item][--><?php //echo $key ?><!--][tax][--><?php //echo $tax_key ?><!--][rate]"-->
+<!--                                                       value="--><?php //echo $tax_value['rate']; ?><!--">-->
+<!--                                            </p>-->
+<!--                                        --><?php //}
+//                                    } ?>
+<!--                                    <input type="hidden" name="invoice[item][--><?php //echo $key; ?><!--][taxprice]"-->
+<!--                                           class="item-tax-price" value="--><?php //echo $value['taxprice']; ?><!--" readonly>-->
+<!--                                </td>-->
                                 <td>
                                     <textarea  name="invoice[item][<?php echo $key; ?>][price]"
                                               class="item-total-price"
@@ -273,7 +273,7 @@
                                     <input type="hidden" class="item-price" value="<?php echo $value['price']; ?>">
                                 </td>
                                 <td>
-                                    <a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>
+<!--                                    <a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>-->
                                     <a class="badge badge-danger badge-sm badge-pill delete m-1">Delete</a>
                                 </td>
                             </tr>
@@ -299,17 +299,17 @@
                                 <textarea type="number" name="invoice[item][0][cost]" class="item-cost"
                                           required onkeypress="return numericValidation(event)"></textarea>
                             </td>
-                            <td class="invoice-tax">
-                                <input type="hidden" name="invoice[item][0][taxprice]" class="item-tax-price" value="0"
-                                       readonly>
-                            </td>
+<!--                            <td class="invoice-tax">-->
+<!--                                <input type="hidden" name="invoice[item][0][taxprice]" class="item-tax-price" value="0"-->
+<!--                                       readonly>-->
+<!--                            </td>-->
                             <td class="">
                                 <textarea type="text" name="invoice[item][0][price]" class="item-total-price"
                                           readonly onkeypress="return numericValidation(event)"></textarea>
                                 <input type="hidden" class="item-price">
                             </td>
                             <td>
-                                <a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>
+<!--                                <a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>-->
                                 <a class="badge badge-danger badge-sm badge-pill delete m-1">Delete</a>
                             </td>
                         </tr>
@@ -330,17 +330,17 @@
                                    value="<?php echo $result['subtotal'] ?>" readonly>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="3" class="blank">
-                        </td>
-                        <td colspan="2" class="total-line">
-                            <label>Tax</label>
-                        </td>
-                        <td colspan="2" class="total-value">
-                            <input type="text" name="invoice[tax]" class="form-transparent tax-total"
+<!--                    <tr>-->
+<!--                        <td colspan="3" class="blank">-->
+<!--                        </td>-->
+<!--                        <td colspan="2" class="total-line">-->
+<!--                            <label>Tax</label>-->
+<!--                        </td>-->
+<!--                        <td colspan="2" class="total-value">-->
+                            <input type="hidden" name="invoice[tax]" class="form-transparent tax-total"
                                    value="<?php echo $result['tax'] ?>" readonly>
-                        </td>
-                    </tr>
+<!--                        </td>-->
+<!--                    </tr>-->
                     <tr>
                         <td colspan="3" class="blank">
                         </td>
