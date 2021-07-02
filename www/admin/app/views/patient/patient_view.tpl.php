@@ -653,7 +653,7 @@
 																		</tr>
 																		<tr>
 																			<td>Diagnosis</td>
-																			<td class="text-dark"><?php echo isset($value['diagnosis']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$value['diagnosis']] : '' ?></td>
+																			<td class="text-dark"><?php echo isset($value['diagnosis']) ? implode(',',json_decode($value['diagnosis'],true)): '' ?></td>
 																		</tr>
 																		<tr>
 																			<td>Diagnosis eye</td>

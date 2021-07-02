@@ -510,7 +510,7 @@
                                         </tr>
                                         <tr>
                                             <td>Diagnosis</td>
-                                            <td class="text-dark"><?php echo isset($result['diagnosis']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$result['diagnosis']] : '' ?></td>
+                                            <td class="text-dark"><?php echo isset($result['diagnosis']) ? implode(',',json_decode($result['diagnosis'],true)): '' ?></td>
                                         </tr>
                                         <tr>
                                             <td>Diagnosis eye</td>

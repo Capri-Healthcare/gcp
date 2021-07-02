@@ -134,6 +134,7 @@ class Appointment extends Model
         `is_glaucoma_required` = ?, 
         `diagnosis_eye` = ?,
         `doctor_note` = ?,
+        `doctor_note_optometrist` = ?,
         `special_condition` = ?
          WHERE `id` = ? ", array(
             $this->database->escape($data['current_event']),
@@ -154,12 +155,13 @@ class Appointment extends Model
             $data['psd_deviation_left'],
             $data['cct_right'],
             $data['cct_left'],
-            $data['diagnosis'],
+            json_encode($data['diagnosis']),
             $data['outcome'],
             $data['followup'],
             $data['gcp_required'],
             $data['diagnosis_eye'],
             $data['doctor_note'],
+            $data['doctor_note_optometrist'],
             $data['special_condition'],
             (int)$data['id']));
 
@@ -557,8 +559,12 @@ class Appointment extends Model
 
         $body .= "<br><br><br>";
 
-        $body .= "<strong>Diagnosis:</strong> " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
-        $body .= "<br>";
+        $body .= "<strong>Diagnosis:</strong> " . implode(',',json_decode($appointment['diagnosis'],true)). "<br>";
+        $body .= "<br><br>";
+
+        $body .= "<strong>Doctor note: </strong> ". $appointment['doctor_note_optometrist']. "<br>";
+        $body .= "<br><br>";
+
         $body .= "<strong>Current Treatment:</strong><br>";
         $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
                                        <tr>
@@ -770,7 +776,7 @@ class Appointment extends Model
 
         $body .= "Dear " . ucfirst($appointment['firstname']);
         $body .= "<br><br>";
-        $body .= "<strong>Diagnosis:</strong> " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment['diagnosis']] . "<br>";
+        $body .= "<strong>Diagnosis:</strong> " . implode(',',json_decode($appointment['diagnosis'],true)). "<br>";
         $body .= "<br>";
         $body .= "<strong>Current Treatment:</strong><br>";
         $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>

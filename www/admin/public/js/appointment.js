@@ -7,6 +7,8 @@
  $(document).ready(function () {
  	"use strict";
 
+     $('.select_diagnosis').select2();
+
  	var today, disabledDays, weeklyHoliday, path = $('input.site_url').val();
     //National Holidays functions for Appointment Page
     function nationalDaysappointment(date) {

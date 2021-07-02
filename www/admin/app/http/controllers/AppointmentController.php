@@ -290,9 +290,11 @@ class AppointmentController extends Controller
 
         if ($data['common']['user']['role_id'] == '3') {
             $data['result'] = $this->model_appointment->getAppointment($id, $data['common']['user']['doctor']);
+
         } else {
             $data['result'] = $this->model_appointment->getAppointment($id);
         }
+        $data['result']['diagnosis'] = json_decode($data['result']['diagnosis'],true);
 
         if (!$data['result']) {
             $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Appointment does not exist in database!');
@@ -370,7 +372,7 @@ class AppointmentController extends Controller
             $summary['summarykey']['iop_right'] = $highestIop['iop_right'];
             $summary['summarykey']['iop_left'] = $highestIop['iop_left'];
             $summary['summarykey']['allergy'] = $appointment_last['allergy'];
-            $summary['summarykey']['diagnosis'] = constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$appointment_last['diagnosis']];
+            $summary['summarykey']['diagnosis'] = implode(',',json_decode($appointment_last['diagnosis'],true));
 
             foreach ($appointment_completed as $key => $list) {
 
@@ -382,7 +384,7 @@ class AppointmentController extends Controller
                 $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_right'];
                 $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_left'];
                 $summary['appointment']['data'][$key]['data'][] = $list['allergy'];
-                $summary['appointment']['data'][$key]['data'][] = constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'][$list['diagnosis']];
+                $summary['appointment']['data'][$key]['data'][] = implode(',',json_decode($list['diagnosis'],true));
 
                 // Get Prescription From Appointment id
                 $prescription = $this->model_appointment->getPrescription($list['id']);

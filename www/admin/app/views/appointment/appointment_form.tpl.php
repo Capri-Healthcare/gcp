@@ -1283,12 +1283,12 @@
                                                             <span class="input-group-text"><i
                                                                         class="ti-user"></i></span>
                                                     </div>
-                                                    <select name="appointment[diagnosis]"
-                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
+                                                    <select name="appointment[diagnosis][]"
+                                                            class="custom-select select_diagnosis" multiple required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select Diagnosis</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'] as $key => $value) { ?>
-                                                            <option value="<?php echo $key; ?>"
-                                                                <?php echo (isset($result['diagnosis']) && $result['diagnosis'] == $key) ? 'selected' : '' ?> >
+                                                            <option value="<?php echo $value; ?>"
+                                                                <?php echo (isset($result['diagnosis']) &&  in_array($value,$result['diagnosis'])) ? 'selected' : '' ?> >
                                                                 <?php echo $value; ?>
                                                             </option>
                                                         <?php } ?>
@@ -1398,6 +1398,18 @@
                                                                         class="ti-notepad"></i></span>
                                                     </div>
                                                     <textarea class="form-control" name="appointment[doctor_note]" <?php echo $examination_notes_readonly ? 'readonly':''?>><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : ''; ?></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Doctor note optometrist</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                        class="ti-notepad"></i></span>
+                                                    </div>
+                                                    <textarea class="form-control" name="appointment[doctor_note_optometrist]" <?php echo $examination_notes_readonly ? 'readonly':''?>><?php echo isset($result['doctor_note_optometrist']) ? $result['doctor_note_optometrist'] : ''; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
