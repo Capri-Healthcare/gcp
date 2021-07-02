@@ -191,7 +191,7 @@
 												<span class="small_text_14">First Payment Amount</span><br>
 											</div>
 											<div style="width:50%; float:none; display: inline-block; vertical-align: bottom;">
-												&#163; <?php echo $result['first_payment']?> <div style="width: 100%; height: 1px; background: #000;"></div>
+												&#163;<div style="width: 100%; height: 1px; background: #000;"></div>
 											</div>
 										</div>
 										<div style="margin-top: 0px;">
