@@ -823,7 +823,7 @@
                 <div class="tab-pane fade" id="patient-direct-debit">
                     <div class="panel panel-default">
                         <div class="panel-head">
-                            <div class="panel-title">GCP form</div>
+                            <div class="panel-title">Glaucoma Care Plan</div>
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped patient-table">
