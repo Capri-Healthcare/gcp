@@ -86,19 +86,20 @@
                                                value="<?php echo $result['department_id']; ?>">
                                     </div>
                                 </div-->
-                                <input type="hidden" class="apnt-department" name="appointment[doctor]"
-                                       value="<?php echo $result['doctor_id']; ?>"-->
-                                <input type="hidden" class="apnt-department" name="appointment[department]"
+                                <input type="hidden" class="apnt-department" id="apt-doctor" name="appointment[doctor]"
+                                       value="<?php echo $result['doctor_id']; ?>"  data-department="<?php echo $result['department_id']; ?>" data-weekly="<?php echo htmlspecialchars($value['weekly'], ENT_QUOTES, 'UTF-8'); ?>"   data-national="<?php echo htmlspecialchars($value['national'], ENT_QUOTES, 'UTF-8'); ?>" >
+                                <input type="hidden" class="apnt-department" id="apt-department" name="appointment[department]"
                                        value="<?php echo $result['department_id']; ?>">
+
                                 <div class="form-group">
                                     <label>Date <span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-calendar"></i></span>
                                         </div>
-                                        <input type="date" class="form-control apnt-date" name="appointment[date]"
+                                        <input type="text" class="form-control apnt-date" name="appointment[date]"
                                                placeholder="Select Date . . ."
-                                               value="<?php echo $result['date']; ?>"
+                                               value="<?php echo date_format(date_create($result['date']),'d-m-Y'); ?>"
                                                required autocomplete="off">
                                     </div>
                                 </div>

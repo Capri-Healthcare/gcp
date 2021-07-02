@@ -7,6 +7,10 @@
  $(document).ready(function () {
  	"use strict";
 
+     var data = $("#apt-doctor").data();
+     data.doctor = $("#apt-doctor").val();
+     initAppointmentDate(data);
+
      $('.select_diagnosis').select2();
 
  	var today, disabledDays, weeklyHoliday, path = $('input.site_url').val();
