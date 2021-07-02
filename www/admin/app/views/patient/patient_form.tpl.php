@@ -356,20 +356,20 @@
                                     </div>
                                 </div>
                             <?php } ?>
-                            <div class="col-md-6" style="<?php echo (in_array($common['user']['role'],[constant('USER_ROLE_GCP'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?>">
-                                <div class="form-group">
-                                    <label>First Payment</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-money"></i></span>
-                                        </div>
-                                        <input type="number" name="patient[first_payment]" class="form-control"
-                                               value="<?php echo $result['first_payment']; ?>"
-                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-                                               placeholder="First payment">
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="col-md-6" style="--><?php //echo (in_array($common['user']['role'],[constant('USER_ROLE_GCP'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?><!--">-->
+<!--                                <div class="form-group">-->
+<!--                                    <label>First Payment</label>-->
+<!--                                    <div class="input-group">-->
+<!--                                        <div class="input-group-prepend">-->
+<!--                                            <span class="input-group-text"><i class="ti-money"></i></span>-->
+<!--                                        </div>-->
+<!--                                        <input type="number" name="patient[first_payment]" class="form-control"-->
+<!--                                               value="--><?php //echo $result['first_payment']; ?><!--"-->
+<!--                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"-->
+<!--                                               placeholder="First payment">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="col-md-6" style="<?php echo (in_array($common['user']['role'],[constant('USER_ROLE_GCP'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?>">
                             <div class="form-group">
                                     <label>Regular Payment</label>
