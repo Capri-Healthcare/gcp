@@ -97,7 +97,7 @@
 								<th class="w-min-280">Items & Description</th>
 								<th>Qty</th>
 								<th><?php echo 'Unit Cost'; ?></th>
-								<th><?php echo 'Tax'; ?></th>
+<!--								<th>--><?php //echo 'Tax'; ?><!--</th>-->
 								<th><?php echo 'Price'; ?></th>
 							</tr>
 						</thead>
@@ -110,16 +110,16 @@
 									</td>
 									<td><?php echo $value['quantity']; ?></td>
 									<td><?php echo $common['info']['currency_abbr'].$value['cost']; ?></td>
-									<td class="tax">
-										<?php if (!empty($value['tax'])) { foreach ($value['tax'] as $tax_key => $tax_value) { ?>
-											<div><span><?php echo $common['info']['currency_abbr'].$tax_value['tax_price']; ?></span><span><?php echo $tax_value['name']; ?></span></div>
-										<?php } } ?>
-									</td>
+<!--									<td class="tax">-->
+<!--										--><?php //if (!empty($value['tax'])) { foreach ($value['tax'] as $tax_key => $tax_value) { ?>
+<!--											<div><span>--><?php //echo $common['info']['currency_abbr'].$tax_value['tax_price']; ?><!--</span><span>--><?php //echo $tax_value['name']; ?><!--</span></div>-->
+<!--										--><?php //} } ?>
+<!--									</td>-->
 									<td><?php echo $common['info']['currency_abbr'].$value['price']; ?></td>
 								</tr>
 							<?php } } ?>
 							<tr class="total">
-								<td rowspan="5" colspan="3" class="blank">
+								<td rowspan="5" colspan="2" class="blank">
 									<?php
                                     if (in_array($common['user']['role'], constant('USER_ROLE'))) {
                                         if (isset($result['medical_insurers_name']) and !empty($result['medical_insurers_name'])) {
@@ -137,10 +137,10 @@
 								<td class="title">Sub Total</td>
 								<td class="value"><?php echo $common['info']['currency_abbr'].$result['subtotal']; ?></td>
 							</tr>
-							<tr class="total">
-								<td class="title">Tax</td>
-								<td class="value"><?php echo $common['info']['currency_abbr'].$result['tax']; ?></td>
-							</tr>
+<!--							<tr class="total">-->
+<!--								<td class="title">Tax</td>-->
+<!--								<td class="value">--><?php //echo $common['info']['currency_abbr'].$result['tax']; ?><!--</td>-->
+<!--							</tr>-->
 							<tr class="total">
 								<td class="title">Discount</td>
 								<td class="value"><?php echo $common['info']['currency_abbr'].$result['discount_value']; ?></td>

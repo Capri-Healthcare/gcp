@@ -74,7 +74,7 @@
 						<th>Item & description</th>
 						<th>Qty</th>
 						<th>Unit Cost</th>
-						<th>Tax</th>
+<!--						<th>Tax</th>-->
 						<th>Price</th>
 					</tr>
 				</thead>
@@ -87,11 +87,11 @@
 							</td>
 							<td><?php echo $value['quantity']; ?></td>
 							<td><?php echo $result['info']['currency_abbr'].$value['cost']; ?></td>
-							<td class="tax">
-								<?php if (!empty($value['tax'])) { foreach ($value['tax'] as $tax_key => $tax_value) { ?>
-									<div><span><?php echo $result['info']['currency_abbr'].$tax_value['tax_price']; ?></span><span><?php echo $tax_value['name']; ?></span></div>
-								<?php } } ?>
-							</td>
+<!--							<td class="tax">-->
+<!--								--><?php //if (!empty($value['tax'])) { foreach ($value['tax'] as $tax_key => $tax_value) { ?>
+<!--									<div><span>--><?php //echo $result['info']['currency_abbr'].$tax_value['tax_price']; ?><!--</span><span>--><?php //echo $tax_value['name']; ?><!--</span></div>-->
+<!--								--><?php //} } ?>
+<!--							</td>-->
 							<td><?php echo $result['info']['currency_abbr'].$value['price']; ?></td>
 						</tr>
 					<?php } } ?>
@@ -114,10 +114,10 @@
 						<td class="title">Sub Total</td>
 						<td class="value"><?php echo $result['info']['currency_abbr'].$result['subtotal']; ?></td>
 					</tr>
-					<tr class="total">
-						<td class="title">Tax</td>
-						<td class="value"><?php echo $result['info']['currency_abbr'].$result['tax']; ?></td>
-					</tr>
+<!--					<tr class="total">-->
+<!--						<td class="title">Tax</td>-->
+<!--						<td class="value">--><?php //echo $result['info']['currency_abbr'].$result['tax']; ?><!--</td>-->
+<!--					</tr>-->
 					<tr class="total">
 						<td class="title">Discount</td>
 						<td class="value"><?php echo $result['info']['currency_abbr'].$result['discount_value']; ?></td>
