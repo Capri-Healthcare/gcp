@@ -180,7 +180,7 @@ class EmailtemplateController extends Controller
 				$error['port'] = 'SMTP Port';
 			}
 
-			if ($this->controller_common->validateEmail($data['smtp']['username'])) {
+			if ($this->controller_common->validateText($data['smtp']['username'])) {
 				$error_flag = true;
 				$error['username'] = 'SMTP Username';
 			}
