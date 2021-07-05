@@ -307,4 +307,16 @@ class RegisterController extends Controller
             echo false;
         }
     }
+
+    public function getEvaluationReport(){
+
+        $data = array();
+        $data['selected_page'] = $this->url->get('route');
+        $data['header'] = $this->load->view('front/common/header', $data);
+        $data['footer'] = $this->load->view('front/common/footer');
+
+        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
+
+        $this->response->setOutput($this->load->view('front/evaluation-report', $data));
+    }
 }

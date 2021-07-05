@@ -34,6 +34,7 @@ $router->get('user/appointment', 'UserController@getAppointment');
 $router->get('user/prescription', 'UserController@getPrescription');
 $router->get('user/request', 'UserController@request');
 $router->get('user/profile', 'UserController@profile');
+$router->get('evaluation-report', 'RegisterController@getEvaluationReport');
 
 $router->get('user/glaucoma', 'UserController@glaucomacarplan');
 $router->post('user/glaucoma/documentUpload', 'UserController@documentUpload');
