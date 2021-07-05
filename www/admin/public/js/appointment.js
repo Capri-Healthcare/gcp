@@ -4,14 +4,14 @@
  * @copyright 2019 Pepdev.
  */
 
+var tabtitle;
+
  $(document).ready(function () {
  	"use strict";
 
      var data = $("#apt-doctor").data();
      data.doctor = $("#apt-doctor").val();
      initAppointmentDate(data);
-
-     $('.select_diagnosis').select2();
 
  	var today, disabledDays, weeklyHoliday, path = $('input.site_url').val();
     //National Holidays functions for Appointment Page
@@ -290,7 +290,7 @@
 });
 
 function tabClick(e) {
-    var tabtitle = $("#tabtitle").val();
+    tabtitle = $("#tabtitle").val();
     $("#tabtitle").val($(e.currentTarget).data('title'));
     if(tabtitle == 'examination'){
         $('body').find('.active').removeClass("active");
@@ -298,12 +298,35 @@ function tabClick(e) {
         $("#appointment-records").addClass('active');
        $("#modal-examination-popup").modal('show');
     }
+    if(tabtitle == 'appointment-info'){
+        $('body').find('.active').removeClass("active");
+        $("#appointmentinfo").addClass('active');
+        $("#appointment-info").addClass('active');
+        $("#modal-examination-popup").modal('show');
+    }
+    if(tabtitle == 'prescription'){
+        $('body').find('.active').removeClass("active");
+        $("#prescription").addClass('active');
+        $("#appointment-prescription").addClass('active');
+        $("#modal-examination-popup").modal('show');
+    }
+
 }
 
 function examinationOk(){
     $('body').find('.active').removeClass("active");
-    $("#tabtitle").val('examination');
+    $("#tabtitle").val(tabtitle);
     $("#modal-examination-popup").modal('hide');
-    $("#examination").addClass('active');
-    $("#appointment-records").addClass('active');
+    if(tabtitle == 'examination'){
+        $("#examination").addClass('active');
+        $("#appointment-records").addClass('active');
+    }
+    if(tabtitle == 'appointment-info'){
+        $("#appointmentinfo").addClass('active');
+        $("#appointment-info").addClass('active');
+    }
+    if(tabtitle == 'prescription'){
+        $("#prescription").addClass('active');
+        $("#appointment-prescription").addClass('active');
+    }
 }

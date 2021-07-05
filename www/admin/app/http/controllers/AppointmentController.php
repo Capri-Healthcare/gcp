@@ -373,6 +373,7 @@ class AppointmentController extends Controller
             $summary['summarykey']['iop_left'] = $highestIop['iop_left'];
             $summary['summarykey']['allergy'] = $appointment_last['allergy'];
             $summary['summarykey']['diagnosis'] = implode(',',json_decode($appointment_last['diagnosis'],true));
+            $summary['summarykey']['special_condition'] = $appointment_last['special_condition'];
 
             foreach ($appointment_completed as $key => $list) {
 
@@ -385,6 +386,7 @@ class AppointmentController extends Controller
                 $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_left'];
                 $summary['appointment']['data'][$key]['data'][] = $list['allergy'];
                 $summary['appointment']['data'][$key]['data'][] = implode(',',json_decode($list['diagnosis'],true));
+                $summary['appointment']['data'][$key]['data'][] = $list['special_condition'];
 
                 // Get Prescription From Appointment id
                 $prescription = $this->model_appointment->getPrescription($list['id']);

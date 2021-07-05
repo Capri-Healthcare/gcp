@@ -24,10 +24,10 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <input type="hidden" id="tabtitle" value="">
+            <input type="hidden" id="tabtitle" value="appointment-info">
             <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#appointment-info" data-toggle="tab" data-title="appointment-info" onclick="tabClick(event)">Appointment Info</a>
+                    <a class="nav-link active" id="appointmentinfo" href="#appointment-info" data-toggle="tab" data-title="appointment-info" onclick="tabClick(event)">Appointment Info</a>
                 </li>
                 <?php if ($page_notes) { ?>
                     <li class="nav-item">
@@ -36,7 +36,7 @@
                 <?php }
                 if ($page_prescriptions) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#appointment-prescription" data-toggle="tab" data-title="prescription" onclick="tabClick(event)">Prescription</a>
+                        <a class="nav-link" id="prescription" href="#appointment-prescription" data-toggle="tab" data-title="prescription" onclick="tabClick(event)">Prescription</a>
                     </li>
                 <?php }
                 if ($page_document_upload || $page_documents) { ?>
@@ -599,6 +599,7 @@
                                                     <th style="width: 15%;">Highest IOP LE</th>
                                                     <th>Allergy</th>
                                                     <th>Diagnosis</th>
+                                                    <th>Special condition</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -609,6 +610,7 @@
                                                     <td><?php echo $summary['summarykey']['iop_left'] ?></td>
                                                     <td><?php echo $summary['summarykey']['allergy'] ?></td>
                                                     <td><?php echo $summary['summarykey']['diagnosis'] ?></td>
+                                                    <td><?php echo $summary['summarykey']['special_condition'] ?></td>
 
                                                 </tr>
                                                 </tbody>
@@ -655,6 +657,7 @@
                                                                                 <th style="width: 15%;">IOP LE</th>
                                                                                 <th>Allergy</th>
                                                                                 <th>Diagnosis</th>
+                                                                                <th>Special condition</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -1285,7 +1288,7 @@
                                                                         class="ti-user"></i></span>
                                                     </div>
                                                     <select name="appointment[diagnosis][]"
-                                                            class="custom-select select_diagnosis" multiple required <?php echo $examination_notes_readonly ? 'disabled':''?>>
+                                                            class="custom-select" multiple required <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select Diagnosis</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'] as $key => $value) { ?>
                                                             <option value="<?php echo $value; ?>"
