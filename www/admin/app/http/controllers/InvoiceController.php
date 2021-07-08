@@ -591,6 +591,8 @@ class InvoiceController extends Controller
 
 
         $result['items'] = json_decode($result['items'], true);
+        $result['address'] = json_decode($result['address'], true);
+
         $result['info'] = $info;
         $result['common'] = $data['common'];
 

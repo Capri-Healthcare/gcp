@@ -1,183 +1,214 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Invoice</title>
-	<link rel="stylesheet" href="<?php echo URL_ADMIN.'public/css/inv-pdf.css'; ?>" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Invoice</title>
+<!--    <link rel="stylesheet" href="--><?php //echo URL_ADMIN . 'public/css/inv-pdf.css'; ?><!--" type="text/css">-->
+<style>
+    .invoice_table{
+        border: 1px solid #000;
+        border-collapse: collapse;
+    }
+    .invoice_table td, .invoice_table th{
+        border: 1px solid #000;
+        padding: 5px 8px;
+        font-size: 13px;
+    }
+    .item_heading{
+        font-weight: 600;
+        display: block;
+    }
+    .item_description{
+        font-weight: 400;
+        display: block;
+    }
+</style>
 </head>
 <body>
-	<div class="inv-template inv-template-1">
-		<div class="company pl-30 pr-30">
-			<table>
-				<tbody>
-					<tr>
-						<td class="info">
-							<div class="logo"><img src="<?php echo URL.'public/images/gcp_logo.png'; ?>" alt="logo"></div>
-							<div class="name"><?php echo $result['info']['legal_name']; ?></div>
-							<div class="text"><?php echo $result['info']['address']['address1'].', '.$result['info']['address']['address2'].', '.$result['info']['address']['city'].', '.$result['info']['address']['country'].' - '.$result['info']['address']['postal']; ?></div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="strip"><p>Invoice</p></div>
-		<div class="meta pl-30 pr-30">
-			<table>
-				<tbody>
-					<tr>
-						<td class="bill-to v-align-bottom">
-							<div class="heading">Bill To</div>
-							<div class="title"><?php echo $result['name']; ?></div>
-							<div class="text"><?php echo $result['email']; ?></div>
-							<div class="text"><?php echo $result['mobile']; ?></div>
-						</td>
-						<td class="info v-align-bottom">
-							<table class="text-right">
-								<tbody>
-									<tr>
-										<td class="text">Invoice ID</td>
-										<td class="text w-min-130"><?php echo $result['info']['invoice_prefix'].str_pad($result['id'], 5, '0', STR_PAD_LEFT); ?></td>
-									</tr>
-									<tr>
-										<td class="text">Invoice Date</td>
-										<td class="text w-min-130"><?php echo date_format(date_create($result['invoicedate']), $result['info']['date_format']); ?></td>
-									</tr>
-									<tr>
-										<td class="text">Due Date</td>
-										<td class="text w-min-130"><?php echo date_format(date_create($result['duedate']), $result['info']['date_format']); ?></td>
-									</tr>
-									<tr>
-										<td class="text">Due Amount</td>
-										<td class="text w-min-130"><?php echo $result['info']['currency_abbr'].$result['due']; ?></td>
-									</tr>
-									<tr>
-										<td class="text">Payment Method</td>
-										<td class="text w-min-130"><?php echo $result['method']; ?></td>
-									</tr>
-									<tr>
-										<td class="text">Status</td>
-										<td class="text w-min-130"><?php echo $result['status']; ?></td>
-									</tr>
-								</tbody>
-							</table>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="item pl-30 pr-30">
-			<table cellspacing="0">
-				<thead>
-					<tr>
-						<th>Item & description</th>
-						<th>Qty</th>
-						<th>Unit Cost</th>
-<!--						<th>Tax</th>-->
-						<th>Price</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php if (!empty($result['items'])) { foreach ($result['items'] as $key => $value) { ?>
-						<tr>
-							<td class="title">
-								<p><?php echo htmlspecialchars_decode($value['name']); ?></p>
-								<span><?php echo htmlspecialchars_decode($value['descr']); ?></span>
-							</td>
-							<td><?php echo $value['quantity']; ?></td>
-							<td><?php echo $result['info']['currency_abbr'].$value['cost']; ?></td>
-<!--							<td class="tax">-->
-<!--								--><?php //if (!empty($value['tax'])) { foreach ($value['tax'] as $tax_key => $tax_value) { ?>
-<!--									<div><span>--><?php //echo $result['info']['currency_abbr'].$tax_value['tax_price']; ?><!--</span><span>--><?php //echo $tax_value['name']; ?><!--</span></div>-->
-<!--								--><?php //} } ?>
-<!--							</td>-->
-							<td><?php echo $result['info']['currency_abbr'].$value['price']; ?></td>
-						</tr>
-					<?php } } ?>
-				</tbody>
-			</table>
-		</div>
-		<div class="payment-total">
-			<table>
-				<tbody>
-					<tr>
-						<td class="v-align-top pr-50 pl-50">
-							<div class="total">
-								<table cellspacing="0">
-									<tbody>
-										<tr>
-											<td>
-											<?php
-                                            if (in_array($result['common']['user']['role'], constant('USER_ROLE'))) {
-												if(isset($result['medical_insurers_name']) AND !empty($result['medical_insurers_name'])){	?>
-													<div class="meta pl-30 pr-30" style="border:0px;">
-														<div class="title"><?php echo "Policy details"; ?></div>
-														<div class="text"><?php echo "Medical insurers name: " . $result['medical_insurers_name']; ?></div>
-														<div class="text"><?php echo "Ploicyholder's name: " . $result['policyholders_name']; ?></div>
-														<div class="text"><?php echo "Membership number: " . $result['membership_number']; ?></div>
-														<div class="text"><?php echo "Scheme name: " . $result['scheme_name']; ?></div>
-														<div class="text"><?php echo "Authorisation number: " . $result['authorisation_number']; ?></div>
-														<div class="text"><?php echo "Employer: " . $result['employer']; ?></div>
-													</div>
-											<?php } } ?>
-											<td>
-										<tr>
-									</tbody>
-								</table>
-							</div>											
-						</td>
-						<td class="v-align-top pr-30">
-							<div class="total">
-								<table cellspacing="0">
-									<tbody>
-										<tr>
-											<td>Sub Total</td>
-											<td><?php echo $result['info']['currency_abbr'].$result['subtotal']; ?></td>
-										</tr>
-<!--										<tr>-->
-<!--											<td>Tax</td>-->
-<!--											<td>--><?php //echo $result['info']['currency_abbr'].$result['tax']; ?><!--</td>-->
-<!--										</tr>-->
-										<tr>
-											<td>Discount</td>
-											<td><?php echo $result['info']['currency_abbr'].$result['discount_value']; ?></td>
-										</tr>
-										<tr>
-											<td>Paid</td>
-											<td><?php echo $result['info']['currency_abbr'].$result['paid']; ?></td>
-										</tr>
-										<tr class="main">
-											<td>Total</td>
-											<td><?php echo $result['info']['currency_abbr'].$result['amount']; ?></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="note pl-30 pr-30">
-			<table>
-				<tbody>
-					<tr>
-						<td class="block v-align-top">
-							<span>Customer Note</span>
-							<p><?php echo $result['note']; ?></p>
-						</td>
-						<td class="block v-align-top">
-							<span>Terms & Conditions</span>
-							<p><?php echo $result['tc']; ?></p>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<?php if ($printInvoice == '1') { ?>
-		<script type="text/javascript"> 
-			this.print(true);
-		</script>
-	<?php } ?>
+
+<table border="0" style="padding:10px !important;">
+    <tr>
+        <td>
+            <table width="100%" style="color:#999">
+                <tbody>
+                <tr>
+                    <td width="60%" style="vertical-align:top">
+                        <strong><?php echo constant('INVOICE_DOCTOR_DETAIL')['NAME'];?></strong><br/>
+                        <span><?php echo constant('INVOICE_DOCTOR_DETAIL')['DEGREE'];?></span><br/>
+                        <span><?php echo constant('INVOICE_DOCTOR_DETAIL')['POSITION'];?></span>
+                    </td>
+                    <td width="40%">
+                        <strong>Please send Payment to this address:</strong><br/>
+                        <span><?php echo constant('PAYMENT_INFO')['LINE_NAME'];?></span><br/>
+                        <span><?php echo constant('PAYMENT_INFO')['LINE_ADDRESS_1'];?>,</span><br/>
+                        <span></span><?php echo constant('PAYMENT_INFO')['LINE_ADDRESS_2'];?></span><br/>
+                        <strong>Account Enquiries: <?php echo constant('PAYMENT_INFO')['LINE_ACCOUNT_ENQUIRIES'];?></strong><br/>
+                        <span>Email:<?php echo constant('PAYMENT_INFO')['LINE_EMAIL'];?></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td >
+            <table border="0" style="margin-top:15px !important;">
+                <tbody>
+                <tr>
+                    <td>
+                        <strong>Invoice/Statement: </strong>
+                    </td>
+                    <td><?php echo $result['info']['invoice_prefix'].str_pad($result['id'], 5, '0', STR_PAD_LEFT); ?></td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Invoice Date:</strong>
+                    </td>
+                    <td><?php echo date_format(date_create($result['invoicedate']), $result['info']['date_format']); ?></td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Invoice Address:</strong>
+                    </td>
+                    <td><?php echo $result['info']['address']['address1'].', '.$result['info']['address']['address2'].', '.$result['info']['address']['city'].', '.$result['info']['address']['country'].' - '.$result['info']['address']['postal']; ?></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table border="0" style="margin-top:15px !important;">
+                <tbody>
+                <tr>
+                    <td>
+                        <strong>Patient: </strong>
+                    </td>
+                    <td><?php echo $result['firstname']." ".$result['lastname']?></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;">
+                        <strong>DOB: </strong>
+                    </td>
+                    <td>
+                        <?php echo date_format(date_create($result['dob']), $result['info']['date_format']);?>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;">
+                        <strong>Address: </strong>
+                    </td>
+                    <td>
+                        <?php echo $result['address']['address1'].", ".$result['address']['address2'].", ".$result['address']['city'].", ".$result['address']['country']."-".$result['address']['postal']?>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table>
+                
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="margin-top:10px !important;">
+            <center><strong><u>Mr. Tarun K Sharma Professional Services</u></strong></center>
+        </td>
+    </tr>
+    <tr>
+        <td style="margin-top:10px !important; ">
+            <table width="100%" class="invoice_table">
+                <thead style="background:#ccc">
+                <tr>
+                    <th>Item & description</th>
+                    <th>Qty</th>
+                    <th>Unit Cost</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if (!empty($result['items'])) { foreach ($result['items'] as $key => $value) { ?>
+                    <tr>
+                        <td>
+                            <span class="item_heading"><?php echo htmlspecialchars_decode($value['name']); ?></span>
+                            <span class="item_description"><?php echo htmlspecialchars_decode($value['descr']) . "ettetew"; ?></span>
+                        </td>
+                        <td><?php echo $value['quantity']; ?></td>
+                        <td align="right"><?php echo $result['info']['currency_abbr'].$value['cost']; ?></td>
+                        <td align="right"><?php echo $result['info']['currency_abbr'].$value['price']; ?></td>
+                    </tr>
+                <?php } } ?>
+                <tr class="total">
+                    <td rowspan="4" colspan="2" class="blank">
+                        <?php
+                        if (in_array($result['common']['user']['role'], constant('USER_ROLE'))) {
+                            if (isset($result['medical_insurers_name']) and !empty($result['medical_insurers_name'])) {
+                                echo "<b>Policy details</b>";
+                                echo "<br>" . "Medical insurers name: " . $result['medical_insurers_name'];
+                                echo "<br>" . "Ploicyholder's name: " . $result['policyholders_name'];
+                                echo "<br>" . "Membership number: " . $result['membership_number'];
+                                echo "<br>" . "Scheme name: " . $result['scheme_name'];
+                                echo "<br>" . "Authorisation number: " . $result['authorisation_number'];
+                                echo "<br>" . "Employer: " . $result['employer'];
+                            }
+                        }
+                        ?>
+                    </td>
+                    <td class="title">Sub Total</td>
+                    <td class="value" align="right"><?php echo $result['info']['currency_abbr'].$result['subtotal']; ?></td>
+                </tr>
+                <tr class="total">
+                    <td class="title">Discount</td>
+                    <td class="value" align="right"><?php echo $result['info']['currency_abbr'].$result['discount_value']; ?></td>
+                </tr>
+                <tr class="total">
+                    <td class="title">Total</td>
+                    <td class="value" align="right"><?php echo $result['info']['currency_abbr'].$result['amount']; ?></td>
+                </tr>
+                <tr class="total">
+                    <td class="title">Paid</td>
+                    <td class="value" align="right"><?php echo empty($result['paid']) ? $result['info']['currency_abbr'].$result['paid'].'0':$result['info']['currency_abbr'].$result['paid'] ?></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+     <td ><strong>Payment Instructions:</strong></td>
+    </tr>
+    <tr>
+        <td>
+            <ul style="list-style: none;padding: 0px">
+                <li>1. Cheques payable to Mr Tarun Sharma.</li>
+                <li>2. Bank Transfer : Sort code: 40-11-13 Account: 71764918; Account name: Sharma vision.</li>
+                <li>3. Reference : <?php echo $result['info']['invoice_prefix'].str_pad($result['id'], 5, '0', STR_PAD_LEFT); ?></li>
+                <li>4. Price revision from 5th April 2021.</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td><center><span style="font-size:13px; font-style:italic;"><?php echo $result['note']; ?><br><br></span><center></td>
+    </tr>
+    <tr>
+        <td>
+            <center>
+                <?php
+                    $now = strtotime(date('Y-m-d')); // or your date as well
+                    $your_date = strtotime($result['invoicedate']);
+                    $datediff = $now - $your_date;
+                    
+                    $due_days = round($datediff / (60 * 60 * 24));
+                ?>
+                <span>Payment due within <?php echo $due_days; ?> days, thank you.<br/></span>
+                <span>
+                    <b>Please Note:</b> <?php echo constant('INVOICE_TERMS_NOTE');?><br>
+                </span>
+                <span>
+                    <b><?php echo constant('INVOICE_TERMS');?></b>
+                </span>
+            </center>
+        </td>
+
+    </tr>
+</table>
 </body>
 </html>

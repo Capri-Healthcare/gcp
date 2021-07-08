@@ -164,10 +164,10 @@
 									<span>Customer Note</span>
 									<p><?php echo $result['note']; ?></p>
 								</td>
-								<td class="block align-top">
+								<!--td class="block align-top">
 									<span>Terms & Conditions</span>
 									<p><?php echo $result['tc']; ?></p>
-								</td>
+								</td-->
 							</tr>
 						</tbody>
 					</table>

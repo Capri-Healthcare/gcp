@@ -484,7 +484,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="form-group">
                         <label>Customer Note</label>
                         <div class="input-group">
@@ -499,7 +499,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <!--div class="col-sm-6">
                     <div class="form-group">
                         <label>Terms Conditions</label>
                         <div class="input-group">
@@ -512,7 +512,7 @@
                                 } ?></textarea>
                         </div>
                     </div>
-                </div>
+                </div-->
             </div>
 
         </div>

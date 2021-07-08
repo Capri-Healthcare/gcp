@@ -201,14 +201,41 @@ define('INVOICE_REPORT_TYPE',[
 ]);
 
 define('INVOICE_ITEM',[
-    'ITEM_1' => ['name' => 'Item 1','price' =>'40'],
-    'ITEM_2' => ['name' => 'Item 2','price' =>'40'],
-    'ITEM_3' => ['name' => 'Item 3','price' =>'80'],
+    'ITEM_1' => ['name' => 'New consult','price' =>'250'],
+    'ITEM_2' => ['name' => 'Follow up','price' =>'150'],
+    'ITEM_3' => ['name' => 'CCT/OCT','price' =>'0.00'],
+    'ITEM_4' => ['name' => 'Phaco Emulsifycation','price' =>'869'],
+    'ITEM_5' => ['name' => 'SLT Unilateral-C6111','price' =>'325'],
+    'ITEM_6' => ['name' => 'SLT Bilateral-C6110','price' =>'408'],
+    'ITEM_7' => ['name' => 'YAG PIC6230 Unilateral','price' =>'335'],
+    'ITEM_8' => ['name' => 'YAG PC Unilateral-7340','price' =>'188'],
+    'ITEM_9' => ['name' => 'YAGPC Bilateral-C7341','price' =>'235'],
+    'ITEM_10' => ['name' => 'Stent-6120','price' =>'1200'],
+    'ITEM_11' => ['name' => 'Trab-6010','price' =>'1400'],
+    'ITEM_12' => ['name' => 'Others','price' =>'0.00'],
 ]);
+
+define('PAYMENT_INFO',[
+    "LINE_NAME"=>"Sharma Vision",
+    "LINE_ADDRESS_1"=>"105 Fitz Roy Avenue, Harborne",
+    "LINE_ADDRESS_2"=>"Birmingham, B17 8RG",
+    "LINE_ACCOUNT_ENQUIRIES"=>"07758057733",
+    "LINE_EMAIL"=>"secretaryoj@gmail.com",
+]);
+
+define('INVOICE_TERMS_NOTE', "There may be a separate charge for any tests, procedures, drugs, x-rays etc");
+define('INVOICE_TERMS', "Mr Sharma reserves the right to charge interest and a collection fee of £20 or 10% of the invoice value (whichever is the greater) on all accounts, which are overdue for payment.
+<br><span style='font-size: 12px;'>Tarun Sharma & Sushma Sharma are Directors of Sharma Vision, Company number-8932399.</span>");
 
 define('HOSPITAL', [
     'SSPBH' => 'Spire South Bank Hospital<br/>Mobile:01905350003<br/>Address:139 Bath Road WORCESTER WR5 3YB<br/>Email:hsc@spirehealthcare.com<br>Web:http://www.spirehealthcare.com/southbank',
     'BTDSH' => 'BMI The Droitwich Spa Hospital<br/>Mobile:01905 793333<br/>Address:St Andrews Road DROITWICH WR9 8DN<br/>Email:info@bmihealthcare.co.uk,<br>Web:http://www.bmihealthcare.co.uk'
+]);
+
+define('INVOICE_DOCTOR_DETAIL',[
+   "NAME" =>'Tarun Sharma',
+   "DEGREE" =>'MBBS MD FRCS (Ed)',
+   "POSITION" =>'Consultant Ophthalmic Surgeon',
 ]);
 
 define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
