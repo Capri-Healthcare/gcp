@@ -9,9 +9,9 @@ var tabtitle;
  $(document).ready(function () {
  	"use strict";
 
-     var data = $("#apt-doctor").data();
-     data.doctor = $("#apt-doctor").val();
-     initAppointmentDate(data);
+    //var data = $("#apt-doctor").data();
+    //data.doctor = $("#apt-doctor").val();
+    //initAppointmentDate(data);
 
  	var today, disabledDays, weeklyHoliday, path = $('input.site_url').val();
     //National Holidays functions for Appointment Page
