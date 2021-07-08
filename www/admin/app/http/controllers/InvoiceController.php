@@ -329,7 +329,7 @@ class InvoiceController extends Controller
         $data['invoice']['duedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['duedate'])->format('Y-m-d');
         $data['invoice']['invoicedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['invoicedate'])->format('Y-m-d');
         $data['invoice']['datetime'] = date('Y-m-d H:i:s');
-
+        $data['invoice']['tc'] = ''; // Set TC blank
         $this->load->model('invoice');
         if (!empty($data['invoice']['id'])) {
             $this->model_invoice->updateInvoice($data['invoice']);
