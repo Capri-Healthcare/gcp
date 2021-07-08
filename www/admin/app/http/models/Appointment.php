@@ -527,7 +527,7 @@ class Appointment extends Model
 
         $prescription = $this->model_appointment->getPrescription($appointment_id);
         $optician_data = $this->getOpticianDetails($appointment['optician_id']);
-        $optician_address = $about_doctor = json_decode($optician_data['address'], true);;
+        $optician_address = json_decode($optician_data['address'], true);;
 
         if (!empty($prescription)) {
             $prescription['prescription'] = json_decode($prescription['prescription'], true);
@@ -545,8 +545,8 @@ class Appointment extends Model
         $body .= "<br><br><br>";
 
         $body .= ucfirst($optician_data['firstname']) . " " . ucfirst($optician_data['lastname']) . "<br>";
-        $body .= $optician_address['address']['address1'] . "," . $optician_address['address']['address2'] . "<br>";
-        $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
+        $body .= $optician_address['address1'] . "," . $optician_address['address2'] . "<br>";
+        $body .= $optician_address['city'] . "," . $optician_address['country'] . "," . $optician_address['postal'];
 
         $body .= "<br><br><br>";
 
