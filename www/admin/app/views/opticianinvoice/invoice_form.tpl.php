@@ -176,12 +176,12 @@
                                     </select>
                                 </td>
                                 <td class="">
-                                    <textarea type="text" name="invoice[item][<?php echo $key; ?>][quantity]"
+                                    <textarea readonly type="text" name="invoice[item][<?php echo $key; ?>][quantity]"
                                               class="item-quantity"
                                               required onkeypress="return numericValidation(event)"><?php echo $value['quantity']; ?></textarea>
                                 </td>
                                 <td class="">
-                                    <textarea type="text" name="invoice[item][<?php echo $key; ?>][cost]" class="item-cost" required onkeypress="return numericValidation(event)"><?php echo $value['cost']; ?></textarea>
+                                    <textarea readonly type="text" name="invoice[item][<?php echo $key; ?>][cost]" class="item-cost" required onkeypress="return numericValidation(event)"><?php echo $value['cost']; ?></textarea>
                                 </td>
 <!--                                <td class="invoice-tax">-->
 <!--                                    --><?php //if (!empty($value['tax'])) {
@@ -350,85 +350,6 @@
                     </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="row" id="insurers_data_div"
-                 style="<?php echo ($selected_payment_method == 'Insurance') ? '' : 'display:none'; ?>">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="col-form-label">Medical insurers name</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span>
-                            </div>
-                            <select name="invoice[medical_insurers_name]" id="medical_insurers_name"
-                                    class="custom-select">
-                                <?php if (!empty(MEDICALE_INSURANCE_COMPANIES)) {
-                                    foreach (MEDICALE_INSURANCE_COMPANIES as $insurance_company_code => $insurance_company_name) { ?>
-                                        <option value="<?php echo $insurance_company_code ?>" <?php echo ($result['medical_insurers_name'] == $insurance_company_code) ? "Selected" : "" ?>><?php echo $insurance_company_name; ?></option>
-                                    <?php }
-                                } ?>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="col-form-label">Policyholder's name</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span>
-                            </div>
-                            <input type="text" name="invoice[policyholders_name]" id="policyholders_name"
-                                   class="form-control" value="<?php echo $result['policyholders_name']; ?>"
-                                   placeholder="Enter Policyholder's name . . .">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="col-form-label">Membership number</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span>
-                            </div>
-                            <input type="text" name="invoice[membership_number]" id="membership_number"
-                                   class="form-control" value="<?php echo $result['membership_number']; ?>"
-                                   placeholder="Enter Membership number . . .">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="col-form-label">Scheme name</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span>
-                            </div>
-                            <input type="text" name="invoice[scheme_name]" id="scheme_name" class="form-control"
-                                   value="<?php echo $result['scheme_name']; ?>"
-                                   placeholder="Enter Scheme name name . . .">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="col-form-label">Authorisation number</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span>
-                            </div>
-                            <input type="text" name="invoice[authorisation_number]" id="authorisation_number"
-                                   class="form-control" value="<?php echo $result['authorisation_number']; ?>"
-                                   placeholder="Enter Authorisation number . . .">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="col-form-label">Employer name</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span>
-                            </div>
-                            <input type="text" name="invoice[employer]" id="employer" class="form-control"
-                                   value="<?php echo $result['employer']; ?>" placeholder="Enter employer name . . .">
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">

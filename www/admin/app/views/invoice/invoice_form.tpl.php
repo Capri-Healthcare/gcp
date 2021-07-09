@@ -235,12 +235,12 @@
                                                   class="item-descr"><?php echo $value['descr']; ?></textarea>
                                 </td>
                                 <td class="">
-                                    <textarea readonly type="text" name="invoice[item][<?php echo $key; ?>][quantity]"
+                                    <textarea type="text" name="invoice[item][<?php echo $key; ?>][quantity]"
                                               class="item-quantity"
                                               required onkeypress="return numericValidation(event)"><?php echo $value['quantity']; ?></textarea>
                                 </td>
                                 <td class="">
-                                    <textarea readonly type="text" name="invoice[item][<?php echo $key; ?>][cost]"
+                                    <textarea type="text" name="invoice[item][<?php echo $key; ?>][cost]"
                                               class="item-cost" required onkeypress="return numericValidation(event)"><?php echo $value['cost']; ?></textarea>
                                 </td>
 <!--                                <td class="invoice-tax">-->
