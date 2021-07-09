@@ -338,7 +338,7 @@
 										<div class="marker"></div>
 										<?php //foreach ($notes as $key => $value) { 
 										 	if (!empty($appointments)) { 
-												foreach ($appointments as $key => $value) { 
+												foreach ($appointments as $key => $value) { 													
 													//echo "<pre>";print_r($value);exit;
 												//$value['notes'] = json_decode($value['notes'], true); 
 
@@ -455,26 +455,26 @@
 																			<td>Disc (oct)</td>
 																			<td class="text-dark">
 																				<div class="report-container">
-																					<?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
-																						<?php if($value['name'] == 'OCT - Right eye' || $value['name'] == 'OCT - Left eye') {?>
+																					<?php if (!empty($reports)) { foreach ($reports as $oct_key => $oct_value) { $file_ext = pathinfo($oct_value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+																						<?php if($oct_value['name'] == 'OCT - Right eye' || $oct_value['name'] == 'OCT - Left eye') {?>
 																							<div class="report-image report-pdf">
-																								<a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																								<a href="../public/uploads/appointment/reports/<?php echo $oct_value['appointment_id'] . '/' . $oct_value['report']; ?>"
 																								class="open-pdf font-12" style="display: block;">
 																									<img class="img-thumbnail" src="../public/images/pdf.png"
 																										alt="">
-																									<span><?php echo $value['name']; ?></span>
+																									<span><?php echo $oct_value['name']; ?></span>
 																								</a>
 																							</div>
 																						<?php } } else {?>
-																						<?php if($value['name'] == 'OCT - Right eye' || $value['name'] == 'OCT - Left eye') {?>
+																						<?php if($oct_value['name'] == 'OCT - Right eye' || $oct_value['name'] == 'OCT - Left eye') {?>
 
 																							<div class="report-image">
 																								<a data-fancybox="gallery"
-																								href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
+																								href="../public/uploads/appointment/reports/<?php echo $oct_value['appointment_id'] . '/' . $oct_value['report']; ?>">
 																									<img class="img-thumbnail"
-																										src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																										src="../public/uploads/appointment/reports/<?php echo $oct_value['appointment_id'] . '/' . $oct_value['report']; ?>"
 																										alt="">
-																									<span><?php echo $value['name']; ?></span>
+																									<span><?php echo $oct_value['name']; ?></span>
 																								</a>
 																							</div>
 																						<?php } } } } else { ?>
