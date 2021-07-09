@@ -1006,7 +1006,7 @@ class AppointmentController extends Controller
             $data['email'] = $appointment['email'];
             $data['cc'] = $appointment['doctor_email'];
             $data['subject'] = str_replace('{ophth_title}', "", $result['template']['subject']);
-            $data['subject'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'] . " " . $optician['lastname'], $data['subject']);
+            $data['subject'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'], $data['subject']);
             $data['message'] = $result['template']['message'];
 
         }
