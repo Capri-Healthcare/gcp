@@ -146,7 +146,8 @@
                                                 </div>
                                                 <textarea name="referral[address_1]" class="form-control"
                                                           placeholder="Enter Address"
-                                                          row=3><?php echo $result['address1']; ?></textarea>
+                                                          row=3><?php echo nl2br($result['address1']); ?>
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>

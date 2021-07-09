@@ -214,7 +214,7 @@
                                     <input type="hidden" class="item-price" value="<?php echo $value['price']; ?>">
                                 </td>
                                 <td>
-                                    <a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a>
+                                    <!--a class="badge badge-warning badge-sm badge-pill add-taxes m-1">Add Taxes</a-->
                                     <a class="badge badge-danger badge-sm badge-pill delete m-1">Delete</a>
                                 </td>
                             </tr>
