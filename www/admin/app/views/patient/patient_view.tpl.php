@@ -533,26 +533,26 @@
 																			<td>Fundus</td>
 																			<td class="text-dark">
 																				<div class="report-container">
-																					<?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
-																						<?php if($value['name'] == 'Fundus - Right eye' || $value['name'] == 'Fundus - Left eye') {?>
+																					<?php if (!empty($reports)) { foreach ($reports as $fundus_key => $fundus_value) { $file_ext = pathinfo($fundus_value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+																						<?php if($fundus_value['name'] == 'Fundus - Right eye' || $fundus_value['name'] == 'Fundus - Left eye') {?>
 																							<div class="report-image report-pdf">
-																								<a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																								<a href="../public/uploads/appointment/reports/<?php echo $fundus_value['appointment_id'] . '/' . $fundus_value['report']; ?>"
 																								class="open-pdf font-12" style="display: block;">
 																									<img class="img-thumbnail" src="../public/images/pdf.png"
 																										alt="">
-																									<span><?php echo $value['name']; ?></span>
+																									<span><?php echo $fundus_value['name']; ?></span>
 																								</a>
 																							</div>
 																						<?php } } else {?>
-																						<?php if($value['name'] == 'Fundus - Right eye' || $value['name'] == 'Fundus - Left eye') {?>
+																						<?php if($fundus_value['name'] == 'Fundus - Right eye' || $fundus_value['name'] == 'Fundus - Left eye') {?>
 
 																							<div class="report-image">
 																								<a data-fancybox="gallery"
-																								href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
+																								href="../public/uploads/appointment/reports/<?php echo $fundus_value['appointment_id'] . '/' . $fundus_value['report']; ?>">
 																									<img class="img-thumbnail"
-																										src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																										src="../public/uploads/appointment/reports/<?php echo $fundus_value['appointment_id'] . '/' . $fundus_value['report']; ?>"
 																										alt="">
-																									<span><?php echo $value['name']; ?></span>
+																									<span><?php echo $fundus_value['name']; ?></span>
 																								</a>
 																							</div>
 																						<?php } } } } else { ?>
@@ -565,26 +565,26 @@
 																			<td>Visual field test plots</td>
 																			<td class="text-dark">
 																				<div class="report-container">
-																					<?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
-																						<?php if($value['name'] == 'Visual fields - Right eye' || $value['name'] == 'Visual fields - Left eye') {?>
+																					<?php if (!empty($reports)) { foreach ($reports as $visual_field_key => $visual_field_value) { $file_ext = pathinfo($visual_field_value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
+																						<?php if($visual_field_value['name'] == 'Visual fields - Right eye' || $visual_field_value['name'] == 'Visual fields - Left eye') {?>
 																							<div class="report-image report-pdf">
-																								<a href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																								<a href="../public/uploads/appointment/reports/<?php echo $visual_field_value['appointment_id'] . '/' . $visual_field_value['report']; ?>"
 																								class="open-pdf font-12" style="display: block;">
 																									<img class="img-thumbnail" src="../public/images/pdf.png"
 																										alt="">
-																									<span><?php echo $value['name']; ?></span>
+																									<span><?php echo $visual_field_value['name']; ?></span>
 																								</a>
 																							</div>
 																						<?php } } else {?>
-																						<?php if($value['name'] == 'Visual fields - Right eye' || $value['name'] == 'Visual fields - Left eye') {?>
+																						<?php if($visual_field_value['name'] == 'Visual fields - Right eye' || $visual_field_value['name'] == 'Visual fields - Left eye') {?>
 
 																							<div class="report-image">
 																								<a data-fancybox="gallery"
-																								href="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>">
+																								href="../public/uploads/appointment/reports/<?php echo $visual_field_value['appointment_id'] . '/' . $visual_field_value['report']; ?>">
 																									<img class="img-thumbnail"
-																										src="../public/uploads/appointment/reports/<?php echo $value['appointment_id'] . '/' . $value['report']; ?>"
+																										src="../public/uploads/appointment/reports/<?php echo $visual_field_value['appointment_id'] . '/' . $visual_field_value['report']; ?>"
 																										alt="">
-																									<span><?php echo $value['name']; ?></span>
+																									<span><?php echo $visual_field_value['name']; ?></span>
 																								</a>
 																							</div>
 																						<?php } } } } else { ?>
@@ -671,6 +671,18 @@
 																			<td>Glaucoma Care Plan Required</td>
 																			<td class="text-dark"><?php echo isset($value['is_glaucoma_required']) ? $value['is_glaucoma_required'] : '' ?></td>
 																		</tr>
+                                                                        <tr>
+                                                                            <td>Doctor note</td>
+                                                                            <td class="text-dark"><?php echo isset($value['doctor_note']) ? $value['doctor_note'] : '' ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Doctor note optometrist</td>
+                                                                            <td class="text-dark"><?php echo isset($value['doctor_note_optometrist']) ? $value['doctor_note_optometrist'] : '' ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Special condition</td>
+                                                                            <td class="text-dark"><?php echo isset($value['special_condition']) ? $value['special_condition'] : '' ?></td>
+                                                                        </tr>
 																	</table>
 																</div>
 															</div>
