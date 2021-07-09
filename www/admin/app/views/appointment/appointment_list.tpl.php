@@ -166,7 +166,8 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            if(<?php echo(isset($patient)?true:false)?>){
+            var patient = '<?php echo(isset($patient)?true:false)?>';
+            if(patient){
                 document.getElementById('appointment-sidebar').click();
             }
         });
