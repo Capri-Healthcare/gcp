@@ -26,13 +26,15 @@
                                         <?php echo $status; ?></option>
                                 <?php } ?>
                             <?php } ?>
-                            <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MED_ROLE'))) { ?>
-                                <?php foreach (constant('STATUS_FOLLOWUP') as $key => $status) { ?>
-                                    <?php if ($common['user']['role'] == constant('USER_ROLE_OPTOMETRIST') || !in_array($key, [constant('STATUS_NEW')])) { ?>
-                                        <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>>
-                                            <?php echo $status; ?></option>
-                                    <?php }
-                                } ?>
+                            <?php if ($common['user']['role'] == constant('USER_ROLE_MED')) { ?>
+                                <?php foreach (constant('FOLLOWUP_MED_SEC_STATUS') as $key => $status) { ?>
+                                <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                            <?php if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { ?>
+                                <?php foreach (constant('FOLLOWUP_OPTICIAN_STATUS') as $key => $status) { ?>
+                                    <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                                <?php } ?>
                             <?php } ?>
                         </select>
                     </div>
