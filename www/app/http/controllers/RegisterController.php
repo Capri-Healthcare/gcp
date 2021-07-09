@@ -136,7 +136,7 @@ class RegisterController extends Controller
                      * Redirect to login page for login
                      **/
                     $this->session->data['message'] = array('alert' => 'success', 'value' => $lang['text_account_created_succefully_check_your_mail_for_more_info']);
-                    $this->url->redirect('login');
+                    $this->url->redirect('register');
                 } else {
                     $this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_server_error']);
                     $this->url->redirect('register');
