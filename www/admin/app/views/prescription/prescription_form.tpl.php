@@ -135,7 +135,7 @@
                                             echo "selected";
                                         } ?> >LE
                                         </option>
-                                        <option value="BOTH" <?php if ($value['eye'] == 'BOTH') {
+                                        <option value="Both" <?php if ($value['eye'] == 'Both') {
                                             echo "selected";
                                         } ?> >Both
                                         </option>
@@ -188,7 +188,7 @@
                                            placeholder="Select Date . . ."
                                            name="prescription[medicine][0][start_date]"
                                            min="<?php echo date("Y-m-d"); ?>"
-                                           value="<?php echo date_format(date_create($value['start_date']), $common['info']['date_format']); ?>"
+                                           value=""
                                            required autocomplete="off">
                                 </td>
                                 <td>
@@ -196,16 +196,16 @@
                                            name="prescription[medicine][0][end_date]"
                                            placeholder="Select Date . . ."
                                            min="<?php echo date("Y-m-d"); ?>"
-                                           value="<?php echo date_format(date_create($value['end_date']), $common['info']['date_format']); ?>"
+                                           value=""
                                            required autocomplete="off">
                                 </td>
                                 <td>
                                     <select name="prescription[medicine][0][eye]"
-                                            class="form-control">
+                                            class="form-control" required>
                                         <option value="RE">RE</option>
                                         <option value="LE">LE</option>
                                         <option value="Both">Both</option>
-                                        <option value="Other">Other</option>
+                                        <option value="Other" selected>Other</option>
                                     </select>
                                 </td>
 
@@ -271,12 +271,12 @@
 		var count = $('.medicine-table .medicine-row:last .prescription-name').attr('name').split('[')[2];
 		count = parseInt(count.split(']')[0]) + 1;
 		$(".medicine-row:last").after('<tr class="medicine-row">'+
-            '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name"></td>' +
+            '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name" required></td>' +
             '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control" required><option value="">Select-Frequency</option><option value="1-0-0">1-0-0</option><option value="1-0-1">1-0-1</option><option value="1-1-1">1-1-1</option><option value="0-0-1">0-0-1</option><option value="0-1-0">0-1-0</option></select></td>' +
             '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
-            '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'"></td>' +
-            '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'"></td>' +
-            '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">RE</option><option value="LE">LE</option><option value="BOTH">Both</option><option value="OTHER">Other</option></select></td>' +
+            '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +
+            '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +
+            '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">RE</option><option value="LE">LE</option><option value="Both">Both</option><option value="Other" selected>Other</option></select></td>' +
             '<td><a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a></td>' +
             '</tr>');
 	});
