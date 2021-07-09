@@ -68,7 +68,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i
                                             class="ti-mobile"></i></span></div>
-                            <input type="text" name="invoice[mobile]" class="form-control patient-mobile"
+                            <input type="number" name="invoice[mobile]" class="form-control patient-mobile"
                                    value="<?php echo $result['mobile']; ?>"
                                    placeholder="Enter Patient Mobile No . . .">
                         </div>
