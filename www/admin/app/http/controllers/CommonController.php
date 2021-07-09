@@ -105,7 +105,9 @@ class CommonController extends Controller
 	//Validate Phone Number
 	public function validatePhoneNumber($phone_number)
 	{
-		if ((strlen($phone_number) < 4) || (strlen($phone_number) > 32)) {
+		//if ((strlen($phone_number) < 4) || (strlen($phone_number) > 32)) {
+
+		if ((strlen($phone_number) != 11)) {
 			return true;
 		}
 		else if ($this->validateNumeric($phone_number)) {

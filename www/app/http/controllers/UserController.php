@@ -697,12 +697,12 @@ class UserController extends Controller {
 			**/
 			return ['status' => false, 'message' => 'Email address is not valid'];
 			//return false;
-		} elseif ( (strlen($this->url->post('mobile')) > 10) ) {
+		} elseif  (strlen($this->url->post('mobile')) != 11)  {
 			/**
 			* If email is not valid
 			* Return false
 			**/
-			return ['status' => false, 'message' => 'Mobile number is not valid, Mobile number must be 10 digit'];
+			return ['status' => false, 'message' => 'Mobile number is not valid, Mobile number must be 11 digit'];
 			//return false;
 		} else {
 			return ['status' => true, 'message' => ''];

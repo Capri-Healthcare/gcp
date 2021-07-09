@@ -167,9 +167,9 @@
 							<span class="heading_text_14">Originator’s Identification Number</span><br>
 							<table width="100%">
 								<tr>
-									<td style="border: 1px solid #000; height: 20px;text-align: center"><?php echo constant('IDENTIFICATION_NUMBER')[0]?></td><td style="border: 1px solid #000;text-align: center"><?php echo constant('IDENTIFICATION_NUMBER')[1]?></td>
-									<td style="border: 1px solid #000;text-align: center"><?php echo constant('IDENTIFICATION_NUMBER')[2]?></td><td style="border: 1px solid #000;text-align: center"><?php echo constant('IDENTIFICATION_NUMBER')[3]?></td>
-									<td style="border: 1px solid #000;text-align: center"><?php echo constant('IDENTIFICATION_NUMBER')[4]?></td><td style="border: 1px solid #000;text-align: center"><?php echo constant('IDENTIFICATION_NUMBER')[5]?></td>
+									<td style="border: 1px solid #000; height: 20px"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
+									<td style="border: 1px solid #000"></td><td style="border: 1px solid #000"></td>
 								</tr>
 							</table>
 						</td>
@@ -191,7 +191,7 @@
 												<span class="small_text_14">Regular Payment Amount</span><br>
 											</div>
 											<div style="width:50%; float:none; display: inline-block; vertical-align: bottom;">
-												&#163; <?php echo $result['regular_payment']?><div style="width: 100%; height: 1px; background: #000;"></div>
+												&#163; <div style="width: 100%; height: 1px; background: #000;"></div>
 											</div>
 										</div>
 										
