@@ -33,7 +33,8 @@
     <div class="col-md-4">
         <div class="input-box">
             <label for="mobile"><?php echo $lang['text_mobile_number']; ?></label>
-            <input type="text" id="mobile" name="mobile" pattern="[0-9]*" value="<?php echo $user_data['mobile']; ?>" required>
+            <input type="text" id="mobile" name="mobile" pattern="[0-9]*" value="<?php echo $user_data['mobile']; ?>" 
+            maxlength="11" onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))" required>
         </div>
     </div>
     <div class="col-md-4">

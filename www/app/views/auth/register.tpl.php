@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="input-box">
-                        <input type="text" name="mobile" pattern="[0-9]*" id="register-mobile" value="7777777777">
+                        <input type="text" name="mobile" pattern="[0-9]*" id="register-mobile" value="7777777777" maxlength="11" onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))">
                         <label for="register-mobile"><?php echo $lang['text_mobile_number']; ?> <em> *</em></label>
                         <span><?php echo $lang['text_mobile_error']; ?></span>
                     </div>

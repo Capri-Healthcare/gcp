@@ -68,9 +68,10 @@
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i
                                             class="ti-mobile"></i></span></div>
-                            <input type="number" name="invoice[mobile]" class="form-control patient-mobile"
+                            <input type="text" name="invoice[mobile]" class="form-control patient-mobile"
                                    value="<?php echo $result['mobile']; ?>"
-                                   placeholder="Enter Patient Mobile No . . .">
+                                   placeholder="Enter Patient Mobile No . . ." 
+                                   maxlength="11" onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))">
                         </div>
                     </div>
                 </div>
