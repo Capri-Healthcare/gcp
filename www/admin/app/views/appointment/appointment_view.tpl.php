@@ -160,10 +160,6 @@
                                             } ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Special Requirements</td>
-                                        <td><?php echo $result['special_requirements']; ?></td>
-                                    </tr>
-                                    <tr>
                                         <td>Status</td>
                                         <td>
                                             <?php if ($result['appointment_status'] == 1) {
@@ -195,10 +191,6 @@
 <!--                                            </td>-->
 <!--                                        </tr>-->
 <!--                                    --><?php //} ?>
-                                    <tr>
-                                        <td>Doctor Note</td>
-                                        <td><?php echo $result['doctor_note']; ?></td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -531,6 +523,10 @@
                                         <tr>
                                             <td>Doctor Note</td>
                                             <td class="text-dark"><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : '' ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Doctor note optometrist</td>
+                                            <td class="text-dark"><?php echo isset($result['doctor_note_optometrist']) ? $result['doctor_note_optometrist'] : '' ?></td>
                                         </tr>
                                         <tr>
                                             <td>Special condition</td>
