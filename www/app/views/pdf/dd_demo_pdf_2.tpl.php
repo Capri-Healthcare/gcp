@@ -186,14 +186,6 @@
 											</div>
 										</div>
 										
-										<div style="margin-top: 15px;">
-											<div style="width:45%; float:none; display: inline-block; vertical-align: bottom;">
-												<span class="small_text_14">First Payment Amount</span><br>
-											</div>
-											<div style="width:50%; float:none; display: inline-block; vertical-align: bottom;">
-												&#163;<div style="width: 100%; height: 1px; background: #000;"></div>
-											</div>
-										</div>
 										<div style="margin-top: 0px;">
 											<div style="width:45%; float:none; display: inline-block; vertical-align: bottom;">
 												<span class="small_text_14">Regular Payment Amount</span><br>

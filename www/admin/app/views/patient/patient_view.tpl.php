@@ -696,16 +696,16 @@
 						<div class="panel-title">Scans & Reports</div>
 					</div>
 					<div class="panel-body">
-						<?php if (!empty($appointment_images)) { ?>
+						<?php if (!empty($reports)) { ?>
 							<div class="report-container">
                                 <?php
-                                if(!empty($appointment_images)) {
-                                    foreach($appointment_images AS $image) { ?>
+                                if(!empty($reports)) {
+                                    foreach($reports AS $image) { ?>
                                         <div class="report-image">
-                                            <a data-fancybox="gallery" href="../public/uploads/appointment/reports/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>">
-                                                <img src="../public/uploads/appointment/reports/<?php echo $image['appointment_id'] ?>/<?php echo $image['filename']; ?>" alt="<?php echo $image['name']; ?>" class="blur_img">
+                                            <a data-fancybox="gallery" href="../public/uploads/appointment/reports/<?php echo $image['appointment_id'] ?>/<?php echo $image['report']; ?>">
+                                                <img src="../public/uploads/appointment/reports/<?php echo $image['appointment_id'] ?>/<?php echo $image['report']; ?>" alt="<?php echo $image['name']; ?>" class="blur_img">
                                                 <span><?php echo $image['name']; ?></span>
-                                                <p><?php echo date_format(date_create($image['created']), $common['info']['date_format']); ?></p>
+                                                <p><?php echo date_format(date_create($image['date_of_joining']), $common['info']['date_format']); ?></p>
                                             </a>
                                         </div>
                                     <?php 	}
