@@ -439,7 +439,7 @@
                                             class="ti-quote-left"></i></span></div>
                             <textarea class="form-control" name="invoice[note]"
                                       rows="3"><?php if (empty($result['id'])) {
-                                    echo $common['info']['invoice_cnote'];
+                                    echo '';
                                 } else {
                                     echo $result['note'];
                                 } ?></textarea>
@@ -453,7 +453,7 @@
                             <div class="input-group-prepend"><span class="input-group-text"><i
                                             class="ti-notepad"></i></span></div>
                             <textarea class="form-control" name="invoice[tc]" rows="3"><?php if (empty($result['id'])) {
-                                    echo $common['info']['invoice_tc'];
+                                    echo '';
                                 } else {
                                     echo $result['tc'];
                                 } ?></textarea>
