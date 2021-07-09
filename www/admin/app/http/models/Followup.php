@@ -17,7 +17,7 @@ class Followup extends Model
                 $status = implode("','", array_keys(constant('STATUS_PAYMENT')));
 
             } elseif ($data['role'] == constant('USER_ROLE_OPTOMETRIST')) {
-                $status = implode("','", array_keys(constant('STATUS_FOLLOWUP')));
+                $status = implode("','", array_keys(constant('FOLLOWUP_OPTICIAN_STATUS')));
 
             } else {
                 $status = $data['period']['status'];
