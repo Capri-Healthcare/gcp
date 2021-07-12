@@ -17,7 +17,7 @@
 			<?php } if ($page_pdf) { ?>
 				<a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician/invoice/pdf&id='.$result['id']; ?>" class="btn btn-danger btn-sm" target="_blank"><i class="far fa-file-pdf mr-2"></i>PDF/Print</a>
 			<?php } if ($page_edit) { ?>
-				<a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician/invoice/edit&id='.$result['id']; ?>" class="btn btn-primary btn-sm"><i class="ti-pencil-alt mr-2"></i>Edit</a>
+				<!--a href="<?php echo URL_ADMIN.DIR_ROUTE.'optician/invoice/edit&id='.$result['id']; ?>" class="btn btn-primary btn-sm"><i class="ti-pencil-alt mr-2"></i>Edit</a-->
 			<?php } if ($page_addpayment) { ?>
 				<a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addPayment"><i class="ti-wallet mr-2"></i>Add Payment</a>
 			<?php } ?>
