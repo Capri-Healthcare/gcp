@@ -254,9 +254,10 @@
                     <div class="tab-pane  <?php echo(isset($_GET['document']) ? 'active' : '') ?>"
                          id="appointment-documents">
                         <div class="row">
-                            <div class="form-group col-sm-6 ">
+                            <div class="form-group col-sm-12 ">
+                            Please upload scans, images (OCT, Fundus, Visual Fields and/or Visual Acuity) and any other relevant documents. <br></br>
                                 <a class="btn btn-warning btn-sm" data-toggle="modal"
-                                   data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload Document</a>
+                                   data-target="#reports-modal"><i class="ti-cloud-up mr-2"></i> Upload documents/ images</a>
                             </div>
                             <!--                            <div class="form-group col-sm-6 text-right">-->
                             <!--                                <a class="btn btn-secondary btn-sm"-->
@@ -312,7 +313,7 @@
                         <div class="panel-footer text-center">
                             <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/edit&id='.$_GET['id'].'&status=NEW'; ?>"
                                class="btn btn-primary"><i
-                                        class="ti-save-alt pr-2"></i> Referral Submit
+                                        class="ti-save-alt pr-2"></i> Submit Referral
                             </a>
                         </div>
                     </div>

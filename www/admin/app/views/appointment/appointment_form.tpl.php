@@ -182,7 +182,7 @@
                                             <span><?php echo $result['age_year'] . ' Years ' . $result['age_month'] . ' Month'; ?></span>
                                         </p>
                                         <p class="d-block mt-3">
-                                            <i class="ti-wheelchair"></i> <?php if (!empty($result['history'])) {
+                                            <i class="ti-wheelchair"></i> <?php if (!empty($result['history']) && is_array($result['history'])) {
                                                 echo implode(', ', json_decode($result['history'], true));
                                             } ?>
                                         </p>
@@ -645,7 +645,7 @@
                                                     <div class="col-md-12 pre-consultation-form">
                                                         <?php if (!empty($summary['appointment']['data'])) { ?>
                                                             <?php foreach ($summary['appointment']['data'] as $key => $list) { ?>
-                                                                <div class="tab-pane <?php echo ($key == 0) ? 'active' : '' ?>"
+                                                                <div class="examination-note-tab-pane <?php echo ($key == 0) ? 'active' : ''; ?>"
                                                                      id="past-appointment-<?php echo str_replace('-', '', $list['date']) ?>">
                                                                     <div class="table-responsive">
                                                                         <table class="table table-bordered">

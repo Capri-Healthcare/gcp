@@ -155,7 +155,7 @@
                                     </tr>
                                     <tr>
                                         <td>Medical History</td>
-                                        <td class="text-danger"><?php if (!empty($result['history'])) {
+                                        <td class="text-danger"><?php if (!empty($result['history']) && is_array($result['history'])) {
                                                 echo implode(', ', json_decode($result['history'], true));
                                             } ?></td>
                                     </tr>
@@ -338,11 +338,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>RE: </b><?php echo isset($result['cct_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_right']] : '' ?>
+                                                            <b>RE: </b><?php echo (isset($result['cct_right']) && $result['cct_right'] > 0) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_right']] : '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>LE: </b><?php echo isset($result['cct_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_left']] : '' ?>
+                                                            <b>LE: </b><?php echo (isset($result['cct_left']) AND $result['cct_right'] > 0) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_left']] : '' ?>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -502,11 +502,11 @@
                                         </tr>
                                         <tr>
                                             <td>Diagnosis</td>
-                                            <td class="text-dark"><?php echo isset($result['diagnosis']) ? implode(',',json_decode($result['diagnosis'],true)): '' ?></td>
+                                            <td class="text-dark"><?php echo (isset($result['diagnosis']) && is_array($result['diagnosis'])) ? implode(',',json_decode($result['diagnosis'],true)): '' ?></td>
                                         </tr>
                                         <tr>
                                             <td>Diagnosis eye</td>
-                                            <td class="text-dark"><?php echo isset($result['diagnosis_eye']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$result['diagnosis_eye']] : '' ?></td>
+                                            <td class="text-dark"><?php echo (isset($result['diagnosis_eye']) && !empty($result['diagnosis_eye'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$result['diagnosis_eye']] : '' ?></td>
                                         </tr>
                                         <tr>
                                             <td>Outcome</td>

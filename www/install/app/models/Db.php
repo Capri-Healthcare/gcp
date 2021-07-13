@@ -49,7 +49,7 @@ class Db extends Model
 	{
 		$passwordhash = password_hash($data['password'], PASSWORD_DEFAULT);
 		$this->database->query("UPDATE `" . $data['db_prefix'] . "users` SET `user_name` = ?, `firstname` = ?, `lastname` = ?, `email` = ?, `password` = ?, `status` = ?, `date_of_joining` = ? WHERE `user_id` = ? ",
-			array($this->database->escape($data['username']), $this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $this->database->escape($data['usermail']), $passwordhash, 1, $data['datetime'], 1));
+			array($this->database->escape($data['username']), $this->database->escape(ucfirst($data['firstname'])), $this->database->escape(ucfirst($data['lastname'])), $this->database->escape($data['usermail']), $passwordhash, 1, $data['datetime'], 1));
 	}
 }
 

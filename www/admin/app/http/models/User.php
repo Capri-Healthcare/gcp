@@ -82,7 +82,7 @@ class User extends Model
 		$address = isset($data['address']) ? $data['address'] : '';
 		$bloodgroup = isset($data['bloodgroup']) ? $data['bloodgroup'] : '';
 
-		$query = $this->database->query("UPDATE `" . DB_PREFIX . "users` SET `user_role` = ?, `user_name` = ?, `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `picture` = ?, `address` = ?, `bloodgroup` = ?, `gender` = ?, `dob` = ?, `status` = ? WHERE `user_id` = ? " , array((int)$data['user_role'], $this->database->escape($data['user_name']), $this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $data['picture'], $address, $bloodgroup, $data['gender'], $this->database->escape($data['dob']), (int)$data['status'], (int)$data['user_id']));
+		$query = $this->database->query("UPDATE `" . DB_PREFIX . "users` SET `user_role` = ?, `user_name` = ?, `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `picture` = ?, `address` = ?, `bloodgroup` = ?, `gender` = ?, `dob` = ?, `status` = ? WHERE `user_id` = ? " , array((int)$data['user_role'], $this->database->escape($data['user_name']), $this->database->escape(ucfirst($data['firstname'])), $this->database->escape(ucfirst($data['lastname'])), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $data['picture'], $address, $bloodgroup, $data['gender'], $this->database->escape($data['dob']), (int)$data['status'], (int)$data['user_id']));
 
 		if ($query->num_rows > 0) { 
 			return true;
@@ -96,7 +96,7 @@ class User extends Model
 		$address = isset($data['address']) ? $data['address'] : '';
 		$bloodgroup = isset($data['bloodgroup']) ? $data['bloodgroup'] : '';
 		
-		$query = $this->database->query("INSERT INTO `" . DB_PREFIX . "users` (`user_role`, `user_name`, `firstname`, `lastname`, `email`, `mobile`, `picture`, `address`, `bloodgroup`, `gender`, `dob`, `password`, `temp_hash`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array($this->database->escape($data['user_role']), $this->database->escape($data['user_name']), $this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $data['picture'], $address, $bloodgroup, $data['gender'], $data['dob'], $data['password'], $data['hash'], $data['datetime']));
+		$query = $this->database->query("INSERT INTO `" . DB_PREFIX . "users` (`user_role`, `user_name`, `firstname`, `lastname`, `email`, `mobile`, `picture`, `address`, `bloodgroup`, `gender`, `dob`, `password`, `temp_hash`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array($this->database->escape($data['user_role']), $this->database->escape($data['user_name']), $this->database->escape(ucfirst($data['firstname'])), $this->database->escape(ucfirst($data['lastname'])), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $data['picture'], $address, $bloodgroup, $data['gender'], $data['dob'], $data['password'], $data['hash'], $data['datetime']));
 		if ($query->num_rows > 0) {
 			return $this->database->last_id();
 		} else {

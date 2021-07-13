@@ -358,7 +358,8 @@ class AppointmentController extends Controller
 
         $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['result']);
         $summary['appointment_count'] = !empty($appointment_completed)?count($appointment_completed):0;
-
+        $data['cct_right'] = 0;
+        $data['cct_left'] = 0;
         if ($summary['appointment_count'] != 0) {
 
             // Get Last Appointment Data

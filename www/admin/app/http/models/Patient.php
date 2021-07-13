@@ -118,7 +118,7 @@ class Patient extends Model
 
     public function createPatient($data)
     {
-        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (`title`, `firstname`, `lastname`, `email`, `mobile`, `address`, `gender`, `dob`, `history`, `other`, `temp_hash`, `status`, `user_id`, `hospital_code`,`date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)", array($data['title'], $data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['hash'], 1, $data['user_id'],$data['hospital_code'], $data['datetime']));
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (`title`, `firstname`, `lastname`, `email`, `mobile`, `address`, `gender`, `dob`, `history`, `other`, `temp_hash`, `status`, `user_id`, `hospital_code`,`date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)", array($data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['mail'], $data['mobile'], $data['address'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['hash'], 1, $data['user_id'],$data['hospital_code'], $data['datetime']));
 
         if ($this->database->error()) {
             return false;
@@ -156,8 +156,8 @@ class Patient extends Model
 		WHERE `id` = ?",
             array(
                 $this->database->escape($data['title']),
-                $this->database->escape($data['firstname']),
-                $this->database->escape($data['lastname']),
+                $this->database->escape(ucfirst($data['firstname'])),
+                $this->database->escape(ucfirst($data['lastname'])),
                 $data['mail'], $this->database->escape($data['mobile']),
                 $this->database->escape($data['dob']),
                 $this->database->escape($data['gender']),

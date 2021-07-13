@@ -195,9 +195,9 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
 ]);
 
 define('INVOICE_REPORT_TYPE',[
-    'VISHUL_FIELDS' => ['name' => 'Vishul fields','price' =>'40'],
+    'VISUAL_FIELDS' => ['name' => 'Visual fields','price' =>'40'],
     'OCT' => ['name' => 'OCT','price' =>'40'],
-    'VISHUL_FIELDS_AND_OCT' => ['name' => 'Vishul fields and OCT','price' =>'80'],
+    'VISUAL_FIELDS_AND_OCT' => ['name' => 'Visual fields and OCT','price' =>'80'],
 ]);
 
 define('INVOICE_ITEM',[

@@ -18,7 +18,7 @@ class Profile extends Model
 
 	public function updateProfile($data)
 	{
-		$query = $this->database->query("UPDATE `" . DB_PREFIX . "users` SET `user_name` = ?, `firstname` = ?, `lastname` = ?, `mobile` = ? WHERE `user_id` = ? AND `email` = ?", array($this->database->escape($data['username']), $this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $this->database->escape($data['mobile']), (int)$data['user_id'], $this->database->escape($data['email'])));
+		$query = $this->database->query("UPDATE `" . DB_PREFIX . "users` SET `user_name` = ?, `firstname` = ?, `lastname` = ?, `mobile` = ? WHERE `user_id` = ? AND `email` = ?", array($this->database->escape($data['username']), $this->database->escape(ucfirst($data['firstname'])), $this->database->escape(ucfirst($data['lastname'])), $this->database->escape($data['mobile']), (int)$data['user_id'], $this->database->escape($data['email'])));
 		if ($this->database->error()) {
 			return $this->database->error();
 		} else {

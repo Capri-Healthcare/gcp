@@ -17,7 +17,7 @@
                 </div>
                 <div class="btn btn-white btn-sm text-left mr-2">
                     <i class="ti-filter text-danger pr-2"></i>
-                    <select class="status" style="border: 0px;">
+                    <select class="status" style="border: 0px; width: 100px;">
 
                         <?php if ($common['user']['role'] == constant('USER_ROLE_MED')) { ?>
                             <?php foreach (constant('REFERRAL_MED_SEC_STATUS') as $key => $status) { ?>
@@ -49,14 +49,17 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Optician</th>
+                        <th>Date Submitted</th>
                         <th>First name</th>
                         <th>Last name</th>
                         <th>Mobile</th>
                         <th>City</th>
                         <th>Status</th>
                         <!--						<th>Created By</th>-->
-                        <th>Date Submitted</th>
+                        
+                        <?php if ($common['user']['role'] != constant('USER_ROLE_OPTOMETRIST')) { ?>
+                        <th>Optician</th>
+                        <?php } ?>
                         <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $period['status'] == constant('STATUS_ACCEPTED')) { ?>
 
                             <th>List</th>
@@ -76,8 +79,7 @@
                             <tr style="cursor: pointer">
                                 <td class="clickable-row"
                                     data-count="<?php echo $key + 1; ?>"><?php echo $key + 1; ?></td>
-                                <td class="clickable-row"
-                                    data-count="<?php echo $key + 1; ?>"><?php echo $value['optician_name']; ?></td>
+                                <td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
                                 <td class="clickable-row"
                                     data-count="<?php echo $key + 1; ?>"><?php echo $value['first_name']; ?></td>
                                 <td class="clickable-row"
@@ -89,7 +91,10 @@
                                 <td class="clickable-row"
                                     data-count="<?php echo $key + 1; ?>"><?php echo constant('STATUS')[$value['status']]; ?></td>
                                 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
-                                <td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
+                                <?php if ($common['user']['role'] != constant('USER_ROLE_OPTOMETRIST')) { ?>
+                                <td class="clickable-row"
+                                    data-count="<?php echo $key + 1; ?>"><?php echo $value['optician_name']; ?></td>
+                                <?php } ?>
                                 <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $period['status']== constant('STATUS_ACCEPTED')) { ?>
 
                                     <td>
