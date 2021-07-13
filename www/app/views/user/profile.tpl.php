@@ -127,7 +127,7 @@
     <div class="col-md-4">
         <div class="input-box">
             <label class="col-form-label" for="postal"><?php echo $lang['text_postal_code']; ?></label>
-            <input type="text" id="postal" name="address[postal]" value="<?php echo $user_data['address']['postal']; ?>" maxlength="7" onkeypress="return alphaNumericValidation(event)">
+            <input type="text" id="postal" name="address[postal]" value="<?php echo $user_data['address']['postal']; ?>" maxlength="8" onkeypress="return alphaNumericValidation(event)">
         </div>
     </div>
     <div class="col-12">

@@ -456,7 +456,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ti-pin"></i></span>
                                 </div>
-                                <input type="text" name="patient[address][postal]" maxlength="7" class="form-control"
+                                <input type="text" name="patient[address][postal]" maxlength="8" class="form-control"
                                        value="<?php echo $result['address']['postal']; ?>"
                                        placeholder="Enter Postal Code . . ."  onkeypress="return alphaNumericValidation(event)">
                             </div>

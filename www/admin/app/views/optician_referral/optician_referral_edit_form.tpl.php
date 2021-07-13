@@ -180,7 +180,7 @@
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                                 class="ti-pin"></i></span></div>
-                                                <input type="text" name="referral[zip_code]" maxlength="7"
+                                                <input type="text" name="referral[zip_code]" maxlength="8"
                                                        class="form-control" value="<?php echo $result['zip_code']; ?>"
                                                        placeholder="Enter Post Code"
                                                        onkeypress="return alphaNumericValidation(event)">
