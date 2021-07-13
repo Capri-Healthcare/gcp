@@ -83,6 +83,7 @@ class OpticianInvoiceController extends Controller
          **/
 
         $this->load->model('commons');
+        $this->load->model('user');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
         $this->load->model('opticianinvoice');
@@ -125,6 +126,9 @@ class OpticianInvoiceController extends Controller
             $data['common']['info']['address']['country'] = $address['country'];
             $data['common']['info']['address']['postal'] = $address['postal'];
         }
+        $data['optician_details'] = $this->model_user->getUser($data['result']['user_id']);
+        //echo "<pre>";print_r($optician_details);exit;
+
         /*Render Invoice list view*/
         $this->response->setOutput($this->load->view('opticianinvoice/invoice_view', $data));
     }
@@ -337,9 +341,9 @@ class OpticianInvoiceController extends Controller
 
         $this->load->model('commons');
         $info = $this->model_commons->getSiteInfo();
-        $data['invoice']['name'] = $info['name'];
-        $data['invoice']['email'] = $info['mail'];
-        $data['invoice']['mobile'] = $info['phone'];
+        $data['invoice']['name'] = $data['common']['user']['optician_shop_name'];
+        $data['invoice']['email'] = $data['common']['user']['email'];
+        $data['invoice']['mobile'] = $data['common']['user']['mobile'];
         $data['invoice']['patient_id'] = 0;
         $data['invoice']['doctor_id'] = 0;
         $data['invoice']['doctor'] = "Demo Doctor";
@@ -494,7 +498,7 @@ class OpticianInvoiceController extends Controller
 
         $invoice = $this->model_opticianinvoice->getInvoiceView($id);
 
-        $data['id'] = $result['common']['invoice_prefix'] . str_pad($invoice['id'], 4, '0', STR_PAD_LEFT);
+        $data['id'] = $result['common']['opt_invoice_prefix'] . str_pad($invoice['id'], 4, '0', STR_PAD_LEFT);
         $site_link = '<a href="' . URL . '">Click Here</a>';
         $invoice['duedate'] = date_format(date_create($invoice['duedate']), $result['common']['date_format']);
 
@@ -630,6 +634,8 @@ class OpticianInvoiceController extends Controller
             $result['info']['address']['country'] = $address['country'];
             $result['info']['address']['postal'] = $address['postal'];
         }
+        $this->load->model('user');
+        $result['optician_details'] = $this->model_user->getUser($result['user_id']);
 
         ob_start();
         if (!empty($result['info']['invoice_template'])) {

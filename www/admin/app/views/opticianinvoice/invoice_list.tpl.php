@@ -67,10 +67,11 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Patient Info</th>
+                        <?php if ($common['user']['role'] != constant('USER_ROLE_OPTOMETRIST')) { ?>
+                        <th>Opticen name</th>
+                        <?php } ?>
                         <th>Amount</th>
                         <th>Due</th>
-                        <th>Doctor</th>
                         <th>Status</th>
                         <th>Invoice Date</th>
                         <th>Created Date</th>
@@ -83,15 +84,16 @@
                     <?php if (!empty($result)) {
                         foreach ($result as $key => $value) { ?>
                             <tr>
-                                <td><?php echo $common['info']['invoice_prefix'] . str_pad($value['id'], 5, '0', STR_PAD_LEFT); ?></td>
+                                <td><?php echo $common['info']['opt_invoice_prefix'] . str_pad($value['id'], 5, '0', STR_PAD_LEFT); ?></td>
+                                <?php if ($common['user']['role'] != constant('USER_ROLE_OPTOMETRIST')) { ?>
                                 <td>
                                     <p class="m-0 text-primary"><?php echo $value['name']; ?></p>
                                     <p class="m-0"><?php echo $value['email']; ?></p>
                                     <p class="m-0"><?php echo $value['mobile']; ?></p>
                                 </td>
+                                <?php } ?>
                                 <td><?php echo $common['info']['currency_abbr'] . $value['amount']; ?></td>
                                 <td><?php echo $common['info']['currency_abbr'] . $value['due']; ?></td>
-                                <td>Dr. <?php echo $value['doctor']; ?></td>
                                 <td>
                                     <?php if ($value['inv_status'] == "0") { ?>
                                         <span class="label label-success">Draft</span>

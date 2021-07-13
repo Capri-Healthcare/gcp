@@ -9,6 +9,7 @@ class Commons extends Model
     {
         $data['user'] = $this->user_agent->getUserData();
         $data['info'] = $this->user_agent->getInfo();
+        $data['info']['opt_invoice_prefix'] = 'OPT'.$data['info']['invoice_prefix'];
         $data['theme'] = $this->user_agent->getTheme();
         $data['page_search'] = $this->user_agent->hasPermission('patients');
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);

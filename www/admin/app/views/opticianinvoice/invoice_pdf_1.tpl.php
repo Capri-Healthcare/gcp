@@ -12,9 +12,13 @@
 				<tbody>
 					<tr>
 						<td class="info">
-							<div class="logo"><img src="<?php echo URL.'public/images/gcp_logo.png'; ?>" alt="logo"></div>
-							<div class="name"><?php echo $result['info']['legal_name']; ?></div>
-							<div class="text"><?php echo $result['info']['address']['address1'].', '.$result['info']['address']['address2'].', '.$result['info']['address']['city'].', '.$result['info']['address']['country'].' - '.$result['info']['address']['postal']; ?></div>
+							<!--div class="logo"><img src="<?php echo URL.'public/images/gcp_logo.png'; ?>" alt="logo"></div-->
+							<div class="name"><?php echo $result['optician_details']['optician_shop_name']; ?></div>
+							<div class="text"><?php 
+							$optician_address = json_decode($result['optician_details']['address'], true);
+							echo $optician_address['address1'].', '. $optician_address['address2'].', '.
+							$optician_address['city'].', '. $optician_address['country'].' - '.
+							$optician_address['postal']; ?></div>
 						</td>
 						<td class="text-right">
 							<div class="title">Invoice</div>
@@ -38,7 +42,7 @@
 								<tbody>
 									<tr>
 										<td class="text">Invoice ID</td>
-										<td class="text w-min-130"><?php echo $result['info']['invoice_prefix'].str_pad($result['id'], 5, '0', STR_PAD_LEFT); ?></td>
+										<td class="text w-min-130"><?php echo $result['common']['info']['opt_invoice_prefix'].str_pad($result['id'], 5, '0', STR_PAD_LEFT); ?></td>
 									</tr>
 									<tr>
 										<td class="text">Invoice Date</td>

@@ -35,9 +35,13 @@
 						<tbody>
 							<tr>
 								<td class="info">
-									<div class="logo"><img src="../public/images/gcp_logo.png" alt="logo"></div>
-									<div class="name"><?php echo $common['info']['legal_name']; ?></div>
-									<div class="text"><?php echo $common['info']['address']['address1'].', '.$common['info']['address']['address2'].', '.$common['info']['address']['city'].', '.$common['info']['address']['country'].' - '.$common['info']['address']['postal']; ?></div>
+									<!--div class="logo"><img src="../public/images/gcp_logo.png" alt="logo"></div-->
+									<div class="name"><?php echo $optician_details['optician_shop_name']; ?></div>
+									<div class="text"><?php 
+									$optician_address = json_decode($optician_details['address'], true);
+									echo $optician_address['address1'].', '. $optician_address['address2'].', '.
+									$optician_address['city'].', '. $optician_address['country'].' - '.
+									$optician_address['postal']; ?></div>
 								</td>
 								<td class="text-right">
 									<div class="title">Invoice</div>
@@ -61,7 +65,9 @@
 										<tbody>
 											<tr>
 												<td class="text">Invoice ID</td>
-												<td class="text w-min-130"><?php echo 'INV-'.str_pad($result['id'], 5, '0', STR_PAD_LEFT); ?></td>
+												<td class="text w-min-130">
+													<?php echo $common['info']['opt_invoice_prefix'] . str_pad($result['id'], 5, '0', STR_PAD_LEFT); ?>
+												</td>
 											</tr>
 											<tr>
 												<td class="text">Invoice Date</td>
