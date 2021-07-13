@@ -106,7 +106,7 @@ class Followup extends Model
             $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `appointment_id` = ?,`patient_id` = ? ,`optician_id` = ? ,`due_date` = ? WHERE `id` = ?", array($this->database->escape($data['appointment_id']), $this->database->escape($data['patient_id']), $this->database->escape($data['optician_id']), $this->database->escape($data['due_date']), $query->row['id']));
             return false;
         } else {
-            $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "followup_appointment` (`patient_id`,`optician_id`,`due_date`,`created_at`,`appointment_id`) VALUES (?,?,?,?,?)", array($this->database->escape($data['patient_id']), $data['optician_id'], $data['due_date'], date('Y-m-d H:i:s'), $data['appointment_id']));
+            $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "followup_appointment` (`patient_id`,`optician_id`,`due_date`,`created_at`,`appointment_id`, followup_status) VALUES (?,?,?,?,?,?)", array($this->database->escape($data['patient_id']), $data['optician_id'], $data['due_date'], date('Y-m-d H:i:s'), $data['appointment_id'], 'NEW'));
             return $this->database->last_id();
         }
     }

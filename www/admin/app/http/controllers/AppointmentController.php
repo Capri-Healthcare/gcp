@@ -787,11 +787,11 @@ class AppointmentController extends Controller
 
             if ($data['mail']['doc_type'] == "to_patient_or_gp") {
 
-                if(isset($data['mail']['gcp_email'])){
+                if(isset($data['mail']['gp_email'])){
                     if(!empty($data['mail']['cc'])){
-                        $data['mail']['cc'] = implode(',',[$data['mail']['gcp_email'],$data['mail']['cc']]);
+                        $data['mail']['cc'] = implode(',',[$data['mail']['gp_email'],$data['mail']['cc']]);
                     }else{
-                        $data['mail']['cc'] = $data['mail']['gcp_email'];
+                        $data['mail']['cc'] = $data['mail']['gp_email'];
                     }
 
                 }

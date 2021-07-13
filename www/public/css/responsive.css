@@ -59,7 +59,7 @@
         background: #fff;
         padding: 10px 15px;
         box-sizing: border-box;
-        z-index: 9;
+        z-index: 999;
         position: relative;
     }
     .navbar-nav li a{

@@ -686,10 +686,10 @@
                                     </div>
                                     <?php if(isset($doc_type) and empty($result['gp_email'])) {?>
                                         <div class="form-group">
-                                            <label>GCP Email</label>
-                                            <input type="text" name="mail[gcp_email]" class="form-control"
+                                            <label>GP Email</label>
+                                            <input type="text" name="mail[gp_email]" class="form-control"
                                                    value=""
-                                                   placeholder="Enter CC . . .">
+                                                   placeholder="Enter GP . . .">
                                         </div>
                                     <?php } ?>
                                     <div class="form-group">
