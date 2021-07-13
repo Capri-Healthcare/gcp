@@ -106,6 +106,10 @@
 									<td>GP Practice</td>
 									<td><?php echo $result['gp_practice'] != 0 ? $gp_practices[$result['gp_practice']] : ''; ?></td>
 								</tr>
+                                <tr>
+                                    <td>GP Email</td>
+                                    <td><?php echo $result['gp_email']; ?></td>
+                                </tr>
 								<tr>
 									<td>GP Address</td>
 									<td><?php echo $result['gp_address']; ?></td>

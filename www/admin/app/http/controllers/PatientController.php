@@ -357,9 +357,13 @@ class PatientController extends Controller
 
         $data['datetime'] = date('Y-m-d H:i:s');
         if (!empty($data['id'])) {
-
-            $gcpID = $this->model_patient->gpPractice($data['gp_practice']);
+            $gp_data['gp_practice'] = $data['gp_practice'];
+            $gp_data['gp_name'] = $data['gp_name'];
+            $gp_data['gp_address'] = $data['gp_address'];
+            $gp_data['gp_email'] = $data['gp_email'];
+            $gcpID = $this->model_patient->gpPractice($gp_data);
             $data['gp_practice'] = $gcpID;
+
             $result = $this->model_patient->updatePatient($data);
 
 //            $referral_data['id'] = $data['referral_id'];

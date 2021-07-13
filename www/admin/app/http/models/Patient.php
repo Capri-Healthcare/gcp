@@ -142,6 +142,7 @@ class Patient extends Model
 		`gp_name` = ?,
 		`gp_practice` = ?,
 		`gp_address` = ?,
+		`gp_email` = ?,
 		`history` = ?,
 		`other` = ?,
 		`regular_payment` = ?,
@@ -165,6 +166,7 @@ class Patient extends Model
                 $data['gp_name'],
                 $data['gp_practice'],
                 $data['gp_address'],
+                $data['gp_email'],
                 $data['history'],
                 $data['other'],
                 $data['regular_payment'],
@@ -257,12 +259,12 @@ class Patient extends Model
 
     public function gpPractice($data)
     {
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "gp_practice` WHERE `gp_practice_name` = ?", array($data));
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "gp_practice` WHERE `gp_practice_name` = ?",array($data['gp_practice']));
 
         if ($query->num_rows > 0) {
             return $query->row['id'];
         } else {
-            $this->database->query("INSERT INTO `" . DB_PREFIX . "gp_practice` (`gp_practice_name`, `gp_practice_code`, `is_active`) VALUES(?,?,?)", array($data, null, 'Y'));
+            $this->database->query("INSERT INTO `" . DB_PREFIX . "gp_practice` (`gp_practice_name`, `gp_name`,`gp_email`,`address`, `is_active`) VALUES(?,?,?,?,?)", array($data['gp_practice'], $data['gp_name'],$data['gp_email'],$data['gp_address'],'Y'));
             return $this->database->last_id();
         }
     }

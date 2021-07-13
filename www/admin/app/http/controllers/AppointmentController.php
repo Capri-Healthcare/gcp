@@ -769,9 +769,11 @@ class AppointmentController extends Controller
             $this->url->redirect('appointments');
         }
 
+
         $data['mail']['email'] = $result['email'];
         $data['mail']['name'] = $result['name'];
         $data['mail']['redirect'] = 'appointment/view&id=' . $result['id'];
+
 
         // Add attachment
         if (isset($data['mail']['doc_type'])) {
@@ -784,6 +786,16 @@ class AppointmentController extends Controller
             }
 
             if ($data['mail']['doc_type'] == "to_patient_or_gp") {
+
+                if(isset($data['mail']['gcp_email'])){
+                    if(!empty($data['mail']['cc'])){
+                        $data['mail']['cc'] = implode(',',[$data['mail']['gcp_email'],$data['mail']['cc']]);
+                    }else{
+                        $data['mail']['cc'] = $data['mail']['gcp_email'];
+                    }
+
+                }
+
                 // Generate examination doc
                 $filename = strtolower(str_replace(" ", "-", $result['name'])) . '-patient-letter.pdf';
                 $appointment_id = $data['mail']['id'];

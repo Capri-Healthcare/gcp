@@ -82,9 +82,15 @@ function update_balance() {
         var after_discount = subtotal - discount;
         after_discount = after_discount;
     } else {
-        discount = discount * subtotal * 0.01;
-        var after_discount = subtotal - discount;
-        after_discount = roundNumber(after_discount, 2);
+        if(discount <= 100){
+            discount = discount * subtotal * 0.01;
+            var after_discount = subtotal - discount;
+            after_discount = roundNumber(after_discount, 2);
+        }else {
+            alert("You can not set more then 100% discount.");
+            $(".discount-total").val(0);
+        }
+
     }
 
     var due = (+after_discount + +tax) - $(".paid-amount").val();

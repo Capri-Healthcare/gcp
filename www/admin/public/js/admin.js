@@ -471,7 +471,9 @@
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
                              '</div>');
                      }
+                     location.reload()
                      toastr.success('Uploaded Succefully', ' Document uploaded successfully');
+
                  } else {
                      toastr.error('Upload Error', response.message);
                  }

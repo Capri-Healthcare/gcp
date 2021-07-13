@@ -315,9 +315,23 @@
                                         </div>
                                         <input type="text" name="patient[gp_name]" class="form-control gcp-name"
                                                value="<?php echo $result['gp_name']; ?>"
-                                               placeholder="GP Name">
+                                               placeholder="GP Name" id="gp_name">
                                         <input type="hidden" name="" class="form-control gcp-practice-id"
                                                value="<?php echo $result['patient_id']; ?>">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>GP Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                        </div>
+                                        <input type="email" name="patient[gp_email]" class="form-control gp_email"
+                                               value="<?php echo $result['gp_email']; ?>"
+                                               placeholder="GP Email" id="gp_email">
 
                                     </div>
                                 </div>
@@ -330,7 +344,7 @@
                                             <span class="input-group-text"><i class="ti-location-pin"></i></span>
                                         </div>
                                         <input type="text" name="patient[gp_address]" class="form-control"
-                                               value="<?php echo $result['gp_address']; ?>" placeholder="GP Address">
+                                               value="<?php echo $result['gp_address']; ?>" placeholder="GP Address" id="gp_address">
                                     </div>
                                 </div>
                             </div>
@@ -604,11 +618,14 @@
             },
             select: function (event, ui) {
                 $('#gp_practice').val(ui.item.gp_practice_name);
+                $('#gp_address').val(ui.item.address);
+                $('#gp_email').val(ui.item.gp_email);
+                $('#gp_name').val(ui.item.gp_name);
                 return false;
             }
         }).autocomplete("instance")._renderItem = function (ul, item) {
             return $("<li>")
-                .append('<div>' + item.gp_practice_name + '</div>')
+                .append('<div>' + item.gp_practice_name +'<br/>'+ item.gp_name +'<br/>'+ item.gp_email +'<br/>'+ item.address + '</div>')
                 .appendTo(ul);
         };
 
