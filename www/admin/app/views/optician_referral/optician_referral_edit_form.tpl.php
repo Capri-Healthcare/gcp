@@ -144,9 +144,9 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ti-check-box"></i></span>
                                                 </div>
-                                                <textarea name="referral[address_1]" class="form-control"
-                                                          placeholder="Enter Address"
-                                                          row=3><?php echo $result['address1']; ?></textarea>
+                                                <input type="text" name="referral[address_1]" class="form-control"
+                                                        placeholder="Enter Address line 1"
+                                                        value="<?php echo stripcslashes($result['address1']); ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -156,9 +156,9 @@
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                                 class="ti-check-box"></i></span></div>
-                                                <textarea name="referral[address_2]" class="form-control"
-                                                          placeholder="Enter Address"
-                                                          row=3><?php echo $result['address2']; ?></textarea>
+                                                <input type="text" name="referral[address_2]" class="form-control"
+                                                          placeholder="Enter Address line 2"
+                                                          value="<?php echo stripcslashes($result['address2']); ?>">
 
                                             </div>
                                         </div>

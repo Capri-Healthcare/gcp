@@ -38,7 +38,7 @@
                         <?php } ?>
                     </select>
                 </div>
-                <div class="dropdown d-inline-block mr-2">
+                <!--div class="dropdown d-inline-block mr-2">
                     <a class="btn btn-white btn-sm dropdown-toggle" data-toggle="dropdown"><i
                                 class="ti-download text-primary pr-2"></i> Export</a>
                     <ul class="dropdown-menu dropdown-menu-right export-button">
@@ -48,7 +48,7 @@
                         <li><a href="#" class="print"><i class="ti-printer pr-2"></i>Print</a></li>
                         <li><a href="#" class="copy"><i class="ti-layers pr-2"></i>Copy</a></li>
                     </ul>
-                </div>
+                </div-->
                 <?php if ($page_add) { ?>
                     <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician/invoice/add&id=0'; ?>"
                        class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> New Invoice</a>

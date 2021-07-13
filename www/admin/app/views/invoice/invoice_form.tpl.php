@@ -268,7 +268,7 @@
 <!--                                           class="item-tax-price" value="--><?php //echo $value['taxprice']; ?><!--" readonly>-->
 <!--                                </td>-->
                                 <td>
-                                    <textarea  name="invoice[item][<?php echo $key; ?>][price]"
+                                    <textarea name="invoice[item][<?php echo $key; ?>][price]"
                                               class="item-total-price"
                                               readonly onkeypress="return numericValidation(event)"><?php echo $value['price']; ?></textarea>
                                     <input type="hidden" class="item-price" value="<?php echo $value['price']; ?>">

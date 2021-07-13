@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     function inputBox(ele) {
         var ele_parent = ele.parent('.input-box');
-        if ($.trim(ele.val()).length > 0) {
+        if ($.trim(ele.val()).length >= 0) {
             ele_parent.addClass('has-content');
         } else {
             ele_parent.removeClass('has-content');

@@ -76,5 +76,5 @@ img.form_thumb_img{
 }
 
 .form-group input, .form-control, .custom-select, .custom-file-label{
-	z-index: 999;
+	z-index: 99;
 }

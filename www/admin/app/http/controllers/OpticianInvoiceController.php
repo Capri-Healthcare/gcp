@@ -633,9 +633,9 @@ class OpticianInvoiceController extends Controller
 
         ob_start();
         if (!empty($result['info']['invoice_template'])) {
-            include DIR_APP . 'views/invoice/invoice_pdf_' . (int)$result['info']['invoice_template'] . '.tpl.php';
+            include DIR_APP . 'views/opticianinvoice/invoice_pdf_' . (int)$result['info']['invoice_template'] . '.tpl.php';
         } else {
-            include DIR_APP . 'views/invoice/invoice_pdf_1.tpl.php';
+            include DIR_APP . 'views/opticianinvoice/invoice_pdf_1.tpl.php';
         }
 
         $html = ob_get_clean();
