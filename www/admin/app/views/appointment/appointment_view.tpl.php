@@ -679,15 +679,23 @@
                                         <input type="hidden" name="_token" value="<?php echo $token; ?>" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <label>Subject</label>
-                                        <input type="text" name="mail[subject]" class="form-control"
-                                               placeholder="Enter SUbject . . .">
-                                    </div>
-                                    <div class="form-group">
                                         <label>CC</label>
                                         <input type="text" name="mail[cc]" class="form-control"
                                                value="<?php echo (isset($doc_type) and !empty($result['gp_email'])) ? $result['gp_email'] : ''; ?>"
                                                placeholder="Enter CC . . .">
+                                    </div>
+                                    <?php if(isset($doc_type) and empty($result['gp_email'])) {?>
+                                        <div class="form-group">
+                                            <label>GCP Email</label>
+                                            <input type="text" name="mail[gcp_email]" class="form-control"
+                                                   value=""
+                                                   placeholder="Enter CC . . .">
+                                        </div>
+                                    <?php } ?>
+                                    <div class="form-group">
+                                        <label>Subject</label>
+                                        <input type="text" name="mail[subject]" class="form-control"
+                                               placeholder="Enter SUbject . . .">
                                     </div>
                                     <div class="form-group">
                                         <label>Message</label>
