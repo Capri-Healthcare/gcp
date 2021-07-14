@@ -38,9 +38,9 @@ class Invoice extends Model
     public function getInvoiceView($id, $user = NULL)
     {
         if ($user != NULL) {
-            $query = $this->database->query("SELECT i.*,u.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor, p.name AS method FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "payment_method` AS p ON p.id = i.method LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id LEFT JOIN `" . DB_PREFIX . "patients` AS u ON u.id = i.patient_id WHERE i.id = '" . (int)$id . "' AND i.doctor_id = '" . $user['doctor'] . "' LIMIT 1");
+            $query = $this->database->query("SELECT i.*, u.address, u.dob, CONCAT(d.firstname, ' ', d.lastname) AS doctor, p.name AS method FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "payment_method` AS p ON p.id = i.method LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id LEFT JOIN `" . DB_PREFIX . "patients` AS u ON u.id = i.patient_id WHERE i.id = '" . (int)$id . "' AND i.doctor_id = '" . $user['doctor'] . "' LIMIT 1");
         } else {
-            $query = $this->database->query("SELECT i.*,u.*, CONCAT(d.firstname, ' ', d.lastname) AS doctor, p.name AS method FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "payment_method` AS p ON p.id = i.method LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id LEFT JOIN `" . DB_PREFIX . "patients` AS u ON u.id = i.patient_id WHERE i.id = '" . (int)$id . "' LIMIT 1");
+            $query = $this->database->query("SELECT i.*, u.address, u.dob, CONCAT(d.firstname, ' ', d.lastname) AS doctor, p.name AS method FROM `" . DB_PREFIX . "invoice` AS i LEFT JOIN `" . DB_PREFIX . "payment_method` AS p ON p.id = i.method LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = i.doctor_id LEFT JOIN `" . DB_PREFIX . "patients` AS u ON u.id = i.patient_id WHERE i.id = '" . (int)$id . "' LIMIT 1");
         }
         return $query->row;
     }

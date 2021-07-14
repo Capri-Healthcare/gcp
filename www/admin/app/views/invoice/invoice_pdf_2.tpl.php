@@ -84,7 +84,7 @@
                     <td>
                         <strong>Patient: </strong>
                     </td>
-                    <td><?php echo $result['firstname']." ".$result['lastname']?></td>
+                    <td><?php echo $result['name']; ?></td>
                 </tr>
                 <tr>
                     <td style="vertical-align: top;">
