@@ -514,7 +514,7 @@
                                         </tr>
                                         <tr>
                                             <td>Follow up / Next Appointment</td>
-                                            <td class="text-dark"><?php echo (isset($result['gcp_next_appointment']) && !empty($result['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$result['gcp_next_appointment']] : '' ?></td>
+                                            <td class="text-dark"><?php echo (isset($result['gcp_next_appointment']) && !empty($result['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$result['gcp_next_appointment']]['name']: '' ?></td>
                                         </tr>
                                         <tr>
                                             <td>Glaucoma Care Plan Required</td>
@@ -681,15 +681,15 @@
                                     <div class="form-group">
                                         <label>CC</label>
                                         <input type="text" name="mail[cc]" class="form-control"
-                                               value="<?php echo (isset($doc_type) and !empty($result['gp_email'])) ? $result['gp_email'] : ''; ?>"
+                                               value=""
                                                placeholder="Enter CC . . .">
                                     </div>
-                                    <?php if(isset($doc_type) and empty($result['gp_email'])) {?>
+                                    <?php if(isset($doc_type)) {?>
                                         <div class="form-group">
                                             <label>GP Email</label>
                                             <input type="text" name="mail[gp_email]" class="form-control"
-                                                   value=""
-                                                   placeholder="Enter GP . . .">
+                                                   value="<?php echo (isset($doc_type) and !empty($result['gp_email'])) ? $result['gp_email'] : ''; ?>"
+                                                   placeholder="Enter GP Email . . .">
                                         </div>
                                     <?php } ?>
                                     <div class="form-group">
@@ -797,7 +797,7 @@
                                                                 }
                                                             } else { ?>
                                                                 <h5 class="mb-0"><b><?php echo $fields['label'] ?></b>
-                                                                </h5>
+                                                                </h5>Send Email to Patient
                                                                 <p class="font-12"><?php echo $answer ?></p>
                                                             <?php } ?>
                                                         </div>

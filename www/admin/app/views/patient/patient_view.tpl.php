@@ -669,7 +669,7 @@
 																		</tr>
 																		<tr>
 																			<td>Follow up / Next Appointment</td>
-																			<td class="text-dark"><?php echo (isset($value['gcp_next_appointment']) && !empty($value['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$value['gcp_next_appointment']] : '' ?></td>
+																			<td class="text-dark"><?php echo (isset($value['gcp_next_appointment']) && !empty($value['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$value['gcp_next_appointment']]['name']: '' ?></td>
 																		</tr>
 																		<tr>
 																			<td>Glaucoma Care Plan Required</td>
@@ -854,7 +854,7 @@
                                     <tr>
                                         <td>GCP Followup Frequency</td>
                                         <td>
-											<?php echo isset($result['gcp_followup_frequency']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$result['gcp_followup_frequency']] : '' ?>
+											<?php echo isset($result['gcp_followup_frequency']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$result['gcp_followup_frequency']]['name'] : '' ?>
                                         </td>
                                     </tr>
                                 <?php }?>

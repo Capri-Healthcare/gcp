@@ -1359,7 +1359,7 @@
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
                                                                 <?php echo (isset($result['gcp_next_appointment']) && $result['gcp_next_appointment'] == $key) ? 'selected' : '' ?> >
-                                                                <?php echo $value; ?>
+                                                                <?php echo $value['name']; ?>
                                                             </option>
                                                         <?php } ?>
                                                     </select>

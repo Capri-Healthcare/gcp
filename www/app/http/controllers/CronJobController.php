@@ -78,8 +78,11 @@ class CronJobController extends Controller
         $this->load->model('commons');
         $result = $this->model_commons->getFollowupforRemainder();
 
-        $afterSixWeekDate = date('Y-m-d', strtotime("+6 weeks", strtotime(date('Y-m-d'))));
-        $afterFourWeekDate = date('Y-m-d', strtotime("+4 weeks", strtotime(date('Y-m-d'))));
+        //$afterSixWeekDate = date('Y-m-d', strtotime("+6 weeks", strtotime(date('Y-m-d'))));
+        //$afterFourWeekDate = date('Y-m-d', strtotime("+4 weeks", strtotime(date('Y-m-d'))));
+
+        $afterSixWeekDate = date('Y-m-d', strtotime("+1 days", strtotime(date('Y-m-d'))));
+        $afterFourWeekDate = date('Y-m-d', strtotime("+1 days", strtotime(date('Y-m-d'))));
 
         if (empty($result)) {
             echo "No followup for reminder";

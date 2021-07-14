@@ -174,11 +174,12 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'UNSTABLE_BOOK_FOR_SURGERY' => 'Unstable - Book for Surgery',
     ],
     'FOLLOW_UP_OR_NEXT_APPOINTMENT' => [
-        '1' => '2 months after change in treatment to see the effect',
-        '2' => '2 months after laser appointment',
-        '4' => '4 months',
-        '6' => '6 months',
-        '12' => '12 months',
+        '1' => ['name' => '1 days after change in treatment to see the effect','intervalrime' => 'days','value' =>'1'],
+        '2' => ['name' => '2 months after change in treatment to see the effect','intervalrime' => 'months','value' =>'2'],
+        '3' => ['name' => '2 months after laser appointment','intervalrime' => 'months','value' =>'2'],
+        '4' => ['name' => '4 months','intervalrime' => 'months','value' =>'4'],
+        '5' => ['name' => '6 months','intervalrime' => 'months','value' =>'6'],
+        '6' => ['name' => '12 months','intervalrime' => 'months','value' =>'12'],
     ],
     'GLAUCOMA_CARE_PLAN_REQUIRED' => [
         'YES' => 'Yes',

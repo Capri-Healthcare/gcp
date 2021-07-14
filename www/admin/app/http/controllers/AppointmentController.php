@@ -542,7 +542,10 @@ class AppointmentController extends Controller
                     $followup['appointment_id'] = $data['appointment']['id'];
                     $followup['patient_id'] = $data['appointment']['patient_id'];
                     $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
-                    $followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
+                    //$followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
+
+                    $next_followup = constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$data['appointment']['followup']]['name'];
+                    $followup['due_date'] = date('Y-m-d', strtotime("+" . $next_followup['value'] . $next_followup['intervalrime'], strtotime(date('Y-m-d'))));
 
                    if($this->model_followup->createFollowup($followup)){
 
@@ -789,12 +792,14 @@ class AppointmentController extends Controller
 
                 if(isset($data['mail']['gp_email'])){
                     if(!empty($data['mail']['cc'])){
-                        $data['mail']['cc'] = implode(',',[$data['mail']['gp_email'],$data['mail']['cc']]);
+                        $data['mail']['cc'] = str_replace(' ','',$data['mail']['cc'].",".$data['mail']['gp_email']);
+
                     }else{
-                        $data['mail']['cc'] = $data['mail']['gp_email'];
+                        $data['mail']['cc'] = trim($data['mail']['gp_email']);
                     }
 
                 }
+
 
                 // Generate examination doc
                 $filename = strtolower(str_replace(" ", "-", $result['name'])) . '-patient-letter.pdf';
