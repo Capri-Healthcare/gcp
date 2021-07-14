@@ -476,3 +476,12 @@ body{
 select:focus{
     border: 2.3px solid #ccc !important;
 }
+
+.navbar-nav li a.dropdown-item{
+    margin: 0;
+}
+
+.navbar-nav li a.active{
+    color: #005eb8 !important;
+    font-weight: 700;
+}

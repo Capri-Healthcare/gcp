@@ -43,11 +43,11 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                                <li class="nav-item dropdown">
+                                <li class="nav-item">
                                     <a class="nav-link" href="<?php echo URL; ?>">Home</a>
                                 </li>
-                                <li class="nav-item <?php echo ($selected_page == 'login') ? 'active' : ''; ?>">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<?php echo URL.DIR_ROUTE.'login'; ?>">Login</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle  <?php echo ($selected_page == 'login') ? 'active' : ''; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<?php echo URL.DIR_ROUTE.'login'; ?>">Login</a>
 									
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="<?php echo URL_ADMIN; ?>">I'm an Optometrist</a>

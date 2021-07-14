@@ -2,7 +2,7 @@
     <!-- Invoice List Page start -->
     <div class="page-title">
         <div class="row align-items-center">
-            <div class="col-sm-4">
+            <div class="col-sm-12">
                 <h2 class="page-title-text d-inline-block"><?php echo $page_title ?></h2>
                 <div class="breadcrumbs d-inline-block">
                     <ul>
@@ -11,7 +11,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-8 text-right">
+            <div class="col-sm-12 text-right">
                 <div class="btn btn-white btn-sm text-left mr-2">
                     <i class="ti-filter text-danger pr-2"></i>
                     <input type="text" class="table-date-range">
@@ -24,8 +24,8 @@
                         <select class="optician" style="border: 0px;">
                             <option value="">Select Optician</option>
                             <?php foreach ($optician_user as $key => $list) { ?>
-                                <option value="<?php echo $list['user_id'] ?>" <?php echo (!empty($dropdown_optician_selected) && $list['user_id'] == $dropdown_optician_selected) ? 'selected' : '' ?>>
-                                    <?php echo $list['fullname']; ?></option>
+                                <option value="<?php echo $list['optician_shop_name'] ?>" <?php echo (!empty($dropdown_optician_selected) && $list['optician_shop_name'] == $dropdown_optician_selected) ? 'selected' : '' ?>>
+                                    <?php echo $list['optician_shop_name']; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -134,9 +134,9 @@
                                                         </li>
                                                     <?php }
                                                     if ($page_edit) { ?>
-                                                        <li>
+                                                        <!--li>
                                                             <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician/invoice/edit&id=' . $value['id']; ?>"><i
-                                                                        class="ti-pencil-alt pr-2"></i>Edit</a></li>
+                                                                        class="ti-pencil-alt pr-2"></i>Edit</a></li-->
                                                     <?php }
                                                     if ($page_pdf) { ?>
                                                         <li>
