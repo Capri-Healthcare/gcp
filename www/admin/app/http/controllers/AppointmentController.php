@@ -773,49 +773,60 @@ class AppointmentController extends Controller
         }
 
 
-        $data['mail']['email'] = $result['email'];
+        if (isset($data['mail']['doc_type']) && $data['mail']['doc_type'] == "to_optom_or_third_party") {
+            $data['mail']['email'] = $data['mail']['email'];
+        }
+        else{
+            $data['mail']['email'] = $result['email'];
+
+        }
         $data['mail']['name'] = $result['name'];
         $data['mail']['redirect'] = 'appointment/view&id=' . $result['id'];
 
 
-        // Add attachment
-        if (isset($data['mail']['doc_type'])) {
+        if ($data['mail']['doc_type']) {
             if ($data['mail']['doc_type'] == "to_optom_or_third_party") {
                 // Generate examination doc 
-                $filename = str_replace(" ", "-", $result['name']) . '-appointment-optom-letter.pdf';
-                $appointment_id = $data['mail']['id'];
-                $this->model_appointment->generateToOptomOrThirdPartyDoc($appointment_id, 'email');
-                $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
+                if(isset($data['mail']['attachment'])){
+                    $filename = str_replace(" ", "-", $result['name']) . '-appointment-optom-letter.pdf';
+                    $appointment_id = $data['mail']['id'];
+                    $this->model_appointment->generateToOptomOrThirdPartyDoc($appointment_id, 'email');
+                    $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
+
+                }
             }
 
             if ($data['mail']['doc_type'] == "to_patient_or_gp") {
 
-                if(isset($data['mail']['gp_email'])){
-                    if(!empty($data['mail']['cc'])){
-                        $data['mail']['cc'] = str_replace(' ','',$data['mail']['cc'].",".$data['mail']['gp_email']);
+                if(isset($data['mail']['gp_email'])) {
+                    if (!empty($data['mail']['cc'])) {
+                        $data['mail']['cc'] = str_replace(' ', '', $data['mail']['cc'] . "," . $data['mail']['gp_email']);
 
-                    }else{
+                    } else {
                         $data['mail']['cc'] = trim($data['mail']['gp_email']);
                     }
 
                 }
 
-
                 // Generate examination doc
-                $filename = strtolower(str_replace(" ", "-", $result['name'])) . '-patient-letter.pdf';
-                $appointment_id = $data['mail']['id'];
-                $this->model_appointment->generateToPatientOrGpDoc($appointment_id, 'email');
-                $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
+                if(isset($data['mail']['attachment'])){
+                    $filename = strtolower(str_replace(" ", "-", $result['name'])) . '-patient-letter.pdf';
+                    $appointment_id = $data['mail']['id'];
+                    $this->model_appointment->generateToPatientOrGpDoc($appointment_id, 'email');
+                    $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
+
+                }
+
             }
         }
 
-        if (isset($_FILES['mail']['name']['attach_file'])) {
-            foreach ($_FILES['mail']['name']['attach_file'] as $key => $file) {
-                $tmp_name = $_FILES['mail']['tmp_name']['attach_file'][$key];
-                $data['mail']['attachments'][] = ['name' => $file, 'file' => $tmp_name];
-            }
-
-        }
+//        if (isset($_FILES['mail']['name']['attach_file'])) {
+//            foreach ($_FILES['mail']['name']['attach_file'] as $key => $file) {
+//                $tmp_name = $_FILES['mail']['tmp_name']['attach_file'][$key];
+//                $data['mail']['attachments'][] = ['name' => $file, 'file' => $tmp_name];
+//            }
+//
+//        }
 
         $this->load->controller('mail');
 

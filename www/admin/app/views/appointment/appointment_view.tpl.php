@@ -665,17 +665,21 @@
                          id="appointment-send-mail">
                         <div class="panel panel-default">
                             <div class="panel-head">
-                                <div class="panel-title">Send Email to Patient</div>
+                                <div class="panel-title"><?php echo (isset($doc_type) && $doc_type != 'to_patient_or_gp') ? 'Send email to the referrer' : 'Send Email to Patient'; ?></div>
                             </div>
                             <form action="<?php echo URL_ADMIN . DIR_ROUTE . 'appointment/sendmail'; ?>" method="post"
                                   enctype="multipart/form-data">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label>To</label>
-                                        <input type="text" value="<?php echo $result['name']; ?>" class="form-control"
+                                        <input type="text" value="<?php echo (isset($doc_type) && $doc_type != 'to_patient_or_gp') ?$result['opticianname'] :$result['name']; ?>" class="form-control"
                                                readonly>
                                         <input type="hidden" name="mail[id]" value="<?php echo $result['id']; ?>"
                                                readonly>
+                                        <?php if(isset($doc_type) && $doc_type != 'to_patient_or_gp') { ?>
+                                            <input type="hidden" name="mail[email]" value="<?php echo $result['opticianemail']; ?>"
+                                                   readonly>
+                                        <?php } ?>
                                         <input type="hidden" name="_token" value="<?php echo $token; ?>" readonly>
                                     </div>
                                     <div class="form-group">
@@ -684,7 +688,7 @@
                                                value=""
                                                placeholder="Enter CC . . .">
                                     </div>
-                                    <?php if(isset($doc_type)) {?>
+                                    <?php if(isset($doc_type) and $doc_type == 'to_patient_or_gp') {?>
                                         <div class="form-group">
                                             <label>GP Email</label>
                                             <input type="text" name="mail[gp_email]" class="form-control"
@@ -695,7 +699,7 @@
                                     <div class="form-group">
                                         <label>Subject</label>
                                         <input type="text" name="mail[subject]" class="form-control"
-                                               placeholder="Enter SUbject . . .">
+                                               placeholder="Enter Subject . . .">
                                     </div>
                                     <div class="form-group">
                                         <label>Message</label>
@@ -706,20 +710,16 @@
                                         </textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Attachment ?</label>
+                                        <label>Attachment</label>
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox"  class="custom-control-input" value="1" id="mail_appointment">
-                                            <label class="custom-control-label" for="mailPdf" id="appointment_mail_file_name">No file chosen</label>
+                                            <input type="checkbox"  class="custom-control-input" value="" name="mail[attachment]" id="mail_appointment" checked>
+                                            <label class="custom-control-label" for="mailPdf" id="appointment_mail_file_name"><?php echo (isset($doc_type) and $doc_type != 'to_patient_or_gp') ? 'Optom / Third Party' : 'Patient / GP'; ?></label>
                                         </div>
-                                        <input type="file" id="appointment_mail_attechment" multiple="multiple" name="mail[attach_file][]" style="display: none">
                                     </div>
 
                                     <?php if (isset($doc_type) and !empty($doc_type)) { ?>
                                         <div class="form-group">
-                                            <label><strong>Note:</strong></label> This email sent
-                                            with <?php echo str_replace("-", " ", $doc_type); ?> document
-                                            <input type="hidden" name="mail[doc_type]"
-                                                   value="<?php echo $doc_type; ?>"/>
+                                            <input type="hidden" name="mail[doc_type]" value="<?php echo $doc_type; ?>"/>
                                         </div>
                                     <?php } ?>
                                 </div>
