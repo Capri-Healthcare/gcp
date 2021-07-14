@@ -68,7 +68,7 @@ class User extends Model
 
     public function checkUserRole($id)
     {
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE `user_role` = ".$id);
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE `user_role` = ? AND `status` = ?",array($id,(int)1));
 
         if ($query->num_rows > 0) {
             return $query->row;

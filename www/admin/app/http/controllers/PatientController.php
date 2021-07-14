@@ -652,6 +652,9 @@ class PatientController extends Controller
 
         $this->load->controller('mail');
         $result = $this->controller_mail->getTemplate('notification_to_the_hospital_for_patient_details');
+        $this->load->model('user');
+        $user_doctor_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_DOCTOR')]);
+
 
         if (empty($result['template']) || $result['template']['status'] == '0') {
             return false;
@@ -671,6 +674,7 @@ class PatientController extends Controller
         $data['name'] = constant('HOSPITAL_LIST')[$patient['hospital_code']]['email'];
         $data['email'] = constant('HOSPITAL_LIST')[$patient['hospital_code']]['email'];
         $data['subject'] = str_replace('{patient_name}',$patient['firstname'] . ' ' . $patient['lastname'], $result['template']['subject']);
+        $data['subject'] = str_replace('{Docter_name}',$user_doctor_data['firstname']." ".$user_doctor_data['lastname'], $data['subject']);
         $data['message'] = $result['template']['message'];
 
         return $this->controller_mail->sendMail($data);

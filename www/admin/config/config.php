@@ -56,7 +56,7 @@ define('STATUS_MED_ROLE', ['NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' 
 
 define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter', 'Visual fields - Right eye' => 'Visual fields - Right eye', 'Visual fields - Left eye' => 'Visual fields - Left eye', 'OCT - Right eye' => 'OCT - Right eye', 'OCT - Left eye' => 'OCT - Left eye', 'Fundus - Right eye' => 'Fundus - Right eye', 'Fundus - Left eye' => 'Fundus - Left eye']);
 
-define('USER_ROLE_ID', ['Med. Secretary' => '7', 'GCP Secretary' => '11','Optician' => '9']);
+define('USER_ROLE_ID', ['Med. Secretary' => '7', 'GCP Secretary' => '11','Optician' => '9','Doctor' => '3']);
 define('CC', 'chetanthumar@gmail.com,sanjay.makwana@tiez.nl');
 define('GCP_REQUIRE', ['YES' => 'Yes', 'NO' => 'No', 'OFFER' => 'Offered']);
 
