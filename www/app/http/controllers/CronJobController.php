@@ -95,7 +95,7 @@ class CronJobController extends Controller
                         $data['status'] = 'NEW';
                         $data['reminder_count'] = $followup['reminder_count'] + 1;
                         $this->model_commons->updateFollowupStatus($data);
-
+                      
                         //$this->followupMail($followup['id'], 'notification_to_optician_for_follow_up');
                     }
                 } else {
@@ -105,7 +105,7 @@ class CronJobController extends Controller
                         $data['reminder_count'] = $followup['reminder_count'] + 1;
                         $this->model_commons->updateFollowupStatus($data);
 
-                        $this->followupGCPNoMail($followup['id'], 'notification_to_optician_for_follow_up');
+                        //$this->followupGCPNoMail($followup['id'], 'notification_to_optician_for_follow_up');
                     }
                 }
             }
@@ -132,7 +132,7 @@ class CronJobController extends Controller
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
 
 
-        $data['name'] = $result['name'];
+        $data['name'] = $result['common']['name'];
         $data['email'] = $optician['email'];
         $data['cc'] = $followup['email'];
         $data['subject'] = str_replace('{patient_title}', $followup['title'], $result['template']['subject']);

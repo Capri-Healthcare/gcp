@@ -631,12 +631,12 @@ class PatientController extends Controller
         $patient = $this->model_patient->getPatient($id);
 
         $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{patient_fname_lname}', $patient['firstname'] . ' ' . $patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('patient_fname', $patient['firstname'] . ' ' . $patient['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{hospital_name}',constant('HOSPITAL_LIST')[$patient['hospital_code']]['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{hospital_address}',constant('HOSPITAL_LIST')[$patient['hospital_code']]['address'], $result['template']['message']);
         $result['template']['message'] = str_replace('{hospital_number}',constant('HOSPITAL_LIST')[$patient['hospital_code']]['mobile'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{email}',constant('HOSPITAL_LIST')[$patient['hospital_code']]['email'], $result['template']['message']);
+        $result['template']['message'] = str_replace('[Email]',constant('HOSPITAL_LIST')[$patient['hospital_code']]['email'], $result['template']['message']);
 
         $data['email'] = $patient['email'];
         $data['subject'] = str_replace('{hospital_name}',constant('HOSPITAL_LIST')[$patient['hospital_code']]['name'], $result['template']['subject']);
