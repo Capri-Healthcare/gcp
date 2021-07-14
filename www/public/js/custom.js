@@ -890,14 +890,14 @@ function checkUserName() {
 }
 
 function passwordChanged() {
-    var strongRegex = new RegExp("^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-    var mediumRegex = new RegExp("^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+    var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
     var enoughRegex = new RegExp("(?=.{8,}).*", "g");
     var pwd = document.getElementById("register-password");
 
     if (false == enoughRegex.test(pwd.value)) {
         $('#register-password').addClass('is-invalid');
-        $(".invalid-password").text('Your password needs to be at least 8 characters long.');
+        $(".invalid-password").text('Password needs to be at least 8 characters long.');
         return false;
     } else if (strongRegex.test(pwd.value)) {
         return true;
