@@ -226,7 +226,7 @@ class Opticianinvoice extends Model
 
     public function checkUserRole($id)
     {
-        $query = $this->database->query("SELECT u.user_id,CONCAT(u.firstname,' ',u.lastname) as fullname FROM `" . DB_PREFIX . "users` as u WHERE u.user_role = ".$id);
+        $query = $this->database->query("SELECT u.user_id,CONCAT(u.firstname,' ',u.lastname) as fullname, u.optician_shop_name FROM `" . DB_PREFIX . "users` as u WHERE u.user_role = ".$id);
 
         if ($query->num_rows > 0) {
             return $query->rows;
