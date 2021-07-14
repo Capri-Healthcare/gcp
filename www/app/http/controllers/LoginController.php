@@ -25,6 +25,7 @@ class LoginController extends Controller
         if ($this->user_agent->isLogged()) {
             $this->url->redirect('user/appointment');
         }
+
         $this->response->setOutput($this->load->view('front/login', $data));
         /**
          * Get service page data from DB

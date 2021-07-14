@@ -13,6 +13,11 @@ class LoginController extends Controller
 			unset($this->session->data['error']);
 		}
 
+        if(isset($_GET['optician_register']))
+        {
+            $this->session->data['success'] = 'Account created succefully, check your mail for more info.';
+        }
+
 		if (isset($this->session->data['success'])) {
 			$data['success'] = $this->session->data['success'];
 			unset($this->session->data['success']);
