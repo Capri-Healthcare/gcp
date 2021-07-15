@@ -117,6 +117,7 @@ class AppointmentController extends Controller
         $data['page_notes'] = $this->user_agent->hasPermission('appointment/notes') ? true : false;
         $data['page_documents'] = $this->user_agent->hasPermission('appointment/documents') ? true : false;
         $data['page_prescriptions'] = $this->user_agent->hasPermission('prescriptions') ? true : false;
+        $data['page_letters'] = $this->user_agent->hasPermission('appointment/letters') ? true : false;
 
         $data['notes'] = $this->model_appointment->getClinicalNotes($id);
         if (!empty($data['notes'])) {
@@ -1024,7 +1025,7 @@ class AppointmentController extends Controller
         }else{
             $result['template']['message'] = str_replace('{ophth_title}', "", $result['template']['message']);
             $result['template']['message'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'], $result['template']['message']);
-            $result['template']['message'] = str_replace('{appt_date}', $appointment['date'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{appt_date}', date('d-m-Y', strtotime($appointment['date'])), $result['template']['message']);
             $result['template']['message'] = str_replace('{appt_time}', $appointment['time'], $result['template']['message']);
             $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
             $result['template']['message'] = str_replace('{patient_title}', $appointment['title'], $result['template']['message']);
