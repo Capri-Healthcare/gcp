@@ -238,8 +238,9 @@ class OpticianReferralController extends Controller
 
                 if (trim($data['referral']['status']) == 'ACCEPTED') {
                     $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
+                    $patient_id = $patient['id'];
 
-                    if (empty($patient['id'])) {
+                    if (empty($patient_id)) {
                         $patient['firstname'] = $data['referral']['first_name'];
                         $patient['lastname'] = $data['referral']['last_name'];
                         $patient['mail'] = $data['referral']['email'];
@@ -252,25 +253,26 @@ class OpticianReferralController extends Controller
                         $patient['history'] = " ";
                         $patient['other'] = " ";
                         $patient['hash'] = $data['referral']['user_id'];
-                        $patient['hospital_code'] = $data['referral']['hospital_code'] == null ? null :$data['referral']['hospital_code'];
+                        $patient['hospital_code'] = $data['referral']['hospital_code'] == null ? null : $data['referral']['hospital_code'];
                         $patient['datetime'] = date('Y-m-d H:s:a');
 
-                        $data['patientid'] = $this->model_patient->createPatient($patient);
+                        $patient_id = $this->model_patient->createPatient($patient);
 
-                        if (!empty($data['patientid'])) {
-
+                        if (!empty($patient_id)) {
+                            $data['patientid'] = $patient_id;
                             $this->model_opticianreferral->updatePatientID($data);
 
-                            $this->patientMail($data['patientid']);
+                            $this->patientMail($patient_id);
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
-                            $this->url->redirect('patient/edit&id=' . $data['patientid'] . '&referralid=' . $data['referral']['id']);
+                            // $this->url->redirect('patient/edit&id=' .$patient['id']. '&referralid=' . $data['referral']['id']);
                         }
 
-                    } else {
-                        $this->url->redirect('patient/edit&id=' . $patient['id'] . '&referralid=' . $data['referral']['id']);
-
-                        //$this->url->redirect('optician-referral');
                     }
+
+                    //$this->notificationToPatientForAppointmentBooking($patient_id);
+                    $this->url->redirect('patient/edit&id=' .$patient_id. '&referralid=' . $data['referral']['id']);
+                    //$this->url->redirect('optician-referral');
+
                 }
 
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral updated successfully.');
@@ -557,6 +559,36 @@ class OpticianReferralController extends Controller
         $data['email'] = $user_data['email'];
         $data['cc'] = $data['common']['user']['email'];
         $data['subject'] = str_replace('{Opto_fname, Opto_lname}', $data['common']['user']['firstname'] . " " . $data['common']['user']['lastname'], $result['template']['subject']);
+        $data['message'] = $result['template']['message'];
+
+        return $this->controller_mail->sendMail($data);
+    }
+
+    public function notificationToPatientForAppointmentBooking($id)
+    {
+
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate('notification_to_the_patient_for_appointment_booking_at_hospital');
+
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+        $this->load->model('patient');
+        $patient = $this->model_patient->getPatient($id);
+
+        $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{patient_fullname}', $patient['firstname'] . ' ' . $patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{hospital_name}', constant('HOSPITAL_LIST')[$patient['hospital_code']]['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{hospital_address}', constant('HOSPITAL_LIST')[$patient['hospital_code']]['address'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{hospital_number}', constant('HOSPITAL_LIST')[$patient['hospital_code']]['mobile'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{email}', constant('HOSPITAL_LIST')[$patient['hospital_code']]['email'], $result['template']['message']);
+
+        $data['email'] = $patient['email'];
+        $data['subject'] = str_replace('{hospital_name}', constant('HOSPITAL_LIST')[$patient['hospital_code']]['name'], $result['template']['subject']);
         $data['message'] = $result['template']['message'];
 
         return $this->controller_mail->sendMail($data);
