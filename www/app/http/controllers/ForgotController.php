@@ -80,14 +80,16 @@ class ForgotController extends Controller
 		$this->load->controller('common');
 		$lang = $this->controller_common->getLanguage();
 		if (!isset($_POST['forgot']) || !$this->validate($email)) {
-			$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_please_enter_valid_data_in_input_box']);
+			//$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_please_enter_valid_data_in_input_box']);
+			$this->session->data['error'] = $lang['text_please_enter_valid_data_in_input_box'];
 			$this->url->redirect('forgot');
 		}
 
 		$token = $this->url->post('_token');
 		$token_check = hash('sha512', TOKEN . TOKEN_SALT);
 		if (hash_equals($token_check, $token) === false ) {
-			$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_security_token_is_missing']);
+			//$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_security_token_is_missing']);
+			$this->session->data['error'] = $lang['text_security_token_is_missing'];
 			$this->url->redirect('forgot');
 		}
 
@@ -103,16 +105,19 @@ class ForgotController extends Controller
 			* The account is locked From too many login attempts 
             **/
 			if (!$this->checkLoginAttempts($email)) {
-				$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_account_exceeded_allowed_attempts']);
+				//$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_account_exceeded_allowed_attempts']);
+				$this->session->data['error'] = $lang['text_account_exceeded_allowed_attempts'];
 				$this->url->redirect('login');
 			} elseif ( $user['status'] === 1 ) {
 				$user['temp_hash'] = md5(uniqid(mt_rand(), true));
 				$this->model_login->editHash($user);
 				$result = $this->sendForgotMail($user);
 				if ($result) {
-					$this->session->data['message'] = array('alert' => 'success', 'value' => $lang['text_reset_instruction_sent_to_your_email_address']);
+					//$this->session->data['message'] = array('alert' => 'success', 'value' => $lang['text_reset_instruction_sent_to_your_email_address']);
+					$this->session->data['success'] = $lang['text_reset_instruction_sent_to_your_email_address'];
 				} else {
-					$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_mail_could_not_be_sent']);
+					//$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_mail_could_not_be_sent']);
+					$this->session->data['error'] = $lang['text_mail_could_not_be_sent'];
 				}
 				$this->url->redirect('login');
 			} else {
@@ -120,7 +125,8 @@ class ForgotController extends Controller
 	        	* If account is disabled by admin 
 		        * Then Show error to user
 		        **/
-	        	$this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_account_disabled_by_admin']);
+	        	//$this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_account_disabled_by_admin']);
+				$this->session->data['error'] = $lang['text_account_disabled_by_admin'];
 	        	$this->url->redirect('login');
 	        }
 			/** 
@@ -128,7 +134,8 @@ class ForgotController extends Controller
 			* Send Mail to user for reset password
             **/
 		} else {
-			$this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_account_does_not_exists']);
+			//$this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_account_does_not_exists']);
+			$this->session->data['error'] = $lang['text_account_does_not_exists'];
 			$this->url->redirect('forgot');
 		}
 	}

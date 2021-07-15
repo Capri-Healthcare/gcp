@@ -35,6 +35,17 @@
                                 </div>
                             </center>
 							<form method="POST"  action="<?php echo URL.DIR_ROUTE; ?>login" method="post" enctype="multipart/form-data">
+                                <?php if(!empty($success)) { ?>
+                                    <div class="alert alert-success alert-dismissable">
+                                        <?php echo $success ?>
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                    </div>
+                                <?php } if(!empty($error)) { ?>
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <?php echo $error ?>
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                    </div>
+                                <?php } ?>
                                 <input type="hidden" name="_token" value="<?php echo $token; ?>">
                                 <input type="hidden" name="login_from" id="login_from" value="patient">
 

@@ -1,1 +1,12 @@
 [12-May-2021 07:38:26 Europe/London] PHP Notice:  Undefined index: username in D:\xampp7.2.24\htdocs\gcp\www\app\http\controllers\RegisterController.php on line 144
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: is_patient_have_any_disabilities in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 168
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: disabilities_details in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 168
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: special_requirements in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 168
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: nhs_hospital_number in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 169
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: policyholders_name in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 170
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: medical_insurers_name in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 170
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: membership_number in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 170
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: scheme_name in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 170
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: authorisation_number in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 171
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: corporate_company_scheme in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 171
+[15-Jul-2021 16:21:41 Europe/London] PHP Notice:  Undefined index: employer in D:\xampp7.2.24\htdocs\gcp\www\app\http\models\User.php on line 171

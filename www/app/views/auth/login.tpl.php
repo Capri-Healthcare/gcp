@@ -3,6 +3,17 @@
 <div class="layer-stretch">
     <div class="layer-wrapper">
         <form class="form-container" action="<?php echo URL.DIR_ROUTE; ?>login" method="post" enctype="multipart/form-data">
+            <?php if(!empty($success)) { ?>
+                <div class="alert alert-success alert-dismissable">
+                    <?php echo $success ?>
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                </div>
+            <?php } if(!empty($error)) { ?>
+                <div class="alert alert-danger alert-dismissable">
+                    <?php echo $error ?>
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                </div>
+            <?php } ?>
             <input type="hidden" name="_token" value="<?php echo $token; ?>">
             <div class="input-box">
                 <input type="text" name="email" id="login-email" required>

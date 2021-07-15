@@ -31,8 +31,7 @@
 <script src="<?php echo URL.'public/js/custom.js'; ?>"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<?php
-if (!empty($this->session->data['message'])) { ?>
+<?php if (isset($message) && !empty($message)) { ?>
     <!-- Set Confirmation Message on create, update and delete -->
     <script>
         /*Set toastr Option*/
@@ -53,7 +52,9 @@ if (!empty($this->session->data['message'])) { ?>
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         }
-        toastr.<?php echo $this->session->data['message']['alert']; ?>('<?php echo  $this->session->data['message']['value']; ?>', '<?php echo ucfirst($this->session->data['message']['alert']); ?>');
+        /*toastr.<?php echo $this->session->data['message']['alert']; ?>('<?php echo  $this->session->data['message']['value']; ?>', '<?php echo ucfirst($this->session->data['message']['alert']); ?>');*/
+		
+toastr.<?php echo $message['alert']; ?>("<?php echo $message['value']; ?>");
 
     </script>
 

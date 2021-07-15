@@ -26,6 +26,18 @@ class LoginController extends Controller
             $this->url->redirect('user/appointment');
         }
 
+        /* Set confirmation message if page submitted before */
+        $data['error'] = '';
+		if (isset($this->session->data['error'])) {
+			$data['error'] = $this->session->data['error'];
+			unset($this->session->data['error']);
+		}
+
+		if (isset($this->session->data['success'])) {
+			$data['success'] = $this->session->data['success'];
+			unset($this->session->data['success']);
+		}
+//echo "<pre>";print_r($data);exit;
         $this->response->setOutput($this->load->view('front/login', $data));
         /**
          * Get service page data from DB
@@ -95,13 +107,15 @@ class LoginController extends Controller
         $lang = $this->controller_common->getLanguage();
 
         if (!$this->validate($data)) {
-            $this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_please_enter_valid_data_in_input_box']);
+            //$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_please_enter_valid_data_in_input_box']);
+            $this->session->data['error'] = $lang['text_please_enter_valid_data_in_input_box'];
             $this->url->redirect('login');
         }
 
         $token_check = hash('sha512', TOKEN . TOKEN_SALT);
         if (hash_equals($token_check, $data['_token']) === false) {
-            $this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_security_token_is_missing']);
+            //$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_security_token_is_missing']);
+            $this->session->data['error'] = $lang['text_please_enter_valid_data_in_input_box'];
             $this->url->redirect('login');
         }
 
@@ -123,7 +137,8 @@ class LoginController extends Controller
                  * The account is locked From too many login attempts
                  **/
                 if (!$this->checkLoginAttempts($email)) {
-                    $this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_account_exceeded_allowed_attempts']);
+                    //$this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_account_exceeded_allowed_attempts']);
+                    $this->session->data['error'] = $lang['text_account_exceeded_allowed_attempts'];
                     $this->url->redirect('login');
                 } elseif ($user['status'] === 1) {
                     /**
@@ -144,12 +159,7 @@ class LoginController extends Controller
                             $this->url->Redirect('user/profile');
                         } else {
                             if (isset($this->session->data['refferal'])) { 
-                                if (!$this->model_login->isUserProfileUpToDate($email)) {
-                                    $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Please complete you profile to use this portal');
-                                    $this->url->Redirect('profile');
-                                } else {
-                                    $this->url->abs_redirect($this->session->data['refferal']);
-                                }
+                                $this->url->abs_redirect($this->session->data['refferal']);
                             } else {
                                 $this->url->Redirect('user/appointments');
                             }
@@ -162,7 +172,8 @@ class LoginController extends Controller
                          * Set error for user
                          **/
                         $this->model_login->addAttempt($email);
-                        $this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_no_match_for_email_address_and_or_Password']);
+                        //$this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_no_match_for_email_address_and_or_Password']);
+                        $this->session->data['error'] = $lang['text_no_match_for_email_address_and_or_Password'];
                         $this->url->Redirect('login');
                     }
                 } else {
@@ -170,7 +181,8 @@ class LoginController extends Controller
                      * If account is disabled by admin
                      * Then Show error to user
                      **/
-                    $this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_account_disabled_by_admin']);
+                    //$this->session->data['message'] = array('alert' => 'error', 'value' => $lang['text_account_disabled_by_admin']);
+                    $this->session->data['error'] = $lang['text_account_disabled_by_admin'];
                     $this->url->redirect('login');
                 }
             } else {
@@ -178,7 +190,8 @@ class LoginController extends Controller
                  * If email address not found in DB
                  * Show error to user for creating account
                  **/
-                $this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_no_match_for_email_address_and_or_Password']);
+                //$this->session->data['message'] = array('alert' => 'warning', 'value' => $lang['text_no_match_for_email_address_and_or_Password']);
+                $this->session->data['error'] = $lang['text_no_match_for_email_address_and_or_Password'];
                 $this->url->redirect('login');
             }
         } else {
