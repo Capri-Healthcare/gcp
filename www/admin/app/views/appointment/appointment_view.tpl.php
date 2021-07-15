@@ -36,7 +36,7 @@
                     </div>
                     <div class=row>
                         <div class="col-12">
-                            <h3>Dr. <?php echo $result['doctor_name']; ?></h3>
+                            <h3><?php echo $result['doctor_name']; ?></h3>
                             <p class="mb-0 font-12"><i class="ti-email"></i> <?php echo $result['doctor_email']; ?><br> <i
                                         class="ti-mobile"></i> <?php echo $result['doctor_mobile']; ?></p>
                         </div>

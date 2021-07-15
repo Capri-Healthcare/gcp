@@ -1,6 +1,12 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
+            <div class="col-md-12 p-5">
+                Please download the Direct Debit Form and complete it. Take the image of the completed document and upload it here. 
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-6 p-5">
                 <center><a href="<?php echo URL.DIR_ROUTE ?>pdf-demo" class="btn btn-primary" download="<?php echo $user_data['id']."pdf-demo.pdf" ?>">Download  Direct Debit  Form</a></center>
             </div>
