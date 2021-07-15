@@ -88,6 +88,7 @@ class Useragent {
 			'attach/documents/delete',
 			'getmenupages',
 			'getmenulink',
+			'gppractices/search',
 		);
 
 		$this->permission = array_merge($this->permission, $extension);

@@ -562,9 +562,6 @@ class Appointment extends Model
         $body .= "<strong>Diagnosis:</strong> " . implode(',',json_decode($appointment['diagnosis'],true)). "<br>";
         $body .= "<br><br>";
 
-        $body .= "<strong>Doctor note: </strong> ". $appointment['doctor_note_optometrist']. "<br>";
-        $body .= "<br><br>";
-
         $body .= "<strong>Current Treatment:</strong><br>";
         $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
                                        <tr>
@@ -597,6 +594,14 @@ class Appointment extends Model
 
         $body .= "<strong>Follow up: </strong>";
         $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] : '';
+
+        $body .= "<br>";
+        if(!empty($appointment['doctor_note_optometrist'])){
+            $body .= "<br><br>";
+            $body .= "<strong>Doctore Note:</strong> ";
+            $body .= $appointment['doctor_note_optometrist'];
+
+        }
 
         $body .= "<br><br>";
 

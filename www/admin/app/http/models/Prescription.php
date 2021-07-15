@@ -21,7 +21,7 @@ class Prescription extends Model
 		if ($doctor == NULL) {
 			$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "prescription` WHERE id = ?", array($id));
 		} else {
-			$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "prescription` WHERE id = ? AND doctor_id", array($id, $doctor));
+			$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "prescription` WHERE id = ? AND doctor_id = ?", array($id, $doctor));
 		}
 		return $query->row;
 	}

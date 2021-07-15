@@ -240,7 +240,7 @@ class InvoiceController extends Controller
         $data['mail']['bcc'] = $data['mail']['bcc'];
         $data['mail']['redirect'] = 'invoice/view&id=' . $result['id'];
         if ($data['mail']['attachPdf'] == '1' && file_exists(DIR . 'public/uploads/invoice/invoice-' . $data['mail']['id'] . '.pdf')) {
-            $data['mail']['attachments'][] = array('file' => DIR . 'public/uploads/invoice/invoice-' . $data['mail']['id'] . '.pdf', 'name' => 'Invoice');
+            $data['mail']['attachments'][] = array('file' => DIR . 'public/uploads/invoice/invoice-' . $data['mail']['id'] . '.pdf', 'name' => 'invoice-' . $data['mail']['id'] . '.pdf');
         }
 
         $this->load->controller('Mail');
@@ -486,7 +486,7 @@ class InvoiceController extends Controller
         $data['message'] = $result['template']['message'];
 
         if (file_exists(DIR . 'public/uploads/invoice/invoice-' . $invoice['id'] . '.pdf')) {
-            $data['attachments'][] = array('file' => DIR . 'public/uploads/invoice/invoice-' . $invoice['id'] . '.pdf', 'name' => 'Invoice');
+            $data['attachments'][] = array('file' => DIR . 'public/uploads/invoice/invoice-' . $invoice['id'] . '.pdf', 'name' => 'invoice-' . $invoice['id'] . '.pdf');
         }
 
         return $this->controller_mail->sendMail($data);

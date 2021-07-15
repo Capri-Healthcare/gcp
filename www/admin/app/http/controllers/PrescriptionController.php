@@ -181,7 +181,7 @@ class PrescriptionController extends Controller
 		} else {
 			$data['result'] = $this->model_prescription->getPrescription($id);
 		}
-		
+
 		if (empty($data['result'])) {
 			$this->session->data['message'] = array('alert' => 'warning', 'value' => 'Prescription does not exist in database!');
 			$this->url->redirect('prescriptions');

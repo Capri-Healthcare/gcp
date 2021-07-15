@@ -192,7 +192,8 @@
         <td>
             <center>
                 <?php
-                    $now = strtotime(date('Y-m-d')); // or your date as well
+                    //$now = strtotime(date('Y-m-d')); // or your date as well
+                    $now = strtotime($result['duedate']);
                     $your_date = strtotime($result['invoicedate']);
                     $datediff = $now - $your_date;
                     

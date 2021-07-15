@@ -50,7 +50,7 @@ class CronJobController extends Controller
         $result['template']['message'] = str_replace('{ophth_title}', "", $result['template']['message']);
         $result['template']['message'] = str_replace('{gcp_fname}', $optician['firstname'] . " " . $optician['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{gcp_fname}', $optician['firstname'] . " " . $optician['lastname'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{appt_date}', $appointment['date'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{appt_date}', date('d-m-Y', strtotime($appointment['date'])), $result['template']['message']);
         $result['template']['message'] = str_replace('{appt_time}', $appointment['time'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{patient_title}', $appointment['title'], $result['template']['message']);

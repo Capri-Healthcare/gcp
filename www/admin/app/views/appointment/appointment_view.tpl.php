@@ -73,9 +73,11 @@
                                 <li><a href="#appointment-send-mail"
                                        class="<?php echo isset($doc_type) ? 'active' : ''; ?>"" data-toggle="tab"><i
                                             class="ti-email"></i> <span>Send Email</span></a></li>
-                            <?php } ?>
+                            <?php } 
+                            if ($page_letters) { ?>
                             <li><a href="#appointment-letters" data-toggle="tab"><i class="ti-email"></i>
                                     <span>Letters</span></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -713,7 +715,7 @@
                                         <label>Attachment</label>
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox"  class="custom-control-input" value="" name="mail[attachment]" id="mail_appointment" checked>
-                                            <label class="custom-control-label" for="mailPdf" id="appointment_mail_file_name"><?php echo (isset($doc_type) and $doc_type != 'to_patient_or_gp') ? 'Optom / Third Party' : 'Patient / GP'; ?></label>
+                                            <label class="custom-control-label" for="mailPdf" id="appointment_mail_file_name"><?php echo (isset($doc_type) and $doc_type != 'to_patient_or_gp') ? 'Optom / Third Party' : 'Patient / GP'; ?> Letter</label>
                                         </div>
                                     </div>
 
