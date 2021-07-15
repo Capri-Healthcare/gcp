@@ -117,7 +117,7 @@
 <!--                                    </tr>-->
                                     <tr>
                                         <td>Patient Name</td>
-                                        <td class="text-dark"><?php echo $result['firstname']." ".$result['lastname']; ?></td>
+                                        <td class="text-dark"><?php echo $result['name']; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Email Address</td>

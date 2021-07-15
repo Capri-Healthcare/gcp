@@ -54,7 +54,7 @@
                         <tr style="cursor: pointer">
                             <td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php echo $common['info']['appointment_prefix'].str_pad($value['id'], 5, '0', STR_PAD_LEFT); ?></td>
                             <td class="clickable-row" data-count="<?php echo $key+1; ?>">
-                                <a class="m-0 text-primary"><?php echo $value['patient_fullname'];?></a>
+                                <a class="m-0 text-primary"><?php echo $value['name'];?></a>
                                 <p class="m-0"><?php echo $value['email']; ?></p>
                                 <p class="m-0"><?php echo $value['mobile']; ?></p>
                             </td>
