@@ -97,14 +97,14 @@
     </div>
 </section>
 
-<section class="appointment_sec">
+<section class="appointment_sec" id="contact-us">
     <div class="container-fluid">
         <div class="appointment_main">
             <div class="appointment_left">
                 <img src="public/images/screenshot.png" alt="Screenshot" title="Screenshot" />
             </div>
             <div class="appointment_right">
-                <h3>Book Your <br/> Appointment <br/> Online</h3>
+                <h3>Contact Us</h3>
             </div>
         </div>
     </div>

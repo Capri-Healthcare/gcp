@@ -197,7 +197,7 @@ class RegisterController extends Controller
         $result = $this->model_commons->getTemplateAndInfo('newwebuser');
 
         $link = '<a href="' . URL . '">Click Here</a>';
-        $contact_link = '<a href="' . URL . DIR_ROUTE . 'contact">Click Here</a>';
+        $contact_link = '<a href="' . URL . DIR_ROUTE . 'home#contact-us">Click Here</a>';
         $verify_link = '<a href="' . URL . DIR_ROUTE . 'register/verify&id=' . $data['email'] . '&code=' . $data['temp_hash'] . '">Verify</a>';
 
         $result['template']['message'] = str_replace('{firstname}', $data['firstname'], $result['template']['message']);

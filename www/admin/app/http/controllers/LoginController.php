@@ -299,7 +299,7 @@ class LoginController extends Controller
 		$result = $this->model_commons->getTemplateAndInfo('resetpassword');
 		
 		$link = '<a href="'.URL.'">Click Here</a>';
-		$contact_link = '<a href="'.URL.DIR_ROUTE.'contact">Click Here</a>';
+		$contact_link = '<a href="'.URL.DIR_ROUTE.'home#contact-us">Click Here</a>';
 		$result['template']['message'] = str_replace('{firstname}', $data['firstname'], $result['template']['message']);
 		$result['template']['message'] = str_replace('{email}', $data['email'], $result['template']['message']);
 		$result['template']['message'] = str_replace('{contact_link}', $contact_link, $result['template']['message']);
