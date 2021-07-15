@@ -479,6 +479,7 @@ select:focus{
 
 .navbar-nav li a.dropdown-item{
     margin: 0;
+    text-transform: none;
 }
 
 .navbar-nav li a.active{

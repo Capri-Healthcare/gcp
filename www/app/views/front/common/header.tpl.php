@@ -50,7 +50,7 @@
                                     <a class="nav-link dropdown-toggle  <?php echo ($selected_page == 'login') ? 'active' : ''; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<?php echo URL.DIR_ROUTE.'login'; ?>">Login</a>
 									
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="<?php echo URL_ADMIN; ?>">As an Optometrist/a>
+                                        <a class="dropdown-item" href="<?php echo URL_ADMIN; ?>">As an Optometrist</a>
                                         <a class="dropdown-item" href="<?php echo URL_ADMIN; ?>">As an Ophthalmologist</a>
                                         <a class="dropdown-item" href="<?php echo URL.DIR_ROUTE.'login'; ?>">As a Patient</a>
                                     </div>

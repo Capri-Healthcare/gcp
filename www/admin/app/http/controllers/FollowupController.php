@@ -139,19 +139,19 @@ class FollowupController extends Controller
 
         $this->load->model('followup');
         $patient = $this->model_followup->getFollowupByID($id);
+        $optician = $this->model_followup->getOpticianDetailsByFollowupID($id);
 
         $this->load->model('user');
         $optician = $this->model_user->getUser($patient['optician_id']);
 
         $link = '<a href="' . URL . 'admin">Optom Dashboard</a>';
-        $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{patient fname, lname}', $patient['firstname'] . " " . $patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{user_fname} {user_lname}', $optician['firstname'] . " " . $optician['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y', strtotime($patient['due_date'])), $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('Optom Dashboard', $link, $result['template']['message']);
 
         $data['email'] = $optician['email'];
-        $data['cc'] = $patient['email'];
+        $data['cc'] = '';//$patient['email'];
         $data['subject'] = str_replace('{patient_title}', $patient['title'], $result['template']['subject']);
         $data['subject'] = str_replace('{patient_fname, lname}', $patient['firstname'] . " " . $patient['lastname'], $data['subject']);
         $data['subject'] = str_replace('{nhs_number}', $patient['nhs_patient_number'], $data['subject']);
