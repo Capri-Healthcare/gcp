@@ -114,7 +114,8 @@ class FollowupController extends Controller
             $data['hospitalcode'] = $hospitalcode;
             $data['status'] = 'ACCEPTED';
             if ($this->model_followup->updateFollowupStatus($data)) {
-                $this->notificationToTheHospitalPatientDetails($id);
+                $this->notificationToPatientForFollowup($id);
+                //$this->notificationToTheHospitalPatientDetails($id);
                 //$this->notificationToGCPForPatientFollowup($id);
                 echo "Followup Successfully updated.";
                 exit();
@@ -252,6 +253,41 @@ class FollowupController extends Controller
         $result['template']['message'] = str_replace('{gcp_sec_fname}', $user_data['firstname'], $result['template']['message']);
         $result['template']['message'] = str_replace('gcp_lname', $optician['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y', strtotime($followup['due_date'])), $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+
+        $data['name'] = $result['template']['name'];
+        $data['email'] = $user_data['email'];
+        $data['subject'] = str_replace('{patient_fname, patient_lname}', $followup['firstname'] . " " . $followup['lastname'], $result['template']['subject']);
+        $data['message'] = $result['template']['message'];
+
+        return $this->controller_mail->sendMail($data);
+    }
+
+    public function notificationToPatientForFollowup($id, $template = 'notification_to_patient_for_follow_up')
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate($template);
+        $this->load->model('followup');
+        $followup = $this->model_followup->getFollowupByID($id);
+
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+        $this->load->model('user');
+
+        $this->load->model('patient');
+        $patient = $this->model_patient->getPatient($followup['patient_id']);
+
+        $optician = $this->model_user->getUser($followup['optician_id']);
+        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_GCP')]);
+
+        $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{patient_fname, lname},', $patient['lastname']. ' ', $patient['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y', strtotime($followup['due_date'])), $result['template']['message']);
+        $result['template']['message'] = str_replace('{hospital_name}', constant('HOSPITAL_LIST')[$patient['hospital_code']]['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{hospital_address}', constant('HOSPITAL_LIST')[$patient['hospital_code']]['address'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{hospital_number}', constant('HOSPITAL_LIST')[$patient['hospital_code']]['mobile'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{email}', constant('HOSPITAL_LIST')[$patient['hospital_code']]['email'], $result['template']['message']);        
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
 
         $data['name'] = $result['template']['name'];

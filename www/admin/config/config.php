@@ -63,17 +63,24 @@ define('GCP_REQUIRE', ['YES' => 'Yes', 'NO' => 'No', 'OFFER' => 'Offered']);
 define('HOSPITAL_LIST', [
     'SSPBH' => [
         "name" => 'Spire South Bank Hospital',
-        "mobile" => '01905350003',
-        "address" => '139 Bath Road WORCESTER WR5 3YB',
-        "email" => "hospital1@mailinator.com",
+        "mobile" => '0190 535 0003',
+        "address" => '139 Bath Road, WORCESTER WR5 3YB',
+        "email" => "hsc@spirehealthcare.com",
         "web" => "http://www.spirehealthcare.com/southbank"
     ],
     'BTDSH' => [
         "name" => 'BMI The Droitwich Spa Hospital',
-        "mobile" => '01905 793333',
-        "address" => 'St Andrews Road DROITWICH WR9 8DN',
-        "email" => "hospital2@mailinator.com",
+        "mobile" => '0190 579 3333',
+        "address" => 'St Andrews Road, DROITWICH WR9 8DN',
+        "email" => "info@bmihealthcare.co.uk",
         "web" => "http://www.bmihealthcare.co.uk"
+    ],
+    'SLAH' => [
+        "name" => 'Spire Little Aston Hospital',
+        "mobile" => '0121 353 2444',
+        "address" => 'Little Aston Hall Drive, Little Aston, SUTTON COLDFIELD B74 3UP',
+        "email" => "cservice-la@spirehealthcare.com",
+        "web" => "http://www.spirehealthcare.com/littleaston"
     ]
 ]);
 
