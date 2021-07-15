@@ -7,7 +7,7 @@ class Profile extends Model
 {
 	public function getProfile($id)
 	{
-		$query = $this->database->query("SELECT `user_id`, `user_name`, `firstname`, `lastname`, `email`, `mobile`, `bloodgroup`, `gender`, `dob` FROM `" . DB_PREFIX . "users` WHERE `user_id` = ? LIMIT 1", array($this->database->escape($id)));
+		$query = $this->database->query("SELECT `user_id`, `user_name`, `firstname`, `lastname`, `email`, `mobile`, `bloodgroup`, `gender`, `dob`, `address` FROM `" . DB_PREFIX . "users` WHERE `user_id` = ? LIMIT 1", array($this->database->escape($id)));
 		
 		if ($query->num_rows > 0) {
 			return $query->row;
@@ -18,7 +18,9 @@ class Profile extends Model
 
 	public function updateProfile($data)
 	{
-		$query = $this->database->query("UPDATE `" . DB_PREFIX . "users` SET `user_name` = ?, `firstname` = ?, `lastname` = ?, `mobile` = ? WHERE `user_id` = ? AND `email` = ?", array($this->database->escape($data['username']), $this->database->escape(ucfirst($data['firstname'])), $this->database->escape(ucfirst($data['lastname'])), $this->database->escape($data['mobile']), (int)$data['user_id'], $this->database->escape($data['email'])));
+		
+		$query = $this->database->query("UPDATE `" . DB_PREFIX . "users` SET `user_name` = ?, `firstname` = ?, `lastname` = ?, `mobile` = ?, `address` = ? WHERE `user_id` = ? AND `email` = ?", array($this->database->escape($data['username']), $this->database->escape(ucfirst($data['firstname'])), $this->database->escape(ucfirst($data['lastname'])), $this->database->escape($data['mobile']), $data['address'], (int)$data['user_id'], $this->database->escape($data['email'])));
+		//echo "<pre>"; print_r($data);exit;
 		if ($this->database->error()) {
 			return $this->database->error();
 		} else {

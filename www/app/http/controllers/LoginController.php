@@ -143,8 +143,13 @@ class LoginController extends Controller
                         if (!$this->model_login->isPatientProfileUpToDate($email)) {
                             $this->url->Redirect('user/profile');
                         } else {
-                            if (isset($this->session->data['refferal'])) {
-                                $this->url->abs_redirect($this->session->data['refferal']);
+                            if (isset($this->session->data['refferal'])) { 
+                                if (!$this->model_login->isUserProfileUpToDate($email)) {
+                                    $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Please complete you profile to use this portal');
+                                    $this->url->Redirect('profile');
+                                } else {
+                                    $this->url->abs_redirect($this->session->data['refferal']);
+                                }
                             } else {
                                 $this->url->Redirect('user/appointments');
                             }

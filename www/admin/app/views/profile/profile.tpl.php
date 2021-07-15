@@ -27,7 +27,7 @@
 					<input type="hidden" value="<?php echo $result['user_id']; ?>" name="id" >
 					<div class="form-group">
 						<label>User Name <span class="form-required">*</span></label>
-						<input type="text" class="form-control" name="username" value="<?php echo $result['user_name'];?>" placeholder="User Name" required>
+						<input type="text" class="form-control" name="username" value="<?php echo $result['user_name'];?>" placeholder="User Name" required readonly>
 					</div>
 					<div class="row content-input">
 						<div class="col-sm-6">
@@ -52,11 +52,44 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label><text>*</text>Mobile <span class="form-required">*</span></label>
+								<label>Mobile <span class="form-required">*</span></label>
 								<input type="number" class="form-control" name="mobile" value="<?php echo $result['mobile'];?>"  pattern=".{6,}" placeholder="Mobile">
 							</div>
 						</div>
 					</div>
+					<div class="row content-input">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Address1 <span class="form-required">*</span></label>
+								<input type="text" name="address[address1]" class="form-control" value="<?php echo $result['address']['address1']; ?>" placeholder="Enter Address Line 1 . . .">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Address2 <span class="form-required">*</span></label>
+								<input type="text" name="address[address2]" class="form-control" value="<?php echo $result['address']['address2']; ?>" placeholder="Enter Address Line 2 . . .">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>City <span class="form-required">*</span></label>
+								<input type="text" name="address[city]" class="form-control" value="<?php echo $result['address']['city']; ?>" placeholder="Enter City . . .">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Country <span class="form-required">*</span></label>
+								<input type="text" name="address[country]" class="form-control" value="<?php echo $result['address']['country']; ?>" placeholder="Enter Country . . .">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Postal Code <span class="form-required">*</span></label>
+								<input type="text" name="address[postal]" class="form-control" value="<?php echo $result['address']['postal']; ?>" placeholder="Enter Postal code . . .">
+							</div>
+						</div>
+					</div>
+					
 				</div>
 				<div class="panel-footer text-center">
 					<button type="submit" name="submit" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Save</button>

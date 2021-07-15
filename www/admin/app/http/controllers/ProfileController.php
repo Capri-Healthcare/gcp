@@ -12,6 +12,8 @@ class ProfileController extends Controller
 
 		$this->load->model('profile');
 		$data['result'] = $this->model_profile->getProfile($this->session->data['user_id']);
+		$data['result']['address'] = json_decode($data['result']['address'], true);
+
 		/* Set confirmation message if page submitted before */
 		if (isset($this->session->data['message'])) {
 			$data['message'] = $this->session->data['message'];
@@ -50,7 +52,8 @@ class ProfileController extends Controller
 		if ($this->controller_common->validateToken($this->url->post('_token'))){
 			$this->url->redirect('profile');
 		}
-
+		
+		$data['address'] = json_encode($data['address'], JSON_UNESCAPED_SLASHES);
 		$this->update($data);
 	}
 
@@ -156,6 +159,31 @@ class ProfileController extends Controller
 		if ($this->controller_common->validatePhoneNumber($data['mobile']) ) {
 			$error_flag = true;
 			$error['mobile'] = 'Mobile Number';
+		}
+
+		if ($this->controller_common->validateText($data['address']['address1'])) {
+			$error_flag = true;
+			$error['address1'] = 'Address 1';
+		}
+
+		if ($this->controller_common->validateText($data['address']['address2'])) {
+			$error_flag = true;
+			$error['address2'] = 'address 2';
+		}
+
+		if ($this->controller_common->validateText($data['address']['city'])) {
+			$error_flag = true;
+			$error['city'] = 'City';
+		}
+
+		if ($this->controller_common->validateText($data['address']['country'])) {
+			$error_flag = true;
+			$error['country'] = 'Country';
+		}
+
+		if ($this->controller_common->validateText($data['address']['postal'])) {
+			$error_flag = true;
+			$error['postal'] = 'Postal code';
 		}
 
 		if ($error_flag) {

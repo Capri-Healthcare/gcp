@@ -171,4 +171,14 @@ class User extends Model
 			return false;
 		}
 	}
+
+	public function isUserProfileUpToDate($email){
+		
+		$query = $this->database->query("SELECT `firstname`, `lastname`, `email`, `password`, `status` FROM `" . DB_PREFIX . "users` WHERE `email` = ? AND firstname != '' AND lastname != '' AND email != '' AND mobile != '' AND address != '' LIMIT 1", array($this->database->escape($email)));
+		if ($query->num_rows > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

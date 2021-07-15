@@ -193,6 +193,7 @@ class DashboardController extends Controller
 
 		$data['common'] = $common;
 		$this->load->model('dashboard');
+		$this->load->model('user');
 		$data['notices'] = $this->model_dashboard->getNotices();
 		
 		$data['page_title'] = 'Dashboard';
@@ -209,7 +210,13 @@ class DashboardController extends Controller
             $this->url->redirect('patients');
         }
         if($common['user']['role'] == 'Optometrist'){
-            $this->url->redirect('optician-referral');
+			if (!$this->model_user->isUserProfileUpToDate($common['user']['email'])) {
+				$this->session->data['message'] = array('alert' => 'warning', 'value' => 'Please complete you profile to use this portal');
+				$this->url->Redirect('profile');
+			} else {
+				$this->url->redirect('optician-referral');
+			}
+            
         }
 	}
 
