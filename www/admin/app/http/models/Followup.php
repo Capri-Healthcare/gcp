@@ -99,7 +99,7 @@ class Followup extends Model
 
     public function getOpticianDetailsByFollowupID($id)
     {
-        $query = $this->database->query("Select f.*, u.email, u.firstname, u.lastname, u.address, u.mobile, From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN `" . DB_PREFIX . "users` AS u ON f.optician_id = u.id WHERE f.id = " . $id);
+        $query = $this->database->query("Select f.*, u.email, u.firstname, u.lastname, u.address, u.mobile From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN `" . DB_PREFIX . "users` AS u ON f.optician_id = u.user_id WHERE f.id = " . $id);
 
         if ($query->num_rows > 0) {
             return $query->row;
