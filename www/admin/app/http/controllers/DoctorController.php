@@ -140,7 +140,7 @@ class DoctorController extends Controller
 		* Return to info view 
 		**/
 		$data = $this->url->post;
-		print_r($data);exit;
+		//print_r($data);exit;
 		$this->load->controller('common');
 		
 		$this->load->model('commons');
