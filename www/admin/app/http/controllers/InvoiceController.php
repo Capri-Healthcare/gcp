@@ -142,6 +142,7 @@ class InvoiceController extends Controller
             $data['result']['invoicedate'] = NULL;
             $data['result']['currency'] = NULL;
             $data['result']['method'] = NULL;
+            $data['result']['treatmentdate'] =  $data['result']['date'];
             $data['result']['status'] = NULL;
             $data['result']['inv_status'] = NULL;
             $data['result']['items'] = NULL;
@@ -328,6 +329,7 @@ class InvoiceController extends Controller
         $data['invoice']['item'] = json_encode($data['invoice']['item']);
         $data['invoice']['duedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['duedate'])->format('Y-m-d');
         $data['invoice']['invoicedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['invoicedate'])->format('Y-m-d');
+        $data['invoice']['treatmentdate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['treatmentdate'])->format('Y-m-d');
         $data['invoice']['datetime'] = date('Y-m-d H:i:s');
         $data['invoice']['tc'] = ''; // Set TC blank
         $this->load->model('invoice');
@@ -408,6 +410,7 @@ class InvoiceController extends Controller
         $result = $this->model_invoice->addInvoicePayment($data['payment']);
         $this->model_invoice->invoiceTotal($data['payment']);
 
+        $this->paymentConfirmationMail($data['payment']['invoice'],$result);
         $this->session->data['message'] = array('alert' => 'success', 'value' => 'Payment added successfully');
         $this->url->redirect('invoice/view&id=' . $data['payment']['invoice']);
     }
@@ -492,6 +495,37 @@ class InvoiceController extends Controller
         return $this->controller_mail->sendMail($data);
     }
 
+    // Payment Confirmation Mail
+
+    private function paymentConfirmationMail($id,$payments_id)
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate('paymentconfirmation');
+        if (empty($result['template']) || $result['template']['status'] == '0') {
+            return false;
+        }
+
+        $invoice = $this->model_invoice->getInvoiceView($id);
+        $payments = $this->model_invoice->getPaymentsByID($payments_id);
+
+        $data['id'] = $result['common']['invoice_prefix'] . str_pad($invoice['id'], 4, '0', STR_PAD_LEFT);
+        $invoice['duedate'] = date_format(date_create($invoice['duedate']), $result['common']['date_format']);
+        $result['template']['message'] = str_replace('{name}', $invoice['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{invoice_id}', $data['id'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{txn_id}', $payments['txn_id'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{paid_amount}', $result['common']['currency_abbr'] . $invoice['paid'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{due_amount}', $result['common']['currency_abbr'] . $invoice['due'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{due_date}', $invoice['duedate'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{paid_date}', date_format(date_create($payments['payment_date']), $result['common']['date_format']), $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+
+        $data['name'] = $invoice['name'];
+        $data['email'] = $invoice['email'];
+        $data['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
+        $data['message'] = $result['template']['message'];
+
+        return $this->controller_mail->sendMail($data);
+    }
     /**
      * Validate user field from server side
      **/

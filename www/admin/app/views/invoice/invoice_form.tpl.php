@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label class="col-form-label">Doctor</label>
                         <div class="input-group">
@@ -112,16 +112,29 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
+                        <label class="col-form-label">Treatment Date</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-calendar"></i></span>
+                            </div>
+                            <input type="text" name="invoice[treatmentdate]" class="form-control date"
+                                   value="<?php echo $result['treatmentdate'] == null ?'':date_format(date_create($result['treatmentdate']), $common['info']['date_format']); ?>"
+                                   placeholder="Treatment Date" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
                         <label class="col-form-label">Due Date <span class="form-required">*</span></label>
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i class="ti-calendar"></i></span>
                             </div>
                             <input type="text" name="invoice[duedate]" class="form-control due_date"
-                                   value="<?php echo date('d-m-Y', strtotime("+5 weeks", strtotime(date('Y-m-d')))) ?>"
+                                   value="<?php echo date('d-m-Y', strtotime("+4 days", strtotime(date('Y-m-d')))) ?>"
                                    placeholder="Due Date" min="<?php echo date('Y-m-d')?>" required>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-form-label">Payment Method <span class="form-required">*</span></label>

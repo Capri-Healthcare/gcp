@@ -25,9 +25,9 @@ class Appointment extends Model
     public function getAppointment($id, $doctor = NULL)
     {
         if ($doctor == NULL) {
-            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email WHERE a.id = '" . (int)$id . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email WHERE a.id = '" . (int)$id . "' LIMIT 1");
         } else {
-            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
         }
 
         if ($query->num_rows > 0) {
@@ -519,11 +519,11 @@ class Appointment extends Model
 
         $appointment = $this->getAppointment($appointment_id);
         $appointment['address'] = json_decode($appointment['address'], true);
-        
+
         $doctor_data = $this->getDoctorData($appointment['doctor_id']);
         $about_doctor = json_decode($doctor_data['about'], true);
-        $qualification = $about_doctor['degree'] . ', ' . $about_doctor['awards'];
-        $position_specility = $about_doctor['position'] . ', ' . $about_doctor['specility'];
+        $qualification = $about_doctor['degree'] . ',' . $about_doctor['awards'];
+        $position_specility = $about_doctor['position'] . ',' . $about_doctor['specility'];
 
         $prescription = $this->model_appointment->getPrescription($appointment_id);
         $optician_data = $this->getOpticianDetails($appointment['optician_id']);
@@ -630,9 +630,14 @@ class Appointment extends Model
         $about_doctor = json_decode($doctor_data['about'], true);
 
         //echo "<pre>";print_r($doctor_data);exit;
-        $qualification = $about_doctor['degree'] . ', ' . $about_doctor['awards'];
-        $position_specility = $about_doctor['position'] . ', ' . $about_doctor['specility'];
-
+        $qualification = $about_doctor['degree'];
+        $position_specility = null;
+        if($about_doctor['position']){
+            $position_specility .= $about_doctor['position'];
+        }
+        if($about_doctor['specility']){
+            $position_specility .=  $about_doctor['specility'];
+        }
         $this->load->model('commons');
         $common = $this->model_commons->getCommonData($this->session->data['user_id']);
 
@@ -754,8 +759,14 @@ class Appointment extends Model
         $prescription = $this->model_appointment->getPrescription($appointment_id);
 
         $about_doctor = json_decode($doctor_data['about'], true);
-        $qualification = $about_doctor['degree'] . ', ' . $about_doctor['awards'];
-        $position_specility = $about_doctor['position'] . ', ' . $about_doctor['specility'];
+        $qualification = $about_doctor['degree'];
+        $position_specility = null;
+        if($about_doctor['position']){
+            $position_specility .= $about_doctor['position'];
+        }
+        if($about_doctor['specility']){
+            $position_specility .=  $about_doctor['specility'];
+        }
 
         if (!empty($prescription)) {
             $prescription['prescription'] = json_decode($prescription['prescription'], true);
@@ -824,7 +835,7 @@ class Appointment extends Model
         }
         $body .= "<br>";
 
-        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to {GP: Name} so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
+        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to ".$appointment['gp_name']." ".$appointment['gp_address'].". so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
 
         $body .= "<br><br>";
 

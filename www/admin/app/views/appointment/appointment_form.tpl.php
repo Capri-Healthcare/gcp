@@ -306,25 +306,17 @@
                                                     <select name="prescription[medicine][<?php echo $key; ?>][dose]"
                                                             class="form-control" required>
                                                         <option value="">Select-Frequency</option>
-                                                        <option value="1-0-0" <?php if ($value['dose'] == '1-0-0') {
+                                                        <option value="once a day" <?php if ($value['dose'] == 'once a day') {
                                                             echo "selected";
-                                                        } ?> >1-0-0
+                                                        } ?> >Once a day
                                                         </option>
-                                                        <option value="1-0-1" <?php if ($value['dose'] == '1-0-1') {
+                                                        <option value="twice a day" <?php if ($value['dose'] == 'twice a day') {
                                                             echo "selected";
-                                                        } ?> >1-0-1
+                                                        } ?> >Twice a day
                                                         </option>
-                                                        <option value="1-1-1" <?php if ($value['dose'] == '1-1-1') {
+                                                        <option value="three times a day" <?php if ($value['dose'] == 'three times a day') {
                                                             echo "selected";
-                                                        } ?> >1-1-1
-                                                        </option>
-                                                        <option value="0-0-1" <?php if ($value['dose'] == '0-0-1') {
-                                                            echo "selected";
-                                                        } ?> >0-0-1
-                                                        </option>
-                                                        <option value="0-1-0" <?php if ($value['dose'] == '0-1-0') {
-                                                            echo "selected";
-                                                        } ?> >0-1-0
+                                                        } ?> >Three times a day
                                                         </option>
                                                     </select>
                                                 </td>
@@ -443,11 +435,9 @@
                                             <td>
                                                 <select name="prescription[medicine][0][dose]" class="form-control" required>
                                                     <option value="">Select-Frequency</option>
-                                                    <option value="1-0-0">1-0-0</option>
-                                                    <option value="1-0-1">1-0-1</option>
-                                                    <option value="1-1-1">1-1-1</option>
-                                                    <option value="0-0-1">0-0-1</option>
-                                                    <option value="0-1-0">0-1-0</option>
+                                                    <option value="once a day">Once a day</option>
+                                                    <option value="twice a day">Twice a day</option>
+                                                    <option value="three times a day">Three times a day</option>
                                                 </select>
                                             </td>
                                             <!--td>
@@ -567,7 +557,9 @@
 
                                 $(".medicine-table .medicine-row:last").after('<tr class="medicine-row">' +
                                     '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name" required></td>' +
-                                    '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control" required><option value="">Select-Frequency</option><option value="1-0-0">1-0-0</option><option value="1-0-1">1-0-1</option><option value="1-1-1">1-1-1</option><option value="0-0-1">0-0-1</option><option value="0-1-0">0-1-0</option></select></td>' +
+                                    '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control" required><option value="">Select-Frequency</option> <option value="once a day">Once a day</option>\n' +
+                                    '                                                    <option value="twice a day">Twice a day</option>\n' +
+                                    '                                                    <option value="three times a day">Three times a day</option></select></td>' +
                                     '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
                                     '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +
                                     '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +

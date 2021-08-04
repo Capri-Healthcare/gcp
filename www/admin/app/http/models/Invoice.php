@@ -91,7 +91,7 @@ class Invoice extends Model
 
     public function getAppointmentData($id)
     {
-        $query = $this->database->query("SELECT a.id AS appointment_id, a.name, a.email, a.mobile, a.doctor_id, CONCAT(d.firstname, ' ', d.lastname) AS doctor, pt.id AS patient_id FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = ? LIMIT 1", array((int)$id));
+        $query = $this->database->query("SELECT a.id AS appointment_id,a.date, a.name, a.email, a.mobile, a.doctor_id, CONCAT(d.firstname, ' ', d.lastname) AS doctor, pt.id AS patient_id FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = ? LIMIT 1", array((int)$id));
 
         if ($query->num_rows > 0) {
             return $query->row;
@@ -102,7 +102,7 @@ class Invoice extends Model
 
     public function updateInvoice($data)
     {
-        $query = $this->database->query("UPDATE `" . DB_PREFIX . "invoice` SET `name` = ?, `email` = ?, `mobile` = ?, `duedate` = ?, `invoicedate` = ?, `method` = ?, `status` = ?, `inv_status` = ?, `items` = ?, `subtotal` = ?, `tax` = ?, `discounttype` = ?, `discount` = ?, `discount_value` = ?, `amount` = ?, `paid` = ?, `due` = ?, `note` = ?, `tc` = ?, `doctor` = ?, `doctor_id` = ?, `patient_id` = ?, `appointment_id` = ? WHERE `id` = ?", array($this->database->escape($data['name']), $this->database->escape($data['email']), $this->database->escape($data['mobile']), $data['duedate'], $data['invoicedate'], (int)$data['method'], $data['status'], (int)$data['inv_status'], $data['item'], $data['subtotal'], $data['tax'], $data['discounttype'], $data['discount'], $data['discount_value'], $data['amount'], $data['paid'], $data['due'], $data['note'], $data['tc'], $data['doctor'], (int)$data['doctor_id'], (int)$data['patient_id'], (int)$data['appointment_id'], (int)$data['id']));
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "invoice` SET `name` = ?, `email` = ?, `mobile` = ?, `duedate` = ?, `invoicedate` = ?,`treatmentdate` = ?, `method` = ?, `status` = ?, `inv_status` = ?, `items` = ?, `subtotal` = ?, `tax` = ?, `discounttype` = ?, `discount` = ?, `discount_value` = ?, `amount` = ?, `paid` = ?, `due` = ?, `note` = ?, `tc` = ?, `doctor` = ?, `doctor_id` = ?, `patient_id` = ?, `appointment_id` = ? WHERE `id` = ?", array($this->database->escape($data['name']), $this->database->escape($data['email']), $this->database->escape($data['mobile']), $data['duedate'], $data['invoicedate'], $data['treatmentdate'], (int)$data['method'], $data['status'], (int)$data['inv_status'], $data['item'], $data['subtotal'], $data['tax'], $data['discounttype'], $data['discount'], $data['discount_value'], $data['amount'], $data['paid'], $data['due'], $data['note'], $data['tc'], $data['doctor'], (int)$data['doctor_id'], (int)$data['patient_id'], (int)$data['appointment_id'], (int)$data['id']));
 
         if ($query->num_rows > 0) {
             return true;
@@ -118,7 +118,7 @@ class Invoice extends Model
 
     public function createInvoice($data)
     {
-        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "invoice` (`name`, `email`, `mobile`, `duedate`, `invoicedate`, `method`, `status`, `inv_status`, `items`, `subtotal`, `tax`, `discounttype`, `discount`, `discount_value`, `amount`, `paid`, `due`, `note`, `tc`, `doctor`, `doctor_id`, `patient_id`, `appointment_id`, `user_id`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array($this->database->escape($data['name']), $this->database->escape($data['email']), $this->database->escape($data['mobile']), $data['duedate'], $data['invoicedate'], (int)$data['method'], $data['status'], (int)$data['inv_status'], $data['item'], $data['subtotal'], $data['tax'], $data['discounttype'], $data['discount'], $data['discount_value'], $data['amount'], $data['paid'], $data['due'], $data['note'], $data['tc'], $data['doctor'], (int)$data['doctor_id'], (int)$data['patient_id'], (int)$data['appointment_id'], (int)$data['user_id'], $data['datetime']));
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "invoice` (`name`, `email`, `mobile`, `duedate`, `invoicedate`,`treatmentdate`, `method`, `status`, `inv_status`, `items`, `subtotal`, `tax`, `discounttype`, `discount`, `discount_value`, `amount`, `paid`, `due`, `note`, `tc`, `doctor`, `doctor_id`, `patient_id`, `appointment_id`, `user_id`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)", array($this->database->escape($data['name']), $this->database->escape($data['email']), $this->database->escape($data['mobile']), $data['duedate'], $data['invoicedate'],$data['treatmentdate'], (int)$data['method'], $data['status'], (int)$data['inv_status'], $data['item'], $data['subtotal'], $data['tax'], $data['discounttype'], $data['discount'], $data['discount_value'], $data['amount'], $data['paid'], $data['due'], $data['note'], $data['tc'], $data['doctor'], (int)$data['doctor_id'], (int)$data['patient_id'], (int)$data['appointment_id'], (int)$data['user_id'], $data['datetime']));
 
         if ($query->num_rows > 0) {
             return $this->database->last_id();
@@ -207,5 +207,11 @@ class Invoice extends Model
         } else {
             return false;
         }
+    }
+
+    public function getPaymentsByID($id)
+    {
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "payments` WHERE id = ?", array((int)$id));
+        return $query->row;
     }
 }

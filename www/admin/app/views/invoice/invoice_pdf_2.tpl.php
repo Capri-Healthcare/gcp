@@ -66,12 +66,20 @@
                     </td>
                     <td><?php echo date_format(date_create($result['invoicedate']), $result['info']['date_format']); ?></td>
                 </tr>
+                <?php if($result['treatmentdate'] != null) {?>
                 <tr>
                     <td>
-                        <strong>Invoice Address:</strong>
+                        <strong>Treatment Date:</strong>
                     </td>
-                    <td><?php echo $result['info']['address']['address1'].', '.$result['info']['address']['address2'].', '.$result['info']['address']['city'].', '.$result['info']['address']['country'].' - '.$result['info']['address']['postal']; ?></td>
+                    <td><?php echo date_format(date_create($result['treatmentdate']), $result['info']['date_format']); ?></td>
                 </tr>
+                <?php }?>
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <strong>Invoice Address:</strong>-->
+<!--                    </td>-->
+<!--                    <td>--><?php //echo $result['info']['address']['address1'].', '.$result['info']['address']['address2'].', '.$result['info']['address']['city'].', '.$result['info']['address']['country'].' - '.$result['info']['address']['postal']; ?><!--</td>-->
+<!--                </tr>-->
                 </tbody>
             </table>
         </td>
@@ -99,7 +107,8 @@
                         <strong>Address: </strong>
                     </td>
                     <td>
-                        <?php echo $result['address']['address1'].", ".$result['address']['address2'].", ".$result['address']['city'].", ".$result['address']['country']."-".$result['address']['postal']?>
+
+                        <?php echo ($result['address'] != null) ?$result['address']['address1'].", ".$result['address']['address2'].", ".$result['address']['city'].", ".$result['address']['country']."-".$result['address']['postal']:''?>
                     </td>
                 </tr>
                 </tbody>
@@ -138,7 +147,7 @@
                     </tr>
                 <?php } } ?>
                 <tr class="total">
-                    <td rowspan="4" colspan="2" class="blank">
+                    <td rowspan="5" colspan="2" class="blank">
                         <?php
                         if (in_array($result['common']['user']['role'], constant('USER_ROLE'))) {
                             if (isset($result['medical_insurers_name']) and !empty($result['medical_insurers_name'])) {
@@ -167,6 +176,10 @@
                 <tr class="total">
                     <td class="title">Paid</td>
                     <td class="value" align="right"><?php echo empty($result['paid']) ? $result['info']['currency_abbr'].$result['paid'].'0':$result['info']['currency_abbr'].$result['paid'] ?></td>
+                </tr>
+                <tr class="total">
+                    <td class="title">Due Amount</td>
+                    <td class="value" align="right"><?php echo $result['info']['currency_abbr'].$result['due']; ?></td>
                 </tr>
                 </tbody>
             </table>
