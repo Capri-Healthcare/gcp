@@ -522,8 +522,6 @@ class Appointment extends Model
 
         $doctor_data = $this->getDoctorData($appointment['doctor_id']);
         $about_doctor = json_decode($doctor_data['about'], true);
-        $qualification = $about_doctor['degree']."<br/>".$about_doctor['awards'];
-        $position_specility = $about_doctor['position']."<br/>".$about_doctor['specility'];
 
         $prescription = $this->model_appointment->getPrescription($appointment_id);
         $optician_data = $this->getOpticianDetails($appointment['optician_id']);
@@ -613,7 +611,11 @@ class Appointment extends Model
 
         $body .= "<br>";
 
-        $body .= $doctor_data['name'] . "<br>" . $qualification . "<br>" . $position_specility;
+        $body .= $doctor_data['name'];
+        $body .= (!empty($about_doctor['position']) AND !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
+        $body .= (!empty($about_doctor['degree']) AND !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
+        $body .= (!empty($about_doctor['specility']) AND !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
+        $body .= (!empty($about_doctor['awards']) AND !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
 
         $body .= "</div>";
 
@@ -754,8 +756,6 @@ class Appointment extends Model
         $prescription = $this->model_appointment->getPrescription($appointment_id);
 
         $about_doctor = json_decode($doctor_data['about'], true);
-        $qualification = $about_doctor['degree']."<br/>".$about_doctor['awards'];
-        $position_specility = $about_doctor['position']."<br/>".$about_doctor['specility'];
 
         if (!empty($prescription)) {
             $prescription['prescription'] = json_decode($prescription['prescription'], true);
@@ -832,7 +832,11 @@ class Appointment extends Model
 
         $body .= "<br>";
 
-        $body .= $doctor_data['name'] . "<br>" . $qualification . "<br>" . $position_specility;
+        $body .= $doctor_data['name'];
+        $body .= (!empty($about_doctor['position']) AND !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
+        $body .= (!empty($about_doctor['degree']) AND !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
+        $body .= (!empty($about_doctor['specility']) AND !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
+        $body .= (!empty($about_doctor['awards']) AND !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
 
         $body .= "</div>";
 
