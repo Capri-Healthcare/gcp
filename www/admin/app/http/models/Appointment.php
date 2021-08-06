@@ -632,7 +632,7 @@ class Appointment extends Model
         $about_doctor = json_decode($doctor_data['about'], true);
 
         $dr_qualification_position_specility = "";
-        $dr_qualification_position_specility .= (!empty($about_doctor['position']) AND !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
+        $dr_qualification_position_specility .= (!empty($about_doctor['position']) AND !is_null($about_doctor['position'])) ? ($about_doctor['position']) : "";
         $dr_qualification_position_specility .= (!empty($about_doctor['degree']) AND !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
         $dr_qualification_position_specility .= (!empty($about_doctor['specility']) AND !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
         $dr_qualification_position_specility .= (!empty($about_doctor['awards']) AND !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
