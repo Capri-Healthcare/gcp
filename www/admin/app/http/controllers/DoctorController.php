@@ -111,7 +111,8 @@ class DoctorController extends Controller
 		$data['result']['national'] = json_decode($data['result']['national'], true);
 		$data['result']['social'] = json_decode($data['result']['social'], true);
 		$data['result']['address'] = json_decode($data['result']['address'], true);
-		
+		$data['result']['user_id'] = $this->session->data['user_id'];
+
 		/* Set department in array */
 		$data['departments'] = $this->model_doctor->getDepartmentByName();
 

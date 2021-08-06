@@ -84,15 +84,15 @@
 								<td>
 									<select name="prescription[medicine][<?php echo $key; ?>][dose]" class="form-control" required>
                                         <option value="">Select-Frequency</option>
-                                        <option value="once a day" <?php if ($value['dose'] == 'once a day') {
+                                        <option value="Once a day" <?php if ($value['dose'] == 'Once a day') {
                                             echo "selected";
                                         } ?> >Once a day
                                         </option>
-                                        <option value="twice a day" <?php if ($value['dose'] == 'twice a day') {
+                                        <option value="Twice a day" <?php if ($value['dose'] == 'Twice a day') {
                                             echo "selected";
                                         } ?> >Twice a day
                                         </option>
-                                        <option value="three times a day" <?php if ($value['dose'] == 'three times a day') {
+                                        <option value="Three times a day" <?php if ($value['dose'] == 'Three times a day') {
                                             echo "selected";
                                         } ?> >Three times a day
                                         </option>
@@ -164,9 +164,9 @@
 								<td>
 									<select name="prescription[medicine][0][dose]" class="form-control" required>
                                         <option value="">Select-Frequency</option>
-                                        <option value="once a day">Once a day</option>
-                                        <option value="twice a day">Twice a day</option>
-                                        <option value="three times a day">Three times a day</option>
+                                        <option value="Once a day">Once a day</option>
+                                        <option value="Twice a day">Twice a day</option>
+                                        <option value="Three times a day">Three times a day</option>
 									</select>
 								</td>
 <!--								<td>-->
@@ -277,9 +277,9 @@
 		count = parseInt(count.split(']')[0]) + 1;
 		$(".medicine-row:last").after('<tr class="medicine-row">'+
             '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name" required></td>' +
-            '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control" required><option value="">Select-Frequency</option> <option value="once a day">Once a day</option>\n' +
-            '                                                    <option value="twice a day">Twice a day</option>\n' +
-            '                                                    <option value="three times a day">Three times a day</option></select></td>' +
+            '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control" required><option value="">Select-Frequency</option> <option value="Once a day">Once a day</option>\n' +
+            '                                                    <option value="Twice a day">Twice a day</option>\n' +
+            '                                                    <option value="Three times a day">Three times a day</option></select></td>' +
             '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
             '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +
             '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +

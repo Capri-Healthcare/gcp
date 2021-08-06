@@ -75,7 +75,8 @@
                                             <td class="text">Invoice Date</td>
                                             <td class="text w-min-130"><?php echo date_format(date_create($result['invoicedate']), $common['info']['date_format']); ?></td>
                                         </tr>
-                                        <?php if ($result['treatmentdate'] != null) { ?>
+                                        <?php if(!is_null($result['treatmentdate']) && $result['treatmentdate'] != '0000-00-00') {?>
+
                                             <tr>
                                                 <td class="text">Treatment Date</td>
                                                 <td class="text w-min-130"><?php echo date_format(date_create($result['treatmentdate']), $common['info']['date_format']); ?></td>
@@ -174,7 +175,7 @@
                             </tr>
                             <tr class="total">
                                 <td class="title">Paid</td>
-                                <td class="value"><?php echo $common['info']['currency_abbr'] . $result['paid']; ?></td>
+                                <td class="value"><?php echo empty($result['paid']) ? $common['info']['currency_abbr'].$result['paid'].'0':$common['info']['currency_abbr'].$result['paid'] ?></td>
                             </tr>
                             <tr class="total">
                                 <td class="title">Due Amount</td>

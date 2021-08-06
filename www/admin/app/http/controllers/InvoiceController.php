@@ -329,7 +329,9 @@ class InvoiceController extends Controller
         $data['invoice']['item'] = json_encode($data['invoice']['item']);
         $data['invoice']['duedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['duedate'])->format('Y-m-d');
         $data['invoice']['invoicedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['invoicedate'])->format('Y-m-d');
-        $data['invoice']['treatmentdate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['treatmentdate'])->format('Y-m-d');
+       if(!empty($data['invoice']['treatmentdate'])){
+           $data['invoice']['treatmentdate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['treatmentdate'])->format('Y-m-d');
+       }
         $data['invoice']['datetime'] = date('Y-m-d H:i:s');
         $data['invoice']['tc'] = ''; // Set TC blank
         $this->load->model('invoice');

@@ -522,8 +522,8 @@ class Appointment extends Model
 
         $doctor_data = $this->getDoctorData($appointment['doctor_id']);
         $about_doctor = json_decode($doctor_data['about'], true);
-        $qualification = $about_doctor['degree'] . ',' . $about_doctor['awards'];
-        $position_specility = $about_doctor['position'] . ',' . $about_doctor['specility'];
+        $qualification = $about_doctor['degree']."<br/>".$about_doctor['awards'];
+        $position_specility = $about_doctor['position']."<br/>".$about_doctor['specility'];
 
         $prescription = $this->model_appointment->getPrescription($appointment_id);
         $optician_data = $this->getOpticianDetails($appointment['optician_id']);
@@ -630,14 +630,9 @@ class Appointment extends Model
         $about_doctor = json_decode($doctor_data['about'], true);
 
         //echo "<pre>";print_r($doctor_data);exit;
-        $qualification = $about_doctor['degree'];
-        $position_specility = null;
-        if($about_doctor['position']){
-            $position_specility .= $about_doctor['position'];
-        }
-        if($about_doctor['specility']){
-            $position_specility .=  $about_doctor['specility'];
-        }
+        $qualification = $about_doctor['degree']."<br/>".$about_doctor['awards']."<br/>";
+        $position_specility = $about_doctor['position']."<br/>".$about_doctor['specility'];
+
         $this->load->model('commons');
         $common = $this->model_commons->getCommonData($this->session->data['user_id']);
 
@@ -651,7 +646,7 @@ class Appointment extends Model
                 "<td align=right>
 					<div style='text-align:right; color: #333;'>
 						<h4 style='font-size:18px; margin: 0 0 0;'><strong>" . $doctor_data['name'] . "</strong></h4>
-						<span style='font-size: 13px;'>" . $qualification . " </span><br/>
+						<span style='font-size: 13px;'>" . $qualification . " </span>
 						<span style='font-size: 13px;'>" . $position_specility . "</span>
 					</div>
 				    
@@ -731,7 +726,7 @@ class Appointment extends Model
 
         if ($action == "DOWNLOAD") {
             // Output the generated PDF to Browser
-            $dompdf->stream($filename, array("Attachment" => true));
+            $dompdf->stream($filename, array("Attachment" => false));
             exit;
             return true;
         } else {
@@ -759,14 +754,8 @@ class Appointment extends Model
         $prescription = $this->model_appointment->getPrescription($appointment_id);
 
         $about_doctor = json_decode($doctor_data['about'], true);
-        $qualification = $about_doctor['degree'];
-        $position_specility = null;
-        if($about_doctor['position']){
-            $position_specility .= $about_doctor['position'];
-        }
-        if($about_doctor['specility']){
-            $position_specility .=  $about_doctor['specility'];
-        }
+        $qualification = $about_doctor['degree']."<br/>".$about_doctor['awards'];
+        $position_specility = $about_doctor['position']."<br/>".$about_doctor['specility'];
 
         if (!empty($prescription)) {
             $prescription['prescription'] = json_decode($prescription['prescription'], true);

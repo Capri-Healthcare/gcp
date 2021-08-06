@@ -66,7 +66,7 @@
                     </td>
                     <td><?php echo date_format(date_create($result['invoicedate']), $result['info']['date_format']); ?></td>
                 </tr>
-                <?php if($result['treatmentdate'] != null) {?>
+                <?php if(!is_null($result['treatmentdate']) && $result['treatmentdate'] != '0000-00-00') {?>
                 <tr>
                     <td>
                         <strong>Treatment Date:</strong>
