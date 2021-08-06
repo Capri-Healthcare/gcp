@@ -823,8 +823,8 @@ class Appointment extends Model
 
         }
         $body .= "<br>";
-
-        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to ".$appointment['gp_name']." ".$appointment['gp_address'].". so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
+        $gp_name = (!empty($appointment['gp_name']) AND !is_null($appointment['gp_name'])) ? $appointment['gp_name'] : "Practice Manager";
+        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to ".$gp_name.", ".$appointment['gp_address'].". so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
 
         $body .= "<br><br>";
 
@@ -836,7 +836,7 @@ class Appointment extends Model
 
         $body .= "</div>";
 
-        //echo $pdf_body;exit;
+        //echo $body;exit;
         $filename = strtolower(str_replace(" ", "-", $appointment['name'])) . '-patient-letter.pdf';
         $this->generatePdfFile($appointment_id, $body, $filename, $action);
     }

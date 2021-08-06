@@ -618,14 +618,14 @@
             },
             select: function (event, ui) {
                 $('#gp_practice').val(ui.item.gp_practice_name);
-                $('#gp_address').val(ui.item.address);
+                $('#gp_address').val(ui.item.gp_address);
                 $('#gp_email').val(ui.item.gp_email);
                 $('#gp_name').val(ui.item.gp_name);
                 return false;
             }
         }).autocomplete("instance")._renderItem = function (ul, item) {
             return $("<li>")
-                .append('<div>' + item.gp_practice_name +'<br/>'+ item.gp_name +'<br/>'+ item.gp_email +'<br/>'+ item.address + '</div>')
+                .append('<div>' + item.gp_practice_name +'<br/>'+ item.gp_address + '</div>')
                 .appendTo(ul);
         };
 
