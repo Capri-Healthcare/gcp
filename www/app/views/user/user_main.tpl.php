@@ -44,9 +44,9 @@
 					<div class="col-md-6">
 						<h1 class="user-ttl"><?php echo $title; ?></h1>
 					</div>
-					<div class="col-md-6 text-right">
+					<!--div class="col-md-6 text-right">
 						<a href="<?php echo URL.DIR_ROUTE."makeanappointment"; ?>" class="btn btn-primary btn-pill pt-2 pb-2 mr-5 mt-3"><i class="far fa-calendar-plus mr-2"></i> Make An Appointment</a>
-					</div>
+					</div-->
 				</div>
 				<div class="user-container">
 					<div class="user-body"><?php echo $user_page; ?></div>

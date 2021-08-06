@@ -104,13 +104,13 @@
                         </li>
                     </ul><!-- End Menu Section -->
                     <div id="menu-bar" class="col-2 col-md-auto"><a><i class="fas fa-bars text-white"></i></a></div>
-                    <div class="col col-md-auto d-block d-sm-block d-md-block d-lg-block d-xl-block">
+                    <!--div class="col col-md-auto d-block d-sm-block d-md-block d-lg-block d-xl-block">
                         <?php if ( $whocan['appointment'] ) { ?>
                             <a href="<?php echo URL.DIR_ROUTE."makeanappointment"; ?>" class="btn btn-primary btn-pill pt-2 pb-2"><i class="far fa-calendar-plus mr-2"></i> Make An Appointment</a>
                         <?php } else { ?>
                             <a href="<?php echo URL.DIR_ROUTE."login"; ?>" class="btn btn-primary btn-pill pt-2 pb-2"><i class="far fa-calendar-plus mr-2"></i> Make An Appointment</a>
                         <?php } ?>
-                    </div>
+                    </div-->
                 </div>
             </div>
         </div>

@@ -152,13 +152,13 @@
 						<?php echo $menu; ?>
 						<li class="mobile-menu-close"><i class="fa fa-times"></i></li>
 					</ul>
-					<div class="col-md-auto d-none d-sm-none d-md-none d-lg-block d-xl-block mt-3 mb-3">
+					<!--div class="col-md-auto d-none d-sm-none d-md-none d-lg-block d-xl-block mt-3 mb-3">
 						<?php if ( $whocan['appointment'] ) { ?>
 							<a href="<?php echo URL.DIR_ROUTE."makeanappointment"; ?>" class="btn btn-primary btn-pill"><span class="far fa-calendar-plus mr-2"></span> Make An Appointment</a>
 						<?php } else { ?>
 							<a href="<?php echo URL.DIR_ROUTE."login"; ?>" class="btn btn-primary btn-pill"><span class="far fa-calendar-plus mr-2"></span> Make An Appointment</a>
 						<?php } ?>
-					</div>
+					</div-->
 				</div>
 			</div>
 		</div><!-- End Header Menu Section -->
