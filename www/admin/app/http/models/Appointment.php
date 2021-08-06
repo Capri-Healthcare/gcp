@@ -631,9 +631,11 @@ class Appointment extends Model
         $doctor_address = $this->getDoctorAddress($appointment['doctor_id']);
         $about_doctor = json_decode($doctor_data['about'], true);
 
-        //echo "<pre>";print_r($doctor_data);exit;
-        $qualification = $about_doctor['degree']."<br/>".$about_doctor['awards']."<br/>";
-        $position_specility = $about_doctor['position']."<br/>".$about_doctor['specility'];
+        $dr_qualification_position_specility = "";
+        $dr_qualification_position_specility .= (!empty($about_doctor['position']) AND !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
+        $dr_qualification_position_specility .= (!empty($about_doctor['degree']) AND !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
+        $dr_qualification_position_specility .= (!empty($about_doctor['specility']) AND !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
+        $dr_qualification_position_specility .= (!empty($about_doctor['awards']) AND !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
 
         $this->load->model('commons');
         $common = $this->model_commons->getCommonData($this->session->data['user_id']);
@@ -648,8 +650,7 @@ class Appointment extends Model
                 "<td align=right>
 					<div style='text-align:right; color: #333;'>
 						<h4 style='font-size:18px; margin: 0 0 0;'><strong>" . $doctor_data['name'] . "</strong></h4>
-						<span style='font-size: 13px;'>" . $qualification . " </span>
-						<span style='font-size: 13px;'>" . $position_specility . "</span>
+						<span style='font-size: 13px;'>" . $dr_qualification_position_specility . "</span>
 					</div>
 				    
 				</td>" .
