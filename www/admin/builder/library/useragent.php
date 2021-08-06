@@ -30,6 +30,7 @@ class Useragent {
 					$this->role = $this->user['role_id'];
 					$this->permission = json_decode($this->user['permission'], true);
 					unset($this->user['permission']);
+					$this->permission = array_map("htmlspecialchars_decode", $this->permission);
 				} else {
 					$this->logout();
 				}
@@ -92,6 +93,8 @@ class Useragent {
 		);
 
 		$this->permission = array_merge($this->permission, $extension);
+		//echo $data; echo "<pre>";print_r($this->permission);echo "</pre>";exit;
+		if($data == 'emailtemplate') $data = "emailtemplate&for=newuser";
 		if (in_array($data, $this->permission) || $this->role == "1") {
 			return true;
 		} else {

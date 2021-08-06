@@ -706,7 +706,7 @@ class UserController extends Controller
 				'sendbulk/email' => 'Send Bulk Email',
 				'emaillogs' => 'Email Log',
 				'emailsetting' => 'Email Settings',
-				'emailtemplate' => 'Email Template'),
+				'emailtemplate&for=newuser' => 'Email Template'),
 			'Media' => array('get/media' => 'Media on Modal',
 				'media/upload' => 'Media Upload',
 				'media/delete' => 'Media Delete',

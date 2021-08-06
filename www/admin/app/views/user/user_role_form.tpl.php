@@ -48,7 +48,7 @@
 									<td>
 										<?php if (!empty($sub_value)) { ?>
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" name="role[]" id="<?php echo $sub_key; ?>" value="<?php echo $sub_key; ?>" <?php if($role_selected) { foreach ($role_selected as $key => $value) { if ($value == $sub_key) { echo "checked"; } } } ?> >
+												<input type="checkbox" class="custom-control-input" name="role[]" id="<?php echo $sub_key; ?>" value="<?php echo $sub_key; ?>" <?php if($role_selected) { foreach ($role_selected as $key => $value) { if (htmlspecialchars_decode($value) == $sub_key) { echo "checked"; } } } ?> >
 												<label class="custom-control-label" for="<?php echo $sub_key; ?>"><?php echo $sub_value; ?></label>
 											</div>
 										<?php } ?>
