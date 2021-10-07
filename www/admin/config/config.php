@@ -181,6 +181,7 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'UNSTABLE_BOOK_FOR_SURGERY' => 'Unstable - Book for Surgery',
     ],
     'FOLLOW_UP_OR_NEXT_APPOINTMENT' => [
+        '0' => ['name' => 'No follow up required','intervalrime' => 'days','value' =>'0'],
         '1' => ['name' => '1 days after change in treatment to see the effect','intervalrime' => 'days','value' =>'1'],
         '2' => ['name' => '2 months after change in treatment to see the effect','intervalrime' => 'months','value' =>'2'],
         '3' => ['name' => '2 months after laser appointment','intervalrime' => 'months','value' =>'2'],

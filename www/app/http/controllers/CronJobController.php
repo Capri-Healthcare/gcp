@@ -96,7 +96,7 @@ class CronJobController extends Controller
                         $data['reminder_count'] = $followup['reminder_count'] + 1;
                         $this->model_commons->updateFollowupStatus($data);
                       
-                        //$this->followupMail($followup['id'], 'notification_to_optician_for_follow_up');
+                        $this->followupMail($followup['id'], 'notification_to_optician_for_follow_up');
                     }
                 } else {
                     if ($followup['due_date'] <= $afterFourWeekDate) {
@@ -105,7 +105,7 @@ class CronJobController extends Controller
                         $data['reminder_count'] = $followup['reminder_count'] + 1;
                         $this->model_commons->updateFollowupStatus($data);
 
-                        //$this->followupGCPNoMail($followup['id'], 'notification_to_optician_for_follow_up');
+                        $this->followupGCPNoMail($followup['id'], 'notification_to_optician_for_follow_up');
                     }
                 }
             }

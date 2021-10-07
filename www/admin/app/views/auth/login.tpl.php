@@ -59,6 +59,10 @@
 					<div class="lgn-submit text-center">
 						<button type="submit" id="lgn-submit" class="btn btn-primary" name="login">Login</button>
 					</div>
+					<div class="login-link text-center pt-3">
+						<span class="paragraph-small">Don't have an account?</span>
+						<a href="<?php echo URL.DIR_ROUTE.'register'; ?>" class="text-primary">Registration</a>
+					</div>
 				</form>
 			</div>
 		</div>

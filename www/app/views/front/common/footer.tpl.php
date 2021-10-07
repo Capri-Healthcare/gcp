@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container">
-        <div class="footer_logo">
+        <!--div class="footer_logo">
             <a href="<?php echo URL; ?>">
                 <img src="public/images/footer_logo.png" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" />
             </a>
@@ -21,7 +21,7 @@
                     <img src="public/images/linked-in.png" alt="linked-in" title="linked-in" />
                 </a>
             </li>
-        </ul>
+        </ul-->
     </div>
 </footer>
 

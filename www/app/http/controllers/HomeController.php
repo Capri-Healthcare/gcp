@@ -6,6 +6,10 @@
 class HomeController extends Controller
 {
 	public function index() {
+
+		//redirect on login page
+		$this->url->redirect('login');
+
 		//$this->getPage();
 		$data['header'] = $this->load->view('front/common/header');
 		$data['footer'] = $this->load->view('front/common/footer');

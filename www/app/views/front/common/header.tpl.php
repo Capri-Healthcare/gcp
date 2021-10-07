@@ -31,9 +31,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="logo">
-                        <a href="<?php echo URL; ?>">
+                        <!--a href="<?php echo URL; ?>">
                             <img src="public/images/gcp-logo.png" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" />
-                        </a>
+                        </a-->
                     </div>
                 </div>
                 <div class="col-lg-6 logo_right">
@@ -43,9 +43,9 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                                <li class="nav-item">
+                                <!--li class="nav-item">
                                     <a class="nav-link" href="<?php echo URL; ?>">Home</a>
-                                </li>
+                                </li-->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle  <?php echo ($selected_page == 'login') ? 'active' : ''; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<?php echo URL.DIR_ROUTE.'login'; ?>">Login</a>
 									
