@@ -29,7 +29,7 @@
 <table border="0" style="padding:10px !important;">
     <tr>
         <td>
-            <table width="100%" style="color:#999">
+            <table width="100%" style="color:#000">
                 <tbody>
                 <tr>
                     <td width="60%" style="vertical-align:top">
