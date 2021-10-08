@@ -7,12 +7,12 @@ use Intervention\Image\ImageManagerStatic as Image;
  */
 class Filesystem
 {
-	public function moveUpload($file, $data, $filetype = array('jpg', 'jpeg', 'gif', 'png', 'pdf'))
+	public function moveUpload($file, $data, $filetype = array('jpg', 'jpeg', 'gif', 'png', 'pdf', 'svg'))
 	{
 		$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 		if (!empty($filetype)) {
 			if (!in_array(strtolower($ext), array_map('strtolower', $filetype))) {
-				return array("error" => true, "message" => "Supported file type".implode(',', $filetype));
+				return array("error" => true, "message" => "Supported file type ".implode(',', $filetype));
 			}
 		}
 
