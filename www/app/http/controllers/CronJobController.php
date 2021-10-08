@@ -128,7 +128,10 @@ class CronJobController extends Controller
             return false;
         }
         $result['template']['message'] = str_replace('{patient_title}', $followup['title'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{patient fname, lname}', $followup['firstname'] . " " . $followup['lastname'], $result['template']['message']);
+        //$result['template']['message'] = str_replace('{patient fname, lname}', $followup['firstname'] . " " . $followup['lastname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{user_fname}', $followup['firstname'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{user_lname}', $followup['lastname'], $result['template']['message']);
+
         $result['template']['message'] = str_replace('{followup_date}', date('d-m-Y', strtotime($followup['due_date'])), $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
 
