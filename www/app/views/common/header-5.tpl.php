@@ -35,7 +35,7 @@
                         <div class="tbl-row">
                             <div class="tbl-cell hdr-logo p-2">
                                 <a href="<?php echo URL; ?>">
-                                    <img src="<?php echo $logo; ?>" alt="<?php echo $siteinfo['name']; ?>">
+                                    <img height="90px" src="<?php echo $logo; ?>" alt="<?php echo $siteinfo['name']; ?>">
                                 </a>
                             </div>
                         </div>
