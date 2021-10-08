@@ -542,3 +542,14 @@ error:1416F086:SSL routines:tls_process_server_certificate:certificate verify fa
 error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
 [12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(): Failed to enable crypto in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
 [12-May-2021 07:48:52 Europe/London] PHP Warning:  getimagesize(https://lc.gcp.caprihealthcare.co.uk/public/uploads/media-1126153191609b79c8f240e.png): failed to open stream: operation failed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\UploadController.php on line 20
+[06-Oct-2021 12:22:06 Europe/London] PHP Notice:  Undefined index: opticianid in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\common\appointment_sidebar.tpl.php on line 21
+[06-Oct-2021 12:22:15 Europe/London] PHP Notice:  Undefined index: opticianid in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\common\appointment_sidebar.tpl.php on line 21
+[06-Oct-2021 12:22:25 Europe/London] PHP Notice:  Undefined index: opticianid in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\common\appointment_sidebar.tpl.php on line 21
+[06-Oct-2021 12:22:31 Europe/London] PHP Warning:  implode(): Invalid arguments passed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\AppointmentController.php on line 377
+[06-Oct-2021 12:22:31 Europe/London] PHP Warning:  implode(): Invalid arguments passed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\AppointmentController.php on line 390
+[06-Oct-2021 12:22:31 Europe/London] PHP Warning:  implode(): Invalid arguments passed in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\AppointmentController.php on line 390
+[07-Oct-2021 10:08:35 Europe/London] PHP Notice:  Undefined variable: lang in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\auth\login.tpl.php on line 63
+[07-Oct-2021 10:08:35 Europe/London] PHP Notice:  Undefined variable: lang in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\auth\login.tpl.php on line 64
+[07-Oct-2021 10:10:13 Europe/London] PHP Notice:  Undefined variable: lang in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\auth\login.tpl.php on line 64
+[07-Oct-2021 10:11:10 Europe/London] PHP Notice:  Undefined variable: lang in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\auth\login.tpl.php on line 63
+[07-Oct-2021 10:11:13 Europe/London] PHP Notice:  Undefined variable: lang in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\auth\login.tpl.php on line 63

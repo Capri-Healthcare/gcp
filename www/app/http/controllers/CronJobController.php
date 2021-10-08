@@ -102,11 +102,11 @@ class CronJobController extends Controller
                 } else {
                     if ($followup['due_date'] <= $afterFourWeekDate OR $forcefully == 1) {
                         $data['id'] = $followup['id'];
-                        $data['status'] = 'NON_GCP_FOLLOWUP';
+                        $data['status'] = 'NON_MERC_FOLLOWUP';
                         $data['reminder_count'] = $followup['reminder_count'] + 1;
                         $this->model_commons->updateFollowupStatus($data);
 
-                        $this->followupGCPNoMail($followup['id'], 'notification_to_optician_for_follow_up');
+                        $this->followupMERCNoMail($followup['id'], 'notification_to_optician_for_follow_up');
                     }
                 }
             }
@@ -114,7 +114,7 @@ class CronJobController extends Controller
 
     }
 
-    // GCP Required Yes Followup Mail
+    // MERCRequired Yes Followup Mail
     public function followupMail($id, $template = 'notification_to_optician_for_follow_up')
     {
         $this->load->model('commons');
@@ -145,9 +145,9 @@ class CronJobController extends Controller
         return $this->controller_mail->sendMail($data);
     }
 
-    // GCP Required No Followup Mail
+    // MERCRequired No Followup Mail
 
-    public function followupGCPNoMail($id, $template = 'notification_to_optician_for_follow_up')
+    public function followupMERCNoMail($id, $template = 'notification_to_optician_for_follow_up')
     {
         $this->load->model('commons');
         $result = $this->model_commons->getTemplateAndInfo($template);

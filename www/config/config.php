@@ -36,8 +36,8 @@ define('AUTH_KEY', 'Z5%UzUZrYfCU7NwFun?bVsynppdy;0);erX4tUHGH6R4n7%-Uk?;g{o}u-pD
 define('LOGGED_IN_SALT', 'DnA*0XQTP(V{&kvJ6|o?7)wjL|4oiC9T~7<VQaTNJeJQlOz*IGgQR6L(#mCo)?K;');
 define('TOKEN', 'R9pnQ}))(hB}Kyb#9&RVePHYK&crHED);CW5HvJX#N}B#>c-i&<jscNOw7xuZBYR');
 define('TOKEN_SALT', 'ugK)00e6YMxJ9CfF66L&W1G?EtKC|wJ-?79eYGAYAh7Kl|m2%4OR?b~aq%O>liBs');
-define('ROLE', ['0' => 'Patient','3' => 'Doctor', '7' => 'Med. Secretary', '9' => 'Optometrist', '11' => 'GCP Secretary']);
-define('USER_ROLE_ID', ['Med. Secretary' => '7', 'GCP Secretary' => '11','Optician' => '9']);
+define('ROLE', ['0' => 'Patient','3' => 'Doctor', '7' => 'Med. Secretary', '9' => 'Optometrist', '11' => 'MERCSecretary']);
+define('USER_ROLE_ID', ['Med. Secretary' => '7', 'MERCSecretary' => '11','Optician' => '9']);
 define('GP_PRACTICE', ['1' => 'Dovecote Surgery','2' => 'Lordswood House Group Medial Practice', '3' => 'Ridgacre House Surgery ']);
 define('CC','chetanthumar@gmail.com');
 define('STATUS_FOLLOWUP_IN_QUEUE', 'IN_QUEUE');

@@ -370,7 +370,7 @@
                                     </div>
                                 </div>
                             <?php } ?>
-<!--                            <div class="col-md-6" style="--><?php //echo (in_array($common['user']['role'],[constant('USER_ROLE_GCP'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?><!--">-->
+<!--                            <div class="col-md-6" style="--><?php //echo (in_array($common['user']['role'],[constant('USER_ROLE_MERC'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?><!--">-->
 <!--                                <div class="form-group">-->
 <!--                                    <label>First Payment</label>-->
 <!--                                    <div class="input-group">-->
@@ -384,7 +384,7 @@
 <!--                                    </div>-->
 <!--                                </div>-->
 <!--                            </div>-->
-                            <div class="col-md-6" style="<?php echo (in_array($common['user']['role'],[constant('USER_ROLE_GCP'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?>">
+                            <div class="col-md-6" style="<?php echo (in_array($common['user']['role'],[constant('USER_ROLE_MERC'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?>">
                             <div class="form-group">
                                     <label>Regular Payment</label>
                                     <div class="input-group">

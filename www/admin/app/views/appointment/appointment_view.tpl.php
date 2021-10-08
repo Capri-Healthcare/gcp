@@ -180,14 +180,14 @@
                                         </td>
                                     </tr>
 <!--                                    <tr>-->
-<!--                                        <td>Glaucoma Care Plan Require</td>-->
+<!--                                        <td>My Eye Record & Care Require</td>-->
 <!--                                        <td>-->
 <!--                                            --><?php //echo $result['is_glaucoma_required'] ?>
 <!--                                        </td>-->
 <!--                                    </tr>-->
 <!--                                    --><?php //if ($result['is_glaucoma_required'] == 'YES') { ?>
 <!--                                        <tr>-->
-<!--                                            <td>GCP Followup Frequency</td>-->
+<!--                                            <td>MERCFollowup Frequency</td>-->
 <!--                                            <td>-->
 <!--                                                --><?php //echo $result['gcp_followup_frequency'] ?>
 <!--                                            </td>-->
@@ -519,7 +519,7 @@
                                             <td class="text-dark"><?php echo (isset($result['gcp_next_appointment']) && !empty($result['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$result['gcp_next_appointment']]['name']: '' ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Glaucoma Care Plan Required</td>
+                                            <td>My Eye Record & Care Required</td>
                                             <td class="text-dark"><?php echo isset($result['is_glaucoma_required']) ? $result['is_glaucoma_required'] : '' ?></td>
                                         </tr>
                                         <tr>
@@ -708,7 +708,7 @@
                                         <textarea name="mail[message]" class="form-control mail-summernote" placeholder="Enter Message . . .">
                                                 <br><br><br><br><br><br><br><br>
                                                 Best Regards, <br>
-                                                Glaucoma Care Plan
+                                                My Eye Record & Care
                                         </textarea>
                                     </div>
                                     <div class="form-group">

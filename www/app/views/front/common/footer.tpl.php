@@ -2,7 +2,7 @@
     <div class="container">
         <!--div class="footer_logo">
             <a href="<?php echo URL; ?>">
-                <img src="public/images/footer_logo.png" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" />
+                <img src="public/images/footer_logo.png" alt="My Eye Record & Care" title="My Eye Record & Care" />
             </a>
         </div>
         <ul>

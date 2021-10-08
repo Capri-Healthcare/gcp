@@ -1362,7 +1362,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Glaucoma Care Plan Required<span
+                                                <label>My Eye Record & Care Required<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -1371,7 +1371,7 @@
                                                     </div>
                                                     <select name="appointment[gcp_required]" class="custom-select"
                                                             required <?php echo $examination_notes_readonly ? 'disabled':''?>>
-                                                        <option value="">Select GCP</option>
+                                                        <option value="">SelectMERC</option>
                                                         <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
                                                             YES
                                                         </option>

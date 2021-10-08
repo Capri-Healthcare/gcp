@@ -37,7 +37,7 @@ class Commons extends Model
     public function getFollowups($id)
     {
         $data['user'] = $this->user_agent->getUserData($id);
-        if($data['user']['role'] == constant('USER_ROLE_GCP'))
+        if($data['user']['role'] == constant('USER_ROLE_MERC'))
         {
             $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE payment_status ='UNPAID' AND followup_status != '".constant('STATUS_FOLLOWUP_IN_QUEUE')."' ORDER BY created_at DESC ");
             return $query->row['Total'];

@@ -34,7 +34,7 @@
                             <li><a href="#additional-information" data-toggle="tab"><i class="ti-info-alt"></i> <span>Additional Information</span></a>
                             </li>
                             <?php if ($result['is_glaucoma_required'] == 'YES') { ?>
-                                <li><a href="#patient-direct-debit" data-toggle="tab"><i class="ti-folder"></i> <span>Glaucoma Care Plan</span></a>
+                                <li><a href="#patient-direct-debit" data-toggle="tab"><i class="ti-folder"></i> <span>My Eye Record & Care</span></a>
                                 </li>
                             <?php } ?>
                             <?php if ($page_notes) { ?>
@@ -781,7 +781,7 @@
                                                                                     <td class="text-dark"><?php echo (isset($value['gcp_next_appointment']) && !empty($value['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$value['gcp_next_appointment']]['name'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Glaucoma Care Plan Required</td>
+                                                                                    <td>My Eye Record & Care Required</td>
                                                                                     <td class="text-dark"><?php echo isset($value['is_glaucoma_required']) ? $value['is_glaucoma_required'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
@@ -1048,20 +1048,20 @@
                     <div class="tab-pane fade" id="patient-direct-debit">
                         <div class="panel panel-default">
                             <div class="panel-head">
-                                <div class="panel-title">Glaucoma Care Plan</div>
+                                <div class="panel-title">My Eye Record & Care</div>
                             </div>
                             <div class="panel-body">
                                 <table class="table table-striped patient-table">
                                     <tbody>
                                     <tr>
-                                        <td>Glaucoma Care Plan Required</td>
+                                        <td>My Eye Record & Care Required</td>
                                         <td>
                                             <?php echo isset($result['is_glaucoma_required']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['GLAUCOMA_CARE_PLAN_REQUIRED'][$result['is_glaucoma_required']] : '' ?>
                                         </td>
                                     </tr>
                                     <?php if ($result['is_glaucoma_required'] == 'YES') { ?>
                                         <tr>
-                                            <td>GCP Followup Frequency</td>
+                                            <td>MERCFollowup Frequency</td>
                                             <td>
                                                 <?php echo isset($result['gcp_followup_frequency']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$result['gcp_followup_frequency']]['name'] : '' ?>
                                             </td>
@@ -1069,7 +1069,7 @@
                                     <?php } ?>
 
                                     <tr>
-                                        <td>GCP form</td>
+                                        <td>MERCform</td>
                                         <td>
                                             <div class="report-container">
                                                 <?php if (!empty($result['ddi_image'])) { ?>

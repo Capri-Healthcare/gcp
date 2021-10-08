@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Description" content="Glaucoma Care Plan">
-    <title>Glaucoma Care Plan</title>
+	<meta name="Description" content="My Eye Record & Care">
+    <title>My Eye Record & Care</title>
 	<link rel="icon" type="image/x-icon" href="public/images/favicon.png" />
     <!-- Included Stylesheets -->
     <link rel="stylesheet" href="public/css/style-blue.min.css">
@@ -32,7 +32,7 @@
                 <div class="col-lg-6">
                     <div class="logo">
                         <!--a href="<?php echo URL; ?>">
-                            <img src="public/images/gcp-logo.png" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" />
+                            <img src="public/images/gcp-logo.png" alt="My Eye Record & Care" title="My Eye Record & Care" />
                         </a-->
                     </div>
                 </div>

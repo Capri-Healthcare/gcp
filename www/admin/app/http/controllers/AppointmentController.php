@@ -550,7 +550,7 @@ class AppointmentController extends Controller
 
                    if($this->model_followup->createFollowup($followup)){
 
-                       //$this->notificationToGCPForPatientFollowup();
+                       //$this->notificationToMERCForPatientFollowup();
                    }
               //  }
 
@@ -558,7 +558,7 @@ class AppointmentController extends Controller
                 $patient['id'] = $data['appointment']['patient_id'];
                 $patient['is_glaucoma_required'] = $data['appointment']['gcp_required'];
                 $patient['gcp_followup_frequency'] = $data['appointment']['followup'];
-                $this->model_patient->updatePatientGCPStatus($patient);
+                $this->model_patient->updatePatientMERCStatus($patient);
 
                 $this->model_appointment->updateExaminationNotes($data['appointment']);
                 $message = "Appointment Examination Note updated successfully.";
@@ -1054,15 +1054,15 @@ class AppointmentController extends Controller
 
         $this->load->model('user');
         $user_med_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MED')]);
-        $user_gcp_sec_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_GCP')]);
+        $user_gcp_sec_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MERC')]);
         $optician = $this->model_user->getUser($id);
         $role = $this->model_user->userRoleByID($optician['user_role']);
 
-        $link = '<a href="' . URL . 'admin">GCP Dashboard</a>';
+        $link = '<a href="' . URL . 'admin">MERCDashboard</a>';
         $result['template']['message'] = str_replace('{gcp_fname}', $user_gcp_sec_data['firstname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{gcp_lname}', $user_gcp_sec_data['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('GCP Dashboard', $link, $result['template']['message']);
+        $result['template']['message'] = str_replace('MERCDashboard', $link, $result['template']['message']);
 
         $data['email'] = $user_gcp_sec_data['email'];
         $data['name'] = $user_gcp_sec_data['firstname'] . ' ' . $user_gcp_sec_data['lastname'];
@@ -1074,7 +1074,7 @@ class AppointmentController extends Controller
         return $this->controller_mail->sendMail($data);
     }
 
-    public function notificationToGCPForPatientFollowup($id, $template = 'notification_to_gcp_sec_for_patient_follow_up_coming')
+    public function notificationToMERCForPatientFollowup($id, $template = 'notification_to_gcp_sec_for_patient_follow_up_coming')
     {
         $this->load->controller('mail');
         $result = $this->controller_mail->getTemplate($template);
@@ -1087,7 +1087,7 @@ class AppointmentController extends Controller
         $this->load->model('user');
 
         $optician = $this->model_user->getUser($followup['optician_id']);
-        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_GCP')]);
+        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MERC')]);
 
         $result['template']['message'] = str_replace('{gcp_sec_fname}', $user_data['firstname'], $result['template']['message']);
         $result['template']['message'] = str_replace('gcp_lname', $optician['lastname'], $result['template']['message']);

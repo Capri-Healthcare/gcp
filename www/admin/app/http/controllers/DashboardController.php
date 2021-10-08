@@ -203,7 +203,7 @@ class DashboardController extends Controller
 			unset($this->session->data['message']);
 		}
 		
-		if($common['user']['role'] == 'GCP Secretary'){
+		if($common['user']['role'] == 'MERCSecretary'){
             $this->url->redirect('patients');
         }
         if($common['user']['role'] == 'Med. Secretary'){

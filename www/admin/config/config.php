@@ -37,13 +37,13 @@ define('LOGGED_IN_SALT', 'Xdb54;55S#CJ33cFq}VdvQvS7O6dfk~uj}C-A>gmie~b9zXI|oO*70
 define('TOKEN', 'oQ913wsl6{WBlk#5jV5%VYExlFaIomj&75ZZ~(W3GREN#n)(jJp2QY7gugD))3L{');
 define('TOKEN_SALT', 'rg(uyO0?I9uq5mx-hh4>V-XCPQ?Dx80{n7|?K?pU;-2WldDIOElXOvzT>p9P1zvN');
 
-define('USER_ROLE', ['Med. Secretary', 'Admin', 'GCP Secretary','Doctor']);
+define('USER_ROLE', ['Med. Secretary', 'Admin', 'MERCSecretary','Doctor']);
 define('USER_FOLLOWUP_MED_ROLE', ['Med. Secretary', 'Admin', 'Optometrist']);
-define('USER_FOLLOWUP_GCP_ROLE', ['Admin', 'GCP Secretary']);
-define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist', 'GCP Secretary']);
+define('USER_FOLLOWUP_MERC_ROLE', ['Admin', 'MERCSecretary']);
+define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist', 'MERCSecretary']);
 define('USER_ROLE_OPTOMETRIST', 'Optometrist');
 define('USER_ROLE_MED', 'Med. Secretary');
-define('USER_ROLE_GCP', 'GCP Secretary');
+define('USER_ROLE_MERC', 'MERCSecretary');
 define('USER_ROLE_DOCTOR', 'Doctor');
 define('USER_ROLE_ADMIN', 'Admin');
 
@@ -56,9 +56,9 @@ define('STATUS_MED_ROLE', ['NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' 
 
 define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter', 'Visual fields - Right eye' => 'Visual fields - Right eye', 'Visual fields - Left eye' => 'Visual fields - Left eye', 'OCT - Right eye' => 'OCT - Right eye', 'OCT - Left eye' => 'OCT - Left eye', 'Fundus - Right eye' => 'Fundus - Right eye', 'Fundus - Left eye' => 'Fundus - Left eye']);
 
-define('USER_ROLE_ID', ['Med. Secretary' => '7', 'GCP Secretary' => '11','Optician' => '9','Doctor' => '3']);
+define('USER_ROLE_ID', ['Med. Secretary' => '7', 'MERCSecretary' => '11','Optician' => '9','Doctor' => '3']);
 define('CC', 'chetanthumar@gmail.com,sanjay.makwana@tiez.nl');
-define('GCP_REQUIRE', ['YES' => 'Yes', 'NO' => 'No', 'OFFER' => 'Offered']);
+define('MERC_REQUIRE', ['YES' => 'Yes', 'NO' => 'No', 'OFFER' => 'Offered']);
 
 define('HOSPITAL_LIST', [
     'SSPBH' => [
@@ -280,9 +280,9 @@ define('PAYMENT_STATUS_FILTER_INVOIVE', [
 define('PAYMENT_STATUS_FILTER_UNPAID', 'Unpaid');
 
 define('STATUS_PAYMENT', ['ALL'=>'All','PAID' => 'Paid', 'UNPAID' => 'Unpaid', 'NOT_SUITABLE' => 'Not suitable']);
-define('STATUS_FOLLOWUP', ['ALL'=>'All','NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable','NON_GCP_FOLLOWUP' => 'Non gcp followup']);
+define('STATUS_FOLLOWUP', ['ALL'=>'All','NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable','NON_MERC_FOLLOWUP' => 'Non gcp followup']);
 
-define('FOLLOWUP_MED_SEC_STATUS', ['ALL'=>'All','OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable', 'NON_GCP_FOLLOWUP' => 'Non gcp followup']);
+define('FOLLOWUP_MED_SEC_STATUS', ['ALL'=>'All','OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable', 'NON_MERC_FOLLOWUP' => 'Non gcp followup']);
 define('FOLLOWUP_OPTICIAN_STATUS', ['ALL'=>'All','NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable']);
 define('REFERRAL_OPTICIAN_STATUS', ['ALL' => 'ALL','NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable', 'DRAFT' => 'Draft']);
 define('REFERRAL_MED_SEC_STATUS', ['ALL' => 'ALL','NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable']);

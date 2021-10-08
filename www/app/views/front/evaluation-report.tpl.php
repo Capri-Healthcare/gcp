@@ -2,7 +2,7 @@
 <script>function(e){var t=-1!==[!0,"true"].indexOf(e.getAttribute("aria-expanded"));e.setAttribute("aria-expanded",!t),e.parentNode.parentNode.nextSibling.classList.toggle("collapsed")}</script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" /><link rel="stylesheet" href="report.css" />
     <section class="my-login-page">
 		<div class="container reporter-view">
-  <h1 class="ng-binding">Report for Glaucoma Care Plan</h1>
+  <h1 class="ng-binding">Report for My Eye Record & Care</h1>
   <p><em class="ng-binding">
     Report Creator: Pooja Duddaiah,
     July 2, 2021
@@ -12,7 +12,7 @@
   </em></p>
 
   <h2 class="ng-binding">Summary of the evaluation findings</h2>
-  <div data-ng-bind-html="report.summary | txtToHtml" class="ng-binding"><p>Glaucoma Care Plan (gcp.caprihealthcare.co.uk) was evaluated against the accessibility requirements of WCAG 2.1 using Wave (web accessibility evaluation tool) and IBM accessibility checker. All the outcomes and recommendations from the evaluation were carefully implemented before the final evaluation.  The website has passed the self-assessment.</p></div>
+  <div data-ng-bind-html="report.summary | txtToHtml" class="ng-binding"><p>My Eye Record & Care (gcp.caprihealthcare.co.uk) was evaluated against the accessibility requirements of WCAG 2.1 using Wave (web accessibility evaluation tool) and IBM accessibility checker. All the outcomes and recommendations from the evaluation were carefully implemented before the final evaluation.  The website has passed the self-assessment.</p></div>
 
   <h2 class="ng-binding">Scope of the evaluation</h2>
   <!-- ngInclude: --><div data-ng-include="" data-src="'views/report/scope.html'" class="ng-scope"><table class="ng-scope">
@@ -21,7 +21,7 @@
 
   <tr>
     <th class="ng-binding">Scope of the website</th>
-  	<td data-ng-bind-html="scope.website.siteScope | txtToHtml" class="ng-binding"><p>The following Web pages of the Glaucoma Care Plan, <a target="_blank" href="https://gcp.caprihealthcare.co.uk/">https://gcp.caprihealthcare.co.uk/</a><br>- Home page<br>- Login page<br>- Registration page</p></td>
+  	<td data-ng-bind-html="scope.website.siteScope | txtToHtml" class="ng-binding"><p>The following Web pages of the My Eye Record & Care, <a target="_blank" href="https://gcp.caprihealthcare.co.uk/">https://gcp.caprihealthcare.co.uk/</a><br>- Home page<br>- Login page<br>- Registration page</p></td>
   </tr>
 
   <tr><th class="ng-binding">WCAG Version</th>

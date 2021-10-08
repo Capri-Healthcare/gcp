@@ -13,7 +13,7 @@ class Followup extends Model
 
             if ($data['role'] == constant('USER_ROLE_MED')) {
                 $status = implode("','", array_keys(constant('FOLLOWUP_MED_SEC_STATUS')));
-            } elseif ($data['role'] == constant('USER_ROLE_GCP')) {
+            } elseif ($data['role'] == constant('USER_ROLE_MERC')) {
                 $status = implode("','", array_keys(constant('STATUS_PAYMENT')));
 
             } elseif ($data['role'] == constant('USER_ROLE_OPTOMETRIST')) {
@@ -30,15 +30,15 @@ class Followup extends Model
         // Med Sec Query
         if ($data['role'] == constant('USER_ROLE_MED')) {
 
-            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE ((payment_status ='PAID' AND followup_status != 'NEW') OR followup_status = 'NON_GCP_FOLLOWUP') AND followup_status IN ('".$status."') AND created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' ORDER BY created_at DESC ");
+            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE ((payment_status ='PAID' AND followup_status != 'NEW') OR followup_status = 'NON_MERC_FOLLOWUP') AND followup_status IN ('".$status."') AND created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' ORDER BY created_at DESC ");
 
         } // Optician Query
         elseif ($data['role'] == constant('USER_ROLE_OPTOMETRIST')) {
 
             $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND optician_id ='" . $data['id'] . "' AND payment_status = 'PAID' AND followup_status IN ('" . $status . "') ORDER BY created_at DESC ");
 
-        } // GCP AND ADMIN Query
-        elseif ($data['role'] == constant('USER_ROLE_GCP')) {
+        } // MERCAND ADMIN Query
+        elseif ($data['role'] == constant('USER_ROLE_MERC')) {
 
             $query = $this->database->query("Select f.*,a.is_glaucoma_required,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id JOIN  `" . DB_PREFIX . "appointments` AS a ON f.appointment_id = a.id WHERE f.created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND f.payment_status IN ('" . $status . "') AND f.followup_status != '" . constant('STATUS_FOLLOWUP_IN_QUEUE') . "' AND a.is_glaucoma_required != 'NO'  ORDER BY f.created_at DESC ");
 

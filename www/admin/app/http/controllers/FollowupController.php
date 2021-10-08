@@ -85,7 +85,7 @@ class FollowupController extends Controller
             $data['id'] = $id;
             $data['status'] = $status;
 
-            if (array_key_exists($status, constant('STATUS_PAYMENT')) && $data['common']['user']['role'] == constant('USER_ROLE_GCP')) {
+            if (array_key_exists($status, constant('STATUS_PAYMENT')) && $data['common']['user']['role'] == constant('USER_ROLE_MERC')) {
 
                 if ($this->model_followup->updateFollowup($data)) {
                     if ($status == 'PAID') {
@@ -116,7 +116,7 @@ class FollowupController extends Controller
             if ($this->model_followup->updateFollowupStatus($data)) {
                 $this->notificationToPatientForFollowup($id);
                 //$this->notificationToTheHospitalPatientDetails($id);
-                //$this->notificationToGCPForPatientFollowup($id);
+                //$this->notificationToMERCForPatientFollowup($id);
                 echo "Followup Successfully updated.";
                 exit();
             }
@@ -235,7 +235,7 @@ class FollowupController extends Controller
         return $this->controller_mail->sendMail($data);
     }
 
-    public function notificationToGCPForPatientFollowup($id, $template = 'notification_to_gcp_sec_for_patient_follow_up_coming')
+    public function notificationToMERCForPatientFollowup($id, $template = 'notification_to_gcp_sec_for_patient_follow_up_coming')
     {
         $this->load->controller('mail');
         $result = $this->controller_mail->getTemplate($template);
@@ -248,7 +248,7 @@ class FollowupController extends Controller
         $this->load->model('user');
 
         $optician = $this->model_user->getUser($followup['optician_id']);
-        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_GCP')]);
+        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MERC')]);
 
         $result['template']['message'] = str_replace('{gcp_sec_fname}', $user_data['firstname'], $result['template']['message']);
         $result['template']['message'] = str_replace('gcp_lname', $optician['lastname'], $result['template']['message']);
@@ -279,7 +279,7 @@ class FollowupController extends Controller
         $patient = $this->model_patient->getPatient($followup['patient_id']);
 
         $optician = $this->model_user->getUser($followup['optician_id']);
-        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_GCP')]);
+        $user_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')[constant('USER_ROLE_MERC')]);
 
         $result['template']['message'] = str_replace('{patient_title}', $patient['title'], $result['template']['message']);
         $result['template']['message'] = str_replace('{patient_fname, lname},', $patient['lastname']. ' ', $patient['lastname'], $result['template']['message']);

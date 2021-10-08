@@ -165,7 +165,7 @@ class PatientController extends Controller
         } else {
             $data['email_body'] = "<br><br><br><br><br><br><br><br>
             Best Regards, <br>
-            Glaucoma Care Plan";
+            My Eye Record & Care";
         }
 
         if ($data['common']['user']['role_id'] == '3') {
@@ -593,7 +593,7 @@ class PatientController extends Controller
             return false;
         }
         $this->load->model('user');
-        $user_gcp_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')['GCP Secretary']);
+        $user_gcp_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')['MERCSecretary']);
         $user_med_sec_data = $this->model_user->checkUserRole(constant('USER_ROLE_ID')['Med. Secretary']);
 
         $this->load->model('commons');

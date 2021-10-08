@@ -42,12 +42,12 @@
     <div class="container-fluid">
         <div class="care_main">
             <div class="care_left">
-                <img src="public/images/glaucoma-care-plan.png" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" />
+                <img src="public/images/glaucoma-care-plan.png" alt="My Eye Record & Care" title="My Eye Record & Care" />
             </div>
             <div class="care_right">
-                <h3><strong>Welcome </strong> to <br/> Glaucoma Care Plan</h3>
+                <h3><strong>Welcome </strong> to <br/> My Eye Record & Care</h3>
                 <h6>Welcome to award-winning healthcare from experts you can trust, book today. Our unique connected health approach means we can support you from diagnosis to recovery.</h6>
-                <p>Welcome to award-winning healthcare from experts you can trust, book today. Our unique connected health approach means we can support you from diagnosis to recovery. Glaucoma occurs when the drainage tubes, trabecular meshwork, within the eye become blocked. This prevents eye fluid, aqueous humour, from draining properly. When the fluid cannot drain properly, pressure builds up. This is called intraocular pressure. This results in damage to the optic nerve, which can lead to blindness. Glaucoma often affects both eyes in varying degrees. If it is diagnosed early enough, further damage to vision can be prevented. The Glaucoma Care Plan sets out a clear eye care plan for new and long term glaucoma patients by developing and strengthening shared glaucoma care pathway across the primary, community and private eye care services.</p>
+                <p>Welcome to award-winning healthcare from experts you can trust, book today. Our unique connected health approach means we can support you from diagnosis to recovery. Glaucoma occurs when the drainage tubes, trabecular meshwork, within the eye become blocked. This prevents eye fluid, aqueous humour, from draining properly. When the fluid cannot drain properly, pressure builds up. This is called intraocular pressure. This results in damage to the optic nerve, which can lead to blindness. Glaucoma often affects both eyes in varying degrees. If it is diagnosed early enough, further damage to vision can be prevented. The My Eye Record & Care sets out a clear eye care plan for new and long term glaucoma patients by developing and strengthening shared glaucoma care pathway across the primary, community and private eye care services.</p>
             </div>
         </div>
     </div>
@@ -86,12 +86,12 @@
     <div class="container-fluid">
         <div class="patient_main">
             <div class="patient_left">
-                <h3>Discover <br/> <strong>Glaucoma Care Plan</strong></h3>
+                <h3>Discover <br/> <strong>My Eye Record & Care</strong></h3>
                 <p>Our patients are our priority, we offer quality <br/> gloucoma care with a team of <br/> <strong>Ophthalmologists</strong>. More details about our services below</p>
                 <a href="<?php echo URL; ?>">OUR SERVICES</a>
             </div>
             <div class="patient_right">
-                <img src="public/images/discover.png" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" />
+                <img src="public/images/discover.png" alt="My Eye Record & Care" title="My Eye Record & Care" />
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@
 				<table width="100%">
 					<tr>
 						<td align="left">
-							<img src="<?php echo URL."public/images/logo.jpg";?>" alt="Glaucoma Care Plan" title="Glaucoma Care Plan" width="234" height="119" />
+							<img src="<?php echo URL."public/images/logo.jpg";?>" alt="My Eye Record & Care" title="My Eye Record & Care" width="234" height="119" />
 						</td>
 					</tr>
 					<tr>
@@ -40,7 +40,7 @@
 					</tr>
 					<tr>
 						<td style="border: 1px solid #000; padding: 5px">
-							<span class="heading_text_14">Glaucoma Care Plan Ltd<br></span>
+							<span class="heading_text_14">My Eye Record & Care Ltd<br></span>
 							<span class="small_text_14">71-75 Shelton Street <br/>
 								Covent Garden, London <br/>
 								United Kingdom, WC2H 9JQ
@@ -218,7 +218,7 @@
 						<td style="padding: 5px;">
 							<span class="heading_text_14">Instruction to your Bank or Building Society</span><br>
 							<span class="small_text_12">
-									Please pay FastPay Ltd Re Glaucoma Care Plan Ltd Direct Debits from the account detailed in this instruction subject to the safeguards assured by the Direct Debit Guarantee. I understand that this instruction may remain with FastPay Ltd Re The Unusual Company Ltd and, if so, details will be passed To The Manager: electronically to my Bank/Building Society
+									Please pay FastPay Ltd Re My Eye Record & Care Ltd Direct Debits from the account detailed in this instruction subject to the safeguards assured by the Direct Debit Guarantee. I understand that this instruction may remain with FastPay Ltd Re The Unusual Company Ltd and, if so, details will be passed To The Manager: electronically to my Bank/Building Society
 							</span>
 						</td>
 					</tr>
@@ -315,7 +315,7 @@
 							</div>
 							<div style="width:97%; float:none; display: inline-block; vertical-align:top;">
 								<span class="small_text_12">
-									If there are any changes to the amount, date or frequency of your Direct Debit, FastPay Ltd re Glaucoma Care Plan Ltd will notify you five working days in advance of your account being debited or as otherwise agreed. If you request FastPay Ltd re Glaucoma Care Plan Ltd to collect a payment, confirmation of the amount and date will be given to you at the time of the request.
+									If there are any changes to the amount, date or frequency of your Direct Debit, FastPay Ltd re My Eye Record & Care Ltd will notify you five working days in advance of your account being debited or as otherwise agreed. If you request FastPay Ltd re My Eye Record & Care Ltd to collect a payment, confirmation of the amount and date will be given to you at the time of the request.
 								</span>
 							</div>
 						</td>
@@ -327,8 +327,8 @@
 							</div>
 							<div style="width:97%; float:none; display: inline-block; vertical-align:top;">
 								<span class="small_text_12">
-									If an error is made in the payment of your Direct Debit by FastPay Ltd Re Glaucoma Care Plan Ltd or your Bank or Building Society, you are entitled to a full and immediate refund of the amount paid from your bank or building society. <br>
-	– If you receive a refund you are not entitled to, you must pay it back when FastPay Ltd re Glaucoma Care Plan Ltd asks you to
+									If an error is made in the payment of your Direct Debit by FastPay Ltd Re My Eye Record & Care Ltd or your Bank or Building Society, you are entitled to a full and immediate refund of the amount paid from your bank or building society. <br>
+	– If you receive a refund you are not entitled to, you must pay it back when FastPay Ltd re My Eye Record & Care Ltd asks you to
 								</span>
 							</div>							
 						</td>
