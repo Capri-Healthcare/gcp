@@ -36,9 +36,9 @@ define('APPOINTMENT_VIDEO_CONSULTATION_TYPE', 'video_consultation');
 define('DEFAULT_COUNTRY_CODE', '+44');
 
 // Text message
-define('TEXT_MSG_APPOINTMENT_BOOKING_CONFIRMATION', 'Dear {patient_name}, Your appointment has been booked with ' . NAME);
-define('TEXT_MSG_APPOINTMENT_STATUS_UPDATE', 'Dear {patient_name}, Your appointment status update with ' . NAME);
-define('TEXT_MSG_APPOINTMENT_REMINDER', 'Dear {patient_name}, This is a reminder from ' . NAME . ' about your appointment on {appointment_time}');
+define('TEXT_MSG_APPOINTMENT_BOOKING_CONFIRMATION', 'Dear {patient_name}, Your appointment has been booked with ' . NAME . '.');
+define('TEXT_MSG_APPOINTMENT_STATUS_UPDATE', 'Dear {patient_name}, Your appointment status update with ' . NAME . '.');
+define('TEXT_MSG_APPOINTMENT_REMINDER', 'Dear {patient_name}, This is a reminder from ' . NAME . ' about your appointment on {appointment_time}' . '.');
 define('TEXT_MSG_OPEN_CALL_INVITATION', 'Hello, This is {doctor_name}. Join me on video call: {video_consultation_link}');
 
 //Used to reduce image file quality in percentage
