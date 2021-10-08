@@ -182,7 +182,7 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
     ],
     'FOLLOW_UP_OR_NEXT_APPOINTMENT' => [
         '0' => ['name' => 'No follow up required','intervalrime' => 'days','value' =>'0'],
-        '1' => ['name' => '1 days after change in treatment to see the effect','intervalrime' => 'days','value' =>'1'],
+        //'1' => ['name' => '1 days after change in treatment to see the effect','intervalrime' => 'days','value' =>'1'],
         '2' => ['name' => '2 months after change in treatment to see the effect','intervalrime' => 'months','value' =>'2'],
         '3' => ['name' => '2 months after laser appointment','intervalrime' => 'months','value' =>'2'],
         '4' => ['name' => '4 months','intervalrime' => 'months','value' =>'4'],

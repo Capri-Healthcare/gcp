@@ -545,9 +545,8 @@ class AppointmentController extends Controller
                     $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
                     //$followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
 
-                    $next_followup = constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$data['appointment']['followup']]['name'];
-                    $followup['due_date'] = date('Y-m-d', strtotime("+" . $next_followup['value'] . $next_followup['intervalrime'], strtotime(date('Y-m-d'))));
-
+                    $next_followup = constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$data['appointment']['followup']];
+                    $followup['due_date'] = date('Y-m-d', strtotime("+ " . $next_followup['value'] . $next_followup['intervalrime'], strtotime(date('Y-m-d'))));
                    if($this->model_followup->createFollowup($followup)){
 
                        //$this->notificationToMERCForPatientFollowup();
