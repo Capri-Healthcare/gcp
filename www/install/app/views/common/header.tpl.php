@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>klinikal Theme Installation | Step 1</title>
 	<meta name="Description" content="klinikal Theme Installation">
-	<link rel="icon" type="image/x-icon" href="public/images/favicon.png" />
+	<link rel="icon" type="image/x-icon" href="public/images/mercfavicon.svg" />
     <!-- Included Stylesheets -->
     <link rel="stylesheet" href="public/css/style.css">
     <style>

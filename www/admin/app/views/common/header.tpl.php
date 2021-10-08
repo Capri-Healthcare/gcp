@@ -8,7 +8,7 @@
     <?php if (!empty($common['theme']['favicon']) && file_exists(DIR.'public/uploads/'.$common['theme']['favicon'])) { ?>
     <link rel="icon" type="image/x-icon" href="<?php echo URL.'public/uploads/'.$common['theme']['favicon']; ?>">
     <?php } else { ?>
-    <link rel="icon" type="image/x-icon" href="<?php echo URL_ADMIN.'public/images/favicon.png'; ?>">
+    <link rel="icon" type="image/x-icon" href="<?php echo URL_ADMIN.'public/images/mercfavicon.svg'; ?>">
     <?php } ?>
     <!-- Include css files -->
     <link rel="stylesheet" type="text/css" href="<?php echo URL_ADMIN.'public/css/style.min.css'; ?>" />
@@ -64,7 +64,7 @@
                             <div class="logo">
                                 <a href="<?php echo URL_ADMIN ?>">
                                     <?php if (!empty($common['theme']['logo']) && file_exists(DIR.'public/uploads/'.$common['theme']['logo'])) { ?>
-                                        <img src="<?php echo URL.'public/uploads/'.$common['theme']['logo']; ?>" alt="Logo">
+                                        <img height="90px" src="<?php echo URL.'public/uploads/'.$common['theme']['logo']; ?>" alt="Logo">
                                     <?php } else { ?>
                                         <img src="<?php echo URL_ADMIN.'public/images/logo.png'; ?>" alt="Logo">
                                     <?php } ?>

@@ -30,7 +30,7 @@
 				<table width="100%">
 					<tr>
 						<td align="left">
-							<img src="<?php echo URL."public/images/logo.jpg";?>" alt="My Eye Record & Care" title="My Eye Record & Care" width="234" height="119" />
+							<img src="<?php echo URL."public/images/Merclogo.svg";?>" alt="My Eye Record & Care" title="My Eye Record & Care" width="234" height="119" />
 						</td>
 					</tr>
 					<tr>

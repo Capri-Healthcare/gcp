@@ -7,7 +7,7 @@
 	<?php if (!empty($theme['favicon']) && file_exists(DIR.'public/uploads/'.$theme['favicon'])) { ?>
 		<link rel="icon" type="image/x-icon" href="<?php echo URL.'public/uploads/'.$theme['favicon']; ?>">
 	<?php } else { ?>
-		<link rel="icon" type="image/x-icon" href="<?php echo URL_ADMIN.'public/images/favicon.png'; ?>">
+		<link rel="icon" type="image/x-icon" href="<?php echo URL_ADMIN.'public/images/mercfavicon.svg'; ?>">
 	<?php } ?>
 	<link rel="stylesheet" href="<?php echo URL_ADMIN.'public/css/style.min.css'; ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo URL_ADMIN.'public/css/custom.css'; ?>" />
@@ -20,7 +20,7 @@
 			<div class="lgn-logo text-center">
 				<a href="<?php echo URL; ?>">
 					<?php if (!empty($theme['logo']) && file_exists(DIR.'public/uploads/'.$theme['logo'])) { ?>
-						<img src="<?php echo URL.'public/uploads/'.$theme['logo']; ?>" alt="<?php echo $common['name']; ?>">
+						<img height="125px" src="<?php echo URL.'public/uploads/'.$theme['logo']; ?>" alt="<?php echo $common['name']; ?>">
 					<?php } else { ?>
 						<img src="<?php echo URL_ADMIN.'public/images/logo.png'; ?>" alt="Logo">
 					<?php } ?>

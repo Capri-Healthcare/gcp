@@ -6,7 +6,7 @@
 	<?php if (!empty($theme['favicon']) && file_exists(DIR.'public/uploads/'.$theme['favicon'])) { ?>
 		<link rel="icon" type="image/x-icon" href="<?php echo URL.'public/uploads/'.$theme['favicon']; ?>">
 	<?php } else { ?>
-		<link rel="icon" type="image/x-icon" href="<?php echo URL_ADMIN.'public/images/favicon.png'; ?>">
+		<link rel="icon" type="image/x-icon" href="<?php echo URL_ADMIN.'public/images/mercfavicon.svg'; ?>">
 	<?php } ?>
 	<link rel="stylesheet" href="<?php echo URL_ADMIN.'public/css/style.min.css'; ?>" />
 	<script src="<?php echo URL_ADMIN.'public/js/vendor.min.js'; ?>"></script>

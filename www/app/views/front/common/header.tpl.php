@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="Description" content="My Eye Record & Care">
     <title>My Eye Record & Care</title>
-	<link rel="icon" type="image/x-icon" href="public/images/favicon.png" />
+	<link rel="icon" type="image/x-icon" href="public/images/mercfavicon.svg" />
     <!-- Included Stylesheets -->
     <link rel="stylesheet" href="public/css/style-blue.min.css">
     <link rel="stylesheet" href="public/css/front.css">
@@ -32,7 +32,7 @@
                 <div class="col-lg-6">
                     <div class="logo">
                         <!--a href="<?php echo URL; ?>">
-                            <img src="public/images/gcp-logo.png" alt="My Eye Record & Care" title="My Eye Record & Care" />
+                            <img src="public/images/Merclogo.svg" alt="My Eye Record & Care" title="My Eye Record & Care" />
                         </a-->
                     </div>
                 </div>
