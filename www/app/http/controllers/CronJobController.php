@@ -77,6 +77,7 @@ class CronJobController extends Controller
     {
         $this->load->model('commons');
         $result = $this->model_commons->getFollowupforRemainder();
+        $forcefully = (int)$this->url->get('forcefully', 0);
 
         //$afterSixWeekDate = date('Y-m-d', strtotime("+6 weeks", strtotime(date('Y-m-d'))));
         //$afterFourWeekDate = date('Y-m-d', strtotime("+4 weeks", strtotime(date('Y-m-d'))));
@@ -90,7 +91,7 @@ class CronJobController extends Controller
             foreach ($result as $followup) {
                 if ($followup['is_glaucoma_required'] != 'NO') {
 
-                    if ($followup['due_date'] <= $afterSixWeekDate) {
+                    if ($followup['due_date'] <= $afterSixWeekDate OR $forcefully == 1) {
                         $data['id'] = $followup['id'];
                         $data['status'] = 'NEW';
                         $data['reminder_count'] = $followup['reminder_count'] + 1;
@@ -99,7 +100,7 @@ class CronJobController extends Controller
                         $this->followupMail($followup['id'], 'notification_to_optician_for_follow_up');
                     }
                 } else {
-                    if ($followup['due_date'] <= $afterFourWeekDate) {
+                    if ($followup['due_date'] <= $afterFourWeekDate OR $forcefully == 1) {
                         $data['id'] = $followup['id'];
                         $data['status'] = 'NON_GCP_FOLLOWUP';
                         $data['reminder_count'] = $followup['reminder_count'] + 1;
