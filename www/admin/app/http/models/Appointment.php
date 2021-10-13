@@ -645,7 +645,7 @@ class Appointment extends Model
         $header = "<table style='width:100%' border=0' >" .
             "<tr>" .
                 "<td width='30%'>
-				    <img src='".URL."public/images/Merclogo.png' alt='My Eye Record & Care' title='My Eye Record & Care' width='234' height='119' />
+				    <img src='".URL."public/images/Merclogo.png' alt='My Eye Record & Care' title='My Eye Record & Care' height='119' />
 				</td>" .
                 "<td align=right>
 					<div style='text-align:right; color: #333;'>

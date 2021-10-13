@@ -45,7 +45,7 @@
                             <label>Mobile</label>
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text"><i class="ti-email"></i></span></div>
-                                <input type="text" name="receiver[mobile]" class="form-control" placeholder="Enter Mobile Number . . ." required>
+                                <input type="text" name="receiver[mobile]" class="form-control" placeholder="Enter Mobile Number . . .">
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <label>CC </label>
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text"><i class="ti-email"></i></span></div>
-                                <input type="text" name="receiver[cc]" class="form-control" value="<?php echo $cc; ?>" placeholder="Enter Email Address . . ." required>
+                                <input type="text" name="receiver[cc]" class="form-control" value="<?php echo $cc; ?>" placeholder="Enter Email Address . . .">
                             </div>
                         </div>
                     </div>

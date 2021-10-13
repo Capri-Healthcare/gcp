@@ -20,9 +20,9 @@
 						<li class="user-records <?php if ($active == 'records') { echo 'active'; } ?>">
 							<a href="<?php echo URL.DIR_ROUTE.'user/records'; ?>"><i class="fas fa-laptop-medical"></i><?php echo $lang['text_medical_records']; ?></a>
 						</li>
-                        <li class="user-records <?php if ($active == 'glaucoma') { echo 'active'; } ?>">
+                        <!--li class="user-records <?php if ($active == 'glaucoma') { echo 'active'; } ?>">
                             <a href="<?php echo URL.DIR_ROUTE.'user/glaucoma'; ?>"><i class="fas fa-laptop-medical"></i><?php echo $lang['text_glaucoma']; ?></a>
-                        </li>
+                        </li-->
 						<!--li class="user-invoices <?php if ($active == 'invoices') { echo 'active'; } ?>">
 							<a href="<?php echo URL.DIR_ROUTE.'user/invoices'; ?>"><i class="far fa-money-bill-alt"></i><?php echo $lang['text_invoices']; ?></a>
 						</li-->
