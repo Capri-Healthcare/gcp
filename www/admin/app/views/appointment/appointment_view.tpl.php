@@ -711,6 +711,7 @@
                                                 My Eye Record & Care
                                         </textarea>
                                     </div>
+                                    <?php if(isset($doc_type) && $doc_type != ''){ ?>
                                     <div class="form-group">
                                         <label>Attachment</label>
                                         <div class="custom-control custom-checkbox">
@@ -718,6 +719,7 @@
                                             <label class="custom-control-label" for="mailPdf" id="appointment_mail_file_name"><?php echo (isset($doc_type) and $doc_type != 'to_patient_or_gp') ? 'Optom / Third Party' : 'Patient / GP'; ?> Letter</label>
                                         </div>
                                     </div>
+                                    <?php } ?>
 
                                     <?php if (isset($doc_type) and !empty($doc_type)) { ?>
                                         <div class="form-group">

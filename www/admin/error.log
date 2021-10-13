@@ -553,3 +553,5 @@ error:1416F086:SSL routines:tls_process_server_certificate:certificate verify fa
 [07-Oct-2021 10:10:13 Europe/London] PHP Notice:  Undefined variable: lang in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\auth\login.tpl.php on line 64
 [07-Oct-2021 10:11:10 Europe/London] PHP Notice:  Undefined variable: lang in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\auth\login.tpl.php on line 63
 [07-Oct-2021 10:11:13 Europe/London] PHP Notice:  Undefined variable: lang in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\auth\login.tpl.php on line 63
+[13-Oct-2021 09:14:26 Europe/London] PHP Notice:  Undefined index: opticianid in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\common\appointment_sidebar.tpl.php on line 21
+[13-Oct-2021 09:14:28 Europe/London] PHP Notice:  Undefined index: opticianid in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\common\appointment_sidebar.tpl.php on line 21
