@@ -790,7 +790,7 @@ class AppointmentController extends Controller
             if ($data['mail']['doc_type'] == "to_optom_or_third_party") {
                 // Generate examination doc 
                 if(isset($data['mail']['attachment'])){
-                    $filename = str_replace(" ", "-", $result['name']) . '-appointment-optom-letter.pdf';
+                    $filename = str_replace(" ", "-", $result['name']) . '-third-party-letter.pdf';
                     $appointment_id = $data['mail']['id'];
                     $this->model_appointment->generateToOptomOrThirdPartyDoc($appointment_id, 'email');
                     $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
