@@ -30,21 +30,21 @@ class Followup extends Model
         // Med Sec Query
         if ($data['role'] == constant('USER_ROLE_MED')) {
 
-            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE ((payment_status ='PAID' AND followup_status != 'NEW') OR followup_status = 'NON_MERC_FOLLOWUP') AND followup_status IN ('".$status."') AND created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' ORDER BY created_at DESC ");
+            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE ((payment_status ='PAID' AND followup_status != 'NEW') OR followup_status = 'NON_MERC_FOLLOWUP') AND followup_status IN ('".$status."') AND due_date  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' ORDER BY due_date DESC ");
 
         } // Optician Query
         elseif ($data['role'] == constant('USER_ROLE_OPTOMETRIST')) {
 
-            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND optician_id ='" . $data['id'] . "' AND payment_status = 'PAID' AND followup_status IN ('" . $status . "') ORDER BY created_at DESC ");
+            $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f LEFT JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE due_date  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND optician_id ='" . $data['id'] . "' AND payment_status = 'PAID' AND followup_status IN ('" . $status . "') ORDER BY due_date DESC ");
 
         } // MERCAND ADMIN Query
         elseif ($data['role'] == constant('USER_ROLE_MERC')) {
 
-            $query = $this->database->query("Select f.*,a.is_glaucoma_required,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id JOIN  `" . DB_PREFIX . "appointments` AS a ON f.appointment_id = a.id WHERE f.created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND f.payment_status IN ('" . $status . "') AND f.followup_status != '" . constant('STATUS_FOLLOWUP_IN_QUEUE') . "' AND a.is_glaucoma_required != 'NO'  ORDER BY f.created_at DESC ");
+            $query = $this->database->query("Select f.*,a.is_glaucoma_required,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id JOIN  `" . DB_PREFIX . "appointments` AS a ON f.appointment_id = a.id WHERE f.due_date  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND f.payment_status IN ('" . $status . "') AND f.followup_status != '" . constant('STATUS_FOLLOWUP_IN_QUEUE') . "' AND a.is_glaucoma_required != 'NO'  ORDER BY f.due_date DESC ");
 
         }
         else {
-            $query = $this->database->query("Select f.*,a.is_glaucoma_required,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id JOIN  `" . DB_PREFIX . "appointments` AS a ON f.appointment_id = a.id WHERE f.created_at  between '" . $data['period']['start'] . "' AND '" . $data['period']['end']."'  ORDER BY f.created_at DESC ");
+            $query = $this->database->query("Select f.*,a.is_glaucoma_required,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id JOIN  `" . DB_PREFIX . "appointments` AS a ON f.appointment_id = a.id WHERE f.due_date  between '" . $data['period']['start'] . "' AND '" . $data['period']['end']."'  ORDER BY f.due_date DESC ");
         }
 
         return $query->rows;
@@ -114,7 +114,7 @@ class Followup extends Model
         $query = $this->database->query("Select * From `" . DB_PREFIX . "followup_appointment` WHERE appointment_id = " . $data['appointment_id']);
 
         if ($query->num_rows > 0) {
-            $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `appointment_id` = ?,`patient_id` = ? ,`optician_id` = ? ,`due_date` = ? WHERE `id` = ?", array($this->database->escape($data['appointment_id']), $this->database->escape($data['patient_id']), $this->database->escape($data['optician_id']), $this->database->escape($data['due_date']), $query->row['id']));
+            $query = $this->database->query("UPDATE `" . DB_PREFIX . "followup_appointment` SET `appointment_id` = ?,`patient_id` = ? ,`optician_id` = ? ,`due_date` = ?, `followup_status` = ? WHERE `id` = ?", array($this->database->escape($data['appointment_id']), $this->database->escape($data['patient_id']), $this->database->escape($data['optician_id']), $this->database->escape($data['due_date']), 'PAID', $query->row['id']));
             return false;
         } else {
             $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "followup_appointment` (`patient_id`,`optician_id`,`due_date`,`created_at`,`appointment_id`, followup_status) VALUES (?,?,?,?,?,?)", array($this->database->escape($data['patient_id']), $data['optician_id'], $data['due_date'], date('Y-m-d H:i:s'), $data['appointment_id'], 'NEW'));
