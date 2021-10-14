@@ -68,7 +68,7 @@
                     <tr>
                         <th>ID</th>
                         <?php if ($common['user']['role'] != constant('USER_ROLE_OPTOMETRIST')) { ?>
-                        <th>Opticen name</th>
+                        <th>Optician name</th>
                         <?php } ?>
                         <th>Amount</th>
                         <th>Due</th>

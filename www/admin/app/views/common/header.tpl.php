@@ -64,7 +64,7 @@
                             <div class="logo">
                                 <a href="<?php echo URL_ADMIN ?>">
                                     <?php if (!empty($common['theme']['logo']) && file_exists(DIR.'public/uploads/'.$common['theme']['logo'])) { ?>
-                                        <img height="90px" src="<?php echo URL.'public/uploads/'.$common['theme']['logo']; ?>" alt="Logo">
+                                        <img height="100px" src="<?php echo URL.'public/uploads/'.$common['theme']['logo']; ?>" alt="Logo">
                                     <?php } else { ?>
                                         <img src="<?php echo URL_ADMIN.'public/images/logo.png'; ?>" alt="Logo">
                                     <?php } ?>

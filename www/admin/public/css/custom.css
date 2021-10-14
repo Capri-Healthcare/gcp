@@ -64,7 +64,7 @@ img.form_thumb_img{
 	border-bottom: none;
 }
 .menu-wrapper{
-	top: 90px;
+	top: 100px;
 }
 
 .lgn-logo{
@@ -77,4 +77,8 @@ img.form_thumb_img{
 
 .form-group input, .form-control, .custom-select, .custom-file-label{
 	z-index: 99;
+}
+
+#logo img {
+    padding: 5px;
 }
