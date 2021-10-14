@@ -19,9 +19,13 @@ class CommonController extends Controller
 				break;
 
 			case 'NEW_APPOINTMENT':
-				$message = TEXT_MSG_APPOINTMENT_BOOKING_CONFIRMATION;
-				$message = str_replace('{hospital_name}', constant('HOSPITAL_LIST')[$appointment['hospital_code']]['name'], $message);
-				$message = str_replace('{hospital_phone_number}',  constant('HOSPITAL_LIST')[$appointment['hospital_code']]['mobile'], $message);
+				if($appointment['hospital_code'] != ''){
+					$message = TEXT_MSG_APPOINTMENT_BOOKING_CONFIRMATION_WITH_HOSTPITAL;
+					$message = str_replace('{hospital_name}', constant('HOSPITAL_LIST')[$appointment['hospital_code']]['name'], $message);
+					$message = str_replace('{hospital_phone_number}',  constant('HOSPITAL_LIST')[$appointment['hospital_code']]['mobile'], $message);
+				} else {
+					$message = TEXT_MSG_APPOINTMENT_BOOKING_CONFIRMATION;
+				}
 				break;
 		}
 		
