@@ -682,14 +682,16 @@
         dateFormat: $('.common_date_format').val(),
         changeMonth: true,
         changeYear: true,
-        yearRange: "-100:+0"
+        yearRange: "-100:+0",
+        maxDate:new Date()
     });
 
     $('.dateofbirth').datepicker({
         dateFormat: $('.common_date_format').val(),
         changeMonth: true,
         changeYear: true,
-        yearRange: "-100:+0"
+        yearRange: "-100:+0",
+        max:new Date()
     });
 
     //Filter date picker

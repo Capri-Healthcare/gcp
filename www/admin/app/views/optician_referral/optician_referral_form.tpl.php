@@ -67,6 +67,36 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label>Landline number</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ti-mobile"></i></span>
+                                            </div>
+                                            <input type="text" name="referral[landline]" class="form-control landline" id="landline"
+                                                   value="<?php echo $result['landline_number']; ?>" min="6" maxlength="11"
+                                                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+
+                                                   placeholder="Enter Landline Number . . . ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Office number</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ti-mobile"></i></span>
+                                            </div>
+                                            <input type="text" name="referral[office_phone]" class="form-control officephone" id="office_phone"
+                                                   value="<?php echo $result['office_number']; ?>" maxlength="11"
+                                                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+
+                                                   placeholder="Enter Office Number . . . ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label>DOB <span class="form-required">*</span></label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i

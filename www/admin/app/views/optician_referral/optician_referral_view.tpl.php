@@ -81,6 +81,14 @@
                                         <td class="text-dark"><?php echo $result['mobile']; ?></td>
                                     </tr>
                                     <tr>
+                                        <td>Landline number</td>
+                                        <td class="text-dark"><?php echo $result['landline_number']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office number</td>
+                                        <td class="text-dark"><?php echo $result['office_phone']; ?></td>
+                                    </tr>
+                                    <tr>
                                         <td>Email</td>
                                         <td class="text-dark"><?php echo $result['email']; ?></td>
                                     </tr>

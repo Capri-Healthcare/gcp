@@ -93,6 +93,14 @@
                                     <td><?php echo $result['mobile']; ?></td>
                                 </tr>
                                 <tr>
+                                    <td>Office number</td>
+                                    <td><?php echo $result['office_number']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Landline number</td>
+                                    <td><?php echo $result['landline_number']; ?></td>
+                                </tr>
+                                <tr>
                                     <td>Date of Birth</td>
                                     <td><?php if (!empty($result['dob'])) {
                                             echo date_format(date_create($result['dob']), $common['info']['date_format']) . '(' . $result['age'] . ' years)';

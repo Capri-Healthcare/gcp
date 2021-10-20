@@ -116,10 +116,40 @@
                                             <span class="input-group-text"><i class="ti-mobile"></i></span>
                                         </div>
                                         <input type="text" name="patient[mobile]" class="form-control mobile" id="mobile"
-                                               value="<?php echo $result['mobile']; ?>" maxlength="11"
+                                               value="<?php echo $result['mobile']; ?>"  min="6" maxlength="11"
                                                onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
 
                                                placeholder="Enter Mobile Number . . . " required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Landline number</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-mobile"></i></span>
+                                        </div>
+                                        <input type="text" name="patient[landline]" class="form-control landline" id="landline"
+                                               value="<?php echo $result['landline_number']; ?>" min="6" maxlength="11"
+                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+
+                                               placeholder="Enter Landline Number . . . ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Office number</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-mobile"></i></span>
+                                        </div>
+                                        <input type="text" name="patient[office_phone]" class="form-control officephone" id="office_phone"
+                                               value="<?php echo $result['office_number']; ?>" maxlength="11"
+                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+
+                                               placeholder="Enter Office Number . . . ">
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +163,7 @@
                                         <input type="text" id="user-dob" name="patient[dob]"
                                                class="form-control bg-white" value="<?php if (!empty($result['dob'])) {
                                             echo date_format(date_create($result['dob']), $common['info']['date_format']);
-                                        } ?>" placeholder="Enter Date of Birth . . . " autocomplete="off" required>
+                                        } ?>" placeholder="DD-MM-YY" autocomplete="off" required>
                                     </div>
                                 </div>
                             </div>
@@ -345,6 +375,21 @@
                                         </div>
                                         <input type="text" name="patient[gp_address]" class="form-control"
                                                value="<?php echo $result['gp_address']; ?>" placeholder="GP Address" id="gp_address">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Thired party</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                        </div>
+                                        <input type="text" name="patient[thired_party]" class="form-control gcp-name"
+                                               value=""
+                                               placeholder="Thired party" id="thired_party">
+
                                     </div>
                                 </div>
                             </div>
