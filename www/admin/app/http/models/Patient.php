@@ -265,13 +265,15 @@ class Patient extends Model
 
     public function gpPractice($data)
     {
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "gp_practice` WHERE `gp_practice_name` = ?",array($data['gp_practice']));
+        if(!empty($data['gp_practice']))
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "gp_practice` WHERE `gp_practice_name` = ?",array($data['gp_practice']));
 
-        if ($query->num_rows > 0) {
-            return $query->row['id'];
-        } else {
-            $this->database->query("INSERT INTO `" . DB_PREFIX . "gp_practice` (`gp_practice_name`, `gp_name`,`gp_email`,`address`, `is_active`) VALUES(?,?,?,?,?)", array($data['gp_practice'], $data['gp_name'],$data['gp_email'],$data['gp_address'],'Y'));
-            return $this->database->last_id();
+            if ($query->num_rows > 0) {
+                return $query->row['id'];
+            } else {
+                $this->database->query("INSERT INTO `" . DB_PREFIX . "gp_practice` (`gp_practice_name`, `gp_name`,`gp_email`,`address`, `is_active`) VALUES(?,?,?,?,?)", array($data['gp_practice'], $data['gp_name'],$data['gp_email'],$data['gp_address'],'Y'));
+                return $this->database->last_id();
+            }
         }
     }
 }
