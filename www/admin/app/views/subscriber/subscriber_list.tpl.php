@@ -50,7 +50,7 @@
 							<td class="text-primary"><?php echo $value['email'];?></td>
 							<td>
 								<?php if ($value['status'] == '0') { ?>
-									<span class="label label-danger">InActive</span>
+									<span class="label label-danger">Inactive</span>
 								<?php  } else { ?>
 									<span class="label label-success">Active</span>
 								<?php } ?>

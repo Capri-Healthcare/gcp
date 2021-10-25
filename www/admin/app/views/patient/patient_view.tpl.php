@@ -130,7 +130,7 @@
                                     <td><?php echo $result['other']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>NHS Patient Number</td>
+                                    <td>NHS Number</td>
                                     <td><?php echo $result['nhs_patient_number']; ?></td>
                                 </tr>
                                 <tr>

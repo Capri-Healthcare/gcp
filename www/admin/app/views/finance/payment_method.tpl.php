@@ -49,7 +49,7 @@
                             <td><a class="text-primary font-14"><?php echo $value['name']; ?></a></td>
                             <td>
                                 <?php if ($value['status'] == 1) { echo '<span class="label label-success">Active</span>'; }
-                                else { echo '<span class="label label-danger">InActive</span>'; } ?>
+                                else { echo '<span class="label label-danger">Inactive</span>'; } ?>
                             </td>
                             <?php if ($page_edit || $page_delete) { ?>
                                 <td class="table-action">
@@ -91,7 +91,7 @@
                             <label class="col-form-label">Status</label>
                             <select name="status" class="custom-select">
                                 <option value="1">Active</option>
-                                <option value="0">InActive</option>
+                                <option value="0">Inactive</option>
                             </select>
                         </div>
                         <input type="hidden" name="id">

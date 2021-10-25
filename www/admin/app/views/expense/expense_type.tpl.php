@@ -53,7 +53,7 @@
                                 <?php if ($value['status'] == 1) { ?>
                                     <span class="label label-success">Active</span>
                                 <?php } else { ?>
-                                    <span class="label label-danger">InActive</span>
+                                    <span class="label label-danger">Inactive</span>
                                 <?php } ?>
                             </td>
                             <?php if ($page_delete || $page_edit) { ?>
@@ -101,7 +101,7 @@
                             <label class="col-form-label">Status</label>
                             <select name="status" class="custom-select">
                                 <option value="1">Active</option>
-                                <option value="0">InActive</option>
+                                <option value="0">Inactive</option>
                             </select>
                         </div>
                         <input type="hidden" name="id">

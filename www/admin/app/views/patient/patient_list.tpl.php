@@ -62,7 +62,7 @@
 							<td class="clickable-row" data-count="<?php echo $key+1; ?>"><?php if (!empty($value['dob'])) { echo date_format(date_create($value['dob']), $common['info']['date_format']); } ?></td>
 							<td class="clickable-row" data-count="<?php echo $key+1; ?>">
 								<?php if ($value['status'] == '0') { ?>
-									<span class="label label-danger">InActive</span>
+									<span class="label label-danger">Inactive</span>
 								<?php  } else { ?>
 									<span class="label label-success">Active</span>
 								<?php } ?>

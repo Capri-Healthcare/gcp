@@ -286,7 +286,7 @@ $lang = array(
 
 	
 	'text_nhs_hospital_number' => 'NHS Hostpital Number',
-	'text_nhs_patient_number' => 'NHS Patient Number',
+	'text_nhs_patient_number' => 'NHS Number',
 	'text_special_requirements' => 'Special Requirements (eg other language / other communication method)',
 	'text_gp_name' => 'GP Name',
 	'text_gp_address' => 'GP Address',

@@ -299,7 +299,7 @@
                             <!--                            </div>-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>NHS Patient Number</label>
+                                    <label>NHS Number</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-check-box"></i></span>
@@ -307,7 +307,7 @@
                                         <input type="text" name="patient[nhs_patient_number]" class="form-control"
                                                value="<?php echo $result['nhs_patient_number']; ?>" maxlength="10"
                                                onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-                                               placeholder="NHS Patient Number">
+                                               placeholder="NHS Number">
                                     </div>
                                 </div>
                             </div>
@@ -381,14 +381,14 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Thired party</label>
+                                    <label>Third Party</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-user"></i></span>
                                         </div>
-                                        <input type="text" name="patient[thired_party]" class="form-control gcp-name"
+                                        <input type="text" name="patient[third_party]" class="form-control gcp-name"
                                                value=""
-                                               placeholder="Thired party" id="thired_party">
+                                               placeholder="Third Party" id="third_party">
 
                                     </div>
                                 </div>
@@ -408,7 +408,7 @@
                                                 </option>
                                                 <option value="0" <?php if ($result['status'] == '0') {
                                                     echo "selected";
-                                                } ?>>InActive
+                                                } ?>>Inactive
                                                 </option>
                                             </select>
                                         </div>

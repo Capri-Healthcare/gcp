@@ -212,7 +212,7 @@
 										</div>
 										<select name="doctor[status]" class="custom-select" required>
 											<option value="1" <?php if($result['status'] == '1') { echo "selected";} ?> >Active</option>
-											<option value="0" <?php if($result['status'] == '0') { echo "selected";} ?> >InActive</option>
+											<option value="0" <?php if($result['status'] == '0') { echo "selected";} ?> >Inactive</option>
 										</select>
 									</div>
 								</div>

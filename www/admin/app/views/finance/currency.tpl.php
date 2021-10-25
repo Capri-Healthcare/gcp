@@ -49,7 +49,7 @@
                                     <td><?php echo $value['abbr']; ?></td>
                                     <td>
                                         <?php if ($value['status'] == 1) { echo '<span class="badge badge-success badge-pill badge-sm">Active</span>'; }
-                                        else { echo '<span class="badge badge-warning badge-pill badge-sm">InActive</span>'; } ?>
+                                        else { echo '<span class="badge badge-warning badge-pill badge-sm">Inactive</span>'; } ?>
                                     </td>
                                     <td class="table-action">
                                         <a class="text-primary edit-currency" data-name="<?php echo $value['name'] ?>" data-abbr="<?php echo $value['abbr'] ?>" data-id="<?php echo $value['id'] ?>" data-status="<?php echo $value['status'] ?>" data-toggle="tooltip" title="Edit"><i class="ti-pencil-alt"></i></a>
@@ -95,7 +95,7 @@
                         <label class="col-form-label">Status</label>
                         <select name="status" class="custom-select">
                             <option value="1">Active</option>
-                            <option value="0">InActive</option>
+                            <option value="0">Inactive</option>
                         </select>
                     </div>
                     <input type="hidden" name="id">
