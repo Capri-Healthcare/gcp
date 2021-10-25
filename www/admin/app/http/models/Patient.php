@@ -265,7 +265,7 @@ class Patient extends Model
 
     public function gpPractice($data)
     {
-        if(!empty($data['gp_practice']))
+        if(!empty($data['gp_practice'])){
             $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "gp_practice` WHERE `gp_practice_name` = ?",array($data['gp_practice']));
 
             if ($query->num_rows > 0) {
