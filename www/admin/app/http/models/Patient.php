@@ -118,8 +118,9 @@ class Patient extends Model
 
     public function createPatient($data)
     {
-
-        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (`title`, `firstname`, `lastname`, `email`, `mobile`, `office_number`,`landline_number`,`address`, `gender`, `dob`, `history`, `other`, `temp_hash`, `status`, `user_id`, `hospital_code`,`date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)", array($data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['mail'], $data['mobile'], $data['office_number'], $data['landline_number'], $data['address'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['hash'], 1, $data['user_id'],$data['hospital_code'], $data['datetime']));
+        $data['hospital_code'] = isset($data['hospital_code']) ? $data['hospital_code'] : '';
+        
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (`title`, `firstname`, `lastname`, `email`, `mobile`, `office_number`,`landline_number`,`address`, `gender`, `dob`, `history`, `other`, `temp_hash`, `status`, `user_id`, `hospital_code`,`date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)", array($data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['mail'], $data['mobile'], $data['office_phone'], $data['landline'], $data['address'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['hash'], 1, $data['user_id'],$data['hospital_code'], $data['datetime']));
 
         if ($this->database->error()) {
 
@@ -275,5 +276,6 @@ class Patient extends Model
                 return $this->database->last_id();
             }
         }
+        return 0;
     }
 }

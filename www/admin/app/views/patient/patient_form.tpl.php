@@ -97,6 +97,57 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
+                                    <label>Date of Birth <span class="form-required">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-calendar"></i></span>
+                                        </div>
+                                        <input type="text" id="user-dob" name="patient[dob]"
+                                               class="form-control bg-white" value="<?php if (!empty($result['dob'])) {
+                                            echo date_format(date_create($result['dob']), $common['info']['date_format']);
+                                        } ?>" placeholder="DD-MM-YY" autocomplete="off" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Gender <span class="form-required">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                                        class="ti-check-box"></i></span></div>
+                                        <select name="patient[gender]" class="custom-select" required>
+                                            <option value="Male" <?php if ($result['gender'] == 'Male') {
+                                                echo "selected";
+                                            } ?>>Male
+                                            </option>
+                                            <option value="Female" <?php if ($result['gender'] == 'Female') {
+                                                echo "selected";
+                                            } ?>>Female
+                                            </option>
+                                            <option value="Other" <?php if ($result['gender'] == 'Other') {
+                                                echo "selected";
+                                            } ?>>Other
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>NHS Number</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                        </div>
+                                        <input type="text" name="patient[nhs_patient_number]" class="form-control"
+                                               value="<?php echo $result['nhs_patient_number']; ?>" maxlength="10"
+                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+                                               placeholder="NHS Number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
                                     <label>Email Address <span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -153,43 +204,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Date of Birth <span class="form-required">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-calendar"></i></span>
-                                        </div>
-                                        <input type="text" id="user-dob" name="patient[dob]"
-                                               class="form-control bg-white" value="<?php if (!empty($result['dob'])) {
-                                            echo date_format(date_create($result['dob']), $common['info']['date_format']);
-                                        } ?>" placeholder="DD-MM-YY" autocomplete="off" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Gender <span class="form-required">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                                        class="ti-check-box"></i></span></div>
-                                        <select name="patient[gender]" class="custom-select" required>
-                                            <option value="Male" <?php if ($result['gender'] == 'Male') {
-                                                echo "selected";
-                                            } ?>>Male
-                                            </option>
-                                            <option value="Female" <?php if ($result['gender'] == 'Female') {
-                                                echo "selected";
-                                            } ?>>Female
-                                            </option>
-                                            <option value="Other" <?php if ($result['gender'] == 'Other') {
-                                                echo "selected";
-                                            } ?>>Other
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            
                             <!--div class="col-md-3">
 							<div class="form-group">
 								<label>Marital Status <span class="form-required">*</span></label>
@@ -297,20 +313,7 @@
                             <!--                                    </div>-->
                             <!--                                </div>-->
                             <!--                            </div>-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>NHS Number</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
-                                        </div>
-                                        <input type="text" name="patient[nhs_patient_number]" class="form-control"
-                                               value="<?php echo $result['nhs_patient_number']; ?>" maxlength="10"
-                                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-                                               placeholder="NHS Number">
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <!--						<div class="col-md-6">-->
                             <!--							<div class="form-group">-->
                             <!--								<label>NHS Hostpital Number</label>-->
