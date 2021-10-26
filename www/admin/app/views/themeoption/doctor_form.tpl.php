@@ -351,6 +351,17 @@
 											</div>
 										</div>
 									</div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Website</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="ti-world"></i></span>
+                                                </div>
+                                                <input type="text" name="doctor[address][website]" id="website" class="form-control" value="" placeholder="Enter website . . .">
+                                            </div>
+                                        </div>
+                                    </div>
 								</div>
 								<div class="panel-footer text-center">
 									<button type="button" name="submit" id="updateAddress" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Save</button>

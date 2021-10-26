@@ -37,7 +37,7 @@ define('LOGGED_IN_SALT', 'Xdb54;55S#CJ33cFq}VdvQvS7O6dfk~uj}C-A>gmie~b9zXI|oO*70
 define('TOKEN', 'oQ913wsl6{WBlk#5jV5%VYExlFaIomj&75ZZ~(W3GREN#n)(jJp2QY7gugD))3L{');
 define('TOKEN_SALT', 'rg(uyO0?I9uq5mx-hh4>V-XCPQ?Dx80{n7|?K?pU;-2WldDIOElXOvzT>p9P1zvN');
 
-define('USER_ROLE', ['Med. Secretary', 'Admin', 'MERCSecretary','Doctor']);
+define('USER_ROLE', ['Med. Secretary', 'Admin', 'MERCSecretary', 'Doctor']);
 define('USER_FOLLOWUP_MED_ROLE', ['Med. Secretary', 'Admin', 'Optometrist']);
 define('USER_FOLLOWUP_MERC_ROLE', ['Admin', 'MERCSecretary']);
 define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist', 'MERCSecretary']);
@@ -56,33 +56,28 @@ define('STATUS_MED_ROLE', ['NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' 
 
 define('FOLLOWUP_DOCUMENT_NAME', ['Referral letter' => 'Referral letter', 'Visual fields - Right eye' => 'Visual fields - Right eye', 'Visual fields - Left eye' => 'Visual fields - Left eye', 'OCT - Right eye' => 'OCT - Right eye', 'OCT - Left eye' => 'OCT - Left eye', 'Fundus - Right eye' => 'Fundus - Right eye', 'Fundus - Left eye' => 'Fundus - Left eye']);
 
-define('USER_ROLE_ID', ['Med. Secretary' => '7', 'MERCSecretary' => '11','Optician' => '9','Doctor' => '3']);
+define('USER_ROLE_ID', ['Med. Secretary' => '7', 'MERCSecretary' => '11', 'Optician' => '9', 'Doctor' => '3']);
 define('CC', 'chetanthumar@gmail.com,sanjay.makwana@tiez.nl');
 define('MERC_REQUIRE', ['YES' => 'Yes', 'NO' => 'No', 'OFFER' => 'Offered']);
 
-define('HOSPITAL_LIST', [
-    'SSPBH' => [
-        "name" => 'Spire South Bank Hospital',
-        "mobile" => '0190 535 0003',
-        "address" => '139 Bath Road, WORCESTER WR5 3YB',
-        "email" => "hsc@spirehealthcare.com",
-        "web" => "http://www.spirehealthcare.com/southbank"
-    ],
-    'BTDSH' => [
-        "name" => 'BMI The Droitwich Spa Hospital',
-        "mobile" => '0190 579 3333',
-        "address" => 'St Andrews Road, DROITWICH WR9 8DN',
-        "email" => "info@bmihealthcare.co.uk",
-        "web" => "http://www.bmihealthcare.co.uk"
-    ],
-    'SLAH' => [
-        "name" => 'Spire Little Aston Hospital',
-        "mobile" => '0121 353 2444',
-        "address" => 'Little Aston Hall Drive, Little Aston, SUTTON COLDFIELD B74 3UP',
-        "email" => "cservice-la@spirehealthcare.com",
-        "web" => "http://www.spirehealthcare.com/littleaston"
-    ]
-]);
+
+//define('HOSPITAL_LIST','',true);
+
+$conn = mysqli_connect(ENV_DB_HOSTNAME, ENV_DB_USERNAME, ENV_DB_PASSWORD, ENV_DB_DATABASE);
+$query = $conn->query("SELECT d.id,ds.* FROM `" . DB_PREFIX . "doctors` As d INNER JOIN `" . DB_PREFIX . "doctor_address` as ds ON  d.id = ds.doctor_id");
+$conn->close();
+
+$hospital_list = [];
+
+while ($row = $query->fetch_assoc()) {
+    $hospital_list[$row['title']]['name'] = $row['title'];
+    $hospital_list[$row['title']]['mobile'] = $row['contact_number'];
+    $hospital_list[$row['title']]['address'] = $row['address'] . " " . $row['city'] . " " . $row['pincode'];
+    $hospital_list[$row['title']]['email'] = $row['email'];
+    $hospital_list[$row['title']]['web'] = $row['website'];
+}
+
+define('HOSPITAL_LIST', $hospital_list);
 
 define('OCULAR_EXAMINATION_DROP_DOWNS', [
     'ALLERGY' => [
@@ -163,7 +158,7 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'SECONDARY_GLAUCOMA_PIGMENT_DISPERSION' => 'Secondary Glaucoma - Pigment Dispersion',
         'SECONDARY_GLAUCOMA_TRAUMA' => 'Secondary Glaucoma - Trauma',
         'SECONDARY_GLAUCOMA_PREV_VR_SURGERY' => 'Secondary Glaucoma - Prev VR Surgery',
-        
+
     ],
     'ANTERIOR_CHAMBER' => [
         'FULLY_OPEN_ANGLE' => 'Fully Open angle',
@@ -181,13 +176,13 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'UNSTABLE_BOOK_FOR_SURGERY' => 'Unstable - Book for Surgery',
     ],
     'FOLLOW_UP_OR_NEXT_APPOINTMENT' => [
-        '0' => ['name' => 'No follow up required','intervalrime' => 'days','value' =>'0'],
-        '1' => ['name' => '1 days after change in treatment to see the effect','intervalrime' => 'days','value' =>'1'],
-        '2' => ['name' => '2 months after change in treatment to see the effect','intervalrime' => 'months','value' =>'2'],
-        '3' => ['name' => '2 months after laser appointment','intervalrime' => 'months','value' =>'2'],
-        '4' => ['name' => '4 months','intervalrime' => 'months','value' =>'4'],
-        '5' => ['name' => '6 months','intervalrime' => 'months','value' =>'6'],
-        '6' => ['name' => '12 months','intervalrime' => 'months','value' =>'12'],
+        '0' => ['name' => 'No follow up required', 'intervalrime' => 'days', 'value' => '0'],
+        '1' => ['name' => '1 days after change in treatment to see the effect', 'intervalrime' => 'days', 'value' => '1'],
+        '2' => ['name' => '2 months after change in treatment to see the effect', 'intervalrime' => 'months', 'value' => '2'],
+        '3' => ['name' => '2 months after laser appointment', 'intervalrime' => 'months', 'value' => '2'],
+        '4' => ['name' => '4 months', 'intervalrime' => 'months', 'value' => '4'],
+        '5' => ['name' => '6 months', 'intervalrime' => 'months', 'value' => '6'],
+        '6' => ['name' => '12 months', 'intervalrime' => 'months', 'value' => '12'],
     ],
     'GLAUCOMA_CARE_PLAN_REQUIRED' => [
         'YES' => 'Yes',
@@ -203,33 +198,33 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
 
 ]);
 
-define('INVOICE_REPORT_TYPE',[
-    'VISUAL_FIELDS' => ['name' => 'Visual fields','price' =>'40'],
-    'OCT' => ['name' => 'OCT','price' =>'40'],
-    'VISUAL_FIELDS_AND_OCT' => ['name' => 'Visual fields and OCT','price' =>'80'],
+define('INVOICE_REPORT_TYPE', [
+    'VISUAL_FIELDS' => ['name' => 'Visual fields', 'price' => '40'],
+    'OCT' => ['name' => 'OCT', 'price' => '40'],
+    'VISUAL_FIELDS_AND_OCT' => ['name' => 'Visual fields and OCT', 'price' => '80'],
 ]);
 
-define('INVOICE_ITEM',[
-    'ITEM_1' => ['name' => 'New consult','price' =>'250'],
-    'ITEM_2' => ['name' => 'Follow up','price' =>'150'],
-    'ITEM_3' => ['name' => 'CCT/OCT','price' =>'0.00'],
-    'ITEM_4' => ['name' => 'Phaco Emulsifycation','price' =>'869'],
-    'ITEM_5' => ['name' => 'SLT Unilateral-C6111','price' =>'325'],
-    'ITEM_6' => ['name' => 'SLT Bilateral-C6110','price' =>'408'],
-    'ITEM_7' => ['name' => 'YAG PIC6230 Unilateral','price' =>'335'],
-    'ITEM_8' => ['name' => 'YAG PC Unilateral-7340','price' =>'188'],
-    'ITEM_9' => ['name' => 'YAGPC Bilateral-C7341','price' =>'235'],
-    'ITEM_10' => ['name' => 'Stent-6120','price' =>'1200'],
-    'ITEM_11' => ['name' => 'Trab-6010','price' =>'1400'],
-    'ITEM_12' => ['name' => 'Others','price' =>'0.00'],
+define('INVOICE_ITEM', [
+    'ITEM_1' => ['name' => 'New consult', 'price' => '250'],
+    'ITEM_2' => ['name' => 'Follow up', 'price' => '150'],
+    'ITEM_3' => ['name' => 'CCT/OCT', 'price' => '0.00'],
+    'ITEM_4' => ['name' => 'Phaco Emulsifycation', 'price' => '869'],
+    'ITEM_5' => ['name' => 'SLT Unilateral-C6111', 'price' => '325'],
+    'ITEM_6' => ['name' => 'SLT Bilateral-C6110', 'price' => '408'],
+    'ITEM_7' => ['name' => 'YAG PIC6230 Unilateral', 'price' => '335'],
+    'ITEM_8' => ['name' => 'YAG PC Unilateral-7340', 'price' => '188'],
+    'ITEM_9' => ['name' => 'YAGPC Bilateral-C7341', 'price' => '235'],
+    'ITEM_10' => ['name' => 'Stent-6120', 'price' => '1200'],
+    'ITEM_11' => ['name' => 'Trab-6010', 'price' => '1400'],
+    'ITEM_12' => ['name' => 'Others', 'price' => '0.00'],
 ]);
 
-define('PAYMENT_INFO',[
-    "LINE_NAME"=>"Sharma Vision",
-    "LINE_ADDRESS_1"=>"105 Fitz Roy Avenue, Harborne",
-    "LINE_ADDRESS_2"=>"Birmingham, B17 8RG",
-    "LINE_ACCOUNT_ENQUIRIES"=>"07758057733",
-    "LINE_EMAIL"=>"secretaryoj@gmail.com",
+define('PAYMENT_INFO', [
+    "LINE_NAME" => "Sharma Vision",
+    "LINE_ADDRESS_1" => "105 Fitz Roy Avenue, Harborne",
+    "LINE_ADDRESS_2" => "Birmingham, B17 8RG",
+    "LINE_ACCOUNT_ENQUIRIES" => "07758057733",
+    "LINE_EMAIL" => "secretaryoj@gmail.com",
 ]);
 
 define('INVOICE_TERMS_NOTE', "There may be a separate charge for any tests, procedures, drugs, x-rays etc");
@@ -241,10 +236,10 @@ define('HOSPITAL', [
     'BTDSH' => 'BMI The Droitwich Spa Hospital<br/>Mobile:01905 793333<br/>Address:St Andrews Road DROITWICH WR9 8DN<br/>Email:info@bmihealthcare.co.uk,<br>Web:http://www.bmihealthcare.co.uk'
 ]);
 
-define('INVOICE_DOCTOR_DETAIL',[
-   "NAME" =>'Tarun Sharma',
-   "DEGREE" =>'MBBS MD FRCS (Ed)',
-   "POSITION" =>'Consultant Ophthalmic Surgeon',
+define('INVOICE_DOCTOR_DETAIL', [
+    "NAME" => 'Tarun Sharma',
+    "DEGREE" => 'MBBS MD FRCS (Ed)',
+    "POSITION" => 'Consultant Ophthalmic Surgeon',
 ]);
 
 define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
@@ -254,15 +249,15 @@ define('STATUS_FOLLOWUP_IN_QUEUE', 'IN_QUEUE');
 define('STATUS_PAYMENT_UNPAID', 'UNPAID');
 define('STATUS_PAYMENT_PAID', 'PAID');
 define('STATUS_PAYMENT_INVOIVE', [
-    'PAID' => 'Paid',
-    'UNPAID' => 'Unpaid',
-    'Partially Paid' => 'Partially Paid',
-    'Pending' => 'Pending',
-    'In Process' => 'In Process',
-    'Cancelled' => 'Cancelled',
-    'Other' => 'Other',
-    'Unknown' => 'Unknown',
- ]
+        'PAID' => 'Paid',
+        'UNPAID' => 'Unpaid',
+        'Partially Paid' => 'Partially Paid',
+        'Pending' => 'Pending',
+        'In Process' => 'In Process',
+        'Cancelled' => 'Cancelled',
+        'Other' => 'Other',
+        'Unknown' => 'Unknown',
+    ]
 );
 
 define('PAYMENT_STATUS_FILTER_INVOIVE', [
@@ -279,11 +274,11 @@ define('PAYMENT_STATUS_FILTER_INVOIVE', [
 );
 define('PAYMENT_STATUS_FILTER_UNPAID', 'Unpaid');
 
-define('STATUS_PAYMENT', ['ALL'=>'All','PAID' => 'Paid', 'UNPAID' => 'Unpaid', 'NOT_SUITABLE' => 'Not suitable']);
-define('STATUS_FOLLOWUP', ['ALL'=>'All','NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable','NON_MERC_FOLLOWUP' => 'Non gcp followup']);
+define('STATUS_PAYMENT', ['ALL' => 'All', 'PAID' => 'Paid', 'UNPAID' => 'Unpaid', 'NOT_SUITABLE' => 'Not suitable']);
+define('STATUS_FOLLOWUP', ['ALL' => 'All', 'NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable', 'NON_MERC_FOLLOWUP' => 'Non gcp followup']);
 
-define('FOLLOWUP_MED_SEC_STATUS', ['ALL'=>'All','OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable', 'NON_MERC_FOLLOWUP' => 'Non gcp followup']);
-define('FOLLOWUP_OPTICIAN_STATUS', ['ALL'=>'All','NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable']);
-define('REFERRAL_OPTICIAN_STATUS', ['ALL' => 'ALL','NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable', 'DRAFT' => 'Draft']);
-define('REFERRAL_MED_SEC_STATUS', ['ALL' => 'ALL','NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable']);
-define('STATUS_ALL','ALL');
+define('FOLLOWUP_MED_SEC_STATUS', ['ALL' => 'All', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable', 'NON_MERC_FOLLOWUP' => 'Non gcp followup']);
+define('FOLLOWUP_OPTICIAN_STATUS', ['ALL' => 'All', 'NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable']);
+define('REFERRAL_OPTICIAN_STATUS', ['ALL' => 'ALL', 'NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable', 'DRAFT' => 'Draft']);
+define('REFERRAL_MED_SEC_STATUS', ['ALL' => 'ALL', 'NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable']);
+define('STATUS_ALL', 'ALL');

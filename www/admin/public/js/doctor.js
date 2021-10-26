@@ -13,6 +13,7 @@
 		$('#pincode').val($(this).data('pincode'));
         $('#contact_number').val($(this).data('contact_number'));
         $('#email').val($(this).data('email'));
+        $('#website').val($(this).data('website'));
     });
     
  });

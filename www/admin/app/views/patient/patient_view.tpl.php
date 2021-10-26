@@ -182,6 +182,10 @@
                                     <?php } ?>
                                 </tr>
                                 <tr>
+                                    <td>Third Party</td>
+                                    <td><?php echo $result['third_party']; ?></td>
+                                </tr>
+                                <tr>
                                     <td>Status</td>
                                     <?php if ($result['status'] == '0') { ?>
                                         <td class="text-danger">Inactive</td>
@@ -253,7 +257,7 @@
                                 <div class="panel-title">Patient's Appointments</div>
                                 <div class="panel-action">
                                     <?php if ($appointment_add) { ?>
-                                        <a class="btn btn-primary btn-sm appointment-sidebar"><i
+                                        <a class="btn btn-primary btn-sm appointment-sidebar" href="<?php echo 'index.php?route=appointments&id='.$result['id']?>"><i
                                                     class="ti-plus pr-2"></i> New Appointment</a>
                                     <?php } ?>
                                 </div>

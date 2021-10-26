@@ -63,10 +63,10 @@ class Doctor extends Model
 
 		if(empty($address['address_id']) ){
 
-			$this->database->query("INSERT INTO `" . DB_PREFIX . "doctor_address` (`doctor_id`, `title`, `address`, `city`, `pincode`, `contact_number`, `email`, `created_at`, `created_by`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", array($data['id'], $address['title'], $address['address'], $address['city'], $address['pincode'], $address['contact_number'], $address['email'], date('Y-m-d H-i-s'),  $this->session->data['user_id']));
+			$this->database->query("INSERT INTO `" . DB_PREFIX . "doctor_address` (`doctor_id`, `title`, `address`, `city`, `pincode`, `contact_number`, `email`,`website`,`created_at`, `created_by`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)", array($data['id'], $address['title'], $address['address'], $address['city'], $address['pincode'], $address['contact_number'], $address['email'],$address['website'], date('Y-m-d H-i-s'),  $this->session->data['user_id']));
 
 		} else {
-			$this->database->query("UPDATE `" . DB_PREFIX . "doctor_address` SET `title` = ?, `address` = ?, `city` = ?, `pincode` = ?, `contact_number` = ?, `email` = ?, `updated_at` = ?, `updated_by` = ?  WHERE `id` = ?", array($address['title'], $address['address'], $address['city'], $address['pincode'], $address['contact_number'], $address['email'], date('Y-m-d H-i-s'),  $this->session->data['user_id'], (int)$address['address_id']));
+			$this->database->query("UPDATE `" . DB_PREFIX . "doctor_address` SET `title` = ?, `address` = ?, `city` = ?, `pincode` = ?, `contact_number` = ?, `email` = ?,`website` = ?, `updated_at` = ?, `updated_by` = ?  WHERE `id` = ?", array($address['title'], $address['address'], $address['city'], $address['pincode'], $address['contact_number'], $address['email'],$address['website'], date('Y-m-d H-i-s'),  $this->session->data['user_id'], (int)$address['address_id']));
 		}
 		
 
@@ -142,10 +142,10 @@ class Doctor extends Model
 					$table_html .= "<tr>".
 										"<td>".
 											$address['title'].", ".$address['address'].", ".$address['city'].", ".$address['pincode'].
-											" </br> ".$address['contact_number'].", ".$address['email'].
+											" </br> ".$address['contact_number'].", ".$address['email'].", ".$address['website'].
 										"</td>".
 										"<td>".
-										"<a href='#' class='text-primary edit-address' title='' data-original-title='Edit' data-address_id='".$address['id']."' data-title='".$address['title']."' data-address='".$address['address']."' data-city='".$address['city']."' data-pincode='".$address['pincode']."' data-contact_number='".$address['contact_number']."' data-email='".$address['email']."'><i class='ti-pencil-alt'></i></a>".
+										"<a href='#' class='text-primary edit-address' title='' data-original-title='Edit' data-address_id='".$address['id']."' data-title='".$address['title']."' data-address='".$address['address']."' data-city='".$address['city']."' data-pincode='".$address['pincode']."' data-contact_number='".$address['contact_number']."' data-email='".$address['email']."' data-website='".$address['website']."'><i class='ti-pencil-alt'></i></a>".
 										"</td>".
 									"</tr>";
 				}
