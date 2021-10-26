@@ -33,21 +33,26 @@ class Doctor extends Model
 
 	public function updateDoctorWebSiteData($data)
 	{
-	   $this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET `about` = ?, `social` = ?, `web_status` = ?, `priority` = ?  WHERE `id` = ? AND `user_id` = ?", array($data['about'], $data['social'], (int)$data['web_status'], (int)$data['priority'], (int)$data['id'], (int)$data['user_id']));
+	   //$this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET `about` = ?, `social` = ?, `web_status` = ?, `priority` = ?  WHERE `id` = ? AND `user_id` = ?", array($data['about'], $data['social'], (int)$data['web_status'], (int)$data['priority'], (int)$data['id'], (int)$data['user_id']));
+
+	   $this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET `about` = ?, `social` = ?, `web_status` = ?, `priority` = ?  WHERE `id` = ? ", array($data['about'], $data['social'], (int)$data['web_status'], (int)$data['priority'], (int)$data['id']));
 
 		return true;
 	}
 
 	public function updateDoctorAppointmentInfo($data)
 	{
-		$this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET `time` = ?, `appointment_status` = ? WHERE `id` = ? AND `user_id` = ?", array($data['time'], $data['appointment_status'], (int)$data['id'], (int)$data['user_id']));
+		//$this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET `time` = ?, `appointment_status` = ? WHERE `id` = ? AND `user_id` = ?", array($data['time'], $data['appointment_status'], (int)$data['id'], (int)$data['user_id']));
+		$this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET `time` = ?, `appointment_status` = ? WHERE `id` = ? ", array($data['time'], $data['appointment_status'], (int)$data['id']));
 
 		return true;
 	}
 
 	public function updateDoctorHollydays($data)
 	{
-		$this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET `weekly` = ?, `national` = ? WHERE `id` = ? AND `user_id` = ?", array($data['weekly'], $data['national'], (int)$data['id'], (int)$data['user_id']));
+		//$this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET `weekly` = ?, `national` = ? WHERE `id` = ? AND `user_id` = ?", array($data['weekly'], $data['national'], (int)$data['id'], (int)$data['user_id']));
+
+		$this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET `weekly` = ?, `national` = ? WHERE `id` = ?", array($data['weekly'], $data['national'], (int)$data['id']));
 
 		return true;
 	}
