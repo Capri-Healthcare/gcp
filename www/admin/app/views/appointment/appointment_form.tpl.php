@@ -182,7 +182,7 @@
                                             <span><?php echo $result['age_year'] . ' Years ' . $result['age_month'] . ' Month'; ?></span>
                                         </p>
                                         <p class="d-block mt-3">
-                                            <?php if (!empty($result['history']) && is_array($result['history'])) {
+                                            <?php if (!empty($result['history'])) {
                                                 echo '<i class="ti-wheelchair"></i> ' . implode(', ', json_decode($result['history'], true));
                                             } ?>
                                         </p>
@@ -396,12 +396,12 @@
                                                     <td>
                                                         <select name="prescription[medicine][<?php echo $key; ?>][eye]"
                                                                 class="form-control" required>
-                                                            <?php foreach (constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'] as $key => $value) { ?>
-                                                                <option value="<?php echo $key; ?>"
-                                                                    <?php echo (isset($value['eye']) && $value['eye'] == $key) ? 'selected' : '' ?> >
-                                                                    <?php echo $value; ?>
+                                                            <?php  foreach (constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'] as $key1 => $value1) { ?>
+                                                                <option value="<?php echo $key1; ?>"
+                                                                    <?php echo (isset($value['eye']) && $value['eye'] == $key1) ? 'selected' : '' ?> >
+                                                                    <?php echo $value1; ?>
                                                                 </option>
-                                                            <?php } ?>
+                                                            <?php }   ?>
                                                         </select>
                                                     </td>
                                                 <td>
