@@ -382,21 +382,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Third Party</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ti-user"></i></span>
-                                        </div>
-                                        <input type="text" name="patient[third_party]" class="form-control gcp-name"
-                                               value=""
-                                               placeholder="Third Party" id="third_party">
-
-                                    </div>
-                                </div>
-                            </div>
-
                             <?php if (!empty($result['id'])) { ?>
                                 <div class="col-md-6">
                                     <div class="form-group">

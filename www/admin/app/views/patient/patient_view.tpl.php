@@ -182,10 +182,6 @@
                                     <?php } ?>
                                 </tr>
                                 <tr>
-                                    <td>Third Party</td>
-                                    <td><?php echo $result['third_party']; ?></td>
-                                </tr>
-                                <tr>
                                     <td>Status</td>
                                     <?php if ($result['status'] == '0') { ?>
                                         <td class="text-danger">Inactive</td>
