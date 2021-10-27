@@ -562,7 +562,7 @@ class Appointment extends Model
 
         $body .= "<br><br><br>";
 
-        $body .= "Dear " . ucfirst($appointment['referee_name']) . "<br><br>";
+        $body .= "Dear " . ucfirst($appointment['referee_name']) . ",<br><br>";
 
         $body .= "<b>Name: </b>".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         $body .= "<b>DOB: </b>".date_format(date_create($appointment['patient_dob']), 'd-m-Y'). "<br>";
