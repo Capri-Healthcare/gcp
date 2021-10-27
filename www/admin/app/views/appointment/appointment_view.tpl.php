@@ -531,7 +531,7 @@
                                             <td class="text-dark"><?php echo isset($result['is_glaucoma_required']) ? $result['is_glaucoma_required'] : '' ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Doctors Comment's</td>
+                                            <td>Doctor's Comments</td>
                                             <td class="text-dark"><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : '' ?></td>
                                         </tr>
                                         <tr>

@@ -1406,7 +1406,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Doctors Comment's</label>
+                                                <label>Doctor's Comments</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
