@@ -33,10 +33,10 @@ class OpticianReferralController extends Controller
             $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
             $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
         } else {
-            $data['period']['start'] = date('Y-m-d ' . '00:00:00');
+            $data['period']['start'] = '2021-01-01 00:00:00';
             $data['period']['end'] = date('Y-m-d ' . '23:59:59');
 
-            $data['period']['status'] = constant('STATUS_ALL');
+            $data['period']['status'] = constant('STATUS_NEW');
         }
 
 
