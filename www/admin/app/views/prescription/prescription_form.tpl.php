@@ -132,25 +132,15 @@
                                            required autocomplete="off" style="width: 160px;">
                                 </td>
                                 <td>
-                                    <select name="prescription[medicine][<?php echo $key; ?>][eye]"
-                                            class="form-control" required>
-                                        <option value="RE" <?php if ($value['eye'] == 'RE') {
-                                            echo "selected";
-                                        } ?> >RE
-                                        </option>
-                                        <option value="LE" <?php if ($value['eye'] == 'LE') {
-                                            echo "selected";
-                                        } ?> >LE
-                                        </option>
-                                        <option value="Both" <?php if ($value['eye'] == 'Both') {
-                                            echo "selected";
-                                        } ?> >Both
-                                        </option>
-                                        <option value="Other" <?php if ($value['eye'] == 'Other') {
-                                            echo "selected";
-                                        } ?> >Other
-                                        </option>
-                                    </select>
+									<select name="prescription[medicine][<?php echo $key; ?>][eye]"
+											class="form-control" required>
+										<?php foreach (constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'] as $key => $value) { ?>
+											<option value="<?php echo $key; ?>"
+												<?php echo (isset($value['eye']) && $value['eye'] == $key) ? 'selected' : '' ?> >
+												<?php echo $value; ?>
+											</option>
+										<?php } ?>
+									</select>
                                 </td>
 								<td>
 									<a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a>
@@ -205,13 +195,15 @@
                                            required autocomplete="off">
                                 </td>
                                 <td>
-                                    <select name="prescription[medicine][0][eye]"
-                                            class="form-control" required>
-                                        <option value="RE">RE</option>
-                                        <option value="LE">LE</option>
-                                        <option value="Both">Both</option>
-                                        <option value="Other" selected>Other</option>
-                                    </select>
+									<select name="prescription[medicine][0][eye]"
+											class="form-control">
+										<?php foreach (constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'] as $key => $value) { ?>
+											<option value="<?php echo $key; ?>"
+												<?php echo (isset($value['eye']) && $value['eye'] == $key) ? 'selected' : '' ?> >
+												<?php echo $value; ?>
+											</option>
+										<?php } ?>
+									</select>
                                 </td>
 
 								<td><a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a></td>
@@ -283,7 +275,7 @@
             '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
             '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +
             '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +
-            '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">RE</option><option value="LE">LE</option><option value="Both">Both</option><option value="Other" selected>Other</option></select></td>' +
+            '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">Right Eye</option><option value="LE">Left Eye</option><option value="Both">Both Eyes</option><option value="Other" selected>Other</option></select></td>' +
             '<td><a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a></td>' +
             '</tr>');
 	});

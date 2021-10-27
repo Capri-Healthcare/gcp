@@ -182,8 +182,8 @@
                                             <span><?php echo $result['age_year'] . ' Years ' . $result['age_month'] . ' Month'; ?></span>
                                         </p>
                                         <p class="d-block mt-3">
-                                            <i class="ti-wheelchair"></i> <?php if (!empty($result['history']) && is_array($result['history'])) {
-                                                echo implode(', ', json_decode($result['history'], true));
+                                            <?php if (!empty($result['history']) && is_array($result['history'])) {
+                                                echo '<i class="ti-wheelchair"></i> ' . implode(', ', json_decode($result['history'], true));
                                             } ?>
                                         </p>
                                     </div>
@@ -396,22 +396,12 @@
                                                     <td>
                                                         <select name="prescription[medicine][<?php echo $key; ?>][eye]"
                                                                 class="form-control" required>
-                                                            <option value="RIGHT_EYE" <?php if ($value['eye'] == 'RIGHT_EYE') {
-                                                                echo "selected";
-                                                            } ?> >Right Eye
-                                                            </option>
-                                                            <option value="LEFT_EYE" <?php if ($value['eye'] == 'LEFT_EYE') {
-                                                                echo "selected";
-                                                            } ?> >Left Eye
-                                                            </option>
-                                                            <option value="BOTH_EYES" <?php if ($value['eye'] == 'BOTH_EYES') {
-                                                                echo "selected";
-                                                            } ?> >Both Eyes
-                                                            </option>
-                                                            <option value="OTHER" <?php if ($value['eye'] == 'OTHER') {
-                                                                echo "selected";
-                                                            } ?> >Other
-                                                            </option>
+                                                            <?php foreach (constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>"
+                                                                    <?php echo (isset($value['eye']) && $value['eye'] == $key) ? 'selected' : '' ?> >
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
                                                         </select>
                                                     </td>
                                                 <td>
@@ -480,10 +470,12 @@
                                             <td>
                                                 <select name="prescription[medicine][0][eye]"
                                                         class="form-control">
-                                                    <option value="RE">RE</option>
-                                                    <option value="LE">LE</option>
-                                                    <option value="Both">Both</option>
-                                                    <option value="Other" selected>Other</option>
+                                                    <?php foreach (constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'] as $key => $value) { ?>
+                                                        <option value="<?php echo $key; ?>"
+                                                            <?php echo (isset($value['eye']) && $value['eye'] == $key) ? 'selected' : '' ?> >
+                                                            <?php echo $value; ?>
+                                                        </option>
+                                                    <?php } ?>
                                                 </select>
                                             </td>
 
@@ -563,7 +555,7 @@
                                     '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
                                     '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +
                                     '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +
-                                    '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">RE</option><option value="LE">LE</option><option value="BOTH">Both</option><option value="Other" selected>Other</option></select></td>' +
+                                    '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">Right Eye</option><option value="LE">Left Eye</option><option value="BOTH">Both Eyes</option><option value="Other" selected>Other</option></select></td>' +
                                     '<td><a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a></td>' +
                                     '</tr>');
                             });
@@ -722,7 +714,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Current event (History)<span
+                                                <label>Current Event (History)<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -760,7 +752,7 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label>Visual acuity - RE<span
+                                                <label>Visual Acuity - RE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -780,7 +772,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Intraocular pressure RE<span
+                                                <label>Intraocular Pressure RE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -802,7 +794,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Visual acuity - LE<span
+                                                <label>Visual Acuity - LE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -822,7 +814,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Intraocular pressure - LE<span
+                                                <label>Intraocular Pressure - LE<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -1134,7 +1126,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Visual field test plots - RE</label><br>
+                                                <label>Visual Field Test Plots - RE</label><br>
                                                 <div class="examination-container visualfieldsrighteye">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Visual fields - Right eye') {?>
@@ -1166,7 +1158,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Visual field test plots - LE</label><br>
+                                                <label>Visual Field Test Plots - LE</label><br>
                                                 <div class="examination-container visualfieldslefteye">
                                                     <?php if (!empty($reports)) { foreach ($reports as $key => $value) { $file_ext = pathinfo($value['report'], PATHINFO_EXTENSION); if ($file_ext == "pdf") { ?>
                                                         <?php if($value['name'] == 'Visual fields - Left eye') {?>
@@ -1338,7 +1330,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Follow up / Next Appointment<span
+                                                <label>Follow Up / Next Appointment<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -1411,7 +1403,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Special condition</label>
+                                                <label>Special Condition</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i

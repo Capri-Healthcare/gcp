@@ -198,6 +198,13 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
 
 ]);
 
+define('PRESCRIPTION_DROP_DOWNS', ['PRESCRIPTION_EYE' => [
+    'RE' => 'Right eye',
+    'LE' => 'Left eye',
+    'BOTH' => 'Both eyes',
+    'OTHER' => 'Other',
+]]);
+
 define('INVOICE_REPORT_TYPE', [
     'VISUAL_FIELDS' => ['name' => 'Visual fields', 'price' => '40'],
     'OCT' => ['name' => 'OCT', 'price' => '40'],
