@@ -557,9 +557,8 @@ class Appointment extends Model
 
         $body .= "<br><br><br>";
 
-        $body .= ucfirst($optician_data['firstname']) . " " . ucfirst($optician_data['lastname']) . "<br>";
-        $body .= $optician_address['address1'] . "," . $optician_address['address2'] . "<br>";
-        $body .= $optician_address['city'] . "," . $optician_address['country'] . "," . $optician_address['postal'];
+        $body .= ucfirst($appointment['referee_name']) . "<br>";
+        $body .= $appointment['referee_address'];
 
         $body .= "<br><br><br>";
 
