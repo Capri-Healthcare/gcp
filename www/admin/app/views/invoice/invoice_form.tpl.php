@@ -137,11 +137,12 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="col-form-label">Payment Method <span class="form-required">*</span></label>
+                        <label class="col-form-label">Payment Method </label>
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i
                                             class="ti-credit-card"></i></span></div>
-                            <select name="invoice[method]" class="custom-select" id="payment_method" required>
+                            <select name="invoice[method]" class="custom-select" id="payment_method">
+                                <option value="">Select payment method<opton>
                                 <?php $selected_payment_method = "";
                                 if ($payment_method) {
                                     foreach ($payment_method as $key => $value) { ?>

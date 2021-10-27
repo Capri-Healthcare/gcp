@@ -98,7 +98,7 @@ class Appointment extends Model
 
     public function updateAppointment($data)
     {
-        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], (int)$data['id']));
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ?, referee_name = ?, referee_address = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], $data['referee_name'], $data['referee_address'], (int)$data['id']));
 
         if ($query->num_rows > 0) {
             return true;
@@ -242,7 +242,22 @@ class Appointment extends Model
             $data['hospital_code']));
 
         if ($query->num_rows > 0) {
-            return $this->database->last_id();
+            $appointment_id = $this->database->last_id();
+
+            if($data['optician_id'] > 0){
+
+                $optician_detail_qry = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE user_id = ?", array($data['optician_id']));
+
+                $optician_details = $optician_detail_qry->row;
+                $referee_name = $optician_details['firstname'] . ' ' . $optician_details['lastname'];
+                $referee_address_aar = json_decode($optician_details['address']);
+                $referee_address = $referee_address_aar->address1 . ', '. $referee_address_aar->address2 . ', '. $referee_address_aar->city . ' - ' . $referee_address_aar->postal;
+
+                $query = $this->database->query("UPDATE " . DB_PREFIX . "appointments SET referee_name = ?, referee_address = ? WHERE id = ? ", array($referee_name, $referee_address, $appointment_id));
+            }
+            
+
+            return $appointment_id;
         } else {
             echo '<pre>'.print_r($data);
             exit();
@@ -596,7 +611,7 @@ class Appointment extends Model
         $body .= "<br>";
         if(!empty($appointment['doctor_note_optometrist'])){
             $body .= "<br><br>";
-            $body .= "<strong>Doctors Comments:</strong> ";
+            $body .= "<strong>Doctors Comment's:</strong> ";
             $body .= $appointment['doctor_note_optometrist'];
 
         }
@@ -819,7 +834,7 @@ class Appointment extends Model
 
         if(!empty($appointment['doctor_note'])){
             $body .= "<br><br>";
-            $body .= "<strong>Doctors Comments:</strong> ";
+            $body .= "<strong>Doctors Comment's:</strong> ";
             $body .= $appointment['doctor_note'];
 
         }

@@ -156,6 +156,14 @@
                                         <td><?php echo $result['gp_address']; ?></td>
                                     </tr>
                                     <tr>
+                                        <td>Referee Name</td>
+                                        <td><?php echo $result['referee_name']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Referee Address</td>
+                                        <td><?php echo $result['referee_address']; ?></td>
+                                    </tr>
+                                    <tr>
                                         <td>Medical History</td>
                                         <td class="text-danger"><?php if (!empty($result['history']) && is_array($result['history'])) {
                                                 echo implode(', ', json_decode($result['history'], true));
@@ -523,7 +531,7 @@
                                             <td class="text-dark"><?php echo isset($result['is_glaucoma_required']) ? $result['is_glaucoma_required'] : '' ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Doctors Comments</td>
+                                            <td>Doctors Comment's</td>
                                             <td class="text-dark"><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : '' ?></td>
                                         </tr>
                                         <tr>

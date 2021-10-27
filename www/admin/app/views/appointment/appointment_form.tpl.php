@@ -151,6 +151,33 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Referee Name </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="appointment[referee_name]"
+                                               placeholder="Enter referee name"
+                                               value="<?php echo $result['referee_name']; ?>"
+                                               >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Referee Address</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="appointment[referee_address]"
+                                               placeholder="Enter referee address"
+                                               value="<?php echo $result['referee_address']; ?>"
+                                               >
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="col-md-6">
                                 <div class="apnt-user">
@@ -183,7 +210,7 @@
                                         </p>
                                         <p class="d-block mt-3">
                                             <?php if (!empty($result['history'])) {
-                                                echo '<i class="ti-wheelchair"></i> ' . implode(', ', json_decode($result['history'], true));
+                                                echo "<b>Medical history:</b> ".implode(', ', json_decode($result['history'], true));
                                             } ?>
                                         </p>
                                     </div>
@@ -1379,7 +1406,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Doctors Comments</label>
+                                                <label>Doctors Comment's</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
