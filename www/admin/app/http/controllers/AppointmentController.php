@@ -538,7 +538,9 @@ class AppointmentController extends Controller
 
               //  if ($data['appointment']['gcp_required'] == 'YES') {
 
-                    $this->newpatiengcpMail($data['appointment']['optician_id']);
+                    if($data['appointment']['optician_id'] > 0){
+                        $this->newpatiengcpMail($data['appointment']['optician_id']);
+                    }
                     $this->load->model('followup');
                     $followup['appointment_id'] = $data['appointment']['id'];
                     $followup['patient_id'] = $data['appointment']['patient_id'];
