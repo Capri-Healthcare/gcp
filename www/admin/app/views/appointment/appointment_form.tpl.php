@@ -396,19 +396,19 @@
                                                     <td>
                                                         <select name="prescription[medicine][<?php echo $key; ?>][eye]"
                                                                 class="form-control" required>
-                                                            <option value="RE" <?php if ($value['eye'] == 'RE') {
+                                                            <option value="RIGHT_EYE" <?php if ($value['eye'] == 'RIGHT_EYE') {
                                                                 echo "selected";
-                                                            } ?> >RE
+                                                            } ?> >Right Eye
                                                             </option>
-                                                            <option value="LE" <?php if ($value['eye'] == 'LE') {
+                                                            <option value="LEFT_EYE" <?php if ($value['eye'] == 'LEFT_EYE') {
                                                                 echo "selected";
-                                                            } ?> >LE
+                                                            } ?> >Left Eye
                                                             </option>
-                                                            <option value="Both" <?php if ($value['eye'] == 'Both') {
+                                                            <option value="BOTH_EYES" <?php if ($value['eye'] == 'BOTH_EYES') {
                                                                 echo "selected";
-                                                            } ?> >Both
+                                                            } ?> >Both Eyes
                                                             </option>
-                                                            <option value="Other" <?php if ($value['eye'] == 'Other') {
+                                                            <option value="OTHER" <?php if ($value['eye'] == 'OTHER') {
                                                                 echo "selected";
                                                             } ?> >Other
                                                             </option>
@@ -1387,7 +1387,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Doctor note</label>
+                                                <label>Doctors Comments</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
@@ -1399,7 +1399,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Doctor note optometrist</label>
+                                                <label>Comments for Optometrist</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i

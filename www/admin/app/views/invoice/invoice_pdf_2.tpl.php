@@ -96,14 +96,6 @@
                 </tr>
                 <tr>
                     <td style="vertical-align: top;">
-                        <strong>DOB: </strong>
-                    </td>
-                    <td>
-                        <?php echo date_format(date_create($result['dob']), $result['info']['date_format']);?>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="vertical-align: top;">
                         <strong>Address: </strong>
                     </td>
                     <td>

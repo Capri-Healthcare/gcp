@@ -596,7 +596,7 @@ class Appointment extends Model
         $body .= "<br>";
         if(!empty($appointment['doctor_note_optometrist'])){
             $body .= "<br><br>";
-            $body .= "<strong>Doctore Note:</strong> ";
+            $body .= "<strong>Doctors Comments:</strong> ";
             $body .= $appointment['doctor_note_optometrist'];
 
         }
@@ -819,7 +819,7 @@ class Appointment extends Model
 
         if(!empty($appointment['doctor_note'])){
             $body .= "<br><br>";
-            $body .= "<strong>Doctore Note:</strong> ";
+            $body .= "<strong>Doctors Comments:</strong> ";
             $body .= $appointment['doctor_note'];
 
         }

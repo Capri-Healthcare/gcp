@@ -523,11 +523,11 @@
                                             <td class="text-dark"><?php echo isset($result['is_glaucoma_required']) ? $result['is_glaucoma_required'] : '' ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Doctor Note</td>
+                                            <td>Doctors Comments</td>
                                             <td class="text-dark"><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : '' ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Doctor note optometrist</td>
+                                            <td>Comments for Optometrist</td>
                                             <td class="text-dark"><?php echo isset($result['doctor_note_optometrist']) ? $result['doctor_note_optometrist'] : '' ?></td>
                                         </tr>
                                         <tr>

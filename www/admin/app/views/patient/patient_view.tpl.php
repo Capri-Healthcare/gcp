@@ -797,11 +797,11 @@
                                                                                     <td class="text-dark"><?php echo isset($value['is_glaucoma_required']) ? $value['is_glaucoma_required'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Doctor note</td>
+                                                                                    <td>Doctors Comments</td>
                                                                                     <td class="text-dark"><?php echo isset($value['doctor_note']) ? $value['doctor_note'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Doctor note optometrist</td>
+                                                                                    <td>Comments for Optometrist</td>
                                                                                     <td class="text-dark"><?php echo isset  ($value['doctor_note_optometrist']) ? $value['doctor_note_optometrist'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>

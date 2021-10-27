@@ -191,9 +191,9 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'NO' => 'No'
     ],
     'DIAGNOSIS_EYE' => [
-        'RE' => 'Re',
-        'LE' => 'Le',
-        'BOTH' => 'Both',
+        'RE' => 'Right eye',
+        'LE' => 'Left eye',
+        'BOTH' => 'Both eyes',
     ],
 
 ]);

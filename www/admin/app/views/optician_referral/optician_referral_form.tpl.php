@@ -101,9 +101,9 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-calendar"></i></span></div>
-                                            <input type="text" name="referral[dob]" class="form-control date"
+                                            <input type="text" name="referral[dob]" class="form-control dateofbirth"
                                                    value="<?php echo $result['dob']; ?>"
-                                                   max="<?php echo date('Y-m-d') ?>">
+                                                   max="<?php echo date('Y-m-d') ?>" placeholder="dd-mm-yy" >
                                         </div>
                                     </div>
                                 </div>
