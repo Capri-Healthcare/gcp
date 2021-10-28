@@ -70,11 +70,11 @@ $conn->close();
 $hospital_list = [];
 
 while ($row = $query->fetch_assoc()) {
-    $hospital_list[$row['title']]['name'] = $row['title'];
-    $hospital_list[$row['title']]['mobile'] = $row['contact_number'];
-    $hospital_list[$row['title']]['address'] = $row['address'] . " " . $row['city'] . " " . $row['pincode'];
-    $hospital_list[$row['title']]['email'] = $row['email'];
-    $hospital_list[$row['title']]['web'] = $row['website'];
+    $hospital_list[$row['id']]['name'] = $row['title'];
+    $hospital_list[$row['id']]['mobile'] = $row['contact_number'];
+    $hospital_list[$row['id']]['address'] = $row['address'] . " " . $row['city'] . " " . $row['pincode'];
+    $hospital_list[$row['id']]['email'] = $row['email'];
+    $hospital_list[$row['id']]['web'] = $row['website'];
 }
 
 define('HOSPITAL_LIST', $hospital_list);

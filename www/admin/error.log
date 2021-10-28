@@ -868,3 +868,69 @@ Stack trace:
 [27-Oct-2021 12:32:13 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 389
 [27-Oct-2021 12:32:13 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 393
 [27-Oct-2021 12:32:13 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 397
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 330
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 353
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 357
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 361
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 365
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 369
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 373
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 377
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 381
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 385
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 389
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 393
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 397
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 330
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 353
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 357
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 361
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 365
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 369
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 373
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 377
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 381
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 385
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 389
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 393
+[27-Oct-2021 14:56:57 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 397
+[28-Oct-2021 05:44:40 Europe/London] PHP Notice:  Undefined index: patient_id in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_form.tpl.php on line 353
+[28-Oct-2021 05:44:47 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 636
+[28-Oct-2021 05:44:47 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 637
+[28-Oct-2021 05:44:47 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 638
+[28-Oct-2021 05:44:47 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 639
+[28-Oct-2021 05:44:47 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 642
+[28-Oct-2021 05:44:47 Europe/London] PHP Notice:  Undefined index: name in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\MailController.php on line 40
+[28-Oct-2021 05:44:52 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 577
+[28-Oct-2021 05:44:52 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 582
+[28-Oct-2021 05:44:52 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 780
+[28-Oct-2021 05:44:58 Europe/London] PHP Notice:  Undefined index: patient_id in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_form.tpl.php on line 353
+[28-Oct-2021 05:48:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 637
+[28-Oct-2021 05:48:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 638
+[28-Oct-2021 05:48:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 639
+[28-Oct-2021 05:48:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 640
+[28-Oct-2021 05:48:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 643
+[28-Oct-2021 05:48:44 Europe/London] PHP Notice:  Undefined index: name in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\MailController.php on line 40
+[28-Oct-2021 05:48:49 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 577
+[28-Oct-2021 05:48:49 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 582
+[28-Oct-2021 05:48:49 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 780
+[28-Oct-2021 05:48:53 Europe/London] PHP Notice:  Undefined index: patient_id in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_form.tpl.php on line 353
+[28-Oct-2021 05:48:59 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 637
+[28-Oct-2021 05:48:59 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 638
+[28-Oct-2021 05:48:59 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 639
+[28-Oct-2021 05:48:59 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 640
+[28-Oct-2021 05:48:59 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 643
+[28-Oct-2021 05:48:59 Europe/London] PHP Notice:  Undefined index: name in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\MailController.php on line 40
+[28-Oct-2021 05:49:03 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 577
+[28-Oct-2021 05:49:03 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 582
+[28-Oct-2021 05:49:03 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 780
+[28-Oct-2021 05:49:07 Europe/London] PHP Notice:  Undefined index: patient_id in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_form.tpl.php on line 353
+[28-Oct-2021 05:49:22 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 637
+[28-Oct-2021 05:49:22 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 638
+[28-Oct-2021 05:49:22 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 639
+[28-Oct-2021 05:49:22 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 640
+[28-Oct-2021 05:49:22 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 643
+[28-Oct-2021 05:49:22 Europe/London] PHP Notice:  Undefined index: name in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\MailController.php on line 40
+[28-Oct-2021 05:49:27 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 577
+[28-Oct-2021 05:49:27 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 582
+[28-Oct-2021 05:49:27 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 780
