@@ -238,11 +238,6 @@ define('INVOICE_TERMS_NOTE', "There may be a separate charge for any tests, proc
 define('INVOICE_TERMS', "Mr Sharma reserves the right to charge interest and a collection fee of £20 or 10% of the invoice value (whichever is the greater) on all accounts, which are overdue for payment.
 <br><span style='font-size: 12px;'>Tarun Sharma & Sushma Sharma are Directors of Sharma Vision, Company number-8932399.</span>");
 
-define('HOSPITAL', [
-    'SSPBH' => 'Spire South Bank Hospital<br/>Mobile:01905350003<br/>Address:139 Bath Road WORCESTER WR5 3YB<br/>Email:hsc@spirehealthcare.com<br>Web:http://www.spirehealthcare.com/southbank',
-    'BTDSH' => 'BMI The Droitwich Spa Hospital<br/>Mobile:01905 793333<br/>Address:St Andrews Road DROITWICH WR9 8DN<br/>Email:info@bmihealthcare.co.uk,<br>Web:http://www.bmihealthcare.co.uk'
-]);
-
 define('INVOICE_DOCTOR_DETAIL', [
     "NAME" => 'Tarun Sharma',
     "DEGREE" => 'MBBS MD FRCS (Ed)',

@@ -1033,7 +1033,7 @@ class AppointmentController extends Controller
             $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
             $result['template']['message'] = str_replace('{patient_title}', $appointment['title'], $result['template']['message']);
             $result['template']['message'] = str_replace('{patient fname, lname}', $appointment['firstname'] . " " . $appointment['lastname'], $result['template']['message']);
-            $result['template']['message'] = str_replace('{appt_loaction}', constant('HOSPITAL')[$appointment['hospital_code']]['name'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{appt_loaction}', constant('HOSPITAL_LIST')[$appointment['hospital_code']]['name'], $result['template']['message']);
 
             $data['name'] = $result['template']['name'];
             $data['email'] = $appointment['email'];
