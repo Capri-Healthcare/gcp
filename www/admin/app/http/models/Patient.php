@@ -175,7 +175,7 @@ class Patient extends Model
 	    `scheme_name` = ?,
 	    `authorisation_number` = ?, 
 		`corporate_company_scheme` = ?,
-		`employer` = ?,
+		`employer` = ?
 		WHERE `id` = ?",
             array(
                 $this->database->escape($data['title']),
