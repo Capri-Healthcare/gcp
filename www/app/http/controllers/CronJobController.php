@@ -55,7 +55,7 @@ class CronJobController extends Controller
         $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
         $result['template']['message'] = str_replace('{patient_title}', $appointment['title'], $result['template']['message']);
         $result['template']['message'] = str_replace('{patient fname, lname}', $appointment['name'], $result['template']['message']);
-        $result['template']['message'] = str_replace('{appt_loaction}', constant('HOSPITAL')[$appointment['hospital_code']], $result['template']['message']);
+        $result['template']['message'] = str_replace('{appt_loaction}', constant('HOSPITAL')[$appointment['hospital_code']]['name'], $result['template']['message']);
 
 
         $data['name'] = $appointment['name'];
