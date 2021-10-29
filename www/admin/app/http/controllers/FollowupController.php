@@ -336,7 +336,7 @@ class FollowupController extends Controller
             exit();
         }
 
-        if (!unlink(DIR . '/public/uploads/optician-referral/followup/' . $referral_list_id . '/' . $file)) {
+        /*if (!unlink(DIR . '/public/uploads/optician-referral/followup/' . $referral_list_id . '/' . $file)) {
             echo("Error deleting $file");
         } else {
             $data['filename'] = $this->url->post('name');
@@ -344,6 +344,13 @@ class FollowupController extends Controller
             $this->load->model('referrallistdocument');
             $result = $this->model_referrallistdocument->deleteReferralListDocument($data);
             echo $result;
-        }
+        }*/
+
+        unlink(DIR . '/public/uploads/optician-referral/followup/' . $referral_list_id . '/' . $file);
+        $data['filename'] = $this->url->post('name');
+        $data['followup_id'] = $referral_list_id;
+        $this->load->model('referrallistdocument');
+        $result = $this->model_referrallistdocument->deleteReferralListDocument($data);
+        echo $result;
     }
 }

@@ -818,7 +818,7 @@ class UserController extends Controller {
             exit();
         }
 
-        if (!unlink(DIR . 'public/uploads/patient/document/' . $referral_list_id . '/' . $file)) {
+        /*if (!unlink(DIR . 'public/uploads/patient/document/' . $referral_list_id . '/' . $file)) {
             echo("Error deleting $file");
         } else {
             $data['id'] = $referral_list_id;
@@ -826,7 +826,12 @@ class UserController extends Controller {
             $this->load->model('user');
             $result =  $this->model_user->deletePatientDDIDocument($data);
 
-        }
+        }*/
+
+		unlink(DIR . 'public/uploads/patient/document/' . $referral_list_id . '/' . $file);
+		$data['id'] = $referral_list_id;
+		$this->load->model('user');
+		$result =  $this->model_user->deletePatientDDIDocument($data);
     }
 
 	public function downloadDirectDebitForm(){

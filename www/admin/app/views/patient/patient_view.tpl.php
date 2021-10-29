@@ -793,7 +793,7 @@
                                                                                     <td class="text-dark"><?php echo isset($value['is_glaucoma_required']) ? $value['is_glaucoma_required'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Doctors Comment's</td>
+                                                                                    <td>Doctor's Comments</td>
                                                                                     <td class="text-dark"><?php echo isset($value['doctor_note']) ? $value['doctor_note'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>

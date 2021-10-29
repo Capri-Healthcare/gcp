@@ -974,7 +974,7 @@ class AppointmentController extends Controller
             exit();
         }
 
-        if (!unlink(DIR . 'public/uploads/appointment/reports/' . $appointment_id . '/' . $file)) {
+        /*if (!unlink(DIR . 'public/uploads/appointment/reports/' . $appointment_id . '/' . $file)) {
             echo("Error deleting $file");
         } else {
             $data['report'] = $this->url->post('name');
@@ -982,7 +982,13 @@ class AppointmentController extends Controller
             $this->load->model('appointment');
             $result = $this->model_appointment->deleteReport($data);
             echo $result;
-        }
+        }*/
+        unlink(DIR . 'public/uploads/appointment/reports/' . $appointment_id . '/' . $file);
+        $data['report'] = $this->url->post('name');
+        $data['appointment_id'] = $appointment_id;
+        $this->load->model('appointment');
+        $result = $this->model_appointment->deleteReport($data);
+        echo $result;
     }
 
     public function appointmentMail($id, $template = 'newappointment')

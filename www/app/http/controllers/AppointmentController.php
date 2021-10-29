@@ -287,7 +287,7 @@ class AppointmentController extends Controller
 		}
 		$data = $this->url->post;
 
-		if (!unlink(DIR.'/public/uploads/appointment/images/'.$data['id'].'/'.$file)) {
+		/*if (!unlink(DIR.'/public/uploads/appointment/images/'.$data['id'].'/'.$file)) {
 			echo ("Error deleting $file");
 		} else {
 			$data['filename'] = $this->url->post('filename');
@@ -295,7 +295,13 @@ class AppointmentController extends Controller
 			$this->load->model('appointment');
 			$result = $this->model_appointment->deleteAppointmentImage($data);
 			echo $result;
-		}
+		}*/
+		unlink(DIR.'/public/uploads/appointment/images/'.$data['id'].'/'.$file);
+		$data['filename'] = $this->url->post('filename');
+		$data['appointment_id'] = $this->url->post('id');
+		$this->load->model('appointment');
+		$result = $this->model_appointment->deleteAppointmentImage($data);
+		echo $result;
 	}
 
 	public function savePreConsultationForm(){
