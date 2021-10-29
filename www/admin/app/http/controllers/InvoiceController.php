@@ -536,10 +536,10 @@ class InvoiceController extends Controller
         $error = [];
         $error_flag = false;
 
-        if ($this->controller_common->validateNumeric($data['invoice']['method'])) {
+        /*if ($this->controller_common->validateNumeric($data['invoice']['method'])) {
             $error_flag = true;
             $error['method'] = 'Payment method';
-        }
+        }*/
         if (!empty($data['invoice']['invoicedate'])) {
             if ($this->controller_common->validateDate($data['invoice']['invoicedate'], $data['info']['date_format'])) {
                 $error_flag = true;
