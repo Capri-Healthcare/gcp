@@ -431,9 +431,9 @@ class AppointmentController extends Controller
         }
 
         $data['examination_notes_readonly'] = false;
-        if($data['result']['date']  < date('Y-m-d', strtotime("-1 weeks", strtotime(date('Y-m-d'))))){
+        /*if($data['result']['date']  < date('Y-m-d', strtotime("-1 weeks", strtotime(date('Y-m-d'))))){
             $data['examination_notes_readonly'] = true;
-        }
+        }*/
         $data['summary'] = $summary;
 
         /*Render Blog edit view*/
@@ -1291,7 +1291,7 @@ class AppointmentController extends Controller
              * Return false
              **/
             return false;
-        } elseif (!$this->validateDate($data['date']) || strtotime($data['date']) < strtotime(date('Y-m-d'))) {
+        } elseif (!$this->validateDate($data['date'])) {
             /**
              * If date is not valid
              * also date is less than today

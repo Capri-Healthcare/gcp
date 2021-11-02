@@ -55,6 +55,9 @@ var tabtitle;
         body.css('overflow', 'hidden');
         body.append('<div class="overlay"></div>');
         setTimeout(function() { $('.appointmet-sidebar').css('right', '0'); }, 50);
+
+        $(".apnt-doctor").val(1);
+        $('.apnt-doctor').trigger('change');
     }
 
     function closeAppointmentSidebar() {
@@ -96,7 +99,6 @@ var tabtitle;
         weeklyHoliday = data.weekly;
         $('.apnt-date').datepicker({
             dateFormat: $('.common_date_format').val(),
-            minDate: 0,
             maxDate: "+1M +10D",
             beforeShowDay: noWeekendsOrHolidaysAppointment,
             onSelect: function () {
@@ -185,7 +187,7 @@ var tabtitle;
         }
     });
 
-
+    $('#apnt-info .apnt-doctor').on('change', function () {
         $('#apnt-info .apnt-date').datepicker('destroy');
         $('#apnt-info .apnt-date').val('');
 
@@ -194,6 +196,7 @@ var tabtitle;
         $('#apnt-info .apnt-time').attr('name', 'appointment[time]');
 
         createAppointmentDate();
+    });
 
     if (typeof $('#appointment-info .apnt-doctor option:selected').val() !== "undefined" && $('#appointment-info .apnt-doctor option:selected').val() !== "") {
     	createAppointmentDate();

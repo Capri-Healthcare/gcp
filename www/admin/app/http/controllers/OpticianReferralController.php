@@ -247,7 +247,6 @@ class OpticianReferralController extends Controller
                         $patient['mail'] = $data['referral']['email'];
                         $patient['mobile'] = $data['referral']['mobile'];
                         $patient['office_number'] = $data['referral']['office_phone'];
-                        $patient['landline_number'] = $data['referral']['landline'];
                         $patient['address'] = json_encode($address);
                         $patient['gender'] = $data['referral']['gender'];
                         $patient['dob'] = $data['referral']['dob'];
