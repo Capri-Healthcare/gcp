@@ -185,7 +185,7 @@ var tabtitle;
         }
     });
 
-    $('#apnt-info .apnt-doctor').on('change', function () {
+
         $('#apnt-info .apnt-date').datepicker('destroy');
         $('#apnt-info .apnt-date').val('');
 
@@ -194,7 +194,6 @@ var tabtitle;
         $('#apnt-info .apnt-time').attr('name', 'appointment[time]');
 
         createAppointmentDate();
-    });
 
     if (typeof $('#appointment-info .apnt-doctor option:selected').val() !== "undefined" && $('#appointment-info .apnt-doctor option:selected').val() !== "") {
     	createAppointmentDate();

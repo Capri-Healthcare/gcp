@@ -89,16 +89,12 @@
                                     <td><?php echo $result['email']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Phone/Mobile number</td>
+                                    <td>Mobile/Landline number</td>
                                     <td><?php echo $result['mobile']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Office number</td>
                                     <td><?php echo $result['office_number']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Landline number</td>
-                                    <td><?php echo $result['landline_number']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Date of Birth</td>

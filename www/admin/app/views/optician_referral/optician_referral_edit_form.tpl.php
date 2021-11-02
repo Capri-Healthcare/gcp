@@ -74,7 +74,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Phone/Mobile number<span class="form-required">*</span></label>
+                                            <label>Mobile/Landline number<span class="form-required">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                                 class="ti-mobile"></i></span></div>
@@ -82,23 +82,8 @@
                                                        maxlength="11"
                                                        id="mobile"
                                                        onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-                                                       value="<?php echo $result['mobile']; ?>" placeholder="Mobile"
+                                                       value="<?php echo $result['mobile']; ?>" placeholder="Mobile/Landline"
                                                        required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Landline number</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="ti-mobile"></i></span>
-                                                </div>
-                                                <input type="text" name="referral[landline]" class="form-control landline" id="landline"
-                                                       value="<?php echo $result['landline_number']; ?>" min="6" maxlength="11"
-                                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-
-                                                       placeholder="Enter Landline Number . . . ">
                                             </div>
                                         </div>
                                     </div>

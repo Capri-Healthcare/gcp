@@ -52,7 +52,7 @@
                         <th>Date Submitted</th>
                         <th>First name</th>
                         <th>Last name</th>
-                        <th>Mobile</th>
+                        <th>Mobile/Landline</th>
                         <th>City</th>
                         <th>Status</th>
                         <!--						<th>Created By</th>-->

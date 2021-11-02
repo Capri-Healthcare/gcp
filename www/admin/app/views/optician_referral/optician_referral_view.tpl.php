@@ -77,12 +77,8 @@
                                         <td class="text-dark"><?php echo $result['gender']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Phone/Mobile number</td>
+                                        <td>Mobile/Landline number</td>
                                         <td class="text-dark"><?php echo $result['mobile']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Landline number</td>
-                                        <td class="text-dark"><?php echo $result['landline_number']; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Office number</td>

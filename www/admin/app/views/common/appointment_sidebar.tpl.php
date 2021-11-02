@@ -62,7 +62,6 @@
                         <span class="input-group-text"><i class="ti-user"></i></span>
                     </div>
                     <select name="appointment[doctor]" class="custom-select apnt-doctor" required>
-                        <option value="">Select Doctor</option>
                         <?php foreach ($doctors as $value) { ?>
                             <option value="<?php echo $value['id']; ?>"
                                     data-department="<?php echo $value['department_id']; ?>"

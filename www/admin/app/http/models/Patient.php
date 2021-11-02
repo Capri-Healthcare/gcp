@@ -122,19 +122,19 @@ class Patient extends Model
         
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (
             `title`, `firstname`, `lastname`, `email`,
-            `mobile`, `office_number`,`landline_number`,`address`, 
+            `mobile`, `office_number`,`address`, 
             `gender`, `dob`, `history`, `other`,
             `temp_hash`, `status`, `user_id`, `hospital_code`,
             `date_of_joining`) 
         VALUES (
             ?, ?, ?, ?,
-            ?, ?, ?, ?,
+            ?, ?, ?,
             ?, ?, ?, ?,
             ?, ?, ?, ?,
             ?)", 
         array(
             $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['mail'], 
-            $data['mobile'], $data['office_phone'], $data['landline'], $data['address'], 
+            $data['mobile'], $data['office_phone'], $data['address'], 
             $data['gender'], $data['dob'], $data['history'], $data['other'], 
             $data['hash'], 1, $data['user_id'],$data['hospital_code'], 
             $data['datetime'])
@@ -156,7 +156,7 @@ class Patient extends Model
     public function updatePatient($data)
     {
 
-        $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `title` = ?, `firstname` = ?, `lastname` = ?, `email` = ?,`mobile` = ?,`office_number` = ?,`landline_number` = ?, 
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `title` = ?, `firstname` = ?, `lastname` = ?, `email` = ?,`mobile` = ?,`office_number` = ?,
 		`dob` = ?,
 		`gender` = ?,
 		`address` = ?,
@@ -183,7 +183,6 @@ class Patient extends Model
                 $this->database->escape(ucfirst($data['lastname'])),
                 $data['mail'],
                 $data['mobile'],
-                $data['landline'],
                 $data['office_phone'],
                 $this->database->escape($data['dob']),
                 $this->database->escape($data['gender']),

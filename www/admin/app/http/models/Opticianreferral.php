@@ -43,7 +43,7 @@ class Opticianreferral extends Model
 
     public function updateOpticianReferral($data)
     {
-        $query = $this->database->query("UPDATE `" . DB_PREFIX . "referral_list` SET `first_name` = ?,  `last_name` = ?,`mobile` = ?,`landline_number` = ?,`office_phone` = ?,`email` = ?,`gender`= ?, `dob` = ?, `address1` = ?, `address2` = ?, `city` = ?, `updated_by` = ?, `zip_code` = ?,`status` = ?,`hospital_code`= ?,`updated_at` = ? WHERE `id` = ?", array($this->database->escape($data['first_name']), $this->database->escape($data['last_name']), $this->database->escape($data['mobile']),$this->database->escape($data['landline']),$this->database->escape($data['office_phone']), $this->database->escape($data['email']), $this->database->escape($data['gender']), date("Y-m-d", strtotime($data['dob'])), $this->database->escape($data['address_1']), $this->database->escape($data['address_2']), $this->database->escape($data['city']), $this->database->escape($data['user_id']), $this->database->escape($data['zip_code']), $this->database->escape($data['status']), $data['status'] != constant('STATUS_ACCEPTED') ? null : $this->database->escape($data['hospital_code']), date('Y-m-d H:i:s'), $data['id']));
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "referral_list` SET `first_name` = ?,  `last_name` = ?,`mobile` = ?,`office_phone` = ?,`email` = ?,`gender`= ?, `dob` = ?, `address1` = ?, `address2` = ?, `city` = ?, `updated_by` = ?, `zip_code` = ?,`status` = ?,`hospital_code`= ?,`updated_at` = ? WHERE `id` = ?", array($this->database->escape($data['first_name']), $this->database->escape($data['last_name']), $this->database->escape($data['mobile']), $this->database->escape($data['office_phone']), $this->database->escape($data['email']), $this->database->escape($data['gender']), date("Y-m-d", strtotime($data['dob'])), $this->database->escape($data['address_1']), $this->database->escape($data['address_2']), $this->database->escape($data['city']), $this->database->escape($data['user_id']), $this->database->escape($data['zip_code']), $this->database->escape($data['status']), $data['status'] != constant('STATUS_ACCEPTED') ? null : $this->database->escape($data['hospital_code']), date('Y-m-d H:i:s'), $data['id']));
 
         if ($query->num_rows > 0) {
             return true;
@@ -102,15 +102,15 @@ class Opticianreferral extends Model
 
     public function createOpticianReferral($data)
     {
-        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "referral_list` (`first_name`, `last_name`,`mobile`,`landline_number`,
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "referral_list` (`first_name`, `last_name`,`mobile`,
 		`office_phone`,`email`,`gender`, `dob`, 
 		`address1`, `address2`, `city`, `zip_code`,
 		`created_by`,`created_at`) VALUES 
-		(?,?,?,?,
+		(?,?,?,
 		?,?,?,?,
 		?,?,?,?,?,?)", array(
 		$this->database->escape($data['first_name']), $data['last_name'], 
-		$this->database->escape($data['mobile']),$this->database->escape($data['office_phone']),
+		$this->database->escape($data['mobile']), 
 		
 		$this->database->escape($data['office_phone']), $this->database->escape($data['email']),
 		$this->database->escape($data['gender']), date("Y-m-d", strtotime($data['dob'])), 
