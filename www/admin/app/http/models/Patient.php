@@ -173,6 +173,7 @@ class Patient extends Model
 	    `medical_insurers_name` = ?,
 	    `membership_number` = ?,
 	    `scheme_name` = ?,
+        `authorisation_number` = ?,
 	    `authorisation_number` = ?, 
 		`corporate_company_scheme` = ?,
 		`employer` = ?
@@ -199,6 +200,7 @@ class Patient extends Model
                 $data['medical_insurers_name'],
                 $data['membership_number'],
                 $data['scheme_name'],
+                $data['authorisation_number'],
                 isset($data['authorisation_number']) ? $data['authorisation_number']:null,
                 isset($data['corporate_company_scheme']) ? $data['corporate_company_scheme']:null,
                 isset($data['employer']) ? $this->database->escape($data['employer']):null,

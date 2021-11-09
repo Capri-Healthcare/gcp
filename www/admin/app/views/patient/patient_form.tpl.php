@@ -613,6 +613,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Authorisation Number</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                        </div>
+                                        <input type="text"
+                                               name="patient[authorisation_number]" <?php echo $insurance_field_readonly ?>
+                                               class="form-control" id="authorisation_number"
+                                               value="<?php echo $result['authorisation_number']; ?>"
+                                               placeholder="Enter Authorisation Number">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

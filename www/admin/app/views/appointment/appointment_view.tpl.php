@@ -247,6 +247,24 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>Visual acuity-unaided, glasses and pin hole</td>
+                                            <td class="text-dark">
+                                                <table style="padding: 0px;">
+                                                    <tr>
+                                                        <td width="50%"
+                                                            style="padding:0px;">
+                                                            <b>RE: </b><?php echo isset($result['visual_acuity_unaided_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$result['visual_acuity_unaided_right']] : '' ?>
+
+                                                        </td>
+                                                        <td width="50%"
+                                                            style="padding:0px;">
+                                                            <b>LE: </b><?php echo isset($result['visual_acuity_unaided_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$result['visual_acuity_unaided_left']] : '' ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>Intraocular pressure(mmHg)</td>
                                             <td class="text-dark">
                                                 <table style="padding: 0px;">
@@ -292,7 +310,22 @@
                                                     </tr>
                                                 </table>
                                           </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Anterior chamber comment</td>
+                                            <td class="text-dark">
+                                                <table style="padding: 0px;">
+                                                    <tr>
+                                                        <td style="padding:0px;">
+                                                            <b>RE: </b><?php echo isset($result['anterior_chamber_right_comment']) ? $result['anterior_chamber_right_comment'] : '' ?>
 
+                                                        </td>
+                                                        <td style="padding:0px;">
+                                                            <b>LE: </b><?php echo isset($result['anterior_chamber_left_comment']) ? $result['anterior_chamber_left_comment'] : '' ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                          </td>
                                         </tr>
                                         <tr>
                                             <td>Lens</td>
@@ -348,11 +381,11 @@
                                                 <table style="padding: 0px;">
                                                     <tr>
                                                         <td style="padding:0px;">
-                                                            <b>RE: </b><?php echo (isset($result['cct_right']) && $result['cct_right'] > 0) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_right']] : '' ?>
+                                                            <b>RE: </b><?php echo (isset($result['cct_right']) && $result['cct_right'] > 0) ? $result['cct_right'] : '' ?>
 
                                                         </td>
                                                         <td style="padding:0px;">
-                                                            <b>LE: </b><?php echo (isset($result['cct_left']) AND $result['cct_right'] > 0) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['CCT'][$result['cct_left']] : '' ?>
+                                                            <b>LE: </b><?php echo (isset($result['cct_left']) AND $result['cct_right'] > 0) ? $result['cct_left'] : '' ?>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -453,6 +486,22 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>Visual Field Progression</td>
+                                            <td class="text-dark">
+                                                <table style="padding: 0px;">
+                                                    <tr>
+                                                        <td style="padding:0px;">
+                                                            <b>RE: </b><?php echo isset($result['visual_field_progression_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_FIELD_PROGRESSION'][$result['visual_field_progression_right']] : '' ?>
+
+                                                        </td>
+                                                        <td style="padding:0px;">
+                                                            <b>LE: </b><?php echo isset($result['visual_field_progression_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_FIELD_PROGRESSION'][$result['visual_field_progression_left']] : '' ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                          </td>
+                                        </tr>
+                                        <tr>
                                             <td>Mean deviation</td>
                                             <td class="text-dark">
                                                 <table style="padding: 0px;">
@@ -511,16 +560,24 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Diagnosis</td>
-                                            <td class="text-dark"><?php echo (isset($result['diagnosis']) && is_array($result['diagnosis'])) ? implode(',',json_decode($result['diagnosis'],true)): '' ?></td>
-                                        </tr>
-                                        <tr>
                                             <td>Diagnosis eye</td>
                                             <td class="text-dark"><?php echo (isset($result['diagnosis_eye']) && !empty($result['diagnosis_eye'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$result['diagnosis_eye']] : '' ?></td>
                                         </tr>
                                         <tr>
+                                            <td>Diagnosis</td>
+                                            <td class="text-dark"><?php echo (isset($result['diagnosis'])) ? implode(', ',json_decode($result['diagnosis'],true)) : '' ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Diagnosis Comment</td>
+                                            <td class="text-dark"><?php echo isset($result['diagnosis_comment']) ? $result['diagnosis_comment'] : '' ?></td>
+                                        </tr>
+                                        <tr>
                                             <td>Outcome</td>
-                                            <td class="text-dark"><?php echo isset($result['outcome']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['OUTCOME'][$result['outcome']] : '' ?></td>
+                                            <td class="text-dark"><?php echo (isset($result['outcome']) && !empty($result['outcome'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['OUTCOME'][$result['outcome']] : '' ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Outcome Comment</td>
+                                            <td class="text-dark"><?php echo isset($result['outcome_comment']) ? $result['outcome_comment'] : '' ?></td>
                                         </tr>
                                         <tr>
                                             <td>Follow up / Next Appointment</td>
