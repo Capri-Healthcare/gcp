@@ -328,7 +328,7 @@ class DoctorController extends Controller
 	
 			if ($this->controller_common->validateNumeric($data['doctor']['department'])) {
 				$error_flag = true;
-				$error['department'] = 'Please enter valid Mobile Number!';
+				$error['department'] = 'Please enter valid department!';
 			}
 	
 			if (!empty($data['doctor']['dob'])) {

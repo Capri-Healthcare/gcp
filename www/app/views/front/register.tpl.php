@@ -57,13 +57,13 @@
                                         </div>
 
                                         <div class="form-group main_box">
-                                            <label for="register-mobile">Mobile/Landline  Number <span class="error">*</span></label>
+                                            <label for="register-mobile">Preferred Contact Number<span class="error">*</span></label>
                                             <input id="register-mobile" type="text" class="form-control" maxlength="11"
                                                 name="mobile" pattern="[0-9]*" value=""
                                                 onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
                                                 required>
                                             <div class="invalid-feedback">
-                                                Mobile number is invalid
+                                                Preferred Contact Number is invalid
                                             </div>
                                         </div>
                                         <div class="form-group main_box" id="register-optician-practice-div">

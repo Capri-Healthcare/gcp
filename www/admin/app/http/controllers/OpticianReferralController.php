@@ -358,7 +358,7 @@ class OpticianReferralController extends Controller
 //        }
         if ($this->controller_common->validateMobileNumber($data['mobile'])) {
             $error_flag = true;
-            $error['title'] = 'Mobile number !';
+            $error['title'] = 'Preferred Contact Number !';
         }
 
 //        if ($this->controller_common->validateText($data['city'])) {

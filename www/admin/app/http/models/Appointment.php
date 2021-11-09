@@ -109,26 +109,34 @@ class Appointment extends Model
 
     public function updateExaminationNotes($data)
     {
+        //echo "<pre>"; print_r($data);exit;
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET 
         `current_event` = ?,
         `allergy` = ?,
         `visual_acuity_right` = ?,
         `intraocular_pressure_right` = ? ,
         `visual_acuity_left` = ?,
+        `visual_acuity_unaided_right` = ?,
+        `visual_acuity_unaided_left` = ?,
         `intraocular_pressure_left` = ?,
         `anterior_chamber_right` = ?,
         `anterior_chamber_left` = ?, 
+        `anterior_chamber_right_comment` = ?,
+        `anterior_chamber_left_comment` = ?,
         `lens_right` = ?, 
         `lens_left` = ?,
         `nfl_thickness_right` = ?, 
         `nfl_thickness_left` = ?,
-         mean_deviation_right = ?, 
+        `visual_field_progression_right` = ?,
+        `visual_field_progression_left` = ?,
+        `mean_deviation_right` = ?, 
         `mean_deviation_left` = ?,
         `psd_deviation_right` = ?,
         `psd_deviation_left` = ?, 
         `cct_right` = ?, 
         `cct_left` = ?, 
         `diagnosis` = ?,
+        `diagnosis_comment` = ?,
         `outcome` = ?,
         `gcp_next_appointment` = ?,
         `is_glaucoma_required` = ?, 
@@ -142,13 +150,19 @@ class Appointment extends Model
             $this->database->escape($data['visual_acuity_right']),
             $this->database->escape($data['intraocular_pressure_right']),
             $this->database->escape($data['visual_acuity_left']),
+            $this->database->escape($data['visual_acuity_unaided_right']),
+            $this->database->escape($data['visual_acuity_unaided_left']),
             $data['intraocular_pressure_left'],
             $data['anterior_chamber_right'],
             $data['anterior_chamber_left'],
+            $data['anterior_chamber_right_comment'],
+            $data['anterior_chamber_left_comment'],
             $data['lens_right'],
             $data['lens_left'],
             (int)$data['nfl_thickness_right'],
             $data['nfl_thickness_left'],
+            $data['visual_field_progression_right'],
+            $data['visual_field_progression_left'],
             $data['mean_deviation_right'],
             $data['mean_deviation_left'],
             $data['psd_deviation_right'],
@@ -156,6 +170,7 @@ class Appointment extends Model
             $data['cct_right'],
             $data['cct_left'],
             json_encode($data['diagnosis']),
+            $data['diagnosis_comment'],
             $data['outcome'],
             $data['followup'],
             $data['gcp_required'],
@@ -168,6 +183,7 @@ class Appointment extends Model
         if ($query->num_rows > 0) {
             return true;
         } else {
+            //echo "test";exit;
             return false;
         }
     }

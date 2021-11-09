@@ -52,14 +52,14 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Mobile/Landline number <span class="form-required">*</span></label>
+                                        <label>Preferred Contact Number<span class="form-required">*</span></label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-mobile"></i></span></div>
                                             <input type="text" name="referral[mobile]" class="form-control"
                                                    maxlength="11"
                                                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-                                                   value="<?php echo $result['mobile']; ?>" placeholder="Mobile/Landline"
+                                                   value="<?php echo $result['mobile']; ?>" placeholder="Preferred Contact Number"
                                                    id="mobile"
                                                    required>
                                         </div>
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Office number</label>
+                                        <label>Alternate Contact Number</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ti-mobile"></i></span>
@@ -76,7 +76,7 @@
                                                    value="<?php echo $result['office_number']; ?>" maxlength="11"
                                                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
 
-                                                   placeholder="Enter Office Number . . . ">
+                                                   placeholder="Enter Alternate Contact Number . . . ">
                                         </div>
                                     </div>
                                 </div>

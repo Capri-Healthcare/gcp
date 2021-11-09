@@ -573,7 +573,7 @@ class PatientController extends Controller
         }
         if ($this->controller_common->validateMobileNumber($data['mobile'])) {
             $error_flag = true;
-            $error['email'] = 'Mobile number';
+            $error['mobile'] = 'Mobile number';
         }
 
         if ($error_flag) {

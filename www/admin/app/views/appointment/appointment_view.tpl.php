@@ -247,7 +247,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Intraocular pressure</td>
+                                            <td>Intraocular pressure(mmHg)</td>
                                             <td class="text-dark">
                                                 <table style="padding: 0px;">
                                                     <tr>

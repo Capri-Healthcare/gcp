@@ -74,7 +74,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Mobile/Landline number<span class="form-required">*</span></label>
+                                            <label>Preferred Contact Number<span class="form-required">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                                 class="ti-mobile"></i></span></div>
@@ -82,14 +82,14 @@
                                                        maxlength="11"
                                                        id="mobile"
                                                        onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-                                                       value="<?php echo $result['mobile']; ?>" placeholder="Mobile/Landline"
+                                                       value="<?php echo $result['mobile']; ?>" placeholder="Preferred Contact Number"
                                                        required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Office number</label>
+                                            <label>Alternate Contact Number</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ti-mobile"></i></span>
@@ -97,8 +97,7 @@
                                                 <input type="text" name="referral[office_phone]" class="form-control officephone" id="office_phone"
                                                        value="<?php echo $result['office_phone']; ?>" maxlength="11"
                                                        onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-
-                                                       placeholder="Enter Office Number . . . ">
+                                                       placeholder="Enter Alternate Contact Number . . . ">
                                             </div>
                                         </div>
                                     </div>
@@ -416,7 +415,7 @@
             var mobile = $("#mobile").val();
 
             if (mobile.length < 10 || mobile.length < 11) {
-                toastr.error('Error', 'Mobile number must be 11 digits.');
+                toastr.error('Error', 'Preferred contact number must be 11 digits.');
                 return false
             }else{
                 return true;

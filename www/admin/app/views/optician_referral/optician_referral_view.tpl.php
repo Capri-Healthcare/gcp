@@ -77,11 +77,11 @@
                                         <td class="text-dark"><?php echo $result['gender']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Mobile/Landline number</td>
+                                        <td>Preferred Contact Number</td>
                                         <td class="text-dark"><?php echo $result['mobile']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Office number</td>
+                                        <td>Alternate Contact Number</td>
                                         <td class="text-dark"><?php echo $result['office_phone']; ?></td>
                                     </tr>
                                     <tr>

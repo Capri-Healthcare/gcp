@@ -90,6 +90,7 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'BITAMATOPROST' => 'Bitamatoprost',
         'LATANOPROST' => 'Latanoprost',
         'TRAVOPROST' => 'Travoprost',
+        'NONE_ALLERGY' => 'None Allergy'
     ],
     'VISUAL_ACUITY' => [
         '1' => '6/4',
@@ -172,8 +173,8 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'STABLE' => 'Stable: review with visual fields',
         'UNSTABLE' => 'Unstable',
         'UNSTABLE_NEED_CHANGE_IN_TREATMENT' => 'Unstable - Need change in treatment- change medication above',
-        'UNSTABLE_BOOK_FOR_LASER' => 'Unstable - Book for laser',
-        'UNSTABLE_BOOK_FOR_SURGERY' => 'Unstable - Book for Surgery',
+        'UNSTABLE_BOOK_FOR_LASER' => 'Book for laser',
+        'UNSTABLE_BOOK_FOR_SURGERY' => 'Book for Surgery',
     ],
     'FOLLOW_UP_OR_NEXT_APPOINTMENT' => [
         '0' => ['name' => 'No follow up required', 'intervalrime' => 'days', 'value' => '0'],
@@ -194,6 +195,23 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'RE' => 'Right eye',
         'LE' => 'Left eye',
         'BOTH' => 'Both eyes',
+    ],
+    'FAMILY_HISTORY_OF_GLAUCOMA' => [
+        'YES' => 'Yes',
+        'NO' => 'No',
+    ],
+    'FAMILY_MEMBER' => [
+        'FATHER' => 'Father',
+        'MOTHER' => 'Mother',
+        'SIBLINGS' => 'Siblings',
+        'UNCLE' => 'Uncle',
+        'AUNT' => 'Aunt',
+        'GRAND PARENTS' => 'Grand parents',
+    ],
+    'VISUAL_FIELD_PROGRESSION' => [
+        'STABLE' => 'Stable',
+        'SLOW_PROGRESSION' => 'Slow progression',
+        'FAST_PROGRESSION' => 'Fast progression',
     ],
 
 ]);

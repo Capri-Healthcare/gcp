@@ -89,11 +89,11 @@
                                     <td><?php echo $result['email']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Mobile/Landline number</td>
+                                    <td>Preferred Contact Number</td>
                                     <td><?php echo $result['mobile']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Office number</td>
+                                    <td>Alternate Contact Number</td>
                                     <td><?php echo $result['office_number']; ?></td>
                                 </tr>
                                 <tr>
@@ -450,7 +450,7 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Intraocular pressure</td>
+                                                                                    <td>Intraocular pressure(mmHg)</td>
                                                                                     <td class="text-dark">
                                                                                         <table style="padding: 0px;">
                                                                                             <tr>
