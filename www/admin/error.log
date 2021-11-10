@@ -934,3 +934,4 @@ Stack trace:
 [28-Oct-2021 05:49:27 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 577
 [28-Oct-2021 05:49:27 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 582
 [28-Oct-2021 05:49:27 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 780
+[10-Nov-2021 11:49:20 Europe/London] PHP Notice:  Undefined index: date in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\AppointmentController.php on line 456
