@@ -144,7 +144,9 @@ class Appointment extends Model
         `diagnosis_eye` = ?,
         `doctor_note` = ?,
         `doctor_note_optometrist` = ?,
-        `special_condition` = ?
+        `special_condition` = ?,
+        `family_history_of_glaucoma` = ?,
+        `relations_with_glaucoma_patient` = ?
          WHERE `id` = ? ", array(
             $this->database->escape($data['current_event']),
             $this->database->escape($data['allergy']),
@@ -180,6 +182,8 @@ class Appointment extends Model
             $data['doctor_note'],
             $data['doctor_note_optometrist'],
             $data['special_condition'],
+            $data['family_history_of_glaucoma'],
+            $data['relations_with_glaucoma_patient'],
             (int)$data['id']));
 
         if ($query->num_rows > 0) {

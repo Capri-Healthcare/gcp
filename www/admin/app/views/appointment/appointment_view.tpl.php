@@ -588,6 +588,16 @@
                                             <td class="text-dark"><?php echo isset($result['is_glaucoma_required']) ? $result['is_glaucoma_required'] : '' ?></td>
                                         </tr>
                                         <tr>
+                                            <td>Family History of Glaucoma</td>
+                                            <td class="text-dark"><?php echo isset($result['family_history_of_glaucoma']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_HISTORY_OF_GLAUCOMA'][$result['family_history_of_glaucoma']] : '' ?></td>
+                                        </tr>
+                                        <?php if($result['family_history_of_glaucoma'] == 'YES'){ ?>
+                                        <tr>
+                                            <td>Who</td>
+                                            <td class="text-dark"><?php echo isset($result['relations_with_glaucoma_patient']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_MEMBER'][$result['relations_with_glaucoma_patient']] : '' ?></td>
+                                        </tr>
+                                        <?php } ?>
+                                        <tr>
                                             <td>Doctor's Comments</td>
                                             <td class="text-dark"><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : '' ?></td>
                                         </tr>

@@ -845,6 +845,16 @@
                                                                                     <td class="text-dark"><?php echo isset($value['is_glaucoma_required']) ? $value['is_glaucoma_required'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    <td>Family History of Glaucoma</td>
+                                                                                    <td class="text-dark"><?php echo isset($value['family_history_of_glaucoma']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_HISTORY_OF_GLAUCOMA'][$value['family_history_of_glaucoma']] : '' ?></td>
+                                                                                </tr>
+                                                                                <?php if($value['family_history_of_glaucoma'] == 'YES'){ ?>
+                                                                                <tr>
+                                                                                    <td>Who</td>
+                                                                                    <td class="text-dark"><?php echo isset($value['relations_with_glaucoma_patient']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_MEMBER'][$value['relations_with_glaucoma_patient']] : '' ?></td>
+                                                                                </tr>
+                                                                                <?php } ?>
+                                                                                <tr>
                                                                                     <td>Doctor's Comments</td>
                                                                                     <td class="text-dark"><?php echo isset($value['doctor_note']) ? $value['doctor_note'] : '' ?></td>
                                                                                 </tr>

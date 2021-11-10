@@ -201,12 +201,12 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'NO' => 'No',
     ],
     'FAMILY_MEMBER' => [
-        'FATHER' => 'Father',
-        'MOTHER' => 'Mother',
-        'SIBLINGS' => 'Siblings',
-        'UNCLE' => 'Uncle',
-        'AUNT' => 'Aunt',
-        'GRAND PARENTS' => 'Grand parents',
+        '1' => 'Father',
+        '2' => 'Mother',
+        '3' => 'Siblings',
+        '4' => 'Uncle',
+        '5' => 'Aunt',
+        '6' => 'Grand parents',
     ],
     'VISUAL_FIELD_PROGRESSION' => [
         'STABLE' => 'Stable',

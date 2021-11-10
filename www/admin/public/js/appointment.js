@@ -133,6 +133,16 @@ var tabtitle;
         openAppointmentSidebar();
     });
 
+    $('body').on('change', '#family_history_of_glaucoma', function () {
+        var family_history_of_glaucoma = $('#family_history_of_glaucoma :selected').val();
+        
+        if(family_history_of_glaucoma == 'NO'){
+            $('#relations_with_glaucoma_patient').prop('selectedIndex',0);
+            $('.relations_with_glaucoma_patient').hide();
+        }else{
+            $('.relations_with_glaucoma_patient').show();
+        }
+    });
 
     $('#calendar').fullCalendar({
         events: path.concat('dashbaordappointment'),

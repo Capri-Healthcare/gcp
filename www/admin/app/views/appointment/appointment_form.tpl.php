@@ -1477,6 +1477,9 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Outcome Comment</label>
                                                 <input type="text" class="form-control"
@@ -1484,6 +1487,8 @@
                                                        value="<?php echo $result['outcome_comment']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Follow Up / Next Appointment<span
@@ -1506,8 +1511,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>My Eye Record & Care Required<span
@@ -1519,7 +1522,7 @@
                                                     </div>
                                                     <select name="appointment[gcp_required]" class="custom-select"
                                                             required <?php echo $examination_notes_readonly ? 'disabled':''?>>
-                                                        <option value="">SelectMERC</option>
+                                                        <option value="">Select MERC</option>
                                                         <option value="YES" <?php echo ($result['is_glaucoma_required'] == 'YES') ? "Selected" : "" ?>>
                                                             YES
                                                         </option>
@@ -1530,7 +1533,52 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Family History of Glaucoma<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                    class="ti-check-box"></i></span>
+                                                    </div>
+                                                    <select name="appointment[family_history_of_glaucoma]" id="family_history_of_glaucoma" 
+                                                            class="custom-select" required <?php echo $examination_notes_readonly ? 'disabled':''?>>
+                                                        <option value="">Select</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_HISTORY_OF_GLAUCOMA'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['family_history_of_glaucoma']) && $result['family_history_of_glaucoma'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group relations_with_glaucoma_patient" style="<?php echo $result['family_history_of_glaucoma'] == 'NO' ? 'display:none;':'' ?>">
+                                                <label>Who<span
+                                                            class="form-required">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                    class="ti-check-box"></i></span>
+                                                    </div>
+                                                    <select name="appointment[relations_with_glaucoma_patient]" id="relations_with_glaucoma_patient"
+                                                            class="custom-select relations_with_glaucoma_patient" <?php echo $examination_notes_readonly ? 'disabled':''?>>
+                                                        <option value="">Select</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_MEMBER'] as $key => $value) { ?>
+                                                            <option value="<?php echo $key; ?>"
+                                                                <?php echo (isset($result['relations_with_glaucoma_patient']) && $result['relations_with_glaucoma_patient'] == $key) ? 'selected' : '' ?> >
+                                                                <?php echo $value; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
