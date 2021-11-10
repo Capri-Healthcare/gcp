@@ -593,7 +593,7 @@
                                         </tr>
                                         <?php if($result['family_history_of_glaucoma'] == 'YES'){ ?>
                                         <tr>
-                                            <td>Who</td>
+                                            <td>Who has the glaucoma condition in your family?</td>
                                             <td class="text-dark"><?php echo isset($result['relations_with_glaucoma_patient']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_MEMBER'][$result['relations_with_glaucoma_patient']] : '' ?></td>
                                         </tr>
                                         <?php } ?>

@@ -1559,7 +1559,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group relations_with_glaucoma_patient" style="<?php echo $result['family_history_of_glaucoma'] == 'NO' ? 'display:none;':'' ?>">
-                                                <label>Who<span
+                                                <label>Who has the glaucoma condition in your family?<span
                                                             class="form-required">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
