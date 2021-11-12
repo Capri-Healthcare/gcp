@@ -263,6 +263,9 @@ class PatientController extends Controller
             unset($this->session->data['message']);
         }
 
+        // Check is patient referred by optician
+        $data['is_patient_referred_by_optician'] = $this->model_patient->isPatientReferredByOptician(0);
+
         $data['page_title'] = 'Add Patient';
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'patient/add';

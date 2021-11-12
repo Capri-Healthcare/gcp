@@ -387,7 +387,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if($is_patient_referred_by_optician){ ?>
+                            <?php } ?>
+                            <?php if($is_patient_referred_by_optician){ ?>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Optician Name</label>
@@ -412,8 +413,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php } ?>
                             <?php } ?>
+                            
 <!--                            <div class="col-md-6" style="--><?php //echo (in_array($common['user']['role'],[constant('USER_ROLE_MERC'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?><!--">-->
 <!--                                <div class="form-group">-->
 <!--                                    <label>First Payment</label>-->
