@@ -122,21 +122,21 @@
                                            name="prescription[medicine][<?php echo $key; ?>][start_date]"
                                            value="<?php echo $value['start_date']; ?>"
                                            min="<?php echo date("Y-m-d"); ?>"
-                                           required autocomplete="off" style="width: 160px;">
+                                           autocomplete="off" style="width: 160px;">
                                 </td>
                                 <td>
                                     <input type="date" class="form-control apnt-date" name="prescription[medicine][<?php echo $key; ?>][end_date]"
                                            placeholder="Select Date . . ."
                                            min="<?php echo date("Y-m-d"); ?>"
                                            value="<?php echo $value['end_date']; ?>"
-                                           required autocomplete="off" style="width: 160px;">
+                                           autocomplete="off" style="width: 160px;">
                                 </td>
                                 <td>
 									<select name="prescription[medicine][<?php echo $key; ?>][eye]"
 											class="form-control" required>
 										<?php foreach (constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'] as $key => $value) { ?>
 											<option value="<?php echo $key; ?>"
-												<?php echo (isset($value['eye']) && $value['eye'] == $key) ? 'selected' : '' ?> >
+												<?php echo (isset($value['eye']) && strtoupper($value['eye']) == $key) ? 'selected' : '' ?> >
 												<?php echo $value; ?>
 											</option>
 										<?php } ?>
@@ -184,7 +184,7 @@
                                            name="prescription[medicine][0][start_date]"
                                            min="<?php echo date("Y-m-d"); ?>"
                                            value=""
-                                           required autocomplete="off">
+                                           autocomplete="off">
                                 </td>
                                 <td>
                                     <input type="date" class="form-control apnt-date"
@@ -192,14 +192,14 @@
                                            placeholder="Select Date . . ."
                                            min="<?php echo date("Y-m-d"); ?>"
                                            value=""
-                                           required autocomplete="off">
+                                           autocomplete="off">
                                 </td>
                                 <td>
 									<select name="prescription[medicine][0][eye]"
 											class="form-control">
 										<?php foreach (constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'] as $key => $value) { ?>
 											<option value="<?php echo $key; ?>"
-												<?php echo (isset($value['eye']) && $value['eye'] == $key) ? 'selected' : '' ?> >
+												<?php echo (isset($value['eye']) && strtoupper($value['eye']) == $key) ? 'selected' : '' ?> >
 												<?php echo $value; ?>
 											</option>
 										<?php } ?>

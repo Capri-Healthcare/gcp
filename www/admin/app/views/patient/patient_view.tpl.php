@@ -431,25 +431,7 @@
                                                                                     <td class="text-dark"><?php echo isset($value['allergy']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['ALLERGY'][$value['allergy']] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Visual acuity</td>
-                                                                                    <td class="text-dark">
-                                                                                        <table style="padding: 0px;">
-                                                                                            <tr>
-                                                                                                <td width="50%"
-                                                                                                    style="padding:0px;">
-                                                                                                    <b>RE: </b><?php echo isset($value['visual_acuity_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$value['visual_acuity_right']] : '' ?>
-
-                                                                                                </td>
-                                                                                                <td width="50%"
-                                                                                                    style="padding:0px;">
-                                                                                                    <b>LE: </b><?php echo isset($value['visual_acuity_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$value['visual_acuity_left']] : '' ?>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                        </table>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>Visual acuity-unaided, glasses and pin hole</td>
+                                                                                    <td>Visual acuity unaided</td>
                                                                                     <td class="text-dark">
                                                                                         <table style="padding: 0px;">
                                                                                             <tr>
@@ -461,6 +443,24 @@
                                                                                                 <td width="50%"
                                                                                                     style="padding:0px;">
                                                                                                     <b>LE: </b><?php echo isset($value['visual_acuity_unaided_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$value['visual_acuity_unaided_left']] : '' ?>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Visual acuity corrected</td>
+                                                                                    <td class="text-dark">
+                                                                                        <table style="padding: 0px;">
+                                                                                            <tr>
+                                                                                                <td width="50%"
+                                                                                                    style="padding:0px;">
+                                                                                                    <b>RE: </b><?php echo isset($value['visual_acuity_corrected_right']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$value['visual_acuity_corrected_right']] : '' ?>
+
+                                                                                                </td>
+                                                                                                <td width="50%"
+                                                                                                    style="padding:0px;">
+                                                                                                    <b>LE: </b><?php echo isset($value['visual_acuity_corrected_left']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['VISUAL_ACUITY'][$value['visual_acuity_corrected_left']] : '' ?>
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </table>

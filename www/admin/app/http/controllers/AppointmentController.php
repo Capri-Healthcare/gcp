@@ -524,6 +524,7 @@ class AppointmentController extends Controller
                 $data['prescription']['medicine'] = array_values($data['prescription']['medicine']);
                 if (!empty($data['prescription']['medicine'][0]['name']) || !empty($data['prescription']['medicine'][0]['description'])) {
                     $data['prescription']['medicine'] = json_encode($data['prescription']['medicine']);
+                    //echo "<pre>";print_r($data);exit;
                     if (!empty($data['prescription']['id'])) {
                         $this->model_appointment->updatePrescription($data);
                     } else {
@@ -536,6 +537,7 @@ class AppointmentController extends Controller
             // Update Examination Notes
             if ($data['form_type'] == 'appointment_records') {
 
+                $data['appointment']['gcp_required'] = 'YES';
               //  if ($data['appointment']['gcp_required'] == 'YES') {
 
                     if($data['appointment']['optician_id'] > 0){

@@ -113,11 +113,11 @@ class Appointment extends Model
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET 
         `current_event` = ?,
         `allergy` = ?,
-        `visual_acuity_right` = ?,
         `intraocular_pressure_right` = ? ,
-        `visual_acuity_left` = ?,
         `visual_acuity_unaided_right` = ?,
         `visual_acuity_unaided_left` = ?,
+        `visual_acuity_corrected_left` = ?,
+        `visual_acuity_corrected_right` = ?,
         `intraocular_pressure_left` = ?,
         `anterior_chamber_right` = ?,
         `anterior_chamber_left` = ?, 
@@ -150,11 +150,11 @@ class Appointment extends Model
          WHERE `id` = ? ", array(
             $this->database->escape($data['current_event']),
             $this->database->escape($data['allergy']),
-            $this->database->escape($data['visual_acuity_right']),
             $this->database->escape($data['intraocular_pressure_right']),
-            $this->database->escape($data['visual_acuity_left']),
             $this->database->escape($data['visual_acuity_unaided_right']),
             $this->database->escape($data['visual_acuity_unaided_left']),
+            $this->database->escape($data['visual_acuity_corrected_right']),
+            $this->database->escape($data['visual_acuity_corrected_left']),
             $data['intraocular_pressure_left'],
             $data['anterior_chamber_right'],
             $data['anterior_chamber_left'],
@@ -207,6 +207,8 @@ class Appointment extends Model
 
     public function updatePrescription($data)
     {
+        //echo "<pre>";print_r($data);exit;
+        
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "prescription` SET `name` = ?, `email` = ?, `prescription` = ?, `doctor_id` = ?, `patient_id` = ? WHERE `id` = ? ", array($this->database->escape($data['appointment']['name']), $this->database->escape($data['appointment']['mail']), $data['prescription']['medicine'], (int)$data['appointment']['doctor'], (int)$data['appointment']['patient_id'], (int)$data['prescription']['id']));
 
         if ($query->num_rows > 0) {
@@ -593,8 +595,12 @@ class Appointment extends Model
 
         $body .= "<br><br><br>";
 
-        $body .= "<strong>Diagnosis:</strong> " . implode(',',json_decode($appointment['diagnosis'],true)). "<br>";
-        $body .= "<br><br>";
+        $body .= "<strong>Diagnosis:</strong> " . implode(',',json_decode($appointment['diagnosis'],true));
+        if(!empty($appointment['diagnosis_comment'])) {
+            $body .= !empty($appointment['diagnosis']) ? ", " : "";
+            $body .= $appointment['diagnosis_comment'];
+        }
+        $body .= "<br><br><br>";
 
         $body .= "<strong>Current Treatment:</strong><br>";
         $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
@@ -788,6 +794,7 @@ class Appointment extends Model
     public function generateToPatientOrGpDoc($appointment_id, $action)
     {
         $appointment = $this->getAppointment($appointment_id);
+        //echo "<pre>"; print_r($appointment);exit;
         $appointment['address'] = json_decode($appointment['address'], true);
         $doctor_data = $this->getDoctorData($appointment['doctor_id']);
         $prescription = $this->model_appointment->getPrescription($appointment_id);
@@ -818,8 +825,12 @@ class Appointment extends Model
 
         $body .= "Dear " . ucfirst($appointment['firstname']);
         $body .= "<br><br>";
-        $body .= "<strong>Diagnosis:</strong> " . implode(',',json_decode($appointment['diagnosis'],true)). "<br>";
-        $body .= "<br>";
+        $body .= "<strong>Diagnosis:</strong> " . implode(', ',json_decode($appointment['diagnosis'],true));
+        if(!empty($appointment['diagnosis_comment'])) {
+            $body .= !empty($appointment['diagnosis']) ? ", " : "";
+            $body .= $appointment['diagnosis_comment'];
+        }
+        $body .= "<br><br>";
         $body .= "<strong>Current Treatment:</strong><br>";
         $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
                                        <tr>
