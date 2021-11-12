@@ -119,25 +119,27 @@ class Patient extends Model
     public function createPatient($data)
     {
         $data['hospital_code'] = isset($data['hospital_code']) ? $data['hospital_code'] : '';
+        $data['optician_name'] = isset($data['optician_name']) ? $data['optician_name'] : '';
+        $data['optician_email'] = isset($data['optician_email']) ? $data['optician_email'] : '';
         
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (
             `title`, `firstname`, `lastname`, `email`,
             `mobile`, `office_number`,`address`, 
             `gender`, `dob`, `history`, `other`,
             `temp_hash`, `status`, `user_id`, `hospital_code`,
-            `date_of_joining`) 
+            `date_of_joining`, `optician_name`, `optician_email`) 
         VALUES (
             ?, ?, ?, ?,
             ?, ?, ?,
             ?, ?, ?, ?,
             ?, ?, ?, ?,
-            ?)", 
+            ?, ?, ?)", 
         array(
             $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['mail'], 
             $data['mobile'], $data['office_phone'], $data['address'], 
             $data['gender'], $data['dob'], $data['history'], $data['other'], 
             $data['hash'], 1, $data['user_id'],$data['hospital_code'], 
-            $data['datetime'])
+            $data['datetime'], $data['optician_name'], $data['optician_email'])
         );
 
         if ($this->database->error()) {
@@ -155,6 +157,8 @@ class Patient extends Model
 
     public function updatePatient($data)
     {
+        $data['optician_name'] = isset($data['optician_name']) ? $data['optician_name'] : '';
+        $data['optician_email'] = isset($data['optician_email']) ? $data['optician_email'] : '';
 
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `title` = ?, `firstname` = ?, `lastname` = ?, `email` = ?,`mobile` = ?,`office_number` = ?,
 		`dob` = ?,
@@ -176,7 +180,9 @@ class Patient extends Model
         `authorisation_number` = ?,
 	    `authorisation_number` = ?, 
 		`corporate_company_scheme` = ?,
-		`employer` = ?
+		`employer` = ?,
+        `optician_name` = ?, 
+        `optician_email` = ?
 		WHERE `id` = ?",
             array(
                 $this->database->escape($data['title']),
@@ -204,6 +210,8 @@ class Patient extends Model
                 isset($data['authorisation_number']) ? $data['authorisation_number']:null,
                 isset($data['corporate_company_scheme']) ? $data['corporate_company_scheme']:null,
                 isset($data['employer']) ? $this->database->escape($data['employer']):null,
+                isset($data['optician_name']) ? $data['optician_name'] : '',
+                isset($data['optician_email']) ? $data['optician_email'] : '',
                 (int)$data['id']));
 
         //$query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `address` = ?, `bloodgroup` = ?, `gender` = ?, `dob` = ?, `history` = ?, `other` = ?, `status` = ? WHERE `id` = ?" , array($data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'],$data['bloodgroup'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['status'], $data['id']));
@@ -296,5 +304,16 @@ class Patient extends Model
             }
         }
         return 0;
+    }
+
+    public function isPatientReferredByOptician($id){
+        if(!empty($id)){
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "referral_list` WHERE `patient_id` = ?",array($id));
+
+            if ($query->num_rows > 0) {
+                return FALSE;
+            }
+        }
+        return TRUE;
     }
 }

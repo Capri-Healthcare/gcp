@@ -387,6 +387,32 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php if($is_patient_referred_by_optician){ ?>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Optician Name</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ti-user"></i></span>
+                                            </div>
+                                            <input type="text" name="patient[optician_name]" class="form-control"
+                                                value="<?php echo $result['optician_name']; ?>" placeholder="Optician Name" id="optician_name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Optician Email</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ti-email"></i></span>
+                                            </div>
+                                            <input type="email" name="patient[optician_email]" class="form-control"
+                                                value="<?php echo $result['optician_email']; ?>" placeholder="Optician Email" id="optician_email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php } ?>
                             <?php } ?>
 <!--                            <div class="col-md-6" style="--><?php //echo (in_array($common['user']['role'],[constant('USER_ROLE_MERC'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'?><!--">-->
 <!--                                <div class="form-group">-->

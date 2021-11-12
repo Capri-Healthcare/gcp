@@ -305,6 +305,9 @@ class PatientController extends Controller
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'patient/edit&id=' . $data['result']['id'];
 
+        // Check is patient referred by optician
+        $data['is_patient_referred_by_optician'] = $this->model_patient->isPatientReferredByOptician($data['result']['id']);
+        
         /*Render User add view*/
         $this->response->setOutput($this->load->view('patient/patient_form', $data));
     }
