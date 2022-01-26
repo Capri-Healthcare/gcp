@@ -38,7 +38,7 @@ class CommonController extends Controller
 
 	public function sendSMSUsingTwilio($number, $message){
 		try {
-
+return true;
 			// Your Account SID and Auth Token from twilio.com/console
 			$account_sid = TWILIO_ACCOUNT_SID;
 			$auth_token = TWILIO_AUTH_TOKEN;

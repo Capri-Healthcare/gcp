@@ -167,7 +167,7 @@
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<label class="d-block">Logo (for latter/pdf heading)</label>
+											<label class="d-block">Logo (for letter/pdf heading)</label>
 											<div class="image-upload" <?php if (!empty($result['logo'])) { echo " style=\"display: none\" "; }?> >
 												<a>Upload</a>
 											</div>
