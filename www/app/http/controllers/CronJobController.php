@@ -67,7 +67,7 @@ class CronJobController extends Controller
         //echo "<pre>"; print_r($data);exit;
 
         $this->load->controller('common');
-        $this->controller_common->sendSMSUsingTwilio($appointment['id'], 'APPOINTMENT_REMINDER');
+        //$this->controller_common->sendSMSUsingTwilio($appointment['id'], 'APPOINTMENT_REMINDER');
 
         $this->load->controller('mail');
         return $this->controller_mail->sendMail($data);

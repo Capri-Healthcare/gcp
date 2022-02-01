@@ -89,7 +89,7 @@ class SenderController extends Controller
 			$sms_text = str_replace('{doctor_name}', $data['common']['user']['firstname'].' ' . $data['common']['user']['lastname'], $sms_text);
 			$sms_text = str_replace('{video_consultation_link}', $data['receiver']['video_consultation_link'], $sms_text);
 	
-			$this->controller_common->sendSMSUsingTwilio($data['receiver']['mobile'], $sms_text);
+			//$this->controller_common->sendSMSUsingTwilio($data['receiver']['mobile'], $sms_text);
 		}
 
 		$data['mail']['name'] = $data['receiver']['name'];

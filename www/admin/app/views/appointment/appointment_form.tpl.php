@@ -1297,7 +1297,7 @@
                                             <div class="form-group">
                                                 <label>Mean Deviation - RE</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control"
+                                                    <input type="number" step="0.01" class="form-control"
                                                            name="appointment[mean_deviation_right]"
                                                            value="<?php echo $result['mean_deviation_right']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>dB</b>
@@ -1308,7 +1308,7 @@
                                             <div class="form-group">
                                                 <label>Mean Deviation - LE</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control"
+                                                    <input type="number" step="0.01" class="form-control"
                                                            name="appointment[mean_deviation_left]"
                                                            value="<?php echo $result['mean_deviation_left']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>dB</b>
@@ -1331,7 +1331,7 @@
                                             <div class="form-group">
                                                 <label>PSD Deviation - RE</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control"
+                                                    <input type="number" step="0.01" class="form-control"
                                                            name="appointment[psd_deviation_right]"
                                                            value="<?php echo $result['psd_deviation_right']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>dB</b>
@@ -1342,7 +1342,7 @@
                                             <div class="form-group">
                                                 <label>PSD Deviation - LE</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control"
+                                                    <input type="number" step="0.01" class="form-control"
                                                            name="appointment[psd_deviation_left]"
                                                            value="<?php echo $result['psd_deviation_left']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>&nbsp;
                                                     <b>dB</b>

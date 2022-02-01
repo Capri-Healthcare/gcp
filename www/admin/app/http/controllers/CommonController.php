@@ -32,7 +32,7 @@ class CommonController extends Controller
 		$message = str_replace('{patient_name}', $appointment['name'], $message);
 		$message = str_replace('{appointment_time}', $appointment_time, $message);	
 
-		$this->sendSMSUsingTwilio(DEFAULT_COUNTRY_CODE . $appointment['mobile'], $message);
+		//$this->sendSMSUsingTwilio(DEFAULT_COUNTRY_CODE . $appointment['mobile'], $message);
 	}
 
 

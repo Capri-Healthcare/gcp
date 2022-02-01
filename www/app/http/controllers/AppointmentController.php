@@ -148,8 +148,8 @@ class AppointmentController extends Controller
 		$data['id'] = $this->model_appointment->createAppointment($data);
 		
 		if ($data['id'] && is_int($data['id'])) {
-			$this->sendMail($data);
-			$this->controller_common->sendSMSUsingTwilio($data['mobile'], 'APPOINTMENT_REMINDER');
+			//$this->sendMail($data);
+			//$this->controller_common->sendSMSUsingTwilio($data['mobile'], 'APPOINTMENT_REMINDER');
 
 			echo json_encode(array('error' => false, 'message' => $common['lang']['text_appointment_created_succefully']));
 		} else {

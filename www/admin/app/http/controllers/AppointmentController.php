@@ -411,14 +411,14 @@ class AppointmentController extends Controller
 
                 $meanDeviationChart[0]['name'] = 'RE';
                 $meanDeviationChart[1]['name'] = 'LE';
-                $meanDeviationChart[0]['data'][] = (int)$list['mean_deviation_right'];
-                $meanDeviationChart[1]['data'][] = (int)$list['mean_deviation_left'];
+                $meanDeviationChart[0]['data'][] = $list['mean_deviation_right'];
+                $meanDeviationChart[1]['data'][] = $list['mean_deviation_left'];
 
 
                 $psdDeviationChart[0]['name'] = 'RE';
                 $psdDeviationChart[1]['name'] = 'LE';
-                $psdDeviationChart[0]['data'][] = (int)$list['psd_deviation_right'];
-                $psdDeviationChart[1]['data'][] = (int)$list['psd_deviation_left'];
+                $psdDeviationChart[0]['data'][] = $list['psd_deviation_right'];
+                $psdDeviationChart[1]['data'][] = $list['psd_deviation_left'];
                 $categories[] = date_format(date_create($list['date']), 'd-m-Y');
 
             }

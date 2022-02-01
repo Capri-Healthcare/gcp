@@ -475,7 +475,7 @@ class PatientController extends Controller
             $sms_text = str_replace('{doctor_name}', $data['common']['user']['firstname'] . ' ' . $data['common']['user']['lastname'], $sms_text);
             $sms_text = str_replace('{video_consultation_link}', $data['mail']['video_consultation_link'], $sms_text);
 
-            $this->controller_common->sendSMSUsingTwilio($result['mobile'], $sms_text);
+            //$this->controller_common->sendSMSUsingTwilio($result['mobile'], $sms_text);
         }
 
 
