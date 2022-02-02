@@ -19,7 +19,7 @@ class Commons extends Model
 
     public function getUserInfo($user_id)
     {
-        $query = $this->database->query("SELECT u.user_id, u.firstname, u.lastname, u.picture, ur.id AS role_id, ur.name AS role, ur.permission, d.id AS doctor FROM `" . DB_PREFIX . "users` AS u LEFT JOIN `" . DB_PREFIX . "user_role` AS ur ON ur.id = u.user_role LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.user_id = u.user_id WHERE u.user_id = ?", array((int)$user_id));
+        $query = $this->database->query("SELECT u.user_id, u.firstname, u.lastname, u.picture, u.dob, ur.id AS role_id, ur.name AS role, ur.permission, d.id AS doctor FROM `" . DB_PREFIX . "users` AS u LEFT JOIN `" . DB_PREFIX . "user_role` AS ur ON ur.id = u.user_role LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.user_id = u.user_id WHERE u.user_id = ?", array((int)$user_id));
         return $query->row;
     }
 

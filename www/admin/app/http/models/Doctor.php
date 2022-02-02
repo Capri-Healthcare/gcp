@@ -16,7 +16,8 @@ class Doctor extends Model
 
 	public function getDoctor($id, $user = NULL)
 	{
-		$query = $this->database->query("SELECT d.*, u.* FROM `" . DB_PREFIX . "doctors` AS d LEFT JOIN `" . DB_PREFIX . "users` AS u ON u.user_id = d.user_id WHERE d.id = '".(int)$id."' LIMIT 1");
+		// $query = $this->database->query("SELECT d.*, u.* FROM `" . DB_PREFIX . "doctors` AS d LEFT JOIN `" . DB_PREFIX . "users` AS u ON u.user_id = d.user_id WHERE d.id = '".(int)$id."' LIMIT 1");
+		$query = $this->database->query("SELECT d.*, u.user_name, u.address, u.gender FROM `" . DB_PREFIX . "doctors` AS d LEFT JOIN `" . DB_PREFIX . "users` AS u ON u.user_id = d.user_id WHERE d.id = '".(int)$id."' LIMIT 1");
 		if ($query->num_rows > 0) {
 			return $query->row;
 		} else {
@@ -78,6 +79,9 @@ class Doctor extends Model
 		/*$this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET title = ?, `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `picture` = ?, logo = ?, `website` = ? , `about` = ?, `department_id` = ?, `social` = ?, `web_status` = ?, `status` = ?, `priority` = ?, `time` = ?, `weekly` = ?, `national` = ?, `appointment_status` = ? WHERE `id` = ? AND `user_id` = ?", array($this->database->escape($data['title']), $this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['picture']), $this->database->escape($data['logo']), $this->database->escape($data['website']), $data['about'], (int)$data['department'], $data['social'], (int)$data['web_status'], (int)$data['status'], (int)$data['priority'], $data['time'], $data['weekly'], $data['national'], $data['appointment_status'], (int)$data['id'], (int)$data['user_id']));*/
 
 		$this->database->query("UPDATE `" . DB_PREFIX . "doctors` SET title = ?, `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `picture` = ?, logo = ?, `department_id` = ?, `status` = ?, `website` = ? , about_doctor = ? WHERE `id` = ? AND `user_id` = ?", array($this->database->escape($data['title']), $this->database->escape(ucfirst($data['firstname'])), $this->database->escape(ucfirst($data['lastname'])), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['picture']), $this->database->escape($data['logo']), (int)$data['department'], (int)$data['status'], $this->database->escape($data['website']), $this->database->escape($data['about_doctor']), (int)$data['id'], (int)$data['user_id']));
+
+		//u.user_name, u.address, u.gender
+		$this->database->query("UPDATE `".DB_PREFIX."users` SET `user_name` = ?, `gender` = ? WHERE `user_id` = ? ",array($this->database->escape(ucfirst($data['user_name'])), $this->database->escape(ucfirst($data['gender'])), (int)$data['user_id']));
 
 		return true;
 	}

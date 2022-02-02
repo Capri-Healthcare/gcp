@@ -150,10 +150,10 @@
                                 <!--                                    <td>-->
                                 <?php //echo $result['first_payment']; ?><!--</td>-->
                                 <!--                                </tr>-->
-                                <tr>
+                                <!-- <tr>
                                     <td>Regular payment</td>
                                     <td><?php echo $result['regular_payment']; ?></td>
-                                </tr>
+                                </tr> -->
                                 <!--								<tr>-->
                                 <!--									<td>Do you/the patient have any disabilities?</td>-->
                                 <!--									<td>-->

@@ -254,13 +254,33 @@ define('PAYMENT_INFO', [
 
 define('INVOICE_TERMS_NOTE', "There may be a separate charge for any tests, procedures, drugs, x-rays etc");
 define('INVOICE_TERMS', "Mr Sharma reserves the right to charge interest and a collection fee of £20 or 10% of the invoice value (whichever is the greater) on all accounts, which are overdue for payment.
-<br><span style='font-size: 12px;'>Tarun Sharma & Sushma Sharma are Directors of Sharma Vision, Company number-8932399.</span>");
+<!-- <br><span style='font-size: 12px;'>Tarun Sharma & Sushma Sharma are Directors of Sharma Vision, Company number-8932399.</span> -->");
+//Changes made on 01-02-2022
 
 define('INVOICE_DOCTOR_DETAIL', [
     "NAME" => 'Tarun Sharma',
     "DEGREE" => 'MBBS MD FRCS (Ed)',
     "POSITION" => 'Consultant Ophthalmic Surgeon',
 ]);
+define('APPOINTMENT_SIDE_BAR','<b>Upload Referral/Investigation</b>
+Communicate via <b>PORTAL</b> 
+<b>My Eye Record & Care</b>
+www.worcesterglaucoma.co.uk
+<b>For Appointments:</b>
+Spire South Bank:           01905362033
+Spire Clinic Droitwich:   01905799116
+Droitwich Spa Hospital: 01905793333
+<b>Private Practice Manager</b>
+Ms Neve Fairless Email:secretaryoj@gmail.com 
+<b>Accounts Enquiries</b>: 07758057733');
+
+define('FOOTER_LINE_1','<b>Award Winner: International Glaucoma Association: BEST GLAUCOMA SERVICE UK 2014/2015</b>');
+define('FOOTER_LINE_2','<b>‘FOR PROVIDING AN OUSTANDING SERVICE TO PATIENTS’</b>');
+define('FOOTER_LINE_3','<b>Tarun Sharma is the Director of Sharma Vision Ltd, Company number 8932399</b>');
+define('FOOTER_LINE_4','<b>Office Address-105 Fitz Roy Avenue, Birmingham, B17 8RG</b>');
+
+//Changes made on 01-02-2022
+define('MY_EYE_RECORD_CARE','<b>M</b>y<br/><b>E</b>ye <br/><b>R</b>ecord & <br/><b>C</b>are');
 
 define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
 define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');

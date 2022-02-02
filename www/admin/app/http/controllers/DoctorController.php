@@ -111,7 +111,8 @@ class DoctorController extends Controller
 		$data['result']['national'] = json_decode($data['result']['national'], true);
 		$data['result']['social'] = json_decode($data['result']['social'], true);
 		$data['result']['address'] = json_decode($data['result']['address'], true);
-		$data['result']['user_id'] = $this->session->data['user_id'];
+		// $data['result']['user_id'] = $this->session->data['user_id'];
+		$data['result']['user_id'] = $data['result']['user_id'];
 
 		/* Set department in array */
 		$data['departments'] = $this->model_doctor->getDepartmentByName();
@@ -213,7 +214,7 @@ class DoctorController extends Controller
 		if($data['form_type'] == 'doctor-basic') {
 			if (!empty($data['doctor']['id'])) {
 				$this->model_doctor->updateDoctor($data['doctor']);
-				$this->model_user->updateUser($data['doctor']);
+				// $this->model_user->updateUser($data['doctor']);
 
 				$this->session->data['message'] = array('alert' => 'success', 'value' => 'Doctor updated successfully.');
 				$this->url->redirect('doctor/edit&id='.$data['doctor']['id']);

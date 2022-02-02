@@ -184,7 +184,8 @@ class Appointment extends Model
             $data['special_condition'],
             $data['family_history_of_glaucoma'],
             $data['relations_with_glaucoma_patient'],
-            (int)$data['id']));
+            (int)$data['id']
+        ));
 
         if ($query->num_rows > 0) {
             return true;
@@ -208,7 +209,7 @@ class Appointment extends Model
     public function updatePrescription($data)
     {
         //echo "<pre>";print_r($data);exit;
-        
+
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "prescription` SET `name` = ?, `email` = ?, `prescription` = ?, `doctor_id` = ?, `patient_id` = ? WHERE `id` = ? ", array($this->database->escape($data['appointment']['name']), $this->database->escape($data['appointment']['mail']), $data['prescription']['medicine'], (int)$data['appointment']['doctor'], (int)$data['appointment']['patient_id'], (int)$data['prescription']['id']));
 
         if ($query->num_rows > 0) {
@@ -263,27 +264,28 @@ class Appointment extends Model
             (int)$data['patient_id'],
             $data['datetime'],
             $data['appointment_id'],
-            $data['hospital_code']));
+            $data['hospital_code']
+        ));
 
         if ($query->num_rows > 0) {
             $appointment_id = $this->database->last_id();
 
-            if($data['optician_id'] > 0){
+            if ($data['optician_id'] > 0) {
 
                 $optician_detail_qry = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE user_id = ?", array($data['optician_id']));
 
                 $optician_details = $optician_detail_qry->row;
                 $referee_name = $optician_details['firstname'] . ' ' . $optician_details['lastname'];
                 $referee_address_aar = json_decode($optician_details['address']);
-                $referee_address = $referee_address_aar->address1 . ', '. $referee_address_aar->address2 . ', '. $referee_address_aar->city . ' - ' . $referee_address_aar->postal;
+                $referee_address = $referee_address_aar->address1 . ', ' . $referee_address_aar->address2 . ', ' . $referee_address_aar->city . ' - ' . $referee_address_aar->postal;
 
                 $query = $this->database->query("UPDATE " . DB_PREFIX . "appointments SET referee_name = ?, referee_address = ? WHERE id = ? ", array($referee_name, $referee_address, $appointment_id));
             }
-            
+
 
             return $appointment_id;
         } else {
-            echo '<pre>'.print_r($data);
+            echo '<pre>' . print_r($data);
             exit();
             return false;
         }
@@ -320,11 +322,9 @@ class Appointment extends Model
             echo "Update";
             print_r($query->row['id']);
             $insert_update_query = $this->database->query("UPDATE `" . DB_PREFIX . "appointment_notes` SET `name` = ?, `email` = ?, `notes` = ?, `appointment_id` = ?, `doctor_id` = ?, `patient_id` = ? WHERE `id` = ? ", array($this->database->escape($data['appointment']['name']), $this->database->escape($data['appointment']['email']), $data['notes']['notes'], (int)$data['appointment']['id'], (int)$data['appointment']['doctor'], (int)$data['appointment']['patient_id'], $query->row['id']));
-
         } else {
             echo "insert";
             $insert_update_query = $this->database->query("INSERT INTO `" . DB_PREFIX . "appointment_notes` (`name`, `email`, `notes`, `appointment_id`, `doctor_id`, `patient_id`, `user_id`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ", array($this->database->escape($data['appointment']['name']), $this->database->escape($data['appointment']['email']), $data['notes']['notes'], (int)$data['appointment']['id'], (int)$data['appointment']['doctor'], (int)$data['appointment']['patient_id'], (int)$data['user_id'], date('Y-m-d H:i:s')));
-
         }
 
 
@@ -407,7 +407,7 @@ class Appointment extends Model
     public function deleteReport($data)
     {
         $user_id = $this->session->data['user_id'];
-       $query = $this->database->query("DELETE FROM `" . DB_PREFIX . "reports` WHERE `report` = ? AND `appointment_id` = ?", array($this->database->escape($data['report']), (int)$data['appointment_id']));
+        $query = $this->database->query("DELETE FROM `" . DB_PREFIX . "reports` WHERE `report` = ? AND `appointment_id` = ?", array($this->database->escape($data['report']), (int)$data['appointment_id']));
 
         // if its image then allow to patient to delete image
         $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointment_images` WHERE appointment_id = '" . (int)$data['appointment_id'] . "' AND `filename` = '" . $data['report'] . "'");
@@ -416,7 +416,6 @@ class Appointment extends Model
         if (!empty($is_exist)) {
 
             $this->database->query("UPDATE `" . DB_PREFIX . "appointment_images` SET `move_to_report` = ?, `updated_at` = ?, `updated_by` = ? WHERE `appointment_id` = ? AND `filename` = ? ", array('N', date('Y-m-d H:i:s'), $user_id, (int)$data['appointment_id'], $data['report']));
-
         }
     }
 
@@ -450,7 +449,6 @@ class Appointment extends Model
             $is_exist = $query->row;
             if (empty($is_exist)) {
                 $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "appointment_forms` (`form_id`, `appointment_id`, `is_active`, `created_at`, `created_by`) VALUES (?, ?, ?, ?, ?)", array($form_id, $appointment_id, 'Y', date('Y-m-d H:i:s'), $user_id));
-
             } else {
                 $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointment_forms` SET `is_active` = ?, `updated_at` = ?, `updated_by` = ? WHERE `id` = ?", array('Y', date('Y-m-d H:i:s'), $user_id, $is_exist['id']));
             }
@@ -461,7 +459,6 @@ class Appointment extends Model
         } else {
             return false;
         }
-
     }
 
     public function moveImageToReport($data)
@@ -507,7 +504,6 @@ class Appointment extends Model
         if (isset($data['referralid'])) {
 
             $images = $this->database->query("SELECT * FROM kk_referral_list_document WHERE referral_list_id='" . $data['referralid'] . "'");
-
         }
         if ($images->num_rows > 0) {
             foreach ($images->rows as $doc) {
@@ -526,11 +522,8 @@ class Appointment extends Model
                 $destination_path = $report_folder . '/' . $doc['filename'];
                 copy($source_path, $destination_path);
                 $this->database->query("INSERT INTO `" . DB_PREFIX . "reports` (`name`, `report`, `appointment_id`, `patient_id`, `user_id`) VALUES (?, ?, ?, ?, ?)", array($doc['name'], $doc['filename'], $data['id'], $data['patient_id'], $data['user_id']));
-
             }
         }
-
-
     }
 
     public function getAppointmentByVideoConsultationToken($token)
@@ -564,7 +557,9 @@ class Appointment extends Model
 
         $prescription = $this->model_appointment->getPrescription($appointment_id);
         $optician_data = $this->getOpticianDetails($appointment['optician_id']);
-        $optician_address = json_decode($optician_data['address'], true);;
+        if (!empty($optician_data['address'])) {
+            $optician_address = json_decode($optician_data['address'], true);;
+        }
 
         if (!empty($prescription)) {
             $prescription['prescription'] = json_decode($prescription['prescription'], true);
@@ -576,10 +571,12 @@ class Appointment extends Model
 
         $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
+        $body .=  "<table width='100%' border=0 >";
+        $body .=  "<tr><td width=70%>";
+
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
 
-        $body .= "<br><br><br>";
 
         $body .= ucfirst($appointment['referee_name']) . "<br>";
         $body .= $appointment['referee_address'];
@@ -588,18 +585,28 @@ class Appointment extends Model
 
         $body .= "Dear " . ucfirst($appointment['referee_name']) . ",<br><br>";
 
-        $body .= "<b>Name: </b>".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
-        $body .= "<b>DOB: </b>".date_format(date_create($appointment['patient_dob']), 'd-m-Y'). "<br>";
-        $body .= "<b>Address: </b>".$appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
-        $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
+        $body .= "<b>Name: </b>" . ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
+        $body .= "<b>DOB: </b>" . date_format(date_create($appointment['patient_dob']), 'd-m-Y') . "<br>";
+        $body .= "<b>Address: </b>";
+        if (!empty($appointment['address'])) {
+            $body .= $appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
+            $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
+        }
 
         $body .= "<br><br><br>";
-
-        $body .= "<strong>Diagnosis:</strong> " . implode(',',json_decode($appointment['diagnosis'],true));
-        if(!empty($appointment['diagnosis_comment'])) {
+        $body .= "<strong>Diagnosis:</strong> ";
+        if (!empty($optician_data['diagnosis'])) {
+            $body .=  implode(',', json_decode($appointment['diagnosis'], true));
+        }
+        if (!empty($appointment['diagnosis_comment'])) {
             $body .= !empty($appointment['diagnosis']) ? ", " : "";
             $body .= $appointment['diagnosis_comment'];
         }
+
+        $body .= "</td><td width=30%>
+        " . constant('APPOINTMENT_SIDE_BAR') . " 
+        </td></tr></table>";
+
         $body .= "<br><br><br>";
 
         $body .= "<strong>Current Treatment:</strong><br>";
@@ -624,7 +631,7 @@ class Appointment extends Model
                 $body .= "<td>" . $value['eye'] . "</td>";
                 $body .= "</tr>";
             }
-        }else{
+        } else {
             $body .= "<tr>";
             $body .= "<td colspan='6' style='text-align: center'>Treatment does not specified.</td>";
             $body .= "</tr>";
@@ -636,16 +643,15 @@ class Appointment extends Model
         $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] : '';
 
         $body .= "<br>";
-        if(!empty($appointment['doctor_note_optometrist'])){
+        if (!empty($appointment['doctor_note_optometrist'])) {
             $body .= "<br><br>";
             $body .= "<strong>Doctor's Comments:</strong> ";
             $body .= $appointment['doctor_note_optometrist'];
-
         }
 
         $body .= "<br><br>";
 
-        $body .= "<p style='letter-spacing:0.6px'>Thank you for your kind referral for ".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname'])." to my private Complex Glaucoma/ Cataract clinic.</p>";
+        $body .= "<p style='letter-spacing:0.6px'>Thank you for your kind referral for " . ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . " to my private Complex Glaucoma/ Cataract clinic.</p>";
 
         $body .= "<br><br>";
 
@@ -654,13 +660,14 @@ class Appointment extends Model
         $body .= "<br>";
 
         $body .= $doctor_data['name'];
-        $body .= (!empty($about_doctor['position']) AND !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
-        $body .= (!empty($about_doctor['degree']) AND !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
-        $body .= (!empty($about_doctor['specility']) AND !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
-        $body .= (!empty($about_doctor['awards']) AND !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
+        $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
+        $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
+        $body .= (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
+        $body .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
 
         $body .= "</div>";
-
+        // echo $body;
+        // exit;
         $filename = str_replace(" ", "-", $appointment['name']) . '-third-party-letter.pdf';
         $this->generatePdfFile($appointment_id, $body, $filename, $action);
     }
@@ -674,47 +681,87 @@ class Appointment extends Model
         $about_doctor = json_decode($doctor_data['about'], true);
 
         $dr_qualification_position_specility = "";
-        $dr_qualification_position_specility .= (!empty($about_doctor['position']) AND !is_null($about_doctor['position'])) ? ($about_doctor['position']) : "";
-        $dr_qualification_position_specility .= (!empty($about_doctor['degree']) AND !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
-        $dr_qualification_position_specility .= (!empty($about_doctor['specility']) AND !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
-        $dr_qualification_position_specility .= (!empty($about_doctor['awards']) AND !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
+        $dr_qualification_position_specility .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ($about_doctor['position']) : "";
+        $dr_qualification_position_specility .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
 
+        $specility_lin_1 = (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ($about_doctor['degree']) : "";
+
+        $dr_qualification_position_specility .= (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
+        $specility_lin_2 = (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
+
+        $dr_qualification_position_specility .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
+        $specility_lin_2 .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? (" " . $about_doctor['awards']) : "";
         $this->load->model('commons');
         $common = $this->model_commons->getCommonData($this->session->data['user_id']);
 
         // Set Header
         $doc_logo = (isset($doctor_data['logo']) and !empty($doctor_data['logo'])) ? $doctor_data['logo'] : $common['info']['logo'];
-        $header = "<table style='width:100%' border=0' >" .
+        // $header = "<table style='width:100%' border=0' >" .
+        //     "<tr>" .
+        //     "<td width='30%'>
+        // 		    <img src='" . URL . "public/images/Merclogo.png' alt='My Eye Record & Care' title='My Eye Record & Care' height='119' />
+        // 		</td>" .
+        //     "<td align=right>
+        // 			<div style='text-align:right; color: #333;'>
+        // 				<h4 style='font-size:18px; margin: 0 0 0;'><strong>" . $doctor_data['name'] . "</strong></h4>
+        // 				<span style='font-size: 13px;'>" . $dr_qualification_position_specility . "</span>
+        // 			</div>
+
+        // 		</td>" .
+        //     "</tr>" .
+        //     "</table>";
+        $header = "<table style='width:100%;' border=0' >" .
             "<tr>" .
-                "<td width='30%'>
-				    <img src='".URL."public/images/Merclogo.png' alt='My Eye Record & Care' title='My Eye Record & Care' height='119' />
-				</td>" .
-                "<td align=right>
-					<div style='text-align:right; color: #333;'>
-						<h4 style='font-size:18px; margin: 0 0 0;'><strong>" . $doctor_data['name'] . "</strong></h4>
-						<span style='font-size: 13px;'>" . $dr_qualification_position_specility . "</span>
+            "<td align=right>
+					<div style='text-align:left; color: #333;'>
+						<div><span style='font-size:20px; font-weight:bold;'>" . $doctor_data['name'] . "</span>
+                        <span style='font-size:12px; font-weight:bold;'>" . $specility_lin_1 . "</span>
+                        <span style='font-size:12px; font-weight:bold;'>" . $specility_lin_2 . "</span>
+                        </div>
+						<!-- <span style='font-size: 13px;'>" . $dr_qualification_position_specility . "</span> -->
 					</div>
 				    
 				</td>" .
+            "<td width=20%>
+                <img src='" . URL_ADMIN . "public/images/picture1.jpg' width='90%'' alt='Icon'>
+                </td>" .
+            "<td width='15%' style='vertical-align:center; text-align:start; padding:5px; border:#000 1px solid;'>
+                <span>" . constant('MY_EYE_RECORD_CARE') . "</span>
+            </td>" .
             "</tr>" .
+            "<tr>
+            <td colspan=3>
+            <table style='width:100%;' border=0' >
+                <tr>";
+        foreach ($doctor_address as $key => $address) {
+            $header .= "<td width='30%' style='color: #333; font-size: 10px;'><strong> " . $address['title'] . "</strong>
+            <br>" . $address['address'] . "
+            </td>";
+        }
+        $header .= "</tr>
+        </table>
+        </td></tr>" .
             "</table>";
 
         // Set footer
         $footer = "<table style='width:100%' border=0 font-size: 9px;'>";
-        if (!empty($doctor_address)) {
-            $footer .= "<table style='width:100%' border=0'><tr>";
-            foreach ($doctor_address as $key => $address) {
-                $footer .= "<td>";
-                $footer .= "<span style='color: #333; font-size: 10px;'><strong> " . $address['title'] . "</strong></span><br/>";
-                $footer .= "<span style='color: #333; font-size: 9px;'>T: " . $address['contact_number'] . "</span><br/>";
-                $footer .= "<span style='color: #333; font-size: 9px;'>E: " . $address['email'] . "</span>";
-                $footer .= "</td>";
-            }
-            $footer .= "</tr></table>";
-
-        } else {
-            $footer .= "<tr><td><center>" . $doctor_data['website'] . "</center></td></tr>";
-        }
+        // if (!empty($doctor_address)) {
+        //     $footer .= "<table style='width:100%' border=0'><tr>";
+        //     foreach ($doctor_address as $key => $address) {
+        //         $footer .= "<td>";
+        //         $footer .= "<span style='color: #333; font-size: 10px;'><strong> " . $address['title'] . "</strong></span><br/>";
+        //         $footer .= "<span style='color: #333; font-size: 9px;'>T: " . $address['contact_number'] . "</span><br/>";
+        //         $footer .= "<span style='color: #333; font-size: 9px;'>E: " . $address['email'] . "</span>";
+        //         $footer .= "</td>";
+        //     }
+        //     $footer .= "</tr></table>";
+        // } else {
+        //     $footer .= "<tr><td><center>" . $doctor_data['website'] . "</center></td></tr>";
+        // }
+        $footer .= "<tr><td style='font-size:12px;' align='center'>".constant('FOOTER_LINE_1')."</td></tr>";
+        $footer .= "<tr><td style='font-size:12px;' align='center'>".constant('FOOTER_LINE_2')."</td></tr>";
+        $footer .= "<tr><td style='font-size:10px;' align='center'>".constant('FOOTER_LINE_3')."</td></tr>";
+        $footer .= "<tr><td style='font-size:10px;' align='center'>".constant('FOOTER_LINE_4')."</td></tr>";
         $footer .= "</table>";
 
         return ["header" => $header, "footer" => $footer];
@@ -733,13 +780,13 @@ class Appointment extends Model
 			li { font-size: 13px; }
 			H4 { margin-bottom: 0px}
 			@page {
-                margin: 150px 30px 50px 30px;
+                margin: 180px 30px 50px 30px;
             }
             header {
-                position: fixed; top: -125px; left: 0px; right: 0px; height: 50px;
+                position: fixed; top: -170px; left: 0px; right: 0px; height: 100px;
             }
             footer {
-				position: fixed; bottom: -90px; left: 0px; right: 0px; height: 100px; 
+				position: fixed; bottom: -70px; left: 0px; right: 0px; height: 100px; 
             }
             body {  
                 font-family: 'Helvetica Neue, Helvetica, Arial, sans-serif';
@@ -811,25 +858,37 @@ class Appointment extends Model
 
         $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
+		$body .=  "<table width='100%' border=0 >";
+        $body .=  "<tr><td width=70%>";
+		
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
 
-        $body .= "<br><br><br><br>";
+        $body .= "<br>";
 
-        $body .= "<strong>Name:</strong> ".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
-        $body .= "<strong>DOB:</strong> ".date_format(date_create($appointment['dob']), 'd-m-Y')."<br>";
-        $body .= "<strong>Address:</strong> ".$appointment['address']['address1'] . "," . $appointment['address']['address2'] . "<br>";
-        $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
-
+        $body .= "<strong>Name:</strong> " . ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
+        $body .= "<strong>DOB:</strong> " . date_format(date_create($appointment['dob']), 'd-m-Y') . "<br>";
+        if (!empty($appointment['address'])) {
+            $body .= "<strong>Address:</strong> " . $appointment['address']['address1'] . "," . $appointment['address']['address2'] . "<br>";
+            $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
+        }
         $body .= "<br><br><br>";
 
         $body .= "Dear " . ucfirst($appointment['firstname']);
         $body .= "<br><br>";
-        $body .= "<strong>Diagnosis:</strong> " . implode(', ',json_decode($appointment['diagnosis'],true));
-        if(!empty($appointment['diagnosis_comment'])) {
+        $body .= "<strong>Diagnosis:</strong> ";
+        if (!empty($appointment['diagnosis'])) {
+            $body .= implode(', ', json_decode($appointment['diagnosis'], true));
+        }
+        if (!empty($appointment['diagnosis_comment'])) {
             $body .= !empty($appointment['diagnosis']) ? ", " : "";
             $body .= $appointment['diagnosis_comment'];
         }
+		
+		$body .= "</td><td width=30%>
+        " . constant('APPOINTMENT_SIDE_BAR') . " 
+        </td></tr></table>";
+
         $body .= "<br><br>";
         $body .= "<strong>Current Treatment:</strong><br>";
         $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
@@ -853,7 +912,7 @@ class Appointment extends Model
                 $body .= "<td>" . $value['eye'] . "</td>";
                 $body .= "</tr>";
             }
-        }else{
+        } else {
             $body .= "<tr>";
             $body .= "<td colspan='6' style='text-align: center'>Treatment does not specified.</td>";
             $body .= "</tr>";
@@ -862,17 +921,16 @@ class Appointment extends Model
         $body .= "<br>";
 
         $body .= "<strong>Follow up:</strong> ";
-        $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name']: '';
+        $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] : '';
 
-        if(!empty($appointment['doctor_note'])){
+        if (!empty($appointment['doctor_note'])) {
             $body .= "<br><br>";
             $body .= "<strong>Doctor's Comments:</strong> ";
             $body .= $appointment['doctor_note'];
-
         }
         $body .= "<br>";
-        $gp_name = (!empty($appointment['gp_name']) AND !is_null($appointment['gp_name'])) ? $appointment['gp_name'] : "Practice Manager";
-        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to ".$gp_name.", ".$appointment['gp_address'].". so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
+        $gp_name = (!empty($appointment['gp_name']) and !is_null($appointment['gp_name'])) ? $appointment['gp_name'] : "Practice Manager";
+        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to " . $gp_name . ", " . $appointment['gp_address'] . ". so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
 
         $body .= "<br><br>";
 
@@ -881,14 +939,15 @@ class Appointment extends Model
         $body .= "<br>";
 
         $body .= $doctor_data['name'];
-        $body .= (!empty($about_doctor['position']) AND !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
-        $body .= (!empty($about_doctor['degree']) AND !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
-        $body .= (!empty($about_doctor['specility']) AND !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
-        $body .= (!empty($about_doctor['awards']) AND !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
+        $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
+        $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
+        $body .= (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
+        $body .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
 
         $body .= "</div>";
 
-        //echo $body;exit;
+        // echo $body;exit;
+
         $filename = strtolower(str_replace(" ", "-", $appointment['name'])) . '-patient-letter.pdf';
         $this->generatePdfFile($appointment_id, $body, $filename, $action);
     }
@@ -942,7 +1001,8 @@ class Appointment extends Model
         }
     }
 
-    public function getOpticianDetails($optician_id){
+    public function getOpticianDetails($optician_id)
+    {
         $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE user_id ='" . $optician_id . "'");
 
         if ($query->num_rows > 0) {
