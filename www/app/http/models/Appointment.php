@@ -119,8 +119,10 @@ class Appointment extends Model
 
 	public function getAppointmentsforReminder()
 	{
-		$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE `date` = CURDATE() AND TIME BETWEEN CURRENT_TIME() AND DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 10 MINUTE), '%H:%i:%s')");
+		// $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE `date` = CURDATE() AND TIME BETWEEN CURRENT_TIME() AND DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 10 MINUTE), '%H:%i:%s')");
 
+		$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE `date` = '".Date('Y-m-d', strtotime('+1 days'))."'");
+		
 		if ($query->num_rows > 0) {
 			return $query->rows;
 		} else {
