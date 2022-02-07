@@ -23,21 +23,14 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-6">
-                <div class="form-group">
-											<label class="d-block">Leaflets Doc</label>
-											<div class="image-upload" <?php if (!empty($result['picture'])) { echo " style=\"display: none\" "; }?> >
-												<a>Upload</a>
-											</div>
-											<div class="saved-picture" <?php if (empty($result['picture'])) { echo " style=\"display: none\" "; } ?> >
-												<?php if (!empty($result['picture'])) { ?>
-													<img class="img-thumbnail" src="../public/uploads/<?php echo $result['picture']; ?>" alt="">
-												<?php } ?>
-												<input type="hidden" name="leaflets[picture]" value="<?php echo $result['picture']; ?>">
-											</div>
-											<div class="saved-picture-delete" data-toggle="tooltip" data-placement="right" title="Remove" <?php if (empty($result['picture'])) { echo " style=\"display: none\" "; } ?> >
-												<a class="ti-trash"></a>
-											</div>
-										</div>
+                    <div class="form-group">
+                        <label class="d-block">Leaflets Doc</label>
+                        <div class="row">
+                            <label for="leaflets_doc" class="ml-4 btn btn-white">
+                                <input class="" id="leaflets_doc" name="leaflets" type="file" style="display:none;" accept="image/jpeg,image/jpg,image/png,application/pdf"> <span>Upload</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="panel-footer text-center">
@@ -48,16 +41,23 @@
     </div>
 </form>
 <!-- include summernote css/js-->
-<link href="public/css/summernote-bs4.css" rel="stylesheet">
+<!-- <link href="public/css/summernote-bs4.css" rel="stylesheet">
 <script type="text/javascript" src="public/js/summernote-bs4.min.js"></script>
 <script type="text/javascript" src="public/js/klinikal.summernote.js"></script>
-<script type="text/javascript" src="public/js/optician.js"></script>
+<script type="text/javascript" src="public/js/optician.js"></script> -->
 <script>
     function validateMyForm(e) {
-        if ($('#leaflets_doc').get(0).files.length === 0) {
-            toastr.error('Error', 'Select leaflets doc to upload.');
+        var fileInput = $('#leaflets_doc').get(0).files;
+        if (fileInput.length === 0) {
+            toastr.error('Select leaflets doc to upload.','Error');
             return false
         } else {
+            var allowedExtensions = /(\.pdf|\.jpg|\.jpeg|\.png)$/i;
+            if (!allowedExtensions.exec(fileInput[0].name)) {
+                fileInput.value = '';
+                toastr.error('Upload pdf or jpeg image only.','Error');
+                return false
+            } 
             return true;
         }
     }

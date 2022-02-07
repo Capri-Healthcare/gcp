@@ -13,7 +13,7 @@
         <div class="col-sm-7 text-right">
 
             <?php if ($page_add) { ?>
-                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'leaflets/add'; ?>" class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create Referral</a>
+                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'leaflets/add'; ?>" class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i>Add New Leaflet</a>
             <?php } ?>
         </div>
     </div>
@@ -34,9 +34,7 @@
                         <?php } ?>
                     </tr>
                 </thead>
-
                 <tbody>
-
                     <?php if (!empty($result)) {
                         foreach ($result as $key => $value) { ?>
                             <tr style="cursor: pointer">

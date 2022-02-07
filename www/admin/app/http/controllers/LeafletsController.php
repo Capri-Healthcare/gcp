@@ -79,42 +79,52 @@ class LeafletsController extends Controller
 
             $data['leaflets']['hash'] = md5(uniqid(mt_rand(), true));
 
-            $file = $this->url->files['file'];
+            $file = $this->url->files['leaflets'];
             $data['ext'] = pathinfo($file['name'], PATHINFO_EXTENSION);
-    
+            if ($validate_field = $this->validateDoc($file)) {
+                $this->session->data['message'] = array('alert' => 'error', 'value' => implode(", ", $validate_field));
+                $this->url->redirect('leaflets/add');
+            }
+            $data['filedir'] = DIR . 'public/uploads/';
+            $data['file_name'] = 'Leaflet-' . uniqid(rand());
 
-            // if ($validate_field = $this->validateDoc($data['leaflets'])) {
-            //     $this->session->data['message'] = array('alert' => 'error', 'value' => implode(", ", $validate_field));
-            //     $this->url->redirect('leaflets/add');
-            // }
+            $filesystem = new Filesystem();
+            $result = $filesystem->moveUpload($file, $data);
 
-            $result = $this->model_leaflets->createLeaflets($data['leaflets']);
+            if ($result['error'] === false) {
+                $data['picture'] = $result['name'];
 
-            $this->session->data['message'] = array('alert' => 'success', 'value' => 'Leaflets uploaded successfully.');
-            $this->url->redirect('leaflets');
+                $result = $this->model_leaflets->createLeaflets($data);
+
+                $this->session->data['message'] = array('alert' => 'success', 'value' => 'Leaflets uploaded successfully.');
+                $this->url->redirect('leaflets');
+            } else {
+                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Error in uploading leaflets.');
+                $this->url->redirect('leaflets');
+            }
         }
 
         $this->url->redirect('leaflets');
     }
-/**
-	* Validate Register data on server side
-	* Validation is also done on client side (Using html5 and javascripts)
-	**/
-	protected function validateDoc($data)
-	{
-		$error = [];
-		$error_flag = false;
-		if (strlen($data['doc_name']) == '') {
-			$error_flag = true;
-			$error['doc_name'] = 'File should not be null!';
-		}
+    /**
+     * Validate Register data on server side
+     * Validation is also done on client side (Using html5 and javascripts)
+     **/
+    protected function validateDoc($data)
+    {
+        $error = [];
+        $error_flag = false;
+        if (strlen($data['name']) == '') {
+            $error_flag = true;
+            $error['name'] = 'File should not be null!';
+        }
 
-		if ($error_flag) {
-			return $error;
-		} else {
-			return false;
-		}
-	}
+        if ($error_flag) {
+            return $error;
+        } else {
+            return false;
+        }
+    }
     /**
      * Leaflets index delete method
      * This method will be called on Leaflets delete action
