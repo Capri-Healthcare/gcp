@@ -9,7 +9,7 @@ class Commons extends Model
     {
         $data['user'] = $this->user_agent->getUserData();
         $data['info'] = $this->user_agent->getInfo();
-        $data['info']['opt_invoice_prefix'] = 'OPT'.$data['info']['invoice_prefix'];
+        $data['info']['opt_invoice_prefix'] = 'OPT' . $data['info']['invoice_prefix'];
         $data['theme'] = $this->user_agent->getTheme();
         $data['page_search'] = $this->user_agent->hasPermission('patients');
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
@@ -26,30 +26,25 @@ class Commons extends Model
     public function getReferrals($id)
     {
         $data['user'] = $this->user_agent->getUserData($id);
-        if($data['user']['role'] == constant('USER_ROLE_MED'))
-        {
+        if ($data['user']['role'] == constant('USER_ROLE_MED')) {
             $query = $this->database->query("Select count(*) As Total From `" . DB_PREFIX . "referral_list` WHERE status = 'NEW' ORDER BY created_at DESC ");
             return $query->row['Total'];
         }
-
     }
 
     public function getFollowups($id)
     {
         $data['user'] = $this->user_agent->getUserData($id);
-        if($data['user']['role'] == constant('USER_ROLE_MERC'))
-        {
-            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE payment_status ='UNPAID' AND followup_status != '".constant('STATUS_FOLLOWUP_IN_QUEUE')."' ORDER BY created_at DESC ");
+        if ($data['user']['role'] == constant('USER_ROLE_MERC')) {
+            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE payment_status ='UNPAID' AND followup_status != '" . constant('STATUS_FOLLOWUP_IN_QUEUE') . "' ORDER BY created_at DESC ");
             return $query->row['Total'];
         }
-        if($data['user']['role'] == constant('USER_ROLE_MED'))
-        {
-            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE followup_status ='".constant('STATUS_FOLLOWUP_OPTICIAN')."' AND payment_status ='PAID' ORDER BY created_at DESC ");
+        if ($data['user']['role'] == constant('USER_ROLE_MED')) {
+            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE followup_status ='" . constant('STATUS_FOLLOWUP_OPTICIAN') . "' AND payment_status ='PAID' ORDER BY created_at DESC ");
             return $query->row['Total'];
         }
-        if($data['user']['role'] == constant('USER_ROLE_OPTOMETRIST'))
-        {
-            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE optician_id ='" . $id. "' AND followup_status ='".constant('STATUS_FOLLOWUP_NEW')."' AND payment_status ='PAID' ORDER BY created_at DESC ");
+        if ($data['user']['role'] == constant('USER_ROLE_OPTOMETRIST')) {
+            $query = $this->database->query("Select count(*) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE optician_id ='" . $id . "' AND followup_status ='" . constant('STATUS_FOLLOWUP_NEW') . "' AND payment_status ='PAID' ORDER BY created_at DESC ");
             return $query->row['Total'];
         }
     }
@@ -124,7 +119,7 @@ class Commons extends Model
                 }
             }
         }
-//echo "<pre>";print_r($tree);exit;
+        //echo "<pre>";print_r($tree);exit;
         $menu = '<ul>';
         if (!empty($tree)) {
             foreach ($tree as $key => $value) {
@@ -150,36 +145,24 @@ class Commons extends Model
                             $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . "My " . $value['name'] . '</span></a></li>';
                         } else {
                             if ($value['name'] == 'Dashboard' && in_array($data['user']['role'], constant('DASHBOARD_NOT_SHOW'))) {
-
-                            }
-                            elseif ($value['name'] == 'Followup') {
-                                $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' .$followup. '</span></span></a></li>';
-
-                            }
-                            else {
+                            } elseif ($value['name'] == 'Followup') {
+                                $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . $followup . '</span></span></a></li>';
+                            } else {
                                 $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
-
                             }
-
                         }
                     } else {
                         if ($value['name'] == 'Referrals') {
                             $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . $referrals . '</span></span></a></li>';
-
                         } else if ($value['name'] == 'Followup') {
 
-                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' .$followup. '</span></span></a></li>';
-
-                        }
-                        else {
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . $followup . '</span></span></a></li>';
+                        } else {
                             if ($value['name'] == 'Dashboard' && in_array($data['user']['role'], constant('DASHBOARD_NOT_SHOW'))) {
-
                             } else {
                                 $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
-
                             }
                         }
-
                     }
                 }
             }
@@ -222,6 +205,13 @@ class Commons extends Model
             'optician-referral/add' => 'optician-referral',
             'optician-referral/edit' => 'optician-referral',
             'optician-referral/delete' => 'optician-referral',
+            //Leaflets
+            'leaflets' => 'leaflets',
+            'leaflets/view' => 'leaflets',
+            'leaflets/add' => 'leaflets',
+            'leaflets/edit' => 'leaflets',
+            'leaflets/delete' => 'leaflets',
+            //Leaflets
             'optician-referral/report/reportUpload' => 'optician-referral',
             'optician-referral/report/removeReport' => 'optician-referral',
             'optician-referral/report/reportsExport' => 'optician-referral',

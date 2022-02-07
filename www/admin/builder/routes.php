@@ -306,6 +306,15 @@ $router->get('optician-referral/edit', 'OpticianReferralController@indexEdit');
 $router->post('optician-referral/edit', 'OpticianReferralController@indexAction');
 $router->post('optician-referral/delete', 'OpticianReferralController@indexDelete');
 
+//Leaflets
+$router->get('leaflets', 'LeafletsController@index');
+$router->get('leaflets/add', 'LeafletsController@indexAdd');
+$router->get('leaflets/view', 'LeafletsController@indexView');
+$router->post('leaflets/add', 'LeafletsController@indexAction');
+$router->get('leaflets/edit', 'LeafletsController@indexEdit');
+$router->post('leaflets/edit', 'LeafletsController@indexAction');
+$router->post('leaflets/delete', 'LeafletsController@indexDelete');
+
 $router->get('follow-up', 'FollowupController@index');
 $router->get('follow-up/add', 'FollowupController@indexAdd');
 $router->get('follow-up/view', 'FollowupController@indexView');

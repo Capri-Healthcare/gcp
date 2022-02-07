@@ -1020,6 +1020,10 @@
 										<?php echo $email_body; ?>
 									</textarea>
                                     </div>
+                                    <div class="panel-action">
+                                        <input type="hidden" name="mail[attached_leaflets]" id="attached_leaflets" value="" />
+                                        <a class="btn btn-info btn-sm" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#attach-file">Attach Leaflets</a>
+                                    </div>
                                 </div>
                                 <div class="panel-footer text-center">
                                     <button type="submit" name="submit" class="btn btn-primary">Send</button>
@@ -1027,6 +1031,44 @@
                             </form>
                         </div>
                     </div>
+                    <div id="attach-file" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Select Leaflets</h5>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                <?php foreach ($leaflets as $each) { ?>
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="custom-control custom-checkbox mb-2">
+                                                <input type="checkbox" name="pre_leaflets"
+                                                       class="custom-control-input" value="<?php echo $each['id'] ?>"
+                                                       id="<?php echo "pre_leaflet" . $each['id'] ?>" />
+                                                <label class="custom-control-label"
+                                                       for="<?php echo "pre_leaflet" . $each['id'] ?>"><?php echo $each['doc_name'] ?></label>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="panel-footer text-center">
+                                        <button type="submit" name="submit" onclick="attachLeafletFiles();" class="btn btn-primary">Attach Selected</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function attachLeafletFiles(){
+                            var ids = new Array();   
+                            $('input:checkbox[name=pre_leaflets]').each(function() {
+                                if($(this).is(':checked'))
+                                    ids.push($(this).val());
+                            });
+                            var str_ids = ids.toString();
+                            $("#attached_leaflets").val(str_ids);
+                            $("#attach-file").modal('hide');
+                        }
+                    </script>
                 <?php }
                 if ($page_notes) { ?>
                     <div class="tab-pane fade" id="patient-letters">

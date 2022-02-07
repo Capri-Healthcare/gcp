@@ -1,5 +1,7 @@
 <?php
 
+use Sabberworm\CSS\Value\URL;
+
 /**
  * PatientController.php
  */
@@ -132,6 +134,10 @@ class PatientController extends Controller
         $data['doctors'] = $this->model_commons->getAppointmentDoctors();
         $data['action_new_appointment'] = URL_ADMIN . DIR_ROUTE . 'appointment/add';
         //echo "<pre>";print_r($data);exit;
+
+        //Get leaflets to attach in mail
+        $this->load->model('leaflets');
+        $data['leaflets'] = $this->model_leaflets->allLeaflets();
 
         // Add email template for invitation
         $data['cc'] = '';
@@ -463,6 +469,8 @@ class PatientController extends Controller
         $this->load->controller('common');
         $this->load->model('commons');
         $this->load->model('patient');
+        $this->load->model('leaflets');
+
         $result = $this->model_patient->getPatient($data['mail']['id']);
         if (empty($result)) {
             $this->url->redirect('patients');
@@ -477,13 +485,22 @@ class PatientController extends Controller
 
             //$this->controller_common->sendSMSUsingTwilio($result['mobile'], $sms_text);
         }
+        if(!empty($data['mail']['attached_leaflets'])){
+            $leaflets = explode(",",$data['mail']['attached_leaflets']);
+            $attached_files = [];
+            foreach($leaflets as $each){
+                $res_leaflets = $this->model_leaflets->getLeaflets($each);
 
-
+                $data['mail']['attachments'][] = ['name' => $res_leaflets['doc_name'], 'file' => DIR . "public/uploads/" .$res_leaflets['doc_name']];
+            }
+            // $data['mail']['attachments'] = $attached_files;
+        }
+        // print_r($data['mail']['attachments']);exit;
         // Send eamil
         $data['mail']['email'] = $result['email'];
         $data['mail']['name'] = $result['firstname'] . ' ' . $result['lastname'];
         $data['mail']['redirect'] = 'patient/view&id=' . $result['id'];
-
+        
         $this->load->controller('Mail');
         $mail_result = $this->controller_mail->sendmail($data['mail']);
 
