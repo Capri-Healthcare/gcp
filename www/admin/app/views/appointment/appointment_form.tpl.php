@@ -153,26 +153,26 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Referee Name </label>
+                                    <label>Referrer Name </label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-check-box"></i></span>
                                         </div>
                                         <input type="text" class="form-control" name="appointment[referee_name]"
-                                               placeholder="Enter referee name"
+                                               placeholder="Enter referrer name"
                                                value="<?php echo $result['referee_name']; ?>"
                                                >
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Referee Address</label>
+                                    <label>Referrer Address</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-check-box"></i></span>
                                         </div>
                                         <input type="text" class="form-control" name="appointment[referee_address]"
-                                               placeholder="Enter referee address"
+                                               placeholder="Enter referrer address"
                                                value="<?php echo $result['referee_address']; ?>"
                                                >
                                     </div>

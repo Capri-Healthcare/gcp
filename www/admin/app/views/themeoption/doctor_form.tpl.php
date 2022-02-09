@@ -419,12 +419,12 @@
 							</div>
 							<div class="col-lg-6">
 								<div class="form-group">
-									<label>Specility</label>
+									<label>Speciality</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="ti-shield"></i></span>
 										</div>
-										<input type="text" name="doctor[about][specility]" class="form-control" value="<?php echo $result['about']['specility'];?>" placeholder="Enter Doctor's Specility . . .">
+										<input type="text" name="doctor[about][specility]" class="form-control" value="<?php echo $result['about']['specility'];?>" placeholder="Enter Doctor's Speciality . . .">
 									</div>
 								</div>
 								<div class="form-group">

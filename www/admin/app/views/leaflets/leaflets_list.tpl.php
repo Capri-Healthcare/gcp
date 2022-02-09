@@ -42,8 +42,9 @@
                                 <td class="clickable-row"><?php echo $value['doc_name']; ?></td>
                                 <?php if ($page_delete) { ?>
                                     <td class="table-action">
+                                    <a href="#" class="download_doc" data-value="<?php echo $value['doc_name']; ?>"><i class="ti-download"></i></a>
                                         <a class="table-delete text-danger delete" data-toggle="tooltip" title="Delete">
-                                            <i class="ti-trash"></i><input type="hidden" value="<?php echo $value['id']; ?>">
+                                            <i class="ti-trash"></i><input id="leaflet" type="hidden" value="<?php echo $value['id']; ?>">
                                         </a>
                                     </td>
                                 <?php } ?>
@@ -56,7 +57,14 @@
         </div>
     </div>
 </div>
-
+<script>
+    $('.download_doc').click(function(e) {
+    e.preventDefault();  //stop the browser from following
+    var path = $(this).data('value');
+    // window.location.href = '../public/uploads/'+path;
+    window.open('../public/uploads/'+path);    
+});
+</script>
 <?php
 if ($page_delete) {
     include DIR_VIEW . 'common/delete_modal.tpl.php';

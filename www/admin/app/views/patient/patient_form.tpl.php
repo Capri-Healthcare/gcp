@@ -299,6 +299,8 @@
                         <!--						</div>-->
 
                         <div class="col-md-6">
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>GP Practice</label>
                                 <div class="input-group">

@@ -156,11 +156,11 @@
                                         <td><?php echo $result['gp_address']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Referee Name</td>
+                                        <td>Referrer Name</td>
                                         <td><?php echo $result['referee_name']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Referee Address</td>
+                                        <td>Referrer Address</td>
                                         <td><?php echo $result['referee_address']; ?></td>
                                     </tr>
                                     <tr>

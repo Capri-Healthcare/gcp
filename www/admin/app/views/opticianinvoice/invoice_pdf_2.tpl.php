@@ -116,7 +116,7 @@
 													<div class="meta pl-30 pr-30" style="border:0px;">
 														<div class="title"><?php echo "Policy details"; ?></div>
 														<div class="text"><?php echo "Medical insurers name: " . $result['medical_insurers_name']; ?></div>
-														<div class="text"><?php echo "Ploicyholder's name: " . $result['policyholders_name']; ?></div>
+														<div class="text"><?php echo "Policyholder's name: " . $result['policyholders_name']; ?></div>
 														<div class="text"><?php echo "Membership number: " . $result['membership_number']; ?></div>
 														<div class="text"><?php echo "Scheme name: " . $result['scheme_name']; ?></div>
 														<div class="text"><?php echo "Authorisation number: " . $result['authorisation_number']; ?></div>
