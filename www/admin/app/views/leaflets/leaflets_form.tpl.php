@@ -29,6 +29,7 @@
                             <label for="leaflets_doc" class="ml-4 btn btn-white">
                                 <input class="" id="leaflets_doc" name="leaflets" type="file" style="display:none;" accept="image/jpeg,image/jpg,image/png,application/pdf"> <span>Upload</span>
                             </label>
+                            <span class="ml-5 mt-2" id="preview_file"></span>
                         </div>
                     </div>
                 </div>
@@ -46,18 +47,23 @@
 <script type="text/javascript" src="public/js/klinikal.summernote.js"></script>
 <script type="text/javascript" src="public/js/optician.js"></script> -->
 <script>
+    $('#leaflets_doc').change(function() {
+        var file = $('#leaflets_doc')[0].files[0].name;
+        $('#preview_file').text(file);
+    });
+
     function validateMyForm(e) {
         var fileInput = $('#leaflets_doc').get(0).files;
         if (fileInput.length === 0) {
-            toastr.error('Select leaflets doc to upload.','Error');
+            toastr.error('Select leaflets doc to upload.', 'Error');
             return false
         } else {
             var allowedExtensions = /(\.pdf|\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(fileInput[0].name)) {
-                fileInput.value = '';
-                toastr.error('Upload pdf or jpeg image only.','Error');
+                // fileInput[0].value = '';
+                toastr.error('Upload pdf or jpeg image only.', 'Error');
                 return false
-            } 
+            }
             return true;
         }
     }

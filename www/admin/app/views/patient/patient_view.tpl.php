@@ -33,10 +33,10 @@
                                    data-toggle="tab"><i class="ti-info-alt"></i> <span>Patient Info</span></a></li>
                             <li><a href="#additional-information" data-toggle="tab"><i class="ti-info-alt"></i> <span>Additional Information</span></a>
                             </li>
-                            <!-- <?php if ($result['is_glaucoma_required'] == 'YES') { ?>
+                            <?php if ($result['is_glaucoma_required'] == 'YES') { ?>
                                 <li><a href="#patient-direct-debit" data-toggle="tab"><i class="ti-folder"></i> <span>My Eye Record & Care</span></a>
                                 </li>
-                            <?php } ?> -->
+                            <?php } ?>
                             <?php if ($page_notes) { ?>
                                 <li><a href="#patient-notes" data-toggle="tab"><i class="ti-files"></i> <span>Examination Notes</span></a>
                                 </li>
@@ -144,14 +144,6 @@
                                 <tr>
                                     <td>GP Address</td>
                                     <td><?php echo $result['gp_address']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Optician Name</td>
-                                    <td><?php echo $result['optician_name']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Optician Email</td>
-                                    <td><?php echo $result['optician_email']; ?></td>
                                 </tr>
                                 <!--                                <tr>-->
                                 <!--                                    <td>First payment</td>-->
@@ -1029,6 +1021,7 @@
 									</textarea>
                                     </div>
                                     <div class="panel-action">
+                                        <div style="font-size: 12px;" id="preview_files"></div>
                                         <input type="hidden" name="mail[attached_leaflets]" id="attached_leaflets" value="" />
                                         <a class="btn btn-info btn-sm" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#attach-file">Attach Leaflets</a>
                                     </div>
@@ -1050,7 +1043,7 @@
                                 <?php foreach ($leaflets as $each) { ?>
                                         <div class="col-md-6 col-lg-4">
                                             <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" name="pre_leaflets"
+                                                <input type="checkbox" name="pre_leaflets" data-original="<?php echo $each['original_name']."(".$each['doc_name'].")"; ?>"
                                                        class="custom-control-input" value="<?php echo $each['id'] ?>"
                                                        id="<?php echo "pre_leaflet" . $each['id'] ?>" />
                                                 <label class="custom-control-label"
@@ -1069,8 +1062,10 @@
                         function attachLeafletFiles(){
                             var ids = new Array();   
                             $('input:checkbox[name=pre_leaflets]').each(function() {
-                                if($(this).is(':checked'))
+                                if($(this).is(':checked')){
                                     ids.push($(this).val());
+                                    $("#preview_files").append("<p><b>Attached:</b>"+$(this).data('original')+"</p>");
+                                }
                             });
                             var str_ids = ids.toString();
                             $("#attached_leaflets").val(str_ids);
@@ -1119,7 +1114,6 @@
                                             </span>
                                                                                     </td>
                                                                                 </tr>
-                                                                                <?php if($result['optician_id'] > 0 ){ ?>
                                                                                 <tr>
                                                                                 <td>To Optom / Third Party</td>
                                                                                 <td class="text-dark">
@@ -1133,7 +1127,6 @@
                                                 </span>
                                                                                 </td>
                                                                                 </tr>
-                                                                                <?php } ?>
                                                                             </table>
                                                                         </div>
                                                                     </div>

@@ -28,6 +28,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Original Name</th>
                         <th>Doc</th>
                         <?php if ($page_delete || $page_view) { ?>
                             <th></th>
@@ -39,6 +40,7 @@
                         foreach ($result as $key => $value) { ?>
                             <tr style="cursor: pointer">
                                 <td class="clickable-row" data-count="<?php echo $key + 1; ?>"><?php echo $key + 1; ?></td>
+                                <td class="clickable-row"><?php echo $value['original_name']; ?></td>
                                 <td class="clickable-row"><?php echo $value['doc_name']; ?></td>
                                 <?php if ($page_delete) { ?>
                                     <td class="table-action">
