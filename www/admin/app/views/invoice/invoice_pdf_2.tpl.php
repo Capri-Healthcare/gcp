@@ -120,7 +120,7 @@
                             <td width="5%">
                                 <strong>DOB: </strong>
                             </td>
-                            <td width="40%"><?php echo $result['dob']; ?></td>
+                            <td width="40%"><?php echo date_format(date_create($result['dob']), 'd-m-Y'); ?></td>
                         </tr>
                         <tr>
                             <td style="border-left: 0px solid; border-right: 0px solid;"></td>
