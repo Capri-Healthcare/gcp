@@ -924,7 +924,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <?php if($result['optician_id'] > 0 ){ ?>
+                                    <?php if(!empty($result['referee_name'])){ ?>
                                         <tr>
                                             <td>To Optom / Third Party</td>
                                             <td> 

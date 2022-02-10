@@ -249,7 +249,11 @@ class Appointment extends Model
         `patient_id`, 
         `date_of_joining`, 
         `appointment_id`,
-        `hospital_code`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?) ", array(
+        `hospital_code`,
+        `referee_name`,
+        `referee_email`,
+        `referee_address`
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?) ", array(
             $data['optician_id'],
             $this->database->escape($data['name']),
             $this->database->escape($data['mail']),
@@ -264,7 +268,10 @@ class Appointment extends Model
             (int)$data['patient_id'],
             $data['datetime'],
             $data['appointment_id'],
-            $data['hospital_code']
+            $data['hospital_code'],
+            $data['referee_name'],
+            $data['referee_email'],
+            $data['referee_address']
         ));
 
         if ($query->num_rows > 0) {
@@ -577,9 +584,7 @@ class Appointment extends Model
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
 
-
-        $body .= ucfirst($appointment['referee_name']) . "<br>";
-        $body .= $appointment['referee_address'];
+        $body .= "<br>". $appointment['referee_address'];
 
         $body .= "<br><br><br>";
 

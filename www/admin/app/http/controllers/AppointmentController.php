@@ -697,6 +697,7 @@ class AppointmentController extends Controller
         $data['appointment']['datetime'] = date('Y-m-d H:i:s');
 
         $this->load->model('appointment');
+        $this->load->model('patient');
         if (!empty($data['appointment']['id'])) {
             // Get appointment old status
             $appointment_details = $this->model_appointment->getAppointmentView($data['appointment']['id']);
@@ -719,6 +720,11 @@ class AppointmentController extends Controller
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Appointment updated successfully.');
         } else {
 
+            // Get patient details 
+            $patient_details = $this->model_patient->getPatient($data['appointment']['patient_id']);
+            $data['appointment']['referee_name'] = $patient_details['optician_name'];
+            $data['appointment']['referee_email'] = $patient_details['optician_email'];
+            $data['appointment']['referee_address'] = $patient_details['optician_address'];
             $data['appointment']['appointment_id'] = date('Ymd') . rand(10, 100) . date('his');
             $data['appointment']['consultation_type'] = 'face_to_face';
             $data['appointment']['id'] = $this->model_appointment->createAppointment($data['appointment']);

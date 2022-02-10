@@ -234,8 +234,26 @@
 								</div>
 							</div>
 						</div-->
-                        <div class="col-md-3">
-                        </div>
+                        <?php if (!empty($result['id'])) { ?>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span></div>
+                                        <select name="patient[status]" class="custom-select">
+                                            <option value="1" <?php if ($result['status'] == '1') {
+                                                                    echo "selected";
+                                                                } ?>>Active
+                                            </option>
+                                            <option value="0" <?php if ($result['status'] == '0') {
+                                                                    echo "selected";
+                                                                } ?>>Inactive
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
                         <!--						<div class="col-md-3">-->
                         <!--							<div class="form-group">-->
                         <!--								<label>Do you/the patient have any disabilities? <span class="form-required">*</span></label>-->
@@ -346,27 +364,7 @@
                             </div>
                         </div>
 
-                        <?php if (!empty($result['id'])) { ?>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Status</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span></div>
-                                        <select name="patient[status]" class="custom-select">
-                                            <option value="1" <?php if ($result['status'] == '1') {
-                                                                    echo "selected";
-                                                                } ?>>Active
-                                            </option>
-                                            <option value="0" <?php if ($result['status'] == '0') {
-                                                                    echo "selected";
-                                                                } ?>>Inactive
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } ?>
-                        <?php if ($is_patient_referred_by_optician) { ?>
+                        
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Optician Name</label>
@@ -389,7 +387,17 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php } ?>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Optician Address</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-email"></i></span>
+                                        </div>
+                                        <input type="text" name="patient[optician_address]" class="form-control" value="<?php echo $result['optician_address']; ?>" placeholder="Optician address" id="optician_address">
+                                    </div>
+                                </div>
+                            </div>
 
                         <!--                            <div class="col-md-6" style="--><?php //echo (in_array($common['user']['role'],[constant('USER_ROLE_MERC'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'
                                                                                         ?>

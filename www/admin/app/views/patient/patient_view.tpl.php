@@ -145,6 +145,18 @@
                                     <td>GP Address</td>
                                     <td><?php echo $result['gp_address']; ?></td>
                                 </tr>
+                                <tr>
+                                    <td>Optician Name</td>
+                                    <td><?php echo $result['optician_name']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Optician Email</td>
+                                    <td><?php echo $result['optician_email']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Optician Address</td>
+                                    <td><?php echo $result['optician_address']; ?></td>
+                                </tr>
                                 <!--                                <tr>-->
                                 <!--                                    <td>First payment</td>-->
                                 <!--                                    <td>-->
@@ -1114,6 +1126,7 @@
                                             </span>
                                                                                     </td>
                                                                                 </tr>
+                                                                                <?php if(!empty($result['referee_name'])){ ?>
                                                                                 <tr>
                                                                                 <td>To Optom / Third Party</td>
                                                                                 <td class="text-dark">
@@ -1127,6 +1140,7 @@
                                                 </span>
                                                                                 </td>
                                                                                 </tr>
+                                                                                <?php } ?>
                                                                             </table>
                                                                         </div>
                                                                     </div>

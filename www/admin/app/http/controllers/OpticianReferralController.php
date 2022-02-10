@@ -224,6 +224,7 @@ class OpticianReferralController extends Controller
 
         $this->load->model('opticianreferral');
         $this->load->model('patient');
+        $this->load->model('user');
 
         if (!empty($data['referral']['id'])) {
             $data['referral']['user_id'] = $this->session->data['user_id'];
@@ -232,7 +233,7 @@ class OpticianReferralController extends Controller
             $address['address2'] = $data['referral']['address_2'];
             $address['city'] = $data['referral']['city'];
             $address['country'] = "";
-            $address['postal'] = "";
+            $address['postal'] = $data['referral']['zip_code'];
 
             if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
 
@@ -240,8 +241,19 @@ class OpticianReferralController extends Controller
                     $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
 
                     $patient_id = $patient['id'];
-
+                    
                     if (empty($patient_id)) {
+                        
+                        $referral_details = $this->model_opticianreferral->getOpticianReferral($data['referral']['id']);
+                        $optician_user = $this->model_user->getUser($referral_details['created_by']);
+
+                        $optician_user_address = json_decode($optician_user['address'], true);
+                        $optician_user_address_for_save = "";
+                        $optician_user_address_for_save .= isset($optician_user_address['address1']) ? $optician_user_address['address1'] : '';
+                        $optician_user_address_for_save .= isset($optician_user_address['address2']) ? (','. $optician_user_address['address2']) : '';
+                        $optician_user_address_for_save .= isset($optician_user_address['city']) ? (','. $optician_user_address['city']) : '';
+                        $optician_user_address_for_save .= isset($optician_user_address['postal']) ? (' - '. $optician_user_address['postal']) : '';
+
                         $patient['firstname'] = $data['referral']['first_name'];
                         $patient['lastname'] = $data['referral']['last_name'];
                         $patient['mail'] = $data['referral']['email'];
@@ -255,6 +267,9 @@ class OpticianReferralController extends Controller
                         $patient['history'] = " ";
                         $patient['other'] = " ";
                         $patient['hash'] = $data['referral']['user_id'];
+                        $patient['optician_name'] = $optician_user['firstname'] . ' '. $optician_user['lastname'];
+                        $patient['optician_email'] = $optician_user['email'];
+                        $patient['optician_address'] = $optician_user_address_for_save;
                         $patient['hospital_code'] = $data['referral']['hospital_code'] == null ? null : $data['referral']['hospital_code'];
                         $patient['datetime'] = date('Y-m-d H:s:a');
 
