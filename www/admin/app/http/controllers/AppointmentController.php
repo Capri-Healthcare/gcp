@@ -474,7 +474,7 @@ class AppointmentController extends Controller
 
             // Update Appointment Info
             if ($data['form_type'] == 'appointment_info') {
-
+                
                 $this->load->model('commons');
                 $data['common'] = $this->model_commons->getSiteInfo();
 
@@ -500,6 +500,9 @@ class AppointmentController extends Controller
                     $data['appointment']['session_id'] = $tokBoxSession['sessionId'];
                     $data['appointment']['token'] = $tokBoxSession['token'];
                     $data['appointment']['video_consultation_token'] = $tokBoxSession['video_consultation_token'];
+                }
+                if(isset($data['submitComplete'])){
+                    $data['appointment']['status'] = COMPLETE_APPOINTMENT_STATUS_ID;
                 }
 
                 $result = $this->model_appointment->updateAppointment($data['appointment']);

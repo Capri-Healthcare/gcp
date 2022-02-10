@@ -1020,7 +1020,7 @@
 										<?php echo $email_body; ?>
 									</textarea>
                                     </div>
-                                    <div class="panel-action">
+                                    <div class="panel-action" style="text-align: left;">
                                         <div class="form-group" style="font-size: 12px;" id="preview_files"></div>
                                         <input type="hidden" name="mail[attached_leaflets]" id="attached_leaflets" value="" />
                                         <a class="btn btn-info btn-sm" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#attach-file">Attach Leaflets</a>

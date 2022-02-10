@@ -41,20 +41,20 @@
     <table border="0" style="padding:10px !important;">
         <tr>
             <td>
-                <table width="100%" style="color:#000">
+                <table width="100%" style="color:#000" border="0">
                     <tbody>
                         <tr>
-                            <td width="35%" class="letter_head" style="vertical-align:top">
+                            <td width="35%" class="letter_head" style="vertical-align:bottom">
                                 <strong>Mr <?php echo constant('INVOICE_DOCTOR_DETAIL')['NAME']; ?></strong><br />
                                 <span><?php echo constant('INVOICE_DOCTOR_DETAIL')['DEGREE']; ?></span><br />
                                 <span><?php echo constant('INVOICE_DOCTOR_DETAIL')['POSITION']; ?></span>
                             </td>
-                            <td width="10%" style="vertical-align:top">
-                                <img src="<?php echo URL_ADMIN . 'public/images/picture1.jpg'; ?>" width="90%" alt="Icon">
+                            <td width="25%" style="vertical-align:top">
+                                <img src="<?php echo URL_ADMIN . 'public/images/picture1.jpg'; ?>" width="100%" alt="Icon">
                             </td>
-                            <td width="15%" style="vertical-align:center; text-align:start; padding:5px; border:#000 1px solid;">
-                                <span><?php echo constant('MY_EYE_RECORD_CARE'); ?></span>
-                            </td>
+                            <!-- <td width="15%" style="vertical-align:center; text-align:start; padding:5px; border:#000 1px solid;">
+                                <span><?php //echo constant('MY_EYE_RECORD_CARE'); ?></span>
+                            </td> -->
                             <td width="40%" style="border:#000 1px solid;">
                                 <strong>Please send Payment to this address:</strong><br />
                                 <span><?php echo constant('PAYMENT_INFO')['LINE_NAME']; ?></span><br />

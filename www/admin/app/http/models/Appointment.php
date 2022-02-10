@@ -690,7 +690,7 @@ class Appointment extends Model
         $specility_lin_2 = (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
 
         $dr_qualification_position_specility .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
-        $specility_lin_2 .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? (" " . $about_doctor['awards']) : "";
+        // $specility_lin_2 .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? (" " . $about_doctor['awards']) : "";
         $this->load->model('commons');
         $common = $this->model_commons->getCommonData($this->session->data['user_id']);
 
@@ -712,7 +712,7 @@ class Appointment extends Model
         //     "</table>";
         $header = "<table style='width:100%;' border=0' >" .
             "<tr>" .
-            "<td align=right>
+            "<td align=right width='60%'>
 					<div style='text-align:left; color: #333;'>
 						<div><span style='font-size:20px; font-weight:bold;'>" . $doctor_data['name'] . "</span>
                         <span style='font-size:12px; font-weight:bold;'>" . $specility_lin_1 . "</span>
@@ -722,12 +722,17 @@ class Appointment extends Model
 					</div>
 				    
 				</td>" .
-            "<td width=20%>
-                <img src='" . URL_ADMIN . "public/images/picture1.jpg' width='90%'' alt='Icon'>
+                "<td width='5%'>
+                <span>&nbsp;</span>
+            </td>" .    
+            "<td width=35% align='left'>
+                <img src='" . URL_ADMIN . "public/images/picture1.jpg' width='90%' alt='Icon'>
                 </td>" .
+                /*
             "<td width='15%' style='vertical-align:center; text-align:start; padding:5px; border:#000 1px solid;'>
                 <span>" . constant('MY_EYE_RECORD_CARE') . "</span>
             </td>" .
+            */
             "</tr>" .
             "<tr>
             <td colspan=3>
@@ -780,10 +785,10 @@ class Appointment extends Model
 			li { font-size: 13px; }
 			H4 { margin-bottom: 0px}
 			@page {
-                margin: 180px 30px 50px 30px;
+                margin: 150px 30px 50px 30px;
             }
             header {
-                position: fixed; top: -170px; left: 0px; right: 0px; height: 100px;
+                position: fixed; top: -130px; left: 0px; right: 0px; height: 100px;
             }
             footer {
 				position: fixed; bottom: -70px; left: 0px; right: 0px; height: 100px; 
