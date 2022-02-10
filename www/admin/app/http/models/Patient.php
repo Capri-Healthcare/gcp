@@ -7,7 +7,7 @@ class Patient extends Model
 {
     public function getPatients($period, $doctor = NULL, $role)
     {
-        if ($doctor) {
+        /*if ($doctor) {
             $data = $this->getPatientDoctorIDs($doctor);
             if (!empty($data)) {
                 $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE id IN(" . implode(",", $data) . ") AND status = 1 ORDER BY `date_of_joining` DESC");
@@ -25,14 +25,16 @@ class Patient extends Model
 
                 $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE status = 1 ORDER BY `date_of_joining` DESC");
             }
-
+				$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE status = 1 ORDER BY `date_of_joining` DESC");
             return $query->rows;
-        }
+        }*/
+		$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE status = 1 ORDER BY `date_of_joining` DESC");
+        return $query->rows;
     }
 
     public function getPatient($id, $doctor = NULL)
     {
-        if ($doctor) {
+        /*if ($doctor) {
             $data = $this->getPatientDoctorIDs($doctor);
             if (!empty($data) && in_array($id, $data)) {
                 $query = $this->database->query("SELECT *, TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age FROM `" . DB_PREFIX . "patients` WHERE `id` = ? ORDER BY `date_of_joining` DESC", array($id));
@@ -44,7 +46,9 @@ class Patient extends Model
         } else {
             $query = $this->database->query("SELECT *, TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age FROM `" . DB_PREFIX . "patients` WHERE `id` = ? ORDER BY `date_of_joining` DESC", array($id));
             return $query->row;
-        }
+        }*/
+		$query = $this->database->query("SELECT *, TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age FROM `" . DB_PREFIX . "patients` WHERE `id` = ? ORDER BY `date_of_joining` DESC", array($id));
+            return $query->row;
     }
 
     public function getPatientDoctorIDs($doctor)
