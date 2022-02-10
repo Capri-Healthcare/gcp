@@ -1021,7 +1021,7 @@
 									</textarea>
                                     </div>
                                     <div class="panel-action">
-                                        <div style="font-size: 12px;" id="preview_files"></div>
+                                        <div class="form-group" style="font-size: 12px;" id="preview_files"></div>
                                         <input type="hidden" name="mail[attached_leaflets]" id="attached_leaflets" value="" />
                                         <a class="btn btn-info btn-sm" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#attach-file">Attach Leaflets</a>
                                     </div>
@@ -1041,7 +1041,7 @@
                                 </div>
                                 <div class="modal-body">
                                 <?php foreach ($leaflets as $each) { ?>
-                                        <div class="col-md-6 col-lg-4">
+                                        <div class="col-md-12">
                                             <div class="custom-control custom-checkbox mb-2">
                                                 <input type="checkbox" name="pre_leaflets" data-original="<?php echo $each['original_name']."(".$each['doc_name'].")"; ?>"
                                                        class="custom-control-input" value="<?php echo $each['id'] ?>"
