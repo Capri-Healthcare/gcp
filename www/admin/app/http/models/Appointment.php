@@ -598,6 +598,7 @@ class Appointment extends Model
             $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
         }
 
+        $body .= "<br><br><br>";
         $body .= "<strong>Diagnosis:</strong> ";
         if (!empty($appointment['diagnosis'])) {
             $body .= implode(', ', json_decode($appointment['diagnosis'], true));
