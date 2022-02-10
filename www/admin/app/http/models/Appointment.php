@@ -598,10 +598,9 @@ class Appointment extends Model
             $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
         }
 
-        $body .= "<br><br><br>";
         $body .= "<strong>Diagnosis:</strong> ";
-        if (!empty($optician_data['diagnosis'])) {
-            $body .=  implode(',', json_decode($appointment['diagnosis'], true));
+        if (!empty($appointment['diagnosis'])) {
+            $body .= implode(', ', json_decode($appointment['diagnosis'], true));
         }
         if (!empty($appointment['diagnosis_comment'])) {
             $body .= !empty($appointment['diagnosis']) ? ", " : "";
