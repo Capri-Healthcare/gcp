@@ -271,7 +271,9 @@ Spire South Bank:           01905362033<br>
 Spire Clinic Droitwich:   01905799116<br>
 Droitwich Spa Hospital: 01905793333<br>
 <b>Private Practice Manager</b><br>
-Ms Neve Fairless Email:secretaryoj@gmail.com<br>
+Ms Neve Fairless <br>
+Email:secretaryoj@gmail.com<br>
+Phone: 07437533520 <br>
 <b>Accounts Enquiries</b>: 07758057733');
 
 define('FOOTER_LINE_1','<b>Award Winner: International Glaucoma Association: BEST GLAUCOMA SERVICE UK 2014/2015</b>');
