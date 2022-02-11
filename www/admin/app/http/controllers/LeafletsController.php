@@ -87,6 +87,7 @@ class LeafletsController extends Controller
             }
             $data['filedir'] = DIR . 'public/uploads/';
             $data['file_name'] = 'Leaflet-' . uniqid(rand());
+            $data['original_name'] = $file['name'];
 
             $filesystem = new Filesystem();
             $result = $filesystem->moveUpload($file, $data);
@@ -166,6 +167,7 @@ class LeafletsController extends Controller
 
         $data['filedir'] = DIR . 'public/uploads/leaflets/document/' . $data['id'] . '/';
         $data['file_name'] = 'Doc-' . uniqid(rand()) . $data['id'];
+        $data['original_name'] = $file['name'];
 
         $filesystem = new Filesystem();
         $result = $filesystem->moveUpload($file, $data);

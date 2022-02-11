@@ -45,7 +45,7 @@ class Leaflets extends Model
 
     public function createLeaflets($data)
     {
-        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "leaflets` (  `doc_name`,`created_at`) VALUES ( ?,?)", array($data['picture'], date('Y-m-d H:i:s')));
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "leaflets` (  `doc_name`,`original_name`, `created_at`) VALUES ( ?,?, ?)", array($data['picture'], $data['original_name'],date('Y-m-d H:i:s')));
 
         if ($query->num_rows > 0) {
             return $this->database->last_id();
