@@ -158,7 +158,9 @@ class AppointmentController extends Controller
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'appointment/edit&id=' . $data['result']['id'];
 
-
+        //Get leaflets to attach in mail
+        $this->load->model('leaflets');
+        $data['leaflets'] = $this->model_leaflets->allLeaflets();
         // Summary Data
 
         $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['result']);
@@ -525,7 +527,7 @@ class AppointmentController extends Controller
                 //Update appointment as completed
                 if (isset($data['submitComplete'])) {
                     $data['appointment']['status'] = COMPLETE_APPOINTMENT_STATUS_ID;
-                    $result = $this->model_appointment->updateAppointmentStatus($data['appointment']['id'],$data['appointment']['status']);
+                    $result = $this->model_appointment->updateAppointmentStatus($data['appointment']['id'], $data['appointment']['status']);
                 }
 
 
@@ -548,7 +550,7 @@ class AppointmentController extends Controller
                 //Update appointment as completed
                 if (isset($data['submitComplete'])) {
                     $data['appointment']['status'] = COMPLETE_APPOINTMENT_STATUS_ID;
-                    $result = $this->model_appointment->updateAppointmentStatus($data['appointment']['id'],$data['appointment']['status']);
+                    $result = $this->model_appointment->updateAppointmentStatus($data['appointment']['id'], $data['appointment']['status']);
                 }
 
 
@@ -782,6 +784,8 @@ class AppointmentController extends Controller
 
         $data = $this->url->post;
 
+
+
         $this->load->controller('common');
         if ($this->controller_common->validateToken($data['_token'])) {
             $this->url->redirect('appointments');
@@ -793,6 +797,18 @@ class AppointmentController extends Controller
             $this->url->redirect('appointments');
         }
 
+        //Leaflet attachments
+        $this->load->model('leaflets');
+        if (!empty($data['mail']['attached_leaflets'])) {
+            $leaflets = explode(",", $data['mail']['attached_leaflets']);
+
+            foreach ($leaflets as $each) {
+                $res_leaflets = $this->model_leaflets->getLeaflets($each);
+
+                $data['mail']['attachments'][] = ['name' => $res_leaflets['doc_name'], 'file' => DIR . "public/uploads/" . $res_leaflets['doc_name']];
+            }
+            
+        }
 
         if (isset($data['mail']['doc_type']) && $data['mail']['doc_type'] == "to_optom_or_third_party") {
             $data['mail']['email'] = $data['mail']['email'];

@@ -786,6 +786,11 @@
                                                 My Eye Record & Care
                                         </textarea>
                                     </div>
+                                    <div class="panel-action" style="text-align: left;">
+                                        <div class="form-group" style="font-size: 12px;" id="preview_files"></div>
+                                        <input type="hidden" name="mail[attached_leaflets]" id="attached_leaflets" value="" />
+                                        <a class="btn btn-info btn-sm" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#attach-file">Attach Leaflets</a>
+                                    </div>
                                     <?php if(isset($doc_type) && $doc_type != ''){ ?>
                                     <div class="form-group">
                                         <label>Attachment</label>
@@ -801,13 +806,55 @@
                                             <input type="hidden" name="mail[doc_type]" value="<?php echo $doc_type; ?>"/>
                                         </div>
                                     <?php } ?>
+                                    
                                 </div>
+                                
                                 <div class="panel-footer text-center">
                                     <button type="submit" name="submit" class="btn btn-primary">Send</button>
                                 </div>
                             </form>
                         </div>
                     </div>
+                    <div id="attach-file" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Select Leaflets</h5>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                <?php foreach ($leaflets as $each) { ?>
+                                        <div class="col-md-12">
+                                            <div class="custom-control custom-checkbox mb-2">
+                                                <input type="checkbox" name="pre_leaflets" data-original="<?php echo $each['original_name']."(".$each['doc_name'].")"; ?>"
+                                                       class="custom-control-input" value="<?php echo $each['id'] ?>"
+                                                       id="<?php echo "pre_leaflet" . $each['id'] ?>" />
+                                                <label class="custom-control-label"
+                                                       for="<?php echo "pre_leaflet" . $each['id'] ?>"><?php echo $each['original_name']; ?></label>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="panel-footer text-center">
+                                        <button type="submit" name="submit" onclick="attachLeafletFiles();" class="btn btn-primary">Attach Selected</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function attachLeafletFiles(){
+                            var ids = new Array();   
+                            $('input:checkbox[name=pre_leaflets]').each(function() {
+                                if($(this).is(':checked')){
+                                    ids.push($(this).val());
+                                    $("#preview_files").append("<p><b>Attached:</b> "+$(this).data('original')+"</p>");
+                                }
+                            });
+                            var str_ids = ids.toString();
+                            $("#attached_leaflets").val(str_ids);
+                            $("#attach-file").modal('hide');
+                        }
+                    </script>
                 <?php } ?>
 
 
@@ -924,7 +971,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <?php if(!empty($result['referee_name'])){ ?>
+                                    <?php if($result['optician_id'] > 0 ){ ?>
                                         <tr>
                                             <td>To Optom / Third Party</td>
                                             <td> 

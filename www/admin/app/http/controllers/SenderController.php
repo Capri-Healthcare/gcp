@@ -1,17 +1,22 @@
 <?php
+
 /**
-* Sender Controller
-*/
+ * Sender Controller
+ */
 class SenderController extends Controller
 {
 	public function indexMail()
 	{
 		$data = $this->url->get;
-		
+
 		$this->load->model('commons');
 		$data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 		$this->load->model('sender');
 		$data['roles'] = $this->model_sender->getRole();
+
+		//Get leaflets to attach in mail
+		$this->load->model('leaflets');
+		$data['leaflets'] = $this->model_leaflets->allLeaflets();
 
 		/* Set confirmation message if page submitted before */
 		if (isset($this->session->data['message'])) {
@@ -22,7 +27,7 @@ class SenderController extends Controller
 		// Add email template for invitation
 		$data['cc'] = '';
 		$data['email_subject'] = $data['email_body'] = "";
-		if(isset($data['email_type']) && $data['email_type'] == 'videocallinvitation') {
+		if (isset($data['email_type']) && $data['email_type'] == 'videocallinvitation') {
 			// Generate tokbox session
 			$this->load->controller('appointment');
 			$user_id = $this->session->data['user_id'];
@@ -37,10 +42,10 @@ class SenderController extends Controller
 			$email_subject = str_replace('{clinic_name}', $data['common']['info']['name'], $result['template']['subject']);
 			$email_body = $result['template']['message'];
 			$video_consultation_link = URL . DIR_ROUTE . 'video-consultation&token=' . $data['tokBoxSession']['video_consultation_token'];
-			
+
 			$email_body = str_replace('{name}', '', $email_body);
 			$email_body = str_replace('Hello ', 'Dear Patient', $email_body);
-			$email_body = str_replace('{doctor_name}', $data['common']['user']['firstname'].' ' . $data['common']['user']['lastname'], $email_body);
+			$email_body = str_replace('{doctor_name}', $data['common']['user']['firstname'] . ' ' . $data['common']['user']['lastname'], $email_body);
 			$email_body = str_replace('{clinic_name}', $data['common']['info']['name'], $email_body);
 			$email_body = str_replace('{video_consultation_link}', $video_consultation_link, $email_body);
 
@@ -52,7 +57,7 @@ class SenderController extends Controller
 
 		$data['page_title'] = 'Send Email';
 		$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-		$data['action'] = URL_ADMIN.DIR_ROUTE.'send/email';
+		$data['action'] = URL_ADMIN . DIR_ROUTE . 'send/email';
 		/*call appointment list view*/
 		$this->response->setOutput($this->load->view('sender/sender_email', $data));
 	}
@@ -61,7 +66,7 @@ class SenderController extends Controller
 	{
 		/**
 		 * Check if from is submitted or not 
-		**/
+		 **/
 		if (!isset($_POST['submit'])) {
 			$this->url->redirect('dashboard');
 			exit();
@@ -69,13 +74,13 @@ class SenderController extends Controller
 		$data = $this->url->post;
 		$this->load->controller('mail');
 		$this->load->controller('common');
-		if ($this->controller_common->validateToken($data['_token'])){
+		if ($this->controller_common->validateToken($data['_token'])) {
 			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Security Token is missing!');
 			$this->url->redirect('send/email');
 		}
 
 		if ($validate_field = $this->validateMailField($data['receiver'])) {
-			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter valid '.implode(", ",$validate_field).'!');
+			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter valid ' . implode(", ", $validate_field) . '!');
 			$this->url->redirect('send/email');
 		}
 
@@ -84,12 +89,24 @@ class SenderController extends Controller
 		$data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
 		// Prepare SMS text and send SMS
-		if(isset($data['receiver']['video_consultation_link']) AND $data['receiver']['video_consultation_link'] != ''){
+		if (isset($data['receiver']['video_consultation_link']) and $data['receiver']['video_consultation_link'] != '') {
 			$sms_text = TEXT_MSG_OPEN_CALL_INVITATION;
-			$sms_text = str_replace('{doctor_name}', $data['common']['user']['firstname'].' ' . $data['common']['user']['lastname'], $sms_text);
+			$sms_text = str_replace('{doctor_name}', $data['common']['user']['firstname'] . ' ' . $data['common']['user']['lastname'], $sms_text);
 			$sms_text = str_replace('{video_consultation_link}', $data['receiver']['video_consultation_link'], $sms_text);
-	
+
 			//$this->controller_common->sendSMSUsingTwilio($data['receiver']['mobile'], $sms_text);
+		}
+
+		//Leaflet attachments
+		$this->load->model('leaflets');
+		if (!empty($data['mail']['attached_leaflets'])) {
+			$leaflets = explode(",", $data['mail']['attached_leaflets']);
+
+			foreach ($leaflets as $each) {
+				$res_leaflets = $this->model_leaflets->getLeaflets($each);
+
+				$data['mail']['attachments'][] = ['name' => $res_leaflets['doc_name'], 'file' => DIR . "public/uploads/" . $res_leaflets['doc_name']];
+			}
 		}
 
 		$data['mail']['name'] = $data['receiver']['name'];
@@ -139,7 +156,7 @@ class SenderController extends Controller
 				}*/
 			}
 		}
-		
+
 
 		$mail_result = $this->controller_mail->sendMail($data['mail']);
 
@@ -149,8 +166,8 @@ class SenderController extends Controller
 			$data['mail']['user_id'] = $this->session->data['user_id'];
 			$this->controller_mail->createMailLog($data['mail']);
 
-			if(isset($data['mail']['tokbox_session_id']) AND !empty($data['mail']['tokbox_session_id'])){
-				
+			if (isset($data['mail']['tokbox_session_id']) and !empty($data['mail']['tokbox_session_id'])) {
+
 				$tokBoxSession = $this->model_patient->getTokBoxSession($data['mail']['tokbox_session_id']);
 				$video_consultation_link = URL . DIR_ROUTE . 'appointment/videoConsultation&token=' . $tokBoxSession['video_consultation_token'];
 				$this->url->redirect('appointment/videoConsultation&token=' . $tokBoxSession['video_consultation_token']);
@@ -171,7 +188,10 @@ class SenderController extends Controller
 		$data['roles'] = $this->model_sender->getRole();
 		$this->load->controller('common');
 
-
+		//Get leaflets to attach in mail
+		$this->load->model('leaflets');
+		$data['leaflets'] = $this->model_leaflets->allLeaflets();
+		
 		/* Set confirmation message if page submitted before */
 		if (isset($this->session->data['message'])) {
 			$data['message'] = $this->session->data['message'];
@@ -179,7 +199,7 @@ class SenderController extends Controller
 		}
 		$data['page_title'] = 'Send Bulk Email';
 		$data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-		$data['action'] = URL_ADMIN.DIR_ROUTE.'sendbulk/email';
+		$data['action'] = URL_ADMIN . DIR_ROUTE . 'sendbulk/email';
 		/*call appointment list view*/
 		$this->response->setOutput($this->load->view('sender/sender_bulk_email', $data));
 	}
@@ -188,20 +208,20 @@ class SenderController extends Controller
 	{
 		/**
 		 * Check if from is submitted or not 
-		**/
+		 **/
 		if (!isset($_POST['submit'])) {
 			$this->url->redirect('dashboard');
 			exit();
 		}
 		$data = $this->url->post;
 		$this->load->controller('common');
-		if ($this->controller_common->validateToken($data['_token'])){
+		if ($this->controller_common->validateToken($data['_token'])) {
 			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Security Token is missing!');
 			$this->url->redirect('sendbulk/email');
 		}
 
 		if ($validate_field = $this->validateBulkMailField($data['receiver'])) {
-			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter valid '.implode(", ",$validate_field).'!');
+			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter valid ' . implode(", ", $validate_field) . '!');
 			$this->url->redirect('sendbulk/email');
 		}
 
@@ -214,7 +234,7 @@ class SenderController extends Controller
 				}
 			}
 		}
-		
+
 		if ($data['receiver']['user_type'] == 'patient') {
 			$data['mail']['addresses'] = $this->model_sender->getPatientReceiver($data['receiver']);
 		} elseif (!filter_var($data['receiver']['user_type'], FILTER_VALIDATE_INT) === false) {
@@ -223,13 +243,25 @@ class SenderController extends Controller
 			$this->session->data['message'] = array('alert' => 'error', 'value' => 'Error: Please select valid user type.');
 			$this->url->redirect('sendbulk/email');
 		}
-		
+
+		//Leaflet attachments
+		$this->load->model('leaflets');
+		if (!empty($data['mail']['attached_leaflets'])) {
+			$leaflets = explode(",", $data['mail']['attached_leaflets']);
+
+			foreach ($leaflets as $each) {
+				$res_leaflets = $this->model_leaflets->getLeaflets($each);
+
+				$data['mail']['attachments'][] = ['name' => $res_leaflets['doc_name'], 'file' => DIR . "public/uploads/" . $res_leaflets['doc_name']];
+			}
+		}
+
 		$data['mail']['subject'] = $data['receiver']['subject'];
 		$data['mail']['message'] = $data['receiver']['message'];
-		
+
 		$this->load->controller('mail');
 		$mail_result = $this->controller_mail->sendBulkMail($data['mail']);
-		
+
 		if ($mail_result == 1) {
 			$data['mail']['type'] = 'sendbulkemail';
 			$data['mail']['type_id'] = 0;
@@ -281,7 +313,7 @@ class SenderController extends Controller
 			$error_flag = true;
 			$error['message'] = 'Message!';
 		}
-		
+
 		if ($error_flag) {
 			return $error;
 		} else {
@@ -317,7 +349,7 @@ class SenderController extends Controller
 			$error_flag = true;
 			$error['message'] = 'Message!';
 		}
-		
+
 		if ($error_flag) {
 			return $error;
 		} else {
@@ -332,16 +364,16 @@ class SenderController extends Controller
 
 		$data['period']['start'] = $this->url->get('start');
 		$data['period']['end'] = $this->url->get('end');
-		
+
 		$this->load->controller('common');
 		if (!empty($data['period']['start']) && !empty($data['period']['end']) && !$this->controller_common->validateDate($data['period']['start']) && !$this->controller_common->validateDate($data['period']['end'])) {
-			$data['period']['start'] = date_format(date_create($data['period']['start'].'00:00:00'), "Y-m-d H:i:s");
-			$data['period']['end'] = date_format(date_create($data['period']['end'].'23:59:59'), "Y-m-d H:i:s");
+			$data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
+			$data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
 		} else {
-			$data['period']['start'] = date('Y-m-d '.'00:00:00', strtotime("-1 month"));
-			$data['period']['end'] = date('Y-m-d '.'23:59:59');
+			$data['period']['start'] = date('Y-m-d ' . '00:00:00', strtotime("-1 month"));
+			$data['period']['end'] = date('Y-m-d ' . '23:59:59');
 		}
-		
+
 		$this->load->model('sender');
 		$data['result'] = $this->model_sender->getEmailLog($data['period']);
 
