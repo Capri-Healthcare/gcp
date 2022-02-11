@@ -76,6 +76,13 @@ class Patient extends Model
         return $query->rows;
     }
 
+    //Added 10-02-2022 To get completed appointment 
+    public function getAppointmentsCompleted($data)
+    {
+        $query = $this->database->query("SELECT a.*, CONCAT(d.title, ' ', d.firstname, ' ', d.lastname) AS doctor, d.picture FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id WHERE a.status ='5' AND a.patient_id = ? OR a.email = ? ORDER BY `date` DESC LIMIT 20", array($data['id'], $data['email']));
+        return $query->rows;
+    }
+
     public function getPrescriptions($data)
     {
         $query = $this->database->query("SELECT p.*, CONCAT(title, '', firstname, ' ', lastname) AS doctor, d.picture AS d_picture FROM `" . DB_PREFIX . "prescription` AS p LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = p.doctor_id WHERE p.email = ? OR p.patient_id = ? ORDER BY `date_of_joining` DESC LIMIT 20", array($data['email'], $data['id']));
@@ -198,14 +205,12 @@ class Patient extends Model
                 isset($data['authorisation_number']) ? $data['authorisation_number']:null,
                 isset($data['corporate_company_scheme']) ? $data['corporate_company_scheme']:null,
                 isset($data['employer']) ? $this->database->escape($data['employer']):null,
-                isset($data['optician_name']) ? $data['optician_name'] : '--',
+                isset($data['optician_name']) ? $data['optician_name'] : '',
                 isset($data['optician_email']) ? $data['optician_email'] : '',
                 isset($data['optician_address']) ? $data['optician_address'] : '',
                 (int)$data['id']));
 
-        //$query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `address` = ?, `bloodgroup` = ?, `gender` = ?, `dob` = ?, `history` = ?, `other` = ?, `status` = ? WHERE `id` = ?" , array($data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'],$data['bloodgroup'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['status'], $data['id'])); 
-        //echo $data['optician_name'];
-        //print_r($data);exit;
+        //$query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `address` = ?, `bloodgroup` = ?, `gender` = ?, `dob` = ?, `history` = ?, `other` = ?, `status` = ? WHERE `id` = ?" , array($data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'],$data['bloodgroup'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['status'], $data['id']));
     }
 
     public function updatePatientMERCStatus($data)

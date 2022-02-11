@@ -107,6 +107,18 @@ class Appointment extends Model
         }
     }
 
+    //Update appointment status
+    public function updateAppointmentStatus($id, $status)
+    {
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `status` = ? WHERE `id` = ? ", array((int)$status, (int)$id));
+
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function updateExaminationNotes($data)
     {
         //echo "<pre>"; print_r($data);exit;

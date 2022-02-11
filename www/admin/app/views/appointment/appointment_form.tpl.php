@@ -531,9 +531,9 @@
                                 <button type="submit" name="submit" class="btn btn-primary"><i
                                             class="ti-save-alt pr-2"></i> Save
                                 </button> &nbsp;
-                                <!-- <button type="submit" name="submitComplete" class="btn btn-primary"><i class="ti-save-alt pr-2"></i>
+                                <button type="submit" name="submitComplete" class="btn btn-primary"><i class="ti-save-alt pr-2"></i>
                                     Save & Compelete
-                                </button> -->
+                                </button>
                             </div>
                         </form>
                         <script>
@@ -1557,9 +1557,9 @@
                                         <button type="submit" name="submit" class="btn btn-primary"><i
                                                     class="ti-save-alt pr-2"></i> Save
                                         </button>
-                                        <!-- <button type="submit" name="submitComplete" class="btn btn-primary"><i class="ti-save-alt pr-2"></i>
+                                        <button type="submit" name="submitComplete" class="btn btn-primary"><i class="ti-save-alt pr-2"></i>
                                             Save & Compelete
-                                        </button> -->
+                                        </button>
                                     </div>
                                 </form>
                             </div>

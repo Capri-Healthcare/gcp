@@ -1351,7 +1351,10 @@
     <link href="public/css/summernote-bs4.css" rel="stylesheet">
     <script type="text/javascript" src="public/js/summernote-bs4.min.js"></script>
     <script type="text/javascript" src="public/js/klinikal.summernote.js"></script>
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script>
         $("a.open-pdf").fancybox({
             'frameWidth': 800,
@@ -1360,6 +1363,15 @@
             'hideOnContentClick': false,
             'type': 'iframe'
         });
+        <?php if ($summary['appointment_count'] >= 1) { ?>
+        var firstChart = <?php echo json_encode($intraocularPressureChart)?>;
+        var nflChart = <?php echo json_encode($nflThicknessChart)?>;
+        var mdChart = <?php echo json_encode($meanDeviationChart)?>;
+        var psdChart =<?php echo json_encode($psdDeviationChart)?>;
+        var categories =<?php echo json_encode($categories)?>;
+        <?php }?>
     </script>
+    <script src="<?php echo URL_ADMIN . "public/js/examination_chart.js"; ?>"></script>
+
     <!-- Footer -->
 <?php include(DIR_ADMIN . 'app/views/common/footer.tpl.php'); ?>

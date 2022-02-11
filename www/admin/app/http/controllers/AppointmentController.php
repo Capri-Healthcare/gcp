@@ -162,7 +162,7 @@ class AppointmentController extends Controller
         // Summary Data
 
         $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['result']);
-        $summary['appointment_count'] = !empty($appointment_completed)?count($appointment_completed):0;
+        $summary['appointment_count'] = !empty($appointment_completed) ? count($appointment_completed) : 0;
 
         if ($summary['appointment_count'] != 0) {
 
@@ -215,7 +215,6 @@ class AppointmentController extends Controller
                 $psdDeviationChart[0]['data'][] = (int)$list['psd_deviation_right'];
                 $psdDeviationChart[1]['data'][] = (int)$list['psd_deviation_left'];
                 $categories[] = date_format(date_create($list['date']), 'd-m-Y');
-
             }
 
             $data['intraocularPressureChart'] = $intraocularPressureChart;
@@ -291,11 +290,10 @@ class AppointmentController extends Controller
 
         if ($data['common']['user']['role_id'] == '3') {
             $data['result'] = $this->model_appointment->getAppointment($id, $data['common']['user']['doctor']);
-
         } else {
             $data['result'] = $this->model_appointment->getAppointment($id);
         }
-        $data['result']['diagnosis'] = json_decode($data['result']['diagnosis'],true);
+        $data['result']['diagnosis'] = json_decode($data['result']['diagnosis'], true);
 
         if (!$data['result']) {
             $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Appointment does not exist in database!');
@@ -358,7 +356,7 @@ class AppointmentController extends Controller
         // Summary Data
 
         $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['result']);
-        $summary['appointment_count'] = !empty($appointment_completed)?count($appointment_completed):0;
+        $summary['appointment_count'] = !empty($appointment_completed) ? count($appointment_completed) : 0;
         $data['cct_right'] = 0;
         $data['cct_left'] = 0;
         if ($summary['appointment_count'] != 0) {
@@ -374,7 +372,7 @@ class AppointmentController extends Controller
             $summary['summarykey']['iop_right'] = $highestIop['iop_right'];
             $summary['summarykey']['iop_left'] = $highestIop['iop_left'];
             $summary['summarykey']['allergy'] = $appointment_last['allergy'];
-            $summary['summarykey']['diagnosis'] = implode(',',json_decode($appointment_last['diagnosis'],true));
+            $summary['summarykey']['diagnosis'] = implode(',', json_decode($appointment_last['diagnosis'], true));
             $summary['summarykey']['special_condition'] = $appointment_last['special_condition'];
 
             foreach ($appointment_completed as $key => $list) {
@@ -387,7 +385,7 @@ class AppointmentController extends Controller
                 $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_right'];
                 $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_left'];
                 $summary['appointment']['data'][$key]['data'][] = $list['allergy'];
-                $summary['appointment']['data'][$key]['data'][] = implode(',',json_decode($list['diagnosis'],true));
+                $summary['appointment']['data'][$key]['data'][] = implode(',', json_decode($list['diagnosis'], true));
                 $summary['appointment']['data'][$key]['data'][] = $list['special_condition'];
 
                 // Get Prescription From Appointment id
@@ -420,7 +418,6 @@ class AppointmentController extends Controller
                 $psdDeviationChart[0]['data'][] = $list['psd_deviation_right'];
                 $psdDeviationChart[1]['data'][] = $list['psd_deviation_left'];
                 $categories[] = date_format(date_create($list['date']), 'd-m-Y');
-
             }
 
             $data['intraocularPressureChart'] = $intraocularPressureChart;
@@ -453,7 +450,7 @@ class AppointmentController extends Controller
          **/
         $data = $this->url->post;
 
-        $data['appointment']['date'] =  date_format(date_create($data['appointment']['date']),'Y-m-d');
+        $data['appointment']['date'] =  date_format(date_create($data['appointment']['date']), 'Y-m-d');
 
         //echo "<pre>"; print_r($data);exit;
 
@@ -474,7 +471,7 @@ class AppointmentController extends Controller
 
             // Update Appointment Info
             if ($data['form_type'] == 'appointment_info') {
-                
+
                 $this->load->model('commons');
                 $data['common'] = $this->model_commons->getSiteInfo();
 
@@ -501,7 +498,7 @@ class AppointmentController extends Controller
                     $data['appointment']['token'] = $tokBoxSession['token'];
                     $data['appointment']['video_consultation_token'] = $tokBoxSession['video_consultation_token'];
                 }
-                if(isset($data['submitComplete'])){
+                if (isset($data['submitComplete'])) {
                     $data['appointment']['status'] = COMPLETE_APPOINTMENT_STATUS_ID;
                 }
 
@@ -524,6 +521,14 @@ class AppointmentController extends Controller
 
             // Update Prescription
             if ($data['form_type'] == 'appointment_prescription') {
+
+                //Update appointment as completed
+                if (isset($data['submitComplete'])) {
+                    $data['appointment']['status'] = COMPLETE_APPOINTMENT_STATUS_ID;
+                    $result = $this->model_appointment->updateAppointmentStatus($data['appointment']['id'],$data['appointment']['status']);
+                }
+
+
                 $data['prescription']['medicine'] = array_values($data['prescription']['medicine']);
                 if (!empty($data['prescription']['medicine'][0]['name']) || !empty($data['prescription']['medicine'][0]['description'])) {
                     $data['prescription']['medicine'] = json_encode($data['prescription']['medicine']);
@@ -540,27 +545,34 @@ class AppointmentController extends Controller
             // Update Examination Notes
             if ($data['form_type'] == 'appointment_records') {
 
+                //Update appointment as completed
+                if (isset($data['submitComplete'])) {
+                    $data['appointment']['status'] = COMPLETE_APPOINTMENT_STATUS_ID;
+                    $result = $this->model_appointment->updateAppointmentStatus($data['appointment']['id'],$data['appointment']['status']);
+                }
+
+
                 $data['appointment']['gcp_required'] = 'YES';
-              //  if ($data['appointment']['gcp_required'] == 'YES') {
+                //  if ($data['appointment']['gcp_required'] == 'YES') {
 
-                    if($data['appointment']['optician_id'] > 0){
-                        $this->newpatiengcpMail($data['appointment']['optician_id']);
-                    }
-                    $this->load->model('followup');
-                    $followup['appointment_id'] = $data['appointment']['id'];
-                    $followup['patient_id'] = $data['appointment']['patient_id'];
-                    $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
-                    //$followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
+                if ($data['appointment']['optician_id'] > 0) {
+                    $this->newpatiengcpMail($data['appointment']['optician_id']);
+                }
+                $this->load->model('followup');
+                $followup['appointment_id'] = $data['appointment']['id'];
+                $followup['patient_id'] = $data['appointment']['patient_id'];
+                $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
+                //$followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
 
-                    $next_followup = constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$data['appointment']['followup']];
-                    if($next_followup['value'] > 0 ){
-                        $followup['due_date'] = date('Y-m-d', strtotime("+ " . $next_followup['value'] . $next_followup['intervalrime'], strtotime(date('Y-m-d'))));
-                        if($this->model_followup->createFollowup($followup)){
+                $next_followup = constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$data['appointment']['followup']];
+                if ($next_followup['value'] > 0) {
+                    $followup['due_date'] = date('Y-m-d', strtotime("+ " . $next_followup['value'] . $next_followup['intervalrime'], strtotime(date('Y-m-d'))));
+                    if ($this->model_followup->createFollowup($followup)) {
 
                         //$this->notificationToMERCForPatientFollowup();
-                        }
                     }
-              //  }
+                }
+                //  }
 
                 $this->load->model('patient');
                 $patient['id'] = $data['appointment']['patient_id'];
@@ -571,7 +583,6 @@ class AppointmentController extends Controller
                 $this->model_appointment->updateExaminationNotes($data['appointment']);
                 $message = "Appointment Examination Note updated successfully.";
                 $redirect_to = "edit";
-
             }
 
 
@@ -661,7 +672,8 @@ class AppointmentController extends Controller
             }
 
             $this->session->data['message'] = array('alert' => 'success', 'value' => $message);
-            $this->url->redirect('appointment/' . $redirect_to . '&id=' . $data['appointment']['id']);
+            // $this->url->redirect('appointment/' . $redirect_to . '&id=' . $data['appointment']['id']);
+            $this->url->redirect('appointments');
         }
         $this->url->redirect('appointments');
     }
@@ -697,7 +709,6 @@ class AppointmentController extends Controller
         $data['appointment']['datetime'] = date('Y-m-d H:i:s');
 
         $this->load->model('appointment');
-        $this->load->model('patient');
         if (!empty($data['appointment']['id'])) {
             // Get appointment old status
             $appointment_details = $this->model_appointment->getAppointmentView($data['appointment']['id']);
@@ -720,11 +731,6 @@ class AppointmentController extends Controller
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Appointment updated successfully.');
         } else {
 
-            // Get patient details 
-            $patient_details = $this->model_patient->getPatient($data['appointment']['patient_id']);
-            $data['appointment']['referee_name'] = $patient_details['optician_name'];
-            $data['appointment']['referee_email'] = $patient_details['optician_email'];
-            $data['appointment']['referee_address'] = $patient_details['optician_address'];
             $data['appointment']['appointment_id'] = date('Ymd') . rand(10, 100) . date('his');
             $data['appointment']['consultation_type'] = 'face_to_face';
             $data['appointment']['id'] = $this->model_appointment->createAppointment($data['appointment']);
@@ -790,10 +796,8 @@ class AppointmentController extends Controller
 
         if (isset($data['mail']['doc_type']) && $data['mail']['doc_type'] == "to_optom_or_third_party") {
             $data['mail']['email'] = $data['mail']['email'];
-        }
-        else{
+        } else {
             $data['mail']['email'] = $result['email'];
-
         }
         $data['mail']['name'] = $result['name'];
         $data['mail']['redirect'] = 'appointment/view&id=' . $result['id'];
@@ -802,46 +806,41 @@ class AppointmentController extends Controller
         if ($data['mail']['doc_type']) {
             if ($data['mail']['doc_type'] == "to_optom_or_third_party") {
                 // Generate examination doc 
-                if(isset($data['mail']['attachment'])){
+                if (isset($data['mail']['attachment'])) {
                     $filename = str_replace(" ", "-", $result['name']) . '-third-party-letter.pdf';
                     $appointment_id = $data['mail']['id'];
                     $this->model_appointment->generateToOptomOrThirdPartyDoc($appointment_id, 'email');
                     $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
-
                 }
             }
 
             if ($data['mail']['doc_type'] == "to_patient_or_gp") {
 
-                if(isset($data['mail']['gp_email'])) {
+                if (isset($data['mail']['gp_email'])) {
                     if (!empty($data['mail']['cc'])) {
                         $data['mail']['cc'] = str_replace(' ', '', $data['mail']['cc'] . "," . $data['mail']['gp_email']);
-
                     } else {
                         $data['mail']['cc'] = trim($data['mail']['gp_email']);
                     }
-
                 }
 
                 // Generate examination doc
-                if(isset($data['mail']['attachment'])){
+                if (isset($data['mail']['attachment'])) {
                     $filename = strtolower(str_replace(" ", "-", $result['name'])) . '-patient-letter.pdf';
                     $appointment_id = $data['mail']['id'];
                     $this->model_appointment->generateToPatientOrGpDoc($appointment_id, 'email');
                     $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
-
                 }
-
             }
         }
 
-//        if (isset($_FILES['mail']['name']['attach_file'])) {
-//            foreach ($_FILES['mail']['name']['attach_file'] as $key => $file) {
-//                $tmp_name = $_FILES['mail']['tmp_name']['attach_file'][$key];
-//                $data['mail']['attachments'][] = ['name' => $file, 'file' => $tmp_name];
-//            }
-//
-//        }
+        //        if (isset($_FILES['mail']['name']['attach_file'])) {
+        //            foreach ($_FILES['mail']['name']['attach_file'] as $key => $file) {
+        //                $tmp_name = $_FILES['mail']['tmp_name']['attach_file'][$key];
+        //                $data['mail']['attachments'][] = ['name' => $file, 'file' => $tmp_name];
+        //            }
+        //
+        //        }
 
         $this->load->controller('mail');
 
@@ -899,13 +898,10 @@ class AppointmentController extends Controller
                 $booked = '';
             }
 
-            if($count > 0)
-            {
+            if ($count > 0) {
                 $slot_html .= '<div><input type="radio" name="appointment[time]" id="apnt-time-' . $key . '" value="' . $time . '" disabled><label for="apnt-time-' . $key . '" style="background-color:#e9ecef">' . $time . $booked . '</label></div>';
-
-            }else{
+            } else {
                 $slot_html .= '<div><input type="radio" name="appointment[time]" id="apnt-time-' . $key . '" value="' . $time . '" required><label for="apnt-time-' . $key . '">' . $time . $booked . '</label></div>';
-
             }
             $count = 0;
             $booked = '';
@@ -1015,12 +1011,12 @@ class AppointmentController extends Controller
         $optician = $this->model_user->getUser($appointment['optician_id']);
 
         $video_consultation_link = " - ";
-        $link = '<a href="' . URL .'">Click</a>';
+        $link = '<a href="' . URL . '">Click</a>';
         if ($appointment['status'] == CONFIRMED_APPOINTMENT_STATUS_ID and $appointment['consultation_type'] == APPOINTMENT_VIDEO_CONSULTATION_TYPE) {
             $video_consultation_link = URL . DIR_ROUTE . 'appointment/openVideoConsultation&token=' . $appointment['video_consultation_token'];
         }
 
-        if($template == 'appointmentstatusupdate'){
+        if ($template == 'appointmentstatusupdate') {
 
             $result['template']['message'] = str_replace('{appointment_id}', $appointment['appointment_id'], $result['template']['message']);
             $result['template']['message'] = str_replace('{name}', $appointment['name'], $result['template']['message']);
@@ -1030,8 +1026,8 @@ class AppointmentController extends Controller
             $result['template']['message'] = str_replace('{date}', $appointment['date'], $result['template']['message']);
             $result['template']['message'] = str_replace('{reason}', $appointment['message'], $result['template']['message']);
             $result['template']['message'] = str_replace('{status}', constant('APPOINTMENT_STATUS')[$appointment['status']], $result['template']['message']);
-            $result['template']['message'] = str_replace('{consultation_method}',$appointment['consultation_type'], $result['template']['message']);
-            $result['template']['message'] = str_replace('{video_consultation_link}',$video_consultation_link, $result['template']['message']);
+            $result['template']['message'] = str_replace('{consultation_method}', $appointment['consultation_type'], $result['template']['message']);
+            $result['template']['message'] = str_replace('{video_consultation_link}', $video_consultation_link, $result['template']['message']);
             $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
             $result['template']['message'] = str_replace('{time}', $appointment['time'], $result['template']['message']);
             $result['template']['message'] = str_replace('{link}', $link, $result['template']['message']);
@@ -1041,8 +1037,7 @@ class AppointmentController extends Controller
             $data['cc'] = $appointment['doctor_email'];
             $data['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
             $data['message'] = $result['template']['message'];
-
-        }else{
+        } else {
             $result['template']['message'] = str_replace('{ophth_title}', "", $result['template']['message']);
             $result['template']['message'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'], $result['template']['message']);
             $result['template']['message'] = str_replace('{appt_date}', date('d-m-Y', strtotime($appointment['date'])), $result['template']['message']);
@@ -1058,7 +1053,6 @@ class AppointmentController extends Controller
             $data['subject'] = str_replace('{ophth_title}', "", $result['template']['subject']);
             $data['subject'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'], $data['subject']);
             $data['message'] = $result['template']['message'];
-
         }
 
         return $this->controller_mail->sendMail($data);
@@ -1158,7 +1152,6 @@ class AppointmentController extends Controller
                 'filePath' => $filePath,
                 'relativePath' => $relativePath,
             ];
-
         }
 
         $parems = [];
@@ -1175,9 +1168,7 @@ class AppointmentController extends Controller
             readfile($zip_file_path);
             // delete file
             unlink($zip_file_path);
-
         }
-
     }
 
     public function imagesExport()
@@ -1216,7 +1207,6 @@ class AppointmentController extends Controller
                 'filePath' => $filePath,
                 'relativePath' => $relativePath,
             ];
-
         }
 
         $parems = [];
@@ -1233,9 +1223,7 @@ class AppointmentController extends Controller
             readfile($zip_file_path);
             // delete file
             unlink($zip_file_path);
-
         }
-
     }
 
     public function createZipFile($parems = [])
@@ -1448,7 +1436,6 @@ class AppointmentController extends Controller
             $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
 
             $this->response->setOutput($this->load->view('appointment/video-call', $data));
-
         } else {
 
             // Load Open appoiment
@@ -1588,7 +1575,6 @@ class AppointmentController extends Controller
 
             $result['error'] = FALSE;
             $result['message'] = "Clinical note saved";
-
         } else {
             $result['error'] = True;
             $result['message'] = "Appointment id missing";
@@ -1628,7 +1614,6 @@ class AppointmentController extends Controller
 
             $result['error'] = FALSE;
             $result['message'] = "Prescription updated successfully";
-
         } else {
             $result['error'] = True;
             $result['message'] = "Appointment id missing";
@@ -1674,6 +1659,5 @@ class AppointmentController extends Controller
         /*if($action == 'email'){
             $this->url->redirect('appointment/view&id='.$appointment_id.'&doc_type='.$doc_type);
         }*/
-
     }
 }

@@ -179,7 +179,9 @@ class PatientController extends Controller
         } else {
             $data['appointment_result'] = $this->model_appointment->getAppointmentView($id);
         }
-        $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['appointment_result']);
+        // $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['appointment_result']);
+        $appointment_completed = $this->model_patient->getAppointmentsCompleted($data['result']);
+
         $summary['appointment_count'] = !empty($appointment_completed)?count($appointment_completed):0;
         if ($summary['appointment_count'] != 0) {
 
