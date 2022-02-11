@@ -591,7 +591,7 @@ class Appointment extends Model
         $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
         $body .=  "<table width='100%' border=0 >";
-        $body .=  "<tr><td width=70%>";
+        $body .=  "<tr><td width=60%>";
 
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
@@ -620,7 +620,7 @@ class Appointment extends Model
             $body .= $appointment['diagnosis_comment'];
         }
 
-        $body .= "</td><td width=30%>
+        $body .= "</td><td width=40%>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
 
@@ -881,7 +881,7 @@ class Appointment extends Model
         $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
 		$body .=  "<table width='100%' border=0 >";
-        $body .=  "<tr><td width=70%>";
+        $body .=  "<tr><td width=60%>";
 		
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
@@ -907,7 +907,7 @@ class Appointment extends Model
             $body .= $appointment['diagnosis_comment'];
         }
 		
-		$body .= "</td><td width=30%>
+		$body .= "</td><td width=40%>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
 

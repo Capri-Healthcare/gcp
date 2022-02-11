@@ -262,16 +262,16 @@ define('INVOICE_DOCTOR_DETAIL', [
     "DEGREE" => 'MBBS MD FRCS (Ed)',
     "POSITION" => 'Consultant Ophthalmic Surgeon',
 ]);
-define('APPOINTMENT_SIDE_BAR','<b>Upload Referral/Investigation</b>
-Communicate via <b>PORTAL</b> 
-<b>My Eye Record & Care</b>
-www.worcesterglaucoma.co.uk
-<b>For Appointments:</b>
-Spire South Bank:           01905362033
-Spire Clinic Droitwich:   01905799116
-Droitwich Spa Hospital: 01905793333
-<b>Private Practice Manager</b>
-Ms Neve Fairless Email:secretaryoj@gmail.com 
+define('APPOINTMENT_SIDE_BAR','<b>Upload Referral/Investigation</b><br>
+Communicate via <b>PORTAL</b><br> 
+<b>My Eye Record & Care</b><br>
+www.worcesterglaucoma.co.uk<br>
+<b>For Appointments:</b><br>
+Spire South Bank:           01905362033<br>
+Spire Clinic Droitwich:   01905799116<br>
+Droitwich Spa Hospital: 01905793333<br>
+<b>Private Practice Manager</b><br>
+Ms Neve Fairless Email:secretaryoj@gmail.com<br>
 <b>Accounts Enquiries</b>: 07758057733');
 
 define('FOOTER_LINE_1','<b>Award Winner: International Glaucoma Association: BEST GLAUCOMA SERVICE UK 2014/2015</b>');
