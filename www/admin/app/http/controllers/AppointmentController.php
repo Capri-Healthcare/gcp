@@ -510,7 +510,7 @@ class AppointmentController extends Controller
                 $this->load->model('patient');
 
                 // Notify patient when status change
-                if ($appointment_details['status'] != $data['appointment']['status']) {
+                if ($appointment_details['status'] != $data['appointment']['status'] AND $data['appointment']['date'] >= date('Y-m-d')) {
 
                     $mail_result = $this->appointmentMail($data['appointment']['id'], 'appointmentstatusupdate');
 
@@ -738,13 +738,15 @@ class AppointmentController extends Controller
             $data['appointment']['id'] = $this->model_appointment->createAppointment($data['appointment']);
             if ($data['appointment']['id']) {
                 $this->model_appointment->moveimagefromopticiantoappointment($data['appointment']);
+                $this->load->controller('common');
 
+                if($data['appointment']['date'] >= date('Y-m-d')){
                 $mail_result = $this->appointmentMail($data['appointment']['id'], 'newappointment');
                 // if ($data['user']['role_id'] == '3') {
                 // 	$this->model_appointment->createPatientDoctor($data);
                 // }
-                $this->load->controller('common');
                 $this->controller_common->notifyPatientBySMS($data['appointment']['id'], 'NEW_APPOINTMENT');
+                }
 
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Appointment created successfully.');
             } else {

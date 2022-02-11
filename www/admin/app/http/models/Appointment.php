@@ -603,7 +603,6 @@ class Appointment extends Model
         $body .= "Dear " . ucfirst($appointment['referee_name']) . ",<br><br>";
 
         $body .= "<b>Name: </b>" . ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
-        $body .= "<b>DOB: </b>" . date_format(date_create($appointment['patient_dob']), 'd-m-Y') . "<br>";
         $body .= "<b>Address: </b>";
         if (!empty($appointment['address'])) {
             $body .= $appointment['address']['address1'] . "," . $appointment['address']['address1'] . "<br>";
@@ -889,7 +888,6 @@ class Appointment extends Model
         $body .= "<br>";
 
         $body .= "<strong>Name:</strong> " . ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
-        $body .= "<strong>DOB:</strong> " . date_format(date_create($appointment['dob']), 'd-m-Y') . "<br>";
         if (!empty($appointment['address'])) {
             $body .= "<strong>Address:</strong> " . $appointment['address']['address1'] . "," . $appointment['address']['address2'] . "<br>";
             $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
