@@ -591,7 +591,7 @@ class Appointment extends Model
         $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
         $body .=  "<table width='100%' border=0 >";
-        $body .=  "<tr><td width=60%>";
+        $body .=  "<tr><td width=66%>";
 
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
@@ -619,7 +619,7 @@ class Appointment extends Model
             $body .= $appointment['diagnosis_comment'];
         }
 
-        $body .= "</td><td width=40%>
+        $body .= "</td><td width=34%>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
 
@@ -738,8 +738,8 @@ class Appointment extends Model
 					</div>
 				    
 				</td>" .   
-            "<td width=40% align='center'>
-                <img src='" . URL_ADMIN . "public/images/picture1.jpg' width='70%' alt='Icon'>
+            "<td width=40% align='left'>
+                <img src='" . URL_ADMIN . "public/images/picture1.jpg' width='80%' alt='Icon'>
                 </td>" .
                 /*
             "<td width='15%' style='vertical-align:center; text-align:start; padding:5px; border:#000 1px solid;'>
@@ -877,7 +877,7 @@ class Appointment extends Model
         $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
 		$body .=  "<table width='100%' border=0 >";
-        $body .=  "<tr><td width=67%>";
+        $body .=  "<tr><td width=66%>";
 		
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
@@ -902,10 +902,11 @@ class Appointment extends Model
             $body .= $appointment['diagnosis_comment'];
         }
 		
-		$body .= "</td><td width=33% style='font-size: 12px'>
+		$body .= "</td><td width=34% style='font-size: 12px'>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
 
+        if (!empty($prescription)) {
         $body .= "<br><br>";
         $body .= "<strong>Current Treatment:</strong><br>";
         $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
@@ -918,7 +919,7 @@ class Appointment extends Model
                                             <th>Eye</th>
                                         </tr>";
 
-        if (!empty($prescription)) {
+        
             foreach ($prescription['prescription'] as $key => $value) {
                 $body .= "<tr>";
                 $body .= "<td>" . $value['name'] . "</td>";
@@ -929,11 +930,8 @@ class Appointment extends Model
                 $body .= "<td>" . $value['eye'] . "</td>";
                 $body .= "</tr>";
             }
-        } else {
-            $body .= "<tr>";
-            $body .= "<td colspan='6' style='text-align: center'>Treatment does not specified.</td>";
-            $body .= "</tr>";
-        }
+        } 
+        
         $body .= "</table>";
         $body .= "<br>";
 

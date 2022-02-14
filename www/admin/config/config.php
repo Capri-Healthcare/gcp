@@ -269,7 +269,7 @@ define('APPOINTMENT_SIDE_BAR',"
     <tr><td colspan='2'><b>My Eye Record & Care</b></td></tr>
     <tr><td colspan='2'>www.worcesterglaucoma.co.uk</td></tr>
     <tr><td colspan='2'><b>For Appointments:</b></td></tr>
-    <tr><td>Spire South Bank:</td><td align='left'>01905362033</td></tr>
+    <tr><td width='60%'>Spire South Bank:</td><td align='left'>01905362033</td></tr>
     <tr><td>Spire Clinic Droitwich:</td><td align='left'>01905799116</td></tr>
     <tr><td>Droitwich Spa Hospital:</td><td align='left'>01905793333</td></tr>
     <tr><td colspan='2'><b>Private Practice Manager</b></td></tr>
