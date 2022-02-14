@@ -262,19 +262,20 @@ define('INVOICE_DOCTOR_DETAIL', [
     "DEGREE" => 'MBBS MD FRCS (Ed)',
     "POSITION" => 'Consultant Ophthalmic Surgeon',
 ]);
-define('APPOINTMENT_SIDE_BAR','<b>Upload Referral/Investigation</b><br>
-Communicate via <b>PORTAL</b><br> 
-<b>My Eye Record & Care</b><br>
-www.worcesterglaucoma.co.uk<br>
-<b>For Appointments:</b><br>
-Spire South Bank:           01905362033<br>
-Spire Clinic Droitwich:   01905799116<br>
-Droitwich Spa Hospital: 01905793333<br>
-<b>Private Practice Manager</b><br>
-Ms Neve Fairless <br>
-Email:secretaryoj@gmail.com<br>
-Phone: 07437533520 <br>
-<b>Accounts Enquiries</b>: 07758057733');
+define('APPOINTMENT_SIDE_BAR',"
+<table style='width:100%;' border=0' > 
+    <tr><td colspan='2'><b>Upload Referral/Investigation</b></td></tr>
+    <tr><td colspan='2'>Communicate via <b>PORTAL</b></td></tr>
+    <tr><td colspan='2'><b>My Eye Record & Care</b></td></tr>
+    <tr><td colspan='2'>www.worcesterglaucoma.co.uk</td></tr>
+    <tr><td colspan='2'><b>For Appointments:</b></td></tr>
+    <tr><td>Spire South Bank:</td><td align='left'>01905362033</td></tr>
+    <tr><td>Spire Clinic Droitwich:</td><td align='left'>01905799116</td></tr>
+    <tr><td>Droitwich Spa Hospital:</td><td align='left'>01905793333</td></tr>
+    <tr><td colspan='2'><b>Private Practice Manager</b></td></tr>
+    <tr><td colspan='2'>Ms Neve Fairless</td></tr>
+    <tr><td colspan='2'>Email: secretaryoj@gmail.com</td></tr>
+    <tr><td><b>Accounts Enquiries</b>:</td><td align='left'>07758057733</td></tr></table>");
 
 define('FOOTER_LINE_1','<b>Award Winner: International Glaucoma Association: BEST GLAUCOMA SERVICE UK 2014/2015</b>');
 define('FOOTER_LINE_2','<b>‘FOR PROVIDING AN OUSTANDING SERVICE TO PATIENTS’</b>');

@@ -678,7 +678,7 @@ class Appointment extends Model
         $body .= $doctor_data['name'];
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
-        $body .= (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
+        $body .= (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . html_entity_decode($about_doctor['specility'])) : "";
         $body .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
 
         $body .= "</div>";
@@ -731,18 +731,15 @@ class Appointment extends Model
             "<td align=right width='60%'>
 					<div style='text-align:left; color: #333;'>
 						<div><span style='font-size:20px; font-weight:bold;'>" . $doctor_data['name'] . "</span>
-                        <span style='font-size:12px; font-weight:bold;'>" . $specility_lin_1 . "</span>
-                        <span style='font-size:12px; font-weight:bold;'>" . $specility_lin_2 . "</span>
+                        <span style='font-size:12px; font-weight:bold;'>" . html_entity_decode($specility_lin_1) . "</span>
+                        <span style='font-size:12px; font-weight:bold;'>" . html_entity_decode($specility_lin_2) . "</span>
                         </div>
-						<!-- <span style='font-size: 13px;'>" . $dr_qualification_position_specility . "</span> -->
+						<!-- <span style='font-size: 13px;'>" . html_entity_decode($dr_qualification_position_specility) . "</span> -->
 					</div>
 				    
-				</td>" .
-                "<td width='5%'>
-                <span>&nbsp;</span>
-            </td>" .    
-            "<td width=35% align='left'>
-                <img src='" . URL_ADMIN . "public/images/picture1.jpg' width='90%' alt='Icon'>
+				</td>" .   
+            "<td width=40% align='center'>
+                <img src='" . URL_ADMIN . "public/images/picture1.jpg' width='70%' alt='Icon'>
                 </td>" .
                 /*
             "<td width='15%' style='vertical-align:center; text-align:start; padding:5px; border:#000 1px solid;'>
@@ -756,7 +753,7 @@ class Appointment extends Model
                 <tr>";
         foreach ($doctor_address as $key => $address) {
             $header .= "<td width='30%' style='color: #333; font-size: 10px;'><strong> " . $address['title'] . "</strong>
-            <br>" . $address['address'] . "
+            <br>" . $address['address'] . ", " . $address['city'] . ", " . $address['pincode'] . "
             </td>";
         }
         $header .= "</tr>
@@ -880,7 +877,7 @@ class Appointment extends Model
         $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
 		$body .=  "<table width='100%' border=0 >";
-        $body .=  "<tr><td width=60%>";
+        $body .=  "<tr><td width=67%>";
 		
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
@@ -905,7 +902,7 @@ class Appointment extends Model
             $body .= $appointment['diagnosis_comment'];
         }
 		
-		$body .= "</td><td width=40%>
+		$body .= "</td><td width=33% style='font-size: 12px'>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
 
@@ -956,12 +953,11 @@ class Appointment extends Model
 
         $body .= "Kind regards<br>Yours sincerely";
 
-        $body .= "<br>";
+        $body .= "<br><br><br><br>";
 
         $body .= $doctor_data['name'];
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
-        $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
-        $body .= (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . $about_doctor['specility']) : "";
+        $body .= (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . html_entity_decode($about_doctor['specility'])) : "";
         $body .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
 
         $body .= "</div>";
