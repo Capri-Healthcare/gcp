@@ -680,6 +680,7 @@ class Appointment extends Model
 
         $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='40%' alt='Icon'>";
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
+        $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
 
         $body .= "</div>";
         // echo $body;
@@ -961,6 +962,7 @@ class Appointment extends Model
 
         $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='40%' alt='Icon'>";
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
+        $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
 
         
         $body .= "</td><td width=34% style='font-size: 12px' valign='top'>
