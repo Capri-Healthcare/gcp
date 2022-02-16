@@ -609,14 +609,16 @@ class Appointment extends Model
             $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
         }
 
-        $body .= "<br><br><br>";
-        $body .= "<strong>Diagnosis:</strong> ";
-        if (!empty($appointment['diagnosis'])) {
-            $body .= implode(', ', json_decode($appointment['diagnosis'], true));
-        }
-        if (!empty($appointment['diagnosis_comment'])) {
-            $body .= !empty($appointment['diagnosis']) ? ", " : "";
-            $body .= $appointment['diagnosis_comment'];
+        if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_comment'])) {
+            $body .= "<br><br>";
+            $body .= "<strong>Diagnosis:</strong> ";
+            if (!empty($appointment['diagnosis'])) {
+                $body .= implode(', ', json_decode($appointment['diagnosis'], true));
+            }
+            if (!empty($appointment['diagnosis_comment'])) {
+                $body .= !empty($appointment['diagnosis']) ? ", " : "";
+                $body .= $appointment['diagnosis_comment'];
+            }
         }
 
         $body .= "</td><td width=34%>
@@ -625,18 +627,20 @@ class Appointment extends Model
 
         $body .= "<br><br><br>";
 
-        $body .= "<strong>Current Treatment:</strong><br>";
-        $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
-                                       <tr>
-                                            <th>Drug Name</th>
-                                            <th>Frequency</th>
-                                            <th>Instruction</th>
-                                            <th>Start date</th>
-                                            <th>End date</th>
-                                            <th>Eye</th>
-                                        </tr>";
-
         if (!empty($prescription)) {
+            $body .= "<br><br>";
+            $body .= "<strong>Current Treatment:</strong><br>";
+            $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
+                                           <tr>
+                                                <th>Drug Name</th>
+                                                <th>Frequency</th>
+                                                <th>Instruction</th>
+                                                <th>Start date</th>
+                                                <th>End date</th>
+                                                <th>Eye</th>
+                                            </tr>";
+    
+            
             foreach ($prescription['prescription'] as $key => $value) {
                 $body .= "<tr>";
                 $body .= "<td>" . $value['name'] . "</td>";
@@ -647,17 +651,16 @@ class Appointment extends Model
                 $body .= "<td>" . $value['eye'] . "</td>";
                 $body .= "</tr>";
             }
-        } else {
-            $body .= "<tr>";
-            $body .= "<td colspan='6' style='text-align: center'>Treatment does not specified.</td>";
-            $body .= "</tr>";
+            $body .= "</table>";
+            $body .= "<br>";
         }
-        $body .= "</table>";
-        $body .= "<br>";
+            
 
-        $body .= "<strong>Follow up: </strong>";
-        $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] : '';
-
+        if (!empty($appointment['gcp_next_appointment'])) {
+            $body .= "<strong>Follow up:</strong> ";
+            $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'];
+        }
+        
         $body .= "<br>";
         if (!empty($appointment['doctor_note_optometrist'])) {
             $body .= "<br><br>";
@@ -676,10 +679,7 @@ class Appointment extends Model
         $body .= "<br>";
 
         $body .= $doctor_data['name'];
-        $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
-        $body .= (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . html_entity_decode($about_doctor['specility'])) : "";
-        $body .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
 
         $body .= "</div>";
         // echo $body;
@@ -877,7 +877,7 @@ class Appointment extends Model
         $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
 		$body .=  "<table width='100%' border=0 >";
-        $body .=  "<tr><td width=66%>";
+        $body .=  "<tr><td width=66% style='padding-right:15px;'>";
 		
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
@@ -886,25 +886,31 @@ class Appointment extends Model
 
         $body .= "<strong>Name:</strong> " . ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         if (!empty($appointment['address'])) {
-            $body .= "<strong>Address:</strong> " . $appointment['address']['address1'] . "," . $appointment['address']['address2'] . "<br>";
-            $body .= $appointment['address']['city'] . "," . $appointment['address']['country'] . "," . $appointment['address']['postal'];
+            //$body .= "<strong>Address:</strong> " . $appointment['address']['address1'] . ", " . $appointment['address']['address2'] . "<br>";
+            //$body .= $appointment['address']['city'] . ", " . $appointment['address']['country'] . ", " . $appointment['address']['postal'];
+            $body .= "<strong>Address:</strong> " . $appointment['address']['address1'];
+            $body .= isset($appointment['address']['address2']) ? (", " . $appointment['address']['address2']) : '';
+            $body .= isset($appointment['address']['city']) ? (", " . $appointment['address']['city']) : '';
+            $body .= isset($appointment['address']['country']) ? (", " . $appointment['address']['country']) : '';
+            $body .= isset($appointment['address']['postal']) ? (", " . $appointment['address']['postal']) : '';
         }
         $body .= "<br><br><br>";
 
         $body .= "Dear " . ucfirst($appointment['firstname']);
-        $body .= "<br><br>";
-        $body .= "<strong>Diagnosis:</strong> ";
-        if (!empty($appointment['diagnosis'])) {
-            $body .= implode(', ', json_decode($appointment['diagnosis'], true));
-        }
-        if (!empty($appointment['diagnosis_comment'])) {
-            $body .= !empty($appointment['diagnosis']) ? ", " : "";
-            $body .= $appointment['diagnosis_comment'];
+        
+        if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_comment'])) {
+            $body .= "<br><br>";
+            $body .= "<strong>Diagnosis:</strong> ";
+            if (!empty($appointment['diagnosis'])) {
+                $body .= implode(', ', json_decode($appointment['diagnosis'], true));
+            }
+            if (!empty($appointment['diagnosis_comment'])) {
+                $body .= !empty($appointment['diagnosis']) ? ", " : "";
+                $body .= $appointment['diagnosis_comment'];
+            }
         }
 		
-		$body .= "</td><td width=34% style='font-size: 12px'>
-        " . constant('APPOINTMENT_SIDE_BAR') . " 
-        </td></tr></table>";
+		
 
         if (!empty($prescription)) {
         $body .= "<br><br>";
@@ -930,13 +936,15 @@ class Appointment extends Model
                 $body .= "<td>" . $value['eye'] . "</td>";
                 $body .= "</tr>";
             }
-        } 
-        
-        $body .= "</table>";
-        $body .= "<br>";
+            $body .= "</table>";
+            
+        }
 
-        $body .= "<strong>Follow up:</strong> ";
-        $body .= (isset($appointment['gcp_next_appointment']) && !empty($appointment['gcp_next_appointment'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] : '';
+        if (!empty($appointment['gcp_next_appointment'])) {
+            $body .= "<br><br>";
+            $body .= "<strong>Follow up:</strong> ";
+            $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'];
+        }
 
         if (!empty($appointment['doctor_note'])) {
             $body .= "<br><br>";
@@ -952,11 +960,13 @@ class Appointment extends Model
         $body .= "Kind regards<br>Yours sincerely";
 
         $body .= "<br><br><br><br>";
+        
+        $body .= "</td><td width=34% style='font-size: 12px' valign='top'>
+        " . constant('APPOINTMENT_SIDE_BAR') . " 
+        </td></tr></table>";
 
         $body .= $doctor_data['name'];
-        $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
-        $body .= (!empty($about_doctor['specility']) and !is_null($about_doctor['specility'])) ? ("<br>" . html_entity_decode($about_doctor['specility'])) : "";
-        $body .= (!empty($about_doctor['awards']) and !is_null($about_doctor['awards'])) ? ("<br>" . $about_doctor['awards']) : "";
+        $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
 
         $body .= "</div>";
 

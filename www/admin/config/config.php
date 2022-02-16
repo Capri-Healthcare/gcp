@@ -266,7 +266,7 @@ define('APPOINTMENT_SIDE_BAR',"
 <table style='width:100%;' border=0' > 
     <tr><td colspan='2'><b>Upload Referral/Investigation</b></td></tr>
     <tr><td colspan='2'>Communicate via <b>PORTAL</b></td></tr>
-    <tr><td colspan='2'><b>My Eye Record & Care</b></td></tr>
+    <tr><td colspan='2'><span style='font-size:15px; color:#151c56'><b>My Eye Record & Care</b></span></td></tr>
     <tr><td colspan='2'>www.worcesterglaucoma.co.uk</td></tr>
     <tr><td colspan='2'><b>For Appointments:</b></td></tr>
     <tr><td width='60%'>Spire South Bank:</td><td align='left'>01905362033</td></tr>
