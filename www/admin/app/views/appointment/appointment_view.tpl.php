@@ -963,7 +963,7 @@
                                         <td> 
                                             <span style="font-size: 16px; margin-right: 15px;">
                                                 <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=to_patient_or_gp&action=download"><i
-                                                            class="ti-download"></i></a>
+                                                            target="_blank" class="ti-download"></i></a>
                                             </span>
                                             <span style="font-size: 16px; margin-right: 15px;">
                                                 <a href="index.php?route=appointment/view&id=<?php echo $result['id']; ?>&doc_type=to_patient_or_gp"><i
@@ -977,7 +977,7 @@
                                             <td> 
                                                 <span style="font-size: 16px; margin-right: 15px;">
                                                     <a href="index.php?route=appointment/letters&id=<?php echo $result['id']; ?>&doc_type=to_optom_or_third_party&action=download"><i
-                                                                class="ti-download"></i></a>
+                                                    target="_blank"class="ti-download"></i></a>
                                                 </span>
                                                 <span style="font-size: 16px; margin-right: 15px;">
                                                     <a href="index.php?route=appointment/view&id=<?php echo $result['id']; ?>&doc_type=to_optom_or_third_party"><i
