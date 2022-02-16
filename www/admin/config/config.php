@@ -279,8 +279,8 @@ define('APPOINTMENT_SIDE_BAR',"
 
 define('FOOTER_LINE_1','<b>Award Winner: International Glaucoma Association: BEST GLAUCOMA SERVICE UK 2014/2015</b>');
 define('FOOTER_LINE_2','<b>‘FOR PROVIDING AN OUSTANDING SERVICE TO PATIENTS’</b>');
-define('FOOTER_LINE_3','<b>Tarun Sharma is the Director of Sharma Vision Ltd, Company number 8932399</b>');
-define('FOOTER_LINE_4','<b>Office Address-105 Fitz Roy Avenue, Birmingham, B17 8RG</b>');
+define('FOOTER_LINE_3','Tarun Sharma is the Director of Sharma Vision Ltd, Company number 8932399');
+define('FOOTER_LINE_4','Office Address-105 Fitz Roy Avenue, Birmingham, B17 8RG');
 
 //Changes made on 01-02-2022
 define('MY_EYE_RECORD_CARE','<b>M</b>y<br/><b>E</b>ye <br/><b>R</b>ecord & <br/><b>C</b>are');

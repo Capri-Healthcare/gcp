@@ -678,7 +678,7 @@ class Appointment extends Model
 
         $body .= "<br>";
 
-        $body .= $doctor_data['name'];
+        $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='40%' alt='Icon'>";
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
 
         $body .= "</div>";
@@ -913,9 +913,9 @@ class Appointment extends Model
 		
 
         if (!empty($prescription)) {
-        $body .= "<br><br>";
-        $body .= "<strong>Current Treatment:</strong><br>";
-        $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
+            $body .= "<br><br>";
+            $body .= "<strong>Current Treatment:</strong><br>";
+            $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;'>
                                        <tr>
                                             <th>Drug Name</th>
                                             <th>Frequency</th>
@@ -957,17 +957,17 @@ class Appointment extends Model
 
         $body .= "<br><br>";
 
-        $body .= "Kind regards<br>Yours sincerely";
+        $body .= "Kind regards<br>Yours sincerely<br>";
 
-        $body .= "<br><br><br><br>";
+        $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='40%' alt='Icon'>";
+        $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
+
         
         $body .= "</td><td width=34% style='font-size: 12px' valign='top'>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
 
-        $body .= $doctor_data['name'];
-        $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
-
+        
         $body .= "</div>";
 
         // echo $body;exit;
