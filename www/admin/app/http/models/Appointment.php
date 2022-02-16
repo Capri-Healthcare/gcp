@@ -591,7 +591,7 @@ class Appointment extends Model
         $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
 
         $body .=  "<table width='100%' border=0 >";
-        $body .=  "<tr><td width=66%>";
+        $body .=  "<tr><td width=66% style='padding-right:15px;'>";
 
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
@@ -620,10 +620,6 @@ class Appointment extends Model
                 $body .= $appointment['diagnosis_comment'];
             }
         }
-
-        $body .= "</td><td width=34%>
-        " . constant('APPOINTMENT_SIDE_BAR') . " 
-        </td></tr></table>";
 
         $body .= "<br><br><br>";
 
@@ -681,6 +677,11 @@ class Appointment extends Model
         $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='40%' alt='Icon'>";
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
+
+        
+        $body .= "</td><td width=34% style='font-size: 12px' valign='top'>
+        " . constant('APPOINTMENT_SIDE_BAR') . " 
+        </td></tr></table>";
 
         $body .= "</div>";
         // echo $body;
