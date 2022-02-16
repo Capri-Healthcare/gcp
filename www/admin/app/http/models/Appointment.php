@@ -588,10 +588,10 @@ class Appointment extends Model
 
         $body = "";
 
-        $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
+        $body .= "<div style='font-size:13px; padding-left:0px; padding-right:0px;'>";
 
-        $body .=  "<table width='100%' border=0 >";
-        $body .=  "<tr><td width=66% style='padding-right:15px;'>";
+		$body .=  "<table width='100%' border=0 cellspacing='0'>";
+        $body .=  "<tr><td style='padding-right:15px;'>";
 
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
@@ -670,16 +670,14 @@ class Appointment extends Model
 
         $body .= "<br><br>";
 
-        $body .= "Kind regards<br>Yours sincerely";
-
-        $body .= "<br>";
-
-        $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='40%' alt='Icon'>";
+        $body .= "Kind regards<br>Yours sincerely<br>";
+        $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'>";
+        $body .= '<br>'.$doctor_data['name'];
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
 
         
-        $body .= "</td><td width=34% style='font-size: 12px' valign='top'>
+        $body .= "</td><td width='220px' style='font-size: 12px; pandding:0px;' valign='top'>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
 
@@ -750,11 +748,11 @@ class Appointment extends Model
             */
             "</tr>" .
             "<tr>
-            <td colspan=3>
-            <table style='width:100%;' border=0' >
+            <td colspan=2>
+            <table style='width:100%;' border=0 cellspacing='0'>
                 <tr>";
         foreach ($doctor_address as $key => $address) {
-            $header .= "<td width='30%' style='color: #333; font-size: 10px;'><strong> " . $address['title'] . "</strong>
+            $header .= "<td width='33%' style='padding:0px; color: #333; font-size: 10px;'><strong>" . $address['title'] . "</strong>
             <br>" . $address['address'] . ", " . $address['city'] . ", " . $address['pincode'] . "
             </td>";
         }
@@ -876,10 +874,10 @@ class Appointment extends Model
 
         $body = "";
 
-        $body .= "<div style='font-size:13px;  padding-left:5px; padding-right:0px;'>";
+        $body .= "<div style='font-size:13px; padding-left:0px; padding-right:0px;'>";
 
-		$body .=  "<table width='100%' border=0 >";
-        $body .=  "<tr><td width=66% style='padding-right:15px;'>";
+		$body .=  "<table width='100%' border=0 cellspacing='0'>";
+        $body .=  "<tr><td style='padding-right:15px;'>";
 		
         $body .= "<strong>Date of visit:</strong> " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "<strong>Date typed:</strong> " . date('d-m-Y');
@@ -960,13 +958,13 @@ class Appointment extends Model
         $body .= "<br><br>";
 
         $body .= "Kind regards<br>Yours sincerely<br>";
-
-        $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='40%' alt='Icon'>";
+        $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'>";
+        $body .= '<br>'.$doctor_data['name'];
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
 
         
-        $body .= "</td><td width=34% style='font-size: 12px' valign='top'>
+        $body .= "</td><td width='220px' style='font-size: 12px; pandding:0px;' valign='top'>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
 

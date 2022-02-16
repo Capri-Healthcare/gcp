@@ -263,19 +263,19 @@ define('INVOICE_DOCTOR_DETAIL', [
     "POSITION" => 'Consultant Ophthalmic Surgeon',
 ]);
 define('APPOINTMENT_SIDE_BAR',"
-<table style='width:100%;' border=0' > 
+<table  border=0 cellspacing='0' style='padding:0px'> 
     <tr><td colspan='2'><b>Upload Referral/Investigation</b></td></tr>
     <tr><td colspan='2'>Communicate via <b>PORTAL</b></td></tr>
     <tr><td colspan='2'><span style='font-size:15px; color:#151c56'><b>My Eye Record & Care</b></span></td></tr>
     <tr><td colspan='2'>www.worcesterglaucoma.co.uk</td></tr>
     <tr><td colspan='2'><b>For Appointments:</b></td></tr>
-    <tr><td width='60%'>Spire South Bank:</td><td align='left'>01905362033</td></tr>
-    <tr><td>Spire Clinic Droitwich:</td><td align='left'>01905799116</td></tr>
-    <tr><td>Droitwich Spa Hospital:</td><td align='left'>01905793333</td></tr>
+    <tr><td width='115px'>Spire South Bank:</td><td width='35px' align='right'>01905362033</td></tr>
+    <tr><td>Spire Clinic Droitwich:</td><td align='right'>01905799116</td></tr>
+    <tr><td>Droitwich Spa Hospital:</td><td align='right'>01905793333</td></tr>
     <tr><td colspan='2'><b>Private Practice Manager</b></td></tr>
     <tr><td colspan='2'>Ms Neve Fairless</td></tr>
     <tr><td colspan='2'>Email: secretaryoj@gmail.com</td></tr>
-    <tr><td><b>Accounts Enquiries</b>:</td><td align='left'>07758057733</td></tr></table>");
+    <tr><td><b>Accounts Enquiries</b>:</td><td align='right'>07758057733</td></tr></table>");
 
 define('FOOTER_LINE_1','<b>Award Winner: International Glaucoma Association: BEST GLAUCOMA SERVICE UK 2014/2015</b>');
 define('FOOTER_LINE_2','<b>‘FOR PROVIDING AN OUSTANDING SERVICE TO PATIENTS’</b>');
