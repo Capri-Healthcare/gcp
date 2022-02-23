@@ -639,7 +639,7 @@ class Appointment extends Model
 
         //$body .= "<br>". $appointment['referee_address'];
         $body .= "<br><br>";
-        $body .= ucfirst($appointment['referee_name']).'<br>';
+        $body .= ucfirst($appointment['referee_name']);
         if(strpos($appointment['referee_address'], ",") === false ){
 
         } else {
@@ -655,7 +655,7 @@ class Appointment extends Model
 
         $body .= "Dear " . ucfirst($appointment['referee_name']) . ",<br><br>";
 
-        $body .= "Patient Details";
+        $body .= "Patient Details:"."<br>";
         $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         if (!empty($appointment['address'])) {
             $body .= $appointment['address']['address1'] . "<br>" . $appointment['address']['address2'] . "<br>";
