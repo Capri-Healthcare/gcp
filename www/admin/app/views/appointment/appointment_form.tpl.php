@@ -1524,7 +1524,7 @@
                                                             <span class="input-group-text"><i
                                                                         class="ti-notepad"></i></span>
                                                     </div>
-                                                    <textarea class="form-control" name="appointment[doctor_note]" <?php echo $examination_notes_readonly ? 'readonly':''?>><?php echo isset($result['doctor_note']) ? $result['doctor_note'] : ''; ?></textarea>
+                                                    <textarea class="form-control" name="appointment[doctor_note]" <?php echo $examination_notes_readonly ? 'readonly':''?>><?php echo !empty($result['doctor_note']) ? $result['doctor_note'] : DOCTOR_COMMENT; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1536,7 +1536,7 @@
                                                             <span class="input-group-text"><i
                                                                         class="ti-notepad"></i></span>
                                                     </div>
-                                                    <textarea class="form-control" name="appointment[doctor_note_optometrist]" <?php echo $examination_notes_readonly ? 'readonly':''?>><?php echo isset($result['doctor_note_optometrist']) ? $result['doctor_note_optometrist'] : ''; ?></textarea>
+                                                    <textarea class="form-control" name="appointment[doctor_note_optometrist]" <?php echo $examination_notes_readonly ? 'readonly':''?>><?php echo !empty($result['doctor_note_optometrist']) ? $result['doctor_note_optometrist'] : str_replace('PATIENT_NAME', $result['firstname'] . ' ' . $result['lastname'], OPTICIAN_COMMENT); ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
