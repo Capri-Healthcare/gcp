@@ -32,7 +32,9 @@ class Filesystem
 		$name = $data['file_name'].'.'.$ext;
 		$target_file = $data['filedir'].$name;
 		if (move_uploaded_file($file['tmp_name'], $target_file)) {
-			$this->reduceImageSize($target_file);
+			if(in_array($ext, array('jpg', 'jpeg', 'gif', 'png', 'svg'))){
+				$this->reduceImageSize($target_file);
+			}
 			return array("error" => false, "name" => $name);
 		} else {
 			return array("error" => false, "message" => "No file uploaded.");

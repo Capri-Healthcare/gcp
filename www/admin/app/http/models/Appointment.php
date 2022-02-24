@@ -655,7 +655,6 @@ class Appointment extends Model
 
         $body .= "Dear " . ucfirst($appointment['referee_name']) . ",<br><br>";
 
-        $body .= "Patient Details:"."<br>";
         $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         if (!empty($appointment['address'])) {
             $body .= $appointment['address']['address1'] . "<br>" . $appointment['address']['address2'] . "<br>";
@@ -710,7 +709,6 @@ class Appointment extends Model
         $body .= "<br>";
         if (!empty($appointment['doctor_note_optometrist'])) {
             $body .= "<br><br>";
-            $body .= "<strong>Doctor's Comments:</strong> ";
             $body .= $appointment['doctor_note_optometrist'];
         }
 
@@ -899,7 +897,7 @@ class Appointment extends Model
         $body .= "<div style='font-size:13px; padding-left:0px; padding-right:0px;'>";
 
 		$body .=  "<table width='100%' border=0 cellspacing='0'>";
-        $body .=  "<tr><td style='padding-right:15px;'  valign='top'>";
+        $body .=  "<tr><td style='padding-right:15px;' valign='top'>";
 		
         $body .= "Date of visit: " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "Date typed: " . date('d-m-Y');
@@ -918,7 +916,7 @@ class Appointment extends Model
         }
         
         
-        $body .= "</td><td width='220px' style='font-size: 12px; pandding:0px;' valign='top'>
+        $body .= "</td><td width='202px' style='font-size: 12px; pandding:0px;' valign='top'>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
         
@@ -971,7 +969,6 @@ class Appointment extends Model
 
         if (!empty($appointment['doctor_note'])) {
             $body .= "<br><br>";
-            $body .= "<strong>Doctor's Comments:</strong> ";
             $body .= $appointment['doctor_note'];
         }
         $body .= "<br>";
@@ -990,9 +987,10 @@ class Appointment extends Model
 
 
         $body .= "<br><br>";
-        $body .= "CC:"."<br><br>";
+        
         $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
         if(!empty($gp_address)){
+            $body .= "CC:"."<br><br>";
             $referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
             foreach($referee_address_arr as $address){
                 $body .= $address."<br>";
