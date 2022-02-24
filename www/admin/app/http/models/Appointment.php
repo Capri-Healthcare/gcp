@@ -648,7 +648,7 @@ class Appointment extends Model
             }
         }
 
-        $body .= "</td><td width='220px' style='font-size: 12px; pandding:0px;' valign='top'>
+        $body .= "</td><td width='202px' style='font-size: 12px; pandding:0px;' valign='top'>
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
         
@@ -778,13 +778,13 @@ class Appointment extends Model
             <table style='width:100%;' border=0 cellspacing='0'>
                 <tr>";
                 
-        $header .= "<td width='35%' style='padding:0px; color: #333; font-size: 10px;'><strong>" . $doctor_address[0]['title'] . "</strong>
+        $header .= "<td width='37%' style='padding:0px; color: #333; font-size: 10px;'><strong>" . $doctor_address[0]['title'] . "</strong>
             <br>" . $doctor_address[0]['address'] . ", " . $doctor_address[0]['city'] . ", " . $doctor_address[0]['pincode'] . "
             </td>";
-            $header .= "<td width='35%' style='padding:0px; color: #333; font-size: 10px;'><strong>" . $doctor_address[1]['title'] . "</strong>
+            $header .= "<td width='36%' style='padding:0px; color: #333; font-size: 10px;'><strong>" . $doctor_address[1]['title'] . "</strong>
             <br>" . $doctor_address[1]['address'] . ", " . $doctor_address[1]['city'] . ", " . $doctor_address[1]['pincode'] . "
             </td>";
-            $header .= "<td width='30%' style='padding:0px; color: #333; font-size: 10px;'><strong>" . $doctor_address[2]['title'] . "</strong>
+            $header .= "<td width='28%' style='padding:0px; color: #333; font-size: 10px;'><strong>" . $doctor_address[2]['title'] . "</strong>
             <br>" . $doctor_address[2]['address'] . ", " . $doctor_address[2]['city'] . ", " . $doctor_address[2]['pincode'] . "
             </td>";
         $header .= "</tr>
