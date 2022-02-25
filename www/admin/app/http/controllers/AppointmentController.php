@@ -227,7 +227,7 @@ class AppointmentController extends Controller
         }
 
         $data['summary'] = $summary;
-
+//echo "<pre>"; print_r($data);exit;
         /*Render Blog edit view*/
         $this->response->setOutput($this->load->view('appointment/appointment_view', $data));
     }
@@ -296,6 +296,7 @@ class AppointmentController extends Controller
             $data['result'] = $this->model_appointment->getAppointment($id);
         }
         $data['result']['diagnosis'] = json_decode($data['result']['diagnosis'], true);
+        $data['result']['relations_with_glaucoma_patient'] = json_decode($data['result']['relations_with_glaucoma_patient'], true);
 
         if (!$data['result']) {
             $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Appointment does not exist in database!');

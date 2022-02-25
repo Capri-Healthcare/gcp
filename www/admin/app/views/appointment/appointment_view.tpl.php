@@ -296,7 +296,39 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Anterior chamber</td>
+                                            <td>CCT</td>
+                                            <td class="text-dark">
+                                                <table style="padding: 0px;">
+                                                    <tr>
+                                                        <td style="padding:0px;">
+                                                            <b>RE: </b><?php echo (isset($result['cct_right']) && $result['cct_right'] > 0) ? $result['cct_right'] : '' ?>
+
+                                                        </td>
+                                                        <td style="padding:0px;">
+                                                            <b>LE: </b><?php echo (isset($result['cct_left']) AND $result['cct_right'] > 0) ? $result['cct_left'] : '' ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pupil</td>
+                                            <td class="text-dark">
+                                                <table style="padding: 0px;">
+                                                    <tr>
+                                                        <td style="padding:0px;">
+                                                            <b>RE: </b><?php echo (isset($result['pupil_right'])) ? $result['pupil_right'] : '' ?>
+
+                                                        </td>
+                                                        <td style="padding:0px;">
+                                                            <b>LE: </b><?php echo (isset($result['pupil_left'])) ? $result['pupil_left'] : '' ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Anterior chamber angle</td>
                                             <td class="text-dark">
                                                 <table style="padding: 0px;">
                                                     <tr>
@@ -312,7 +344,7 @@
                                           </td>
                                         </tr>
                                         <tr>
-                                            <td>Anterior chamber comment</td>
+                                            <td>Anterior segment</td>
                                             <td class="text-dark">
                                                 <table style="padding: 0px;">
                                                     <tr>
@@ -373,22 +405,6 @@
                                                         <p class="text-danger text-center">No documents found !!!</p>
                                                     <?php } ?>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>CCT</td>
-                                            <td class="text-dark">
-                                                <table style="padding: 0px;">
-                                                    <tr>
-                                                        <td style="padding:0px;">
-                                                            <b>RE: </b><?php echo (isset($result['cct_right']) && $result['cct_right'] > 0) ? $result['cct_right'] : '' ?>
-
-                                                        </td>
-                                                        <td style="padding:0px;">
-                                                            <b>LE: </b><?php echo (isset($result['cct_left']) AND $result['cct_right'] > 0) ? $result['cct_left'] : '' ?>
-                                                        </td>
-                                                    </tr>
-                                                </table>
                                             </td>
                                         </tr>
                                         <tr>
@@ -568,6 +584,10 @@
                                             <td class="text-dark"><?php echo (isset($result['diagnosis'])) ? implode(', ',json_decode($result['diagnosis'],true)) : '' ?></td>
                                         </tr>
                                         <tr>
+                                            <td>Diagnosis Other</td>
+                                            <td class="text-dark"><?php echo isset($result['diagnosis_other']) ? $result['diagnosis_other'] : '' ?></td>
+                                        </tr>
+                                        <tr>
                                             <td>Diagnosis Comment</td>
                                             <td class="text-dark"><?php echo isset($result['diagnosis_comment']) ? $result['diagnosis_comment'] : '' ?></td>
                                         </tr>
@@ -594,7 +614,7 @@
                                         <?php if($result['family_history_of_glaucoma'] == 'YES'){ ?>
                                         <tr>
                                             <td>Who has the glaucoma condition in your family?</td>
-                                            <td class="text-dark"><?php echo isset($result['relations_with_glaucoma_patient']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_MEMBER'][$result['relations_with_glaucoma_patient']] : '' ?></td>
+                                            <td class="text-dark"><?php echo (isset($result['relations_with_glaucoma_patient'])) ? implode(', ',json_decode($result['relations_with_glaucoma_patient'],true)) : '' ?></td>
                                         </tr>
                                         <?php } ?>
                                         <tr>

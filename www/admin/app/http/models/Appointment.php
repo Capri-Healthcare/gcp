@@ -178,7 +178,10 @@ class Appointment extends Model
         `psd_deviation_left` = ?, 
         `cct_right` = ?, 
         `cct_left` = ?, 
+        `pupil_right` = ?, 
+        `pupil_left` = ?, 
         `diagnosis` = ?,
+        `diagnosis_other` = ?,
         `diagnosis_comment` = ?,
         `outcome` = ?,
         `outcome_comment` = ?,
@@ -215,7 +218,10 @@ class Appointment extends Model
             $data['psd_deviation_left'],
             $data['cct_right'],
             $data['cct_left'],
+            $data['pupil_right'],
+            $data['pupil_left'],
             json_encode($data['diagnosis']),
+            $data['diagnosis_other'],
             $data['diagnosis_comment'],
             $data['outcome'],
             $data['outcome_comment'],
@@ -226,7 +232,7 @@ class Appointment extends Model
             $data['doctor_note_optometrist'],
             $data['special_condition'],
             $data['family_history_of_glaucoma'],
-            $data['relations_with_glaucoma_patient'],
+            json_encode($data['relations_with_glaucoma_patient']),
             (int)$data['id']
         ));
 
@@ -664,11 +670,17 @@ class Appointment extends Model
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_comment'])) {
             $body .= "<br><br>";
             $body .= "Diagnosis:<br>";
+            $index = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
-                    $body .= " &nbsp; &nbsp; &nbsp;".($key+1).'. '.$diagnosis.'<br>';
+                    $body .= " &nbsp; &nbsp; &nbsp;". $index .'. '.$diagnosis.'<br>';
+                    $index++;
                 }
                 //$body .= implode(', ', json_decode($appointment['diagnosis'], true));
+            }
+            if (!empty($appointment['diagnosis_other'])) {
+                //$body .= !empty($appointment['diagnosis']) ? ", " : "";
+                $body .= " &nbsp; &nbsp; &nbsp;". $index . '. '.$appointment['diagnosis_other'].'<br>';
             }
             if (!empty($appointment['diagnosis_comment'])) {
                 //$body .= !empty($appointment['diagnosis']) ? ", " : "";
@@ -925,11 +937,17 @@ class Appointment extends Model
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_comment'])) {
             $body .= "<br><br>";
             $body .= "Diagnosis:<br>";
+            $index = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
-                    $body .= " &nbsp; &nbsp; &nbsp;".($key+1).'. '.$diagnosis.'<br>';
+                    $body .= " &nbsp; &nbsp; &nbsp;". $index .'. '.$diagnosis.'<br>';
+                    $index++;
                 }
                 //$body .= implode(', ', json_decode($appointment['diagnosis'], true));
+            }
+            if (!empty($appointment['diagnosis_other'])) {
+                //$body .= !empty($appointment['diagnosis']) ? ", " : "";
+                $body .= " &nbsp; &nbsp; &nbsp;". $index . '. '.$appointment['diagnosis_other'].'<br>';
             }
             if (!empty($appointment['diagnosis_comment'])) {
                 //$body .= !empty($appointment['diagnosis']) ? ", " : "";

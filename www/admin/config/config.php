@@ -175,15 +175,18 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'UNSTABLE_NEED_CHANGE_IN_TREATMENT' => 'Unstable - Need change in treatment- change medication above',
         'UNSTABLE_BOOK_FOR_LASER' => 'Book for laser',
         'UNSTABLE_BOOK_FOR_SURGERY' => 'Book for Surgery',
+        'DISCHARGE_VIRTUAL_REVIEW' => 'Discharge / Virtual review'
     ],
     'FOLLOW_UP_OR_NEXT_APPOINTMENT' => [
         '0' => ['name' => 'No follow up required', 'intervalrime' => 'days', 'value' => '0'],
         //'1' => ['name' => '1 days after change in treatment to see the effect', 'intervalrime' => 'days', 'value' => '1'],
-        '2' => ['name' => '2 months after change in treatment to see the effect', 'intervalrime' => 'months', 'value' => '2'],
-        '3' => ['name' => '2 months after laser appointment', 'intervalrime' => 'months', 'value' => '2'],
+        //'2' => ['name' => '2 months after change in treatment to see the effect', 'intervalrime' => 'months', 'value' => '2'],
+        //'3' => ['name' => '2 months after laser appointment', 'intervalrime' => 'months', 'value' => '2'],
         '4' => ['name' => '4 months', 'intervalrime' => 'months', 'value' => '4'],
         '5' => ['name' => '6 months', 'intervalrime' => 'months', 'value' => '6'],
+        '7' => ['name' => '9 months', 'intervalrime' => 'months', 'value' => '9'],
         '6' => ['name' => '12 months', 'intervalrime' => 'months', 'value' => '12'],
+        
     ],
     'GLAUCOMA_CARE_PLAN_REQUIRED' => [
         'YES' => 'Yes',

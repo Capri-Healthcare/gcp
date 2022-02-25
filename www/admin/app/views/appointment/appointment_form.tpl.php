@@ -911,10 +911,64 @@
                                             </div>
                                         </div>
                                     <?php } ?>
+
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Anterior Chamber - RE</label>
+                                                <label>CCT - RE</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[cct_right]"
+                                                           value="<?php echo $result['cct_right']; ?>"
+                                                           max="999" 
+                                                           min ="0"  <?php echo $examination_notes_readonly ? 'readonly':''?>>
+                                                           &nbsp;<b>Microns</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>CCT - LE</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control"
+                                                           name="appointment[cct_left]"
+                                                           value="<?php echo $result['cct_left']; ?>" 
+                                                           max="999" 
+                                                           min ="0" <?php echo $examination_notes_readonly ? 'readonly':''?>>
+                                                           &nbsp;<b>Microns</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Pupil - RE</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                           name="appointment[pupil_right]"
+                                                           value="<?php echo $result['pupil_right']; ?>"
+                                                           maxlength=90
+                                                           <?php echo $examination_notes_readonly ? 'readonly':''?>>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Pupil - LE</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                           name="appointment[pupil_left]"
+                                                           value="<?php echo $result['pupil_left']; ?>"
+                                                           maxlength=90
+                                                           <?php echo $examination_notes_readonly ? 'readonly':''?>>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Anterior Chamber Angle - RE</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
@@ -922,7 +976,7 @@
                                                     </div>
                                                     <select name="appointment[anterior_chamber_right]"
                                                             class="custom-select" <?php echo $examination_notes_readonly ? 'disabled':''?>>
-                                                        <option value="">Select anterior chamber</option>
+                                                        <option value="">Select anterior chamber angle</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
                                                                 <?php echo (isset($result['anterior_chamber_right']) && $result['anterior_chamber_right'] == $key) ? 'selected' : '' ?> >
@@ -935,7 +989,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Anterior Chamber - LE</label>
+                                                <label>Anterior Chamber Angle - LE</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                             <span class="input-group-text"><i
@@ -943,7 +997,7 @@
                                                     </div>
                                                     <select name="appointment[anterior_chamber_left]"
                                                             class="custom-select" <?php echo $examination_notes_readonly ? 'disabled':''?>>
-                                                        <option value="">Select anterior chamber</option>
+                                                        <option value="">Select anterior chamber angle</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['ANTERIOR_CHAMBER'] as $key => $value) { ?>
                                                             <option value="<?php echo $key; ?>"
                                                                 <?php echo (isset($result['anterior_chamber_left']) && $result['anterior_chamber_left'] == $key) ? 'selected' : '' ?> >
@@ -958,7 +1012,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Anterior Chamber Comment - RE</label>
+                                                <label>Anterior Segment - RE</label>
                                                 <input type="text" class="form-control"
                                                        name="appointment[anterior_chamber_right_comment]"
                                                        value="<?php echo $result['anterior_chamber_right_comment']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>
@@ -966,7 +1020,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Anterior Chamber Comment - LE</label>
+                                                <label>Anterior Segment - LE</label>
                                                 <input type="text" class="form-control"
                                                        name="appointment[anterior_chamber_left_comment]"
                                                        value="<?php echo $result['anterior_chamber_left_comment']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>
@@ -1059,34 +1113,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>CCT - RE</label>
-                                                <div class="input-group">
-                                                    <input type="number" class="form-control"
-                                                           name="appointment[cct_right]"
-                                                           value="<?php echo $result['cct_right']; ?>"
-                                                           max="999" 
-                                                           min ="0"  <?php echo $examination_notes_readonly ? 'readonly':''?>>
-                                                           &nbsp;<b>Microns</b>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>CCT - LE</label>
-                                                <div class="input-group">
-                                                    <input type="number" class="form-control"
-                                                           name="appointment[cct_left]"
-                                                           value="<?php echo $result['cct_left']; ?>" 
-                                                           max="999" 
-                                                           min ="0" <?php echo $examination_notes_readonly ? 'readonly':''?>>
-                                                           &nbsp;<b>Microns</b>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -1388,6 +1415,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label>Diagnosis Other</label>
+                                                <input type="text" class="form-control"
+                                                       name="appointment[diagnosis_other]"
+                                                       value="<?php echo $result['diagnosis_other']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Diagnosis Comment</label>
                                                 <input type="text" class="form-control"
                                                        name="appointment[diagnosis_comment]"
@@ -1501,12 +1534,12 @@
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                                     </div>
-                                                    <select name="appointment[relations_with_glaucoma_patient]" id="relations_with_glaucoma_patient"
+                                                    <select name="appointment[relations_with_glaucoma_patient][]" multiple id="relations_with_glaucoma_patient"
                                                             class="custom-select relations_with_glaucoma_patient" <?php echo $examination_notes_readonly ? 'disabled':''?>>
                                                         <option value="">Select</option>
                                                         <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_MEMBER'] as $key => $value) { ?>
-                                                            <option value="<?php echo $key; ?>"
-                                                                <?php echo (isset($result['relations_with_glaucoma_patient']) && $result['relations_with_glaucoma_patient'] == $key) ? 'selected' : '' ?> >
+                                                            <option value="<?php echo $value; ?>"
+                                                                <?php echo (isset($result['relations_with_glaucoma_patient']) &&  in_array($value, $result['relations_with_glaucoma_patient'])) ? 'selected' : '' ?> >
                                                                 <?php echo $value; ?>
                                                             </option>
                                                         <?php } ?>

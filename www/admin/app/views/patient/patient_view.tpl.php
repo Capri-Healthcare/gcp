@@ -513,7 +513,43 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Anterior chamber</td>
+                                                                                    <td>CCT</td>
+                                                                                    <td class="text-dark">
+                                                                                        <table style="padding: 0px;">
+                                                                                            <tr>
+                                                                                                <td width="50%"
+                                                                                                    style="padding:0px;">
+                                                                                                    <b>RE: </b><?php echo isset($value['cct_right']) ? $value['cct_right'] : '' ?>
+
+                                                                                                </td>
+                                                                                                <td width="50%"
+                                                                                                    style="padding:0px;">
+                                                                                                    <b>LE: </b><?php echo isset($value['cct_left']) ? $value['cct_left'] : '' ?>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Pupil</td>
+                                                                                    <td class="text-dark">
+                                                                                        <table style="padding: 0px;">
+                                                                                            <tr>
+                                                                                                <td width="50%"
+                                                                                                    style="padding:0px;">
+                                                                                                    <b>RE: </b><?php echo isset($value['pupil_right']) ? $value['pupil_right'] : '' ?>
+
+                                                                                                </td>
+                                                                                                <td width="50%"
+                                                                                                    style="padding:0px;">
+                                                                                                    <b>LE: </b><?php echo isset($value['pupil_left']) ? $value['pupil_left'] : '' ?>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Anterior chamber angle</td>
                                                                                     <td class="text-dark">
                                                                                         <table style="padding: 0px;">
                                                                                             <tr>
@@ -531,7 +567,7 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Anterior chamber comment</td>
+                                                                                    <td>Anterior segment</td>
                                                                                     <td class="text-dark">
                                                                                         <table style="padding: 0px;">
                                                                                             <tr>
@@ -607,24 +643,7 @@
                                                                                         </div>
                                                                                     </td>
                                                                                 </tr>
-                                                                                <tr>
-                                                                                    <td>CCT</td>
-                                                                                    <td class="text-dark">
-                                                                                        <table style="padding: 0px;">
-                                                                                            <tr>
-                                                                                                <td width="50%"
-                                                                                                    style="padding:0px;">
-                                                                                                    <b>RE: </b><?php echo isset($value['cct_right']) ? $value['cct_right'] : '' ?>
-
-                                                                                                </td>
-                                                                                                <td width="50%"
-                                                                                                    style="padding:0px;">
-                                                                                                    <b>LE: </b><?php echo isset($value['cct_left']) ? $value['cct_left'] : '' ?>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                        </table>
-                                                                                    </td>
-                                                                                </tr>
+                                                                                
                                                                                 <tr>
                                                                                     <td>NFL thickness</td>
                                                                                     <td class="text-dark">
@@ -836,6 +855,10 @@
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis']) ? implode(', ', json_decode($value['diagnosis'], true)) : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    <td>Diagnosis Other</td>
+                                                                                    <td class="text-dark"><?php echo isset($value['diagnosis_other']) ? $value['diagnosis_other'] : '' ?></td>
+                                                                                </tr>
+                                                                                <tr>
                                                                                     <td>Diagnosis Comment</td>
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_comment']) ? $value['diagnosis_comment'] : '' ?></td>
                                                                                 </tr>
@@ -863,7 +886,7 @@
                                                                                 <?php if($value['family_history_of_glaucoma'] == 'YES'){ ?>
                                                                                 <tr>
                                                                                     <td>Who has the glaucoma condition in your family?</td>
-                                                                                    <td class="text-dark"><?php echo isset($value['relations_with_glaucoma_patient']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FAMILY_MEMBER'][$value['relations_with_glaucoma_patient']] : '' ?></td>
+                                                                                    <td class="text-dark"><?php echo isset($value['relations_with_glaucoma_patient']) ? implode(', ',json_decode($value['relations_with_glaucoma_patient'],true)) : '' ?></td>
                                                                                 </tr>
                                                                                 <?php } ?>
                                                                                 <tr>

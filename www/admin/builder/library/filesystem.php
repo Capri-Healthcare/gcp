@@ -17,7 +17,7 @@ class Filesystem
 		}
 
 		if ($file['error'] != 0) {
-			return array("error" => true, "message" => "No file uploaded.");
+			return array("error" => true, "message" => "No file uploaded." . $ext);
 		}
 
 		if ($file['size'] > 4999999) {
