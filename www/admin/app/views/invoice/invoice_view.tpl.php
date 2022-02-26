@@ -69,7 +69,9 @@
                                         <tbody>
                                         <tr>
                                             <td class="text">Invoice ID</td>
-                                            <td class="text w-min-130"><?php echo 'INV-' . str_pad($result['id'], 5, '0', STR_PAD_LEFT); ?></td>
+                                            <td class="text w-min-130"><?php 
+                                            $invoice_number = 'INV-' . str_pad($result['id'], 5, '0', STR_PAD_LEFT);
+                                            echo $invoice_number; ?></td>
                                         </tr>
                                         <tr>
                                             <td class="text">Invoice Date</td>
@@ -478,7 +480,7 @@
                         </div>
                         <div class="form-group">
                             <label>Subject</label>
-                            <input type="text" class="form-control" name="mail[subject]" value="Invoice Reminder"
+                            <input type="text" class="form-control" name="mail[subject]" value="Reminder for unpaid invoices"
                                    placeholder="Subject" required>
                         </div>
                         <div class="form-group">
@@ -492,7 +494,28 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Message</label>
-                            <textarea name="mail[message]" class="mail-summernote" placeholder="Message"></textarea>
+                            <textarea name="mail[message]" class="mail-summernote" placeholder="Message">
+
+                            <?php 
+                            $address_arr = json_decode($result['address'], true);
+                            $patient_address = "";
+                            $patient_address.= !empty($address_arr['address1']) ? ('<br>'.$address_arr['address1']) : '';
+                            $patient_address.= !empty($address_arr['address2']) ? ('<br>'.$address_arr['address2']) : '';
+                            $patient_address.= !empty($address_arr['city']) ? ('<br>'.$address_arr['city']) : '';
+                            $patient_address.= !empty($address_arr['postal']) ? ('<br>'.$address_arr['postal']) : '';
+                            
+                                $emial_body = INVOICE_REMINDER_EMAIL_TEMPLATE;
+                                $emial_body = str_replace("#TODAY_DATE", date('d-m-Y'), $emial_body);
+                                $emial_body = str_replace("#PATIENT_FULLNAME", $result['name'], $emial_body);
+                                $emial_body = str_replace("#PATIENT_ADDRESS", $patient_address, $emial_body);
+                                $emial_body = str_replace("#INVOICE_NUMBER", $invoice_number, $emial_body);
+                                $emial_body = str_replace("#INVOICE_DATE", $result['invoicedate'], $emial_body);
+                                $emial_body = str_replace("#INVOICE_TREATMENT_DATE", $result['treatmentdate'], $emial_body);
+                                $emial_body = str_replace("#INVOICE_TOTAL", $common['info']['currency_abbr'] . $result['amount'], $emial_body);
+                                $emial_body = str_replace("#INVOICE_DUE", $common['info']['currency_abbr'] . $result['due'], $emial_body);
+                                echo $emial_body;
+                             ?>
+                            </textarea>
                         </div>
                         <input type="hidden" name="mail[id]" value="<?php echo $result['id']; ?>">
                         <input type="hidden" name="_token" value="<?php echo $common['token']; ?>">

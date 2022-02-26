@@ -673,8 +673,10 @@ class Appointment extends Model
             $index = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
-                    $body .= " &nbsp; &nbsp; &nbsp;". $index .'. '.$diagnosis.'<br>';
-                    $index++;
+                    if(!empty($diagnosis)){
+                        $body .= " &nbsp; &nbsp; &nbsp;". $index .'. '.$diagnosis.'<br>';
+                        $index++;
+                    }
                 }
                 //$body .= implode(', ', json_decode($appointment['diagnosis'], true));
             }
@@ -940,8 +942,10 @@ class Appointment extends Model
             $index = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
-                    $body .= " &nbsp; &nbsp; &nbsp;". $index .'. '.$diagnosis.'<br>';
-                    $index++;
+                    if(!empty($diagnosis)){
+                        $body .= " &nbsp; &nbsp; &nbsp;". $index .'. '.$diagnosis.'<br>';
+                        $index++;
+                    }
                 }
                 //$body .= implode(', ', json_decode($appointment['diagnosis'], true));
             }
