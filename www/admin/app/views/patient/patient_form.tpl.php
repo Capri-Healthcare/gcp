@@ -367,7 +367,7 @@
                         
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Optician Name</label>
+                                    <label>Optician / Third Party Name</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-user"></i></span>
@@ -378,7 +378,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Optician Email</label>
+                                    <label>Optician / Third Party Email</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-email"></i></span>
@@ -389,7 +389,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Optician Address</label>
+                                    <label>Optician / Third Party Address</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-email"></i></span>

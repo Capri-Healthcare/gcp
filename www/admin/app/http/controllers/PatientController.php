@@ -391,7 +391,11 @@ class PatientController extends Controller
 
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient Information updated successfully.');
         } else {
-            $gcpID = $this->model_patient->gpPractice($data['gp_practice']);
+            $gp_data['gp_practice'] = $data['gp_practice'];
+            $gp_data['gp_name'] = $data['gp_name'];
+            $gp_data['gp_address'] = $data['gp_address'];
+            $gp_data['gp_email'] = $data['gp_email'];
+            $gcpID = $this->model_patient->gpPractice($gp_data);
             $data['gp_practice'] = $gcpID;
 
             if (!$this->model_patient->checkPatientEmail($data['mail'])) {

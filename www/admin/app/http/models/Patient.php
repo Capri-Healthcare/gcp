@@ -136,23 +136,32 @@ class Patient extends Model
         $data['office_phone'] = isset($data['office_phone']) ? $data['office_phone'] : $data['office_number'];
         
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (
-            `title`, `firstname`, `lastname`, `email`,
-            `mobile`, `office_number`,`address`, 
-            `gender`, `dob`, `history`, `other`,
-            `temp_hash`, `status`, `user_id`, `hospital_code`,
-            `date_of_joining`, `optician_name`, `optician_email`, `optician_address`) 
+            `title`, `firstname`, `lastname`, `dob`, 
+            `gender`, `nhs_patient_number`, `email`, `mobile`,
+            `office_number`, 
+            `gp_name`, `gp_practice`, `gp_address`, `gp_email`, 
+            `optician_name`, `optician_email`, `optician_address`,
+            `address`, 
+            `history`, `other`,
+            `temp_hash`, `user_id`, `hospital_code`, `date_of_joining` ) 
         VALUES (
             ?, ?, ?, ?,
+            ?, ?, ?, ?,
+            ?, 
+            ?, ?, ?, ?,
             ?, ?, ?,
-            ?, ?, ?, ?,
-            ?, ?, ?, ?,
+            ?, 
+            ?, ?,
             ?, ?, ?, ?)", 
         array(
-            $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['mail'], 
-            $data['mobile'], $data['office_phone'], $data['address'], 
-            $data['gender'], $data['dob'], $data['history'], $data['other'], 
-            $data['hash'], 1, $data['user_id'],$data['hospital_code'], 
-            $data['datetime'], $data['optician_name'], $data['optician_email'], $data['optician_address'])
+            $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['dob'], 
+            $data['gender'], $data['nhs_patient_number'], $data['mail'], $data['mobile'], 
+            $data['office_phone'], 
+            $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['gp_email'], 
+            $data['optician_name'], $data['optician_email'], $data['optician_address'], 
+            $data['address'], 
+            $data['history'], $data['other'], 
+            $data['hash'], $data['user_id'],$data['hospital_code'], date('Y-m-d H:i:s'))
         );
 
         if ($this->database->error()) {

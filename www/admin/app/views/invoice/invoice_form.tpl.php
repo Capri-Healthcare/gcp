@@ -429,6 +429,7 @@
                             </div>
                             <select name="invoice[medical_insurers_name]" id="medical_insurers_name"
                                     class="custom-select">
+                                    <option value="">Select insurance company</option>
                                 <?php if (!empty(MEDICALE_INSURANCE_COMPANIES)) {
                                     foreach (MEDICALE_INSURANCE_COMPANIES as $insurance_company_code => $insurance_company_name) { ?>
                                         <option value="<?php echo $insurance_company_code ?>" <?php echo ($result['medical_insurers_name'] == $insurance_company_code) ? "Selected" : "" ?>><?php echo $insurance_company_name; ?></option>

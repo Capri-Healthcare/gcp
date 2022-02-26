@@ -132,7 +132,7 @@
                             <td>
                                 <?php 
                                 
-                                    echo isset($result['address']['address1']) ? ("<br>" . $result['address']['address1']) : '';
+                                    echo isset($result['address']['address1']) ? ( $result['address']['address1']) : '';
                                     echo isset($result['address']['address2']) ? ("<br>" . $result['address']['address2']) : '';
                                     echo isset($result['address']['city']) ? ("<br>" . $result['address']['city']) : '';
                                     echo isset($result['address']['country']) ? ("<br>" . $result['address']['country']) : '';
