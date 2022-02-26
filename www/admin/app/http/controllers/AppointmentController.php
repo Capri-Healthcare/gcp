@@ -366,6 +366,7 @@ class AppointmentController extends Controller
 
             // Get Last Appointment Data
             $appointment_last = $this->model_appointment->getLastPatientAppointment($data['result']);
+            //echo "<pre>";print_r($appointment_last);exit;
             $highestIop = $this->model_appointment->getMaxIOPAppointment($data['result']);
             $data['cct_right'] = $appointment_last['cct_right'];
             $data['cct_left'] = $appointment_last['cct_left'];
@@ -502,7 +503,7 @@ class AppointmentController extends Controller
                     $data['appointment']['video_consultation_token'] = $tokBoxSession['video_consultation_token'];
                 }
                 if (isset($data['submitComplete'])) {
-                    $data['appointment']['status'] = COMPLETE_APPOINTMENT_STATUS_ID;
+                    $data['appointment']['status'] = COMPLETED_APPOINTMENT_STATUS_ID;
                 }
 
                 $result = $this->model_appointment->updateAppointment($data['appointment']);
@@ -527,7 +528,7 @@ class AppointmentController extends Controller
 
                 //Update appointment as completed
                 if (isset($data['submitComplete'])) {
-                    $data['appointment']['status'] = COMPLETE_APPOINTMENT_STATUS_ID;
+                    $data['appointment']['status'] = COMPLETED_APPOINTMENT_STATUS_ID;
                     $result = $this->model_appointment->updateAppointmentStatus($data['appointment']['id'], $data['appointment']['status']);
                 }
 
@@ -550,7 +551,7 @@ class AppointmentController extends Controller
 
                 //Update appointment as completed
                 if (isset($data['submitComplete'])) {
-                    $data['appointment']['status'] = COMPLETE_APPOINTMENT_STATUS_ID;
+                    $data['appointment']['status'] = COMPLETED_APPOINTMENT_STATUS_ID;
                     $result = $this->model_appointment->updateAppointmentStatus($data['appointment']['id'], $data['appointment']['status']);
                 }
 

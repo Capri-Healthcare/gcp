@@ -29,9 +29,9 @@ define('MEDICALE_INSURANCE_COMPANIES', ['BUPA' => 'Bupa',
 										'AVIVA' => 'Aviva',
 										'BENEDON' => 'Benedon',
 										'OTHER' => 'Other']);
-
-define('CONFIRMED_APPOINTMENT_STATUS_ID', 3);
+										
 define('COMPLETED_APPOINTMENT_STATUS_ID', 5);
+define('CONFIRMED_APPOINTMENT_STATUS_ID', 3);
 define('APPOINTMENT_VIDEO_CONSULTATION_TYPE', 'video_consultation');
 
 define('DEFAULT_COUNTRY_CODE', '+44');
