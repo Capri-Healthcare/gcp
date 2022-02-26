@@ -159,6 +159,11 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'SECONDARY_GLAUCOMA_PIGMENT_DISPERSION' => 'Secondary Glaucoma - Pigment Dispersion',
         'SECONDARY_GLAUCOMA_TRAUMA' => 'Secondary Glaucoma - Trauma',
         'SECONDARY_GLAUCOMA_PREV_VR_SURGERY' => 'Secondary Glaucoma - Prev VR Surgery',
+        'BLEPHRITIS' => 'Blephritis',
+        'OCULAR_SURFACE_DISORDER' => 'Ocular surface disorder',
+        'CATARACT' => 'Cataract',
+        'PSEUDOPHAKOS' => 'Pseudophakos',
+        'NO_EVIDENCE_OF_GLAUCOMA' => 'No evidence of glaucoma',
 
     ],
     'ANTERIOR_CHAMBER' => [
