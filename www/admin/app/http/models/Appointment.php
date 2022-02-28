@@ -1007,9 +1007,9 @@ class Appointment extends Model
 
         $body .= "<br><br>";
         
-        $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
         if(!empty($gp_address)){
             $body .= "CC:"."<br><br>";
+            $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
             $referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
             foreach($referee_address_arr as $address){
                 $body .= $address."<br>";
