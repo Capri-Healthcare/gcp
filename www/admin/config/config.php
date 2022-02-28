@@ -266,9 +266,9 @@ define('INVOICE_TERMS', "Mr Sharma reserves the right to charge interest and a c
 //Changes made on 01-02-2022
 
 define('INVOICE_DOCTOR_DETAIL', [
-    "NAME" => 'Tarun Sharma',
-    "DEGREE" => 'MBBS MD FRCS (Ed)',
-    "POSITION" => 'Consultant Ophthalmic Surgeon',
+    "NAME" => 'Mr. Tarun Sharma',
+    "DEGREE" => 'MBBS, MD(Glaucoma), FRCS Ed',
+    "POSITION" => 'Regional Specialist in Glaucoma & Cataract Surgery',
 ]);
 /* define('APPOINTMENT_SIDE_BAR',"
 <table  border=0 cellspacing='0' style='padding:0px'> 

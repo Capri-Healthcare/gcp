@@ -17,7 +17,7 @@
         .invoice_table th {
             border: 1px solid #000;
             padding: 5px 8px;
-            font-size: 13px;
+            
         }
 
         .item_heading {
@@ -30,8 +30,13 @@
             display: block;
         }
 
-        .font_arial {
-            font-family: Arial, Helvetica, sans-serif;
+        H4 { margin-bottom: 0px}
+        @page {
+            margin: 40px 20px 50px 20px;
+        }
+        body {  
+            font-family: 'Helvetica Neue, Helvetica, Arial, sans-serif';
+            font-size: 13px;
         }
     </style>
 </head>
@@ -41,13 +46,18 @@
     <table border="0" style="padding:10px !important;">
         <tr>
             <td>
-                <table width="100%" style="color:#000" border="0">
+                <table width="100%" style=" font-size:15px; color:#000" border="0">
                     <tbody>
                         <tr>
-                            <td width="35%" class="letter_head" style="vertical-align:bottom">
-                                <strong>Mr <?php echo constant('INVOICE_DOCTOR_DETAIL')['NAME']; ?></strong><br />
-                                <span><?php echo constant('INVOICE_DOCTOR_DETAIL')['DEGREE']; ?></span><br />
-                                <span><?php echo constant('INVOICE_DOCTOR_DETAIL')['POSITION']; ?></span>
+                            <td width="35%" class="letter_head" style="vertical-align:top">
+                                <div style='text-align:left; color: #333;'>
+                                    <div>
+                                        <span style='font-size:20px; font-weight:bold;'><?php echo constant('INVOICE_DOCTOR_DETAIL')['NAME']; ?></span><br>
+                                        <span style='font-size:12px; font-weight:bold;'><?php echo html_entity_decode(constant('INVOICE_DOCTOR_DETAIL')['DEGREE']); ?></span><br>
+                                        <span style='font-size:12px; font-weight:bold;'><?php echo html_entity_decode(constant('INVOICE_DOCTOR_DETAIL')['POSITION']); ?></span>
+                                    </div>
+                                    <!-- <span style='font-size: 13px;'>" . html_entity_decode($dr_qualification_position_specility) . "</span> -->
+                                </div>
                             </td>
                             <td width="25%" style="vertical-align:top">
                                 <img src="<?php echo URL_ADMIN . 'public/images/picture1.jpg'; ?>" width="100%" alt="Icon">
@@ -70,16 +80,13 @@
         </tr>
         <tr>
             <td>
-                <table border="0" style="margin-top:15px !important;">
+                <table border="0" >
                     <tbody>
                         <tr>
                             <td class="font_arial">
                                 <strong>Invoice/Statement: </strong>
                             </td>
                             <td class="font_arial"><strong><?php echo $result['info']['invoice_prefix'] . str_pad($result['id'], 5, '0', STR_PAD_LEFT); ?></strong></td>
-                        </tr>
-                        <tr>
-                            <td><br /></td>
                         </tr>
                         <tr>
                             <td width="5%">
@@ -96,49 +103,27 @@
                                 <td><?php echo date_format(date_create($result['treatmentdate']), $result['info']['date_format']); ?></td>
                             </tr>
                         <?php } ?>
-                        <!--                <tr>-->
-                        <!--                    <td>-->
-                        <!--                        <strong>Invoice Address:</strong>-->
-                        <!--                    </td>-->
-                        <!--                    <td>--><?php //echo $result['info']['address']['address1'].', '.$result['info']['address']['address2'].', '.$result['info']['address']['city'].', '.$result['info']['address']['country'].' - '.$result['info']['address']['postal']; 
-                                                        ?>
-                        <!--</td>-->
-                        <!--                </tr>-->
                     </tbody>
                 </table>
             </td>
         </tr>
         <tr>
             <td>
-                <table border="0" style="margin-top:15px !important;" width="100%">
+                <table border="0" style="" width="100%">
                     <tbody>
                         <tr>
-                            <td width="5%">
-                                <strong>Patient: </strong>
-                            </td>
-                            <td width="50%"><?php echo $result['name']; ?></td>
-                            <td width="5%">
-                                <strong>DOB: </strong>
-                            </td>
-                            <td width="40%"><?php echo date_format(date_create($result['dob']), 'd-m-Y'); ?></td>
-                        </tr>
-                        <tr>
-                            <td style="border-left: 0px solid; border-right: 0px solid;"></td>
-                        </tr>
-                        <tr>
-                            <td style="vertical-align: top;">
-                                <strong>Address: </strong>
-                            </td>
-                            <td>
-                                <?php 
+                            <td valign="top"><?php echo $result['name'].'<br>'; ?>
+                            <?php 
                                 
-                                    echo isset($result['address']['address1']) ? ( $result['address']['address1']) : '';
-                                    echo isset($result['address']['address2']) ? ("<br>" . $result['address']['address2']) : '';
-                                    echo isset($result['address']['city']) ? ("<br>" . $result['address']['city']) : '';
-                                    echo isset($result['address']['country']) ? ("<br>" . $result['address']['country']) : '';
-                                    echo isset($result['address']['postal']) ? ("<br>" . $result['address']['postal']) : '';
-    
-                                ?>
+                                echo isset($result['address']['address1']) ? ( $result['address']['address1']) : '';
+                                echo isset($result['address']['address2']) ? ("<br>" . $result['address']['address2']) : '';
+                                echo isset($result['address']['city']) ? ("<br>" . $result['address']['city']) : '';
+                                echo isset($result['address']['country']) ? ("<br>" . $result['address']['country']) : '';
+                                echo isset($result['address']['postal']) ? ("<br>" . $result['address']['postal']) : '';
+
+                            ?></td>
+                            <td valign="top">
+                                DOB: <?php echo date_format(date_create($result['dob']), 'd-m-Y'); ?>
                             </td>
                         </tr>
                     </tbody>

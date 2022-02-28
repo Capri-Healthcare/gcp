@@ -163,6 +163,10 @@
                             <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span>
                             </div>
                             <select name="invoice[status]" id="" class="custom-select" required>
+                                <option value="Unpaid" <?php if ("Unpaid" == $result['status']) {
+                                    echo "selected";
+                                } ?>>Unpaid
+                                </option>
                                 <option value="Paid" <?php if ("Paid" == $result['status']) {
                                     echo "selected";
                                 } ?>>Paid
@@ -171,10 +175,7 @@
                                     echo "selected";
                                 } ?>>Partially Paid
                                 </option>
-                                <option value="Unpaid" <?php if ("Unpaid" == $result['status']) {
-                                    echo "selected";
-                                } ?>>Unpaid
-                                </option>
+                                
                                 <option value="Pending" <?php if ("Pending" == $result['status']) {
                                     echo "selected";
                                 } ?>>Pending

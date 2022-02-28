@@ -113,7 +113,7 @@ return true;
 	{
 		//if ((strlen($phone_number) < 4) || (strlen($phone_number) > 32)) {
 
-		if ((strlen($phone_number) != 11)) {
+		if (strlen($phone_number) > 11 AND strlen($phone_number) < 10) {
 			return true;
 		}
 		else if ($this->validateNumeric($phone_number)) {

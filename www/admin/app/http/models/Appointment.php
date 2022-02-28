@@ -939,24 +939,21 @@ class Appointment extends Model
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_comment'])) {
             $body .= "<br><br>";
             $body .= "Diagnosis:<br>";
-            $index = 1;
+            $body .= "<ol>";
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
                     if(!empty($diagnosis)){
-                        $body .= " &nbsp; &nbsp; &nbsp;". $index .'. '.$diagnosis.'<br>';
-                        $index++;
+                        $body .= "<li>". $diagnosis."</li>";
                     }
                 }
-                //$body .= implode(', ', json_decode($appointment['diagnosis'], true));
             }
             if (!empty($appointment['diagnosis_other'])) {
-                //$body .= !empty($appointment['diagnosis']) ? ", " : "";
-                $body .= " &nbsp; &nbsp; &nbsp;". $index . '. '.$appointment['diagnosis_other'].'<br>';
+                $body .= "<li>". $appointment['diagnosis_other']."</li>";
             }
             if (!empty($appointment['diagnosis_comment'])) {
-                //$body .= !empty($appointment['diagnosis']) ? ", " : "";
-                $body .= " &nbsp; &nbsp; &nbsp;".$appointment['diagnosis_comment'];
+                $body .= "<li>".$appointment['diagnosis_comment']."</li>";
             }
+            $body .= "</ol>";
         }
 		
 		
