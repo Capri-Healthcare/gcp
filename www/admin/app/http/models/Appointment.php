@@ -739,7 +739,19 @@ class Appointment extends Model
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
         $body .= "</strong>";
         
+        $body .= "<br><br>";
 
+        $gp_name = (!empty($appointment['gp_name']) and !is_null($appointment['gp_name'])) ? $appointment['gp_name'] : "";
+        $gp_address = (!empty($appointment['gp_address']) and !is_null($appointment['gp_address'])) ? $appointment['gp_address'] : "";
+
+        if(!empty($gp_address)){
+            $body .= "CC:"."<br><br>";
+            $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
+            $referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
+            foreach($referee_address_arr as $address){
+                $body .= $address."<br>";
+            }
+        }
         $body .= "</div>";
         // echo $body;
         // exit;
