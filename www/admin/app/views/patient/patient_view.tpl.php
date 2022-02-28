@@ -146,15 +146,15 @@
                                     <td><?php echo $result['gp_address']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Optician Name</td>
+                                    <td>Optician / Third Party Name</td>
                                     <td><?php echo $result['optician_name']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Optician Email</td>
+                                    <td>Optician / Third Party Email</td>
                                     <td><?php echo $result['optician_email']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Optician Address</td>
+                                    <td>Optician / Third Party Address</td>
                                     <td><?php echo $result['optician_address']; ?></td>
                                 </tr>
                                 <!--                                <tr>-->
@@ -1213,15 +1213,15 @@
                                     </tr>
                                     <?php if ($result['is_glaucoma_required'] == 'YES') { ?>
                                         <tr>
-                                            <td>MERCFollowup Frequency</td>
+                                            <td>MERC Followup Frequency</td>
                                             <td>
                                                 <?php echo isset($result['gcp_followup_frequency']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$result['gcp_followup_frequency']]['name'] : '' ?>
                                             </td>
                                         </tr>
                                     <?php } ?>
 
-                                    <tr>
-                                        <td>MERCform</td>
+                                    <!-- <tr>
+                                        <td>MERC form</td>
                                         <td>
                                             <div class="report-container">
                                                 <?php if (!empty($result['ddi_image'])) { ?>
@@ -1246,7 +1246,7 @@
                                                 <?php } ?>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     </tbody>
                                 </table>
 
