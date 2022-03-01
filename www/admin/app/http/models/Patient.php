@@ -129,10 +129,13 @@ class Patient extends Model
 
     public function createPatient($data)
     {
-        $data['hospital_code'] = isset($data['hospital_code']) ? $data['hospital_code'] : '';
-        $data['optician_name'] = isset($data['optician_name']) ? $data['optician_name'] : '';
-        $data['optician_email'] = isset($data['optician_email']) ? $data['optician_email'] : '';
-        $data['optician_address'] = isset($data['optician_address']) ? $data['optician_address'] : '';
+
+        $required_kets = ['firstname', 'lastname', 'dob', 'gender', 'nhs_patient_number', 'mail', 'mobile', 'office_phone', 
+            'gp_name', 'gp_practice', 'gp_address', 'gp_email', 'optician_name', 'optician_email', 'optician_address', 
+            'address', 'history', 'other', 'hash', 'user_id', 'hospital_code'];
+        foreach($required_kets as $key){
+            $data[$key] = isset($data[$key]) ? $data[$key] : '';    
+        }
         $data['office_phone'] = isset($data['office_phone']) ? $data['office_phone'] : $data['office_number'];
         
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (
