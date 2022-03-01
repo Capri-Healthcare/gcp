@@ -165,7 +165,7 @@
                                         <span class="item_heading"><?php echo htmlspecialchars_decode($value['name']); ?></span>
                                     </td>
                                     <td>
-                                        <span class="item_description"><?php echo htmlspecialchars_decode($value['descr']) . "ettetew"; ?></span>
+                                        <span class="item_description"><?php echo htmlspecialchars_decode($value['descr']); ?></span>
                                     </td>
                                     <td><?php echo $value['quantity']; ?></td>
                                     <td align="right"><?php echo $result['info']['currency_abbr'] . $value['cost']; ?></td>
