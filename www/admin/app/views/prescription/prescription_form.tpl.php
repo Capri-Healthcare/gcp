@@ -84,7 +84,7 @@
 								<td>
 									<select name="prescription[medicine][<?php echo $key; ?>][dose]" class="form-control" required>
                                         <option value="">Select-Frequency</option>
-                                        <option value="Once a day" <?php if ($value['dose'] == 'Once a day') {
+                                        <!-- <option value="Once a day" <?php if ($value['dose'] == 'Once a day') {
                                             echo "selected";
                                         } ?> >Once a day
                                         </option>
@@ -95,7 +95,11 @@
                                         <option value="Three times a day" <?php if ($value['dose'] == 'Three times a day') {
                                             echo "selected";
                                         } ?> >Three times a day
-                                        </option>
+                                        </option> -->
+
+										<?php foreach (constant('PRESCRIPTION_FREQUENCY') as $frequency) { ?>
+                                            <option value="<?php echo $frequency ?>"  <?php echo $value['dose'] == $frequency ? 'selected' : '' ?> ><?php echo $frequency ?></option>
+                                        <?php } ?>
 									</select>
 								</td>
 <!--								<td>-->
@@ -153,10 +157,13 @@
 								</td>
 								<td>
 									<select name="prescription[medicine][0][dose]" class="form-control" required>
-                                        <option value="">Select-Frequency</option>
+                                        <!-- <option value="">Select-Frequency</option>
                                         <option value="Once a day">Once a day</option>
                                         <option value="Twice a day">Twice a day</option>
-                                        <option value="Three times a day">Three times a day</option>
+                                        <option value="Three times a day">Three times a day</option> -->
+										<?php foreach (constant('PRESCRIPTION_FREQUENCY') as $frequency) { ?>
+                                            <option value="<?php echo $frequency ?>" ><?php echo $frequency ?></option>
+                                        <?php } ?>
 									</select>
 								</td>
 <!--								<td>-->

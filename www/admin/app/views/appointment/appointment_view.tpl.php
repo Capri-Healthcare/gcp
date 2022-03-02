@@ -588,8 +588,8 @@
                                             <td class="text-dark"><?php echo isset($result['diagnosis_other']) ? $result['diagnosis_other'] : '' ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Diagnosis Comment</td>
-                                            <td class="text-dark"><?php echo isset($result['diagnosis_comment']) ? $result['diagnosis_comment'] : '' ?></td>
+                                            <td>Operation</td>
+                                            <td class="text-dark"><?php echo isset($result['operation']) ? $result['operation'] : '' ?></td>
                                         </tr>
                                         <tr>
                                             <td>Outcome</td>

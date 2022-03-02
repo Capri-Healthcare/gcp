@@ -180,13 +180,16 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'UNSTABLE_NEED_CHANGE_IN_TREATMENT' => 'Unstable - Need change in treatment- change medication above',
         'UNSTABLE_BOOK_FOR_LASER' => 'Book for laser',
         'UNSTABLE_BOOK_FOR_SURGERY' => 'Book for Surgery',
-        'DISCHARGE_VIRTUAL_REVIEW' => 'Discharge / Virtual review'
+        'DISCHARGE' => 'Discharge',
+        'VIRTUAL_REVIEW' => 'Virtual review'
     ],
     'FOLLOW_UP_OR_NEXT_APPOINTMENT' => [
         '0' => ['name' => 'No follow up required', 'intervalrime' => 'days', 'value' => '0'],
         //'1' => ['name' => '1 days after change in treatment to see the effect', 'intervalrime' => 'days', 'value' => '1'],
         //'2' => ['name' => '2 months after change in treatment to see the effect', 'intervalrime' => 'months', 'value' => '2'],
         //'3' => ['name' => '2 months after laser appointment', 'intervalrime' => 'months', 'value' => '2'],
+        '1' => ['name' => '4 weeks', 'intervalrime' => 'weeks', 'value' => '4'],
+        '2' => ['name' => '2 months', 'intervalrime' => 'months', 'value' => '2'],
         '4' => ['name' => '4 months', 'intervalrime' => 'months', 'value' => '4'],
         '5' => ['name' => '6 months', 'intervalrime' => 'months', 'value' => '6'],
         '7' => ['name' => '9 months', 'intervalrime' => 'months', 'value' => '9'],
@@ -241,7 +244,7 @@ define('INVOICE_ITEM', [
     'ITEM_1' => ['name' => 'New consult', 'price' => '250'],
     'ITEM_2' => ['name' => 'Follow up', 'price' => '150'],
     'ITEM_3' => ['name' => 'CCT/OCT', 'price' => '0.00'],
-    'ITEM_4' => ['name' => 'Phaco Emulsifycation', 'price' => '869'],
+    'ITEM_4' => ['name' => 'Phacoemulsification', 'price' => '869'],
     'ITEM_5' => ['name' => 'SLT Unilateral-C6111', 'price' => '325'],
     'ITEM_6' => ['name' => 'SLT Bilateral-C6110', 'price' => '408'],
     'ITEM_7' => ['name' => 'YAG PIC6230 Unilateral', 'price' => '335'],
@@ -323,6 +326,17 @@ define('STATUS_PAYMENT_INVOIVE', [
         'Other' => 'Other',
         'Unknown' => 'Unknown',
     ]
+);
+
+define('PRESCRIPTION_FREQUENCY', [
+    'Once a day' => 'Once a day',
+    'Twice a day' => 'Twice a day',
+    'Three times a day Paid' => 'Three times a day',
+    '4x a day' => '4x a day',
+    '6x a day' => '6x a day ',
+    'Every 2 hourly' => 'Every 2 hourly',
+    'Every 1 hourly' => 'Every 1 hourly',
+]
 );
 
 define('PAYMENT_STATUS_FILTER_INVOIVE', [

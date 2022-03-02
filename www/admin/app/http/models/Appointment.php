@@ -182,7 +182,7 @@ class Appointment extends Model
         `pupil_left` = ?, 
         `diagnosis` = ?,
         `diagnosis_other` = ?,
-        `diagnosis_comment` = ?,
+        `operation` = ?,
         `outcome` = ?,
         `outcome_comment` = ?,
         `gcp_next_appointment` = ?,
@@ -222,7 +222,7 @@ class Appointment extends Model
             $data['pupil_left'],
             json_encode($data['diagnosis']),
             $data['diagnosis_other'],
-            $data['diagnosis_comment'],
+            $data['operation'],
             $data['outcome'],
             $data['outcome_comment'],
             $data['followup'],
@@ -667,29 +667,28 @@ class Appointment extends Model
             $body .= $appointment['address']['city'] . "<br>" . $appointment['address']['country'] . "<br>" . $appointment['address']['postal'];
         }
 
-        if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_comment'])) {
+        if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
             $body .= "Diagnosis:<br>";
-            $index = 1;
+            $body .= "<ol>";
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
                     if(!empty($diagnosis)){
-                        $body .= " &nbsp; &nbsp; &nbsp;". $index .'. '.$diagnosis.'<br>';
-                        $index++;
+                        $body .= "<li>". $diagnosis."</li>";
                     }
                 }
-                //$body .= implode(', ', json_decode($appointment['diagnosis'], true));
             }
             if (!empty($appointment['diagnosis_other'])) {
-                //$body .= !empty($appointment['diagnosis']) ? ", " : "";
-                $body .= " &nbsp; &nbsp; &nbsp;". $index . '. '.$appointment['diagnosis_other'].'<br>';
+                $body .= "<li>". $appointment['diagnosis_other']."</li>";
             }
-            if (!empty($appointment['diagnosis_comment'])) {
-                //$body .= !empty($appointment['diagnosis']) ? ", " : "";
-                $body .= " &nbsp; &nbsp; &nbsp;".$appointment['diagnosis_comment'];
-            }
+            $body .= "</ol>";
         }
 		
+        $body .= "<br><br>";
+        if (!empty($appointment['operation'])) {
+            //$body .= !empty($appointment['diagnosis']) ? ", " : "";
+            $body .= "Operation: ".$appointment['operation'];
+        }
 		
 
         if (!empty($prescription)) {
@@ -948,7 +947,7 @@ class Appointment extends Model
         
         $body .= "Dear " . ucfirst($appointment['firstname']);
         
-        if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_comment'])) {
+        if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
             $body .= "Diagnosis:<br>";
             $body .= "<ol>";
@@ -962,10 +961,13 @@ class Appointment extends Model
             if (!empty($appointment['diagnosis_other'])) {
                 $body .= "<li>". $appointment['diagnosis_other']."</li>";
             }
-            if (!empty($appointment['diagnosis_comment'])) {
-                $body .= "<li>".$appointment['diagnosis_comment']."</li>";
-            }
             $body .= "</ol>";
+        }
+
+        $body .= "<br><br>";
+        if (!empty($appointment['operation'])) {
+            //$body .= !empty($appointment['diagnosis']) ? ", " : "";
+            $body .= "Operation: ".$appointment['operation'];
         }
 		
 		
@@ -1111,19 +1113,27 @@ class Appointment extends Model
             $body .= $appointment['address']['city'] . "<br>" . $appointment['address']['country'] . "<br>" . $appointment['address']['postal'];
         }
 
-        if (!empty($appointment['diagnosis']) and !is_null($appointment['diagnosis']) AND $appointment['diagnosis'] != 'null') {
+        if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
             $body .= "Diagnosis:<br>";
+            $body .= "<ol>";
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
-                    $body .= " &nbsp; &nbsp; &nbsp;".($key+1).'. '.$diagnosis.'<br>';
+                    if(!empty($diagnosis)){
+                        $body .= "<li>". $diagnosis."</li>";
+                    }
                 }
-                //$body .= implode(', ', json_decode($appointment['diagnosis'], true));
             }
-            if (!empty($appointment['diagnosis_comment'])) {
-                //$body .= !empty($appointment['diagnosis']) ? ", " : "";
-                $body .= " &nbsp; &nbsp; &nbsp;".$appointment['diagnosis_comment'];
+            if (!empty($appointment['diagnosis_other'])) {
+                $body .= "<li>". $appointment['diagnosis_other']."</li>";
             }
+            $body .= "</ol>";
+        }
+
+        $body .= "<br><br>";
+        if (!empty($appointment['operation'])) {
+            //$body .= !empty($appointment['diagnosis']) ? ", " : "";
+            $body .= "Operation: ".$appointment['operation'];
         }
 		
 		
@@ -1238,19 +1248,27 @@ class Appointment extends Model
         
         $body .= "Dear " . ucfirst($appointment['firstname']);
         
-        if ((!empty($appointment['diagnosis']) ) OR !empty($appointment['diagnosis_comment'])) {
+        if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
             $body .= "Diagnosis:<br>";
-            if (!empty($appointment['diagnosis']) and !is_null($appointment['diagnosis']) AND $appointment['diagnosis'] != 'null') {
+            $body .= "<ol>";
+            if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
-                    $body .= " &nbsp; &nbsp; &nbsp;".($key+1).'. '.$diagnosis.'<br>';
+                    if(!empty($diagnosis)){
+                        $body .= "<li>". $diagnosis."</li>";
+                    }
                 }
-                //$body .= implode(', ', json_decode($appointment['diagnosis'], true));
             }
-            if (!empty($appointment['diagnosis_comment'])) {
-                //$body .= !empty($appointment['diagnosis']) ? ", " : "";
-                $body .= " &nbsp; &nbsp; &nbsp;".$appointment['diagnosis_comment'];
+            if (!empty($appointment['diagnosis_other'])) {
+                $body .= "<li>". $appointment['diagnosis_other']."</li>";
             }
+            $body .= "</ol>";
+        }
+
+        $body .= "<br><br>";
+        if (!empty($appointment['operation'])) {
+            //$body .= !empty($appointment['diagnosis']) ? ", " : "";
+            $body .= "Operation: ".$appointment['operation'];
         }
 
         if (!empty($prescription)) {

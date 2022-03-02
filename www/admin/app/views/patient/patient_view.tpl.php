@@ -859,8 +859,8 @@
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_other']) ? $value['diagnosis_other'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Diagnosis Comment</td>
-                                                                                    <td class="text-dark"><?php echo isset($value['diagnosis_comment']) ? $value['diagnosis_comment'] : '' ?></td>
+                                                                                    <td>Operation</td>
+                                                                                    <td class="text-dark"><?php echo isset($value['operation']) ? $value['operation'] : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>Outcome</td>
