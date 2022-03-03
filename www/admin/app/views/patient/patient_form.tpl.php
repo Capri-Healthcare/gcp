@@ -109,6 +109,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span></div>
                                     <select name="patient[gender]" class="custom-select" required>
+                                        <option value="">Select gender</option>
                                         <option value="Male" <?php if ($result['gender'] == 'Male') {
                                                                     echo "selected";
                                                                 } ?>>Male

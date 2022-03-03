@@ -115,11 +115,11 @@
                             <td valign="top"><?php echo $result['name'].'<br>'; ?>
                             <?php 
                                 
-                                echo isset($result['address']['address1']) ? ( $result['address']['address1']) : '';
-                                echo isset($result['address']['address2']) ? ("<br>" . $result['address']['address2']) : '';
-                                echo isset($result['address']['city']) ? ("<br>" . $result['address']['city']) : '';
-                                echo isset($result['address']['country']) ? ("<br>" . $result['address']['country']) : '';
-                                echo isset($result['address']['postal']) ? ("<br>" . $result['address']['postal']) : '';
+                                echo !empty($result['address']['address1']) ? ( $result['address']['address1']) : '';
+                                echo !empty($result['address']['address2']) ? ("<br>" . $result['address']['address2']) : '';
+                                echo !empty($result['address']['city']) ? ("<br>" . $result['address']['city']) : '';
+                                echo !empty($result['address']['country']) ? ("<br>" . $result['address']['country']) : '';
+                                echo !empty($result['address']['postal']) ? ("<br>" . $result['address']['postal']) : '';
 
                             ?></td>
                             <td valign="top">

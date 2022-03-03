@@ -663,8 +663,11 @@ class Appointment extends Model
 
         $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         if (!empty($appointment['address'])) {
-            $body .= $appointment['address']['address1'] . "<br>" . $appointment['address']['address2'] . "<br>";
-            $body .= $appointment['address']['city'] . "<br>" . $appointment['address']['country'] . "<br>" . $appointment['address']['postal'];
+            $body .= $appointment['address']['address1'];
+            $body .= !empty($appointment['address']['address2']) ? ("<br>" . $appointment['address']['address2']) : '';
+            $body .= !empty($appointment['address']['city']) ? ("<br>" . $appointment['address']['city']) : '';
+            $body .= !empty($appointment['address']['country']) ? ("<br>" . $appointment['address']['country']) : '';
+            $body .= !empty($appointment['address']['postal']) ? ("<br>" . $appointment['address']['postal']) : '';
         }
 
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
@@ -934,10 +937,10 @@ class Appointment extends Model
             //$body .= "<strong>Address:</strong> " . $appointment['address']['address1'] . ", " . $appointment['address']['address2'] . "<br>";
             //$body .= $appointment['address']['city'] . ", " . $appointment['address']['country'] . ", " . $appointment['address']['postal'];
             $body .= $appointment['address']['address1'];
-            $body .= isset($appointment['address']['address2']) ? ("<br>" . $appointment['address']['address2']) : '';
-            $body .= isset($appointment['address']['city']) ? ("<br>" . $appointment['address']['city']) : '';
-            $body .= isset($appointment['address']['country']) ? ("<br>" . $appointment['address']['country']) : '';
-            $body .= isset($appointment['address']['postal']) ? ("<br>" . $appointment['address']['postal']) : '';
+            $body .= !empty($appointment['address']['address2']) ? ("<br>" . $appointment['address']['address2']) : '';
+            $body .= !empty($appointment['address']['city']) ? ("<br>" . $appointment['address']['city']) : '';
+            $body .= !empty($appointment['address']['country']) ? ("<br>" . $appointment['address']['country']) : '';
+            $body .= !empty($appointment['address']['postal']) ? ("<br>" . $appointment['address']['postal']) : '';
         }
         
         
@@ -1236,10 +1239,10 @@ class Appointment extends Model
             //$body .= "<strong>Address:</strong> " . $appointment['address']['address1'] . ", " . $appointment['address']['address2'] . "<br>";
             //$body .= $appointment['address']['city'] . ", " . $appointment['address']['country'] . ", " . $appointment['address']['postal'];
             $body .= $appointment['address']['address1'];
-            $body .= isset($appointment['address']['address2']) ? ("<br>" . $appointment['address']['address2']) : '';
-            $body .= isset($appointment['address']['city']) ? ("<br>" . $appointment['address']['city']) : '';
-            $body .= isset($appointment['address']['country']) ? ("<br>" . $appointment['address']['country']) : '';
-            $body .= isset($appointment['address']['postal']) ? ("<br>" . $appointment['address']['postal']) : '';
+            $body .= !empty($appointment['address']['address2']) ? ("<br>" . $appointment['address']['address2']) : '';
+            $body .= !empty($appointment['address']['city']) ? ("<br>" . $appointment['address']['city']) : '';
+            $body .= !empty($appointment['address']['country']) ? ("<br>" . $appointment['address']['country']) : '';
+            $body .= !empty($appointment['address']['postal']) ? ("<br>" . $appointment['address']['postal']) : '';
         }
               
         $body .= "</td><td width='220px' style='font-size: 12px; pandding:0px;' valign='top'>
