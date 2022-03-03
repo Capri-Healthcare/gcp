@@ -543,6 +543,10 @@
                             </div>
                         </form>
                         <script>
+                            var prescription_frequency_option = '';
+                            <?php if(!empty(constant('PRESCRIPTION_FREQUENCY'))) {foreach (constant('PRESCRIPTION_FREQUENCY') as $key => $row){?>
+                                    prescription_frequency_option += '<option value="<?php echo $key?>" ><?php echo $row?></option>';
+                            <?php }}?>
                             function medicine_autocomplete() {
                                 $(".prescription-name").autocomplete({
                                     minLength: 0,
@@ -588,9 +592,7 @@
 
                                 $(".medicine-table .medicine-row:last").after('<tr class="medicine-row">' +
                                     '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name" required></td>' +
-                                    '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control" required><option value="">Select-Frequency</option> <option value="Once a day">Once a day</option>\n' +
-                                    '                                                    <option value="Twice a day">Twice a day</option>\n' +
-                                    '                                                    <option value="Three times a day">Three times a day</option></select></td>' +
+                                    '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control" required><option value="">Select-Frequency</option> '+prescription_frequency_option+'' </select></td>' +
                                     '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
                                     '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" ></td>' +
                                     '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" ></td>' +
@@ -1426,6 +1428,8 @@
                                                        name="appointment[diagnosis_other]"
                                                        value="<?php echo $result['diagnosis_other']; ?>" <?php echo $examination_notes_readonly ? 'readonly':''?>>
                                             </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Operation</label>
                                                 <input type="text" class="form-control"
