@@ -146,7 +146,7 @@ class Patient extends Model
             `optician_name`, `optician_email`, `optician_address`,
             `address`, 
             `history`, `other`,
-            `temp_hash`, `user_id`, `hospital_code`, `date_of_joining` ) 
+            `temp_hash`, `user_id`, `hospital_code`, `date_of_joining`, `status` ) 
         VALUES (
             ?, ?, ?, ?,
             ?, ?, ?, ?,
@@ -155,7 +155,7 @@ class Patient extends Model
             ?, ?, ?,
             ?, 
             ?, ?,
-            ?, ?, ?, ?)", 
+            ?, ?, ?, ?, ?)", 
         array(
             $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['dob'], 
             $data['gender'], $data['nhs_patient_number'], $data['mail'], $data['mobile'], 
@@ -164,7 +164,7 @@ class Patient extends Model
             $data['optician_name'], $data['optician_email'], $data['optician_address'], 
             $data['address'], 
             $data['history'], $data['other'], 
-            $data['hash'], $data['user_id'],$data['hospital_code'], date('Y-m-d H:i:s'))
+            $data['hash'], $data['user_id'],$data['hospital_code'], date('Y-m-d H:i:s'), 1)
         );
 
         if ($this->database->error()) {
