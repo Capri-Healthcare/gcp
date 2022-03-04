@@ -292,6 +292,16 @@ class Appointment extends Model
     public function createAppointment($data)
     {
 
+        if ($data['patient_id'] > 0) {
+
+            $patient_detail_qry = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE id = ?", array($data['patient_id']));
+
+            $patient_detail = $patient_detail_qry->row;
+            $data['referee_name'] = $patient_detail['optician_name'];
+            $data['referee_email'] = $patient_detail['optician_email'];
+            $data['referee_address'] = $patient_detail['optician_address'];
+        }
+        
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "appointments`(
         `optician_id`,
         `name`,

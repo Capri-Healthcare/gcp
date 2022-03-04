@@ -241,39 +241,36 @@ class OpticianReferralController extends Controller
                     $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
 
                     $patient_id = $patient['id'];
+                    $referral_details = $this->model_opticianreferral->getOpticianReferral($data['referral']['id']);
+                    $optician_user = $this->model_user->getUser($referral_details['created_by']);
+
+                    $optician_user_address = json_decode($optician_user['address'], true);
+                    $optician_user_address_for_save = "";
+                    $optician_user_address_for_save .= isset($optician_user_address['address1']) ? $optician_user_address['address1'] : '';
+                    $optician_user_address_for_save .= isset($optician_user_address['address2']) ? (','. $optician_user_address['address2']) : '';
+                    $optician_user_address_for_save .= isset($optician_user_address['city']) ? (','. $optician_user_address['city']) : '';
+                    $optician_user_address_for_save .= isset($optician_user_address['postal']) ? (' - '. $optician_user_address['postal']) : '';
+
+                    $patient_data['firstname'] = $data['referral']['first_name'];
+                    $patient_data['lastname'] = $data['referral']['last_name'];
+                    $patient_data['mail'] = $data['referral']['email'];
+                    $patient_data['mobile'] = $data['referral']['mobile'];
+                    $patient_data['office_number'] = $data['referral']['office_phone'];
+                    $patient_data['address'] = json_encode($address);
+                    $patient_data['gender'] = $data['referral']['gender'];
+                    $patient_data['dob'] = $data['referral']['dob'];
+                    $patient_data['user_id'] = $data['referral']['user_id'];
+                    $patient_data['title'] = "Mr.";
+                    $patient_data['hash'] = $data['referral']['user_id'];
+                    $patient_data['optician_name'] = $optician_user['firstname'] . ' '. $optician_user['lastname'];
+                    $patient_data['optician_email'] = $optician_user['email'];
+                    $patient_data['optician_address'] = $optician_user_address_for_save;
+                    $patient_data['hospital_code'] = $data['referral']['hospital_code'] == null ? null : $data['referral']['hospital_code'];
+                    $patient_data['datetime'] = date('Y-m-d H:s:a');
                     
                     if (empty($patient_id)) {
-                        
-                        $referral_details = $this->model_opticianreferral->getOpticianReferral($data['referral']['id']);
-                        $optician_user = $this->model_user->getUser($referral_details['created_by']);
 
-                        $optician_user_address = json_decode($optician_user['address'], true);
-                        $optician_user_address_for_save = "";
-                        $optician_user_address_for_save .= isset($optician_user_address['address1']) ? $optician_user_address['address1'] : '';
-                        $optician_user_address_for_save .= isset($optician_user_address['address2']) ? (','. $optician_user_address['address2']) : '';
-                        $optician_user_address_for_save .= isset($optician_user_address['city']) ? (','. $optician_user_address['city']) : '';
-                        $optician_user_address_for_save .= isset($optician_user_address['postal']) ? (' - '. $optician_user_address['postal']) : '';
-
-                        $patient['firstname'] = $data['referral']['first_name'];
-                        $patient['lastname'] = $data['referral']['last_name'];
-                        $patient['mail'] = $data['referral']['email'];
-                        $patient['mobile'] = $data['referral']['mobile'];
-                        $patient['office_number'] = $data['referral']['office_phone'];
-                        $patient['address'] = json_encode($address);
-                        $patient['gender'] = $data['referral']['gender'];
-                        $patient['dob'] = $data['referral']['dob'];
-                        $patient['user_id'] = $data['referral']['user_id'];
-                        $patient['title'] = "Mr.";
-                        $patient['history'] = " ";
-                        $patient['other'] = " ";
-                        $patient['hash'] = $data['referral']['user_id'];
-                        $patient['optician_name'] = $optician_user['firstname'] . ' '. $optician_user['lastname'];
-                        $patient['optician_email'] = $optician_user['email'];
-                        $patient['optician_address'] = $optician_user_address_for_save;
-                        $patient['hospital_code'] = $data['referral']['hospital_code'] == null ? null : $data['referral']['hospital_code'];
-                        $patient['datetime'] = date('Y-m-d H:s:a');
-
-                        $patient_id = $this->model_patient->createPatient($patient);
+                        $patient_id = $this->model_patient->createPatient($patient_data);
 
                         if (!empty($patient_id)) {
                             $data['patientid'] = $patient_id;
@@ -284,7 +281,11 @@ class OpticianReferralController extends Controller
                             // $this->url->redirect('patient/edit&id=' .$patient['id']. '&referralid=' . $data['referral']['id']);
                         }
 
+                    } else {
+                        $patient_data['id'] = $patient_id;
+                        $this->model_patient->updatePatientFromReferral($patient_data);
                     }
+                    
 
                     //$this->notificationToPatientForAppointmentBooking($patient_id);
                     $this->url->redirect('patient/edit&id=' .$patient_id. '&referralid=' . $data['referral']['id']);

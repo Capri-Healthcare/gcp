@@ -130,7 +130,7 @@ class Patient extends Model
     public function createPatient($data)
     {
 
-        $required_kets = ['firstname', 'lastname', 'dob', 'gender', 'nhs_patient_number', 'mail', 'mobile', 'office_phone', 
+        $required_kets = ['title', 'firstname', 'lastname', 'dob', 'gender', 'nhs_patient_number', 'mail', 'mobile', 'office_phone', 
             'gp_name', 'gp_practice', 'gp_address', 'gp_email', 'optician_name', 'optician_email', 'optician_address', 
             'address', 'history', 'other', 'hash', 'user_id', 'hospital_code'];
         foreach($required_kets as $key){
@@ -223,6 +223,42 @@ class Patient extends Model
                 (int)$data['id']));
 
         //$query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `address` = ?, `bloodgroup` = ?, `gender` = ?, `dob` = ?, `history` = ?, `other` = ?, `status` = ? WHERE `id` = ?" , array($data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'],$data['bloodgroup'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['status'], $data['id']));
+    }
+
+    public function updatePatientFromReferral($data)
+    {
+        
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET
+         `title` = ?, `firstname` = ?, `lastname` = ?, `email` = ?,
+         `mobile` = ?,`office_number` = ?, `dob` = ?, `gender` = ?,
+		`address` = ?,  `optician_name` = ?,  `optician_email` = ?,
+        `optician_address` = ?, `hospital_code` = ?
+		WHERE `id` = ?",
+            array(
+                $this->database->escape($data['title']),
+                $this->database->escape(ucfirst($data['firstname'])),
+                $this->database->escape(ucfirst($data['lastname'])),
+                $data['mail'],
+                $data['mobile'],
+                $data['office_number'],
+                $this->database->escape($data['dob']),
+                $this->database->escape($data['gender']),
+                $data['address'],
+                isset($data['optician_name']) ? $data['optician_name'] : '',
+                isset($data['optician_email']) ? $data['optician_email'] : '',
+                isset($data['optician_address']) ? $data['optician_address'] : '',
+                isset($data['hospital_code']) ? $data['hospital_code'] : '',
+                (int)$data['id']));
+
+                if ($this->database->error()) {
+                    echo $this->database->error();
+                    print_r($data);exit;
+                    return false;
+                } else {
+                    return $this->database->last_id();
+                }
+                
+
     }
 
     public function updatePatientMERCStatus($data)
