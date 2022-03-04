@@ -723,7 +723,7 @@ class AppointmentController extends Controller
             $data['appointment']['video_consultation_token'] = '';
             if ($data['appointment']['status'] == CONFIRMED_APPOINTMENT_STATUS_ID and $data['appointment']['consultation_type'] == APPOINTMENT_VIDEO_CONSULTATION_TYPE) {
                 //echo "<pre>";print_r($data);exit;
-                $user_id = $data['appointment']['user_id'];
+                $user_id = $data['appointment']['user_id']; 
                 $tokBoxSession = $this->generateTokBoxSession($data['appointment']['id'], $data['appointment']['doctor'], $data['appointment']['patient_id'], $this->session->data['user_id']);
 
                 $data['appointment']['session_id'] = $tokBoxSession['sessionId'];
@@ -737,6 +737,7 @@ class AppointmentController extends Controller
 
             $data['appointment']['appointment_id'] = date('Ymd') . rand(10, 100) . date('his');
             $data['appointment']['consultation_type'] = 'face_to_face';
+            echo "<pre>"; print_r($data['appointment']);exit;
             $data['appointment']['id'] = $this->model_appointment->createAppointment($data['appointment']);
             if ($data['appointment']['id']) {
                 $this->model_appointment->moveimagefromopticiantoappointment($data['appointment']);
