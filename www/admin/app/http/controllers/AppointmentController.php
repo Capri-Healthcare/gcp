@@ -737,7 +737,7 @@ class AppointmentController extends Controller
 
             $data['appointment']['appointment_id'] = date('Ymd') . rand(10, 100) . date('his');
             $data['appointment']['consultation_type'] = 'face_to_face';
-            echo "<pre>"; print_r($data['appointment']);exit;
+
             $data['appointment']['id'] = $this->model_appointment->createAppointment($data['appointment']);
             if ($data['appointment']['id']) {
                 $this->model_appointment->moveimagefromopticiantoappointment($data['appointment']);
