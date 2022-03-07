@@ -368,8 +368,8 @@ class AppointmentController extends Controller
             $appointment_last = $this->model_appointment->getLastPatientAppointment($data['result']);
             //echo "<pre>";print_r($appointment_last);exit;
             $highestIop = $this->model_appointment->getMaxIOPAppointment($data['result']);
-            $data['cct_right'] = $appointment_last['cct_right'];
-            $data['cct_left'] = $appointment_last['cct_left'];
+            $data['result']['cct_right'] = $appointment_last['cct_right'];
+            $data['result']['cct_left'] = $appointment_last['cct_left'];
 
             $summary['summarykey']['cct_right'] = $appointment_last['cct_right'];
             $summary['summarykey']['cct_left'] = $appointment_last['cct_left'];

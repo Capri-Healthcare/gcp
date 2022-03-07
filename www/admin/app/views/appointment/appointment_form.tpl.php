@@ -670,7 +670,7 @@
                                                     <div class="col-md-12 pre-consultation-form">
                                                         <?php if (!empty($summary['appointment']['data'])) { ?>
                                                             <?php foreach ($summary['appointment']['data'] as $key => $list) { ?>
-                                                                <div class="examination-note-tab-pane <?php echo ($key == 0) ? 'active' : ''; ?>"
+                                                                <div class="examination-note-tab-pane<?php echo ($key == 0) ? ' active' : ''; ?>"
                                                                      id="past-appointment-<?php echo str_replace('-', '', $list['date']) ?>">
                                                                     <div class="table-responsive">
                                                                         <table class="table table-bordered">
