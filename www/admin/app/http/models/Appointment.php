@@ -695,11 +695,12 @@ class Appointment extends Model
                 $body .= "<li>". $appointment['diagnosis_other']."</li>";
             }
             $body .= "</ol>";
+        } else {
+            $body .= "<br><br>";
         }
 		
         
         if (!empty($appointment['operation'])) {
-            $body .= "<br><br>";
             //$body .= !empty($appointment['diagnosis']) ? ", " : "";
             $body .= "Operation: ".$appointment['operation'];
         }
@@ -960,7 +961,7 @@ class Appointment extends Model
         
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis:<br>";
+            $body .= "Diagnosis:";
             $body .= "<ol>";
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
@@ -973,20 +974,19 @@ class Appointment extends Model
                 $body .= "<li>". $appointment['diagnosis_other']."</li>";
             }
             $body .= "</ol>";
+        } else {
+            $body .= "<br><br>";
         }
 
         
         if (!empty($appointment['operation'])) {
-            $body .= "<br><br>";
-            //$body .= !empty($appointment['diagnosis']) ? ", " : "";
             $body .= "Operation: ".$appointment['operation'];
         }
 		
 		
 
         if (!empty($prescription)) {
-            $body .= "<br><br>";
-            $body .= "Current Treatment:<br>";
+            $body .= "<br><br>Current Treatment:<br>";
             $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;' align=center>
                                        <tr>
                                             <td align='left'> &nbsp; Drug Name</td>
@@ -1007,7 +1007,7 @@ class Appointment extends Model
         }
 
         if (!empty($appointment['gcp_next_appointment'])) {
-            $body .= "<br><br>";
+            $body .= "<br>";
             $body .= "<strong>Follow up: ";
             $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] . "</strong>";
         }
