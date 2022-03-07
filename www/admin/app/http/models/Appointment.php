@@ -957,7 +957,7 @@ class Appointment extends Model
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
         
-        $body .= "Dear " . ucfirst($appointment['firstname']);
+        $body .= $appointment['title'] . " " . ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";

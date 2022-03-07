@@ -132,11 +132,10 @@ class Patient extends Model
 
         $required_kets = ['title', 'firstname', 'lastname', 'dob', 'gender', 'nhs_patient_number', 'mail', 'mobile', 'office_phone', 
             'gp_name', 'gp_practice', 'gp_address', 'gp_postal_code', 'gp_email', 'optician_name', 'optician_email', 'optician_address', 
-            'address', 'history', 'other', 'hash', 'user_id', 'hospital_code'];
+            'address', 'history', 'other', 'hash', 'user_id', 'hospital_code', 'office_number'];
         foreach($required_kets as $key){
             $data[$key] = isset($data[$key]) ? $data[$key] : '';    
         }
-        $data['office_phone'] = isset($data['office_phone']) ? $data['office_phone'] : $data['office_number'];
         
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (
             `title`, `firstname`, `lastname`, `dob`, 
