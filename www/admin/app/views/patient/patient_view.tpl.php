@@ -146,6 +146,10 @@
                                     <td><?php echo $result['gp_address']; ?></td>
                                 </tr>
                                 <tr>
+                                    <td>GP Postal Code</td>
+                                    <td><?php echo $result['gp_postal_code']; ?></td>
+                                </tr>
+                                <tr>
                                     <td>Optician / Third Party Name</td>
                                     <td><?php echo $result['optician_name']; ?></td>
                                 </tr>

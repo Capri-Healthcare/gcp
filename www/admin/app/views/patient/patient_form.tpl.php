@@ -364,6 +364,19 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>GP Postal Code</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-location-pin"></i></span>
+                                    </div>
+                                    <input type="text" name="patient[gp_postal_code]" class="form-control" value="<?php echo $result['gp_postal_code']; ?>" placeholder="Enter gp postal code" id="gp_postal_code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
 
                         
                             <div class="col-md-6">
@@ -633,6 +646,7 @@
         select: function(event, ui) {
             $('#gp_practice').val(ui.item.gp_practice_name);
             $('#gp_address').val(ui.item.gp_address);
+            $('#gp_postal_code').val(ui.item.gp_postcode);
             $('#gp_email').val(ui.item.gp_email);
             $('#gp_name').val(ui.item.gp_name);
             return false;

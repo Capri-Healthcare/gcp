@@ -156,6 +156,10 @@
                                         <td><?php echo $result['gp_address']; ?></td>
                                     </tr>
                                     <tr>
+                                        <td>GP Address</td>
+                                        <td><?php echo $result['gp_postal_code']; ?></td>
+                                    </tr>
+                                    <tr>
                                         <td>Referrer Name</td>
                                         <td><?php echo $result['referee_name']; ?></td>
                                     </tr>

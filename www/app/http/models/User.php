@@ -159,14 +159,14 @@ class User extends Model
 		$query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET title = ?, `firstname` = ?, `lastname` = ?, `mobile` = ?, 
 		`dob` = ?, `gender` = ?, 
 		`is_patient_have_any_disabilities` = ?, `disabilities_details` = ?, `special_requirements` = ?, 
-		`address` = ?, `nhs_patient_number` = ?, `nhs_hospital_number` = ?, `gp_practice` = ?, `gp_address` = ?, `history` = ?, `other` = ?, 
+		`address` = ?, `nhs_patient_number` = ?, `nhs_hospital_number` = ?, `gp_practice` = ?, `gp_address` = ?, `gp_postal_code` = ?, `history` = ?, `other` = ?, 
 		`how_the_account_is_to_be_settled` = ?, `policyholders_name` = ?, `medical_insurers_name` = ?, `membership_number` = ?, `scheme_name` = ?, `authorisation_number` = ?, 
 		`corporate_company_scheme` = ?, `employer` = ?
 		WHERE `id` = ? AND `email` = ?", 
 		array($this->database->escape($data['title']), $this->database->escape(ucfirst($data['firstname'])), $this->database->escape(ucfirst($data['lastname'])), $this->database->escape($data['mobile']), 
 		$this->database->escape($data['dob']), $this->database->escape($data['gender']), 
 		$this->database->escape($data['is_patient_have_any_disabilities']), $this->database->escape($data['disabilities_details']), $data['special_requirements'], 
-		$data['address'], $data['nhs_patient_number'], $data['nhs_hospital_number'], $data['gp_practice'], $data['gp_address'], $data['history'], $data['other'], 
+		$data['address'], $data['nhs_patient_number'], $data['nhs_hospital_number'], $data['gp_practice'], $data['gp_address'], $data['gp_postal_code'], $data['history'], $data['other'], 
 		$data['how_the_account_is_to_be_settled'], $data['policyholders_name'], $data['medical_insurers_name'], $data['membership_number'], $data['scheme_name'], 
 		$data['authorisation_number'], $data['corporate_company_scheme'], $data['employer'], 
 		(int)$data['user_id'], $this->database->escape($data['email'])));

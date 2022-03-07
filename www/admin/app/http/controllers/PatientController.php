@@ -374,6 +374,7 @@ class PatientController extends Controller
             $gp_data['gp_practice'] = $data['gp_practice'];
             $gp_data['gp_name'] = $data['gp_name'];
             $gp_data['gp_address'] = $data['gp_address'];
+            $gp_data['gp_postal_code'] = $data['gp_postal_code'];
             $gp_data['gp_email'] = $data['gp_email'];
             $gcpID = $this->model_patient->gpPractice($gp_data);
             $data['gp_practice'] = $gcpID;
@@ -394,6 +395,7 @@ class PatientController extends Controller
             $gp_data['gp_practice'] = $data['gp_practice'];
             $gp_data['gp_name'] = $data['gp_name'];
             $gp_data['gp_address'] = $data['gp_address'];
+            $gp_data['gp_postal_code'] = $data['gp_postal_code'];
             $gp_data['gp_email'] = $data['gp_email'];
             $gcpID = $this->model_patient->gpPractice($gp_data);
             $data['gp_practice'] = $gcpID;

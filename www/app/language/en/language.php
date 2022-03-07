@@ -291,6 +291,7 @@ $lang = array(
 	'text_gp_name' => 'GP Name',
 	'text_gp_address' => 'GP Address',
 	'text_gp_address' => 'GP Address',
+	'text_gp_postal_code' => 'GP Postal Code',
 	'text_is_patient_have_any_disabilities' => 'Do you/the patient have any disabilities?',
 	'text_disabilities_details' => 'Please provide disabilities details',
 	'text_please_indicate_how_the_account_is_to_be_settled' => 'Please indicate how the account is to be settled',

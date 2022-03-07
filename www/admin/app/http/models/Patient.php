@@ -131,7 +131,7 @@ class Patient extends Model
     {
 
         $required_kets = ['title', 'firstname', 'lastname', 'dob', 'gender', 'nhs_patient_number', 'mail', 'mobile', 'office_phone', 
-            'gp_name', 'gp_practice', 'gp_address', 'gp_email', 'optician_name', 'optician_email', 'optician_address', 
+            'gp_name', 'gp_practice', 'gp_address', 'gp_postal_code', 'gp_email', 'optician_name', 'optician_email', 'optician_address', 
             'address', 'history', 'other', 'hash', 'user_id', 'hospital_code'];
         foreach($required_kets as $key){
             $data[$key] = isset($data[$key]) ? $data[$key] : '';    
@@ -142,7 +142,7 @@ class Patient extends Model
             `title`, `firstname`, `lastname`, `dob`, 
             `gender`, `nhs_patient_number`, `email`, `mobile`,
             `office_number`, 
-            `gp_name`, `gp_practice`, `gp_address`, `gp_email`, 
+            `gp_name`, `gp_practice`, `gp_address`, `gp_postal_code`, `gp_email`, 
             `optician_name`, `optician_email`, `optician_address`,
             `address`, 
             `history`, `other`,
@@ -151,7 +151,7 @@ class Patient extends Model
             ?, ?, ?, ?,
             ?, ?, ?, ?,
             ?, 
-            ?, ?, ?, ?,
+            ?, ?, ?, ?,?,
             ?, ?, ?,
             ?, 
             ?, ?,
@@ -160,7 +160,7 @@ class Patient extends Model
             $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['dob'], 
             $data['gender'], $data['nhs_patient_number'], $data['mail'], $data['mobile'], 
             $data['office_phone'], 
-            $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['gp_email'], 
+            $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['gp_postal_code'], $data['gp_email'], 
             $data['optician_name'], $data['optician_email'], $data['optician_address'], 
             $data['address'], 
             $data['history'], $data['other'], 
@@ -185,7 +185,7 @@ class Patient extends Model
          `title` = ?, `firstname` = ?, `lastname` = ?, `email` = ?,
          `mobile` = ?,`office_number` = ?, `dob` = ?, `gender` = ?,
 		`address` = ?, `nhs_patient_number` = ?, `gp_name` = ?, `gp_practice` = ?,
-		`gp_address` = ?, `gp_email` = ?, `history` = ?, `other` = ?,
+		`gp_address` = ?, `gp_postal_code` = ?, `gp_email` = ?, `history` = ?, `other` = ?,
 		`regular_payment` = ?, `how_the_account_is_to_be_settled` = ?,  `policyholders_name` = ?,  `medical_insurers_name` = ?,
 	    `membership_number` = ?, `scheme_name` = ?, `authorisation_number` = ?, `authorisation_number` = ?, 
 		`corporate_company_scheme` = ?, `employer` = ?, `optician_name` = ?,  `optician_email` = ?,
@@ -204,6 +204,7 @@ class Patient extends Model
                 $data['gp_name'],
                 $data['gp_practice'],
                 $data['gp_address'],
+                $data['gp_postal_code'],                
                 $data['gp_email'],
                 $data['history'],
                 $data['other'],
@@ -343,7 +344,7 @@ class Patient extends Model
             if ($query->num_rows > 0) {
                 return $query->row['id'];
             } else {
-                $this->database->query("INSERT INTO `" . DB_PREFIX . "gp_practice` (`gp_practice_name`, `gp_name`,`gp_email`,`address`, `is_active`) VALUES(?,?,?,?,?)", array($data['gp_practice'], $data['gp_name'],$data['gp_email'],$data['gp_address'],'Y'));
+                $this->database->query("INSERT INTO `" . DB_PREFIX . "gp_practice` (`gp_practice_name`, `gp_name`,`gp_email`,`address`,`gp_postcode`, `is_active`) VALUES(?,?,?,?,?)", array($data['gp_practice'], $data['gp_name'],$data['gp_email'],$data['gp_address'],$data['gp_postal_code'],'Y'));
                 return $this->database->last_id();
             }
         }
