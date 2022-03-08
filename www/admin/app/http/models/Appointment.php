@@ -650,7 +650,7 @@ class Appointment extends Model
 		$body .=  "<table width='100%' border=0 cellspacing='0'>";
         $body .=  "<tr><td style='padding-right:15px;'  valign='top'><br><br>";
 
-        $body .= "Date of visit: " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br><br>";
+        $body .= "Date of visit: " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "Date typed: " . date('d-m-Y');
 
         //$body .= "<br>". $appointment['referee_address'];
@@ -936,7 +936,7 @@ class Appointment extends Model
 		$body .=  "<table width='100%' border=0 cellspacing='0'>";
         $body .=  "<tr><td style='padding-right:15px;' valign='top'><br><br>";
 		
-        $body .= "Date of visit: " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br><br>";
+        $body .= "Date of visit: " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "Date typed: " . date('d-m-Y');
 
         $body .= "<br><br>";
