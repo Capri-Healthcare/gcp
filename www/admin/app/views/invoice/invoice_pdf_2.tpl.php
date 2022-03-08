@@ -32,7 +32,7 @@
 
         H4 { margin-bottom: 0px}
         @page {
-            margin: 40px 20px 50px 20px;
+            margin: 40px 80px 60px 80px;
         }
         body {  
             font-family: 'Helvetica Neue, Helvetica, Arial, sans-serif';
@@ -65,7 +65,7 @@
                             <!-- <td width="15%" style="vertical-align:center; text-align:start; padding:5px; border:#000 1px solid;">
                                 <span><?php //echo constant('MY_EYE_RECORD_CARE'); ?></span>
                             </td> -->
-                            <td width="40%" style="border:#000 1px solid;">
+                            <td width="40%" style="border:#000 1px solid; font-size:12px;">
                                 <strong>Please send Payment to this address:</strong><br />
                                 <span><?php echo constant('PAYMENT_INFO')['LINE_NAME']; ?></span><br />
                                 <span><?php echo constant('PAYMENT_INFO')['LINE_ADDRESS_1']; ?>,</span><br />

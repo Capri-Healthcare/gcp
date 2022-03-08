@@ -682,22 +682,26 @@ class Appointment extends Model
 
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis:<br>";
-            $body .= "<ol>";
+            $body .= "Diagnosis:";
+            //$body .= "<ol>";
+            $count = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
                     if(!empty($diagnosis)){
-                        $body .= "<li>". $diagnosis."</li>";
+                        //$body .= "<li>". $diagnosis."</li>";
+                        $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
                     }
+                    $count++;
                 }
             }
             if (!empty($appointment['diagnosis_other'])) {
-                $body .= "<li>". $appointment['diagnosis_other']."</li>";
+                //$body .= "<li>". $appointment['diagnosis_other']."</li>";
+                $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
             }
-            $body .= "</ol>";
-        } else {
+            //$body .= "</ol>";
+        } /*else {
             $body .= "<br><br>";
-        }
+        }*/
 		
         
         if (!empty($appointment['operation'])) {
@@ -729,7 +733,7 @@ class Appointment extends Model
         }
 
         if (!empty($appointment['gcp_next_appointment'])) {
-            $body .= "<br><br>";
+            $body .= "<br>";
             $body .= "<strong>Follow up: ";
             $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] . "</strong>";
         }
@@ -756,6 +760,7 @@ class Appointment extends Model
         $gp_address = (!empty($appointment['gp_address']) and !is_null($appointment['gp_address'])) ? $appointment['gp_address'] : "";
 
         if(!empty($gp_address)){
+            $body .= "<span style='font-size:12px'>";
             $body .= "CC:"."<br><br>";
             $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
             $referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
@@ -763,6 +768,7 @@ class Appointment extends Model
                 $body .= $address."<br>";
             }
             $body .= (!empty($appointment['gp_postal_code'])) ? ($appointment['gp_postal_code']) : "";
+            $body .= "</span>";
         }
         $body .= "</div>";
         // echo $body;
@@ -844,7 +850,7 @@ class Appointment extends Model
           li { font-size: 13px; }
           H4 { margin-bottom: 0px}
           @page {
-              margin: 150px 80px 50px 80px;
+              margin: 150px 80px 60px 80px;
           }
           header {
               position: fixed; top: -120px; left: 0px; right: 0px; height: 100px;
@@ -957,33 +963,36 @@ class Appointment extends Model
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
         
-        $body .= "Dear " . $appointment['title'] . " " . ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']);
+        $body .= "Dear " . ucfirst($appointment['firstname']) . ",";
         
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
             $body .= "Diagnosis:";
-            $body .= "<ol>";
+            //$body .= "<ol>";
+            $count = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
                     if(!empty($diagnosis)){
-                        $body .= "<li>". $diagnosis."</li>";
+                        //$body .= "<li>". $diagnosis."</li>";
+                        $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
                     }
+                    $count++;
                 }
             }
             if (!empty($appointment['diagnosis_other'])) {
-                $body .= "<li>". $appointment['diagnosis_other']."</li>";
+                //$body .= "<li>". $appointment['diagnosis_other']."</li>";
+                $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
             }
-            $body .= "</ol>";
-        } else {
+            //$body .= "</ol>";
+        } /*else {
             $body .= "<br><br>";
-        }
+        }*/
 
         
         if (!empty($appointment['operation'])) {
+            $body .= "<br><br>";
             $body .= "Operation: ".$appointment['operation'];
         }
-		
-		
 
         if (!empty($prescription)) {
             $body .= "<br><br>Current Treatment:<br>";
@@ -1007,7 +1016,7 @@ class Appointment extends Model
         }
 
         if (!empty($appointment['gcp_next_appointment'])) {
-            $body .= "<br><br>";
+            $body .= "<br>";
             $body .= "<strong>Follow up: ";
             $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] . "</strong>";
         }
@@ -1034,6 +1043,7 @@ class Appointment extends Model
         $body .= "<br><br>";
         
         if(!empty($gp_address)){
+            $body .= "<span style='font-size:12px'>";
             $body .= "CC:"."<br><br>";
             $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
             $referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
@@ -1041,6 +1051,7 @@ class Appointment extends Model
                 $body .= $address."<br>";
             }
             $body .= (!empty($appointment['gp_postal_code'])) ? ($appointment['gp_postal_code']) : "";
+            $body .= "</span>";
         }
         $body .= "</div>";
 
