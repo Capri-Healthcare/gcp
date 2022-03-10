@@ -90,6 +90,7 @@ class Useragent {
 			'getmenupages',
 			'getmenulink',
 			'gppractices/search',
+			'appointment/updateAppintmentInfo',
 		);
 
 		$this->permission = array_merge($this->permission, $extension);
