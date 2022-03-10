@@ -260,7 +260,7 @@ class OpticianReferralController extends Controller
                     $patient_data['gender'] = $data['referral']['gender'];
                     $patient_data['dob'] = $data['referral']['dob'];
                     $patient_data['user_id'] = $data['referral']['user_id'];
-                    $patient_data['title'] = "Mr.";
+                    $patient_data['title'] = "";
                     $patient_data['hash'] = $data['referral']['user_id'];
                     $patient_data['optician_name'] = $optician_user['firstname'] . ' '. $optician_user['lastname'];
                     $patient_data['optician_email'] = $optician_user['email'];

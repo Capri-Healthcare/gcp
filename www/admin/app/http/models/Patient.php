@@ -158,7 +158,7 @@ class Patient extends Model
         array(
             $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['dob'], 
             $data['gender'], $data['nhs_patient_number'], $data['mail'], $data['mobile'], 
-            $data['office_phone'], 
+            $data['office_number'], 
             $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['gp_postal_code'], $data['gp_email'], 
             $data['optician_name'], $data['optician_email'], $data['optician_address'], 
             $data['address'], 
