@@ -296,6 +296,8 @@ $router->post('appointment/moveImageToReport', 'AppointmentController@moveImageT
 $router->get('appointment/videoConsultation', 'AppointmentController@startVideoConsultation');
 $router->post('appointment/clinicalNoteUpdate', 'AppointmentController@clinicalNoteUpdate');
 $router->post('appointment/prescriptionUpdate', 'AppointmentController@PrescriptionUpdate');
+//Appointment ajax route added
+$router->post('appointment/updateAppintmentInfo','AppointmentController@UpdateAppintmentInfo');
 
 
 $router->get('optician-referral', 'OpticianReferralController@index');
