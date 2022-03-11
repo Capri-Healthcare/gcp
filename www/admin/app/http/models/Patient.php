@@ -113,6 +113,20 @@ class Patient extends Model
         return $query->rows;
     }
 
+    public function checkPatientForDuplicate($data, $id = NULL)
+    {
+        if (!empty($id)) {
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ? AND id != ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape($data['dob']), (int)$id));
+        } else {
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` p WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape($data['dob']) ));
+        }
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function checkPatientEmail($mail, $id = NULL)
     {
         if (!empty($id)) {
@@ -272,10 +286,10 @@ class Patient extends Model
     public function getSearchedPatient($data, $role = null)
     {
         if ($role == constant('USER_ROLE')[2]) {
-            $query = $this->database->query("SELECT id, CONCAT(firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' AND is_glaucoma_required = 'YES' LIMIT 5");
+            $query = $this->database->query("SELECT id, CONCAT(title, ' ', firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' AND is_glaucoma_required = 'YES' LIMIT 5");
 
         } else {
-            $query = $this->database->query("SELECT id, CONCAT(firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' LIMIT 5");
+            $query = $this->database->query("SELECT id, CONCAT(title, ' ', firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' LIMIT 5");
         }
         return $query->rows;
     }

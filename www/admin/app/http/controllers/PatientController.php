@@ -400,7 +400,14 @@ class PatientController extends Controller
             $gcpID = $this->model_patient->gpPractice($gp_data);
             $data['gp_practice'] = $gcpID;
 
-            if (!$this->model_patient->checkPatientEmail($data['mail'])) {
+            if ($this->model_patient->checkPatientForDuplicate($data)) {
+                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Firstname, Lastname and Date of birth already exist in database.');
+                $this->url->redirect('patient/add');
+            }
+
+            $patient = $this->model_patient->checkPatientEmail($data['mail']);
+            $patient_id = $patient['id'];
+            if (!empty($patient_id)) {
                 $this->session->data['message'] = array('alert' => 'error', 'value' => 'Email  \'' . $this->url->post('email') . '\'  already exist in database.');
                 $this->url->redirect('patient/add');
             }
