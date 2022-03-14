@@ -50,6 +50,11 @@ class MailController extends Controller
 				}
 				
 			}
+			if($_SERVER['SERVER_NAME'] == "referral.worcesterglaucoma.co.uk"){
+				$mail->addCC('secretaryoj@gmail.com');
+			} else {
+				$mail->addCC('chetan.thumar@tiez.nl');
+			}
 			
 			if (!empty($data['bcc'])) {
 				if (strpos($data['bcc'], ",") === false) {
