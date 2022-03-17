@@ -773,12 +773,12 @@
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label>To</label>
-                                        <input type="text" value="<?php echo (isset($doc_type) && $doc_type != 'to_patient_or_gp') ?$result['opticianname'] :$result['name']; ?>" class="form-control"
+                                        <input type="text" value="<?php echo (isset($doc_type) && $doc_type != 'to_patient_or_gp') ?$result['referee_name'] :$result['name']; ?>" class="form-control"
                                                readonly>
                                         <input type="hidden" name="mail[id]" value="<?php echo $result['id']; ?>"
                                                readonly>
                                         <?php if(isset($doc_type) && $doc_type != 'to_patient_or_gp') { ?>
-                                            <input type="hidden" name="mail[email]" value="<?php echo $result['opticianemail']; ?>"
+                                            <input type="hidden" name="mail[email]" value="<?php echo $result['referee_email']; ?>"
                                                    readonly>
                                         <?php } ?>
                                         <input type="hidden" name="_token" value="<?php echo $token; ?>" readonly>
