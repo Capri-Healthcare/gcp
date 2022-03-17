@@ -739,9 +739,9 @@ class Appointment extends Model
             $body .= "Current Treatment:<br>";
             $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;' align=center>
                                        <tr>
-                                            <td align='left'> &nbsp; Drug Name</td>
-                                            <td align='left'> &nbsp; Frequency</td>
-                                            <td align='left'> &nbsp; Eye</td>
+                                            <th align='left'> &nbsp; Drug Name</th>
+                                            <th align='left'> &nbsp; Frequency</th>
+                                            <th align='left'> &nbsp; Eye</th>
                                         </tr>";
 
         
@@ -1022,9 +1022,9 @@ class Appointment extends Model
             $body .= "<br><br>Current Treatment:<br>";
             $body .= "<table width='100%' border=1 style='border: 1px solid black; border-collapse:collapse;' align=center>
                                        <tr>
-                                            <td align='left'> &nbsp; Drug Name</td>
-                                            <td align='left'> &nbsp; Frequency</td>
-                                            <td align='left'> &nbsp; Eye</td>
+                                            <th align='left'> &nbsp; Drug Name</th>
+                                            <th align='left'> &nbsp; Frequency</th>
+                                            <th align='left'> &nbsp; Eye</th>
                                         </tr>";
 
         
