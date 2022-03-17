@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Referrer Name </label>
+                                <label>Optician / Third Party Name </label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ti-check-box"></i></span>
@@ -152,7 +152,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Referrer Address</label>
+                                <label>Optician / Third Party Address</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ti-check-box"></i></span>
@@ -162,7 +162,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Referrer Email</label>
+                                <label>Optician / Third Party Email</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ti-check-box"></i></span>

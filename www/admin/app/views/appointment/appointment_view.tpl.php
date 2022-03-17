@@ -160,15 +160,15 @@
                                         <td><?php echo $result['gp_postal_code']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Referrer Name</td>
+                                        <td>Optician / Third Party Name</td>
                                         <td><?php echo $result['referee_name']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Referrer Address</td>
+                                        <td>Optician / Third Party Address</td>
                                         <td><?php echo $result['referee_address']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Referrer Email</td>
+                                        <td>Optician / Third Party Email</td>
                                         <td><?php echo $result['referee_email']; ?></td>
                                     </tr>
                                     <tr>
