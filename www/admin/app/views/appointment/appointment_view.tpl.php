@@ -168,6 +168,10 @@
                                         <td><?php echo $result['referee_address']; ?></td>
                                     </tr>
                                     <tr>
+                                        <td>Referrer Email</td>
+                                        <td><?php echo $result['referee_email']; ?></td>
+                                    </tr>
+                                    <tr>
                                         <td>Medical History</td>
                                         <td class="text-danger"><?php if (!empty($result['history']) && is_array($result['history'])) {
                                                 echo implode(', ', json_decode($result['history'], true));

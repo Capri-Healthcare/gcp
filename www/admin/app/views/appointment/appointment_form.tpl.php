@@ -161,6 +161,16 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label>Referrer Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="appointment[referee_email]" placeholder="Enter referrer email" value="<?php echo $result['referee_email']; ?>">
+                                </div>
+                            </div>
+
                         </div>
                         <div class="col-md-6">
                             <div class="apnt-user">
