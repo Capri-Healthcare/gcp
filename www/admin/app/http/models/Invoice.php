@@ -91,7 +91,7 @@ class Invoice extends Model
 
     public function getAppointmentData($id)
     {
-        $query = $this->database->query("SELECT a.id AS appointment_id,a.date, a.name, a.email, a.mobile, a.doctor_id, CONCAT(d.firstname, ' ', d.lastname) AS doctor, pt.id AS patient_id FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = ? LIMIT 1", array((int)$id));
+        $query = $this->database->query("SELECT a.id AS appointment_id,a.date, CONCAT(pt.title, ' ', pt.firstname, ' ', pt.firstname) name, a.email, a.mobile, a.doctor_id, CONCAT(d.firstname, ' ', d.lastname) AS doctor, pt.id AS patient_id FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = ? LIMIT 1", array((int)$id));
 
         if ($query->num_rows > 0) {
             return $query->row;
