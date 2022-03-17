@@ -700,13 +700,9 @@ class Appointment extends Model
         }
         $body .= "</b></u>";
 
-        if (!empty($appointment['diagnosis_eye']) OR !empty($appointment['diagnosis_eye'])) {
-            $body .= "<br><br>";
-            $body .= "Diagnosis eye: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
-        }
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis:";
+            $body .= "Diagnosis:" . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
             //$body .= "<ol>";
             $count = 1;
             if (!empty($appointment['diagnosis'])) {
@@ -779,17 +775,16 @@ class Appointment extends Model
         $body .= "</strong>";
         
         $body .= "<br><br>";
-
        
             $body .= "<span style='font-size:12px'>";
             $body .= "CC:"."<br><br>";
             $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
             if (!empty($appointment['address'])) {
                 $body .= $appointment['address']['address1'];
-                $body .= !empty($appointment['address']['address2']) ? (", " . $appointment['address']['address2']) : '';
-                $body .= !empty($appointment['address']['city']) ? (", " . $appointment['address']['city']) : '';
-                $body .= !empty($appointment['address']['country']) ? (", " . $appointment['address']['country']) : '';
-                $body .= !empty($appointment['address']['postal']) ? (" - " . $appointment['address']['postal']) : '';
+                $body .= !empty($appointment['address']['address2']) ? ("<br> " . $appointment['address']['address2']) : '';
+                $body .= !empty($appointment['address']['city']) ? ("<br> " . $appointment['address']['city']) : '';
+                $body .= !empty($appointment['address']['country']) ? ("<br> " . $appointment['address']['country']) : '';
+                $body .= !empty($appointment['address']['postal']) ? ("<br> " . $appointment['address']['postal']) : '';
             }$body .= "</span>";
         
         $body .= "</div>";
@@ -985,13 +980,9 @@ class Appointment extends Model
         
         $body .= "Dear " . ucfirst($appointment['firstname']) . ",";
         
-        if (!empty($appointment['diagnosis_eye']) OR !empty($appointment['diagnosis_eye'])) {
-            $body .= "<br><br>";
-            $body .= "Diagnosis eye: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
-        }
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis:";
+            $body .= "Diagnosis:" . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
             //$body .= "<ol>";
             $count = 1;
             if (!empty($appointment['diagnosis'])) {
