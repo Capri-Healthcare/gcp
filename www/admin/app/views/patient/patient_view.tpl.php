@@ -649,6 +649,21 @@
                                                                                 </tr>
                                                                                 
                                                                                 <tr>
+                                                                                    <td>Disc (OCT) Comment </td>
+                                                                                    <td class="text-dark">
+                                                                                        <table style="padding: 0px;">
+                                                                                            <tr>
+                                                                                                <td width="50%" style="padding:0px;">
+                                                                                                    <b>RE: </b><?php echo isset($value['disc_oct_comment_right']) ? $value['disc_oct_comment_right'] : '' ?>
+                                                                                                </td>
+                                                                                                <td width="50%" style="padding:0px;">
+                                                                                                    <b>LE: </b><?php echo isset($value['disc_oct_comment_left']) ? $value['disc_oct_comment_left'] : '' ?>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
                                                                                     <td>NFL thickness</td>
                                                                                     <td class="text-dark">
                                                                                         <table style="padding: 0px;">
@@ -656,16 +671,13 @@
                                                                                                 <td width="50%"
                                                                                                     style="padding:0px;">
                                                                                                     <b>RE: </b><?php echo isset($value['nfl_thickness_right']) ? $value['nfl_thickness_right'] . " mm" : '' ?>
-
                                                                                                 </td>
                                                                                                 <td width="50%"
                                                                                                     style="padding:0px;">
                                                                                                     <b>LE: </b><?php echo isset($value['nfl_thickness_left']) ? $value['nfl_thickness_left'] . " mm" : '' ?>
                                                                                                 </td>
-                                                                                                </td>
                                                                                             </tr>
                                                                                         </table>
-
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -726,6 +738,21 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    <td>Fundus Comment </td>
+                                                                                    <td class="text-dark">
+                                                                                        <table style="padding: 0px;">
+                                                                                            <tr>
+                                                                                                <td width="50%" style="padding:0px;">
+                                                                                                    <b>RE: </b><?php echo isset($value['fundus_comment_right']) ? $value['fundus_comment_right'] : '' ?>
+                                                                                                </td>
+                                                                                                <td width="50%" style="padding:0px;">
+                                                                                                    <b>LE: </b><?php echo isset($value['fundus_comment_left']) ? $value['fundus_comment_left'] : '' ?>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
                                                                                     <td>Visual field test plots</td>
                                                                                     <td class="text-dark">
                                                                                         <div class="report-container">
@@ -766,6 +793,21 @@
                                                                                                     !!!</p>
                                                                                             <?php } ?>
                                                                                         </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Visual Field Test Plots Comment </td>
+                                                                                    <td class="text-dark">
+                                                                                        <table style="padding: 0px;">
+                                                                                            <tr>
+                                                                                                <td width="50%" style="padding:0px;">
+                                                                                                    <b>RE: </b><?php echo isset($value['visual_field_test_plots_comment_right']) ? $value['visual_field_test_plots_comment_right'] : '' ?>
+                                                                                                </td>
+                                                                                                <td width="50%" style="padding:0px;">
+                                                                                                    <b>LE: </b><?php echo isset($value['visual_field_test_plots_comment_left']) ? $value['visual_field_test_plots_comment_left'] : '' ?>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>

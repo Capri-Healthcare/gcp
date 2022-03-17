@@ -1019,7 +1019,24 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Disc (OCT) Comment - RE</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="appointment[disc_oct_comment_right]" value="<?php echo $result['disc_oct_comment_right']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Disc (OCT) Comment - LE</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="appointment[disc_oct_comment_left]" value="<?php echo $result['disc_oct_comment_left']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -1123,6 +1140,24 @@
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>Fundus Comment - RE</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="appointment[fundus_comment_right]" value="<?php echo $result['fundus_comment_right']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Fundus Comment - LE</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="appointment[fundus_comment_left]" value="<?php echo $result['fundus_comment_left']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label>Visual Field Test Plots - RE</label><br>
                                                 <div class="examination-container visualfieldsrighteye">
                                                     <?php if (!empty($reports)) {
@@ -1186,6 +1221,25 @@
                                                     } else { ?>
                                                         <p class="text-danger text-center">No documents found !!!</p>
                                                     <?php } ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Visual Field Test Plots Comment - RE</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="appointment[visual_field_test_plots_comment_right]" value="<?php echo $result['visual_field_test_plots_comment_right']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Visual Field Test Plots Comment - LE</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="appointment[visual_field_test_plots_comment_left]" value="<?php echo $result['visual_field_test_plots_comment_left']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
                                                 </div>
                                             </div>
                                         </div>

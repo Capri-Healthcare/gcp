@@ -412,6 +412,22 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>Disc (OCT) Comment</td>
+                                            <td class="text-dark">
+                                                <table style="padding: 0px;">
+                                                    <tr>
+                                                        <td style="padding:0px;">
+                                                            <b>RE: </b><?php echo isset($result['disc_oct_comment_right']) ? $result['disc_oct_comment_right'] : '' ?>
+
+                                                        </td>
+                                                        <td style="padding:0px;">
+                                                            <b>LE: </b><?php echo isset($result['disc_oct_comment_left']) ? $result['disc_oct_comment_left'] : '' ?></td>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>NFL thickness</td>
                                             <td class="text-dark">
                                                 <table style="padding: 0px;">
@@ -474,6 +490,22 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>Fundus Comment</td>
+                                            <td class="text-dark">
+                                                <table style="padding: 0px;">
+                                                    <tr>
+                                                        <td style="padding:0px;">
+                                                            <b>RE: </b><?php echo isset($result['fundus_comment_right']) ? $result['fundus_comment_right'] : '' ?>
+
+                                                        </td>
+                                                        <td style="padding:0px;">
+                                                            <b>LE: </b><?php echo isset($result['disc_oct_comment_left']) ? $result['fundus_comment_left'] : '' ?></td>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>Visual field test plots</td>
                                             <td class="text-dark">
                                                 <div class="report-container">
@@ -503,6 +535,22 @@
                                                         <p class="text-danger text-center">No documents found !!!</p>
                                                     <?php } ?>
                                                 </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Visual Field Test Plots Comment</td>
+                                            <td class="text-dark">
+                                                <table style="padding: 0px;">
+                                                    <tr>
+                                                        <td style="padding:0px;">
+                                                            <b>RE: </b><?php echo isset($result['visual_field_test_plots_comment_right']) ? $result['visual_field_test_plots_comment_right'] : '' ?>
+
+                                                        </td>
+                                                        <td style="padding:0px;">
+                                                            <b>LE: </b><?php echo isset($result['visual_field_test_plots_comment_left']) ? $result['visual_field_test_plots_comment_left'] : '' ?></td>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </td>
                                         </tr>
                                         <tr>

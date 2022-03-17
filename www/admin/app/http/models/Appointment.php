@@ -168,8 +168,14 @@ class Appointment extends Model
         `anterior_chamber_left_comment` = ?,
         `lens_right` = ?, 
         `lens_left` = ?,
+        `disc_oct_comment_right` = ?,
+        `disc_oct_comment_left` = ?,
         `nfl_thickness_right` = ?, 
         `nfl_thickness_left` = ?,
+        `fundus_comment_right` = ?,
+        `fundus_comment_left` = ?,
+        `visual_field_test_plots_comment_right` = ?,
+        `visual_field_test_plots_comment_left` = ?,
         `visual_field_progression_right` = ?,
         `visual_field_progression_left` = ?,
         `mean_deviation_right` = ?, 
@@ -208,8 +214,14 @@ class Appointment extends Model
             $data['anterior_chamber_left_comment'],
             $data['lens_right'],
             $data['lens_left'],
+            $data['disc_oct_comment_right'],
+            $data['disc_oct_comment_left'],
             (int)$data['nfl_thickness_right'],
-            $data['nfl_thickness_left'],
+            (int)$data['nfl_thickness_left'],
+            $data['fundus_comment_right'],
+            $data['fundus_comment_left'],
+            $data['visual_field_test_plots_comment_right'],
+            $data['visual_field_test_plots_comment_left'],
             $data['visual_field_progression_right'],
             $data['visual_field_progression_left'],
             $data['mean_deviation_right'],
@@ -671,18 +683,19 @@ class Appointment extends Model
 
         $body .= "Dear " . ucfirst($appointment['referee_name']) . ",<br><br>";
 
-        $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
+        $body .= "<u><b>"."RE: ".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']);
         if (!empty($appointment['address'])) {
-            $body .= $appointment['address']['address1'];
+            $body .= !empty($appointment['address']['address1']) ? (", " . $appointment['address']['address1']) : '';
             $body .= !empty($appointment['address']['address2']) ? (", " . $appointment['address']['address2']) : '';
             $body .= !empty($appointment['address']['city']) ? (", " . $appointment['address']['city']) : '';
             $body .= !empty($appointment['address']['country']) ? (", " . $appointment['address']['country']) : '';
             $body .= !empty($appointment['address']['postal']) ? (" - " . $appointment['address']['postal']) : '';
         }
+        $body .= "</b></u>";
 
         if (!empty($appointment['diagnosis_eye']) OR !empty($appointment['diagnosis_eye'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis eye:" . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
+            $body .= "Diagnosis eye: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
         }
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
@@ -969,7 +982,7 @@ class Appointment extends Model
         
         if (!empty($appointment['diagnosis_eye']) OR !empty($appointment['diagnosis_eye'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis eye:" . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
+            $body .= "Diagnosis eye: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
         }
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
