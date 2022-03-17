@@ -681,8 +681,14 @@ class Appointment extends Model
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
         
+        $patient_first_name_arr = explode(" ", strtolower($appointment['referee_name']));
+        if(in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
+            $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
+        } else {
+            $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
+        }
 
-        $body .= "Dear " . ucfirst($appointment['referee_name']) . ",<br><br>";
+        $body .= "Dear " . $patient_first_name . ",<br><br>";
 
         $body .= "<u><b>"."Re: ".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']);
         if (!empty($appointment['address'])) {
@@ -965,8 +971,6 @@ class Appointment extends Model
 
         $body .= $appointment['title'] . " " . ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         if (!empty($appointment['address'])) {
-            //$body .= "<strong>Address:</strong> " . $appointment['address']['address1'] . ", " . $appointment['address']['address2'] . "<br>";
-            //$body .= $appointment['address']['city'] . ", " . $appointment['address']['country'] . ", " . $appointment['address']['postal'];
             $body .= $appointment['address']['address1'];
             $body .= !empty($appointment['address']['address2']) ? ("<br>" . $appointment['address']['address2']) : '';
             $body .= !empty($appointment['address']['city']) ? ("<br>" . $appointment['address']['city']) : '';

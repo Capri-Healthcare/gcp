@@ -506,7 +506,15 @@
                             
                                 $emial_body = INVOICE_REMINDER_EMAIL_TEMPLATE;
                                 $emial_body = str_replace("#TODAY_DATE", date('d-m-Y'), $emial_body);
+
+                                $patient_first_name_arr = explode(" ", strtolower($result['name']));
+                                if(in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
+                                    $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
+                                } else {
+                                    $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
+                                }
                                 $emial_body = str_replace("#PATIENT_FULLNAME", $result['name'], $emial_body);
+                                $emial_body = str_replace("#PATIENT_FIRST_NAME", $patient_first_name, $emial_body);
                                 $emial_body = str_replace("#PATIENT_ADDRESS", $patient_address, $emial_body);
                                 $emial_body = str_replace("#INVOICE_NUMBER", $invoice_number, $emial_body);
                                 $emial_body = str_replace("#INVOICE_DATE", $result['invoicedate'], $emial_body);
