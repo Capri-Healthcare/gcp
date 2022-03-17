@@ -681,14 +681,14 @@ class Appointment extends Model
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
         
-        $patient_first_name_arr = explode(" ", strtolower($appointment['referee_name']));
-        if(in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
-            $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
+        $optician_first_name_arr = explode(" ", strtolower($appointment['referee_name']));
+        if(in_array($optician_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
+            $optician_first_name = ucfirst(strtolower($optician_first_name_arr[1]));
         } else {
-            $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
+            $optician_first_name = ucfirst(strtolower($optician_first_name_arr[0]));
         }
 
-        $body .= "Dear " . $patient_first_name . ",<br><br>";
+        $body .= "Dear " . $optician_first_name . ",<br><br>";
 
         $body .= "<u><b>"."Re: ".ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']);
         if (!empty($appointment['address'])) {
@@ -702,7 +702,7 @@ class Appointment extends Model
 
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis:" . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
+            $body .= "Diagnosis: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
             //$body .= "<ol>";
             $count = 1;
             if (!empty($appointment['diagnosis'])) {
@@ -777,7 +777,7 @@ class Appointment extends Model
         $body .= "<br><br>";
        
             $body .= "<span style='font-size:12px'>";
-            $body .= "CC:"."<br><br>";
+            $body .= "CC:"."<br>";
             $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
             if (!empty($appointment['address'])) {
                 $body .= $appointment['address']['address1'];
@@ -867,13 +867,14 @@ class Appointment extends Model
           li { font-size: 13px; }
           H4 { margin-bottom: 0px}
           @page {
-              margin: 150px 80px 60px 80px;
+              margin: 150px 80px 70px 80px;
           }
           header {
               position: fixed; top: -120px; left: 0px; right: 0px; height: 100px;
           }
           footer {
-              position: fixed; bottom: -70px; left: 0px; right: 0px; height: 100px; 
+              position: fixed; bottom: -70px; left: 0px; right: 0px; height: 80px; 
+              padding-top: 20px;
           }
           body {  
               font-family: 'Helvetica Neue, Helvetica, Arial, sans-serif';
@@ -978,11 +979,18 @@ class Appointment extends Model
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
         
-        $body .= "Dear " . ucfirst($appointment['firstname']) . ",";
+        $patient_first_name_arr = explode(" ", strtolower($appointment['firstname']));
+        if(in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
+            $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
+        } else {
+            $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
+        }
+
+        $body .= "Dear " . $patient_first_name . ",";
         
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis:" . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
+            $body .= "Diagnosis: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
             //$body .= "<ol>";
             $count = 1;
             if (!empty($appointment['diagnosis'])) {
@@ -1059,11 +1067,11 @@ class Appointment extends Model
         
         if(!empty($gp_address)){
             $body .= "<span style='font-size:12px'>";
-            $body .= "CC:"."<br><br>";
+            $body .= "CC:"."<br>";
             $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
             $referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
             foreach($referee_address_arr as $address){
-                $body .= $address."<br>";
+                $body .= ucfirst(strtolower($address))."<br>";
             }
             $body .= (!empty($appointment['gp_postal_code'])) ? ($appointment['gp_postal_code']) : "";
             $body .= "</span>";
