@@ -857,9 +857,14 @@
                                     <div class="form-group">
                                         <label>Message</label>
                                         <textarea name="mail[message]" class="form-control mail-summernote" placeholder="Enter Message . . .">
-                                                <br><br><br><br><br><br><br><br>
-                                                Best Regards, <br>
-                                                My Eye Record & Care
+                                                
+                                        <br><br><br><br><br><br><br><br>
+                                            Best wishes,<br><br>
+
+                                            Admin Team<br>
+                                            on Behalf of <br>
+                                            Mr Tarun Sharma<br>
+                                            Consultant Ophthalmologist
                                         </textarea>
                                     </div>
                                     <div class="panel-action" style="text-align: left;">

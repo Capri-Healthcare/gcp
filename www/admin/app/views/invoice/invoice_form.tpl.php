@@ -176,26 +176,26 @@
                                 } ?>>Partially Paid
                                 </option>
                                 
-                                <option value="Pending" <?php if ("Pending" == $result['status']) {
+                                <!-- <option value="Pending" <?php if ("Pending" == $result['status']) {
                                     echo "selected";
                                 } ?>>Pending
-                                </option>
-                                <option value="In Process" <?php if ("In Process" == $result['status']) {
+                                </option> -->
+                                <!-- <option value="In Process" <?php if ("In Process" == $result['status']) {
                                     echo "selected";
                                 } ?>>In Process
-                                </option>
+                                </option> -->
                                 <option value="Cancelled" <?php if ("Cancelled" == $result['status']) {
                                     echo "selected";
                                 } ?>>Cancelled
                                 </option>
-                                <option value="Other" <?php if ("Other" == $result['status']) {
+                                <!-- <option value="Other" <?php if ("Other" == $result['status']) {
                                     echo "selected";
                                 } ?>>Other
                                 </option>
                                 <option value="Unknown" <?php if ("Unknown" == $result['status']) {
                                     echo "selected";
                                 } ?>>Unknown
-                                </option>
+                                </option> -->
                             </select>
                         </div>
                     </div>
@@ -207,13 +207,13 @@
                             <div class="input-group-prepend"><span class="input-group-text"><i class="ti-check-box"></i></span>
                             </div>
                             <select name="invoice[inv_status]" class="custom-select" required>
-                                <option value="0" <?php if ($result['inv_status'] == "0") {
-                                    echo "selected";
-                                } ?>>Draft
-                                </option>
                                 <option value="1" <?php if ($result['inv_status'] == "1") {
                                     echo "selected";
                                 } ?>>Published
+                                </option>
+                                <option value="0" <?php if ($result['inv_status'] == "0") {
+                                    echo "selected";
+                                } ?>>Draft
                                 </option>
                             </select>
                         </div>
