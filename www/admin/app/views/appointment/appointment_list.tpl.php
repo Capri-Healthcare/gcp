@@ -103,7 +103,7 @@
                                                 <?php } if (!empty($value['invoice_id']) && $invoice_view) { ?>
                                                     <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$value['invoice_id'];?>"><i class="ti-receipt pr-2"></i>Invoice</a></li>
                                                 <?php } elseif (empty($value['invoice_id']) && $invoice_add) { ?>
-                                                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/add&appointment='.$value['id'];?>"><i class="ti-receipt pr-2"></i>Generate Invoice</a></li>
+                                                    <li><a target="_blank" href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/add&appointment='.$value['id'];?>"><i class="ti-receipt pr-2"></i>Generate Invoice</a></li>
                                                 <?php } ?>
                                             </ul>
                                         </div>

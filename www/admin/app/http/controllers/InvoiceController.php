@@ -342,7 +342,7 @@ class InvoiceController extends Controller
             if ($data['invoice']['inv_status'] == "1") {
                 $checkMailStatus = $this->model_invoice->checkInvoiceMailStatus($data['invoice']['id']);
                 if ($checkMailStatus == '0') {
-                    $this->invoiceMail($data['invoice']['id']);
+                    //$this->invoiceMail($data['invoice']['id']);
                     $this->model_invoice->updateInvoiceMailStatus($data['invoice']['id']);
                 }
             }
@@ -358,7 +358,7 @@ class InvoiceController extends Controller
                 if ($data['invoice']['inv_status'] == "1") {
                     $checkMailStatus = $this->model_invoice->checkInvoiceMailStatus($result);
                     if ($checkMailStatus == '0') {
-                        $this->invoiceMail($result);
+                        //$this->invoiceMail($result);
                         $this->model_invoice->updateInvoiceMailStatus($result);
                     }
                 }
@@ -412,7 +412,7 @@ class InvoiceController extends Controller
         $result = $this->model_invoice->addInvoicePayment($data['payment']);
         $this->model_invoice->invoiceTotal($data['payment']);
 
-        $this->paymentConfirmationMail($data['payment']['invoice'],$result);
+        //$this->paymentConfirmationMail($data['payment']['invoice'],$result);
         $this->session->data['message'] = array('alert' => 'success', 'value' => 'Payment added successfully');
         $this->url->redirect('invoice/view&id=' . $data['payment']['invoice']);
     }

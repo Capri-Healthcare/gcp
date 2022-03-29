@@ -1,7 +1,7 @@
 <?php include(DIR_ADMIN . 'app/views/common/header.tpl.php'); ?>
     <div class="page-title">
         <div class="row align-items-center">
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <h2 class="page-title-text d-inline-block"><?php echo $page_title; ?></h2>
                 <div class="breadcrumbs d-inline-block">
                     <ul>
@@ -11,10 +11,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-7 text-right">
                 <?php if ($page_send_mail) { ?>
                     <a data-toggle="modal" class="btn btn-success btn-sm" data-target="#invoiceMail"><i
-                                class="ti-envelope mr-2"></i>Send Email</a>
+                                class="ti-envelope mr-2"></i>Send Payment Reminder Email</a>
                 <?php }
                 if ($page_pdf) { ?>
                     <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/pdf&id=' . $result['id']; ?>"
