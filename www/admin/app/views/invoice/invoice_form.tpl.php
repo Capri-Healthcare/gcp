@@ -141,12 +141,21 @@
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i
                                             class="ti-credit-card"></i></span></div>
+                            <?php 
+                            
+                            if(!empty($result['medical_insurers_name']) AND empty($result['method'])){
+                                $result['method'] = 4;
+                            }
+                            //echo "<pre>"; print_r($result);exit; 
+                            ?>
                             <select name="invoice[method]" class="custom-select" id="payment_method">
                                 <option value="">Select payment method<opton>
                                 <?php $selected_payment_method = "";
+                                
                                 if ($payment_method) {
                                     foreach ($payment_method as $key => $value) { ?>
-                                        <option value="<?php echo $value['id'] ?>" <?php if ($result['method'] == $value['id']) {
+                                        <option value="<?php echo $value['id'] ?>" 
+                                        <?php if ($result['method'] == $value['id']) {
                                             $selected_payment_method = $value['name'];
                                             echo "selected";
                                         } ?>><?php echo $value['name']; ?></option>

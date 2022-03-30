@@ -351,11 +351,11 @@ define('PAYMENT_STATUS_FILTER_INVOIVE', [
         'Paid' => 'Paid',
         'Unpaid' => 'Unpaid',
         'Partially Paid' => 'Partially Paid',
-        'Pending' => 'Pending',
-        'In Process' => 'In Process',
+        /* 'Pending' => 'Pending',
+        'In Process' => 'In Process', */
         'Cancelled' => 'Cancelled',
-        'Other' => 'Other',
-        'Unknown' => 'Unknown',
+        /* 'Other' => 'Other',
+        'Unknown' => 'Unknown', */
     ]
 );
 define('PAYMENT_STATUS_FILTER_UNPAID', 'Unpaid');

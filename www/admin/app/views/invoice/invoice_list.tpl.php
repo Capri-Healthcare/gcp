@@ -2,7 +2,7 @@
 <!-- Invoice List Page start -->
 <div class="page-title">
     <div class="row align-items-center">
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <h2 class="page-title-text d-inline-block">Invoices</h2>
             <div class="breadcrumbs d-inline-block">
                 <ul>
@@ -11,14 +11,23 @@
                 </ul>
             </div>
         </div>
-        <div class="col-sm-6 text-right">
+        <div class="col-sm-9 text-right">
             <div class="btn btn-white btn-sm text-left mr-2">
                 <i class="ti-filter text-danger pr-2"></i>
                 <input type="text" class="table-date-range">
             </div>
             <div class="btn btn-white btn-sm text-left mr-2">
                 <i class="ti-filter text-danger pr-2"></i>
-                <select class="status" style="border: 0px;">
+                <select class="insurers_company_name" name="insurers_company_name" style="border: 0px;">
+                        <option value="">Select insurers company</option>
+                        <?php foreach (MEDICALE_INSURANCE_COMPANIES as $key => $status) { ?>
+                            <option value="<?php echo $key ?>" <?php echo (isset($period['insurers_company_name']) AND $key == $period['insurers_company_name']) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                        <?php } ?>
+                </select>
+            </div>
+            <div class="btn btn-white btn-sm text-left mr-2">
+                <i class="ti-filter text-danger pr-2"></i>
+                <select class="status" name="status" style="border: 0px;">
                         <?php foreach (constant('PAYMENT_STATUS_FILTER_INVOIVE') as $key => $status) { ?>
                             <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
                         <?php } ?>
@@ -177,7 +186,16 @@
         $('.status').on('change', function (e) {
             var startDate = $("#startDate").val();
             var endDate = $("#endDate").val();
-            window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>invoices'+'&status=' + e.currentTarget.value +'&start='+startDate+'&end='+endDate);
+            var status = $(".status").val();
+            var insurers_company_name = $(".insurers_company_name").val();
+            window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>invoices'+'&status=' + status +'&insurers_company_name=' + insurers_company_name + '&start='+startDate+'&end='+endDate);
+        });
+        $('.insurers_company_name').on('change', function (e) {
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+            var status = $(".status").val();
+            var insurers_company_name = $(".insurers_company_name").val();
+            window.location.replace('<?php echo URL_ADMIN.DIR_ROUTE; ?>invoices'+'&status=' + status +'&insurers_company_name=' + insurers_company_name +'&start='+startDate+'&end='+endDate);
         });
         var invoiceTable = $('.invoice-table').DataTable({
             aLengthMenu: [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
