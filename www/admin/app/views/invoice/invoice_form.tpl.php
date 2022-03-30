@@ -143,9 +143,13 @@
                                             class="ti-credit-card"></i></span></div>
                             <?php 
                             
-                            if(!empty($result['medical_insurers_name']) AND empty($result['method'])){
-                                $result['method'] = 4;
-                            }
+							if(empty($result['method'])){
+								if(!empty($result['medical_insurers_name'])){
+									$result['method'] = 4;
+								} else {
+									$result['method'] = 1;
+								}
+							}                            
                             //echo "<pre>"; print_r($result);exit; 
                             ?>
                             <select name="invoice[method]" class="custom-select" id="payment_method">
