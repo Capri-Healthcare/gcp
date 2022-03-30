@@ -19,7 +19,7 @@
             <div class="btn btn-white btn-sm text-left mr-2">
                 <i class="ti-filter text-danger pr-2"></i>
                 <select class="insurers_company_name" name="insurers_company_name" style="border: 0px;">
-                        <option value="">Select insurers company</option>
+                        <option value="">Select insurance company</option>
                         <?php foreach (MEDICALE_INSURANCE_COMPANIES as $key => $status) { ?>
                             <option value="<?php echo $key ?>" <?php echo (isset($period['insurers_company_name']) AND $key == $period['insurers_company_name']) ? 'selected' : '' ?>><?php echo $status; ?></option>
                         <?php } ?>
