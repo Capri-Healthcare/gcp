@@ -95,7 +95,7 @@
                                 <td class="clickable-row"
                                     data-count="<?php echo $key + 1; ?>"><?php echo $value['optician_name']; ?></td>
                                 <?php } ?>
-                                <?php if ($common['user']['role'] == constant('USER_ROLE_MED') && $period['status']== constant('STATUS_ACCEPTED')) { ?>
+                                <?php if (in_array($common['user']['role'], [constant('USER_ROLE_ADMIN'), constant('USER_ROLE_DOCTOR'), constant('USER_ROLE_MED')]) && $period['status']== constant('STATUS_ACCEPTED')) { ?>
 
                                     <td>
                                         <?php if ($value['status'] == 'ACCEPTED') { ?>

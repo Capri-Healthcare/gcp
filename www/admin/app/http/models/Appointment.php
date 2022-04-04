@@ -725,6 +725,7 @@ class Appointment extends Model
 		
         
         if (!empty($appointment['operation'])) {
+            $body .= "<br><br>";
             //$body .= !empty($appointment['diagnosis']) ? ", " : "";
             $body .= "Operation: ".$appointment['operation'];
         }
@@ -753,7 +754,7 @@ class Appointment extends Model
         }
 
         if (!empty($appointment['gcp_next_appointment'])) {
-            $body .= "<br>";
+            $body .= "<br><br>";
             $body .= "<strong>Follow up: ";
             $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] . "</strong>";
         }
@@ -1039,7 +1040,7 @@ class Appointment extends Model
         }
 
         if (!empty($appointment['gcp_next_appointment'])) {
-            $body .= "<br>";
+            $body .= "<br><br>";
             $body .= "<strong>Follow up: ";
             $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] . "</strong>";
         }
