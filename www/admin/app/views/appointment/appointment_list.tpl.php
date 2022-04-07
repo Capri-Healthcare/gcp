@@ -101,7 +101,7 @@
                                                 <?php } if ($page_edit) { ?>
                                                     <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/edit&id='.$value['id'];?>"><i class="ti-pencil-alt pr-2"></i>Edit</a></li>
                                                 <?php } if (!empty($value['invoice_id']) && $invoice_view) { ?>
-                                                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$value['invoice_id'];?>"><i class="ti-receipt pr-2"></i>Invoice</a></li>
+                                                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$value['invoice_id'];?>"><i class="ti-receipt pr-2"></i>View Invoice</a></li>
                                                 <?php } elseif (empty($value['invoice_id']) && $invoice_add) { ?>
                                                     <li><a target="_blank" href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/add&appointment='.$value['id'];?>"><i class="ti-receipt pr-2"></i>Generate Invoice</a></li>
                                                 <?php } ?>

@@ -19,7 +19,7 @@ class InvoiceController extends Controller
         $data['period']['start'] = $this->url->get('start');
         $data['period']['end'] = $this->url->get('end');
         $data['period']['status'] = $this->url->get('status');
-        $data['period']['insurers_company_name'] = $this->url->get('insurers_company_name');
+        $data['period']['insurers_company_name'] = $this->url->get('insurers_company_name', '');
 
 
         if (!empty($data['period']['start']) && !empty($data['period']['end']) && !$this->controller_common->validateDate($data['period']['start']) && !$this->controller_common->validateDate($data['period']['end'])) {

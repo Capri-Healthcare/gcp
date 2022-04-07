@@ -19,10 +19,11 @@
             <div class="btn btn-white btn-sm text-left mr-2">
                 <i class="ti-filter text-danger pr-2"></i>
                 <select class="insurers_company_name" name="insurers_company_name" style="border: 0px;">
-                        <option value="">Select insurance company</option>
+                        <option value="">Select Payment by</option>
                         <?php foreach (MEDICALE_INSURANCE_COMPANIES as $key => $status) { ?>
                             <option value="<?php echo $key ?>" <?php echo (isset($period['insurers_company_name']) AND $key == $period['insurers_company_name']) ? 'selected' : '' ?>><?php echo $status; ?></option>
                         <?php } ?>
+                        <option value="SELF_PAY">Self pay</option>
                 </select>
             </div>
             <div class="btn btn-white btn-sm text-left mr-2">
@@ -199,7 +200,7 @@
         });
         var invoiceTable = $('.invoice-table').DataTable({
             aLengthMenu: [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
-            iDisplayLength: 10,
+            iDisplayLength: 20,
             pagingType: 'full_numbers',
             order: [],
             dom: "<'row align-items-center pb-3'<'col-sm-6 text-left'l><'col-sm-6 text-right'f>><'row'<'col-sm-12'tr>><'row align-items-center pt-3'<'col-sm-12 col-md-4'i><'col-sm-12 col-md-8 text-right dataTables_pager'p>>",

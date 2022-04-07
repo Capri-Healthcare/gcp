@@ -88,7 +88,7 @@
                 <div class="tab-pane fade <?php echo !isset($doc_type) ? 'show active' : ''; ?>" id="appointment-info">
                     <div class="panel panel-default">
                         <div class="panel-head">
-                            <div class="panel-title">Appointment Info</div>
+                            <div class="panel-title">Appointment Info | <?php echo $result['name']; ?> | <?php echo date_format(date_create($result['patient_dob']), $common['info']['date_format']); ?></div>
                             <?php if ($result['consultation_type'] == 'video_consultation' and $result['status'] == 3) { ?>
                                 <div class="video_call_icon pull-right">
                                     <div class="icon tbl-cell">
@@ -97,7 +97,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            <?php }  ?>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive" style="overflow-x: hidden !important;">
@@ -219,7 +219,7 @@
                     <div class="tab-pane fade" id="appointment-records">
                         <div class="panel panel-default">
                             <div class="panel-head">
-                                <div class="panel-title">Examination Notes</div>
+                                <div class="panel-title">Examination Notes | <?php echo $result['name']; ?> | <?php echo date_format(date_create($result['patient_dob']), $common['info']['date_format']); ?></div>
                                 <?php /* if (!empty($notes)) { ?>
                                 <div class="panel-action">
                                     <a href="<?php echo URL_ADMIN.DIR_ROUTE.'records/pdf&id='.$notes['id']; ?>" class="btn btn-danger btn-sm" target="_blank"><i class="ti-printer mr-2"></i>PDF/Print</a>
@@ -705,7 +705,7 @@
                     <div class="tab-pane fade" id="appointment-documents">
                         <div class="panel panel-default">
                             <div class="panel-head">
-                                <div class="panel-title">Scans & Reports</div>
+                                <div class="panel-title">Scans & Reports | <?php echo $result['name']; ?> | <?php echo date_format(date_create($result['patient_dob']), $common['info']['date_format']); ?></div>
                                 <!--                            <div class="panel-title text-right">-->
                                 <!--                                <a class="btn btn-secondary btn-sm" href="-->
                                 <?php //echo URL_ADMIN.DIR_ROUTE.'appointment/reportsExport&id='.$result['id']; ?><!--"><i class="ti-cloud-down mr-2"></i> Download Documents/Reports</a>-->
@@ -749,7 +749,7 @@
                     <div class="tab-pane fade" id="appointment-invoice">
                         <div class="panel panel-default">
                             <div class="panel-head">
-                                <div class="panel-title">Invoice</div>
+                                <div class="panel-title">Invoice | <?php echo $result['name']; ?> | <?php echo date_format(date_create($result['patient_dob']), $common['info']['date_format']); ?></div>
                             </div>
                             <div class="panel-body">
                                 <div class="text-center">
@@ -782,7 +782,7 @@
                     <div class="tab-pane fade" id="appointment-prescription">
                         <div class="panel panel-default">
                             <div class="panel-head">
-                                <div class="panel-title">Prescription</div>
+                                <div class="panel-title">Prescription | <?php echo $result['name']; ?> | <?php echo date_format(date_create($result['patient_dob']), $common['info']['date_format']); ?></div>
                                 <?php if (!empty($prescription['prescription'])) { ?>
                                     <div class="panel-action">
                                         <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'prescription/pdf&id=' . $result['prescription_id']; ?>"
@@ -826,7 +826,7 @@
                          id="appointment-send-mail">
                         <div class="panel panel-default">
                             <div class="panel-head">
-                                <div class="panel-title"><?php echo (isset($doc_type) && $doc_type != 'to_patient_or_gp') ? 'Send email to the referrer' : 'Send Email to Patient'; ?></div>
+                                <div class="panel-title"><?php echo (isset($doc_type) && $doc_type != 'to_patient_or_gp') ? 'Send email to the referrer' : 'Send Email to Patient'; ?> | <?php echo $result['name']; ?> | <?php echo date_format(date_create($result['patient_dob']), $common['info']['date_format']); ?></div>
                             </div>
                             <form action="<?php echo URL_ADMIN . DIR_ROUTE . 'appointment/sendmail'; ?>" method="post"
                                   enctype="multipart/form-data">
@@ -1033,7 +1033,7 @@
                 <div class="tab-pane fade" id="appointment-letters">
                     <div class="panel panel-default">
                         <div class="panel-head">
-                            <div class="panel-title">Download letter</div>
+                            <div class="panel-title">Download letter | <?php echo $result['name']; ?> | <?php echo date_format(date_create($result['patient_dob']), $common['info']['date_format']); ?></div>
                         </div>
                         <div class="panel-body">
 
