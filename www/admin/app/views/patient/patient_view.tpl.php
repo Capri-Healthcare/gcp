@@ -892,26 +892,26 @@
                                                                                         <?php } ?>
                                                                                     </td>
                                                                                 </tr>
-                                                                                <!--tr>
+                                                                                <tr>
                                                                                     <td>Diagnosis eye</td>
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_eye']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$value['diagnosis_eye']] : '' ?></td>
-                                                                                </tr-->
-                                                                                <tr>
-                                                                                    <td>Diagnosis - RE</td>
-                                                                                    <td class="text-dark"><?php echo isset($value['diagnosis_re']) ? implode(', ', json_decode($value['diagnosis_re'], true)) : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>Diagnosis Other - RE</td>
-                                                                                    <td class="text-dark"><?php echo isset($value['diagnosis_other_re']) ? $value['diagnosis_other_re'] : '' ?></td>
+                                                                                    <td>Diagnosis</td>
+                                                                                    <td class="text-dark"><?php echo isset($value['diagnosis']) ? implode(', ', json_decode($value['diagnosis'], true)) : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    <td>Diagnosis Other</td>
+                                                                                    <td class="text-dark"><?php echo isset($value['diagnosis_other']) ? $value['diagnosis_other'] : '' ?></td>
+                                                                                </tr>
+                                                                                <!-- <tr>
                                                                                     <td>Diagnosis - LE</td>
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_le']) ? implode(', ', json_decode($value['diagnosis_le'], true)) : '' ?></td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>Diagnosis Other - LE</td>
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_other_le']) ? $value['diagnosis_other_le'] : '' ?></td>
-                                                                                </tr>
+                                                                                </tr> -->
                                                                                 <tr>
                                                                                     <td>Operation</td>
                                                                                     <td class="text-dark"><?php echo isset($value['operation']) ? $value['operation'] : '' ?></td>
