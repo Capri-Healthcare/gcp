@@ -583,7 +583,7 @@ class AppointmentController extends Controller
                 //$followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
 
                 $next_followup = constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$data['appointment']['followup']];
-                if ($next_followup['value'] > 0) {
+                if (is_numeric($next_followup['value']) AND $next_followup['value'] > 0) {
                     $followup['due_date'] = date('Y-m-d', strtotime("+ " . $next_followup['value'] . $next_followup['intervalrime'], strtotime(date('Y-m-d'))));
                     if ($this->model_followup->createFollowup($followup)) {
 

@@ -23,6 +23,7 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
+        <h4><?php echo $result['name']; ?> | <?php echo date_format(date_create($result['patient_dob']), $common['info']['date_format']); ?></h4>
         <input type="hidden" id="tabtitle" value="appointment-info">
         <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
             <li class="nav-item">
