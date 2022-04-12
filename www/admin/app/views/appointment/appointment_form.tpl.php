@@ -233,7 +233,7 @@
                                     </div>
                                 </div-->
                             <div class="apnt-user-input">
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <label>Patient Name <span class="form-required">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -243,7 +243,7 @@
                                         <input type="hidden" class="patient-id" name="appointment[patient_id]" value="<?php echo $result['patient_id'] ?>">
 
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="form-group">
                                     <label>Patient Email Address <span class="form-required">*</span></label>
                                     <div class="input-group">
