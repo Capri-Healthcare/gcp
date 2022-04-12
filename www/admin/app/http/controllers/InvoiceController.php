@@ -99,6 +99,8 @@ class InvoiceController extends Controller
         $data['payments'] = $this->model_invoice->getPayments($id);
         $data['attachments'] = $this->model_invoice->getAttachments($id);
 
+        unset($data['method']['0']); // Self pay
+
         /* Set confirmation message if page submitted before */
         if (isset($this->session->data['message'])) {
             $data['message'] = $this->session->data['message'];
@@ -161,6 +163,10 @@ class InvoiceController extends Controller
         } else {
             $data['result'] = NULL;
         }
+
+        unset($data['payment_method']['2']); // Cheque
+        unset($data['payment_method']['3']); // Bank Transfer
+        unset($data['payment_method']['4']); // Cash
 
         /* Set confirmation message if page submitted before */
         if (isset($this->session->data['message'])) {

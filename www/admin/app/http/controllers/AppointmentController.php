@@ -1751,6 +1751,13 @@ class AppointmentController extends Controller
 
                 $this->load->model('patient');
 
+                $patient_update_parames = [
+                    'mail' => $data['appointment']['mail'],
+                    'mobile' => $data['appointment']['mobile'],
+                    'id' => $data['appointment']['patient_id']
+                ];
+                $this->model_patient->updatePatientEmailAndMobile($patient_update_parames);
+
                 // Notify patient when status change
                 if ($appointment_details['status'] != $data['appointment']['status'] AND $data['appointment']['date'] >= date('Y-m-d')) {
 
@@ -1758,7 +1765,7 @@ class AppointmentController extends Controller
 
                     $this->controller_common->notifyPatientBySMS($data['appointment']['id'], 'UPDATE_APPOINTMENT');
                 }
-                $message = "Appointment Clinical Note updated successfully.";
+                $message = "Appointment detail updated successfully.";
             }
 
 

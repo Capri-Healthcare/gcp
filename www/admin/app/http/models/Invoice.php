@@ -77,7 +77,7 @@ class Invoice extends Model
 
     public function getPaymentMethod()
     {
-        $query = $this->database->query("SELECT `id`, `name` FROM `" . DB_PREFIX . "payment_method` WHERE status = ?", array(1));
+        $query = $this->database->query("SELECT `id`, `name` FROM `" . DB_PREFIX . "payment_method` WHERE status = ? ORDER BY sort_order", array(1));
         return $query->rows;
     }
 
