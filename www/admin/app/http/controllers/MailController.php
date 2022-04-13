@@ -54,7 +54,7 @@ class MailController extends Controller
 				$mail->addCC('secretaryoj@gmail.com');
 				$mail->addCC('tarunsharmat1@gmail.com');
 			} else {
-				$mail->addCC('pranita@capriconsulting.co.uk');
+				$mail->addCC('pranita.raghuwanshi22@gmail.com');
 			}
 			
 			if (!empty($data['bcc'])) {
