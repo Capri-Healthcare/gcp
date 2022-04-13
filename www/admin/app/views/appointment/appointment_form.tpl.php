@@ -259,7 +259,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-mobile"></i></span>
                                         </div>
-                                        <input type="text" class="form-control apnt-mobile" name="appointment[mobile]" value="<?php echo $result['mobile'] ?>" placeholder="Enter Patient Mobile Number . . ." required>
+                                        <input type="text" class="form-control apnt-mobile" name="appointment[mobile]" value="<?php echo $result['mobile'] ?>" placeholder="Enter Patient Mobile Number . . ." required maxlength="11" onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))">
                                     </div>
                                 </div>
                             </div>
