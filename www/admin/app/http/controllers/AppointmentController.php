@@ -1072,7 +1072,8 @@ class AppointmentController extends Controller
 
             $data['name'] = $result['template']['name'];
             $data['email'] = $appointment['email'];
-            $data['cc'] = $appointment['doctor_email'];
+            // as per tarun, he dont want doctor email in CC.
+            //$data['cc'] = $appointment['doctor_email'];
             $data['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
             $data['message'] = $result['template']['message'];
         } else {
@@ -1087,7 +1088,8 @@ class AppointmentController extends Controller
 
             $data['name'] = $result['template']['name'];
             $data['email'] = $appointment['email'];
-            $data['cc'] = $appointment['doctor_email'];
+            // as per tarun, he dont want doctor email in CC.
+            //$data['cc'] = $appointment['doctor_email'];
             $data['subject'] = str_replace('{ophth_title}', "", $result['template']['subject']);
             $data['subject'] = str_replace('{Ophth_fname, lname}', $appointment['doctor_name'], $data['subject']);
             $data['message'] = $result['template']['message'];

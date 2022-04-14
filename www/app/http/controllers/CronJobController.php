@@ -60,7 +60,7 @@ class CronJobController extends Controller
 
         $data['name'] = $appointment['name'];
         $data['email'] = $appointment['email'];
-        $data['bcc'] = $appointment['doctor_email'];
+        //$data['bcc'] = $appointment['doctor_email'];
         $data['subject'] = str_replace('{ophth_title}', "", $result['template']['subject']);
         $data['subject'] = str_replace('{Ophth_fname, lname}', $optician['firstname'] . " " . $optician['lastname'], $data['subject']);
         $data['message'] = $result['template']['message'];
