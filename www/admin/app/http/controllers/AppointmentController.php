@@ -309,13 +309,24 @@ class AppointmentController extends Controller
 
         $data['doctors'] = $this->model_appointment->getDoctors();
         $data['prescription'] = $this->model_appointment->getPrescription($id);
+        $is_repeat_prescription = false;
         if(empty($data['prescription'])){
             $data['prescription'] = $this->model_appointment->getLastAppointmentPrescription($id, $data['result']['patient_id']);
+            $is_repeat_prescription = true;
         }
         if (!empty($data['prescription'])) {
             $data['prescription']['prescription'] = json_decode($data['prescription']['prescription'], true);
         } else {
             $data['prescription'] = NULL;
+        }
+
+        if($is_repeat_prescription){
+            // reset start date and end date
+            foreach($data['prescription']['prescription'] as $key => $prescription){
+                $prescription['start_date'] = '';
+                $prescription['end_date'] = '';
+                $data['prescription']['prescription'][$key] = $prescription;
+            }
         }
 
         $data['notes'] = $this->model_appointment->getClinicalNotes($id);
