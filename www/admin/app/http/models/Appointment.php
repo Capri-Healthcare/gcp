@@ -1548,6 +1548,18 @@ class Appointment extends Model
         }
     }
 
+    public function getLastAppointmentPrescription($appointment_id, $patient_id){
+        //echo $appointment_id. ' - ' .$patient_id;exit;
+
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='" . $patient_id . "' AND id <> '".$appointment_id."' ORDER BY date DESC LIMIT 1");
+
+        if ($query->num_rows > 0) {
+            return $this->getPrescription($query->row['id']);
+        } else {
+            return false;
+        }
+    }
+
     public function getMaxIOPAppointment($data)
     {
         $query = $this->database->query("SELECT MAX(`intraocular_pressure_right`) AS iop_right,MAX(`intraocular_pressure_left`) AS iop_left FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='" . $data['patient_id'] . "' AND status ='5' ORDER BY date DESC");

@@ -309,6 +309,9 @@ class AppointmentController extends Controller
 
         $data['doctors'] = $this->model_appointment->getDoctors();
         $data['prescription'] = $this->model_appointment->getPrescription($id);
+        if(empty($data['prescription'])){
+            $data['prescription'] = $this->model_appointment->getLastAppointmentPrescription($id, $data['result']['patient_id']);
+        }
         if (!empty($data['prescription'])) {
             $data['prescription']['prescription'] = json_decode($data['prescription']['prescription'], true);
         } else {
