@@ -316,6 +316,14 @@ define('FOOTER_LINE_4','Office Address-105 Fitz Roy Avenue, Birmingham, B17 8RG'
 
 //Changes made on 01-02-2022
 define('MY_EYE_RECORD_CARE','<b>M</b>y<br/><b>E</b>ye <br/><b>R</b>ecord & <br/><b>C</b>are');
+//Changes made on 15-04-2022
+define('PATIENT_GP_EMAIL_BODY',"Dear #PATIENT_FIRST_NAME"."<br><br><br>".
+"Please find the clinic letter attached. We have sent the email to your GP surgery as well."."<br><br>".
+
+"If you have any query, please email secretartyoj@gmail.com.");
+define('THIRD_PARTY_EMAIL_BODY', "Dear #THIRD_PARTY_NAME"."<br><br><br>".
+"Please find enclosed the clinic letter for our mutual patient following a recent clinic visit. "."<br><br>".
+"Thank you for your ongoing support and help in sharing the ophthalmic care.");
 
 define('STATUS_FOLLOWUP_OPTICIAN', 'OPTICIAN_REVIEWED');
 define('STATUS_FOLLOWUP_ACCEPTED', 'ACCEPTED');

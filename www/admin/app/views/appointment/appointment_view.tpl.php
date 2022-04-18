@@ -865,8 +865,8 @@
                                     <div class="form-group">
                                         <label>Message</label>
                                         <textarea name="mail[message]" class="form-control mail-summernote" placeholder="Enter Message . . .">
-                                                
-                                        <br><br><br><br><br><br><br><br>
+                                        <?php echo $email['body']; ?>
+                                        <br><br><br><br><br>
                                             Best wishes,<br><br>
 
                                             Admin Team<br>

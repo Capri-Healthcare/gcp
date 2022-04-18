@@ -1448,6 +1448,12 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Other follow up</label>
+                                                <input type="text" class="form-control" name="appointment[other_followup]" value="">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">

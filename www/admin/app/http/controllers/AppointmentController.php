@@ -164,6 +164,15 @@ class AppointmentController extends Controller
         //Get leaflets to attach in mail
         $this->load->model('leaflets');
         $data['leaflets'] = $this->model_leaflets->allLeaflets();
+        //Get email content based on doc_type
+        //echo "<pre>";print_r($data);exit;
+        if (isset($data['doc_type']) && $data['doc_type'] == "to_optom_or_third_party") {
+            $third_party_name_arr = explode(' ',$data['result']['referee_name']);
+            $data['email']['body'] = str_replace("#THIRD_PARTY_NAME", $third_party_name_arr[0], constant('THIRD_PARTY_EMAIL_BODY'));
+        } else {
+            $patient_name_arr = explode(' ',$data['result']['name']);
+            $data['email']['body'] = str_replace("#PATIENT_FIRST_NAME", $patient_name_arr[0], constant('PATIENT_GP_EMAIL_BODY'));
+        }
         // Summary Data
 
         $appointment_completed = $this->model_appointment->getPatientCompletedAppointment($data['result']);

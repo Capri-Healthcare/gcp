@@ -192,6 +192,7 @@ class Appointment extends Model
         `outcome` = ?,
         `outcome_comment` = ?,
         `gcp_next_appointment` = ?,
+        other_followup = ?,
         `is_glaucoma_required` = ?, 
         `diagnosis_eye` = ?,
         diagnosis = ?,
@@ -240,6 +241,7 @@ class Appointment extends Model
             $data['outcome'],
             $data['outcome_comment'],
             $data['followup'],
+            $data['other_followup'],
             $data['gcp_required'],
             $data['diagnosis_eye'],
             json_encode($data['diagnosis']),
@@ -411,11 +413,11 @@ class Appointment extends Model
         $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointment_notes` WHERE appointment_id = ? ", array((int)$data['appointment']['id']));
         echo $query->num_rows;
         if ($query->num_rows > 0) {
-            echo "Update";
-            print_r($query->row['id']);
+            // echo "Update";
+            // print_r($query->row['id']);
             $insert_update_query = $this->database->query("UPDATE `" . DB_PREFIX . "appointment_notes` SET `name` = ?, `email` = ?, `notes` = ?, `appointment_id` = ?, `doctor_id` = ?, `patient_id` = ? WHERE `id` = ? ", array($this->database->escape($data['appointment']['name']), $this->database->escape($data['appointment']['email']), $data['notes']['notes'], (int)$data['appointment']['id'], (int)$data['appointment']['doctor'], (int)$data['appointment']['patient_id'], $query->row['id']));
         } else {
-            echo "insert";
+            // echo "insert";
             $insert_update_query = $this->database->query("INSERT INTO `" . DB_PREFIX . "appointment_notes` (`name`, `email`, `notes`, `appointment_id`, `doctor_id`, `patient_id`, `user_id`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ", array($this->database->escape($data['appointment']['name']), $this->database->escape($data['appointment']['email']), $data['notes']['notes'], (int)$data['appointment']['id'], (int)$data['appointment']['doctor'], (int)$data['appointment']['patient_id'], (int)$data['user_id'], date('Y-m-d H:i:s')));
         }
 
@@ -802,6 +804,10 @@ class Appointment extends Model
             $body .= "<strong>Follow up: ";
             $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] . "</strong>";
         }
+        if (!empty($appointment['other_followup'])) {
+            $body .= "<br>";
+            $body .= "<strong>Follow up: ".$appointment['other_followup'];
+        }
         
         if (!empty($appointment['doctor_note_optometrist'])) {
             $body .= "<br><br>";
@@ -1049,50 +1055,6 @@ class Appointment extends Model
                 $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
             }
         }
-
-        /*if (!empty($appointment['diagnosis_re']) OR !empty($appointment['diagnosis_other_re']) 
-                OR !empty($appointment['diagnosis_le']) OR !empty($appointment['diagnosis_other_le'])) {
-            $body .= "<br><br>";
-            $body .= "Diagnosis";
-            $body .= "<table width='100%' border=0 style='border: 0px solid black; border-collapse:collapse;' align=center>
-                            <tr>
-                                <th align='left'>Right eye</th>
-                                <th align='left'>Left eye</th>
-                            </tr>";
-            if (!empty($appointment['diagnosis_re']) OR !empty($appointment['diagnosis_le'])) {        
-                $body .= "<tr><td align='left'>";
-                    $re_count = 1;
-                    if (!empty($appointment['diagnosis_re'])) {
-                        foreach(json_decode($appointment['diagnosis_re'], true) AS $key => $diagnosis){
-                            if(!empty($diagnosis)){
-                                //$body .= "<li>". $diagnosis."</li>";
-                                $body .= $re_count . ". ".$diagnosis."<br>";
-                            }
-                            $re_count++;
-                        }
-                    }
-                $body .= "</td><td align='left'>";
-                    $le_count = 1;
-                    if (!empty($appointment['diagnosis_le'])) {
-                        foreach(json_decode($appointment['diagnosis_le'], true) AS $key => $diagnosis){
-                            if(!empty($diagnosis)){
-                                //$body .= "<li>". $diagnosis."</li>";
-                                $body .= $le_count . ". ".$diagnosis."<br>";
-                            }
-                            $le_count++;
-                        }
-                    }
-                $body .= "</td></tr>";
-            }
-            if (!empty($appointment['diagnosis_other_re']) OR !empty($appointment['diagnosis_other_le'])) {        
-                $body .= "<tr>
-                            <td align='left'>".$re_count. ". ".$appointment['diagnosis_other_re']."</td>
-                            <td align='left'>".$le_count. ". ".$appointment['diagnosis_other_le']."</td>
-                        </tr>";
-            }
-            $body .= "</table>";
-        }*/
-
         
         if (!empty($appointment['operation'])) {
             $body .= "<br>";
@@ -1124,6 +1086,10 @@ class Appointment extends Model
             $body .= "<br>";
             $body .= "<strong>Follow up: ";
             $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] . "</strong>";
+        }
+        if (!empty($appointment['other_followup'])) {
+            $body .= "<br>";
+            $body .= "<strong>Follow up: ".$appointment['other_followup'];
         }
 
         if (!empty($appointment['doctor_note'])) {
@@ -1543,18 +1509,6 @@ class Appointment extends Model
 
         if ($query->num_rows > 0) {
             return $query->row;
-        } else {
-            return false;
-        }
-    }
-
-    public function getLastAppointmentPrescription($appointment_id, $patient_id){
-        //echo $appointment_id. ' - ' .$patient_id;exit;
-
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='" . $patient_id . "' AND id <> '".$appointment_id."' ORDER BY date DESC LIMIT 1");
-
-        if ($query->num_rows > 0) {
-            return $this->getPrescription($query->row['id']);
         } else {
             return false;
         }
