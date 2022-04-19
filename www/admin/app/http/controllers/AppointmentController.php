@@ -170,8 +170,13 @@ class AppointmentController extends Controller
             $third_party_name_arr = explode(' ',$data['result']['referee_name']);
             $data['email']['body'] = str_replace("#THIRD_PARTY_NAME", $third_party_name_arr[0], constant('THIRD_PARTY_EMAIL_BODY'));
         } else {
-            $patient_name_arr = explode(' ',$data['result']['name']);
-            $data['email']['body'] = str_replace("#PATIENT_FIRST_NAME", $patient_name_arr[0], constant('PATIENT_GP_EMAIL_BODY'));
+            $patient_first_name_arr = explode(' ',$data['result']['name']);
+            if(in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
+                $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
+            } else {
+                $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
+            }
+            $data['email']['body'] = str_replace("#PATIENT_FIRST_NAME", $patient_first_name, constant('PATIENT_GP_EMAIL_BODY'));
         }
         // Summary Data
 
