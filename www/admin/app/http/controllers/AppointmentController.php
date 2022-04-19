@@ -170,7 +170,7 @@ class AppointmentController extends Controller
             $third_party_name_arr = explode(' ',$data['result']['referee_name']);
             $data['email']['body'] = str_replace("#THIRD_PARTY_NAME", $third_party_name_arr[0], constant('THIRD_PARTY_EMAIL_BODY'));
         } else {
-            $patient_first_name_arr = explode(' ',$data['result']['name']);
+            $patient_first_name_arr = explode(' ',strtolower($data['result']['name']));
             if(in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
                 $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
             } else {
