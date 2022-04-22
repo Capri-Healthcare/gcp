@@ -336,9 +336,9 @@ class InvoiceController extends Controller
         $data['invoice']['item'] = json_encode($data['invoice']['item']);
         $data['invoice']['duedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['duedate'])->format('Y-m-d');
         $data['invoice']['invoicedate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['invoicedate'])->format('Y-m-d');
-       if(!empty($data['invoice']['treatmentdate'])){
-           $data['invoice']['treatmentdate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['treatmentdate'])->format('Y-m-d');
-       }
+        if (!empty($data['invoice']['treatmentdate'])) {
+            $data['invoice']['treatmentdate'] = DateTime::createFromFormat($data['info']['date_format'], $data['invoice']['treatmentdate'])->format('Y-m-d');
+        }
         $data['invoice']['datetime'] = date('Y-m-d H:i:s');
         $data['invoice']['tc'] = ''; // Set TC blank
         $this->load->model('invoice');
@@ -349,8 +349,8 @@ class InvoiceController extends Controller
             if ($data['invoice']['inv_status'] == "1") {
                 $checkMailStatus = $this->model_invoice->checkInvoiceMailStatus($data['invoice']['id']);
                 if ($checkMailStatus == '0') {
-                    //$this->invoiceMail($data['invoice']['id']);
-                    $this->model_invoice->updateInvoiceMailStatus($data['invoice']['id']);
+                    // $this->invoiceMail($data['invoice']['id']);
+                    // $this->model_invoice->updateInvoiceMailStatus($data['invoice']['id']);
                 }
             }
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Invoice updated successfully.');
@@ -365,8 +365,8 @@ class InvoiceController extends Controller
                 if ($data['invoice']['inv_status'] == "1") {
                     $checkMailStatus = $this->model_invoice->checkInvoiceMailStatus($result);
                     if ($checkMailStatus == '0') {
-                        //$this->invoiceMail($result);
-                        $this->model_invoice->updateInvoiceMailStatus($result);
+                        // $this->invoiceMail($result);
+                        // $this->model_invoice->updateInvoiceMailStatus($result);
                     }
                 }
 
@@ -469,14 +469,20 @@ class InvoiceController extends Controller
         $this->url->redirect('invoices');
     }
 
-    private function invoiceMail($id)
+    public function invoiceMail()
     {
+        $id = (int)$this->url->get('id');
+
+        $this->load->model('invoice');
         $this->load->controller('mail');
+
         $result = $this->controller_mail->getTemplate('newinvoice');
-        if (empty($result['template']) || $result['template']['status'] == '0') {
+        // if (empty($result['template']) || $result['template']['status'] == '0') {
+        //     return false;
+        // }
+        if (empty($result['template'])) {
             return false;
         }
-
         $invoice = $this->model_invoice->getInvoiceView($id);
 
         $data['id'] = $result['common']['invoice_prefix'] . str_pad($invoice['id'], 4, '0', STR_PAD_LEFT);
@@ -501,7 +507,13 @@ class InvoiceController extends Controller
             $data['attachments'][] = array('file' => DIR . 'public/uploads/invoice/invoice-' . $invoice['id'] . '.pdf', 'name' => 'invoice-' . $invoice['id'] . '.pdf');
         }
 
-        return $this->controller_mail->sendMail($data);
+        //This line is copied from indexAction to update status of mail after sent
+        $this->model_invoice->updateInvoiceMailStatus($id);
+
+        $this->controller_mail->sendMail($data);
+
+        $this->session->data['message'] = array('alert' => 'success', 'value' => 'Invoice sent successfully.');
+        $this->url->redirect('invoice/view&id=' . $id);
     }
 
     // Payment Confirmation Mail
@@ -663,6 +675,52 @@ class InvoiceController extends Controller
         }
         return array('html' => $html, 'result' => $result);
     }
+    private function createReminderEmailPDFHTML($id, $printInvoice = NULL)
+    {
+        $invoice_number = 'INV-' . str_pad($id, 5, '0', STR_PAD_LEFT);
+
+        $this->load->model('commons');
+        $common = $this->model_commons->getCommonData($this->session->data['user_id']);
+
+        $this->load->model('appointment');
+        $headerfooter = $this->model_appointment->getAppointmentDocHeaderFooter($id);
+        
+        $this->load->model('invoice');
+        $result = $this->model_invoice->getInvoiceView($id);
+        $address_arr = json_decode($result['address'], true);
+        $patient_address = "";
+        $patient_address .= !empty($address_arr['address1']) ? ('<br>' . $address_arr['address1']) : '';
+        $patient_address .= !empty($address_arr['address2']) ? ('<br>' . $address_arr['address2']) : '';
+        $patient_address .= !empty($address_arr['city']) ? ('<br>' . $address_arr['city']) : '';
+        $patient_address .= !empty($address_arr['postal']) ? ('<br>' . $address_arr['postal']) : '';
+        $patient_first_name_arr = explode(" ", strtolower($result['name']));
+        if(in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
+            $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
+        } else {
+            $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
+        }
+
+        $emial_body = INVOICE_REMINDER_EMAIL_TEMPLATE;
+        $emial_body = str_replace("#TODAY_DATE", date('d-m-Y'), $emial_body);
+        $emial_body = str_replace("#PATIENT_FULLNAME", $result['name'], $emial_body);
+        $emial_body = str_replace("#PATIENT_FIRST_NAME", $patient_first_name, $emial_body);
+        $emial_body = str_replace("#PATIENT_ADDRESS", $patient_address, $emial_body);
+        $emial_body = str_replace("#INVOICE_NUMBER", $invoice_number, $emial_body);
+        $emial_body = str_replace("#INVOICE_DATE", $result['invoicedate'], $emial_body);
+        $emial_body = str_replace("#INVOICE_TREATMENT_DATE", $result['treatmentdate'], $emial_body);
+        $emial_body = str_replace("#INVOICE_TOTAL", $common['info']['currency_abbr'] . $result['amount'], $emial_body);
+        $emial_body = str_replace("#INVOICE_DUE", $common['info']['currency_abbr'] . $result['due'], $emial_body);
+        ob_start();
+        
+            include DIR_APP . 'views/invoice/reminder_email_pdf.tpl.php';
+        
+        $html = ob_get_clean();
+
+        if (ob_get_length() > 0) {
+            ob_end_flush();
+        }
+        return array('html' => $html, 'result' => $result);
+    }
 
     public function autoGenrateInvoice()
     {
@@ -676,6 +734,21 @@ class InvoiceController extends Controller
         $payment_status = "Unpaid";
         $invoice_status = 0;
 
-      echo "Hello";
+        echo "Hello";
+    }
+    public function reminderemailpdf()
+    {
+        /**
+         * Check if id exist in url if not exist then redirect to Invoice list view
+         **/
+        $id = (int)$this->url->get('id');
+        if (empty($id) || !is_int($id)) {
+            $this->url->redirect('invoices');
+        }
+
+        $data = $this->createReminderEmailPDFHTML($id);
+
+        $pdf = new PDF();
+        $pdf->createPDF($data);
     }
 }

@@ -138,6 +138,11 @@ $router->post('invoice/add', 'InvoiceController@indexAction');
 $router->get('invoice/edit', 'InvoiceController@indexEdit');
 $router->post('invoice/edit', 'InvoiceController@indexAction');
 $router->post('invoice/delete', 'InvoiceController@indexDelete');
+//To send invoice in mail added on 16-04-2022
+$router->get('invoice/sendinvoice', 'InvoiceController@invoiceMail');
+$router->get('invoice/reminderemailpdf', 'InvoiceController@reminderEmailPdf');
+//To send invoice in mail
+
 $router->post('addpayment', 'InvoiceController@invoicePayment');
 $router->get('autogenrateinvoice', 'InvoiceController@autoGenrateInvoice');
 $router->get('expenses', 'ExpenseController@index');
