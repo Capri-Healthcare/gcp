@@ -378,11 +378,36 @@ define('REFERRAL_MED_SEC_STATUS', ['ALL' => 'ALL', 'NEW' => 'New', 'ACCEPTED' =>
 define('STATUS_ALL', 'ALL');
 
 define('INVOICE_REMINDER_EMAIL_TEMPLATE', "
+Dear #PATIENT_FIRST_NAME<br><br>
+<center><strong><u>Outstanding Invoice</u></strong></center><br><br>
+Our computer records show that the following invoice/s are showing as outstanding. The details are as follows:<br>
+Invoice Number: #INVOICE_NUMBER <br>
+Invoice Date: #INVOICE_DATE <br>
+Event Date: #INVOICE_TREATMENT_DATE <br>
+Invoice Total: #INVOICE_TOTAL <br>
+Balance Outstanding: #INVOICE_DUE <br><br>
+
+If you have medical insurance could you please follow this up with your insurance company or alternatively if
+you have no insurance could you please settle this overdue amount promptly. Please note this refers only to
+the invoice stated, if other monies are outstanding under a different invoice number a separate reminder will
+follow in due course. <br><br>
+We apologise if this letter should cross in the post with any payment due to Mr Sharma. Should you have any
+queries please contact us on 07758057733or by email, secretaryoj@gmail.com. If this invoice has been paid
+directly to Spire eye centre please leave a message for us stating the invoice number along with your name
+and we will ensure that the records are updated. Please makes cheques payable to: Mr Tarun Sharma.
+Thank you for your assistance in this matter. <br><br>
+Yours sincerely <br>
+<strong>Accounts Team</strong> <br>
+<strong>Sharma Vision</strong> <br><br>
+Enc Invoice #INVOICE_NUMBER
+");
+
+define('INVOICE_REMINDER_LETTER_TEMPLATE', "
 #TODAY_DATE<br>
 #PATIENT_FULLNAME
 #PATIENT_ADDRESS<br><br>
 Dear #PATIENT_FIRST_NAME<br><br>
-<strong><u>Outstanding Invoice</u></strong><br><br>
+<center><strong><u>Outstanding Invoice</u></strong></center><br><br>
 Our computer records show that the following invoice/s are showing as outstanding. The details are as follows:<br>
 Invoice Number: #INVOICE_NUMBER <br>
 Invoice Date: #INVOICE_DATE <br>

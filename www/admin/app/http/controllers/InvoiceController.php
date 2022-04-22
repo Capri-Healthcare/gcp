@@ -700,7 +700,7 @@ class InvoiceController extends Controller
             $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
         }
 
-        $emial_body = INVOICE_REMINDER_EMAIL_TEMPLATE;
+        $emial_body = INVOICE_REMINDER_LETTER_TEMPLATE;
         $emial_body = str_replace("#TODAY_DATE", date('d-m-Y'), $emial_body);
         $emial_body = str_replace("#PATIENT_FULLNAME", $result['name'], $emial_body);
         $emial_body = str_replace("#PATIENT_FIRST_NAME", $patient_first_name, $emial_body);

@@ -1,7 +1,7 @@
 <?php include(DIR_ADMIN . 'app/views/common/header.tpl.php'); ?>
 <div class="page-title">
     <div class="row align-items-center">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <h2 class="page-title-text d-inline-block"><?php echo $page_title; ?></h2>
             <div class="breadcrumbs d-inline-block">
                 <ul>
@@ -11,14 +11,21 @@
                 </ul>
             </div>
         </div>
-        <div class="col-sm-6 text-right">
-            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/reminderemailpdf&id=' . $result['id']; ?>" class="btn btn-warning btn-sm" target="_blank"><i class="ti-wallet mr-2"></i>Download reminder email letter</a>
-            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/sendinvoice&id=' . $result['id']; ?>" class="btn btn-warning btn-sm"><i class="ti-wallet mr-2"></i>Send invoice</a>
-
+        <div class="col-sm-8 text-right">
+        </div>
+    </div>
+    <div>
+    <div class="row align-items-center">
+        <div class="col-sm-12 pb-2 text-right">
+            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/reminderemailpdf&id=' . $result['id']; ?>" class="btn btn-secondary btn-sm" target="_blank"><i class="ti-wallet mr-2"></i>Download reminder email letter</a>
+            
             <?php if ($page_send_mail) { ?>
                 <a data-toggle="modal" class="btn btn-success btn-sm" data-target="#invoiceMail"><i class="ti-envelope mr-2"></i>Send payment reminder email</a>
-            <?php }
-            if ($page_pdf) { ?>
+            <?php } ?>
+
+            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/sendinvoice&id=' . $result['id']; ?>" class="btn btn-warning btn-sm"><i class="ti-wallet mr-2"></i>Send invoice</a>
+
+            <?php if ($page_pdf) { ?>
                 <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/pdf&id=' . $result['id']; ?>" class="btn btn-danger btn-sm" target="_blank"><i class="far fa-file-pdf mr-2"></i>PDF/Print</a>
             <?php }
             if ($page_edit) { ?>
@@ -28,7 +35,7 @@
                     <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addPayment"><i
                                 class="ti-wallet mr-2"></i>Add Payment</a>
                 <?php } */ ?>
-            <a data-toggle="modal" class="btn btn-info btn-sm" data-target="#attach-file" class="btn btn-secondary btn-sm"><i class="ti-clip"></i></a>
+            <!-- <a data-toggle="modal" class="btn btn-info btn-sm" data-target="#attach-file" class="btn btn-secondary btn-sm"><i class="ti-clip"></i></a> -->
         </div>
     </div>
 </div>
