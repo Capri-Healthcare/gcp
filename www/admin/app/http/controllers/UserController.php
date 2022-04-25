@@ -522,8 +522,8 @@ class UserController extends Controller
 				'invoice/pdf' => 'Invoice PDF',
 				'invoice/sentmail' => 'Invoice Sendmail',
 				'addpayment' => 'Add Payment',
-				'1' => '',
-				'2' => ''
+				'invoice/reminderemailpdf' => 'Download reminder email letter',
+				'invoice/sendinvoice' => 'Send invoice email',
 			),
 			'Optician Invoice' => array(
 				'optician-invoices' => 'Optician Invoice List',
