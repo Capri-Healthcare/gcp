@@ -408,7 +408,14 @@ class AppointmentController extends Controller
             $summary['summarykey']['iop_left'] = $highestIop['iop_left'];
             $summary['summarykey']['allergy'] = $appointment_last['allergy'];
             if(!empty($appointment_last['diagnosis'])){
-                $summary['summarykey']['diagnosis'] = implode(',', json_decode($appointment_last['diagnosis'], true));
+                // $summary['summarykey']['diagnosis'] = implode(',', json_decode($appointment_last['diagnosis'], true));
+                //echo "<pre>";print_r($appointment_last);exit;                
+                $isDiagnosisJson = $this->isJson($appointment_last['diagnosis']);
+                if ($isDiagnosisJson === true) {
+                    $summary['summarykey']['diagnosis'] = json_decode($appointment_last['diagnosis'], TRUE);
+                }else{
+                    $summary['summarykey']['diagnosis'] = '';
+                }
             }else{
                 $summary['summarykey']['diagnosis'] = '';
             }
@@ -427,7 +434,13 @@ class AppointmentController extends Controller
                 $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_left'];
                 $summary['appointment']['data'][$key]['data'][] = $list['allergy'];
                 if(!empty($list['diagnosis'])){
-                    $summary['appointment']['data'][$key]['data'][] = implode(',', json_decode($list['diagnosis'], true));
+                    // $summary['appointment']['data'][$key]['data'][] = implode(',', json_decode($list['diagnosis'], true));
+                    $isDiagnosisJson = $this->isJson($appointment_last['diagnosis']);
+                    if ($isDiagnosisJson === true) {
+                        $summary['summarykey']['diagnosis'] = json_decode($appointment_last['diagnosis'], TRUE);
+                    }else{
+                        $summary['summarykey']['diagnosis'] = '';
+                    }
                 }else{
                     $summary['appointment']['data'][$key]['data'][] = '';
                 }
@@ -482,7 +495,11 @@ class AppointmentController extends Controller
         /*Render Blog edit view*/
         $this->response->setOutput($this->load->view('appointment/appointment_form', $data));
     }
-
+    function isJson($string) {
+        return ((is_string($string) &&
+                (is_object(json_decode($string)) ||
+                is_array(json_decode($string))))) ? true : false;
+    }
     /**
      * Appointment index action method
      * This method will be called on appointment submit/save view
@@ -732,7 +749,12 @@ class AppointmentController extends Controller
         echo json_encode($result);
         exit();
     }
-
+    //Get diagnosis list
+    public function getDiagnosis()
+	{
+		echo json_encode(constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS']);
+		exit();
+	}
     public function appointmentSidebar()
     {
         $data = $this->url->post;
@@ -1729,7 +1751,7 @@ class AppointmentController extends Controller
          * Return error         
         **/
         $data = $this->url->post;
-
+// print_r($data);exit;
         $data['appointment']['date'] =  date_format(date_create($data['appointment']['date']), 'Y-m-d');
 
         $this->load->controller('common');

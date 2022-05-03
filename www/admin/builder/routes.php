@@ -349,3 +349,5 @@ $router->post('optician/invoice/edit', 'OpticianInvoiceController@indexAction');
 $router->post('optician/invoice/delete', 'OpticianInvoiceController@indexDelete');
 $router->post('optician/addpayment', 'OpticianInvoiceController@invoicePayment');
 $router->get('optician/autogenrateinvoice', 'OpticianInvoiceController@autoGenrateInvoice');
+//Get diagnosis list
+$router->get('getdiagnosis', 'AppointmentController@getDiagnosis');

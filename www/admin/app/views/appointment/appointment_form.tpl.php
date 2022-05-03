@@ -590,7 +590,13 @@
                                                         <td><?php echo $summary['summarykey']['iop_right'] ?></td>
                                                         <td><?php echo $summary['summarykey']['iop_left'] ?></td>
                                                         <td><?php echo $summary['summarykey']['allergy'] ?></td>
-                                                        <td><?php echo $summary['summarykey']['diagnosis'] ?></td>
+                                                        <td><?php 
+                                                        foreach ($summary['summarykey']['diagnosis'] as $key => $value) {
+                                                            echo "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$value['eye']] . "</b>: ".$value['name']."<br>";
+                                                        }
+                                                        // echo $summary['summarykey']['diagnosis'] 
+                                                        ?>
+                                                        </td>
                                                         <td><?php echo $summary['summarykey']['special_condition'] ?></td>
 
                                                     </tr>
@@ -1355,8 +1361,69 @@
                                         </div>
                                     <?php } ?>
                                     <div class="row mt-2">
-                                    <div class="col-md-6">
-                                            <div class="form-group">
+                                    <div class="col-md-12">
+                                    <div class="table-responsive">
+                            <table class="table table-bordered diagnosis-table">
+                                <thead>
+                                    <tr class="diagnosis-row">
+                                        <th style="width: 50%;">Diagnosis</th>
+                                        <th style="width: 30%;">Diagnosis Eye</th>
+                                        <th style="width: 20%;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php //echo "<pre>"; print_r($result); exit; 
+                                    if (!empty($result['diagnosis'])) {
+                                        foreach ($result['diagnosis'] as $key => $value) { ?>
+                                            <tr class="diagnosis-row">
+                                                <td>
+                                                    <input class="form-control diagnosis-name" name="appointment[diagnosis][<?php echo $key; ?>][name]" value="<?php echo $value['name'] ?>" placeholder="Diagnosis" required>
+                                                </td>
+                                                
+                                                <td>
+                                                <select name="appointment[diagnosis][<?php echo $key; ?>][eye]" class="custom-select" <?php echo $examination_notes_readonly ? 'disabled' : '' ?>>
+                                                        <option value="">Select Diagnosis Eye</option>
+                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $diagnosisKey => $diagnosisValue) { ?>
+                                                            <option value="<?php echo $diagnosisKey; ?>" <?php echo (isset($value['eye']) && $value['eye'] == $diagnosisKey) ? 'selected' : '' ?>>
+                                                                <?php echo $diagnosisValue; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </td>
+                                                
+                                                <td>
+                                                    <a class="table-action-button diagnosis-delete"><i class="ti-trash text-danger" style="font-size:20px;"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php }
+                                    } else { ?>
+                                        <tr class="diagnosis-row">
+                                            <td>
+                                                <input class="form-control diagnosis-name" name="appointment[diagnosis][0][name]" placeholder="Diagnosis">
+                                            </td>
+                                            
+                                            <td>
+                                                <select name="appointment[diagnosis][0][eye]" class="form-control" required>
+                                                    <option value="">Select Diagnosis Eye</option>
+                                                    <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $key => $value) { ?>
+                                                        <option value="<?php echo $key; ?>">
+                                                            <?php echo $value; ?>
+                                                        </option>
+                                                    <?php } ?>
+                                                </select>
+                                            </td>
+                                            <td><a class="table-action-button diagnosis-delete"><i class="ti-trash text-danger" style="font-size:20px;"></i></a></td>
+                                        </tr>
+                                    <?php } ?>
+                                    <tr>
+                                        <td colspan="8" align="right">
+                                            <a id="add-diagnosis" class="font-12 text-primary cursor-pointer">Add Diagnosis</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                                            <!-- <div class="form-group">
                                                 <label>Diagnosis</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -1375,10 +1442,12 @@
                                             <div class="form-group">
                                                 <label>Diagnosis Other</label>
                                                 <input type="text" class="form-control" name="appointment[diagnosis_other]" value="<?php echo $result['diagnosis_other']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
-                                            </div>
+                                            </div> -->
+                                            <input type="hidden" class="form-control" name="appointment[diagnosis_other]" value="<?php echo $result['diagnosis_other']; ?>">
+                                            <input type="hidden" class="form-control" name="appointment[diagnosis_eye]" value="<?php echo $result['diagnosis_eye']; ?>">
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>Diagnosis Eye</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -1394,7 +1463,7 @@
                                                     </select>
                                                 </div>
                                                 <br><br>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label>Operation</label>
                                                 <input type="text" class="form-control" name="appointment[operation]" value="<?php echo $result['operation']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
@@ -1540,7 +1609,63 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                        var diagnosis_eye_option = '';
+                        <?php if (!empty(constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'])) {
+                            foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $key => $row) { ?>
+                                diagnosis_eye_option += '<option value="<?php echo $key ?>" ><?php echo $row ?></option>';
+                        <?php }
+                        } ?>
 
+                        function medicine_autocomplete() {
+                            $(".diagnosis-name").autocomplete({
+                                minLength: 0,
+                                source: '<?php echo URL_ADMIN . DIR_ROUTE . 'getdiagnosis'; ?>',
+                                focus: function(event, ui) {
+                                    $(this).parents('tr').find('.diagnosis-name').val(ui.item.label);
+                                    return false;
+                                },
+                                select: function(event, ui) {
+                                    $(this).parents('tr').find('.diagnosis-name').val(ui.item.label);
+                                    return false;
+                                }
+                            }).autocomplete("instance")._renderItem = function(ul, item) {
+                                return $("<li>")
+                                    .append("<div>" + item.label + "</div>")
+                                    .appendTo(ul);
+                            };
+                        }
+
+                        $('body').on('keydown.autocomplete', '.diagnosis-name', function() {
+                            medicine_autocomplete();
+                        });
+                        if ($(".diagnosis-delete").length < 2) {
+                            $(".diagnosis-delete").hide();
+                        } else {
+                            $(".diagnosis-delete").show();
+                        }
+
+                        $('body').on('click', '.diagnosis-delete', function() {
+                            $(this).parents('tr').remove();
+                            if ($(".diagnosis-delete").length < 2) $(".diagnosis-delete").hide();
+                        });
+
+                        $('#add-diagnosis').click(function() {
+                            if ($(".diagnosis-delete").length < 1) {
+                                $(".diagnosis-delete").hide();
+                            } else {
+                                $(".diagnosis-delete").show();
+                            }
+                            var count = $('.diagnosis-table .diagnosis-row:last .diagnosis-name').attr('name').split('[')[2];
+                            count = parseInt(count.split(']')[0]) + 1;
+
+                            $(".diagnosis-table .diagnosis-row:last").after('<tr class="diagnosis-row">' +
+                                '<td><input class="form-control diagnosis-name" name="appointment[diagnosis][' + count + '][name]" value="" placeholder="Diagnosis" required></td>' +
+                                '<td><select name="appointment[diagnosis][' + count + '][eye]" class="form-control" required><option value="">Select Diagnosis Eye</option> ' + diagnosis_eye_option + ' </select></td>' +
+                                '<td><a class="table-action-button diagnosis-delete"><i class="ti-trash text-danger" style="font-size:20px;"></i></a></td>' +
+                                '</tr>');
+                        });
+                    </script>
             <?php }
             if ($page_document_upload || $page_documents) { ?>
                 <div class="tab-pane" id="appointment-documents">

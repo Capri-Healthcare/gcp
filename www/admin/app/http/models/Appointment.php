@@ -186,17 +186,16 @@ class Appointment extends Model
         `cct_left` = ?, 
         `pupil_right` = ?, 
         `pupil_left` = ?, 
-        `diagnosis` = ?,
-        `diagnosis_other` = ?,
+        
         `operation` = ?,
         `outcome` = ?,
         `outcome_comment` = ?,
         `gcp_next_appointment` = ?,
-        other_followup = ?,
+        `other_followup` = ?,
         `is_glaucoma_required` = ?, 
         `diagnosis_eye` = ?,
-        diagnosis = ?,
-        diagnosis_other = ?,
+        `diagnosis` = ?,
+        `diagnosis_other` = ?,
         `doctor_note` = ?,
         `doctor_note_optometrist` = ?,
         `special_condition` = ?,
@@ -235,8 +234,7 @@ class Appointment extends Model
             $data['cct_left'],
             $data['pupil_right'],
             $data['pupil_left'],
-            json_encode($data['diagnosis']),
-            $data['diagnosis_other'],
+            
             $data['operation'],
             $data['outcome'],
             $data['outcome_comment'],
@@ -253,7 +251,14 @@ class Appointment extends Model
             json_encode($data['relations_with_glaucoma_patient']),
             (int)$data['id']
         ));
-
+        /***
+         *        //Check database error
+        if ($this->database->error()) {
+            echo $this->database->error();
+            print_r($data);exit;
+            return false;
+        } 
+         */
         //$patient_letter = $this->generatePatientOrGpDocHtml($data['id'], 'HTML');
         //$optom_letter = $this->generateOptomOrThirdPartyDocHtml($data['id'], 'HTML');
         //$this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET patient_letter = ?, optom_letter = ? WHERE id = ? ", array($patient_letter, $optom_letter, $data['id']));
@@ -708,14 +713,15 @@ class Appointment extends Model
 
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
+            $body .= "Diagnosis: ";// . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
             //$body .= "<ol>";
             $count = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
                     if(!empty($diagnosis)){
                         //$body .= "<li>". $diagnosis."</li>";
-                        $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
+                        //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
+                        $body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
                     }
                     $count++;
                 }
@@ -1041,19 +1047,20 @@ class Appointment extends Model
         
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis: " . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
+            $body .= "Diagnosis: ";// . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
             $count = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
                     if(!empty($diagnosis)){
-                        $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
+                        //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
+                        $body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
                     }
                     $count++;
                 }
             }
-            if (!empty($appointment['diagnosis_other'])) {
+            /* if (!empty($appointment['diagnosis_other'])) {
                 $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
-            }
+            } */
         }
         
         if (!empty($appointment['operation'])) {
