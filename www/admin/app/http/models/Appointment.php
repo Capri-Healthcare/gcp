@@ -721,7 +721,14 @@ class Appointment extends Model
                     if(!empty($diagnosis)){
                         //$body .= "<li>". $diagnosis."</li>";
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
-                        $body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
+                        //$body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
+                    }
+                    $body .= "<br> &nbsp;&nbsp;&nbsp; ";
+                    if(!empty($diagnosis['eye'])){
+                        $body .= "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ";
+                    }
+                    if(!empty($diagnosis['name'])){
+                        $body .= $diagnosis['name'] . "<br>";
                     }
                     $count++;
                 }
@@ -1053,7 +1060,14 @@ class Appointment extends Model
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
                     if(!empty($diagnosis)){
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
-                        $body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
+                        //$body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
+                    }
+                    $body .= "<br> &nbsp;&nbsp;&nbsp; ";
+                    if(!empty($diagnosis['eye'])){
+                        $body .= "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ";
+                    }
+                    if(!empty($diagnosis['name'])){
+                        $body .= $diagnosis['name'] . "<br>";
                     }
                     $count++;
                 }

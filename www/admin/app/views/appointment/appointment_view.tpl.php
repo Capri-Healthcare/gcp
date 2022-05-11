@@ -631,18 +631,32 @@
                                                 <?php }?>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <!--tr>
                                             <td>Diagnosis eye</td>
                                             <td class="text-dark"><?php echo (isset($result['diagnosis_eye']) && !empty($result['diagnosis_eye'])) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$result['diagnosis_eye']] : '' ?></td>
-                                        </tr>
+                                        </tr-->
                                         <tr>
                                             <td>Diagnosis</td>
-                                            <td class="text-dark"><?php echo (isset($result['diagnosis'])) ? implode(', ',json_decode($result['diagnosis'],true)) : '' ?></td>
+                                            <td class="text-dark"><?php 
+                                                if (!empty($result['diagnosis'])) {
+                                                    foreach(json_decode($result['diagnosis'], true) AS $key => $diagnosis){
+                                                        //echo $diagnosis['eye'];exit;
+                                                        if(!empty($diagnosis)){
+                                                            if(!empty($diagnosis['eye'])){
+                                                                echo "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ";
+                                                            }
+                                                            if(!empty($diagnosis['name'])){
+                                                                echo $diagnosis['name'] . "<br>";
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ?></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>Diagnosis Other</td>
                                             <td class="text-dark"><?php echo isset($result['diagnosis_other']) ? $result['diagnosis_other'] : '' ?></td>
-                                        </tr>
+                                        </tr> -->
                                         <!-- <tr>
                                             <td>Diagnosis - LE</td>
                                             <td class="text-dark"><?php echo (isset($result['diagnosis_le'])) ? implode(', ',json_decode($result['diagnosis_le'],true)) : '' ?></td>

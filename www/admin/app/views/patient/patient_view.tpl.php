@@ -892,18 +892,34 @@
                                                                                         <?php } ?>
                                                                                     </td>
                                                                                 </tr>
-                                                                                <tr>
+                                                                                <!-- <tr>
                                                                                     <td>Diagnosis eye</td>
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_eye']) ? constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$value['diagnosis_eye']] : '' ?></td>
-                                                                                </tr>
+                                                                                </tr> -->
                                                                                 <tr>
                                                                                     <td>Diagnosis</td>
-                                                                                    <td class="text-dark"><?php echo isset($value['diagnosis']) ? implode(', ', json_decode($value['diagnosis'], true)) : '' ?></td>
+                                                                                    <td class="text-dark">
+                                                                                    <?php 
+                                                                                        if (!empty($value['diagnosis'])) {
+                                                                                            foreach(json_decode($value['diagnosis'], true) AS $key => $diagnosis){
+                                                                                                //echo $diagnosis['eye'];exit;
+                                                                                                if(!empty($diagnosis)){
+                                                                                                    if(!empty($diagnosis['eye'])){
+                                                                                                        echo "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ";
+                                                                                                    }
+                                                                                                    if(!empty($diagnosis['name'])){
+                                                                                                        echo $diagnosis['name'] . "<br>";
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ?>
+                                                                                    </td>
                                                                                 </tr>
-                                                                                <tr>
+                                                                                <!-- <tr>
                                                                                     <td>Diagnosis Other</td>
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_other']) ? $value['diagnosis_other'] : '' ?></td>
-                                                                                </tr>
+                                                                                </tr> -->
                                                                                 <!-- <tr>
                                                                                     <td>Diagnosis - LE</td>
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_le']) ? implode(', ', json_decode($value['diagnosis_le'], true)) : '' ?></td>
