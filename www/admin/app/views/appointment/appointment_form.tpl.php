@@ -1361,68 +1361,70 @@
                                         </div>
                                     <?php } ?>
                                     <div class="row mt-2">
-                                    <div class="col-md-12">
-                                    <div class="table-responsive">
-                            <table class="table table-bordered diagnosis-table">
-                                <thead>
-                                    <tr class="diagnosis-row">
-                                        <th style="width: 50%;">Diagnosis</th>
-                                        <th style="width: 30%;">Diagnosis Eye</th>
-                                        <th style="width: 20%;">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php //echo "<pre>"; print_r($result); exit; 
-                                    if (!empty($result['diagnosis'])) {
-                                        foreach ($result['diagnosis'] as $key => $value) { ?>
-                                            <tr class="diagnosis-row">
-                                                <td>
-                                                    <input class="form-control diagnosis-name" name="appointment[diagnosis][<?php echo $key; ?>][name]" value="<?php echo $value['name'] ?>" placeholder="Diagnosis" required>
-                                                </td>
-                                                
-                                                <td>
-                                                <select name="appointment[diagnosis][<?php echo $key; ?>][eye]" class="custom-select" <?php echo $examination_notes_readonly ? 'disabled' : '' ?>>
-                                                        <option value="">Select Diagnosis Eye</option>
-                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $diagnosisKey => $diagnosisValue) { ?>
-                                                            <option value="<?php echo $diagnosisKey; ?>" <?php echo (isset($value['eye']) && $value['eye'] == $diagnosisKey) ? 'selected' : '' ?>>
-                                                                <?php echo $diagnosisValue; ?>
-                                                            </option>
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered diagnosis-table">
+                                                    <thead>
+                                                        <tr class="diagnosis-row">
+                                                            <th style="width: 50%;">Diagnosis</th>
+                                                            <th style="width: 30%;">Diagnosis Eye</th>
+                                                            <th style="width: 20%;">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php //echo "<pre>"; print_r($result); exit; 
+                                                        if (!empty($result['diagnosis'])) {
+                                                            foreach ($result['diagnosis'] as $key => $value) { ?>
+                                                                <tr class="diagnosis-row">
+                                                                    <td>
+                                                                        <input class="form-control diagnosis-name" name="appointment[diagnosis][<?php echo $key; ?>][name]" value="<?php echo $value['name'] ?>" placeholder="Diagnosis" required>
+                                                                    </td>
+                                                                    
+                                                                    <td>
+                                                                    <select name="appointment[diagnosis][<?php echo $key; ?>][eye]" class="custom-select" <?php echo $examination_notes_readonly ? 'disabled' : '' ?>>
+                                                                            <option value="">Select Diagnosis Eye</option>
+                                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $diagnosisKey => $diagnosisValue) { ?>
+                                                                                <option value="<?php echo $diagnosisKey; ?>" <?php echo (isset($value['eye']) && $value['eye'] == $diagnosisKey) ? 'selected' : '' ?>>
+                                                                                    <?php echo $diagnosisValue; ?>
+                                                                                </option>
+                                                                            <?php } ?>
+                                                                        </select>
+                                                                    </td>
+                                                                    
+                                                                    <td>
+                                                                        <a class="table-action-button diagnosis-delete"><i class="ti-trash text-danger" style="font-size:20px;"></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php }
+                                                        } else { ?>
+                                                            <tr class="diagnosis-row">
+                                                                <td>
+                                                                    <input class="form-control diagnosis-name" name="appointment[diagnosis][0][name]" placeholder="Diagnosis">
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <select name="appointment[diagnosis][0][eye]" class="form-control" required>
+                                                                        <option value="">Select Diagnosis Eye</option>
+                                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $key => $value) { ?>
+                                                                            <option value="<?php echo $key; ?>">
+                                                                                <?php echo $value; ?>
+                                                                            </option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </td>
+                                                                <td><a class="table-action-button diagnosis-delete"><i class="ti-trash text-danger" style="font-size:20px;"></i></a></td>
+                                                            </tr>
                                                         <?php } ?>
-                                                    </select>
-                                                </td>
-                                                
-                                                <td>
-                                                    <a class="table-action-button diagnosis-delete"><i class="ti-trash text-danger" style="font-size:20px;"></i></a>
-                                                </td>
-                                            </tr>
-                                        <?php }
-                                    } else { ?>
-                                        <tr class="diagnosis-row">
-                                            <td>
-                                                <input class="form-control diagnosis-name" name="appointment[diagnosis][0][name]" placeholder="Diagnosis">
-                                            </td>
-                                            
-                                            <td>
-                                                <select name="appointment[diagnosis][0][eye]" class="form-control" required>
-                                                    <option value="">Select Diagnosis Eye</option>
-                                                    <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $key => $value) { ?>
-                                                        <option value="<?php echo $key; ?>">
-                                                            <?php echo $value; ?>
-                                                        </option>
-                                                    <?php } ?>
-                                                </select>
-                                            </td>
-                                            <td><a class="table-action-button diagnosis-delete"><i class="ti-trash text-danger" style="font-size:20px;"></i></a></td>
-                                        </tr>
-                                    <?php } ?>
-                                    <tr>
-                                        <td colspan="8" align="right">
-                                            <a id="add-diagnosis" class="font-12 text-primary cursor-pointer">Add Diagnosis</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                                        <tr>
+                                                            <td colspan="8" align="right">
+                                                                <a id="add-diagnosis" class="font-12 text-primary cursor-pointer">Add Diagnosis</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                             <!-- <div class="form-group">
                                                 <label>Diagnosis</label>
                                                 <div class="input-group">
@@ -1439,37 +1441,39 @@
                                                     </select>
                                                 </div>
                                             </div> -->
-                                            <div class="form-group">
-                                                <label>Diagnosis Other</label>
-                                                <input type="text" class="form-control" name="appointment[diagnosis_other]" value="<?php echo $result['diagnosis_other']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
-                                            </div>
-                                            <input type="hidden" class="form-control" name="appointment[diagnosis_eye]" value="<?php echo $result['diagnosis_eye']; ?>">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!-- <div class="form-group">
-                                                <label>Diagnosis Eye</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="ti-user"></i></span>
-                                                    </div>
-                                                    <select name="appointment[diagnosis_eye]" class="custom-select" <?php echo $examination_notes_readonly ? 'disabled' : '' ?>>
-                                                        <option value="">Select Diagnosis Eye</option>
-                                                        <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $key => $value) { ?>
-                                                            <option value="<?php echo $key; ?>" <?php echo (isset($result['diagnosis_eye']) && $result['diagnosis_eye'] == $key) ? 'selected' : '' ?>>
-                                                                <?php echo $value; ?>
-                                                            </option>
-                                                        <?php } ?>
-                                                    </select>
+                                        <div class="row mt-4">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Diagnosis Other</label>
+                                                    <input type="text" class="form-control" name="appointment[diagnosis_other]" value="<?php echo $result['diagnosis_other']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
                                                 </div>
-                                                <br><br>
-                                            </div> -->
-                                            <div class="form-group">
-                                                <label>Operation</label>
-                                                <input type="text" class="form-control" name="appointment[operation]" value="<?php echo $result['operation']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
+                                                <input type="hidden" class="form-control" name="appointment[diagnosis_eye]" value="<?php echo $result['diagnosis_eye']; ?>">
                                             </div>
-                                        </div>
+                                            <div class="col-md-6">
+                                                <!-- <div class="form-group">
+                                                    <label>Diagnosis Eye</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ti-user"></i></span>
+                                                        </div>
+                                                        <select name="appointment[diagnosis_eye]" class="custom-select" <?php echo $examination_notes_readonly ? 'disabled' : '' ?>>
+                                                            <option value="">Select Diagnosis Eye</option>
+                                                            <?php foreach (constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'] as $key => $value) { ?>
+                                                                <option value="<?php echo $key; ?>" <?php echo (isset($result['diagnosis_eye']) && $result['diagnosis_eye'] == $key) ? 'selected' : '' ?>>
+                                                                    <?php echo $value; ?>
+                                                                </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <br><br>
+                                                </div> -->
+                                                <div class="form-group">
+                                                    <label>Operation</label>
+                                                    <input type="text" class="form-control" name="appointment[operation]" value="<?php echo $result['operation']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
+                                                </div>
+                                            </div>
                                         
-                                    </div>
+                                        </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <div class="form-group">
