@@ -653,10 +653,10 @@
                                                 }
                                             ?></td>
                                         </tr>
-                                        <!-- <tr>
+                                        <tr>
                                             <td>Diagnosis Other</td>
                                             <td class="text-dark"><?php echo isset($result['diagnosis_other']) ? $result['diagnosis_other'] : '' ?></td>
-                                        </tr> -->
+                                        </tr>
                                         <!-- <tr>
                                             <td>Diagnosis - LE</td>
                                             <td class="text-dark"><?php echo (isset($result['diagnosis_le'])) ? implode(', ',json_decode($result['diagnosis_le'],true)) : '' ?></td>

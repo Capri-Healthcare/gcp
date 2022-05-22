@@ -307,6 +307,12 @@ class AppointmentController extends Controller
          * If blog does not exist then redirect it to blog list view
          **/
 
+         
+        if($this->url->get('update_diagnosis') == 'Y'){
+            $this->model_appointment->updateDiagnosis();
+            exit;
+        }
+
         if ($data['common']['user']['role_id'] == '3') {
             $data['result'] = $this->model_appointment->getAppointment($id, $data['common']['user']['doctor']);
         } else {

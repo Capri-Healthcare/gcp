@@ -1438,12 +1438,11 @@
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label>Diagnosis Other</label>
                                                 <input type="text" class="form-control" name="appointment[diagnosis_other]" value="<?php echo $result['diagnosis_other']; ?>" <?php echo $examination_notes_readonly ? 'readonly' : '' ?>>
-                                            </div> -->
-                                            <input type="hidden" class="form-control" name="appointment[diagnosis_other]" value="<?php echo $result['diagnosis_other']; ?>">
+                                            </div>
                                             <input type="hidden" class="form-control" name="appointment[diagnosis_eye]" value="<?php echo $result['diagnosis_eye']; ?>">
                                         </div>
                                         <div class="col-md-6">

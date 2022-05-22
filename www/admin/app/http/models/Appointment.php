@@ -1072,9 +1072,9 @@ class Appointment extends Model
                     $count++;
                 }
             }
-            /* if (!empty($appointment['diagnosis_other'])) {
+            if (!empty($appointment['diagnosis_other'])) {
                 $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
-            } */
+            }
         }
         
         if (!empty($appointment['operation'])) {
@@ -1566,6 +1566,30 @@ class Appointment extends Model
             return $this->getPrescription($query->row['id']);
         } else {
             return false;
+        }
+    }
+
+    public function updateDiagnosis(){
+
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE diagnosis IS NOT NULL and id < 59");
+echo "<pre>";
+        if ($query->num_rows > 0) {
+            foreach ($query->rows as $key => $appointment) {
+                
+                $new_diagnosis_format = [];
+                foreach(json_decode($appointment['diagnosis'], true) as $key => $value){
+                    $new_diagnosis_format[] = array('name'=> $value, 'eye'=>'BOTH');
+                }
+
+                echo $appointment['id']."<br>";
+                print_r(json_decode($appointment['diagnosis'], true));
+                print_r(json_encode($new_diagnosis_format));
+
+                $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `diagnosis` = ? WHERE `id` = ? ", array(json_encode($new_diagnosis_format), (int)$appointment['id']));
+                echo "<br><br><br>";
+            }
+        } else {
+            return true;
         }
     }
 }

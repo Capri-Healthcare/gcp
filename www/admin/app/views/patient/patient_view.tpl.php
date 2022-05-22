@@ -916,10 +916,10 @@
                                                                                     ?>
                                                                                     </td>
                                                                                 </tr>
-                                                                                <!-- <tr>
+                                                                                <tr>
                                                                                     <td>Diagnosis Other</td>
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_other']) ? $value['diagnosis_other'] : '' ?></td>
-                                                                                </tr> -->
+                                                                                </tr>
                                                                                 <!-- <tr>
                                                                                     <td>Diagnosis - LE</td>
                                                                                     <td class="text-dark"><?php echo isset($value['diagnosis_le']) ? implode(', ', json_decode($value['diagnosis_le'], true)) : '' ?></td>
