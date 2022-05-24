@@ -238,7 +238,9 @@ class OpticianReferralController extends Controller
             if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
 
                 if (trim($data['referral']['status']) == 'ACCEPTED') {
-                    $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
+                    //$patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
+                    $data = ['firstname' => $data['referral']['first_name'], 'lastname' => $data['referral']['last_name'], 'dob' => $data['referral']['dob'], 'return_type' => 'record'];
+                    $patient = $this->model_patient->checkPatientForDuplicate($data);
 
                     $patient_id = $patient['id'];
                     $referral_details = $this->model_opticianreferral->getOpticianReferral($data['referral']['id']);

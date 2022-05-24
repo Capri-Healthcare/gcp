@@ -728,14 +728,15 @@ class Appointment extends Model
                         $body .= "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ";
                     }
                     if(!empty($diagnosis['name'])){
-                        $body .= $diagnosis['name'] . "<br>";
+                        $body .= $diagnosis['name'];
                     }
                     $count++;
                 }
             }
             if (!empty($appointment['diagnosis_other'])) {
                 //$body .= "<li>". $appointment['diagnosis_other']."</li>";
-                $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
+                //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
+                $body .= "<br> &nbsp;&nbsp;&nbsp; " . $appointment['diagnosis_other'];
             }
             //$body .= "</ol>";
         }
@@ -1050,7 +1051,7 @@ class Appointment extends Model
             $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
         }
 
-        $body .= "Dear " . $patient_first_name . ",";
+        $body .= "Dear " . $appointment['title'] . ' ' . $appointment['lastname'] . ",";
         
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
@@ -1067,13 +1068,14 @@ class Appointment extends Model
                         $body .= "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ";
                     }
                     if(!empty($diagnosis['name'])){
-                        $body .= $diagnosis['name'] . "<br>";
+                        $body .= $diagnosis['name'];
                     }
                     $count++;
                 }
             }
             if (!empty($appointment['diagnosis_other'])) {
-                $body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
+                //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
+                $body .= "<br> &nbsp;&nbsp;&nbsp;  " . $appointment['diagnosis_other'];
             }
         }
         

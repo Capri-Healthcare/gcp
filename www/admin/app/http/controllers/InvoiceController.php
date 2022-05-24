@@ -703,7 +703,7 @@ class InvoiceController extends Controller
         $emial_body = INVOICE_REMINDER_LETTER_TEMPLATE;
         $emial_body = str_replace("#TODAY_DATE", date('d-m-Y'), $emial_body);
         $emial_body = str_replace("#PATIENT_FULLNAME", $result['name'], $emial_body);
-        $emial_body = str_replace("#PATIENT_FIRST_NAME", $patient_first_name, $emial_body);
+        $emial_body = str_replace("#PATIENT_TITLE_LAST_NAME", $result['title']. ' '. $result['lastname'], $emial_body);
         $emial_body = str_replace("#PATIENT_ADDRESS", $patient_address, $emial_body);
         $emial_body = str_replace("#INVOICE_NUMBER", $invoice_number, $emial_body);
         $emial_body = str_replace("#INVOICE_DATE", $result['invoicedate'], $emial_body);

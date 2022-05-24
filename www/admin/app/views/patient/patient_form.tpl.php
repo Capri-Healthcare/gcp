@@ -64,6 +64,14 @@
                                                                     echo "selected";
                                                                 } ?>>Miss.
                                         </option>
+                                        <option value="Dr." <?php if ($result['title'] == 'Dr.') {
+                                                                    echo "selected";
+                                                                } ?>>Dr.
+                                        </option>
+                                        <option value="Prof." <?php if ($result['title'] == 'Prof.') {
+                                                                    echo "selected";
+                                                                } ?>>Prof.
+                                        </option>
                                     </select>
                                 </div>
                             </div>

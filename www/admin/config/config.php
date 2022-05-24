@@ -378,7 +378,7 @@ define('REFERRAL_MED_SEC_STATUS', ['ALL' => 'ALL', 'NEW' => 'New', 'ACCEPTED' =>
 define('STATUS_ALL', 'ALL');
 
 define('INVOICE_REMINDER_EMAIL_TEMPLATE', "
-Dear #PATIENT_FIRST_NAME<br><br>
+Dear #PATIENT_TITLE_LAST_NAME<br><br>
 <center><strong><u>Outstanding Invoice</u></strong></center><br><br>
 Our computer records show that the following invoice/s are showing as outstanding. The details are as follows:<br>
 Invoice Number: #INVOICE_NUMBER <br>
@@ -406,7 +406,7 @@ define('INVOICE_REMINDER_LETTER_TEMPLATE', "
 #TODAY_DATE<br>
 #PATIENT_FULLNAME
 #PATIENT_ADDRESS<br><br>
-Dear #PATIENT_FIRST_NAME<br><br>
+Dear #PATIENT_TITLE_LAST_NAME<br><br>
 <center><strong><u>Outstanding Invoice</u></strong></center><br><br>
 Our computer records show that the following invoice/s are showing as outstanding. The details are as follows:<br>
 Invoice Number: #INVOICE_NUMBER <br>

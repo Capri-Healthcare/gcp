@@ -121,7 +121,11 @@ class Patient extends Model
             $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` p WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape($data['dob']) ));
         }
         if ($query->num_rows > 0) {
-            return true;
+            if(isset($data['return_type']) AND $data['return_type'] == 'record'){
+                return $query->row;
+            } else {
+                return true;
+            }
         } else {
             return false;
         }
@@ -297,12 +301,14 @@ class Patient extends Model
 
     public function getSearchedPatient($data, $role = null)
     {
-        if ($role == constant('USER_ROLE')[2]) {
+        /*if ($role == constant('USER_ROLE')[2]) {
             $query = $this->database->query("SELECT id, CONCAT(title, ' ', firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' AND is_glaucoma_required = 'YES' LIMIT 5");
 
         } else {
             $query = $this->database->query("SELECT id, CONCAT(title, ' ', firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' LIMIT 5");
-        }
+        }*/
+
+        $query = $this->database->query("SELECT id, CONCAT(title, ' ', firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' OR lastname like '%" . $data . "%' LIMIT 15");
         return $query->rows;
     }
 
