@@ -143,7 +143,6 @@ class OpticianReferralController extends Controller
             if ($this->model_opticianreferral->updateStatus($referral)) {
                 $this->referralMail($id);
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral Status Updated.!');
-
             } else {
                 $this->session->data['message'] = array('alert' => 'danger', 'value' => 'Optician Referral Status Not Updated.!');
             }
@@ -249,9 +248,9 @@ class OpticianReferralController extends Controller
                     $optician_user_address = json_decode($optician_user['address'], true);
                     $optician_user_address_for_save = "";
                     $optician_user_address_for_save .= isset($optician_user_address['address1']) ? $optician_user_address['address1'] : '';
-                    $optician_user_address_for_save .= isset($optician_user_address['address2']) ? (','. $optician_user_address['address2']) : '';
-                    $optician_user_address_for_save .= isset($optician_user_address['city']) ? (','. $optician_user_address['city']) : '';
-                    $optician_user_address_for_save .= isset($optician_user_address['postal']) ? (' - '. $optician_user_address['postal']) : '';
+                    $optician_user_address_for_save .= isset($optician_user_address['address2']) ? (',' . $optician_user_address['address2']) : '';
+                    $optician_user_address_for_save .= isset($optician_user_address['city']) ? (',' . $optician_user_address['city']) : '';
+                    $optician_user_address_for_save .= isset($optician_user_address['postal']) ? (' - ' . $optician_user_address['postal']) : '';
 
                     $patient_data['firstname'] = $data['referral']['first_name'];
                     $patient_data['lastname'] = $data['referral']['last_name'];
@@ -264,12 +263,12 @@ class OpticianReferralController extends Controller
                     $patient_data['user_id'] = $data['referral']['user_id'];
                     $patient_data['title'] = "";
                     $patient_data['hash'] = $data['referral']['user_id'];
-                    $patient_data['optician_name'] = $optician_user['firstname'] . ' '. $optician_user['lastname'];
+                    $patient_data['optician_name'] = $optician_user['firstname'] . ' ' . $optician_user['lastname'];
                     $patient_data['optician_email'] = $optician_user['email'];
                     $patient_data['optician_address'] = $optician_user_address_for_save;
                     $patient_data['hospital_code'] = $data['referral']['hospital_code'] == null ? null : $data['referral']['hospital_code'];
                     $patient_data['datetime'] = date('Y-m-d H:s:a');
-                    
+
                     if (empty($patient_id)) {
 
                         $patient_id = $this->model_patient->createPatient($patient_data);
@@ -282,37 +281,42 @@ class OpticianReferralController extends Controller
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
                             // $this->url->redirect('patient/edit&id=' .$patient['id']. '&referralid=' . $data['referral']['id']);
                         }
-
                     } else {
                         $patient_data['id'] = $patient_id;
                         $this->model_patient->updatePatientFromReferral($patient_data);
                     }
-                    
+
 
                     //$this->notificationToPatientForAppointmentBooking($patient_id);
-                    $this->url->redirect('patient/edit&id=' .$patient_id. '&referralid=' . $data['referral']['id']);
+                    $this->url->redirect('patient/edit&id=' . $patient_id . '&referralid=' . $data['referral']['id']);
                     //$this->url->redirect('optician-referral');
 
                 }
 
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral updated successfully.');
-
             } else {
                 $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not updated successfully.');
             }
             $this->url->redirect('optician-referral/edit&id=' . $data['referral']['id']);
         } else {
-            $data['referral']['user_id'] = $this->session->data['user_id'];
-            $opticianID = $this->model_opticianreferral->createOpticianReferral($data['referral']);
-            if (!empty($opticianID)) {
-                $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral created successfully.');
-                $this->url->redirect('optician-referral/edit&id=' . $opticianID . '&document=true');
-            } else {
-                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not created successfully.');
+
+            $validate_referral = $this->model_opticianreferral->validateReferral($data['referral']);
+
+            if ($validate_referral) {
+                $this->session->data['message'] = array('alert' => 'error', 'value' => 'You have already created referral with this patient.');
                 $this->url->redirect('optician-referral');
+            } else {
+                $data['referral']['user_id'] = $this->session->data['user_id'];
+                $opticianID = $this->model_opticianreferral->createOpticianReferral($data['referral']);
+                if (!empty($opticianID)) {
+                    $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral created successfully.');
+                    $this->url->redirect('optician-referral/edit&id=' . $opticianID . '&document=true');
+                } else {
+                    $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not created successfully.');
+                    $this->url->redirect('optician-referral');
+                }
             }
         }
-
     }
 
     /**
@@ -358,35 +362,35 @@ class OpticianReferralController extends Controller
             $error_flag = true;
             $error['title'] = 'Date of Birth!';
         }
-//        if ($this->controller_common->validateText($data['address_1'])) {
-//            $error_flag = true;
-//            $error['title'] = 'Address !';
-//        }
-//        if ($data['gender'] == null) {
-//            $error_flag = true;
-//            $error['title'] = 'Gender !';
-//        }
-//        if ($this->controller_common->validateText($data['email'])) {
-//            $error_flag = true;
-//            $error['title'] = 'Email !';
-//        }
-//        if ($this->controller_common->validateEmail($data['email'])) {
-//            $error_flag = true;
-//            $error['title'] = 'Email address !';
-//        }
+        //        if ($this->controller_common->validateText($data['address_1'])) {
+        //            $error_flag = true;
+        //            $error['title'] = 'Address !';
+        //        }
+        //        if ($data['gender'] == null) {
+        //            $error_flag = true;
+        //            $error['title'] = 'Gender !';
+        //        }
+        //        if ($this->controller_common->validateText($data['email'])) {
+        //            $error_flag = true;
+        //            $error['title'] = 'Email !';
+        //        }
+        //        if ($this->controller_common->validateEmail($data['email'])) {
+        //            $error_flag = true;
+        //            $error['title'] = 'Email address !';
+        //        }
         if ($this->controller_common->validateMobileNumber($data['mobile'])) {
             $error_flag = true;
             $error['title'] = 'Preferred Contact Number !';
         }
 
-//        if ($this->controller_common->validateText($data['city'])) {
-//            $error_flag = true;
-//            $error['title'] = 'City !';
-//        }
-//        if ($this->controller_common->validateText($data['zip_code'])) {
-//            $error_flag = true;
-//            $error['title'] = 'Post Code  !';
-//        }
+        //        if ($this->controller_common->validateText($data['city'])) {
+        //            $error_flag = true;
+        //            $error['title'] = 'City !';
+        //        }
+        //        if ($this->controller_common->validateText($data['zip_code'])) {
+        //            $error_flag = true;
+        //            $error['title'] = 'Post Code  !';
+        //        }
 
         if ($error_flag) {
             return $error;
@@ -493,7 +497,6 @@ class OpticianReferralController extends Controller
                 'filePath' => $filePath,
                 'relativePath' => $relativePath,
             ];
-
         }
 
         $parems = [];
@@ -510,9 +513,7 @@ class OpticianReferralController extends Controller
             readfile($zip_file_path);
             // delete file
             unlink($zip_file_path);
-
         }
-
     }
 
 
@@ -619,5 +620,4 @@ class OpticianReferralController extends Controller
 
         return $this->controller_mail->sendMail($data);
     }
-
 }

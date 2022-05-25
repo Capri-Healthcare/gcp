@@ -202,7 +202,7 @@ class Appointment extends Model
         `family_history_of_glaucoma` = ?,
         `relations_with_glaucoma_patient` = ?
          WHERE `id` = ? ", array(
-            $this->database->escape($data['current_event']),
+            $data['current_event'],
             $this->database->escape($data['allergy']),
             $this->database->escape($data['intraocular_pressure_right']),
             $this->database->escape($data['visual_acuity_unaided_right']),

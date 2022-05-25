@@ -156,4 +156,14 @@ class Opticianreferral extends Model
             return false;
         }
     }
+    public function validateReferral($data)
+    {
+        $query = $this->database->query("Select * From `" . DB_PREFIX . "referral_list` WHERE first_name  = '" . $data['first_name'] . "' AND last_name = '" . $data['last_name'] . "' AND dob = '" . date("Y-m-d", strtotime($data['dob'])) . "'");
+
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

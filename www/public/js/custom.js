@@ -384,7 +384,11 @@ $(document).ready(function () {
                 $('#register-bot').focus();
             }
         }
-
+        if (!$('#privacy_policy').is(":checked")) {
+            $('#privacy_policy').addClass('is-invalid');
+            clck_invld = 1;
+            $('#privacy_policy').focus();
+        }
         if ($('#register-password').val() == '') {
             $('#register-password').addClass('is-invalid');
             $(".invalid-password").text('Password is required')
@@ -428,6 +432,11 @@ $(document).ready(function () {
             clck_invld = 1;
             $('#register-first-name').focus();
         }
+        // if (!$('#privacy_policy').is(":checked")) {
+        //     $('#privacy_policy').addClass('is-invalid');
+        //     clck_invld = 1;
+        //     $('#privacy_policy').focus();
+        // }
         if (form == 'optician') {
             if ($('#register-optician-practice-name').val().trim().length < 2) {
                 $('#register-optician-practice-name').addClass('is-invalid');

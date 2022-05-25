@@ -26359,3 +26359,13 @@ button.toast-close-button {
 .tt-block:hover p a {
     color: #fff;
 }
+input.privacy_policy {
+    width: auto !important;
+    height: auto !important;
+    float: left !important;
+    margin: 3px 5px 3px 10px !important;
+}
+
+.privacy_policy.is-invalid~.invalid-feedback {
+    display: block !important;
+}

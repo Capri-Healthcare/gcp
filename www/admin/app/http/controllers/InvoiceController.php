@@ -29,7 +29,6 @@ class InvoiceController extends Controller
                 $data['dropdown_selected'] = $data['period']['status'];
             } else {
                 $data['period']['status'] = ucfirst(constant('STATUS_PAYMENT_UNPAID'));
-
             }
         } else {
             $data['period']['start'] = date('Y-m-d ' . '00:00:00');
@@ -41,7 +40,7 @@ class InvoiceController extends Controller
             $data['result'] = $this->model_invoice->allInvoices($data['period'], $data['common']['user']);
         } else {
 
-            $data['result'] = $this->model_invoice->allInvoices($data['period'],null,$data['common']['user']);
+            $data['result'] = $this->model_invoice->allInvoices($data['period'], null, $data['common']['user']);
         }
 
         /* Set confirmation message if page submitted before */
@@ -106,6 +105,7 @@ class InvoiceController extends Controller
             $data['message'] = $this->session->data['message'];
             unset($this->session->data['message']);
         }
+        $data['email_preview'] = $this->getInvoicePreivew($id);
 
         $data['page_title'] = 'Invoice View';
         $data['page_edit'] = $this->user_agent->hasPermission('invoice/edit') ? true : false;
@@ -518,7 +518,7 @@ class InvoiceController extends Controller
 
     // Payment Confirmation Mail
 
-    private function paymentConfirmationMail($id,$payments_id)
+    private function paymentConfirmationMail($id, $payments_id)
     {
         $this->load->controller('mail');
         $result = $this->controller_mail->getTemplate('paymentconfirmation');
@@ -684,7 +684,7 @@ class InvoiceController extends Controller
 
         $this->load->model('appointment');
         $headerfooter = $this->model_appointment->getAppointmentDocHeaderFooter($id);
-        
+
         $this->load->model('invoice');
         $result = $this->model_invoice->getInvoiceView($id);
         $address_arr = json_decode($result['address'], true);
@@ -694,7 +694,7 @@ class InvoiceController extends Controller
         $patient_address .= !empty($address_arr['city']) ? ('<br>' . $address_arr['city']) : '';
         $patient_address .= !empty($address_arr['postal']) ? ('<br>' . $address_arr['postal']) : '';
         $patient_first_name_arr = explode(" ", strtolower($result['name']));
-        if(in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
+        if (in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])) {
             $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
         } else {
             $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
@@ -703,7 +703,7 @@ class InvoiceController extends Controller
         $emial_body = INVOICE_REMINDER_LETTER_TEMPLATE;
         $emial_body = str_replace("#TODAY_DATE", date('d-m-Y'), $emial_body);
         $emial_body = str_replace("#PATIENT_FULLNAME", $result['name'], $emial_body);
-        $emial_body = str_replace("#PATIENT_TITLE_LAST_NAME", $result['title']. ' '. $result['lastname'], $emial_body);
+        $emial_body = str_replace("#PATIENT_TITLE_LAST_NAME", $result['title'] . ' ' . $result['lastname'], $emial_body);
         $emial_body = str_replace("#PATIENT_ADDRESS", $patient_address, $emial_body);
         $emial_body = str_replace("#INVOICE_NUMBER", $invoice_number, $emial_body);
         $emial_body = str_replace("#INVOICE_DATE", $result['invoicedate'], $emial_body);
@@ -711,9 +711,9 @@ class InvoiceController extends Controller
         $emial_body = str_replace("#INVOICE_TOTAL", $common['info']['currency_abbr'] . $result['amount'], $emial_body);
         $emial_body = str_replace("#INVOICE_DUE", $common['info']['currency_abbr'] . $result['due'], $emial_body);
         ob_start();
-        
-            include DIR_APP . 'views/invoice/reminder_email_pdf.tpl.php';
-        
+
+        include DIR_APP . 'views/invoice/reminder_email_pdf.tpl.php';
+
         $html = ob_get_clean();
 
         if (ob_get_length() > 0) {
@@ -750,5 +750,38 @@ class InvoiceController extends Controller
 
         $pdf = new PDF();
         $pdf->createPDF($data);
+    }
+    public function getInvoicePreivew($id)
+    {
+        $this->load->controller('mail');
+        $result = $this->controller_mail->getTemplate('newinvoice');
+        if (empty($result['template'])) {
+            return false;
+        }
+        $invoice = $this->model_invoice->getInvoiceView($id);
+
+        $data['id'] = $result['common']['invoice_prefix'] . str_pad($invoice['id'], 4, '0', STR_PAD_LEFT);
+        $site_link = '<a href="' . URL . '">Click Here</a>';
+        $invoice['duedate'] = date_format(date_create($invoice['duedate']), $result['common']['date_format']);
+
+        $result['template']['message'] = str_replace('{name}', $invoice['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{inv_id}', $data['id'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{amount}', $result['common']['currency_abbr'] . $invoice['amount'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{paid}', $result['common']['currency_abbr'] . $invoice['paid'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{due}', $result['common']['currency_abbr'] . $invoice['due'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{due_date}', $invoice['duedate'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{inv_url}', $site_link, $result['template']['message']);
+
+        $data['name'] = $invoice['name'];
+        $data['email'] = $invoice['email'];
+        $data['subject'] = str_replace('{clinic_name}', $result['common']['name'], $result['template']['subject']);
+        $data['message'] = $result['template']['message'];
+
+        if (file_exists(DIR . 'public/uploads/invoice/invoice-' . $invoice['id'] . '.pdf')) {
+            $data['attachments'][] = array('file' => DIR . 'public/uploads/invoice/invoice-' . $invoice['id'] . '.pdf', 'name' => 'invoice-' . $invoice['id'] . '.pdf');
+        }
+
+        return $data;
     }
 }
