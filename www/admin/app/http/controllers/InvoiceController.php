@@ -759,6 +759,7 @@ class InvoiceController extends Controller
             return false;
         }
         $invoice = $this->model_invoice->getInvoiceView($id);
+        $invoice['paid'] = empty($invoice['paid']) ? 0 : $invoice['paid'];
 
         $data['id'] = $result['common']['invoice_prefix'] . str_pad($invoice['id'], 4, '0', STR_PAD_LEFT);
         $site_link = '<a href="' . URL . '">Click Here</a>';

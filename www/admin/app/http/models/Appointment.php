@@ -713,7 +713,7 @@ class Appointment extends Model
 
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis: ";// . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
+            $body .= "Diagnosis: <br>";// . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
             //$body .= "<ol>";
             $count = 1;
             if (!empty($appointment['diagnosis'])) {
@@ -723,20 +723,21 @@ class Appointment extends Model
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
                     }
-                    $body .= "<br> &nbsp;&nbsp;&nbsp; ";
+                    $body .= " &nbsp;&nbsp;&nbsp; ";
                     if(!empty($diagnosis['eye'])){
-                        $body .= "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ";
+                        $body .= "".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . ": ";
                     }
                     if(!empty($diagnosis['name'])){
                         $body .= $diagnosis['name'];
                     }
+                    $body .= "<br>";
                     $count++;
                 }
             }
             if (!empty($appointment['diagnosis_other'])) {
                 //$body .= "<li>". $appointment['diagnosis_other']."</li>";
                 //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
-                $body .= "<br> &nbsp;&nbsp;&nbsp; " . $appointment['diagnosis_other'];
+                $body .= "&nbsp;&nbsp;&nbsp; " . $appointment['diagnosis_other'] . "<br>";
             }
             //$body .= "</ol>";
         }
@@ -1055,7 +1056,7 @@ class Appointment extends Model
         
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
-            $body .= "Diagnosis: ";// . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
+            $body .= "Diagnosis: <br>";// . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
             $count = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
@@ -1063,19 +1064,20 @@ class Appointment extends Model
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
                     }
-                    $body .= "<br> &nbsp;&nbsp;&nbsp; ";
+                    $body .= "&nbsp;&nbsp;&nbsp; ";
                     if(!empty($diagnosis['eye'])){
-                        $body .= "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ";
+                        $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . ": ";
                     }
                     if(!empty($diagnosis['name'])){
                         $body .= $diagnosis['name'];
                     }
+                    $body .= "<br>";
                     $count++;
                 }
             }
             if (!empty($appointment['diagnosis_other'])) {
                 //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
-                $body .= "<br> &nbsp;&nbsp;&nbsp;  " . $appointment['diagnosis_other'];
+                $body .= "&nbsp;&nbsp;&nbsp;  " . $appointment['diagnosis_other']."<br>";
             }
         }
         
