@@ -515,6 +515,39 @@ class InvoiceController extends Controller
         $this->session->data['message'] = array('alert' => 'success', 'value' => 'Invoice sent successfully.');
         $this->url->redirect('invoice/view&id=' . $id);
     }
+    public function invoicePreviewMail()
+    {
+        $data = $this->url->post['mail'];
+        $this->load->model('invoice');
+        $this->load->controller('mail');
+
+        $id = $data['id'];
+        $result = $this->controller_mail->getTemplate('newinvoice');
+        
+        if (empty($result['template'])) {
+            return false;
+        }
+        $invoice = $this->model_invoice->getInvoiceView($id);
+
+        $data['id'] = $result['common']['invoice_prefix'] . str_pad($invoice['id'], 4, '0', STR_PAD_LEFT);
+
+        $data['name'] = $invoice['name'];
+        $data['email'] = $invoice['email'];
+        $data['subject'] = $data['subject'];
+        $data['message'] = $data['message'];
+
+        if (file_exists(DIR . 'public/uploads/invoice/invoice-' . $invoice['id'] . '.pdf')) {
+            $data['attachments'][] = array('file' => DIR . 'public/uploads/invoice/invoice-' . $invoice['id'] . '.pdf', 'name' => 'invoice-' . $invoice['id'] . '.pdf');
+        }
+        
+        //This line is copied from indexAction to update status of mail after sent
+        $this->model_invoice->updateInvoiceMailStatus($id);
+
+        $this->controller_mail->sendMail($data);
+        
+        $this->session->data['message'] = array('alert' => 'success', 'value' => 'Invoice sent successfully.');
+        $this->url->redirect('invoice/view&id=' . $id);
+    }
 
     // Payment Confirmation Mail
 

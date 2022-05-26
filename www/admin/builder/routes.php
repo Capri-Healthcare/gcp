@@ -140,6 +140,8 @@ $router->post('invoice/edit', 'InvoiceController@indexAction');
 $router->post('invoice/delete', 'InvoiceController@indexDelete');
 //To send invoice in mail added on 16-04-2022
 $router->get('invoice/sendinvoice', 'InvoiceController@invoiceMail');
+$router->post('invoice/sendpreviewinvoice', 'InvoiceController@invoicePreviewMail');
+
 $router->get('invoice/reminderemailpdf', 'InvoiceController@reminderEmailPdf');
 //To send invoice in mail
 
