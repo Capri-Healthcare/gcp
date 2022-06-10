@@ -320,7 +320,7 @@ define('MY_EYE_RECORD_CARE','<b>M</b>y<br/><b>E</b>ye <br/><b>R</b>ecord & <br/>
 define('PATIENT_GP_EMAIL_BODY',"Dear #PATIENT_FIRST_NAME,"."<br><br><br>".
 "Please find the clinic letter attached. We have sent the email to your GP surgery as well."."<br><br>".
 
-"If you have any query, please email secretartyoj@gmail.com.");
+"If you have any query, please email secretaryoj@gmail.com.");
 define('THIRD_PARTY_EMAIL_BODY', "Dear #THIRD_PARTY_NAME,"."<br><br><br>".
 "Please find enclosed the clinic letter for our mutual patient following a recent clinic visit. "."<br><br>".
 "Thank you for your ongoing support and help in sharing the ophthalmic care.");
