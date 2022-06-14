@@ -3,7 +3,7 @@
 /**
  * Privacy Controller
  */
-class PrivacyController extends Controller
+class TcController extends Controller
 {
     /**
      * Privacy controller index method
@@ -25,6 +25,6 @@ class PrivacyController extends Controller
             $this->url->redirect('user/appointment');
         }
 
-        $this->response->setOutput($this->load->view('front/privacy_policy', $data));
+        $this->response->setOutput($this->load->view('front/terms_condition', $data));
     }
 }

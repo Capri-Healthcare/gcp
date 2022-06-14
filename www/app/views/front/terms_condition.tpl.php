@@ -6,7 +6,7 @@
                 <!-- <img src="public/images/ophthalmologist.png" alt="Ophthalmologist" title="Ophthalmologist" /> -->
             </div>
             <div class="care_right">
-            <h3>Privacy policy</h3>
+                <h3>Terms and condition</h3>
                 <p>Content coming soon</p>
             </div>
         </div>
