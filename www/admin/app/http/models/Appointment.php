@@ -833,7 +833,7 @@ class Appointment extends Model
 
         $body .= "<br><br>";
 
-        $body .= "Kind regards<br>Yours sincerely<br>";
+        $body .= "Kind regards,<br>Yours sincerely<br>";
         $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'>";
         $body .= '<br><strong>'.$doctor_data['name'];
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
@@ -843,7 +843,7 @@ class Appointment extends Model
         $body .= "<br><br>";
        
             $body .= "<span style='font-size:12px'>";
-            $body .= "CC:"."<br>";
+            $body .= "CC:"."<br><br>";
             $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
             if (!empty($appointment['address'])) {
                 $body .= $appointment['address']['address1'];
@@ -1128,7 +1128,7 @@ class Appointment extends Model
 
         $body .= "<br><br>";
 
-        $body .= "Kind regards<br>Yours sincerely<br>";
+        $body .= "Kind regards,<br>Yours sincerely<br>";
         $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'>";
         $body .= '<br><strong>'.$doctor_data['name'];
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
@@ -1140,7 +1140,7 @@ class Appointment extends Model
         
         if(!empty($gp_address)){
             $body .= "<span style='font-size:12px'>";
-            $body .= "CC:"."<br>";
+            $body .= "CC:"."<br><br>";
             $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
             $referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
             foreach($referee_address_arr as $address){

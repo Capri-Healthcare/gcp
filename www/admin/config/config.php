@@ -164,6 +164,14 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'CATARACT' => 'Cataract',
         'PSEUDOPHAKOS' => 'Pseudophakos',
         'NO_EVIDENCE_OF_GLAUCOMA' => 'No evidence of glaucoma',
+        'NORMAL_TENSION_GLAUCOMA' => 'Normal Tension Glaucoma',
+        'INTOLERANCE_TO_PRESERVATIVES' => 'Intolerance to Preservatives',
+        'INTOLERANCE_TO_BETABLOCKERS' => 'Intolerance to betablockers',
+        'CENTRAL_RETINAL_VEIN_OCCLUSSION' => 'Central Retinal vein Occlussion',
+        'BRANCH_RETINAL_VIEN_OCCLUSION' => 'Branch Retinal vien occlusion',
+        'DIABETIC_RETINOPATHY' => 'Diabetic Retinopathy',
+        'AGE_RELATED_MACULAR_DEGENERATION_DRY_TYPE' => 'Age related macular degeneration-Dry type',
+        'AGE_RELATED_MACULAR_DEGENERATION_WET_TYPE' => 'Age related macular degeneration-Wet type',
 
     ],
     'ANTERIOR_CHAMBER' => [
@@ -210,9 +218,9 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'NO' => 'No'
     ],
     'DIAGNOSIS_EYE' => [
-        'RE' => 'Right eye',
-        'LE' => 'Left eye',
-        'BOTH' => 'Both eyes',
+        'RE' => 'Right',
+        'LE' => 'Left',
+        'BOTH' => 'Bilateral',
     ],
     'FAMILY_HISTORY_OF_GLAUCOMA' => [
         'YES' => 'Yes',
@@ -235,9 +243,9 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
 ]);
 
 define('PRESCRIPTION_DROP_DOWNS', ['PRESCRIPTION_EYE' => [
-    'RE' => 'Right eye',
-    'LE' => 'Left eye',
-    'BOTH' => 'Both eyes',
+    'RE' => 'Right',
+    'LE' => 'Left',
+    'BOTH' => 'Bilateral',
     'OTHER' => 'Other',
 ]]);
 
