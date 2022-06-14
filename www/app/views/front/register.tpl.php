@@ -132,9 +132,9 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="mb-3 privacy_policy">
+                                    <div class="mb-3 privacy_policy form-group">
                                         <input type="checkbox" name="privacy_policy" id="privacy_policy" value="Y" class="privacy_policy" required />&nbsp;
-                                        I agree with the <a target="_blank" href="<?php echo URL."public/uploads/test.pdf";?>">terms and condition</a> and <a target="_blank" href="<?php echo URL."public/uploads/test.pdf";?>">privacy policy</a>.
+                                        I agree with the <a target="_blank" href="<?php echo URL."public/uploads/test.pdf";?>">terms and condition</a> and <a target="_blank" href="<?php echo URL.DIR_ROUTE."privacy-policy";?>">privacy policy</a>.
                                         <div class="invalid-feedback ml-3">
                                             Please agree with terms and condition and privacy policy
                                         </div>

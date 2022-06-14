@@ -935,3 +935,576 @@ Stack trace:
 [28-Oct-2021 05:49:27 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 582
 [28-Oct-2021 05:49:27 Europe/London] PHP Notice:  Undefined index:  in D:\xampp7.2.24\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 780
 [10-Nov-2021 11:49:20 Europe/London] PHP Notice:  Undefined index: date in D:\xampp7.2.24\htdocs\gcp\www\admin\app\http\controllers\AppointmentController.php on line 456
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[24-May-2022 13:20:09 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[24-May-2022 13:20:09 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 13:20:09 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 13:20:09 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 13:20:09 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 13:20:09 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 13:20:09 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 14:11:07 Europe/London] PHP Fatal error:  Uncaught Error: Call to a member function getTemplate() on null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\InvoiceController.php:756
+Stack trace:
+#0 D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\InvoiceController.php(109): InvoiceController->getInvoicePreivew(21)
+#1 D:\xampp_7_4_27\htdocs\gcp\www\admin\builder\core\action.php(28): InvoiceController->indexView()
+#2 D:\xampp_7_4_27\htdocs\gcp\www\admin\builder\core\router.php(50): Action->execute(Object(Repository), Array)
+#3 D:\xampp_7_4_27\htdocs\gcp\www\admin\builder\core\router.php(40): Router->dispatch(Array)
+#4 D:\xampp_7_4_27\htdocs\gcp\www\admin\builder\bootstrap.php(66): Router->route('invoice/view', 'GET')
+#5 D:\xampp_7_4_27\htdocs\gcp\www\admin\builder\startup.php(67): require_once('D:\\xampp_7_4_27...')
+#6 D:\xampp_7_4_27\htdocs\gcp\www\admin\index.php(43): launch()
+#7 {main}
+  thrown in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\InvoiceController.php on line 756
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[24-May-2022 15:24:46 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[24-May-2022 15:24:47 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[24-May-2022 15:24:47 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 15:24:47 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 15:24:47 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 15:24:47 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 15:24:47 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[24-May-2022 15:24:47 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:51:33 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:51:33 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:51:33 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:51:33 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:51:33 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:51:33 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:51:33 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:56:17 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:56:17 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:56:17 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:56:17 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:56:17 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:56:17 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:56:17 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:58:42 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:58:42 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:58:42 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:58:42 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:58:42 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:58:42 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:58:42 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:59:04 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:59:04 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:04 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:04 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:04 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:04 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:04 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:59:52 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 06:59:52 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:52 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:52 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:52 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:52 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 06:59:52 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 07:04:32 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 07:04:32 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:32 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:32 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:32 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:32 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:32 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 07:04:56 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 07:04:56 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:56 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:56 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:56 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:56 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:04:56 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 07:05:27 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[25-May-2022 07:05:27 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:05:27 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:05:27 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:05:27 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:05:27 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:05:27 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 07:11:47 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 07:17:34 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 07:18:44 Europe/London] PHP Notice:  Undefined index: status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Opticianreferral.php on line 46
+[25-May-2022 07:18:44 Europe/London] PHP Notice:  Undefined index: status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Opticianreferral.php on line 46
+[25-May-2022 07:18:44 Europe/London] PHP Warning:  Header may not contain more than a single header, new line detected in D:\xampp_7_4_27\htdocs\gcp\www\admin\builder\library\url.php on line 79
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 07:18:52 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 07:19:02 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 07:19:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 07:26:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 07:34:22 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 07:59:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 08:10:38 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 08:13:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 08:13:06 Europe/London] PHP Notice:  Undefined index: status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Opticianreferral.php on line 46
+[25-May-2022 08:13:06 Europe/London] PHP Notice:  Undefined index: status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Opticianreferral.php on line 46
+[25-May-2022 08:13:06 Europe/London] PHP Warning:  Header may not contain more than a single header, new line detected in D:\xampp_7_4_27\htdocs\gcp\www\admin\builder\library\url.php on line 79
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 08:13:13 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 08:13:17 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 08:13:45 Europe/London] PHP Notice:  Undefined index: status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Opticianreferral.php on line 46
+[25-May-2022 08:13:45 Europe/London] PHP Notice:  Undefined index: status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Opticianreferral.php on line 46
+[25-May-2022 08:13:45 Europe/London] PHP Warning:  Header may not contain more than a single header, new line detected in D:\xampp_7_4_27\htdocs\gcp\www\admin\builder\library\url.php on line 79
+[25-May-2022 08:14:19 Europe/London] PHP Notice:  Undefined index: status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Opticianreferral.php on line 46
+[25-May-2022 08:14:19 Europe/London] PHP Notice:  Undefined index: status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Opticianreferral.php on line 46
+[25-May-2022 08:14:19 Europe/London] PHP Warning:  Header may not contain more than a single header, new line detected in D:\xampp_7_4_27\htdocs\gcp\www\admin\builder\library\url.php on line 79
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 08:14:45 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 21
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 35
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 47
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 62
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 76
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 90
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 102
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 139
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 151
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 163
+[25-May-2022 08:14:49 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\optician_referral\optician_referral_form.tpl.php on line 176
+[25-May-2022 08:15:18 Europe/London] PHP Notice:  Undefined index: first_name in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\OpticianReferralController.php on line 304
+[25-May-2022 08:15:18 Europe/London] PHP Notice:  Undefined index: last_name in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\OpticianReferralController.php on line 304
+[25-May-2022 08:15:18 Europe/London] PHP Notice:  Undefined index: dob in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\OpticianReferralController.php on line 304
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 318
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 387
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[26-May-2022 09:59:30 Europe/London] PHP Notice:  Array to string conversion in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 716
+[26-May-2022 09:59:30 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[26-May-2022 09:59:30 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[26-May-2022 09:59:30 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[26-May-2022 09:59:30 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[26-May-2022 09:59:30 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[26-May-2022 09:59:30 Europe/London] PHP Warning:  in_array() expects parameter 2 to be array, string given in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 1559
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 239
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 247
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 251
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 264
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 269
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 281
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 285
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 344
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 348
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 566
+[26-May-2022 09:59:46 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 570
+[26-May-2022 10:12:59 Europe/London] PHP Notice:  Undefined index: attachPdf in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\InvoiceController.php on line 250
+[26-May-2022 10:13:46 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\ErrorController.php on line 31
+[26-May-2022 10:13:46 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\ErrorController.php on line 31
+[26-May-2022 10:14:26 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\ErrorController.php on line 31
+[26-May-2022 10:14:26 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\ErrorController.php on line 31
+[26-May-2022 10:15:08 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\ErrorController.php on line 31
+[26-May-2022 10:15:08 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\ErrorController.php on line 31
+[26-May-2022 10:16:28 Europe/London] PHP Notice:  Trying to get property 'mail' of non-object in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\InvoiceController.php on line 520
