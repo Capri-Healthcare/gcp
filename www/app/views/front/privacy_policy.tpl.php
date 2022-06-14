@@ -1,5 +1,5 @@
 <?php echo $header; ?>
-<section class="care_block about_block">
+<section class="care_block about_block my-login-page" style="height: 500px;">
     <div class="container-fluid">
         <div class="care_main">
             <div class="care_left">
