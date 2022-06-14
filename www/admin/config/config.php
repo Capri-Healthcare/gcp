@@ -164,6 +164,14 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'CATARACT' => 'Cataract',
         'PSEUDOPHAKOS' => 'Pseudophakos',
         'NO_EVIDENCE_OF_GLAUCOMA' => 'No evidence of glaucoma',
+        'NORMAL_TENSION_GLAUCOMA' => 'Normal Tension Glaucoma',
+        'INTOLERANCE_TO_PRESERVATIVES' => 'Intolerance to Preservatives',
+        'INTOLERANCE_TO_BETABLOCKERS' => 'Intolerance to betablockers',
+        'CENTRAL_RETINAL_VEIN_OCCLUSSION' => 'Central Retinal vein Occlussion',
+        'BRANCH_RETINAL_VIEN_OCCLUSION' => 'Branch Retinal vien occlusion',
+        'DIABETIC_RETINOPATHY' => 'Diabetic Retinopathy',
+        'AGE_RELATED_MACULAR_DEGENERATION_DRY_TYPE' => 'Age related macular degeneration-Dry type',
+        'AGE_RELATED_MACULAR_DEGENERATION_WET_TYPE' => 'Age related macular degeneration-Wet type',
 
     ],
     'ANTERIOR_CHAMBER' => [
@@ -210,9 +218,9 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
         'NO' => 'No'
     ],
     'DIAGNOSIS_EYE' => [
-        'RE' => 'Right eye',
-        'LE' => 'Left eye',
-        'BOTH' => 'Both eyes',
+        'RE' => 'Right',
+        'LE' => 'Left',
+        'BOTH' => 'Bilateral',
     ],
     'FAMILY_HISTORY_OF_GLAUCOMA' => [
         'YES' => 'Yes',
@@ -235,9 +243,9 @@ define('OCULAR_EXAMINATION_DROP_DOWNS', [
 ]);
 
 define('PRESCRIPTION_DROP_DOWNS', ['PRESCRIPTION_EYE' => [
-    'RE' => 'Right eye',
-    'LE' => 'Left eye',
-    'BOTH' => 'Both eyes',
+    'RE' => 'Right',
+    'LE' => 'Left',
+    'BOTH' => 'Bilateral',
     'OTHER' => 'Other',
 ]]);
 
@@ -320,7 +328,7 @@ define('MY_EYE_RECORD_CARE','<b>M</b>y<br/><b>E</b>ye <br/><b>R</b>ecord & <br/>
 define('PATIENT_GP_EMAIL_BODY',"Dear #PATIENT_FIRST_NAME,"."<br><br><br>".
 "Please find the clinic letter attached. We have sent the email to your GP surgery as well."."<br><br>".
 
-"If you have any query, please email secretartyoj@gmail.com.");
+"If you have any query, please email secretaryoj@gmail.com.");
 define('THIRD_PARTY_EMAIL_BODY', "Dear #THIRD_PARTY_NAME,"."<br><br><br>".
 "Please find enclosed the clinic letter for our mutual patient following a recent clinic visit. "."<br><br>".
 "Thank you for your ongoing support and help in sharing the ophthalmic care.");

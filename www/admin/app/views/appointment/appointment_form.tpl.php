@@ -1599,6 +1599,27 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <b>Vitamin: </b>
+                                                    I mentioned the positive impact of physical exercise ( 5000 steps a day), Vitamin B3 &  meditation on glaucoma. Vitamin B3 has been shown to be protective to retinal ganglion cells in high doses but can also cause macular oedema. I recommend that you should take daily recommended dose of B3 so that you are not deficient in this vitamin. You asked about prevention of macular degeneration. I mentioned various formulations like macuShield which combines all three macular carotenoids especially lutein & zeaxanthin. Lutein and zeaxanthin can be found in fruits and dark green leafy vegetables and meso-zeaxanthin is present in some species of fish and seafood. You can take these supplement in the form of tablet like macuShield-one tablet a day. 
+                                                    <br><br>
+
+                                                    <b>Cataract: </b>
+                                                    We discussed cataract surgery and options of various intraocular lens including multifocal intraocular lens. I informed you that the risk of complication is less than 1%. There is a 1:200 chance of requiring second operation to complete the surgery. I also discussed that there is a 10% chance of posterior capsular opacification requiring treatment with YAG laser. On balance, it is in your best interest to proceed with cataract surgery.  I have taken consent for cataract surgery aiming for emmetropia and booked you for cataract surgery. 
+                                                    <br><br>
+
+                                                    <b>Post Cataract Letter</b>
+                                                    He / She is delighted with the results of right / left cataract surgery. His / her unaided visual acuity is 6/6 which is improved further with correction to 6/6. There is minimal / no inflammation in the eye. Intraocular pressure is 16mmHg in RE and 18 mmHg in the left eye. The anterior chamber has deepened as expected. Intraocular lens in nicely centrally positioned. There is no macular oedema. On his / her request I have arranged cataract surgery in the fellow eye. I shall keep you informed of his/ her progress. 
+                                                    <br><br>
+
+                                                    <b>Post Trab letter</b>
+                                                    I am satisfied with the progress achieved since this complex surgery. He / she is advised to continue to follow the instructions as per trabeculectomy information leaflet given to him / her prior to surgery. This can be downloaded from www.worcesterglaucoma.co.uk.
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="panel-footer text-center">
                                         <button type="button" onclick="return saveInfo('#form_ocular_examination')" name="submit" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Save
