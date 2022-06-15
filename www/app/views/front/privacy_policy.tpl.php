@@ -3,11 +3,11 @@
     <div class="container-fluid">
         <div class="care_main">
             <div class="care_left">
-                <!-- <img src="public/images/ophthalmologist.png" alt="Ophthalmologist" title="Ophthalmologist" /> -->
+                <h3>Privacy policy</h3>
+                <p>Content coming soon</p>
             </div>
             <div class="care_right">
-            <h3>Privacy policy</h3>
-                <p>Content coming soon</p>
+                <!-- <img src="public/images/ophthalmologist.png" alt="Ophthalmologist" title="Ophthalmologist" /> -->
             </div>
         </div>
     </div>

@@ -24,7 +24,6 @@ class TcController extends Controller
         if ($this->user_agent->isLogged()) {
             $this->url->redirect('user/appointment');
         }
-
         $this->response->setOutput($this->load->view('front/terms_condition', $data));
     }
 }
