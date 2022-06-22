@@ -61,8 +61,8 @@ define('IDENTIFICATION_NUMBER',[
     '5'=>'6',
 ]);
 
-define("DOCTOR_COMMENT", "It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to Practice Manager. so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician or at hospital before your next visit and bring the results with you on the next visit.");
+define("DOCTOR_COMMENT", "It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to your GP Practice Manager so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician or at hospital before your next visit and bring the results with you on the next visit or ask your optician to upload the results on My Eye Record & Care.");
 
-define("OPTICIAN_COMMENT", "Thank you for your kind referral to my private Complex Glaucoma/ Cataract clinic.");
+define("OPTICIAN_COMMENT", "Thank you for your kind referral to my private Complex Glaucoma/ Cataract clinic. Thank you for sharing the glaucoma care and carrying out high quality glaucoma diagnostic tests Threshold perimetry with Humphrey machine (visual field test) & OCT of disc & macula on regular basis. Please arrange another set of glaucoma diagnostic tests in 6 months.");
 
 ?>
