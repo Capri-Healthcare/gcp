@@ -714,18 +714,16 @@ class Appointment extends Model
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
             $body .= "<br><br>";
             $body .= "Diagnosis: <br>";// . constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$appointment['diagnosis_eye']];
-            //$body .= "<ol>";
             $count = 1;
             if (!empty($appointment['diagnosis'])) {
                 foreach(json_decode($appointment['diagnosis'], true) AS $key => $diagnosis){
                     if(!empty($diagnosis)){
-                        //$body .= "<li>". $diagnosis."</li>";
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
                     }
-                    $body .= " &nbsp;&nbsp;&nbsp; ";
+                    $body .= "&nbsp;&nbsp;&nbsp; ". $count . " ";
                     if(!empty($diagnosis['eye'])){
-                        $body .= "".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . ": ";
+                        $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . ": ";
                     }
                     if(!empty($diagnosis['name'])){
                         $body .= $diagnosis['name'];
@@ -735,11 +733,9 @@ class Appointment extends Model
                 }
             }
             if (!empty($appointment['diagnosis_other'])) {
-                //$body .= "<li>". $appointment['diagnosis_other']."</li>";
                 //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". " . $appointment['diagnosis_other'];
-                $body .= "&nbsp;&nbsp;&nbsp; " . $appointment['diagnosis_other'] . "<br>";
+                $body .= "&nbsp;&nbsp;&nbsp;  " . $appointment['diagnosis_other']."<br>";
             }
-            //$body .= "</ol>";
         }
 		
         /*if (!empty($appointment['diagnosis_re']) OR !empty($appointment['diagnosis_other_re']) 
@@ -815,7 +811,7 @@ class Appointment extends Model
         }
 
         if (!empty($appointment['gcp_next_appointment'])) {
-            $body .= "<br><br>";
+            $body .= "<br>";
             $body .= "<strong>Follow up: ";
             $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$appointment['gcp_next_appointment']]['name'] . "</strong>";
         }
@@ -825,7 +821,7 @@ class Appointment extends Model
         }
         
         if (!empty($appointment['doctor_note_optometrist'])) {
-            $body .= "<br><br>";
+            $body .= "<br>";
             $body .= $appointment['doctor_note_optometrist'];
         }
 
@@ -833,7 +829,7 @@ class Appointment extends Model
 
         $body .= "<br><br>";
 
-        $body .= "Kind regards,<br>Yours sincerely<br>";
+        $body .= "Kind regards,<br/><br/>Yours sincerely<br>";
         $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'>";
         $body .= '<br><strong>'.$doctor_data['name'];
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
@@ -1064,7 +1060,7 @@ class Appointment extends Model
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; ".$count . ". ".$diagnosis;
                         //$body .= "<br> &nbsp;&nbsp;&nbsp; <b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . "</b>: ".$diagnosis['name'];
                     }
-                    $body .= "&nbsp;&nbsp;&nbsp; ";
+                    $body .= "&nbsp;&nbsp;&nbsp; ". $count . " ";
                     if(!empty($diagnosis['eye'])){
                         $body .= constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$diagnosis['eye']] . ": ";
                     }
@@ -1128,7 +1124,7 @@ class Appointment extends Model
 
         $body .= "<br><br>";
 
-        $body .= "Kind regards,<br>Yours sincerely<br>";
+        $body .= "Kind regards,<br/><br/>Yours sincerely<br>";
         $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'>";
         $body .= '<br><strong>'.$doctor_data['name'];
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
