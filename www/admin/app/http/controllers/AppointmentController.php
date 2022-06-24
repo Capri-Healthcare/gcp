@@ -1722,15 +1722,15 @@ class AppointmentController extends Controller
 
         $doc_type = $this->url->get('doc_type');
         if (empty($doc_type) || !in_array($doc_type, ['to_patient_or_gp', 'to_optom_or_third_party', 'discharge'])) {
-            echo "Check 1" . $doc_type;
-            exit;
+            // echo "Check 1" . $doc_type;
+            // exit;
             $this->url->redirect('appointment/view&id=' . $appointment_id);
         }
 
         $action = $this->url->get('action');
         if (empty($action) || !in_array($action, ['download', 'email'])) {
-            echo "Check 2";
-            exit;
+            // echo "Check 2";
+            // exit;
             $this->url->redirect('appointment/view&id=' . $appointment_id);
         }
 
@@ -1759,6 +1759,7 @@ class AppointmentController extends Controller
         $data = $this->url->post;
 // print_r($data);exit;
         $data['appointment']['date'] =  date_format(date_create($data['appointment']['date']), 'Y-m-d');
+        $data['appointment']['typed_date'] =  date_format(date_create($data['appointment']['typed_date']), 'Y-m-d');
 
         $this->load->controller('common');
         if ($this->controller_common->validateToken($data['_token'])) {

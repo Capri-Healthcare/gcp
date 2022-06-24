@@ -141,7 +141,15 @@
                                     </select>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label>Typed Date <span class="form-required">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-calendar"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control typed-date" name="appointment[typed_date]" placeholder="Select Typed Date . . ." value="<?php echo $result['typed_date']!= NULL?date_format(date_create($result['typed_date']), 'd-m-Y'):date('d-m-Y'); ?>" required autocomplete="off">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label>Optician / Third Party Name </label>
                                 <div class="input-group">

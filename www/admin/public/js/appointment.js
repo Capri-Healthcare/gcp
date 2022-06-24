@@ -108,6 +108,17 @@ var tabtitle;
                 getAppointmentSlot(data);
             }
         });
+        $('.typed-date').datepicker({
+            dateFormat: $('.common_date_format').val(),
+            maxDate: "+1M +10D",
+            beforeShowDay: noWeekendsOrHolidaysAppointment,
+            onSelect: function () {
+                var curDate = $(this).datepicker('getDate');
+                data.typed_date = $.datepicker.formatDate("yy-mm-dd", curDate);
+                data.day = curDate.getDay();
+                // getAppointmentSlot(data);
+            }
+        });
     }
 
     function createAppointmentDate() {
@@ -182,6 +193,7 @@ var tabtitle;
             $('#apnt-info .apnt-doctor').val(event.doctor_id);
             $('#apnt-info .apnt-department').val(event.department_id);
             $('#apnt-info .apnt-date').val(event.start.format($('.common_daterange_format').val()));
+            $('#apnt-info .typed-date').val(event.start.format($('.common_daterange_format').val()));
             $('#apnt-info .apnt-time').val(event.time);
             $('#apnt-info .apnt-slot-time').val(event.slot);
             $('#apnt-info .apnt-status').val(event.status);
