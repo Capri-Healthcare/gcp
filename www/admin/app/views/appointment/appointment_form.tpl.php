@@ -1634,7 +1634,7 @@
                         <?php }
                         } ?>
 
-                        function medicine_autocomplete() {
+                        function diagnosis_autocomplete() {
                             $(".diagnosis-name").autocomplete({
                                 minLength: 0,
                                 source: '<?php echo URL_ADMIN . DIR_ROUTE . 'getdiagnosis'; ?>',
@@ -1654,7 +1654,7 @@
                         }
 
                         $('body').on('keydown.autocomplete', '.diagnosis-name', function() {
-                            medicine_autocomplete();
+                            diagnosis_autocomplete();
                         });
                         if ($(".diagnosis-delete").length < 2) {
                             $(".diagnosis-delete").hide();
