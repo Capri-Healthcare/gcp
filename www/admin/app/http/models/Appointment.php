@@ -98,7 +98,7 @@ class Appointment extends Model
 
     public function updateAppointment($data)
     {
-        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ?, referee_name = ?, referee_address = ?, referee_email = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], $data['referee_name'], $data['referee_address'], $data['referee_email'], (int)$data['id']));
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `typed_date` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ?, referee_name = ?, referee_address = ?, referee_email = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['slot'], (int)$data['department'], (int)$data['status'], $this->database->escape($data['typed_date']), (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], $data['referee_name'], $data['referee_address'], $data['referee_email'], (int)$data['id']));
 
         if ($query->num_rows > 0) {
             return true;
@@ -1023,7 +1023,7 @@ class Appointment extends Model
         $body .=  "<tr><td style='padding-right:15px;' valign='top'><br><br>";
 		
         $body .= "Date of visit: " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
-        $body .= "Date typed: " . date('d-m-Y');
+        $body .= "Date typed: " . date_format(date_create($appointment['typed_date']), 'd-m-Y') . "<br>";
 
         $body .= "<br><br>";
 

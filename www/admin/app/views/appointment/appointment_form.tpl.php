@@ -141,7 +141,15 @@
                                     </select>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label>Typed Date <span class="form-required">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-calendar"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control typed-date" name="appointment[typed_date]" placeholder="Select Typed Date . . ." value="<?php echo $result['typed_date']!= NULL?date_format(date_create($result['typed_date']), 'd-m-Y'):date('d-m-Y'); ?>" required autocomplete="off">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label>Optician / Third Party Name </label>
                                 <div class="input-group">
@@ -318,24 +326,9 @@
                                                               placeholder="Generic"><?php echo $value['generic'] ?></textarea>
                                                 </td-->
                                                 <td>
-                                                    <select name="prescription[medicine][<?php echo $key; ?>][dose]" class="form-control" required>
-                                                        <!-- <option value="">Select-Frequency</option>
-                                                        <option value="Once a day" <?php if ($value['dose'] == 'Once a day') {
-                                                                                        echo "selected";
-                                                                                    } ?> >Once a day
-                                                        </option>
-                                                        <option value="Twice a day" <?php if ($value['dose'] == 'Twice a day') {
-                                                                                        echo "selected";
-                                                                                    } ?> >Twice a day
-                                                        </option>
-                                                        <option value="Three times a day" <?php if ($value['dose'] == 'Three times a day') {
-                                                                                                echo "selected";
-                                                                                            } ?> >Three times a day
-                                                        </option> -->
-                                                        <?php foreach (constant('PRESCRIPTION_FREQUENCY') as $frequency) { ?>
-                                                            <option value="<?php echo $frequency ?>" <?php echo $value['dose'] == $frequency ? 'selected' : '' ?>><?php echo $frequency ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                <input class="form-control prescription-name" name="prescription[medicine][<?php echo $key; ?>][name]" value="<?php echo $value['name'] ?>" placeholder="Medicine Name" required>
+
+                                                    <!--  -->
                                                 </td>
                                                 <!--td>
                                                     <select name="prescription[medicine][<?php echo $key; ?>][duration]"
@@ -1641,7 +1634,7 @@
                         <?php }
                         } ?>
 
-                        function medicine_autocomplete() {
+                        function diagnosis_autocomplete() {
                             $(".diagnosis-name").autocomplete({
                                 minLength: 0,
                                 source: '<?php echo URL_ADMIN . DIR_ROUTE . 'getdiagnosis'; ?>',
@@ -1661,7 +1654,7 @@
                         }
 
                         $('body').on('keydown.autocomplete', '.diagnosis-name', function() {
-                            medicine_autocomplete();
+                            diagnosis_autocomplete();
                         });
                         if ($(".diagnosis-delete").length < 2) {
                             $(".diagnosis-delete").hide();
@@ -1986,6 +1979,29 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <script>
+    function medicine_autocomplete() {
+		$(".prescription-name").autocomplete({
+			minLength: 0,
+			source: '<?php echo URL_ADMIN.DIR_ROUTE.'getmedicine'; ?>',
+			focus: function( event, ui ) {
+				$(this).parents('tr').find('.prescription-name').val( ui.item.label );
+				return false;
+			},
+			select: function( event, ui ) {
+				$(this).parents('tr').find('.prescription-name').val( ui.item.label );
+				$(this).parents('tr').find('.prescription-generic').val( ui.item.generic );
+				return false;
+			}
+		}).autocomplete( "instance" )._renderItem = function( ul, item ) {
+			return $( "<li>" )
+			.append( "<div>" + item.label + "<br>" + item.generic + "</div>" )
+			.appendTo( ul );
+		};
+	}
+
+	$('body').on('keydown.autocomplete', '.prescription-name', function() {
+		medicine_autocomplete();
+	});
     function saveInfo(formId) {
         // var formData = $(formId).serialize();
         // console.log("form_data-->",formData);
