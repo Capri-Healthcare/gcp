@@ -1572,7 +1572,7 @@ class Appointment extends Model
     public function updateDiagnosis(){
 
         $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE diagnosis IS NOT NULL and id < 59");
-echo "<pre>";
+//echo "<pre>";
         if ($query->num_rows > 0) {
             foreach ($query->rows as $key => $appointment) {
                 
@@ -1581,12 +1581,12 @@ echo "<pre>";
                     $new_diagnosis_format[] = array('name'=> $value, 'eye'=>'BOTH');
                 }
 
-                echo $appointment['id']."<br>";
+                /* echo $appointment['id']."<br>";
                 print_r(json_decode($appointment['diagnosis'], true));
-                print_r(json_encode($new_diagnosis_format));
+                print_r(json_encode($new_diagnosis_format)); */
 
                 $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `diagnosis` = ? WHERE `id` = ? ", array(json_encode($new_diagnosis_format), (int)$appointment['id']));
-                echo "<br><br><br>";
+                //echo "<br><br><br>";
             }
         } else {
             return true;
