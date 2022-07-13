@@ -803,7 +803,7 @@ class Appointment extends Model
                 $body .= "<tr>";
                 $body .= "<td> &nbsp; " . $value['name'] . "</td>";
                 $body .= "<td> &nbsp; " . $value['dose'] . "</td>";
-                $body .= "<td> &nbsp; " . $value['eye'] . "</td>";
+                $body .= "<td> &nbsp; " . constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'][$value['eye']] . "</td>";
                 $body .= "</tr>";
             }
             $body .= "</table>";
@@ -1096,7 +1096,7 @@ class Appointment extends Model
                 $body .= "<tr>";
                 $body .= "<td> &nbsp; " . $value['name'] . "</td>";
                 $body .= "<td> &nbsp; " . $value['dose'] . "</td>";
-                $body .= "<td> &nbsp; " . $value['eye'] . "</td>";
+                $body .= "<td> &nbsp; " . constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'][$value['eye']] . "</td>";
                 $body .= "</tr>";
             }
             $body .= "</table>";
