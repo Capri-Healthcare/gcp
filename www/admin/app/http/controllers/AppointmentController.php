@@ -758,7 +758,10 @@ class AppointmentController extends Controller
     //Get diagnosis list
     public function getDiagnosis()
 	{
-		echo json_encode(constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS']);
+        $data = $this->url->get;
+        $diagnosis = constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS'];
+        $result = preg_grep("/{$data['term']}/i", $diagnosis);
+		echo json_encode($result);
 		exit();
 	}
     public function appointmentSidebar()
