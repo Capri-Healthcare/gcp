@@ -42,3 +42,22 @@
 [06-Oct-2021 08:57:24 Europe/London] PHP Notice:  Undefined variable: selected_page in D:\xampp7.2.24\htdocs\gcp\www\app\views\front\common\header.tpl.php on line 58
 [06-Oct-2021 09:00:56 Europe/London] PHP Notice:  Undefined variable: selected_page in D:\xampp7.2.24\htdocs\gcp\www\app\views\front\common\header.tpl.php on line 50
 [06-Oct-2021 09:00:56 Europe/London] PHP Notice:  Undefined variable: selected_page in D:\xampp7.2.24\htdocs\gcp\www\app\views\front\common\header.tpl.php on line 58
+[14-Jun-2022 12:48:33 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[14-Jun-2022 12:48:33 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[14-Jun-2022 12:53:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[14-Jun-2022 12:53:48 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[14-Jun-2022 12:56:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[14-Jun-2022 12:56:36 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[14-Jun-2022 13:06:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[14-Jun-2022 13:06:01 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[14-Jun-2022 13:06:08 Europe/London] PHP Fatal error:  Uncaught Error: Class 'PrivacyController' not found in D:\xampp_7_4_27\htdocs\gcp\www\builder\core\action.php:16
+Stack trace:
+#0 D:\xampp_7_4_27\htdocs\gcp\www\builder\core\router.php(48): Action->execute(Object(Repository), Array)
+#1 D:\xampp_7_4_27\htdocs\gcp\www\builder\core\router.php(37): Router->dispatch(Array)
+#2 D:\xampp_7_4_27\htdocs\gcp\www\builder\bootstrap.php(43): Router->route('privacy-policy', 'GET')
+#3 D:\xampp_7_4_27\htdocs\gcp\www\builder\startup.php(69): require_once('D:\\xampp_7_4_27...')
+#4 D:\xampp_7_4_27\htdocs\gcp\www\index.php(44): launch()
+#5 {main}
+  thrown in D:\xampp_7_4_27\htdocs\gcp\www\builder\core\action.php on line 16
+[14-Jun-2022 14:00:16 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[14-Jun-2022 14:00:16 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43

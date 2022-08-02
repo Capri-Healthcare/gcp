@@ -325,15 +325,18 @@
                                                               rows="3"
                                                               placeholder="Generic"><?php echo $value['generic'] ?></textarea>
                                                 </td-->
-                                                <td>
+                                                <!-- <td>
                                                 <input class="form-control prescription-name" name="prescription[medicine][<?php echo $key; ?>][name]" value="<?php echo $value['name'] ?>" placeholder="Medicine Name" required>
-
-                                                    <!--  -->
-                                                </td>
-                                                <!--td>
+                                                </td> -->
+                                                <td>
                                                     <select name="prescription[medicine][<?php echo $key; ?>][duration]"
                                                             class="form-control">
-                                                        <option value="1" <?php if ($value['duration'] == '1') {
+                                                            <?php foreach (constant('PRESCRIPTION_FREQUENCY') as $frequency) { ?>
+                                                        <option <?php if ($value['duration'] == $frequency) {
+                                                                                echo "selected";
+                                                                            } ?> value="<?php echo $frequency ?>"><?php echo $frequency ?></option>
+                                                    <?php } ?>
+                                                        <!-- <option value="1" <?php if ($value['duration'] == '1') {
                                                                                 echo "selected";
                                                                             } ?> >1 Days
                                                         </option>
@@ -380,9 +383,9 @@
                                                         <option value="60" <?php if ($value['duration'] == '60') {
                                                                                 echo "selected";
                                                                             } ?> >60 Days
-                                                        </option>
+                                                        </option> -->
                                                     </select>
-                                                </td-->
+                                                                        </td>
                                                 <td>
                                                     <textarea name="prescription[medicine][<?php echo $key; ?>][instruction]" class="form-control" rows="3" placeholder="Instructions"><?php echo $value['instruction']; ?></textarea>
                                                 </td>

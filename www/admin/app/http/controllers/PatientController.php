@@ -103,7 +103,21 @@ class PatientController extends Controller
             $data['appointments'] = $this->model_patient->getAppointments($data['result']);
         }
         if ($data['page_invoices']) {
+            $total_amount = 0;
+            $total_paid = 0;
+            $total_unpaid = 0;
+            $total_due = 0;
             $data['invoices'] = $this->model_patient->getInvoices($data['result']);
+            if (!empty($data['invoices'])) {
+                foreach ($data['invoices'] as $key => $value) {
+                    $total_amount += $value['amount'];
+                    $total_paid += $value['paid'];
+                    $total_due += $value['due'];
+                }
+                $data['total_amount'] = $total_amount;
+                $data['total_paid'] = $total_paid;
+                $data['total_due'] = $total_due;
+            }
         }
         if ($data['page_prescriptions']) {
             $data['prescriptions'] = $this->model_patient->getPrescriptions($data['result']);

@@ -338,8 +338,12 @@
                                 </div>
                             </div>
                             <div class="panel-body">
+                                
                                 <table class="table table-middle table-bordered table-striped datatable-table">
                                     <thead>
+                                    <tr><td colspan="2">Total invoice amount</td><td colspan="4"><?php echo  $common['info']['currency_abbr'] .$total_amount;?></td></tr>
+                                    <tr><td colspan="2"> Total paid amount</td><td colspan="4"><?php echo  $common['info']['currency_abbr'] .$total_paid;?></td></tr> 
+                                    <tr><td colspan="2">Total due amount</td><td colspan="4"><?php echo  $common['info']['currency_abbr'] .$total_due;?></td></tr>
                                     <tr>
                                         <th>ID</th>
                                         <th>Amount</th>
