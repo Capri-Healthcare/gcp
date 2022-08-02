@@ -802,7 +802,7 @@ class Appointment extends Model
             foreach ($prescription['prescription'] as $key => $value) {
                 $body .= "<tr>";
                 $body .= "<td> &nbsp; " . $value['name'] . "</td>";
-                $body .= "<td> &nbsp; " . $value['dose'] . "</td>";
+                $body .= "<td> &nbsp; " . constant('PRESCRIPTION_FREQUENCY')[$value['duration']] . "</td>";
                 $body .= "<td> &nbsp; " . constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'][$value['eye']] . "</td>";
                 $body .= "</tr>";
             }
@@ -1095,7 +1095,7 @@ class Appointment extends Model
             foreach ($prescription['prescription'] as $key => $value) {
                 $body .= "<tr>";
                 $body .= "<td> &nbsp; " . $value['name'] . "</td>";
-                $body .= "<td> &nbsp; " . $value['dose'] . "</td>";
+                $body .= "<td> &nbsp; " . constant('PRESCRIPTION_FREQUENCY')[$value['duration']] . "</td>";
                 $body .= "<td> &nbsp; " . constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'][$value['eye']] . "</td>";
                 $body .= "</tr>";
             }
