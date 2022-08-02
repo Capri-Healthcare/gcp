@@ -420,7 +420,7 @@
                                                           placeholder="Generic"></textarea>
                                             </td--->
                                             <td>
-                                                <select name="prescription[medicine][0][dose]" class="form-control" required>
+                                                <select name="prescription[medicine][0][duration]" class="form-control" required>
                                                     <!-- <option value="">Select-Frequency</option>
                                                     <option value="Once a day">Once a day</option>
                                                     <option value="Twice a day">Twice a day</option>
@@ -542,7 +542,7 @@
 
                             $(".medicine-table .medicine-row:last").after('<tr class="medicine-row">' +
                                 '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name" required></td>' +
-                                '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control" required><option value="">Select-Frequency</option> ' + prescription_frequency_option + ' </select></td>' +
+                                '<td><select name="prescription[medicine][' + count + '][duration]" class="form-control" required><option value="">Select-Frequency</option> ' + prescription_frequency_option + ' </select></td>' +
                                 '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
                                 '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="' + new Date().toISOString().split('T')[0] + '" ></td>' +
                                 '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ." min="' + new Date().toISOString().split('T')[0] + '" ></td>' +
@@ -671,7 +671,7 @@
 
                                                                                         <tr>
                                                                                             <td><?php echo $value['name']; ?></td>
-                                                                                            <td><?php echo $value['dose']; ?></td>
+                                                                                            <td><?php echo $value['duration']; ?></td>
                                                                                             <td><?php echo $value['start_date']; ?></td>
                                                                                             <td><?php echo $value['end_date']; ?></td>
                                                                                             <td><?php echo $value['instruction']; ?></td>
