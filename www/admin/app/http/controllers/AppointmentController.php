@@ -96,9 +96,10 @@ class AppointmentController extends Controller
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
         $this->load->model('appointment');
         if ($data['common']['user']['role_id'] == '3') {
-            $data['result'] = $this->model_appointment->getAppointmentView($id, $data['common']['user']['doctor']);
+            
+            $data['result'] = $this->model_appointment->getAppointment($id, $data['common']['user']['doctor']);
         } else {
-            $data['result'] = $this->model_appointment->getAppointmentView($id);
+            $data['result'] = $this->model_appointment->getAppointment($id);
         }
 
         if (!$data['result']) {

@@ -5599,3 +5599,287 @@ Stack trace:
 [02-Aug-2022 06:36:43 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
 [02-Aug-2022 06:36:43 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
 [02-Aug-2022 06:36:43 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:37:44 Europe/London] PHP Warning:  A non-numeric value encountered in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 114
+[02-Aug-2022 13:37:44 Europe/London] PHP Warning:  A non-numeric value encountered in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 114
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 206
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 207
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 210
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 426
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 451
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 460
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 465
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 478
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 483
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 496
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 501
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 566
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 571
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 823
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 827
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 901
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 426
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 451
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 460
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 465
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 478
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 483
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 496
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 501
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 566
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 571
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 823
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 827
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 901
+[02-Aug-2022 13:37:44 Europe/London] PHP Warning:  Invalid argument supplied for foreach() in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 908
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 426
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1069
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1069
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:37:44 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:37:54 Europe/London] PHP Notice:  Undefined index: patient_id in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_form.tpl.php on line 347
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 688
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 688
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 689
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 689
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 690
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 690
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 691
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 691
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 694
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 694
+[02-Aug-2022 13:38:09 Europe/London] PHP Notice:  Undefined index: name in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\MailController.php on line 40
+[02-Aug-2022 13:38:12 Europe/London] PHP Warning:  A non-numeric value encountered in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 114
+[02-Aug-2022 13:38:12 Europe/London] PHP Warning:  A non-numeric value encountered in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 114
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 206
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 207
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\PatientController.php on line 210
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 426
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 451
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 460
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 465
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 478
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 483
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 496
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 501
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 566
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 571
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 823
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 827
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 901
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 426
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 451
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 460
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 465
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 478
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 483
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 496
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined offset: 0 in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 501
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 566
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 571
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 823
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 827
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 901
+[02-Aug-2022 13:38:12 Europe/London] PHP Warning:  Invalid argument supplied for foreach() in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 908
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Trying to access array offset on value of type bool in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 426
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1069
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1069
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1063
+[02-Aug-2022 13:38:12 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\patient\patient_view.tpl.php on line 1066
+[02-Aug-2022 13:38:46 Europe/London] PHP Notice:  Undefined variable: images in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Appointment.php on line 607
+[02-Aug-2022 13:38:46 Europe/London] PHP Notice:  Trying to get property 'num_rows' of non-object in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\models\Appointment.php on line 607
+[02-Aug-2022 13:38:46 Europe/London] PHP Notice:  Undefined index:  in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\AppointmentController.php on line 1143
+[02-Aug-2022 13:38:46 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\http\controllers\AppointmentController.php on line 1143
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 326
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 339
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 326
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 339
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 674
+[02-Aug-2022 13:39:16 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 674
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 326
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 339
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 326
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 339
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 674
+[02-Aug-2022 13:42:29 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 674
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 326
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 339
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 326
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 339
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 674
+[02-Aug-2022 13:44:55 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 674
+[02-Aug-2022 13:44:59 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 184
+[02-Aug-2022 13:44:59 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 186
+[02-Aug-2022 13:44:59 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 188
+[02-Aug-2022 13:44:59 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 190
+[02-Aug-2022 13:44:59 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 192
+[02-Aug-2022 13:46:39 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 184
+[02-Aug-2022 13:46:39 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 186
+[02-Aug-2022 13:46:39 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 188
+[02-Aug-2022 13:46:39 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 190
+[02-Aug-2022 13:46:39 Europe/London] PHP Notice:  Undefined index: appointment_status in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_view.tpl.php on line 192
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 326
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 339
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: generic in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 326
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 335
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 339
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 343
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 347
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 351
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 355
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 359
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 363
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 367
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 371
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 375
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 379
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: duration in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 383
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 674
+[02-Aug-2022 13:47:05 Europe/London] PHP Notice:  Undefined index: dose in D:\xampp_7_4_27\htdocs\gcp\www\admin\app\views\appointment\appointment_form.tpl.php on line 674
