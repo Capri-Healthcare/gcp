@@ -354,7 +354,7 @@ define('STATUS_PAYMENT_INVOIVE', [
 define('PRESCRIPTION_FREQUENCY', [
     'Once a day' => 'Once a day',
     'Twice a day' => 'Twice a day',
-    'Three times a day Paid' => 'Three times a day',
+    'Three times a day' => 'Three times a day',
     '4x a day' => '4x a day',
     '6x a day' => '6x a day ',
     'Every 2 hourly' => 'Every 2 hourly',
