@@ -173,7 +173,8 @@
                                     </tr>
                                     <tr>
                                         <td>Medical History</td>
-                                        <td class="text-danger"><?php if (!empty($result['history']) && is_array($result['history'])) {
+                                        
+                                        <td class="text-danger"><?php if (!empty($result['history'])) {
                                                 echo implode(', ', json_decode($result['history'], true));
                                             } ?></td>
                                     </tr>
