@@ -97,6 +97,7 @@ class Useragent {
 		$this->permission = array_merge($this->permission, $extension);
 		//echo $data; echo "<pre>";print_r($this->permission);echo "</pre>";exit;
 		if($data == 'emailtemplate') $data = "emailtemplate&for=newuser";
+		if(sendpreviewinvoice) $data = "sendinvoice";
 		if (in_array($data, $this->permission) || $this->role == "1") {
 			return true;
 		} else {
