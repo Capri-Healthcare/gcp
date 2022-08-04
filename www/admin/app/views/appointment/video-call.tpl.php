@@ -436,11 +436,11 @@
 											</td>
 											<td>
 												<select name="prescription[medicine][<?php echo $key; ?>][dose]" class="form-control">
-													<option value="1-0-0" <?php if ($value['dose'] == '1-0-0') { echo "selected";} ?> >1-0-0</option>
-													<option value="1-0-1" <?php if ($value['dose'] == '1-0-1') { echo "selected";} ?> >1-0-1</option>
-													<option value="1-1-1" <?php if ($value['dose'] == '1-1-1') { echo "selected";} ?> >1-1-1</option>
-													<option value="0-0-1" <?php if ($value['dose'] == '0-0-1') { echo "selected";} ?> >0-0-1</option>
-													<option value="0-1-0" <?php if ($value['dose'] == '0-1-0') { echo "selected";} ?> >0-1-0</option>
+													<option value="1-0-0" <?php if ($value['duration'] == '1-0-0') { echo "selected";} ?> >1-0-0</option>
+													<option value="1-0-1" <?php if ($value['duration'] == '1-0-1') { echo "selected";} ?> >1-0-1</option>
+													<option value="1-1-1" <?php if ($value['duration'] == '1-1-1') { echo "selected";} ?> >1-1-1</option>
+													<option value="0-0-1" <?php if ($value['duration'] == '0-0-1') { echo "selected";} ?> >0-0-1</option>
+													<option value="0-1-0" <?php if ($value['duration'] == '0-1-0') { echo "selected";} ?> >0-1-0</option>
 												</select>
 											</td>
 											<td>

@@ -197,7 +197,7 @@
 												<p class="font-14 text-primary m-0"><?php echo $value['name']; ?></p>
 												<p class="font-12 m-0"><?php echo $value['generic']; ?></p>
 											</td>
-											<td><?php echo $value['dose']; ?></td>
+											<td><?php echo $value['duration']; ?></td>
 											<td><?php echo $value['duration'].' '.$lang['text_day']; ?></td>
 											<td><?php echo $value['instruction']; ?></td>
 										</tr>

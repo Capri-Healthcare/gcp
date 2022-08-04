@@ -1268,7 +1268,7 @@ class Appointment extends Model
             foreach ($prescription['prescription'] as $key => $value) {
                 $body .= "<tr>";
                 $body .= "<td> &nbsp; " . $value['name'] . "</td>";
-                $body .= "<td> &nbsp; " . $value['dose'] . "</td>";
+                $body .= "<td> &nbsp; " . $value['duration'] . "</td>";
                 $body .= "<td> &nbsp; " . $value['eye'] . "</td>";
                 $body .= "</tr>";
             }
@@ -1401,7 +1401,7 @@ class Appointment extends Model
             foreach ($prescription['prescription'] as $key => $value) {
                 $body .= "<tr>";
                 $body .= "<td> &nbsp; " . $value['name'] . "</td>";
-                $body .= "<td> &nbsp; " . $value['dose'] . "</td>";
+                $body .= "<td> &nbsp; " . $value['duration'] . "</td>";
                 $body .= "<td> &nbsp; " . $value['eye'] . "</td>";
                 $body .= "</tr>";
             }

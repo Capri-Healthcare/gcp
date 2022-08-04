@@ -1051,26 +1051,27 @@
                                                         <div class="table-responsive">
                                                             <table class="table table-bordered">
                                                                 <tr>
-                                                                    <th>Medicine Name</th>
-                                                                    <th>Dose</th>
-                                                                    <th>Duration</th>
+                                                                    <th>Drug Name</th>
+                                                                    <th>Frequency</th>
                                                                     <th>Instruction</th>
+                                                                    <th>Start date</th>
+                                                                    <th>End date</th>
+                                                                    <th>Eye</th>
                                                                 </tr>
                                                                 <?php foreach ($value['prescription'] as $s_key => $s_value) { ?>
                                                                     <tr>
                                                                         <td>
                                                                             <p class="text-primary m-0"><?php echo html_entity_decode($s_value['name'], ENT_QUOTES, 'UTF-8'); ?></p>
-                                                                            <p class="m-0"><?php echo html_entity_decode($s_value['generic'], ENT_QUOTES, 'UTF-8'); ?></p>
                                                                         </td>
                                                                         <td class="text-center"><p
-                                                                                    class="font-12"><?php echo $s_value['dose']; ?></p>
-                                                                        </td>
-                                                                        <td class="text-center"><p
-                                                                                    class="font-12"><?php echo $s_value['duration'] . ' Day'; ?></p>
+                                                                                    class="font-12"><?php echo $s_value['duration']; ?></p>
                                                                         </td>
                                                                         <td class="text-center"><p
                                                                                     class="font-12"><?php echo $s_value['instruction']; ?></p>
                                                                         </td>
+                                                                        <td><?php echo date_format(date_create($s_value['start_date']),'d-m-Y'); ?></td>
+                                                                        <td><?php echo date_format(date_create($s_value['end_date']),'d-m-Y'); ?></td>
+                                                                        <td><?php echo constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'][$s_value['eye']]; ?></td>
                                                                     </tr>
                                                                 <?php } ?>
                                                             </table>

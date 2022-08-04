@@ -84,21 +84,21 @@
 								<td>
 									<select name="prescription[medicine][<?php echo $key; ?>][dose]" class="form-control" required>
                                         <option value="">Select-Frequency</option>
-                                        <!-- <option value="Once a day" <?php if ($value['dose'] == 'Once a day') {
+                                        <!-- <option value="Once a day" <?php if ($value['duration'] == 'Once a day') {
                                             echo "selected";
                                         } ?> >Once a day
                                         </option>
-                                        <option value="Twice a day" <?php if ($value['dose'] == 'Twice a day') {
+                                        <option value="Twice a day" <?php if ($value['duration'] == 'Twice a day') {
                                             echo "selected";
                                         } ?> >Twice a day
                                         </option>
-                                        <option value="Three times a day" <?php if ($value['dose'] == 'Three times a day') {
+                                        <option value="Three times a day" <?php if ($value['duration'] == 'Three times a day') {
                                             echo "selected";
                                         } ?> >Three times a day
                                         </option> -->
 
 										<?php foreach (constant('PRESCRIPTION_FREQUENCY') as $frequency) { ?>
-                                            <option value="<?php echo $frequency ?>"  <?php echo $value['dose'] == $frequency ? 'selected' : '' ?> ><?php echo $frequency ?></option>
+                                            <option value="<?php echo $frequency ?>"  <?php echo $value['duration'] == $frequency ? 'selected' : '' ?> ><?php echo $frequency ?></option>
                                         <?php } ?>
 									</select>
 								</td>

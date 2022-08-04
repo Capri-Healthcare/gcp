@@ -66,7 +66,7 @@
 													<p class="font-14 text-primary m-0"><?php echo htmlspecialchars_decode($v['name']); ?></p>
 													<p class="font-12 m-0"><?php echo htmlspecialchars_decode($v['generic']); ?></p>
 												</td>
-												<td><?php echo $v['dose']; ?></td>
+												<td><?php echo $v['duration']; ?></td>
 												<td><?php echo $v['duration'].' '.$lang['text_day']; ?></td>
 												<td><?php echo $v['instruction']; ?></td>
 											</tr>
