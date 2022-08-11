@@ -325,8 +325,8 @@ $router->post('leaflets/edit', 'LeafletsController@indexAction');
 $router->post('leaflets/delete', 'LeafletsController@indexDelete');
 
 $router->get('follow-up', 'FollowupController@index');
-$router->get('follow-up/add', 'FollowupController@indexAdd');
 $router->get('follow-up/view', 'FollowupController@indexView');
+$router->get('follow-up/add', 'FollowupController@indexAdd');
 $router->post('follow-up/add', 'FollowupController@indexAction');
 $router->get('follow-up/edit', 'FollowupController@indexEdit');
 $router->post('follow-up/edit', 'FollowupController@indexAction');
@@ -334,6 +334,7 @@ $router->post('follow-up/delete', 'FollowupController@indexDelete');
 $router->get('follow-up/status', 'FollowupController@statusChange');
 $router->post('follow-up/report/reportUpload', 'FollowupController@documentUpload');
 $router->post('follow-up/report/removeReport', 'FollowupController@documentRemove');
+$router->get('getpatient', 'FollowupController@getPatient');
 
 $router->post('optician-referral/report/reportUpload', 'OpticianReferralController@documentUpload');
 $router->post('optician-referral/report/removeReport', 'OpticianReferralController@documentRemove');

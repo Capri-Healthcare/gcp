@@ -225,6 +225,7 @@ class Commons extends Model
             'optician/invoice/delete' => 'optician-invoices',
             'optician/invoice/view' => 'optician-invoices',
             'follow-up' => 'follow-up',
+            'follow-up/add' => 'follow-up',
             'follow-up/edit' => 'follow-up',
             'follow-up/report/reportUpload' => 'follow-up',
             'follow-up/report/removeReport' => 'follow-up',

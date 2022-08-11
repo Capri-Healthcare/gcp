@@ -37,12 +37,36 @@ class FollowupController extends Controller
         $data['result'] = $this->model_followup->getFollowup($data);
 
         $data['page_title'] = 'Follow Up';
+        $data['page_add'] = $this->user_agent->hasPermission('follow-up/add') ? true : false;
         $data['page_edit'] = $this->user_agent->hasPermission('follow-up/edit') ? true : false;
 
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action'] = URL_ADMIN . DIR_ROUTE . 'followup/add';
         /*Render Blog view*/
         $this->response->setOutput($this->load->view('followup/followup_list', $data));
+    }
+    public function indexAdd()
+    {
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+
+        /* Set empty data to array */
+        $data['result'] = NULL;
+        /* Set confirmation message if page submitted before */
+        if (isset($this->session->data['message'])) {
+            $data['message'] = $this->session->data['message'];
+            unset($this->session->data['message']);
+        }
+        $this->load->model('followup');
+
+        /* Set page title */
+        $data['page_title'] = 'Add new followup';
+
+        $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'followup/add';
+
+        /*Render Optician Referral add view*/
+        $this->response->setOutput($this->load->view('followup/followup_form', $data));
     }
 
     public function indexEdit()
@@ -298,7 +322,6 @@ class FollowupController extends Controller
         return $this->controller_mail->sendMail($data);
     }
 
-
     public function documentUpload()
     {
         $data = $this->url->post;
@@ -352,5 +375,13 @@ class FollowupController extends Controller
         $this->load->model('referrallistdocument');
         $result = $this->model_referrallistdocument->deleteReferralListDocument($data);
         echo $result;
+    }
+
+    public function getPatient(){
+        $data = $this->url->get;
+        $this->load->model('patient');
+        $result = $this->model_patient->getPatientByName($data['term']);
+        echo json_encode($result);
+        exit();
     }
 }

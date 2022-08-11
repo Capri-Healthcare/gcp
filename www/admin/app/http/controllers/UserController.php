@@ -507,6 +507,7 @@ class UserController extends Controller
 			),
 			'Followup' => array(
 				'follow-up' => 'Followup List',
+				'follow-up/add' => 'Followup Status',
 				'follow-up/edit' => 'Followup Status',
 				'follow-up/report/reportUpload' => 'Followup Referral Upload Document',
 				'follow-up/report/removeReport' => 'Followup Referral Remove Document',

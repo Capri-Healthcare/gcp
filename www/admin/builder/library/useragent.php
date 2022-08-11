@@ -77,6 +77,7 @@ class Useragent {
 			'appointment/makeanappointment',
 			'checkstaffsalary',
 			'getmedicine',
+			'getpatient',
 			'getbatch',
 			'getbatchdata',
 			'notes/search',

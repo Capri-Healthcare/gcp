@@ -39,12 +39,11 @@
                         </select>
                     </div>
                 <?php } ?>
-                <!--                --><?php //if ($page_add) { ?>
-                <!--                    <a href="-->
-                <?php //echo URL_ADMIN . DIR_ROUTE . 'optician-referral/add'; ?><!--"-->
-                <!--                       class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create Referral</a>-->
-                <!--                --><?php //} ?>
-                <!--            </div>-->
+                <?php //if ($page_add) { ?>
+                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/add'; ?>"
+                class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> CFreate new followup</a>
+                <?php //} ?>
+                </div>
             </div>
         </div>
     </div>
@@ -55,7 +54,6 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="table-responsive">
-
                 <table class="table table-middle table-bordered table-striped datatable-table">
                     <thead>
                     <tr>

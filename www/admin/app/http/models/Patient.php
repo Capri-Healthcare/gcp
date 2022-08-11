@@ -308,7 +308,13 @@ class Patient extends Model
             $query = $this->database->query("SELECT id, CONCAT(title, ' ', firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' LIMIT 5");
         }*/
 
-        $query = $this->database->query("SELECT id, CONCAT(title, ' ', firstname, ' ', lastname) AS label, email, mobile FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' OR lastname like '%" . $data . "%' LIMIT 15");
+        $query = $this->database->query("SELECT id, CONCAT(title, ' ', firstname, ' ', lastname) AS label, email, mobile, dob FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' OR lastname like '%" . $data . "%' LIMIT 15");
+        return $query->rows;
+    }
+
+    public function getPatientByName($data, $role = null)
+    {
+        $query = $this->database->query("SELECT id, firstname,  lastname, email, mobile, dob FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' OR lastname like '%" . $data . "%' LIMIT 15");
         return $query->rows;
     }
 
