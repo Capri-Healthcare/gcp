@@ -306,7 +306,6 @@ $router->post('appointment/prescriptionUpdate', 'AppointmentController@Prescript
 //Appointment ajax route added
 $router->post('appointment/updateAppintmentInfo','AppointmentController@UpdateAppintmentInfo');
 
-
 $router->get('optician-referral', 'OpticianReferralController@index');
 $router->get('optician-referral/add', 'OpticianReferralController@indexAdd');
 $router->get('optician-referral/view', 'OpticianReferralController@indexView');
@@ -339,7 +338,6 @@ $router->get('getpatient', 'FollowupController@getPatient');
 $router->post('optician-referral/report/reportUpload', 'OpticianReferralController@documentUpload');
 $router->post('optician-referral/report/removeReport', 'OpticianReferralController@documentRemove');
 $router->get('optician-referral/report/reportsExport', 'OpticianReferralController@reportsExport');
-
 
 $router->get('optician-invoices', 'OpticianInvoiceController@index');
 $router->get('optician/invoice/view', 'OpticianInvoiceController@indexView');

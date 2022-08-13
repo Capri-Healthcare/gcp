@@ -15,10 +15,9 @@
             <div class="col-sm-6 text-right"></div>
         </div>
     </div>
-    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"
-          onsubmit="return validateMyForm(event);">
+    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="<?php echo $token; ?>">
-        <input type="hidden" name="referral[id]" value="<?php echo $result['id']; ?>">
+        <input type="hidden" name="referral[id]">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -29,10 +28,11 @@
                                     <div class="form-group">
                                         <label>First Name <span class="form-required">*</span></label>
                                         <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text"><i
-                                                            class="ti-user"></i></span></div>
+                                            <div class="input-group-prepend"><span class="input-group-text">
+                                                <i class="ti-user"></i></span>
+                                            </div>
                                             <input type="text" name="referral[first_name]" class="form-control"
-                                                   value="<?php echo $result['first_name']; ?>"
+                                                   value="<?php echo isset($result['first_name'])?$result['first_name']:''; ?>"
                                                    placeholder="First Name" required>
                                         </div>
                                     </div>
@@ -41,10 +41,13 @@
                                     <div class="form-group">
                                         <label>Last Name <span class="form-required">*</span></label>
                                         <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text"><i
-                                                            class="ti-user"></i></span></div>
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="ti-user"></i>
+                                                </span>
+                                            </div>
                                             <input type="text" name="referral[last_name]" class="form-control"
-                                                   value="<?php echo $result['last_name']; ?>"
+                                                   value="<?php echo isset($result['last_name'])?$result['last_name']:''; ?>"
                                                    placeholder="Last Name" required>
                                         </div>
                                     </div>
@@ -59,7 +62,7 @@
                                             <input type="text" name="referral[mobile]" class="form-control"
                                                    maxlength="11"
                                                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-                                                   value="<?php echo $result['mobile']; ?>" placeholder="Preferred Contact Number"
+                                                   value="<?php echo isset($result['mobile'])?$result['mobile']:''; ?>" placeholder="Preferred Contact Number"
                                                    id="mobile"
                                                    required>
                                         </div>
@@ -73,10 +76,8 @@
                                                 <span class="input-group-text"><i class="ti-mobile"></i></span>
                                             </div>
                                             <input type="text" name="referral[office_phone]" class="form-control officephone" id="office_phone"
-                                                   value="<?php echo $result['office_number']; ?>" maxlength="11"
-                                                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
-
-                                                   placeholder="Enter Alternate Contact Number . . . ">
+                                                   value="<?php echo isset($result['office_number'])?$result['office_number']:''; ?>" maxlength="11"
+                                                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))" placeholder="Enter Alternate Contact Number . . . ">
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +88,7 @@
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-calendar"></i></span></div>
                                             <input type="text" name="referral[dob]" class="form-control dateofbirth"
-                                                   value="<?php echo $result['dob']; ?>"
+                                                   value="<?php echo isset($result['dob'])?$result['dob']:''; ?>"
                                                    max="<?php echo date('Y-m-d') ?>" placeholder="dd-mm-yy" >
                                         </div>
                                     </div>
@@ -99,8 +100,7 @@
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-email"></i></span></div>
                                             <input type="email" name="referral[email]" class="form-control"
-                                                   value="<?php echo $result['email']; ?>" placeholder="Email"
-                                            >
+                                                   value="<?php echo isset($result['email'])?$result['email']:''; ?>" placeholder="Email">
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                                             </div>
                                             <textarea name="referral[address_1]" class="form-control"
                                                       placeholder="Enter Address"
-                                                      row=3><?php echo $result['address1']; ?></textarea>
+                                                      row=3><?php echo isset($result['address1'])?$result['address1']:''; ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
                                                             class="ti-check-box"></i></span></div>
                                             <textarea name="referral[address_2]" class="form-control"
                                                       placeholder="Enter Address"
-                                                      row=3><?php echo $result['address2']; ?></textarea>
+                                                      row=3><?php echo isset($result['address2'])?$result['address2']:''; ?></textarea>
 
                                         </div>
                                     </div>
@@ -160,7 +160,7 @@
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-map-alt"></i></span></div>
                                             <input type="text" name="referral[city]" class="form-control"
-                                                   value="<?php echo $result['city']; ?>"
+                                                   value="<?php echo isset($result['city'])?$result['city']:''; ?>"
                                                    placeholder="Enter City">
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@
                                                             class="ti-pin"></i></span></div>
                                             <input type="text" name="referral[zip_code]" maxlength="8"
                                                    class="form-control"
-                                                   value="<?php echo $result['zip_code']; ?>"
+                                                   value="<?php echo isset($result['zip_code'])?$result['zip_code']:''; ?>"
                                                    placeholder="Enter Post Code"
                                                    onkeypress="return alphaNumericValidation(event)"
                                             >

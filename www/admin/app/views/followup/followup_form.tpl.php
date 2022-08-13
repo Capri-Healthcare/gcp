@@ -18,7 +18,7 @@
     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"
           onsubmit="return validateMyForm(event);">
         <input type="hidden" name="_token" value="<?php echo $token; ?>">
-        <input type="hidden" name="referral[id]" value="">
+        <input type="hidden" name="referral[patient_id]" class="patient_id" value="">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -31,7 +31,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-user"></i></span></div>
-                                            <input type="text" name="referral[first_name]" class="form-control first-name"
+                                            <input type="text" name="referral[first_name]" class="form-control firstname"
                                                    value="" placeholder="First Name" required>
                                         </div>
                                     </div>
@@ -42,7 +42,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-user"></i></span></div>
-                                            <input type="text" name="referral[last_name]" class="form-control last-name"
+                                            <input type="text" name="referral[last_name]" class="form-control lastname"
                                                    value="" placeholder="Last Name" readonly required>
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-mobile"></i></span></div>
-                                            <input type="text" name="referral[mobile]" class="form-control"
+                                            <input type="text" name="referral[mobile]" class="form-control mobile"
                                                    maxlength="11"
                                                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
                                                    value="" placeholder="Preferred Contact Number"
@@ -218,20 +218,21 @@
     <script>
         function patient_autocomplete() {
             console.log("searching...");
-            $(".first-name").autocomplete({
+            $(".firstname").autocomplete({
                 minLength: 0,
                 source: '<?php echo URL_ADMIN.DIR_ROUTE.'getpatient'; ?>',
                 focus: function( event, ui ) {
-                    $(this).parents('tr').find('.first-name').val( ui.item.firstname );
+                    $(this).parents('tr').find('.firstname').val( ui.item.firstname );
                     return false;
                 },
                 select: function( event, ui ) {
-                    console.log(ui.item.firstname)
-                    $('.first-name').val(ui.item.firstname)
-                    $('.last-name').val(ui.item.lastname)
+                    $('.patient_id').val(ui.item.id)
+                    $('.firstname').val(ui.item.firstname)
+                    $('.lastname').val(ui.item.lastname)
                     $('.dateofbirth').val(ui.item.dob)
-                    // $(this).parents('tr').find('.first-name').val( ui.item.firstname );
-                    // $(this).parents('tr').find('.last-name').val( ui.item.lastname );
+                    $('.mobile').val(ui.item.mobile)
+                    // $(this).parents('tr').find('.firstname').val( ui.item.firstname );
+                    // $(this).parents('tr').find('.lastname').val( ui.item.lastname );
                     // $(this).parents('tr').find('.dateofbirth').val( ui.item.dob );
                     return false;
                 }
@@ -241,7 +242,7 @@
                 .appendTo( ul );
             };
         }
-        $('body').on('keydown.autocomplete', '.first-name', function() {
+        $('body').on('keydown.autocomplete', '.firstname', function() {
 		    patient_autocomplete();
 	    });
     </script>

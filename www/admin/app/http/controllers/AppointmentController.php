@@ -632,6 +632,7 @@ class AppointmentController extends Controller
                 $followup['appointment_id'] = $data['appointment']['id'];
                 $followup['patient_id'] = $data['appointment']['patient_id'];
                 $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
+                $followup['payment_status'] = 'UNPAID';
                 //$followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
 
                 $next_followup = constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$data['appointment']['followup']];
@@ -1873,6 +1874,7 @@ class AppointmentController extends Controller
                 $followup['appointment_id'] = $data['appointment']['id'];
                 $followup['patient_id'] = $data['appointment']['patient_id'];
                 $followup['optician_id'] = $data['appointment']['optician_id'] ?? 0;
+                $followup['payment_status'] = 'UNPAID';
                 //$followup['due_date'] = date('Y-m-d', strtotime("+" . $data['appointment']['followup'] . "months", strtotime(date('Y-m-d'))));
 
                 $next_followup = constant('OCULAR_EXAMINATION_DROP_DOWNS')['FOLLOW_UP_OR_NEXT_APPOINTMENT'][$data['appointment']['followup']];

@@ -141,7 +141,7 @@ class OpticianReferralController extends Controller
             $referral['status'] = $status;
 
             if ($this->model_opticianreferral->updateStatus($referral)) {
-                $this->referralMail($id);
+                // $this->referralMail($id);
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral Status Updated.!');
             } else {
                 $this->session->data['message'] = array('alert' => 'danger', 'value' => 'Optician Referral Status Not Updated.!');
@@ -277,7 +277,7 @@ class OpticianReferralController extends Controller
                             $data['patientid'] = $patient_id;
                             $this->model_opticianreferral->updatePatientID($data);
 
-                            $this->patientMail($patient_id);
+                            // $this->patientMail($patient_id);
                             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
                             // $this->url->redirect('patient/edit&id=' .$patient['id']. '&referralid=' . $data['referral']['id']);
                         }

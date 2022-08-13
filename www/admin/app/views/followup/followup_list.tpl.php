@@ -39,10 +39,10 @@
                         </select>
                     </div>
                 <?php } ?>
-                <?php //if ($page_add) { ?>
-                <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/add'; ?>"
-                class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> CFreate new followup</a>
-                <?php //} ?>
+                <?php if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { ?>
+                    <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/add'; ?>"
+                    class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create new followup</a>
+                <?php } ?>
                 </div>
             </div>
         </div>
@@ -81,8 +81,6 @@
 
                     <?php if (!empty($result)) {
                         foreach ($result as $key => $value) { ?>
-
-
                             <tr style="cursor: pointer">
                                 <td class="clickable-row"
                                     data-count="<?php echo $key + 1; ?>"><?php echo $key + 1; ?></td>
@@ -118,14 +116,12 @@
                                 <?php if ($common['user']['role'] != constant('USER_ROLE_MERC')) { ?>
                                     <td class="<?php echo ($common['user']['role'] == constant('USER_ROLE_OPTOMETRIST')) ? 'table-action' : '' ?>">
                                         <?php if ($page_edit) { ?>
-
-
-                                            <?php if ($common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[0] && $common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[2] && $value['followup_status'] == 'NEW') { ?>
+                                            <?php 
+                                                if ($common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[0] && $common['user']['role'] != constant('DASHBOARD_NOT_SHOW')[2] && $value['followup_status'] == 'NEW') { ?>
                                                 <a class="pageview<?php echo $key + 1 ?>"
                                                    href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id']; ?>"
                                                    class="text-primary edit" data-toggle="tooltip"
-                                                   title="Edit"><i
-                                                            class="ti-pencil-alt"></i></a>
+                                                   title="Edit"><i class="ti-pencil-alt"></i></a>
                                             <?php } ?>
 
                                         <?php } ?>

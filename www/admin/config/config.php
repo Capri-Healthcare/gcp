@@ -38,7 +38,7 @@ define('TOKEN', 'oQ913wsl6{WBlk#5jV5%VYExlFaIomj&75ZZ~(W3GREN#n)(jJp2QY7gugD))3L
 define('TOKEN_SALT', 'rg(uyO0?I9uq5mx-hh4>V-XCPQ?Dx80{n7|?K?pU;-2WldDIOElXOvzT>p9P1zvN');
 
 define('USER_ROLE', ['Med. Secretary', 'Admin', 'MERCSecretary', 'Doctor']);
-define('USER_FOLLOWUP_MED_ROLE', ['Med. Secretary', 'Admin', 'Optometrist']);
+define('USER_FOLLOWUP_MED_ROLE', ['Med. Secretary', 'Admin', 'Optometrist', 'Doctor']);
 define('USER_FOLLOWUP_MERC_ROLE', ['Admin', 'MERCSecretary', 'Doctor']);
 define('DASHBOARD_NOT_SHOW', ['Med. Secretary', 'Optometrist', 'MERCSecretary']);
 define('USER_ROLE_OPTOMETRIST', 'Optometrist');

@@ -63,7 +63,7 @@ class FollowupController extends Controller
         $data['page_title'] = 'Add new followup';
 
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-        $data['action'] = URL_ADMIN . DIR_ROUTE . 'followup/add';
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'follow-up/add';
 
         /*Render Optician Referral add view*/
         $this->response->setOutput($this->load->view('followup/followup_form', $data));
@@ -74,6 +74,7 @@ class FollowupController extends Controller
         $id = (int)$this->url->get('id');
         $status = $this->url->get('status');
         $hospitalcode = $this->url->get('hospitalcode');
+        $patient_id = $this->url->get('patient_id');
 
 
         if (empty($id) || !is_int($id)) {
@@ -90,9 +91,14 @@ class FollowupController extends Controller
 
         $this->load->model('commons');
         $this->load->model('followup');
+        $this->load->model('patient');
+        $data['result'] = $this->model_patient->getPatient($data['followup']['patient_id']);
+        $data['result']['address'] = json_decode($data['result']['address'], true);
+        $data['result']['status'] = $data['followup']['followup_status'];
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+        
+        // $data['result'] = $this->model_followup->getFollowupByID($id);
         $data['reports'] = $this->model_followup->getOpticianReferralDocumnet($id);
-
         /* Set confirmation message if page submitted before */
         if (isset($this->session->data['message'])) {
             $data['message'] = $this->session->data['message'];
@@ -102,8 +108,9 @@ class FollowupController extends Controller
         $data['page_edit'] = $this->user_agent->hasPermission('follow-up/edit') ? true : false;
         $data['page_title'] = 'Edit Followup';
         $data['id'] = $id;
+        $data['patient_id'] = $patient_id;
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
-
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'follow-up/edit';
 
         if (!empty($status)) {
             $data['id'] = $id;
@@ -149,6 +156,80 @@ class FollowupController extends Controller
         }
     }
 
+    public function indexAction(){
+        /**
+         * Check if from is submitted or not
+         **/
+        if (!isset($_POST['submit'])) {
+            $this->url->redirect('follow-up');
+        }
+
+        $data = $this->url->post;
+        $this->load->controller('common');
+        if ($this->controller_common->validateToken($data['_token'])) {
+            $this->session->data['message'] = array('alert' => 'error', 'value' => 'Security token is missing!');
+            $this->url->redirect('follow-up');
+        }
+
+        if ($validate_field = $this->validateField($data['referral'])) {
+            $this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter valid ' . implode(", ", $validate_field) . '!');
+            if (!empty($data['referral']['id'])) {
+                $this->url->redirect('follow-up/edit&id=' . $data['referral']['id']);
+            } else {
+                $this->url->redirect('follow-up/add');
+            }
+        }
+        
+        $this->load->model('followup');
+        $this->load->model('appointment');
+        $this->load->model('user');
+
+        $followup['id'] = isset($data['referral']['id'])?$data['referral']['id']:NULL;
+        $followup['patient_id'] = $data['referral']['patient_id'];
+        $followup['payment_status'] = 'PAID';
+        $followup['followup_status'] = isset($data['referral']['status'])? $data['referral']['status'] : 'NEW';
+        $followup['due_date'] = date('Y-m-d H:i:s');
+        $followup['appointment_id'] = NULL;
+
+        if(isset($data['referral']['id']) && !empty($data['referral']['id'])){
+            $folloups_row = $this->model_followup->getFollowupByID($followup['id']);
+            $followup['optician_id'] = $folloups_row['optician_id'];
+        }else{
+            $followup['optician_id'] = $this->session->data['user_id'];
+        }
+
+        $followupID = $this->model_followup->createFollowup($followup);
+        if (!empty($followupID)) {
+            $this->session->data['message'] = array('alert' => 'success', 'value' => 'Followup created successfully.');
+            $this->url->redirect('follow-up/edit&id=' . $followupID . '&document=true');
+        }
+    }
+    protected function validateField($data)
+    {
+        $error = [];
+        $error_flag = false;
+        if ($this->controller_common->validateText($data['first_name'])) {
+            $error_flag = true;
+            $error['title'] = 'First Name!';
+        }
+        if ($this->controller_common->validateText($data['last_name'])) {
+            $error_flag = true;
+            $error['title'] = 'Last Name!';
+        }
+        if ($this->controller_common->validateText($data['dob'])) {
+            $error_flag = true;
+            $error['title'] = 'Date of Birth!';
+        }
+        if ($this->controller_common->validateMobileNumber($data['mobile'])) {
+            $error_flag = true;
+            $error['title'] = 'Preferred Contact Number !';
+        }
+        if ($error_flag) {
+            return $error;
+        } else {
+            return false;
+        }
+    }
     public function opticianFollowUpMail($id)
     {
         $this->load->controller('mail');
