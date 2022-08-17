@@ -374,8 +374,11 @@ class Appointment extends Model
 
                 $optician_details = $optician_detail_qry->row;
                 $referee_name = $optician_details['firstname'] . ' ' . $optician_details['lastname'];
-                $referee_address_aar = json_decode($optician_details['address']);
-                $referee_address = $referee_address_aar->address1 . ', ' . $referee_address_aar->address2 . ', ' . $referee_address_aar->city . ' - ' . $referee_address_aar->postal;
+                $referee_address = '';
+                if(!empty($optician_details['address'])){
+                    $referee_address_aar = json_decode($optician_details['address']);
+                    $referee_address = $referee_address_aar->address1 . ', ' . $referee_address_aar->address2 . ', ' . $referee_address_aar->city . ' - ' . $referee_address_aar->postal;
+                }
 
                 $referee_email = $optician_details['email'];
                 $query = $this->database->query("UPDATE " . DB_PREFIX . "appointments SET referee_name = ?, referee_address = ?, referee_email = ? WHERE id = ? ", array($referee_name, $referee_address, $referee_email, $appointment_id));

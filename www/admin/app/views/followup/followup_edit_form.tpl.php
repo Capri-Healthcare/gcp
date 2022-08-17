@@ -167,7 +167,7 @@
                                 <?php if ($result['status'] == 'NEW' && in_array($common['user']['role'], constant('USER_ROLE'))) { ?>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Referral status<span class="form-required">*</span></label>
+                                            <label>Followup status<span class="form-required">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ti-check-box"></i></span>
@@ -254,8 +254,14 @@
                         } ?>
                     </div>
                     <div class="panel-footer text-center">
-                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $_GET['id'] . '&status=NEW'; ?>" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Submit
+                        <?php if($common['user']['role'] == constant('USER_ROLE_OPTOMETRIST')){?>
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $_GET['id'] . '&status=ACCEPTED'; ?>" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Submit
                         </a>
+                        <?php }else { ?>
+                            <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $_GET['id'] . '&status=NEW'; ?>" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Submit
+                        </a>
+                        <?php }?>
+                        
                     </div>
                 </div>
             <?php } ?>

@@ -377,7 +377,9 @@ define('PAYMENT_STATUS_FILTER_INVOIVE', [
 define('PAYMENT_STATUS_FILTER_UNPAID', 'Unpaid');
 
 define('STATUS_PAYMENT', ['ALL' => 'All', 'PAID' => 'Paid', 'UNPAID' => 'Unpaid', 'NOT_SUITABLE' => 'Not suitable']);
-define('STATUS_FOLLOWUP', ['ALL' => 'All', 'NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable', 'NON_MERC_FOLLOWUP' => 'Non gcp followup']);
+define('STATUS_FOLLOWUP', ['ALL' => 'All', 'NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable', 'NON_MERC_FOLLOWUP' => 'Non gcp followup','APPOINTMENT_CREATED'=>'Appointment Created']);
+define('STATUS_DOCTOR_FOLLOWUP', ['ALL' => 'All', 'NEW' => 'New', 'ACCEPTED' => 'Accepted', 'APPOINTMENT_CREATED'=>'Appointment Created']);
+
 
 define('FOLLOWUP_MED_SEC_STATUS', ['ALL' => 'All', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable', 'NON_MERC_FOLLOWUP' => 'Non gcp followup']);
 define('FOLLOWUP_OPTICIAN_STATUS', ['ALL' => 'All', 'NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable']);

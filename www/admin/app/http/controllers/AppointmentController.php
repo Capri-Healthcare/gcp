@@ -20,7 +20,8 @@ class AppointmentController extends Controller
         $this->load->controller('common');
         $data['period']['start'] = $this->url->get('start');
         $data['period']['end'] = $this->url->get('end');
-
+        $data['followupid'] = (null !== $this->url->get('followupid'))?$this->url->get('followupid'):'';
+        
         if (!empty($data['period']['start']) && !empty($data['period']['end']) && !$this->controller_common->validateDate($data['period']['start']) && !$this->controller_common->validateDate($data['period']['end'])) {
             $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
             $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
@@ -812,9 +813,21 @@ class AppointmentController extends Controller
 
             $data['appointment']['appointment_id'] = date('Ymd') . rand(10, 100) . date('his');
             $data['appointment']['consultation_type'] = 'face_to_face';
-
             $data['appointment']['id'] = $this->model_appointment->createAppointment($data['appointment']);
+            
             if ($data['appointment']['id']) {
+
+                //update folloup with appointment id and folloup status
+                $folloupid = (null !== $data['appointment']['followupid'])?$data['appointment']['followupid']:'';
+                if(!empty($folloupid)){
+                    $this->load->model('followup');
+                    
+                    $folloup['id'] = $folloupid;
+                    $folloup['followup_status'] = 'APPOINTMENT_CREATED';
+                    $folloup['appointment_id'] = $data['appointment']['id'];
+                    $followup_result = $this->model_followup->updateFollowupAppointmentID($folloup);    
+                }
+
                 $this->model_appointment->moveimagefromopticiantoappointment($data['appointment']);
                 $this->load->controller('common');
 

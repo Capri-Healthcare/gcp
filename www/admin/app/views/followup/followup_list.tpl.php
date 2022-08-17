@@ -18,25 +18,33 @@
                 <?php if ($common['user']['role'] != constant('USER_ROLE')[1]) { ?>
                     <div class="btn btn-white btn-sm text-left mr-2">
                         <i class="ti-filter text-danger pr-2"></i>
-                        <select class="status" style="border: 0px;">
-                            <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MERC_ROLE'))) { ?>
-                                <?php foreach (constant('STATUS_PAYMENT') as $key => $status) { ?>
-
-                                    <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>>
-                                        <?php echo $status; ?></option>
+                        <?php if($common['user']['role'] == constant('USER_ROLE_DOCTOR')){ ?>
+                                <select class="status" style="border: 0px;">
+                                    <?php foreach (constant('STATUS_DOCTOR_FOLLOWUP') as $key => $status) { ?>
+                                        <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>>
+                                            <?php echo $status; ?></option>
+                                    <?php } ?>
+                                </select>
+                        <?php }else{ ?>
+                            <select class="status" style="border: 0px;">
+                                <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MERC_ROLE'))) { ?>
+                                    <?php foreach (constant('STATUS_PAYMENT') as $key => $status) { ?>
+                                        <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>>
+                                            <?php echo $status; ?></option>
+                                    <?php } ?>
                                 <?php } ?>
-                            <?php } ?>
-                            <?php if ($common['user']['role'] == constant('USER_ROLE_MED')) { ?>
-                                <?php foreach (constant('FOLLOWUP_MED_SEC_STATUS') as $key => $status) { ?>
-                                <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
-                                <?php } ?>
-                            <?php } ?>
-                            <?php if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { ?>
-                                <?php foreach (constant('FOLLOWUP_OPTICIAN_STATUS') as $key => $status) { ?>
+                                <?php if ($common['user']['role'] == constant('USER_ROLE_MED')) { ?>
+                                    <?php foreach (constant('FOLLOWUP_MED_SEC_STATUS') as $key => $status) { ?>
                                     <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                                    <?php } ?>
                                 <?php } ?>
-                            <?php } ?>
-                        </select>
+                                <?php if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { ?>
+                                    <?php foreach (constant('FOLLOWUP_OPTICIAN_STATUS') as $key => $status) { ?>
+                                        <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                        <?php }?>
                     </div>
                 <?php } ?>
                 <?php if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { ?>
@@ -66,9 +74,9 @@
                             <th>Followup Status</th>
                         <?php } ?>
                         <th>Date Submitted</th>
-                        <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MERC_ROLE'))) { ?>
+                        <?php /* if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MERC_ROLE'))) { ?>
                             <th>Payment Status</th>
-                        <?php } ?>
+                        <?php } */?>
                         <?php if ($common['user']['role'] != constant('USER_ROLE_MERC')) { ?>
                             <?php if ($page_edit) { ?>
                                 <th>Action</th>
@@ -105,14 +113,14 @@
                                 <!--							<td>--><?php //echo $value['created_by']; ?><!--</td>-->
 
                                 <td><?php echo date_format(date_create($value['created_at']), $common['info']['date_format']); ?></td>
-                                <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MERC_ROLE'))) { ?>
+                                <?php /*if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MERC_ROLE'))) { ?>
                                     <td><?php if ($value['payment_status'] == 'UNPAID') {
                                             echo '<a href="' . URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id'] . '&status=PAID" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Mark as Paid">&nbsp;Mark as paid</a></br></br>';
                                             echo '<a href="' . URL_ADMIN . DIR_ROUTE . 'follow-up/edit&id=' . $value['id'] . '&status=NOT_SUITABLE" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Mark as Not Suitable">&nbsp;Not Suitable</a>';
                                         } else {
                                             echo constant('STATUS_PAYMENT')[$value['payment_status']];
                                         } ?></td>
-                                <?php } ?>
+                                <?php } */ ?>
                                 <?php if ($common['user']['role'] != constant('USER_ROLE_MERC')) { ?>
                                     <td class="<?php echo ($common['user']['role'] == constant('USER_ROLE_OPTOMETRIST')) ? 'table-action' : '' ?>">
                                         <?php if ($page_edit) { ?>

@@ -84,7 +84,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ti-mobile"></i></span>
                                             </div>
-                                            <input type="text" name="referral[office_phone]" class="form-control officephone" id="office_phone"
+                                            <input type="text" name="referral[office_phone]" class="form-control office_number" id="office_phone"
                                                    value="" maxlength="11"
                                                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
 
@@ -99,9 +99,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-email"></i></span></div>
-                                            <input type="email" name="referral[email]" class="form-control"
-                                                   value="" placeholder="Email"
-                                            >
+                                            <input type="email" name="referral[email]" class="form-control email" value="" placeholder="Email">
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +111,7 @@
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                             </div>
-                                            <select name="referral[gender]" class="custom-select">
+                                            <select name="referral[gender]" class="custom-select gender">
                                                 <option value="" selected>Select Gender</option>
                                                 <option value="Male">Male
                                                 </option>
@@ -135,7 +133,7 @@
                                                         <span class="input-group-text"><i
                                                                     class="ti-check-box"></i></span>
                                             </div>
-                                            <textarea name="referral[address_1]" class="form-control"
+                                            <textarea name="referral[address_1]" class="form-control address1"
                                                       placeholder="Enter Address"
                                                       row=3></textarea>
                                         </div>
@@ -147,7 +145,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-check-box"></i></span></div>
-                                            <textarea name="referral[address_2]" class="form-control"
+                                            <textarea name="referral[address_2]" class="form-control address2"
                                                       placeholder="Enter Address"
                                                       row=3></textarea>
 
@@ -160,7 +158,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-map-alt"></i></span></div>
-                                            <input type="text" name="referral[city]" class="form-control"
+                                            <input type="text" name="referral[city]" class="form-control city"
                                                    value=""
                                                    placeholder="Enter City">
                                         </div>
@@ -173,7 +171,7 @@
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="ti-pin"></i></span></div>
                                             <input type="text" name="referral[zip_code]" maxlength="8"
-                                                   class="form-control"
+                                                   class="form-control postal"
                                                    value=""
                                                    placeholder="Enter Post Code"
                                                    onkeypress="return alphaNumericValidation(event)"
@@ -226,11 +224,19 @@
                     return false;
                 },
                 select: function( event, ui ) {
+                    console.log(ui.item);
                     $('.patient_id').val(ui.item.id)
                     $('.firstname').val(ui.item.firstname)
                     $('.lastname').val(ui.item.lastname)
                     $('.dateofbirth').val(ui.item.dob)
                     $('.mobile').val(ui.item.mobile)
+                    $('.office_number').val(ui.item.office_number);
+                    $('.email').val(ui.item.email)
+                    $('.gender').val(ui.item.gender)
+                    $('.address1').val(ui.item.address1)
+                    $('.address2').val(ui.item.address2)
+                    $('.city').val(ui.item.city)
+                    $('.postal').val(ui.item.postal)
                     // $(this).parents('tr').find('.firstname').val( ui.item.firstname );
                     // $(this).parents('tr').find('.lastname').val( ui.item.lastname );
                     // $(this).parents('tr').find('.dateofbirth').val( ui.item.dob );

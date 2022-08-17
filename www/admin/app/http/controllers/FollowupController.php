@@ -23,15 +23,16 @@ class FollowupController extends Controller
         $data['period']['start'] = $this->url->get('start');
         $data['period']['end'] = $this->url->get('end');
         $data['period']['status'] = $this->url->get('status');
+        $data['period']['followup_status'] = $this->url->get('followup_status');
 
         if (!empty($data['period']['start']) && !empty($data['period']['end'])) {
             $data['period']['start'] = date_format(date_create($data['period']['start'] . '00:00:00'), "Y-m-d H:i:s");
             $data['period']['end'] = date_format(date_create($data['period']['end'] . '23:59:59'), "Y-m-d H:i:s");
         } else {
-
             $data['period']['start'] = date_format(date_create(date('Y-m-d') . '00:00:00'), "Y-m-d H:i:s");
             $data['period']['end'] = date_format(date_create(date('Y-m-d') . '23:59:59'), "Y-m-d H:i:s");
             $data['period']['status'] = constant('STATUS_ALL');
+            $data['period']['followup_status'] = constant('STATUS_DOCTOR_FOLLOWUP');
         }
 
         $data['result'] = $this->model_followup->getFollowup($data);
@@ -461,7 +462,26 @@ class FollowupController extends Controller
     public function getPatient(){
         $data = $this->url->get;
         $this->load->model('patient');
-        $result = $this->model_patient->getPatientByName($data['term']);
+        $patients = $this->model_patient->getPatientByName($data['term']);
+        $patient_data = $result = [];
+        foreach($patients as $rows){
+            foreach($rows as $key=>$value){
+                if($key == "address"){
+                    $addresses = json_decode($value, true);
+                    $patient_data['address1'] = $addresses['address1'];
+                    $patient_data['address2'] = $addresses['address1'];
+                    $patient_data['city'] = $addresses['city'];
+                    $patient_data['country'] = $addresses['country'];
+                    $patient_data['postal'] = $addresses['postal'];
+                }else{
+                    $patient_data[$key] = $value;
+                }
+            }
+            $result[] = $patient_data;
+        }
+        // $addresses = json_decode($result['address'], true);
+        // $result['address_1'] = $addresses[0];
+        // $result['address_2'] = $addresses[1];
         echo json_encode($result);
         exit();
     }
