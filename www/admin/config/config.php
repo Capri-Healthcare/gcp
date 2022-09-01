@@ -324,7 +324,10 @@ define('FOOTER_LINE_4','Office Address-105 Fitz Roy Avenue, Birmingham, B17 8RG'
 
 //Changes made on 01-02-2022
 define('MY_EYE_RECORD_CARE','<b>M</b>y<br/><b>E</b>ye <br/><b>R</b>ecord & <br/><b>C</b>are');
-//Changes made on 15-04-2022
+//Changes made on 22-08-2022
+define('PATIENT_GP_EMAIL_GREETING',"Dear #PATIENT_FIRST_NAME,"."<br><br><br>");
+define('PATIENT_GP_EMAIL_FOOTER_GREETING','<br><br><br><br><br>Best wishes,<br><br>Admin Team<br>on Behalf of <br>Mr Tarun Sharma<br>Consultant Ophthalmologist');
+
 define('PATIENT_GP_EMAIL_BODY',"Dear #PATIENT_FIRST_NAME,"."<br><br><br>".
 "Please find the clinic letter attached. We have sent the email to your GP surgery as well."."<br><br>".
 

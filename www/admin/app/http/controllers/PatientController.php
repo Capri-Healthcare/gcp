@@ -270,7 +270,7 @@ class PatientController extends Controller
         $this->load->model('patient');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
 
-        $data['result'] = NULL;
+        // $data['result'] = ['title'=>'','firstname'=>''];
         /* Set confirmation message if page submitted before */
         if (isset($this->session->data['message'])) {
             $data['message'] = $this->session->data['message'];

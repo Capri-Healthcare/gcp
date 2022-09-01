@@ -18,7 +18,7 @@
 
 <form action="<?php echo $action; ?>" method="post" onsubmit="return validateMyForm(event);">
     <input type="hidden" name="_token" value="<?php echo $token; ?>">
-    <input type="hidden" name="patient[id]" value="<?php echo $result['id']; ?>">
+    <input type="hidden" name="patient[id]" value="<?php echo isset($result['id'])?$result['id']:''; ?>">
     <input type="hidden" name="patient[referral_id]" value="<?php echo isset($_GET['referralid']) ? $_GET['referralid'] : '' ?>">
 
     <div class="panel panel-default">

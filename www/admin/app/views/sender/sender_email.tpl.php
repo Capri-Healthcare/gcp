@@ -85,12 +85,41 @@
                 <input type="hidden" name="mail[attached_leaflets]" id="attached_leaflets" value="" />
                 <a class="btn btn-info btn-sm" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#attach-file">Attach Leaflets</a>
             </div>
+            <!-- upload external file from local drive -->
+            <div class="panel-body">
+                <div class="form-group" style="font-size: 12px;" id="preview_files"></div>
+                <a class="btn btn-info btn-sm" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#attach-external-file">Upload File</a>
+            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-wrapper">
+                        <div class="attachment-container">                    
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- upload external file from local drive END-->
             <div class="panel-footer text-center">
                 <button type="submit" name="submit" class="btn btn-primary"><i class="ti-save-alt pr-2"></i> Submit</button>
             </div>
         </div>
     </div>
 </form>
+<!-- Attach External File Modal -->
+<div id="attach-external-file" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Upload Documents</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo URL_ADMIN.DIR_ROUTE.'attach/documents'; ?>" class="dropzone" id="attach-file-upload"></form>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="attach-file" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -127,6 +156,74 @@
         $("#attached_leaflets").val(str_ids);
         $("#attach-file").modal('hide');
     }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#attach-file-upload").dropzone({
+            addRemoveLinks: true,
+            acceptedFiles: "image/*,application/pdf",
+            maxFilesize: 2,
+            dictDefaultMessage: 'Drop files here or click here to upload.<br /><br /> Only Image and PDF allowed.',
+            init: function() {
+                var attachmentDropzone = this;
+                this.on("sending", function(file, xhr, formData) {
+                    formData.append("id", '0');
+                    formData.append("type", 'external');
+                    formData.append("_token", $('.s_token').val());
+                });
+
+                this.on("success", function(file, xhr){
+                    var response = JSON.parse(xhr);
+                    if (response.error === false) {
+                        if (response.ext === "pdf") {
+                            $('.attachment-container').append('<div class="attachment-image attachment-pdf">'+
+                                '<a href="../public/uploads/attachments/'+response.name+'" class="open-pdf">'+
+                                '<img class="img-thumbnail" src="../public/images/pdf.png" alt="">'+
+                                '</a>'+
+                                '<input type="hidden" name="mail[external_file][]" value="'+response.name+'">'+
+                                '<div class="attachment-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                                '</div>');
+                        } else {
+                            $('.attachment-container').append('<div class="attachment-image">'+
+                                '<a data-fancybox="gallery" href="../public/uploads/attachments/'+response.name+'">'+
+                                '<img class="img-thumbnail" src="../public/uploads/attachments/'+response.name+'" alt="">'+
+                                '</a>'+
+                                '<div class="attachment-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                                '<input type="hidden" name="mail[external_file][]" value="'+response.name+'">'+
+                                '</div>');
+                        }
+                        toastr.success('File uploaded successfully.', 'Success');
+                        $('#attach-external-file').modal('hide');
+                    } else {
+                        toastr.error(response.message, 'Error');
+                    }
+                    attachmentDropzone.removeFile(file);
+                });
+            }
+        });
+
+        $('.attachment-container').on('click', '.attachment-delete a', function () {
+            var ele = $(this),
+            name = ele.parents('.attachment-image').find('input').val();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo URL_ADMIN.DIR_ROUTE.'attach/documents/delete'; ?>',
+                data: {name: name, type: 'external', id: '0', _token: $('.s_token').val()},
+                error: function() {
+                    toastr.error('File could not be deleted', 'Server Error');
+                },
+                success: function(response) {
+                    response = JSON.parse(response);
+                    if (response.error === false) {
+                        ele.parents('.attachment-image').remove();
+                        toastr.success(response.message, 'Success');
+                    } else {
+                        toastr.error(response.message, 'Error');
+                    }
+                }
+            });
+        });
+    });
 </script>
 <!-- include summernote css/js-->
 <link href="public/css/summernote-bs4.css" rel="stylesheet">
