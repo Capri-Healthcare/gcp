@@ -116,9 +116,10 @@ class Patient extends Model
     public function checkPatientForDuplicate($data, $id = NULL)
     {
         if (!empty($id)) {
-            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ? AND id != ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape($data['dob']), (int)$id));
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ? AND id != ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape(date("Y-m-d", strtotime($data['dob']))), (int)$id));
         } else {
-            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` p WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape($data['dob']) ));
+            echo sprintf("SELECT * FROM `" . DB_PREFIX . "patients` p WHERE `firstname` = %s AND `lastname` = %s AND `dob` = %s", $this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape(date("Y-m-d", strtotime($data['dob']))));
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` p WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape(date("Y-m-d", strtotime($data['dob']))) ));
         }
         if ($query->num_rows > 0) {
             if(isset($data['return_type']) AND $data['return_type'] == 'record'){
@@ -174,7 +175,7 @@ class Patient extends Model
             ?, ?,
             ?, ?, ?, ?, ?)", 
         array(
-            $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), $data['dob'], 
+            $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), date("Y-m-d", strtotime($data['dob'])), 
             $data['gender'], $data['nhs_patient_number'], $data['mail'], $data['mobile'], 
             $data['office_number'], 
             $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['gp_postal_code'], $data['gp_email'], 

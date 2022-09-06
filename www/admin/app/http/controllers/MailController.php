@@ -129,8 +129,15 @@ class MailController extends Controller
 			$mail->addBCC($data['bcc']);
 		}
 		
+		// if (!empty($data['attachments'])) {
+		// 	$mail->addAttachment($data['attachments']['file'], $data['attachments']['name']);
+		// }
 		if (!empty($data['attachments'])) {
-			$mail->addAttachment($data['attachments']['file'], $data['attachments']['name']);
+			foreach($data['attachments'] as $attachment){
+				if(file_exists($attachment['file'])){
+					$mail->addAttachment($attachment['file'], $attachment['name']);
+				}
+			}
 		}
 		
 		$mail->isHTML();

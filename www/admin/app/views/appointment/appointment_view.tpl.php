@@ -181,15 +181,15 @@
                                     <tr>
                                         <td>Status</td>
                                         <td>
-                                            <?php if ($result['appointment_status'] == 1) {
+                                            <?php if ($result['status'] == 1) {
                                                 echo '<span class="badge badge-sm badge-pill badge-info">In process</span>';
-                                            } elseif ($result['appointment_status'] == 2) {
+                                            } elseif ($result['status'] == 2) {
                                                 echo '<span class="badge badge-sm badge-pill badge-warning">Document Requested</span>';
-                                            } elseif ($result['appointment_status'] == 3) {
+                                            } elseif ($result['status'] == 3) {
                                                 echo '<span class="badge badge-sm badge-pill badge-success">Confirmed</span>';
-                                            } elseif ($result['appointment_status'] == 5) {
+                                            } elseif ($result['status'] == 5) {
                                                 echo '<span class="badge badge-sm badge-pill badge-default">Completed</span>';
-                                            } elseif ($result['appointment_status'] == 6) {
+                                            } elseif ($result['status'] == 6) {
                                                 echo '<span class="badge badge-sm badge-pill badge-danger">Cancelled</span>';
                                             } else {
                                                 echo '<span class="badge badge-sm badge-pill badge-primary">New</span>';
@@ -866,9 +866,9 @@
                                     </div>
                                     <?php if(isset($doc_type) and $doc_type == 'to_patient_or_gp') {?>
                                         <div class="form-group">
-                                            <label>GP Email</label>
+                                            <label>GP/Optician Email</label>
                                             <input type="text" name="mail[gp_email]" class="form-control"
-                                                   value="<?php echo (isset($doc_type) and !empty($result['gp_email'])) ? $result['gp_email'] : ''; ?>"
+                                                   value="<?php echo (isset($doc_type) and !empty($result['gp_email'])) ? $result['gp_email'] : ''; ?>, <?php echo (isset($result['referee_email']) and !empty( $result['referee_email'])) ? $result['referee_email']:'';?>"
                                                    placeholder="Enter GP Email . . .">
                                         </div>
                                     <?php } ?>
@@ -881,16 +881,9 @@
                                         <label>Message</label>
                                         <textarea name="mail[message]" class="form-control mail-summernote" placeholder="Enter Message . . .">
                                         <?php echo $email['body']; ?>
-                                        <br><br><br><br><br>
-                                            Best wishes,<br><br>
-
-                                            Admin Team<br>
-                                            on Behalf of <br>
-                                            Mr Tarun Sharma<br>
-                                            Consultant Ophthalmologist
                                         </textarea>
                                     </div>
-                                    <div class="panel-action" style="text-align: left;">
+                                    <div class="form-group" style="text-align: left;">
                                         <div class="form-group" style="font-size: 12px;" id="preview_files"></div>
                                         <input type="hidden" name="mail[attached_leaflets]" id="attached_leaflets" value="" />
                                         <a class="btn btn-info btn-sm" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#attach-file">Attach Leaflets</a>
@@ -904,15 +897,28 @@
                                         </div>
                                     </div>
                                     <?php } ?>
-
                                     <?php if (isset($doc_type) and !empty($doc_type)) { ?>
                                         <div class="form-group">
                                             <input type="hidden" name="mail[doc_type]" value="<?php echo $doc_type; ?>"/>
                                         </div>
                                     <?php } ?>
-                                    
+                                    <!-- upload external file from local drive -->
+                                    <div class="form-group" style="text-align: left;">
+                                        <div class="form-group" style="font-size: 12px;" id="preview_files"></div>
+                                        <!-- <input type="hidden" name="mail[attachment]" id="attachment" value="" /> -->
+                                        <a class="btn btn-info btn-sm" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#attach-external-file">Upload File</a>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-wrapper">
+                                                <div class="attachment-container">                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- upload external file from local drive END-->
                                 </div>
-                                
                                 <div class="panel-footer text-center">
                                     <button type="submit" name="submit" class="btn btn-primary">Send</button>
                                 </div>
@@ -945,6 +951,96 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Attach External File Modal -->
+                    <div id="attach-external-file" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Upload Documents</h5>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="<?php echo URL_ADMIN.DIR_ROUTE.'attach/documents'; ?>" class="dropzone" id="attach-file-upload"></form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("a.open-pdf").fancybox({
+                                'frameWidth': 800,
+                                'frameHeight': 900,
+                                'overlayShow': true,
+                                'hideOnContentClick': false,
+                                'type': 'iframe'
+                            });
+
+                            $("#attach-file-upload").dropzone({
+                                addRemoveLinks: true,
+                                acceptedFiles: "image/*,application/pdf",
+                                maxFilesize: 2,
+                                dictDefaultMessage: 'Drop files here or click here to upload.<br /><br /> Only Image and PDF allowed.',
+                                init: function() {
+                                    var attachmentDropzone = this;
+                                    this.on("sending", function(file, xhr, formData) {
+                                        formData.append("id", <?php echo $result['id']; ?>);
+                                        formData.append("type", 'external');
+                                        formData.append("_token", $('.s_token').val());
+                                    });
+
+                                    this.on("success", function(file, xhr){
+                                        var response = JSON.parse(xhr);
+                                        if (response.error === false) {
+                                            if (response.ext === "pdf") {
+                                                $('.attachment-container').append('<div class="attachment-image attachment-pdf">'+
+                                                    '<a href="../public/uploads/attachments/'+response.name+'" class="open-pdf">'+
+                                                    '<img class="img-thumbnail" src="../public/images/pdf.png" alt="">'+
+                                                    '</a>'+
+                                                    '<input type="hidden" name="mail[external_file][]" value="'+response.name+'">'+
+                                                    '<div class="attachment-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                                                    '</div>');
+                                            } else {
+                                                $('.attachment-container').append('<div class="attachment-image">'+
+                                                    '<a data-fancybox="gallery" href="../public/uploads/attachments/'+response.name+'">'+
+                                                    '<img class="img-thumbnail" src="../public/uploads/attachments/'+response.name+'" alt="">'+
+                                                    '</a>'+
+                                                    '<div class="attachment-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="ti-close"></a></div>'+
+                                                    '<input type="hidden" name="mail[external_file][]" value="'+response.name+'">'+
+                                                    '</div>');
+                                            }
+                                            toastr.success('File uploaded successfully.', 'Success');
+                                            $('#attach-external-file').modal('hide');
+                                        } else {
+                                            toastr.error(response.message, 'Error');
+                                        }
+                                        attachmentDropzone.removeFile(file);
+                                    });
+                                }
+                            });
+
+                            $('.attachment-container').on('click', '.attachment-delete a', function () {
+                                var ele = $(this),
+                                name = ele.parents('.attachment-image').find('input').val();
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '<?php echo URL_ADMIN.DIR_ROUTE.'attach/documents/delete'; ?>',
+                                    data: {name: name, type: 'external', id: '<?php echo $result['id']; ?>', _token: $('.s_token').val()},
+                                    error: function() {
+                                        toastr.error('File could not be deleted', 'Server Error');
+                                    },
+                                    success: function(response) {
+                                        response = JSON.parse(response);
+                                        if (response.error === false) {
+                                            ele.parents('.attachment-image').remove();
+                                            toastr.success(response.message, 'Success');
+                                        } else {
+                                            toastr.error(response.message, 'Error');
+                                        }
+                                    }
+                                });
+                            });
+                        });
+                    </script>
                     <script>
                         function attachLeafletFiles(){
                             var ids = new Array();   

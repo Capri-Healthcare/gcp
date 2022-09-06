@@ -171,14 +171,26 @@ class AppointmentController extends Controller
         if (isset($data['doc_type']) && $data['doc_type'] == "to_optom_or_third_party") {
             $third_party_name_arr = explode(' ',$data['result']['referee_name']);
             $data['email']['body'] = str_replace("#THIRD_PARTY_NAME", $third_party_name_arr[0], constant('THIRD_PARTY_EMAIL_BODY'));
+            $data['email']['body'] .= constant('PATIENT_GP_EMAIL_FOOTER_GREETING');
         } else {
             $patient_first_name_arr = explode(' ',strtolower($data['result']['name']));
+            $title = !empty($data['result']['title']) ? $data['result']['title'] : '';
+            
             if(in_array($patient_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
-                $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
+                $patient_first_name = ucfirst(strtolower($patient_first_name_arr[2]));
             } else {
-                $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
+                $patient_first_name = ucfirst(strtolower($patient_first_name_arr[1]));
             }
-            $data['email']['body'] = str_replace("#PATIENT_FIRST_NAME", $patient_first_name, constant('PATIENT_GP_EMAIL_BODY'));
+
+            // $email_body = isset($data['doc_type']) && $data['doc_type'] == "to_patient_or_gp" ? constant('PATIENT_GP_EMAIL_BODY') : constant('PATIENT_GP_EMAIL_GREETING');
+            // $data['email']['body'] = str_replace("#PATIENT_FIRST_NAME", $title." ".$patient_first_name, $email_body);
+            
+            if(isset($data['doc_type']) && $data['doc_type'] == "to_patient_or_gp"){
+                $data['email']['body'] = str_replace("#PATIENT_FIRST_NAME", $title." ".$patient_first_name, constant('PATIENT_GP_EMAIL_BODY'));
+                $data['email']['body'] .= constant('PATIENT_GP_EMAIL_FOOTER_GREETING');
+            }else{
+                $data['email']['body'] = str_replace("#PATIENT_FIRST_NAME", $title." ".$patient_first_name, constant('PATIENT_GP_EMAIL_GREETING'));
+            }
         }
         // Summary Data
 
@@ -246,7 +258,7 @@ class AppointmentController extends Controller
         }
 
         $data['summary'] = $summary;
-//echo "<pre>"; print_r($data);exit;
+        //echo "<pre>"; print_r($data);exit;
         /*Render Blog edit view*/
         $this->response->setOutput($this->load->view('appointment/appointment_view', $data));
     }
@@ -911,8 +923,8 @@ class AppointmentController extends Controller
         $data['mail']['name'] = $result['name'];
         $data['mail']['redirect'] = 'appointment/view&id=' . $result['id'];
 
-
         if ($data['mail']['doc_type']) {
+
             if ($data['mail']['doc_type'] == "to_optom_or_third_party") {
                 // Generate examination doc 
                 if (isset($data['mail']['attachment'])) {
@@ -941,8 +953,13 @@ class AppointmentController extends Controller
                     $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
                 }
             }
+            // External file upload
+            if (isset($data['mail']['external_file'])) {
+                foreach($data['mail']['external_file'] as $file){
+                    $data['mail']['attachments'][] = ['name' => $file, 'file' => DIR . "public/uploads/attachments/" . $file ]; 
+                }
+            }
         }
-
         //        if (isset($_FILES['mail']['name']['attach_file'])) {
         //            foreach ($_FILES['mail']['name']['attach_file'] as $key => $file) {
         //                $tmp_name = $_FILES['mail']['tmp_name']['attach_file'][$key];
@@ -1775,7 +1792,7 @@ class AppointmentController extends Controller
          * Return error         
         **/
         $data = $this->url->post;
-// print_r($data);exit;
+        // print_r($data);exit;
         $data['appointment']['date'] =  date_format(date_create($data['appointment']['date']), 'Y-m-d');
         $data['appointment']['typed_date'] =  date_format(date_create($data['appointment']['typed_date']), 'Y-m-d');
 

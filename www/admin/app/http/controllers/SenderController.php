@@ -114,6 +114,12 @@ class SenderController extends Controller
 		$data['mail']['subject'] = $data['receiver']['subject'];
 		$data['mail']['message'] = $data['receiver']['message'];
 		$data['mail']['cc'] = $data['receiver']['cc'];
+		// External file upload
+		if (isset($data['mail']['external_file'])) {
+			foreach($data['mail']['external_file'] as $file){
+				$data['mail']['attachments'][] = ['name' => $file, 'file' => DIR . "public/uploads/attachments/" . $file ]; 
+			}
+		}
 
 		// Check if patient already exist ? If its then creaet in system. 
 		$this->load->model('patient');
@@ -253,6 +259,12 @@ class SenderController extends Controller
 				$res_leaflets = $this->model_leaflets->getLeaflets($each);
 
 				$data['mail']['attachments'][] = ['name' => $res_leaflets['doc_name'], 'file' => DIR . "public/uploads/" . $res_leaflets['doc_name']];
+			}
+		}
+		// External file upload
+		if (isset($data['mail']['external_file'])) {
+			foreach($data['mail']['external_file'] as $file){
+				$data['mail']['attachments'][] = ['name' => $file, 'file' => DIR . "public/uploads/attachments/" . $file ]; 
 			}
 		}
 
