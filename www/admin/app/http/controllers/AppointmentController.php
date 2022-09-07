@@ -906,13 +906,17 @@ class AppointmentController extends Controller
         $this->load->model('leaflets');
         if (!empty($data['mail']['attached_leaflets'])) {
             $leaflets = explode(",", $data['mail']['attached_leaflets']);
-
             foreach ($leaflets as $each) {
                 $res_leaflets = $this->model_leaflets->getLeaflets($each);
-
                 $data['mail']['attachments'][] = ['name' => $res_leaflets['doc_name'], 'file' => DIR . "public/uploads/" . $res_leaflets['doc_name']];
             }
-            
+        }
+
+        // External file upload
+        if (isset($data['mail']['external_file'])) {
+            foreach($data['mail']['external_file'] as $file){
+                $data['mail']['attachments'][] = ['name' => $file, 'file' => DIR . "public/uploads/attachments/" . $file ]; 
+            }
         }
 
         if (isset($data['mail']['doc_type']) && $data['mail']['doc_type'] == "to_optom_or_third_party") {
@@ -953,13 +957,8 @@ class AppointmentController extends Controller
                     $data['mail']['attachments'][] = ['name' => $filename, 'file' => DIR . "public/uploads/appointment/letters/" . $appointment_id . '/' . $filename];
                 }
             }
-            // External file upload
-            if (isset($data['mail']['external_file'])) {
-                foreach($data['mail']['external_file'] as $file){
-                    $data['mail']['attachments'][] = ['name' => $file, 'file' => DIR . "public/uploads/attachments/" . $file ]; 
-                }
-            }
         }
+
         //        if (isset($_FILES['mail']['name']['attach_file'])) {
         //            foreach ($_FILES['mail']['name']['attach_file'] as $key => $file) {
         //                $tmp_name = $_FILES['mail']['tmp_name']['attach_file'][$key];
@@ -969,7 +968,7 @@ class AppointmentController extends Controller
         //        }
 
         $this->load->controller('mail');
-
+// print_r($data['mail']);exit;
         $mail_result = $this->controller_mail->sendMail($data['mail']);
         if ($mail_result == 1) {
             $data['mail']['type'] = 'appointment';
