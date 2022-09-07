@@ -1134,38 +1134,46 @@ class Appointment extends Model
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
         $body .= "</strong>";
 
-        
-        if(!empty($gp_address)){
-			$body .= "<br><br>";
-            $body .= "<span style='font-size:12px'>";
-            $body .= "CC:"."<br><br>";
-            $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
-			if(!empty($gp_address)){
-            $referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
-				foreach($referee_address_arr as $address){
-					$body .= ucfirst(strtolower($address))."<br>";
-				}
-			}
-            $body .= (!empty($appointment['gp_postal_code'])) ? ($appointment['gp_postal_code']) : "";
-            $body .= "</span>";
-        }
-		
-        $referee_name = (!empty($appointment['referee_name']) and !is_null($appointment['referee_name'])) ? $appointment['referee_name'] : "";
+		$referee_name = (!empty($appointment['referee_name']) and !is_null($appointment['referee_name'])) ? $appointment['referee_name'] : "";
         $referee_address = (!empty($appointment['referee_address']) and !is_null($appointment['referee_address'])) ? $appointment['referee_address'] : "";
-        if(!empty($referee_name)){
+        
+        if(!empty($gp_name) OR !empty($referee_name)){
 			$body .= "<br><br>";
             $body .= "<span style='font-size:12px'>";
             $body .= "CC:"."<br><br>";
-            $body .= (!empty($referee_name)) ? ('<strong>'.$referee_name.'</strong><br>') : '';
-			if(!empty($referee_address)){
-				$referee_address_arr = explode(',', str_replace(', ', ',', $referee_address));
-				foreach($referee_address_arr as $address){
-					$body .= ucfirst(strtolower($address))."<br>";
-				}
-			}
+
+				$body .= "<table border=0>";
+				$body .= "<tr>";
+				
+					if(!empty($gp_name)){
+						$body .= "<td>";
+						$body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
+						if(!empty($gp_address)){
+						$referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
+							foreach($referee_address_arr as $address){
+								$body .= ucfirst(strtolower($address))."<br>";
+							}
+						}
+						$body .= (!empty($appointment['gp_postal_code'])) ? ($appointment['gp_postal_code']) : "";
+						$body .= "</td>";
+					}
+					
+					if(!empty($referee_name)){
+						$body .= "<td>";
+						$body .= (!empty($referee_name)) ? ('<strong>'.$referee_name.'</strong><br>') : '';
+						if(!empty($referee_address)){
+							$referee_address_arr = explode(',', str_replace(', ', ',', $referee_address));
+							foreach($referee_address_arr as $address){
+								$body .= ucfirst(strtolower($address))."<br>";
+							}
+						}
+						$body .= "</td>";
+					}
+
+				$body .= "</tr>";
+				$body .= "</table>";
             $body .= "</span>";
         }
-		
 		
         $body .= "</div>";
 
