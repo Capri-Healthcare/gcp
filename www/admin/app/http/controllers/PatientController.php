@@ -400,7 +400,7 @@ class PatientController extends Controller
 //            $this->load->model('opticianreferral');
 //            $this->model_opticianreferral->updateReferralHospitalCode($referral_data);
 
-            $this->notificationToPatientForAppointmentBooking($data['id']);
+            //$this->notificationToPatientForAppointmentBooking($data['id']);
 
            //$this->notificationToHospitalForAppointmentBooking($data['id']);
 
@@ -429,7 +429,7 @@ class PatientController extends Controller
             $data['id'] = $this->model_patient->createPatient($data);
             $result = $this->model_patient->updatePatient($data); // Call update patient for update other patient data
             if ($data['id']) {
-                $this->patientMail($data['id']);
+                //$this->patientMail($data['id']);
                 if ($data['user']['role_id'] == '3') {
                     $this->model_patient->createPatientDoctor($data);
                 }
