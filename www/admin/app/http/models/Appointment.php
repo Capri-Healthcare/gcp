@@ -1142,11 +1142,12 @@ class Appointment extends Model
             $body .= "<span style='font-size:12px'>";
             $body .= "CC:"."<br><br>";
 
-				$body .= "<table border=0>";
+				$body .= "<table border=0 width='80%'>";
 				$body .= "<tr>";
 				
 					if(!empty($gp_name)){
-						$body .= "<td>";
+						$body .= "<td width='50%' valign='top'>";
+						$body .= "GP<br>";
 						$body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
 						if(!empty($gp_address)){
 						$referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
@@ -1159,7 +1160,8 @@ class Appointment extends Model
 					}
 					
 					if(!empty($referee_name)){
-						$body .= "<td>";
+						$body .= "<td width='50%' valign='top'>";
+						$body .= "Optician / Third Party<br>";
 						$body .= (!empty($referee_name)) ? ('<strong>'.$referee_name.'</strong><br>') : '';
 						if(!empty($referee_address)){
 							$referee_address_arr = explode(',', str_replace(', ', ',', $referee_address));
