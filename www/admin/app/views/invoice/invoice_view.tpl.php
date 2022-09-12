@@ -233,7 +233,8 @@
                             </div>
                             <div class="panel-action">
                                 <?php if ($page_addpayment) { ?>
-                                    <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addPayment"><i class="ti-wallet mr-1"></i> Add Payment</a>
+                                    <!-- <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addPayment" target="_blank"><i class="ti-wallet mr-1"></i> Add Payment</a> -->
+                                    <a class="btn btn-warning btn-sm" href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$result['id'];?>#addPayment" target="_blank"><i class="ti-wallet mr-1"></i> Add Payment</a>
                                 <?php } ?>
                             </div>
                         </div>
@@ -459,6 +460,12 @@
                 });
             });
         });
+        if(window.location.hash) {
+            var hash = window.location.hash.substring(1);
+            if(hash == 'addPayment'){
+                $(window.location.hash).modal("show");
+            }
+        }
     </script>
     <!-- Sent Email -->
     <div id="invoiceMail" class="modal fade" role="dialog">

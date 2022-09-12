@@ -170,7 +170,7 @@ class AppointmentController extends Controller
         //echo "<pre>";print_r($data);exit;
         if (isset($data['doc_type']) && $data['doc_type'] == "to_optom_or_third_party") {
             $third_party_name_arr = explode(' ',$data['result']['referee_name']);
-            $data['email']['body'] = str_replace("#THIRD_PARTY_NAME", $third_party_name_arr[0], constant('THIRD_PARTY_EMAIL_BODY'));
+            $data['email']['body'] = str_replace("#THIRD_PARTY_NAME", $third_party_name_arr[1], constant('THIRD_PARTY_EMAIL_BODY'));
             $data['email']['body'] .= constant('PATIENT_GP_EMAIL_FOOTER_GREETING');
         } else {
             $patient_first_name_arr = explode(' ',strtolower($data['result']['name']));
