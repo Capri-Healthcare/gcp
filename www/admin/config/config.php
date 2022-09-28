@@ -312,8 +312,7 @@ define('APPOINTMENT_SIDE_BAR',"
         Spire South Bank: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 01905362033<br>
         Spire Clinic Droitwich: &nbsp; 01905799116<br>
         Droitwich Spa Hospital: 01905793333<br>
-        <b>Private Practice Manager</b><br>
-        Ms Neve Fairless<br>
+        <b>Admin & account</b><br>
         Email: secretaryoj@gmail.com<br>
         <b>Accounts Enquiries</b>: &nbsp; 07758057733</div>");
 
@@ -404,7 +403,7 @@ If you have medical insurance could you please follow this up with your insuranc
 you have no insurance could you please settle this overdue amount promptly. Please note this refers only to
 the invoice stated, if other monies are outstanding under a different invoice number a separate reminder will
 follow in due course. <br><br>
-We apologise if this letter should cross in the post with any payment due to Mr Sharma. Should you have any
+We apologize if this letter should cross in the post with any payment due to Mr Sharma. Should you have any
 queries please contact us on 07758057733or by email, secretaryoj@gmail.com. If this invoice has been paid
 directly to Spire eye centre please leave a message for us stating the invoice number along with your name
 and we will ensure that the records are updated. Please makes cheques payable to: Mr Tarun Sharma.
