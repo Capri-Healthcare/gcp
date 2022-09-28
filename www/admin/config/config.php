@@ -317,7 +317,7 @@ define('APPOINTMENT_SIDE_BAR',"
         <b>Accounts Enquiries</b>: &nbsp; 07758057733</div>");
 
 define('FOOTER_LINE_1','<b>Award Winner: International Glaucoma Association: BEST GLAUCOMA SERVICE UK 2014/2015</b>');
-define('FOOTER_LINE_2','<b>‘FOR PROVIDING AN OUSTANDING SERVICE TO PATIENTS’</b>');
+define('FOOTER_LINE_2','<b>‘FOR PROVIDING AN OUTSTANDING SERVICE TO PATIENTS’</b>');
 define('FOOTER_LINE_3','Tarun Sharma is the Director of Sharma Vision Ltd, Company number 8932399');
 define('FOOTER_LINE_4','Office Address-105 Fitz Roy Avenue, Birmingham, B17 8RG');
 
@@ -431,7 +431,7 @@ If you have medical insurance could you please follow this up with your insuranc
 you have no insurance could you please settle this overdue amount promptly. Please note this refers only to
 the invoice stated, if other monies are outstanding under a different invoice number a separate reminder will
 follow in due course. <br><br>
-We apologise if this letter should cross in the post with any payment due to Mr Sharma. Should you have any
+We apologize if this letter should cross in the post with any payment due to Mr Sharma. Should you have any
 queries please contact us on 07758057733or by email, secretaryoj@gmail.com. If this invoice has been paid
 directly to Spire eye centre please leave a message for us stating the invoice number along with your name
 and we will ensure that the records are updated. Please makes cheques payable to: Mr Tarun Sharma.
