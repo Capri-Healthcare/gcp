@@ -51,7 +51,7 @@ class MailController extends Controller
 				
 			}
 			if($_SERVER['SERVER_NAME'] == "referral.worcesterglaucoma.co.uk"){
-				$mail->addCC('secretaryoj@gmail.com');
+				$mail->addCC('mercinfo38@gmail.com');
 			} else if($_SERVER['SERVER_NAME'] == "merctest.caprihealthcare.co.uk"){
 				$mail->addCC('pranita.raghuwanshi22@gmail.com');
 			} else {
