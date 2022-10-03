@@ -851,6 +851,8 @@ class AppointmentController extends Controller
                 $this->controller_common->notifyPatientBySMS($data['appointment']['id'], 'NEW_APPOINTMENT');
                 }
 
+                $this->model_appointment->updateDiagnosisAndPrescription($data['appointment']['id'], $data['appointment']['patient_id']);
+
                 $this->session->data['message'] = array('alert' => 'success', 'value' => 'Appointment created successfully.');
             } else {
                 $this->session->data['message'] = array('alert' => 'error', 'value' => 'Appointment does not created. Server Error');
