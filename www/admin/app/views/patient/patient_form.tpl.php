@@ -20,6 +20,7 @@
     <input type="hidden" name="_token" value="<?php echo $token; ?>">
     <input type="hidden" name="patient[id]" value="<?php echo isset($result['id'])?$result['id']:''; ?>">
     <input type="hidden" name="patient[referral_id]" value="<?php echo isset($_GET['referralid']) ? $_GET['referralid'] : '' ?>">
+    <input type="hidden" name="patient[opticianid]" value="<?php echo isset($_GET['opticianid']) ? $_GET['opticianid'] : '' ?>">
 
     <div class="panel panel-default">
         <div class="panel-body">

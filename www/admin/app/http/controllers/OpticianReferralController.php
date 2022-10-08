@@ -288,7 +288,8 @@ class OpticianReferralController extends Controller
 
 
                     //$this->notificationToPatientForAppointmentBooking($patient_id);
-                    $this->url->redirect('patient/edit&id=' . $patient_id . '&referralid=' . $data['referral']['id']);
+                    //$this->url->redirect('patient/edit&id=' . $patient_id . '&referralid=' . $data['referral']['id']);
+                    $this->url->redirect('patient/edit&id=' . $patient_id . '&referralid=' . $data['referral']['id'] . '&opticianid=' . $referral_details['created_by']);
                     //$this->url->redirect('optician-referral');
 
                 }

@@ -437,7 +437,11 @@ class PatientController extends Controller
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient created successfully.');
         }
 
-        $this->url->redirect('patient/view&id=' . $data['id']);
+        if(isset($data['referral_id']) AND isset($data['opticianid'])){
+            $this->url->redirect('appointments&id=' . $data['id'] . '&referralid=' . $data['referral_id'] . '&opticianid=' . $data['opticianid']);
+        } else{
+            $this->url->redirect('patient/view&id=' . $data['id']);
+        }
     }
 
     public function patientMail($id)
