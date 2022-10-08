@@ -613,7 +613,7 @@
                                                             <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
                                                                 <?php foreach ($summary['appointment']['appointment_date'] as $key => $date) { ?>
                                                                     <li class="nav-item">
-                                                                        <a class="nav-link <?php echo ($key == 0) ? 'active' : '' ?>" href="#past-appointment-<?php echo str_replace('-', '', $date) ?>" data-toggle="tab"><?php echo date_format(date_create($date), $common['info']['date_format']) ?></a>
+                                                                        <a class="nav-link appointment-date <?php echo ($key == 0) ? 'active' : '' ?>" href="#past-appointment-<?php echo str_replace('-', '', $date) ?>" data-toggle="tab"><?php echo date_format(date_create($date), $common['info']['date_format']) ?></a>
                                                                     </li>
                                                                 <?php } ?>
                                                             </ul>

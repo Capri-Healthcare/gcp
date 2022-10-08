@@ -83,3 +83,9 @@ img.form_thumb_img{
 #logo img {
     padding: 5px;
 }
+.examination-note-tab-pane{
+	display: none;
+}
+.examination-note-tab-pane > .show{
+	display: block;
+}

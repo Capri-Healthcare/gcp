@@ -322,10 +322,19 @@ function tabClick(e) {
         $('body').find('.active').removeClass("active");
         $("#examination").addClass('active');
         $("#appointment-records").addClass('active');
-       $("#modal-examination-popup").modal('show');
+        $("#modal-examination-popup").modal('show');
     }
     if(tabtitle == 'appointment-info'){
         $('body').find('.active').removeClass("active");
+        //Add extra class to active inner appointment data 
+        // $('.nav-item').addClass('active show');
+        $('.appointment-date').each(function(i) {
+            console.log(i);
+            if(i == 0){
+                $('.appointment-date:first').addClass('active');
+            }
+        });
+        $('.examination-note-tab-pane:first').addClass('active');
         $("#appointmentinfo").addClass('active');
         $("#appointment-info").addClass('active');
         $("#modal-examination-popup").modal('show');

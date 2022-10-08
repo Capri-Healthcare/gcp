@@ -71,7 +71,7 @@
                             <?php }
                             if ($page_sendmail) { ?>
                                 <li><a href="#appointment-send-mail"
-                                       class="<?php echo isset($doc_type) ? 'active' : ''; ?>"" data-toggle="tab"><i
+                                       class="<?php echo isset($doc_type) ? 'active' : ''; ?>" data-toggle="tab"><i
                                             class="ti-email"></i> <span>Send Email</span></a></li>
                             <?php } 
                             if ($page_letters) { ?>
