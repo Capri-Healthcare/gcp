@@ -833,7 +833,7 @@ class Appointment extends Model
         $body .= "<br><br>";
 
         $body .= "Kind regards,<br/><br/>Yours sincerely<br>";
-        $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'>";
+        $body .= "<!--img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'-->";
         $body .= '<br><strong>'.$doctor_data['name'];
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
@@ -896,7 +896,7 @@ class Appointment extends Model
 				    
 				</td>" .   
             "<td width=40% align='left'>
-                <img src='" . URL_ADMIN . "public/images/picture1.jpg' width='80%' alt='Icon'>
+                <!--img src='" . URL_ADMIN . "public/images/picture1.jpg' width='80%' alt='Icon'-->
                 </td>" .
             "</tr>" .
             "<tr>
@@ -1128,7 +1128,7 @@ class Appointment extends Model
         $body .= "<br><br>";
 
         $body .= "Kind regards,<br/><br/>Yours sincerely<br>";
-        $body .= "<img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'>";
+        $body .= "<!--img src='" . URL_ADMIN . "public/images/dr_sharma_sign.png' width='22%' alt='Icon'-->";
         $body .= '<br><strong>'.$doctor_data['name'];
         $body .= (!empty($about_doctor['degree']) and !is_null($about_doctor['degree'])) ? ("<br>" . $about_doctor['degree']) : "";
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
