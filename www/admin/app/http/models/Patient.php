@@ -72,20 +72,24 @@ class Patient extends Model
 
     public function getAppointments($data)
     {
-        $query = $this->database->query("SELECT a.*, CONCAT(d.title, ' ', d.firstname, ' ', d.lastname) AS doctor, d.picture FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id WHERE a.patient_id = ? OR a.email = ? ORDER BY `date` DESC LIMIT 20", array($data['id'], $data['email']));
+        //$query = $this->database->query("SELECT a.*, CONCAT(d.title, ' ', d.firstname, ' ', d.lastname) AS doctor, d.picture FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id WHERE a.patient_id = ? OR a.email = ? ORDER BY `date` DESC LIMIT 20", array($data['id'], $data['email']));
+        $query = $this->database->query("SELECT a.*, CONCAT(d.title, ' ', d.firstname, ' ', d.lastname) AS doctor, d.picture FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id WHERE a.patient_id = ? ORDER BY `date` DESC LIMIT 20", array($data['id']));
         return $query->rows;
     }
 
     //Added 10-02-2022 To get completed appointment 
     public function getAppointmentsCompleted($data)
     {
-        $query = $this->database->query("SELECT a.*, CONCAT(d.title, ' ', d.firstname, ' ', d.lastname) AS doctor, d.picture FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id WHERE a.status ='5' AND a.patient_id = ? OR a.email = ? ORDER BY `date` DESC LIMIT 20", array($data['id'], $data['email']));
+        //$query = $this->database->query("SELECT a.*, CONCAT(d.title, ' ', d.firstname, ' ', d.lastname) AS doctor, d.picture FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id WHERE a.status ='5' AND a.patient_id = ? OR a.email = ? ORDER BY `date` DESC LIMIT 20", array($data['id'], $data['email']));
+        $query = $this->database->query("SELECT a.*, CONCAT(d.title, ' ', d.firstname, ' ', d.lastname) AS doctor, d.picture FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = a.doctor_id WHERE a.status ='5' AND a.patient_id = ? ORDER BY `date` DESC LIMIT 20", array($data['id']));
+
         return $query->rows;
     }
 
     public function getPrescriptions($data)
     {
-        $query = $this->database->query("SELECT p.*, CONCAT(title, '', firstname, ' ', lastname) AS doctor, d.picture AS d_picture FROM `" . DB_PREFIX . "prescription` AS p LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = p.doctor_id WHERE p.email = ? OR p.patient_id = ? ORDER BY `date_of_joining` DESC LIMIT 20", array($data['email'], $data['id']));
+        //$query = $this->database->query("SELECT p.*, CONCAT(title, '', firstname, ' ', lastname) AS doctor, d.picture AS d_picture FROM `" . DB_PREFIX . "prescription` AS p LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = p.doctor_id WHERE p.email = ? OR p.patient_id = ? ORDER BY `date_of_joining` DESC LIMIT 20", array($data['email'], $data['id']));
+        $query = $this->database->query("SELECT p.*, CONCAT(title, '', firstname, ' ', lastname) AS doctor, d.picture AS d_picture FROM `" . DB_PREFIX . "prescription` AS p LEFT JOIN `" . DB_PREFIX . "doctors` AS d ON d.id = p.doctor_id WHERE p.patient_id = ? ORDER BY `date_of_joining` DESC LIMIT 20", array($data['id']));
 
         return $query->rows;
     }
