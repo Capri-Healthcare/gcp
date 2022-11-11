@@ -1040,7 +1040,7 @@
                                     <?php if (!empty($prescriptions)) {
                                         foreach ($prescriptions as $key => $value) {
                                             $value['prescription'] = json_decode($value['prescription'], true);
-                                            if (!empty($value['prescription'][$key]['name'])) { ?>
+                                            //if (!empty($value['prescription'][$key]['name'])) { ?>
                                                 <div class="item item-left pb-4">
                                                     <div class="circle"><img
                                                                 src="<?php echo '../public/uploads/' . $value['d_picture']; ?>"
@@ -1082,7 +1082,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <?php }
+                                            <?php 
+                                            //}
                                         }
                                     } ?>
                                 </div>

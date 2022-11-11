@@ -291,7 +291,7 @@
                         <input type="hidden" name="appointment[name]" value="<?php echo $result['name']; ?>">
                         <input type="hidden" name="appointment[mail]" value="<?php echo $result['email']; ?>">
                         <input type="hidden" name="appointment[doctor]" value="<?php echo $result['doctor_id']; ?>">
-                        <input type="hidden" name="appointment[patient_id]" value="<?php echo $result['name']; ?>">
+                        <input type="hidden" name="appointment[patient_id]" value="<?php echo $result['patient_id']; ?>">
                         <input type="hidden" class="appointment-id" name="appointment[id]" value="<?php echo $result['id']; ?>">
                         <input type="hidden" name="prescription[id]" value="<?php echo $result['prescription_id']; ?>">
                         <input type="hiddden" class="apnt-date" name="appointment[date]" value="<?php echo date_format(date_create($result['date']), 'd-m-Y'); ?>" />
@@ -458,7 +458,7 @@
                                             <td>
                                                 <select name="prescription[medicine][0][eye]" class="form-control">
                                                     <?php foreach (constant('PRESCRIPTION_DROP_DOWNS')['PRESCRIPTION_EYE'] as $key => $value) { ?>
-                                                        <option value="<?php echo $key; ?>" <?php echo (isset($value['eye']) && $value['eye'] == $key) ? 'selected' : '' ?>>
+                                                        <option value="<?php echo $key; ?>" <?php echo (isset($value['eye']) && strtoupper($value['eye']) == $key) ? 'selected' : '' ?>>
                                                             <?php echo $value; ?>
                                                         </option>
                                                     <?php } ?>
@@ -546,7 +546,7 @@
                                 '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
                                 '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="' + new Date().toISOString().split('T')[0] + '" ></td>' +
                                 '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][end_date]" value="" placeholder="Select Date . . ." min="' + new Date().toISOString().split('T')[0] + '" ></td>' +
-                                '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">Right Eye</option><option value="LE">Left Eye</option><option value="BOTH">Bilateral</option><option value="Other" selected>Other</option></select></td>' +
+                                '<td><select name="prescription[medicine][' + count + '][eye]" class="form-control"><option value="RE">Right Eye</option><option value="LE">Left Eye</option><option value="BOTH">Bilateral</option><option value="OTHER" selected>Other</option></select></td>' +
                                 '<td><a class="table-action-button medicine-delete"><i class="ti-trash text-danger"></i></a></td>' +
                                 '</tr>');
                         });
