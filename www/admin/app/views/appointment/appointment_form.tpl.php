@@ -520,7 +520,7 @@
                         $('body').on('keydown.autocomplete', '.prescription-name', function() {
                             medicine_autocomplete();
                         });
-                        if ($(".medicine-delete").length < 2) {
+                        if ($(".medicine-delete").length < 1) {
                             $(".medicine-delete").hide();
                         } else {
                             $(".medicine-delete").show();
@@ -528,7 +528,7 @@
 
                         $('body').on('click', '.medicine-delete', function() {
                             $(this).parents('tr').remove();
-                            if ($(".medicine-delete").length < 2) $(".medicine-delete").hide();
+                            // if ($(".medicine-delete").length < 2) $(".medicine-delete").hide();
                         });
 
                         $('#add-medicine').click(function() {
@@ -537,8 +537,12 @@
                             } else {
                                 $(".medicine-delete").show();
                             }
-                            var count = $('.medicine-table .medicine-row:last .prescription-name').attr('name').split('[')[2];
-                            count = parseInt(count.split(']')[0]) + 1;
+                            var count = 0;
+                            var last_row = $('.medicine-table .medicine-row:last .prescription-name');
+                            if(last_row.length > 0){
+                                count = $('.medicine-table .medicine-row:last .prescription-name').attr('name').split('[')[2];
+                                count = parseInt(count.split(']')[0]) + 1;
+                            }
 
                             $(".medicine-table .medicine-row:last").after('<tr class="medicine-row">' +
                                 '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name" required></td>' +

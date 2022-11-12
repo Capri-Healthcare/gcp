@@ -49,6 +49,18 @@ class Commons extends Model
         }
     }
 
+    //Added to count followup new appointment
+    function getFollowupCount($status = "NEW"){
+        $query = $this->database->query("Select count(id) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE followup_status = '".strtoupper($status)."' ORDER BY created_at DESC ");
+        return $query->row['Total'];
+    }
+
+    //Added to count followup new referral
+    function getReferralCount($status = "NEW"){
+        $query = $this->database->query("Select count(id) AS Total From `" . DB_PREFIX . "referral_list` WHERE status = '".strtoupper($status)."' ORDER BY created_at DESC ");
+        return $query->row['Total'];
+    }
+
     public function getSiteInfo()
     {
         return $this->user_agent->getInfo();
@@ -145,7 +157,7 @@ class Commons extends Model
                             $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . "My " . $value['name'] . '</span></a></li>';
                         } else {
                             if ($value['name'] == 'Dashboard' && in_array($data['user']['role'], constant('DASHBOARD_NOT_SHOW'))) {
-                            } elseif ($value['name'] == 'Followup') {
+                            } elseif ($value['name'] == 'Follow Up') {
                                 $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . $followup . '</span></span></a></li>';
                             } else {
                                 $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '</span></a></li>';
@@ -153,10 +165,9 @@ class Commons extends Model
                         }
                     } else {
                         if ($value['name'] == 'Referrals') {
-                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . $referrals . '</span></span></a></li>';
-                        } else if ($value['name'] == 'Followup') {
-
-                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . $followup . '</span></span></a></li>';
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . $referrals . '(' .$this->getReferralCount('NEW').') </span></span></a></li>';
+                        } else if (trim($value['name']) == 'Follow Up') {
+                            $menu .= '<li class="' . $active . '"><a href="' . URL_ADMIN . DIR_ROUTE . $value['link'] . '"><i class="' . $value['icon'] . '"></i><span>' . $value['name'] . '&nbsp;&nbsp;&nbsp;<span class="badge badge-sm badge-danger">' . $followup . '(' .$this->getFollowupCount('NEW').')</span></span></a></li>';
                         } else {
                             if ($value['name'] == 'Dashboard' && in_array($data['user']['role'], constant('DASHBOARD_NOT_SHOW'))) {
                             } else {
