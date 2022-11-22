@@ -599,11 +599,11 @@ class Appointment extends Model
 
     public function moveimagefromopticiantoappointment($data)
     {
-        if (isset($data['followupid'])) {
+        if (isset($data['followupid']) AND is_numeric($data['followupid'])) {
 
             $images = $this->database->query("SELECT * FROM kk_referral_list_document WHERE followup_id='" . $data['followupid'] . "'");
         }
-        if (isset($data['referralid'])) {
+        if (isset($data['referralid']) AND is_numeric($data['referralid'])) {
 
             $images = $this->database->query("SELECT * FROM kk_referral_list_document WHERE referral_list_id='" . $data['referralid'] . "'");
         }
