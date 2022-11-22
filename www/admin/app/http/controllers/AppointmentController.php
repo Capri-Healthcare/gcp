@@ -1883,6 +1883,8 @@ class AppointmentController extends Controller
                     } else {
                         $this->model_appointment->createPrescription($data);
                     }
+                } else {
+                    $this->model_appointment->removePrescription($data);
                 }
                 $message = "Appointment Prescription updated successfully.";
             }

@@ -57,7 +57,7 @@
 
                     <tr>
                         <td><?php echo $value['name']; ?></td>
-                        <td><?php echo $value['duration']; ?></td>
+                        <td><?php echo $value['dose']; ?></td>
                         <td><?php echo $value['instruction']; ?></td>
                         <td><?php echo date_format(date_create($value['start_date']),'d-m-Y'); ?></td>
                         <td><?php echo date_format(date_create($value['end_date']),'d-m-Y'); ?></td>
