@@ -299,13 +299,16 @@ class Appointment extends Model
     {
         //echo "<pre>";print_r($data);exit;
 
-        $query = $this->database->query("DELETE FROM `" . DB_PREFIX . "prescription` WHERE id = " . (int)$data['prescription']['id']);
+        if(is_numeric((int)$data['prescription']['id'])){
+            $query = $this->database->query("DELETE FROM `" . DB_PREFIX . "prescription` WHERE id = " . (int)$data['prescription']['id']);
 
-        if ($query->num_rows > 0) {
-            return true;
-        } else {
-            return false;
+            if ($query->num_rows > 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
+        
     }
 
     public function createPrescription($data)
