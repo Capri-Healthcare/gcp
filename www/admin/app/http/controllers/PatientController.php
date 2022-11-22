@@ -422,7 +422,7 @@ class PatientController extends Controller
             $patient = $this->model_patient->checkPatientEmail($data['mail']);
             $patient_id = $patient['id'];
             if (!empty($patient_id)) {
-                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Email  \'' . $this->url->post('email') . '\'  already exist in database.');
+                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Email  \'' . $data['mail'] . '\'  already exist in database.');
                 $this->url->redirect('patient/add');
             }
             $data['hash'] = md5(uniqid(mt_rand(), true));

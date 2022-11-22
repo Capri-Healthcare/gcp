@@ -107,13 +107,13 @@ class Patient extends Model
 
     public function getInvoices($data)
     {
-        $query = $this->database->query("SELECT i.* FROM `" . DB_PREFIX . "invoice` AS i WHERE i.patient_id = ? OR i.email = ? ORDER BY i.date_of_joining DESC LIMIT 20", array($data['id'], $data['email']));
+        $query = $this->database->query("SELECT i.* FROM `" . DB_PREFIX . "invoice` AS i WHERE i.patient_id = ? ORDER BY i.date_of_joining DESC LIMIT 20", array($data['id']));
         return $query->rows;
     }
 
     public function getDocuments($data)
     {
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "reports` WHERE patient_id = ? OR email = ? ORDER BY date_of_joining DESC", array($data['id'], $data['email']));
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "reports` WHERE patient_id = ? ORDER BY date_of_joining DESC", array($data['id']));
         return $query->rows;
     }
 
