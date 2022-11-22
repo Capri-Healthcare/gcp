@@ -98,7 +98,7 @@
                                         </option> -->
 
 										<?php foreach (constant('PRESCRIPTION_FREQUENCY') as $frequency) { ?>
-                                            <option value="<?php echo $frequency ?>"  <?php echo $value['duration'] == $frequency ? 'selected' : '' ?> ><?php echo $frequency ?></option>
+                                            <option value="<?php echo $frequency ?>"  <?php echo $value['dose'] == $frequency ? 'selected' : '' ?> ><?php echo $frequency ?></option>
                                         <?php } ?>
 									</select>
 								</td>

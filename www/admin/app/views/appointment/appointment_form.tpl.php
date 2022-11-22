@@ -332,7 +332,7 @@
                                                     <select name="prescription[medicine][<?php echo $key; ?>][duration]"
                                                             class="form-control">
                                                             <?php foreach (constant('PRESCRIPTION_FREQUENCY') as $frequency) { ?>
-                                                        <option <?php if ($value['duration'] == $frequency) {
+                                                        <option <?php if ($value['dose'] == $frequency) {
                                                                                 echo "selected";
                                                                             } ?> value="<?php echo $frequency ?>"><?php echo $frequency ?></option>
                                                     <?php } ?>
