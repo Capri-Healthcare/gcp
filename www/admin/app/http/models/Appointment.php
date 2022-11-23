@@ -693,7 +693,11 @@ class Appointment extends Model
         $body .=  "<tr><td style='padding-right:15px;'  valign='top'><br><br>";
 
         $body .= "Date of visit: " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
-        $body .= "Date typed: " . date('d-m-Y');
+        $date_typed = date_format(date_create($appointment['date']), 'd-m-Y');
+        if(!empty($appointment['typed_date']) AND !is_null($appointment['typed_date'])){
+            $date_typed = date_format(date_create($appointment['typed_date']), 'd-m-Y');
+        } 
+        $body .= "Date typed: " .$date_typed . "<br>";
 
         //$body .= "<br>". $appointment['referee_address'];
         $body .= "<br><br>";
@@ -1041,7 +1045,11 @@ class Appointment extends Model
         $body .=  "<tr><td style='padding-right:15px;' valign='top'><br><br>";
 		
         $body .= "Date of visit: " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
-        $body .= "Date typed: " . date_format(date_create($appointment['typed_date']), 'd-m-Y') . "<br>";
+        $date_typed = date_format(date_create($appointment['date']), 'd-m-Y');
+        if(!empty($appointment['typed_date']) AND !is_null($appointment['typed_date'])){
+            $date_typed = date_format(date_create($appointment['typed_date']), 'd-m-Y');
+        } 
+        $body .= "Date typed: " .$date_typed . "<br>";
 
         $body .= "<br><br>";
 
