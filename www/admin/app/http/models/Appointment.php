@@ -302,13 +302,12 @@ class Appointment extends Model
         if(!empty($data['prescription']['id']) AND is_numeric($data['prescription']['id'])){
             $query = $this->database->query("DELETE FROM `" . DB_PREFIX . "prescription` WHERE id = " . (int)$data['prescription']['id']);
 
-            if ($query->num_rows > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+            return true;
         
+        } else {
+            return false;
+        }
+    
     }
 
     public function createPrescription($data)
