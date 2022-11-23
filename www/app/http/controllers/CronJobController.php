@@ -39,7 +39,8 @@ class CronJobController extends Controller
         $this->load->model('appointment');
         $appointment = $this->model_appointment->getAppointmentView($id);
         $optician = $this->model_user->getUser($appointment['optician_id']);
-
+		$doctor_detail = $this->model_appointment->getDoctor($appointment['doctor_id']);
+//echo "<pre>"; print_r($doctor_detail);echo $doctor_detail['title'];exit;
         $video_consultation_link = " - ";
         if ($appointment['status'] == CONFIRMED_APPOINTMENT_STATUS_ID and $appointment['consultation_type'] == APPOINTMENT_VIDEO_CONSULTATION_TYPE) {
             $video_consultation_link = URL . DIR_ROUTE . 'appointment/videoConsultation&token=' . $appointment['video_consultation_token'];
@@ -47,7 +48,8 @@ class CronJobController extends Controller
 
         $link = '<a href="' . URL . '">Click Here</a>';
 
-        $result['template']['message'] = str_replace('{ophth_title}', "", $result['template']['message']);
+        $result['template']['message'] = str_replace('{ophth_title}', $doctor_detail['title'] , $result['template']['message']);
+		$result['template']['message'] = str_replace('{ophth_fname, lname}', $appointment['doctor_name'],  $result['template']['message']);
         $result['template']['message'] = str_replace('{gcp_fname}', $optician['firstname'] . " " . $optician['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{gcp_fname}', $optician['firstname'] . " " . $optician['lastname'], $result['template']['message']);
         $result['template']['message'] = str_replace('{appt_date}', date('d-m-Y', strtotime($appointment['date'])), $result['template']['message']);
@@ -61,8 +63,9 @@ class CronJobController extends Controller
         $data['name'] = $appointment['name'];
         $data['email'] = $appointment['email'];
         //$data['bcc'] = $appointment['doctor_email'];
-        $data['subject'] = str_replace('{ophth_title}', "", $result['template']['subject']);
-        $data['subject'] = str_replace('{Ophth_fname, lname}', $optician['firstname'] . " " . $optician['lastname'], $data['subject']);
+        //$data['subject'] = str_replace('{ophth_title}', "", $result['template']['subject']);
+        //$data['subject'] = str_replace('{Ophth_fname, lname}', $optician['firstname'] . " " . $optician['lastname'], $data['subject']);
+		$data['subject'] = str_replace('{Ophth_Name}', $doctor_detail['title'] .' '. $appointment['doctor_name'] , $result['template']['subject']);
         $data['message'] = $result['template']['message'];
         //echo "<pre>"; print_r($data);exit;
 

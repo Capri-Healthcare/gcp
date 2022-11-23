@@ -63,7 +63,7 @@ class Appointment extends Model
 
 	public function getDoctor($id)
 	{
-		$query = $this->database->query("SELECT CONCAT(firstname, ' ', lastname) AS name, `email` FROM `" . DB_PREFIX . "doctors` WHERE `id` = ? LIMIT 1 ", array($this->database->escape($id)));
+		$query = $this->database->query("SELECT title, firstname, lastname, CONCAT(firstname, ' ', lastname) AS name, `email` FROM `" . DB_PREFIX . "doctors` WHERE `id` = ? LIMIT 1 ", array($this->database->escape($id)));
 		return $query->row;
 	}
 
