@@ -1795,7 +1795,6 @@ class AppointmentController extends Controller
         $data = $this->url->post;
         // print_r($data);exit;
         $data['appointment']['date'] =  date_format(date_create($data['appointment']['date']), 'Y-m-d');
-        $data['appointment']['typed_date'] =  date_format(date_create($data['appointment']['typed_date']), 'Y-m-d');
 
         $this->load->controller('common');
         if ($this->controller_common->validateToken($data['_token'])) {
@@ -1815,6 +1814,8 @@ class AppointmentController extends Controller
 
                 $this->load->model('commons');
                 $data['common'] = $this->model_commons->getSiteInfo();
+                
+                $data['appointment']['typed_date'] =  date_format(date_create($data['appointment']['typed_date']), 'Y-m-d');
 
                 if ($validate_field = $this->validateField($data['appointment'])) {
                     $this->session->data['message'] = array('alert' => 'error', 'value' => 'Please enter/select valid ' . implode(", ", $validate_field) . '!');
@@ -1873,15 +1874,16 @@ class AppointmentController extends Controller
                     $result = $this->model_appointment->updateAppointmentStatus($data['appointment']['id'], $data['appointment']['status']);
                 }
 
-
-                $data['prescription']['medicine'] = array_values($data['prescription']['medicine']);
-                if (!empty($data['prescription']['medicine'][0]['name']) || !empty($data['prescription']['medicine'][0]['description'])) {
-                    $data['prescription']['medicine'] = json_encode($data['prescription']['medicine']);
-                    //echo "<pre>";print_r($data);exit;
-                    if (!empty($data['prescription']['id'])) {
-                        $this->model_appointment->updatePrescription($data);
-                    } else {
-                        $this->model_appointment->createPrescription($data);
+                if(isset($data['prescription']['medicine']) AND !empty($data['prescription']['medicine'])){
+                    $data['prescription']['medicine'] = array_values($data['prescription']['medicine']);
+                    if (!empty($data['prescription']['medicine'][0]['name']) || !empty($data['prescription']['medicine'][0]['description'])) {
+                        $data['prescription']['medicine'] = json_encode($data['prescription']['medicine']);
+                        //echo "<pre>";print_r($data);exit;
+                        if (!empty($data['prescription']['id'])) {
+                            $this->model_appointment->updatePrescription($data);
+                        } else {
+                            $this->model_appointment->createPrescription($data);
+                        }
                     }
                 } else {
                     $this->model_appointment->removePrescription($data);
