@@ -294,7 +294,7 @@
                         <input type="hidden" name="appointment[patient_id]" value="<?php echo $result['patient_id']; ?>">
                         <input type="hidden" class="appointment-id" name="appointment[id]" value="<?php echo $result['id']; ?>">
                         <input type="hidden" name="prescription[id]" value="<?php echo $result['prescription_id']; ?>">
-                        <input type="hiddden" class="apnt-date" name="appointment[date]" value="<?php echo date_format(date_create($result['date']), 'd-m-Y'); ?>" />
+                        <input type="hidden" class="apnt-date" name="appointment[date]" value="<?php echo date_format(date_create($result['date']), 'd-m-Y'); ?>" />
                         <div class="table-responsive">
                             <table class="table table-bordered medicine-table">
                                 <thead>
@@ -332,7 +332,7 @@
                                                     <select name="prescription[medicine][<?php echo $key; ?>][duration]"
                                                             class="form-control">
                                                             <?php foreach (constant('PRESCRIPTION_FREQUENCY') as $frequency) { ?>
-                                                        <option <?php if ($value['dose'] == $frequency) {
+                                                        <option <?php if ($value['duration'] == $frequency) {
                                                                                 echo "selected";
                                                                             } ?> value="<?php echo $frequency ?>"><?php echo $frequency ?></option>
                                                     <?php } ?>

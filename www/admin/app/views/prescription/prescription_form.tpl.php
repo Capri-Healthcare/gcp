@@ -82,7 +82,7 @@
 									<input class="form-control prescription-name" name="prescription[medicine][<?php echo $key; ?>][name]" value="<?php echo $value['name'] ?>" placeholder="Medicine Name" required>
 								</td>
 								<td>
-									<select name="prescription[medicine][<?php echo $key; ?>][dose]" class="form-control" required>
+									<select name="prescription[medicine][<?php echo $key; ?>][duration]" class="form-control" required>
                                         <option value="">Select-Frequency</option>
                                         <!-- <option value="Once a day" <?php if ($value['duration'] == 'Once a day') {
                                             echo "selected";
@@ -98,7 +98,7 @@
                                         </option> -->
 
 										<?php foreach (constant('PRESCRIPTION_FREQUENCY') as $frequency) { ?>
-                                            <option value="<?php echo $frequency ?>"  <?php echo $value['dose'] == $frequency ? 'selected' : '' ?> ><?php echo $frequency ?></option>
+                                            <option value="<?php echo $frequency ?>"  <?php echo $value['duration'] == $frequency ? 'selected' : '' ?> ><?php echo $frequency ?></option>
                                         <?php } ?>
 									</select>
 								</td>
@@ -156,7 +156,7 @@
 									<input class="form-control prescription-name" name="prescription[medicine][0][name]" placeholder="Medicine Name" required>
 								</td>
 								<td>
-									<select name="prescription[medicine][0][dose]" class="form-control" required>
+									<select name="prescription[medicine][0][duration]" class="form-control" required>
                                         <!-- <option value="">Select-Frequency</option>
                                         <option value="Once a day">Once a day</option>
                                         <option value="Twice a day">Twice a day</option>
@@ -283,7 +283,7 @@
 		count = parseInt(count.split(']')[0]) + 1;
 		$(".medicine-row:last").after('<tr class="medicine-row">'+
             '<td><input class="form-control prescription-name" name="prescription[medicine][' + count + '][name]" value="" placeholder="Medicine Name" required></td>' +
-            '<td><select name="prescription[medicine][' + count + '][dose]" class="form-control" required><option value="">Select-Frequency</option> ' +
+            '<td><select name="prescription[medicine][' + count + '][duration]" class="form-control" required><option value="">Select-Frequency</option> ' +
 			prescription_frequency_option+'</select></td>' +
             '<td><textarea name="prescription[medicine][' + count + '][instruction]" class="form-control" rows="3" placeholder="Instructions"></textarea></td>' +
             '<td><input type="date" class="form-control apnt-date" name="prescription[medicine][' + count + '][start_date]" value="" placeholder="Select Date . . ." min="'+new Date().toISOString().split('T')[0]+'" required></td>' +

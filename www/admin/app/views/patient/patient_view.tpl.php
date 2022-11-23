@@ -1064,7 +1064,7 @@
                                                                             <p class="text-primary m-0"><?php echo html_entity_decode($s_value['name'], ENT_QUOTES, 'UTF-8'); ?></p>
                                                                         </td>
                                                                         <td class="text-center"><p
-                                                                                    class="font-12"><?php echo $s_value['dose']; ?></p>
+                                                                                    class="font-12"><?php echo $s_value['duration']; ?></p>
                                                                         </td>
                                                                         <td class="text-center"><p
                                                                                     class="font-12"><?php echo $s_value['instruction']; ?></p>
