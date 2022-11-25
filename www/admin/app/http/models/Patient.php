@@ -28,7 +28,7 @@ class Patient extends Model
 				$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE status = 1 ORDER BY `date_of_joining` DESC");
             return $query->rows;
         }*/
-		$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE status = 1 ORDER BY `date_of_joining` DESC");
+		$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients`  ORDER BY `date_of_joining` DESC");
         return $query->rows;
     }
 
@@ -211,7 +211,7 @@ class Patient extends Model
 		`regular_payment` = ?, `how_the_account_is_to_be_settled` = ?,  `policyholders_name` = ?,  `medical_insurers_name` = ?,
 	    `membership_number` = ?, `scheme_name` = ?, `authorisation_number` = ?, `authorisation_number` = ?, 
 		`corporate_company_scheme` = ?, `employer` = ?, `optician_name` = ?,  `optician_email` = ?,
-        `optician_address` = ?
+        `optician_address` = ?, `status` = ? 
 		WHERE `id` = ?",
             array(
                 $this->database->escape($data['title']),
@@ -243,6 +243,7 @@ class Patient extends Model
                 isset($data['optician_name']) ? $data['optician_name'] : '',
                 isset($data['optician_email']) ? $data['optician_email'] : '',
                 isset($data['optician_address']) ? $data['optician_address'] : '',
+                isset($data['status']) ? $data['status'] : '1',
                 (int)$data['id']));
 
         //$query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET `firstname` = ?, `lastname` = ?, `email` = ?, `mobile` = ?, `address` = ?, `bloodgroup` = ?, `gender` = ?, `dob` = ?, `history` = ?, `other` = ?, `status` = ? WHERE `id` = ?" , array($data['firstname'], $data['lastname'], $data['mail'], $data['mobile'], $data['address'],$data['bloodgroup'], $data['gender'], $data['dob'], $data['history'], $data['other'], $data['status'], $data['id']));

@@ -66,8 +66,8 @@
                         <th>Due</th>
                         <th>Doctor</th>
                         <th>Status</th>
+                        <th>Treatment Date</th>
                         <th>Invoice Date</th>
-                        <th>Created Date</th>
                         <?php if ($page_view || $page_edit || $page_delete || $page_pdf) { ?>
                             <th></th>
                         <?php } ?>
@@ -106,8 +106,14 @@
                                     <span class="label label-default">Unknown</span>
                                 <?php } } ?>
                             </td>
+                            <td>
+                                <?php 
+                                    if(isset($value['treatmentdate']) AND $value['treatmentdate'] != '0000-00-00' AND !is_null($value['treatmentdate'])){
+                                        echo date_format(date_create($value['treatmentdate']), $common['info']['date_format']);
+                                    }  
+                                ?>
+                            </td>
                             <td><?php echo date_format(date_create($value['invoicedate']), $common['info']['date_format']); ?></td>
-                            <td><?php echo date_format(date_create($value['date_of_joining']), $common['info']['date_format']); ?></td>
                             <?php if ($page_view || $page_edit || $page_delete || $page_pdf) { ?>
                                 <td class="table-action">
                                     <?php if ($page_view || $page_edit) { ?>

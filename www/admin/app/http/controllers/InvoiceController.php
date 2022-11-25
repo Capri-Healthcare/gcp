@@ -341,6 +341,13 @@ class InvoiceController extends Controller
         }
         $data['invoice']['datetime'] = date('Y-m-d H:i:s');
         $data['invoice']['tc'] = ''; // Set TC blank
+        // Get tation last name
+        $data['invoice']['name_for_email'] = '';
+        if(isset($data['invoice']['patient_id']) AND !empty($data['invoice']['patient_id']) AND is_numeric($data['invoice']['patient_id']) AND $data['invoice']['patient_id'] > 0){
+            $this->load->model('patient');
+            $patient_detail = $this->model_patient->getPatient($data['invoice']['patient_id']);
+            $data['invoice']['name_for_email'] = $patient_detail['title'] . ' ' . $patient_detail['lastname'];
+        }
         $this->load->model('invoice');
         if (!empty($data['invoice']['id'])) {
             $this->model_invoice->updateInvoice($data['invoice']);
@@ -358,7 +365,7 @@ class InvoiceController extends Controller
         } else {
 
             $data['invoice']['user_id'] = $this->session->data['user_id'];
-            $result = $this->model_invoice->createInvoice($data['invoice']);
+            $result = $this->model_invoice->createInvoice($data['invoice']); 
             if ((int)$result) {
                 $this->model_invoice->updateInsurersDetailsInInvoice($result, $data['invoice']);
                 $this->createPDF($result);
@@ -489,7 +496,7 @@ class InvoiceController extends Controller
         $site_link = '<a href="' . URL . '">Click Here</a>';
         $invoice['duedate'] = date_format(date_create($invoice['duedate']), $result['common']['date_format']);
 
-        $result['template']['message'] = str_replace('{name}', $invoice['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{name}', $invoice['name_for_email'], $result['template']['message']);
         $result['template']['message'] = str_replace('{inv_id}', $data['id'], $result['template']['message']);
         $result['template']['message'] = str_replace('{amount}', $result['common']['currency_abbr'] . $invoice['amount'], $result['template']['message']);
         $result['template']['message'] = str_replace('{paid}', $result['common']['currency_abbr'] . $invoice['paid'], $result['template']['message']);
@@ -564,7 +571,7 @@ class InvoiceController extends Controller
 
         $data['id'] = $result['common']['invoice_prefix'] . str_pad($invoice['id'], 4, '0', STR_PAD_LEFT);
         $invoice['duedate'] = date_format(date_create($invoice['duedate']), $result['common']['date_format']);
-        $result['template']['message'] = str_replace('{name}', $invoice['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{name}', $invoice['name_for_email'], $result['template']['message']);
         $result['template']['message'] = str_replace('{invoice_id}', $data['id'], $result['template']['message']);
         $result['template']['message'] = str_replace('{txn_id}', $payments['txn_id'], $result['template']['message']);
         $result['template']['message'] = str_replace('{paid_amount}', $result['common']['currency_abbr'] . $invoice['paid'], $result['template']['message']);
@@ -736,7 +743,7 @@ class InvoiceController extends Controller
         $emial_body = INVOICE_REMINDER_LETTER_TEMPLATE;
         $emial_body = str_replace("#TODAY_DATE", date('d-m-Y'), $emial_body);
         $emial_body = str_replace("#PATIENT_FULLNAME", $result['name'], $emial_body);
-        $emial_body = str_replace("#PATIENT_TITLE_LAST_NAME", $result['title'] . ' ' . $result['lastname'], $emial_body);
+        $emial_body = str_replace("#PATIENT_TITLE_LAST_NAME", $result['name_for_email'], $emial_body);
         $emial_body = str_replace("#PATIENT_ADDRESS", $patient_address, $emial_body);
         $emial_body = str_replace("#INVOICE_NUMBER", $invoice_number, $emial_body);
         $emial_body = str_replace("#INVOICE_DATE", $result['invoicedate'], $emial_body);
@@ -798,7 +805,7 @@ class InvoiceController extends Controller
         $site_link = '<a href="' . URL . '">Click Here</a>';
         $invoice['duedate'] = date_format(date_create($invoice['duedate']), $result['common']['date_format']);
 
-        $result['template']['message'] = str_replace('{name}', $invoice['name'], $result['template']['message']);
+        $result['template']['message'] = str_replace('{name}', $invoice['name_for_email'], $result['template']['message']);
         $result['template']['message'] = str_replace('{inv_id}', $data['id'], $result['template']['message']);
         $result['template']['message'] = str_replace('{amount}', $result['common']['currency_abbr'] . $invoice['amount'], $result['template']['message']);
         $result['template']['message'] = str_replace('{paid}', $result['common']['currency_abbr'] . $invoice['paid'], $result['template']['message']);

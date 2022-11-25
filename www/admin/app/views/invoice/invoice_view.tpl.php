@@ -521,7 +521,7 @@
                                 $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
                             }
                             $emial_body = str_replace("#PATIENT_FULLNAME", $result['name'], $emial_body);
-                            $emial_body = str_replace("#PATIENT_FIRST_NAME", $patient_first_name, $emial_body);
+                            $emial_body = str_replace("#PATIENT_FIRST_NAME", $result['name_for_email'], $emial_body);
                             $emial_body = str_replace("#PATIENT_ADDRESS", $patient_address, $emial_body);
                             $emial_body = str_replace("#INVOICE_NUMBER", $invoice_number, $emial_body);
                             $emial_body = str_replace("#INVOICE_DATE", $result['invoicedate'], $emial_body);
