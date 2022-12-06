@@ -188,7 +188,8 @@ class FollowupController extends Controller
         $followup['id'] = isset($data['referral']['id'])?$data['referral']['id']:NULL;
         $followup['patient_id'] = $data['referral']['patient_id'];
         $followup['payment_status'] = 'PAID';
-        $followup['followup_status'] = isset($data['referral']['status'])? $data['referral']['status'] : 'NEW';
+        // $followup['followup_status'] = isset($data['referral']['status'])? $data['referral']['status'] : 'NEW';
+        $followup['followup_status'] = 'NEW';
         $followup['due_date'] = date('Y-m-d H:i:s');
         $followup['appointment_id'] = NULL;
 

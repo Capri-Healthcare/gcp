@@ -56,7 +56,11 @@ class InvoiceController extends Controller
         $data['page_add'] = $this->user_agent->hasPermission('invoice/add') ? true : false;
         $data['page_edit'] = $this->user_agent->hasPermission('invoice/edit') ? true : false;
         $data['page_delete'] = $this->user_agent->hasPermission('invoice/delete') ? true : false;
-
+        $data['page_addpayment'] = $this->user_agent->hasPermission('addpayment') ? true : false;
+        
+        $data['method'] = $this->model_invoice->getPaymentMethod();
+        $payment_url_params = "&list=true&status=".$data['period']['status']."&insurers_company_name=".$data['period']['insurers_company_name']."&start=".$this->url->get('start')."&end=".$this->url->get('end');
+        $data['action'] = URL_ADMIN . DIR_ROUTE . 'addpayment'.$payment_url_params;
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action_delete'] = URL_ADMIN . DIR_ROUTE . 'invoice/delete';
 
@@ -425,7 +429,10 @@ class InvoiceController extends Controller
         $this->load->model('invoice');
         $result = $this->model_invoice->addInvoicePayment($data['payment']);
         $this->model_invoice->invoiceTotal($data['payment']);
-
+        
+        if(isset($_GET['list'])){
+            $this->url->redirect('invoices&status='.$this->url->get('status').'&insurers_company_name='.$this->url->get('insurers_company_name').'&start='.$this->url->get('start').'&end='.$this->url->get('end'));
+        }
         //$this->paymentConfirmationMail($data['payment']['invoice'],$result);
         $this->session->data['message'] = array('alert' => 'success', 'value' => 'Payment added successfully');
         $this->url->redirect('invoice/view&id=' . $data['payment']['invoice']);

@@ -51,7 +51,7 @@ class Commons extends Model
 
     //Added to count followup new appointment
     function getFollowupCount($status = "NEW"){
-        $query = $this->database->query("Select count(id) AS Total From `" . DB_PREFIX . "followup_appointment` WHERE followup_status = '".strtoupper($status)."' AND payment_status = 'PAID' ORDER BY created_at DESC ");
+        $query = $this->database->query("Select count(f.id) AS Total From `" . DB_PREFIX . "followup_appointment` AS f JOIN `kk_patients` AS p ON f.patient_id = p.id  WHERE f.followup_status = '".strtoupper($status)."' AND f.payment_status = 'PAID' ORDER BY f.created_at DESC ");
         return $query->row['Total'];
     }
 

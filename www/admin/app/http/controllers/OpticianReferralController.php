@@ -306,16 +306,29 @@ class OpticianReferralController extends Controller
             if ($validate_referral) {
                 $this->session->data['message'] = array('alert' => 'error', 'value' => 'You have already created referral with this patient.');
                 $this->url->redirect('optician-referral');
+            } 
+
+            //Check for validations
+            if ($this->model_patient->checkPatientForDuplicate($data['referral'])) {
+                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Firstname, Lastname and Date of birth already exist in database.');
+                $this->url->redirect('optician-referral');
+            }
+
+            $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
+            $patient_id = $patient['id'];
+            if (!empty($patient_id)) {
+                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Email  \'' . $data['referral']['email'] . '\'  already exist in database.');
+                $this->url->redirect('optician-referral');
+            }
+            
+            $data['referral']['user_id'] = $this->session->data['user_id'];
+            $opticianID = $this->model_opticianreferral->createOpticianReferral($data['referral']);
+            if (!empty($opticianID)) {
+                $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral created successfully.');
+                $this->url->redirect('optician-referral/edit&id=' . $opticianID . '&document=true');
             } else {
-                $data['referral']['user_id'] = $this->session->data['user_id'];
-                $opticianID = $this->model_opticianreferral->createOpticianReferral($data['referral']);
-                if (!empty($opticianID)) {
-                    $this->session->data['message'] = array('alert' => 'success', 'value' => 'Optician Referral created successfully.');
-                    $this->url->redirect('optician-referral/edit&id=' . $opticianID . '&document=true');
-                } else {
-                    $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not created successfully.');
-                    $this->url->redirect('optician-referral');
-                }
+                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Optician Referral not created successfully.');
+                $this->url->redirect('optician-referral');
             }
         }
     }

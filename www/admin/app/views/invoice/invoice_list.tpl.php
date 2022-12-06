@@ -122,8 +122,15 @@
                                                 <i class="ti-more"></i>
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-right export-button">
+                                                <?php if ($page_addpayment) { ?>
+                                                    <li>
+                                                        <a data-toggle="modal" data-target="#addPayment" id="payment_model" data-due="<?php echo $value['due']; ?>" data-invoice="<?php echo $value['id']; ?>" data-email="<?php echo $value['email']; ?>" data-url="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$value['id'];?>">
+                                                            <i class="ti-layout-media-center-alt pr-2"></i>Add Payment
+                                                        </a>
+                                                    </li>
+                                                <?php } ?>
                                                 <?php if ($page_view) { ?>
-                                                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$value['id'];?>"><i class="ti-layout-media-center-alt pr-2"></i>View</a></li>
+                                                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$value['id'];?>" target="_blank"><i class="ti-layout-media-center-alt pr-2"></i>View</a></li>
                                                 <?php } if ($page_edit) { ?>
                                                     <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/edit&id='.$value['id'];?>"><i class="ti-pencil-alt pr-2"></i>Edit</a></li>
                                                  <?php } if ($page_pdf) { ?>
@@ -160,6 +167,48 @@
         </div>
     </div>
 </div>
+<!-- Add Payment Modal -->
+<div id="addPayment" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Payments</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <form action="<?php echo $action; ?>" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-form-label">Payment Method</label>
+                            <select name="payment[method]" class="custom-select" required>
+                                <option value="">Payment Method</option>
+                                <?php if ($method) {
+                                    foreach ($method as $key => $value) { ?>
+                                        <option value="<?php echo $value['id'] ?>"><?php echo $value['name']; ?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label"><?php echo 'Amount (' . $common['info']['currency_abbr'] . ')'; ?></label>
+                            <input type="text" class="form-control" name="payment[amount]" value="" placeholder="Amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Payment Date</label>
+                            <input type="text" class="form-control date" name="payment[date]" value="<?php echo date_format(date_create(), $common['info']['date_format']); ?>" placeholder="Payment Date" required>
+                        </div>
+                        <input type="hidden" name="payment[invoice]" value="">
+                        <input type="hidden" name="payment[email]" value="">
+                        <input type="hidden" name="_token" value="<?php echo $common['token']; ?>">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" name="submit" class="btn btn-primary"><i class="ti-save-alt pr-2"></i>
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 <script>
     $(document).ready(function () {
         $('.table-date-range').daterangepicker({
@@ -181,7 +230,7 @@
                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
                 'This Month': [moment().startOf('month'), moment().endOf('month')],
                 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                'All Time': [moment('2015-01-01'), moment().add(30, 'days')]
+                'All Time': [moment('2015-01-01'), moment().add(1000, 'days')]
             },
         });
 
@@ -264,6 +313,18 @@
 
         $(".export-button .pdf").on("click", function(e) {
             e.preventDefault(); invoiceTable.button(4).trigger()
+        });
+        
+        //triggered when modal is about to be shown
+        $('#addPayment').on('show.bs.modal', function(e) {
+            //get data-id attribute of the clicked element
+            var due = $(e.relatedTarget).data('due');
+            var invoice = $(e.relatedTarget).data('invoice');
+            var email = $(e.relatedTarget).data('email');
+            //populate the textbox
+            $(e.currentTarget).find('input[name="payment[amount]"]').val(due);
+            $(e.currentTarget).find('input[name="payment[invoice]"]').val(invoice);
+            $(e.currentTarget).find('input[name="payment[email]"]').val(email);
         });
     });
 </script>

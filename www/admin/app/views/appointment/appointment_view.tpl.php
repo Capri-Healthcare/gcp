@@ -64,11 +64,18 @@
                             <?php } ?>
                             <!--li><a href="#appointment-pre-consultation-requirement" data-toggle="tab"><i
                                             class="ti-receipt"></i> <span>Pre-consultation requirement</span></a></li-->
-                            <?php if ($page_edit) { ?>
-                                <li>
-                                    <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointment/edit&id=' . $result['id']; ?>"><i
+                            <?php if ($page_edit) { 
+                                $now = time(); // or your date as well
+                                $your_date = strtotime($result['date'] );
+                                $datediff = $now - $your_date;
+                                
+                                $datediff_in_day = round($datediff / (60 * 60 * 24));
+                                if($datediff_in_day < 10){ ?>
+                                    <li>
+                                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'appointment/edit&id=' . $result['id']; ?>"><i
                                                 class="ti-pencil-alt"></i> <span>Edit Appointment</span></a></li>
                             <?php }
+                            }
                             if ($page_sendmail) { ?>
                                 <li><a href="#appointment-send-mail"
                                        class="<?php echo isset($doc_type) ? 'active' : ''; ?>" data-toggle="tab"><i

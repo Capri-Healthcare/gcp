@@ -384,7 +384,8 @@ define('STATUS_DOCTOR_FOLLOWUP', ['ALL' => 'All', 'NEW' => 'New', 'ACCEPTED' => 
 
 
 define('FOLLOWUP_MED_SEC_STATUS', ['ALL' => 'All', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable', 'NON_MERC_FOLLOWUP' => 'Non gcp followup']);
-define('FOLLOWUP_OPTICIAN_STATUS', ['ALL' => 'All', 'NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable']);
+//define('FOLLOWUP_OPTICIAN_STATUS', ['ALL' => 'All', 'NEW' => 'New', 'OPTICIAN_REVIEWED' => 'Optician Reviewed', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable']);
+define('FOLLOWUP_OPTICIAN_STATUS', ['ALL' => 'All', 'NEW' => 'New', 'ACCEPTED' => 'Accepted', 'NOT_SUITABLE' => 'Not suitable']);
 define('REFERRAL_OPTICIAN_STATUS', ['ALL' => 'ALL', 'NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable', 'DRAFT' => 'Draft']);
 define('REFERRAL_MED_SEC_STATUS', ['ALL' => 'ALL', 'NEW' => 'New', 'ACCEPTED' => 'Accepted', 'REJECTED' => 'Not suitable']);
 define('STATUS_ALL', 'ALL');

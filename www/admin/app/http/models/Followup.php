@@ -23,7 +23,9 @@ class Followup extends Model
                 } elseif ($data['role'] == constant('USER_ROLE_OPTOMETRIST')) {
                     $status = implode("','", array_keys(constant('FOLLOWUP_OPTICIAN_STATUS')));
                 } else {
-                    $status = $data['period']['status'];
+                    //exit;
+                    //$status = $data['period']['status'];
+                    $status = implode("','", array_keys(constant('FOLLOWUP_OPTICIAN_STATUS')));
                 }
             } else {
                 $status = $data['period']['status'];
@@ -44,7 +46,7 @@ class Followup extends Model
             $query = $this->database->query("Select f.*,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE f.due_date  between '" . $data['period']['start'] . "' AND '" . $data['period']['end'] . "' AND f.followup_status IN ('" . $followup_status . "') ORDER BY f.due_date DESC ");
         } else {
             // $query = $this->database->query("Select f.*,a.is_glaucoma_required,CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id JOIN  `" . DB_PREFIX . "appointments` AS a ON f.appointment_id = a.id WHERE f.due_date  between '" . $data['period']['start'] . "' AND '" . $data['period']['end']."'  ORDER BY f.due_date DESC ");
-            $query = $this->database->query("Select f.*, CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE f.due_date  between '" . $data['period']['start'] . "' AND '" . $data['period']['end']."'  ORDER BY f.due_date DESC ");
+            $query = $this->database->query("Select f.*, CONCAT(p.firstname, ' ', p.lastname) AS patient_name ,p.email,p.mobile,p.dob,p.gender From `" . DB_PREFIX . "followup_appointment` as f JOIN  `" . DB_PREFIX . "patients` AS p ON f.patient_id = p.id WHERE f.due_date  between '" . $data['period']['start'] . "' AND '" . $data['period']['end']."' AND f.followup_status IN ('" . $status . "')   ORDER BY f.due_date DESC ");
         }
 
         return $query->rows;

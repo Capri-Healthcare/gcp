@@ -34,6 +34,11 @@
                     <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/add'; ?>"
                        class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create Referral</a>
                 <?php } ?>
+                <?php //if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { 
+                    if (in_array($common['user']['role'],constant('USER_FOLLOWUP_MED_ROLE'))) {  ?>
+                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/add'; ?>"
+                        class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create new followup</a>
+                <?php } ?>
             </div>
         </div>
     </div>

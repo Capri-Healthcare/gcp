@@ -15,7 +15,7 @@
                     <i class="ti-filter text-danger pr-2"></i>
                     <input type="text" class="table-date-range">
                 </div>
-                <?php if ($common['user']['role'] != constant('USER_ROLE')[1]) { ?>
+                <?php //if ($common['user']['role'] != constant('USER_ROLE')[1]) { ?>
                     <div class="btn btn-white btn-sm text-left mr-2">
                         <i class="ti-filter text-danger pr-2"></i>
                         <?php if($common['user']['role'] == constant('USER_ROLE_DOCTOR')){ ?>
@@ -27,29 +27,28 @@
                                 </select>
                         <?php }else{ ?>
                             <select class="status" style="border: 0px;">
-                                <?php if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MERC_ROLE'))) { ?>
+                                <?php /* if (in_array($common['user']['role'], constant('USER_FOLLOWUP_MERC_ROLE'))) { ?>
                                     <?php foreach (constant('STATUS_PAYMENT') as $key => $status) { ?>
                                         <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>>
                                             <?php echo $status; ?></option>
                                     <?php } ?>
-                                <?php } ?>
+                                <?php }  */?>
                                 <?php if ($common['user']['role'] == constant('USER_ROLE_MED')) { ?>
                                     <?php foreach (constant('FOLLOWUP_MED_SEC_STATUS') as $key => $status) { ?>
                                     <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
                                     <?php } ?>
                                 <?php } ?>
-                                <?php if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { ?>
-                                    <?php foreach (constant('FOLLOWUP_OPTICIAN_STATUS') as $key => $status) { ?>
-                                        <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
-                                    <?php } ?>
+                                <?php foreach (constant('FOLLOWUP_OPTICIAN_STATUS') as $key => $status) { ?>
+                                    <option value="<?php echo $key ?>" <?php echo ($key == $period['status']) ? 'selected' : '' ?>><?php echo $status; ?></option>
                                 <?php } ?>
                             </select>
                         <?php }?>
                     </div>
-                <?php } ?>
-                <?php if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { ?>
-                    <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/add'; ?>"
-                    class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create new followup</a>
+                <?php //} ?>
+                <?php //if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { 
+                    if (in_array($common['user']['role'],constant('USER_FOLLOWUP_MED_ROLE'))) {  ?>
+                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/add'; ?>"
+                        class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create new followup</a>
                 <?php } ?>
                 </div>
             </div>
@@ -218,7 +217,7 @@
                         //'Last 30 Days': [moment().subtract(29, 'days'), moment()],
                         'This Month': [moment().startOf('month'), moment().endOf('month')],
                         'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                        'All Time': [moment('2015-01-01'), moment().add(30, 'days')]
+                        'All Time': [moment('2015-01-01'), moment().add(1000, 'days')]
                     },
                 });
 
