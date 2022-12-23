@@ -957,7 +957,7 @@ class Appointment extends Model
               position: fixed; top: -120px; left: 0px; right: 0px; height: 100px;
           }
           footer {
-              position: fixed; bottom: -70px; left: 0px; right: 0px; height: 80px; 
+              position: fixed; bottom: -60px; left: 0px; right: 0px; height: 80px; 
               padding-top: 20px;
           }
           body {  
@@ -1073,7 +1073,7 @@ class Appointment extends Model
         } else {
             $patient_first_name = ucfirst(strtolower($patient_first_name_arr[0]));
         }
-
+        $body .= "<br><br>";
         $body .= "Dear " . $appointment['title'] . ' ' . $appointment['lastname'] . ",";
         
         if (!empty($appointment['diagnosis']) OR !empty($appointment['diagnosis_other'])) {
