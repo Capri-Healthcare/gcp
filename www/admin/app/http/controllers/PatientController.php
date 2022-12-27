@@ -736,4 +736,109 @@ class PatientController extends Controller
         return $this->controller_mail->sendMail($data);
     }
 
+    public function indexExport()
+    {
+        $id = (int)$this->url->get('id');
+        if (empty($id) || !is_int($id)) {
+            $this->url->redirect('patients');
+        }
+        $data = $this->url->get;
+
+        $this->load->model('patient');
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+        $data['gp_practices'] = $this->model_patient->getALlGpPractice();
+
+        if ($data['common']['user']['role_id'] == "3") {
+            $data['result'] = $this->model_patient->getPatient($id, $data['common']['user']['doctor']);
+        } else {
+            $data['result'] = $this->model_patient->getPatient($id);
+        }
+
+        if (empty($data['result'])) {
+            $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Patient does not exist in database!');
+            $this->url->redirect('patients');
+        }
+        // $data['result']['history'] = json_decode($data['result']['history'], true);
+        $data['result']['address'] = json_decode($data['result']['address'], true);
+
+        $data['page_title'] = 'Patient Export';
+        $patient_name = $data['result']['firstname'] .' '. $data['result']['lastname'];
+        $patient_address = '';
+        if(isset($data['result']['address']) AND is_array($data['result']['address'])){
+            $patient_address = $data['result']['address']['address1'] .', '. $data['result']['address']['address2'] . ', '. $data['result']['address']['city'] . '-'. $data['result']['address']['postal'];
+        }
+
+        $filename = str_replace(" ", "-", $patient_name).'_invoice_list_'.date('Ymd_his') . ".xls";		 
+        $total_amount = 0;
+        $total_paid = 0;
+        $total_due = 0;
+        $result['invoices'] = $this->model_patient->getInvoices($data['result']);
+        if (!empty($result['invoices'])) {
+            foreach ($result['invoices'] as $key => $value) {
+                $total_amount += (float) $value['amount'];
+                $total_paid += (float) $value['paid'];
+                $total_due += (float) $value['due'];
+            }
+            $objPHPExcel = new PHPExcel();
+            // Set document properties
+            $objPHPExcel->getProperties()->setCreator("My Eye Record and Care")
+                        ->setLastModifiedBy("My Eye Record and Care")
+                        ->setTitle($patient_name." Invoice List")
+                        ->setSubject($patient_name." Invoice List")
+                        ->setDescription($patient_name." Invoice List");
+
+            // Add some data
+            $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
+            $objPHPExcel->getActiveSheet()->getStyle("A1:A6")->getFont()->setBold( true );
+            $objPHPExcel->getActiveSheet()->getStyle("A8:E8")->getFont()->setBold( true );
+
+            $objPHPExcel->setActiveSheetIndex(0)
+                        ->setCellValue('A1', 'Name')->setCellValue('B1', $patient_name)
+                        ->setCellValue('A2', 'Address')->setCellValue('B2', $patient_address)
+                        ->setCellValue('A4', 'Total invoice amount')->setCellValue('B4', $total_amount)
+                        ->setCellValue('A5', 'Total invoice amount')->setCellValue('B5', $total_paid)
+                        ->setCellValue('A6', 'Total invoice amount')->setCellValue('B6', $total_due);
+
+            $objPHPExcel->setActiveSheetIndex(0)
+                        ->setCellValue('A8', 'Invocie Id')->setCellValue('B8', 'Amount')->setCellValue('C8', 'Due')->setCellValue('D8', 'Status')->setCellValue('E8', 'Invocie Date');
+                        foreach ($result['invoices'] as $key => $value) {
+                            $next_row = 9 + $key;
+
+                            $objPHPExcel->setActiveSheetIndex(0)
+                                ->setCellValue('A'.$next_row, str_pad($value['id'], 4, '0', STR_PAD_LEFT))
+                                ->setCellValue('B'.$next_row, $value['amount'])
+                                ->setCellValue('C'.$next_row, $value['due'])
+                                ->setCellValue('D'.$next_row, $value['status'])
+                                ->setCellValue('E'.$next_row, date_format(date_create($value['invoicedate']), $data['common']['info']['date_format']));
+                        }
+
+            // Rename worksheet
+            $objPHPExcel->getActiveSheet()->setTitle('Invoice List');
+            // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+            $objPHPExcel->setActiveSheetIndex(0);
+
+            // Redirect output to a client’s web browser (Excel5)
+            header('Content-Type: application/vnd.ms-excel; charset=UTF-8');
+            header('Content-Disposition: attachment;filename="'.$filename.'"');
+            header('Cache-Control: max-age=0');
+            // If you're serving to IE 9, then the following may be needed
+            header('Cache-Control: max-age=1');
+
+            // If you're serving to IE over SSL, then the following may be needed
+            header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+            header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+            header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+            header ('Pragma: public'); // HTTP/1.0
+
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+            $objWriter->save('php://output');
+            exit;
+           
+        }
+    }
 }

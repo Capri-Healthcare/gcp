@@ -331,6 +331,10 @@
                                 <div class="panel-title">Patient's Invoices</div>
                                 <div class="panel-action">
                                     <?php if ($invoice_add) { ?>
+                                        <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'patient/export&id='.$result['id']; ?>"
+                                           class="btn btn-primary btn-sm"><i class="ti-export pr-2"></i>
+                                            Export invoice</a>
+
                                         <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'invoice/add'; ?>"
                                            class="btn btn-primary btn-sm" target="_blank"><i class="ti-plus pr-2"></i>
                                             New Invoice</a>

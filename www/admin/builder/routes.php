@@ -32,6 +32,7 @@ $router->post('patient/edit', 'PatientController@indexAction');
 $router->post('patient/delete', 'PatientController@indexDelete');
 $router->post('patient/sendmail', 'PatientController@indexMail'); // 
 $router->get('patient/search', 'PatientController@searchPatient');
+$router->get('patient/export', 'PatientController@indexExport');
 $router->get('gppractices/search', 'PatientController@searchGpPractices');
 $router->get('notes', 'NotesController@index');
 $router->post('note/add', 'NotesController@indexAction');

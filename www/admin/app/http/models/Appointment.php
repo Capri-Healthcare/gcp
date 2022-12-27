@@ -1593,7 +1593,7 @@ class Appointment extends Model
 
     public function getMaxIOPAppointment($data)
     {
-        $query = $this->database->query("SELECT MAX(`intraocular_pressure_right`) AS iop_right,MAX(`intraocular_pressure_left`) AS iop_left FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='" . $data['patient_id'] . "' AND status ='5' ORDER BY date DESC");
+        $query = $this->database->query("SELECT MAX(`intraocular_pressure_right`) AS iop_right,MAX(`intraocular_pressure_left`) AS iop_left FROM `" . DB_PREFIX . "appointments` WHERE patient_id ='" . $data['patient_id'] . "' ORDER BY date DESC");
 
         if ($query->num_rows > 0) {
             return $query->row;
@@ -1651,11 +1651,11 @@ class Appointment extends Model
 
     public function updateDiagnosisAndPrescription($appointment_id, $patient_id){
 
-        $query = $this->database->query("SELECT a.diagnosis, p.* FROM `" . DB_PREFIX . "appointments` a LEFT JOIN `" . DB_PREFIX . "prescription` p ON a.id = p.appointment_id WHERE a.patient_id ='" . $patient_id . "' AND a.id <> '".$appointment_id."' ORDER BY date DESC LIMIT 1");
+        $query = $this->database->query("SELECT a.diagnosis, a.cct_left, a.cct_right, a.outcome_comment, a.special_condition, a.doctor_note, p.* FROM `" . DB_PREFIX . "appointments` a LEFT JOIN `" . DB_PREFIX . "prescription` p ON a.id = p.appointment_id WHERE a.patient_id ='" . $patient_id . "' AND a.id <> '".$appointment_id."' ORDER BY date DESC LIMIT 1");
         $data = $query->row;
        
         if ($query->num_rows > 0) {     
-            $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `diagnosis` = ? WHERE `id` = ? ", array($data['diagnosis'], (int)$appointment_id));
+            $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `diagnosis` = ?, `cct_left` = ?, `cct_right` = ?, `outcome_comment` = ?, `special_condition` = ?, doctor_note = ?  WHERE `id` = ? ", array($data['diagnosis'], $data['cct_left'], $data['cct_right'], $data['outcome_comment'], $data['special_condition'],  $data['doctor_note'], (int)$appointment_id));
 
             $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "prescription` (`name`, `email`, `prescription`, `doctor_id`, `appointment_id`, `patient_id`, `user_id`, `date_of_joining`) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ", array($this->database->escape($data['name']), $this->database->escape($data['email']), $data['prescription'], (int)$data['doctor_id'], (int)$appointment_id, (int)$data['patient_id'], (int)$data['user_id'], $data['date_of_joining']));
             

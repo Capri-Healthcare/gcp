@@ -200,14 +200,9 @@ class AppointmentController extends Controller
         if ($summary['appointment_count'] != 0) {
 
             // Get Last Appointment Data
-            $appointment_last = $this->model_appointment->getLastPatientAppointment($data['result']);
             $highestIop = $this->model_appointment->getMaxIOPAppointment($data['result']);
-
-            $summary['summarykey']['cct_right'] = $appointment_last['cct_right'];
-            $summary['summarykey']['cct_left'] = $appointment_last['cct_left'];
             $summary['summarykey']['iop_right'] = $highestIop['iop_right'];
             $summary['summarykey']['iop_left'] = $highestIop['iop_left'];
-            $summary['summarykey']['allergy'] = $appointment_last['allergy'];
 
             foreach ($appointment_completed as $key => $list) {
 
@@ -356,10 +351,12 @@ class AppointmentController extends Controller
 
         if($is_repeat_prescription){
             // reset start date and end date
-            foreach($data['prescription']['prescription'] as $key => $prescription){
-                $prescription['start_date'] = '';
-                $prescription['end_date'] = '';
-                $data['prescription']['prescription'][$key] = $prescription;
+            if($data['prescription']['prescription']){
+                foreach($data['prescription']['prescription'] as $key => $prescription){
+                    $prescription['start_date'] = '';
+                    $prescription['end_date'] = '';
+                    $data['prescription']['prescription'][$key] = $prescription;
+                }
             }
         }
 
@@ -416,56 +413,47 @@ class AppointmentController extends Controller
         if ($summary['appointment_count'] != 0) {
 
             // Get Last Appointment Data
-            $appointment_last = $this->model_appointment->getLastPatientAppointment($data['result']);
             //echo "<pre>";print_r($appointment_last);exit;
             $highestIop = $this->model_appointment->getMaxIOPAppointment($data['result']);
-            $data['result']['cct_right'] = $appointment_last['cct_right'];
-            $data['result']['cct_left'] = $appointment_last['cct_left'];
 
-            $summary['summarykey']['cct_right'] = $appointment_last['cct_right'];
-            $summary['summarykey']['cct_left'] = $appointment_last['cct_left'];
+            $summary['summarykey']['cct_right'] = $data['result']['cct_right'];
+            $summary['summarykey']['cct_left'] = $data['result']['cct_left'];
             $summary['summarykey']['iop_right'] = $highestIop['iop_right'];
             $summary['summarykey']['iop_left'] = $highestIop['iop_left'];
-            $summary['summarykey']['allergy'] = $appointment_last['allergy'];
-            if(!empty($appointment_last['diagnosis'])){
-                // $summary['summarykey']['diagnosis'] = implode(',', json_decode($appointment_last['diagnosis'], true));
-                //echo "<pre>";print_r($appointment_last);exit;                
-                $isDiagnosisJson = $this->isJson($appointment_last['diagnosis']);
-                if ($isDiagnosisJson === true) {
-                    $summary['summarykey']['diagnosis'] = json_decode($appointment_last['diagnosis'], TRUE);
-                }else{
-                    $summary['summarykey']['diagnosis'] = '';
-                }
+            $summary['summarykey']['allergy'] = $data['result']['allergy'];
+            $isDiagnosisJson = $this->isJson($data['result']['diagnosis']);
+            if ($isDiagnosisJson === true) {
+                $summary['summarykey']['diagnosis'] = json_decode($data['result']['diagnosis'], TRUE);
             }else{
                 $summary['summarykey']['diagnosis'] = '';
             }
             
             
-            $summary['summarykey']['special_condition'] = $appointment_last['special_condition'];
+            $summary['summarykey']['special_condition'] = $data['result']['special_condition'];
 
             foreach ($appointment_completed as $key => $list) {
 
                 $summary['appointment']['appointment_date'][$key] = $list['date'];
 
                 $summary['appointment']['data'][$key]['date'] = $list['date'];
-                $summary['appointment']['data'][$key]['data'][] = $list['cct_right'];
-                $summary['appointment']['data'][$key]['data'][] = $list['cct_left'];
-                $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_right'];
-                $summary['appointment']['data'][$key]['data'][] = $list['intraocular_pressure_left'];
-                $summary['appointment']['data'][$key]['data'][] = $list['allergy'];
+                $summary['appointment']['data'][$key]['data']['cct_right'] = $list['cct_right'];
+                $summary['appointment']['data'][$key]['data']['cct_left'] = $list['cct_left'];
+                $summary['appointment']['data'][$key]['data']['iop_right'] = $list['intraocular_pressure_right'];
+                $summary['appointment']['data'][$key]['data']['iop_left'] = $list['intraocular_pressure_left'];
+                $summary['appointment']['data'][$key]['data']['allergy'] = $list['allergy'];
+                $summary['appointment']['data'][$key]['data']['diagnosis'] = '';
                 if(!empty($list['diagnosis'])){
                     // $summary['appointment']['data'][$key]['data'][] = implode(',', json_decode($list['diagnosis'], true));
-                    $isDiagnosisJson = $this->isJson($appointment_last['diagnosis']);
+                    $isDiagnosisJson = $this->isJson($list['diagnosis']);
                     if ($isDiagnosisJson === true) {
-                        $summary['summarykey']['diagnosis'] = json_decode($appointment_last['diagnosis'], TRUE);
+                        $summary['summarykey']['diagnosis'] = json_decode($list['diagnosis'], TRUE);
+                        $summary['appointment']['data'][$key]['data']['diagnosis'] = json_decode($list['diagnosis'], TRUE);
                     }else{
                         $summary['summarykey']['diagnosis'] = '';
                     }
-                }else{
-                    $summary['appointment']['data'][$key]['data'][] = '';
                 }
                 
-                $summary['appointment']['data'][$key]['data'][] = $list['special_condition'];
+                $summary['appointment']['data'][$key]['data']['special_condition'] = $list['special_condition'];
 
                 // Get Prescription From Appointment id
                 $prescription = $this->model_appointment->getPrescription($list['id']);
@@ -511,7 +499,7 @@ class AppointmentController extends Controller
             $data['examination_notes_readonly'] = true;
         }*/
         $data['summary'] = $summary;
-
+//echo "<pre>"; print_r($data['summary']);exit;
         /*Render Blog edit view*/
         $this->response->setOutput($this->load->view('appointment/appointment_form', $data));
     }

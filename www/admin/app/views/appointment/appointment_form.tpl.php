@@ -282,6 +282,7 @@
                         </button>
                     </div>
                 </form>
+                <?php  //echo "<pre>"; print_r($result);exit; ?>
             </div>
             <?php if ($page_prescriptions) { ?>
                 <div class="tab-pane" id="appointment-prescription">
@@ -617,7 +618,7 @@
                                                             <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary">
                                                                 <?php foreach ($summary['appointment']['appointment_date'] as $key => $date) { ?>
                                                                     <li class="nav-item">
-                                                                        <a class="nav-link appointment-date <?php echo ($key == 0) ? 'active' : '' ?>" href="#past-appointment-<?php echo str_replace('-', '', $date) ?>" data-toggle="tab"><?php echo date_format(date_create($date), $common['info']['date_format']) ?></a>
+                                                                        <a class="nav-link appointment-date <?php echo ($key == 0) ? 'active' : '' ?>" href="#past-appointment-<?php echo str_replace('-', '', $date).'-'.$key ?>" data-toggle="tab"><?php echo date_format(date_create($date), $common['info']['date_format']) ?></a>
                                                                     </li>
                                                                 <?php } ?>
                                                             </ul>
@@ -630,7 +631,7 @@
                                                     <div class="col-md-12 pre-consultation-form">
                                                         <?php if (!empty($summary['appointment']['data'])) { ?>
                                                             <?php foreach ($summary['appointment']['data'] as $key => $list) { ?>
-                                                                <div class="examination-note-tab-pane<?php echo ($key == 0) ? ' active' : ''; ?>" id="past-appointment-<?php echo str_replace('-', '', $list['date']) ?>">
+                                                                <div class="examination-note-tab-pane<?php echo ($key == 0) ? ' active' : ''; ?>" id="past-appointment-<?php echo str_replace('-', '', $list['date']).'-'.$key ?>">
                                                                     <div class="table-responsive">
                                                                         <table class="table table-bordered">
                                                                             <thead>
@@ -646,9 +647,21 @@
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr class="medicine-row">
-                                                                                    <?php foreach ($list['data'] as $summry_key) { ?>
-                                                                                        <td><?php echo $summry_key ?></td>
-                                                                                    <?php } ?>
+                                                                                    
+                                                                                    <td><?php echo $list['data']['cct_right'] ?></td>
+                                                                                    <td><?php echo $list['data']['cct_left'] ?></td>
+                                                                                    <td><?php echo $list['data']['iop_right'] ?></td>
+                                                                                    <td><?php echo $list['data']['iop_left'] ?></td>
+                                                                                    <td><?php echo $list['data']['allergy'] ?></td>
+                                                                                    <td><?php 
+                                                                                    if(isset($list['data']['diagnosis'])){
+                                                                                        foreach ($list['data']['diagnosis'] as $key => $value) {
+                                                                                            echo "<b>".constant('OCULAR_EXAMINATION_DROP_DOWNS')['DIAGNOSIS_EYE'][$value['eye']] . "</b>: ".$value['name']."<br>";
+                                                                                        }
+                                                                                    }
+                                                                                    ?>
+                                                                                    </td>
+                                                                                    <td><?php echo $list['data']['special_condition'] ?></td>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
