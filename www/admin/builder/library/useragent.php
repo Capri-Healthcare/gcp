@@ -92,7 +92,8 @@ class Useragent {
 			'getmenulink',
 			'gppractices/search',
 			'appointment/updateAppintmentInfo',
-			'getdiagnosis'
+			'getdiagnosis',
+			'patient/export'
 		);
 
 		$this->permission = array_merge($this->permission, $extension);
