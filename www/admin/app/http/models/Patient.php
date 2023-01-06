@@ -139,7 +139,7 @@ class Patient extends Model
     public function checkPatientEmail($mail, $id = NULL)
     {
         if (!empty($id)) {
-            $query = $this->database->query("SELECT count(*) AS total FROM `" . DB_PREFIX . "patients` WHERE `email` = ? AND id != ?", array($this->database->escape($mail), (int)$id));
+            $query = $this->database->query("SELECT count(*) AS total, id FROM `" . DB_PREFIX . "patients` WHERE `email` = ? AND id != ?", array($this->database->escape($mail), (int)$id));
         } else {
             $query = $this->database->query("SELECT count(*) AS total ,id FROM `" . DB_PREFIX . "patients` WHERE `email` = ? ", array($this->database->escape($mail)));
         }
