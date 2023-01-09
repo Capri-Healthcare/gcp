@@ -1,7 +1,7 @@
 <?php include(DIR_ADMIN . 'app/views/common/header.tpl.php'); ?>
     <div class="page-title">
         <div class="row align-items-center">
-            <div class="col-sm-5">
+            <div class="col-sm-3">
                 <h2 class="page-title-text d-inline-block"><?php echo $page_title; ?></h2>
                 <div class="breadcrumbs d-inline-block">
                     <ul>
@@ -10,7 +10,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-7 text-right">
+            <div class="col-sm-9 text-right">
                 <div class="btn btn-white btn-sm text-left mr-2">
                     <i class="ti-filter text-danger pr-2"></i>
                     <input type="text" class="table-date-range">
@@ -32,12 +32,12 @@
                 </div>
                 <?php if ($page_add) { ?>
                     <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'optician-referral/add'; ?>"
-                       class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create Referral</a>
+                       class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create new referral</a>
                 <?php } ?>
                 <?php //if ($common['user']['role'] ==  constant('USER_ROLE_OPTOMETRIST')) { 
                     if (in_array($common['user']['role'],constant('USER_FOLLOWUP_MED_ROLE'))) {  ?>
                         <a href="<?php echo URL_ADMIN . DIR_ROUTE . 'follow-up/add'; ?>"
-                        class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create new followup</a>
+                        class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> Create followup</a>
                 <?php } ?>
             </div>
         </div>
