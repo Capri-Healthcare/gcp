@@ -320,7 +320,8 @@ class Patient extends Model
 
     public function getPatientByName($data, $role = null)
     {
-        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' OR lastname like '%" . $data . "%' LIMIT 15");
+        //$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE firstname like '%" . $data . "%' OR lastname like '%" . $data . "%' LIMIT 15");
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE concat(firstname, ' ', lastname) like '%" . $data . "%' LIMIT 15");
         return $query->rows;
     }
 
