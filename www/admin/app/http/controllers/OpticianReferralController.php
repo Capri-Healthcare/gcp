@@ -228,11 +228,11 @@ class OpticianReferralController extends Controller
         if (!empty($data['referral']['id'])) {
             $data['referral']['user_id'] = $this->session->data['user_id'];
 
-            $address['address1'] = $data['referral']['address_1'];
-            $address['address2'] = $data['referral']['address_2'];
-            $address['city'] = $data['referral']['city'];
-            $address['country'] = "";
-            $address['postal'] = $data['referral']['zip_code'];
+            //$address['address1'] = $data['referral']['address_1'];
+            //$address['address2'] = $data['referral']['address_2'];
+            //$address['city'] = $data['referral']['city'];
+            //$address['country'] = "";
+            //$address['postal'] = $data['referral']['zip_code'];
 
             if ($this->model_opticianreferral->updateOpticianReferral($data['referral'])) {
 

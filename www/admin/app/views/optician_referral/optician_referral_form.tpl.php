@@ -53,6 +53,31 @@
                                     </div>
                                 </div>
 
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label>Alternate Contact Number</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-prepend">-->
+<!--                                                <span class="input-group-text"><i class="ti-mobile"></i></span>-->
+<!--                                            </div>-->
+<!--                                            <input type="text" name="referral[office_phone]" class="form-control officephone" id="office_phone"-->
+<!--                                                   value="--><?php //echo isset($result['office_number'])?$result['office_number']:''; ?><!--" maxlength="11"-->
+<!--                                                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))" placeholder="Enter Alternate Contact Number . . . ">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>DOB <span class="form-required">*</span></label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                                            class="ti-calendar"></i></span></div>
+                                            <input type="text" name="referral[dob]" class="form-control dateofbirth"
+                                                   value="<?php echo isset($result['dob'])?$result['dob']:''; ?>"
+                                                   max="<?php echo date('Y-m-d') ?>" placeholder="dd-mm-yy" >
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Preferred Contact Number<span class="form-required">*</span></label>
@@ -68,120 +93,95 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Alternate Contact Number</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ti-mobile"></i></span>
-                                            </div>
-                                            <input type="text" name="referral[office_phone]" class="form-control officephone" id="office_phone"
-                                                   value="<?php echo isset($result['office_number'])?$result['office_number']:''; ?>" maxlength="11"
-                                                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))" placeholder="Enter Alternate Contact Number . . . ">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>DOB <span class="form-required">*</span></label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text"><i
-                                                            class="ti-calendar"></i></span></div>
-                                            <input type="text" name="referral[dob]" class="form-control dateofbirth"
-                                                   value="<?php echo isset($result['dob'])?$result['dob']:''; ?>"
-                                                   max="<?php echo date('Y-m-d') ?>" placeholder="dd-mm-yy" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text"><i
-                                                            class="ti-email"></i></span></div>
-                                            <input type="email" name="referral[email]" class="form-control"
-                                                   value="<?php echo isset($result['email'])?$result['email']:''; ?>" placeholder="Email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Gender</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                    class="ti-check-box"></i></span>
-                                            </div>
-                                            <select name="referral[gender]" class="custom-select">
-                                                <option value="" selected>Select Gender</option>
-                                                <option value="Male">Male
-                                                </option>
-                                                <option value="Female">Female
-                                                </option>
-                                                <option value="Other">Other
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label>Email</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-prepend"><span class="input-group-text"><i-->
+<!--                                                            class="ti-email"></i></span></div>-->
+<!--                                            <input type="email" name="referral[email]" class="form-control"-->
+<!--                                                   value="--><?php //echo isset($result['email'])?$result['email']:''; ?><!--" placeholder="Email">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label>Gender</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-prepend">-->
+<!--                                                        <span class="input-group-text"><i-->
+<!--                                                                    class="ti-check-box"></i></span>-->
+<!--                                            </div>-->
+<!--                                            <select name="referral[gender]" class="custom-select">-->
+<!--                                                <option value="" selected>Select Gender</option>-->
+<!--                                                <option value="Male">Male-->
+<!--                                                </option>-->
+<!--                                                <option value="Female">Female-->
+<!--                                                </option>-->
+<!--                                                <option value="Other">Other-->
+<!--                                                </option>-->
+<!--                                            </select>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
 
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Address 1</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                    class="ti-check-box"></i></span>
-                                            </div>
-                                            <textarea name="referral[address_1]" class="form-control"
-                                                      placeholder="Enter Address"
-                                                      row=3><?php echo isset($result['address1'])?$result['address1']:''; ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Address 2</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text"><i
-                                                            class="ti-check-box"></i></span></div>
-                                            <textarea name="referral[address_2]" class="form-control"
-                                                      placeholder="Enter Address"
-                                                      row=3><?php echo isset($result['address2'])?$result['address2']:''; ?></textarea>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>City</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text"><i
-                                                            class="ti-map-alt"></i></span></div>
-                                            <input type="text" name="referral[city]" class="form-control"
-                                                   value="<?php echo isset($result['city'])?$result['city']:''; ?>"
-                                                   placeholder="Enter City">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Post Code</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text"><i
-                                                            class="ti-pin"></i></span></div>
-                                            <input type="text" name="referral[zip_code]" maxlength="8"
-                                                   class="form-control"
-                                                   value="<?php echo isset($result['zip_code'])?$result['zip_code']:''; ?>"
-                                                   placeholder="Enter Post Code"
-                                                   onkeypress="return alphaNumericValidation(event)"
-                                            >
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label>Address 1</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-prepend">-->
+<!--                                                        <span class="input-group-text"><i-->
+<!--                                                                    class="ti-check-box"></i></span>-->
+<!--                                            </div>-->
+<!--                                            <textarea name="referral[address_1]" class="form-control"-->
+<!--                                                      placeholder="Enter Address"-->
+<!--                                                      row=3>--><?php //echo isset($result['address1'])?$result['address1']:''; ?><!--</textarea>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label>Address 2</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-prepend"><span class="input-group-text"><i-->
+<!--                                                            class="ti-check-box"></i></span></div>-->
+<!--                                            <textarea name="referral[address_2]" class="form-control"-->
+<!--                                                      placeholder="Enter Address"-->
+<!--                                                      row=3>--><?php //echo isset($result['address2'])?$result['address2']:''; ?><!--</textarea>-->
+<!---->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label>City</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-prepend"><span class="input-group-text"><i-->
+<!--                                                            class="ti-map-alt"></i></span></div>-->
+<!--                                            <input type="text" name="referral[city]" class="form-control"-->
+<!--                                                   value="--><?php //echo isset($result['city'])?$result['city']:''; ?><!--"-->
+<!--                                                   placeholder="Enter City">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label>Post Code</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-prepend"><span class="input-group-text"><i-->
+<!--                                                            class="ti-pin"></i></span></div>-->
+<!--                                            <input type="text" name="referral[zip_code]" maxlength="8"-->
+<!--                                                   class="form-control"-->
+<!--                                                   value="--><?php //echo isset($result['zip_code'])?$result['zip_code']:''; ?><!--"-->
+<!--                                                   placeholder="Enter Post Code"-->
+<!--                                                   onkeypress="return alphaNumericValidation(event)"-->
+<!--                                            >-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!---->
+<!--                            </div>-->
                             <div class="panel-footer text-center">
                                 <button type="submit" name="submit" class="btn btn-primary"><i
                                             class="ti-save-alt pr-2"></i> Next
