@@ -68,11 +68,8 @@
                                     </div>
 
                                     <div class="form-group main_box" id="register-goc-div">
-                                        <label for="register-goc-registration">GOC registrations <span class="error">*</span></label>
+                                        <label for="register-goc-registration">GOC registrations</label>
                                         <input type="text" class="form-control" name="optician_register_number" id="register-goc-registration" value="" autofocus>
-                                        <div class="invalid-feedback">
-                                            GOC registrations is invalid
-                                        </div>
                                     </div>
                                 </div>
                             </div>

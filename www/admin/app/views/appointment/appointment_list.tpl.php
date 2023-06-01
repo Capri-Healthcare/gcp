@@ -97,11 +97,11 @@
                                             <a class="text-primary edit dropdown-toggle" data-toggle="dropdown"><i class="ti-more"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right export-button">
                                                 <?php if ($page_view) { ?>
-                                                    <li><a class="pageview<?php echo $key+1?>" href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/view&id='.$value['id'];?>"><i class="ti-layout-media-center-alt pr-2"></i>View</a></li>
+                                                    <li><a target="_blank" class="pageview<?php echo $key+1?>" href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/view&id='.$value['id'];?>"><i class="ti-layout-media-center-alt pr-2"></i>View</a></li>
                                                 <?php } if ($page_edit) { ?>
-                                                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/edit&id='.$value['id'];?>"><i class="ti-pencil-alt pr-2"></i>Edit</a></li>
+                                                    <li><a target="_blank" href="<?php echo URL_ADMIN.DIR_ROUTE.'appointment/edit&id='.$value['id'];?>"><i class="ti-pencil-alt pr-2"></i>Edit</a></li>
                                                 <?php } if (!empty($value['invoice_id']) && $invoice_view) { ?>
-                                                    <li><a href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$value['invoice_id'];?>"><i class="ti-receipt pr-2"></i>View Invoice</a></li>
+                                                    <li><a target="_blank" href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/view&id='.$value['invoice_id'];?>"><i class="ti-receipt pr-2"></i>View Invoice</a></li>
                                                 <?php } elseif (empty($value['invoice_id']) && $invoice_add) { ?>
                                                     <li><a target="_blank" href="<?php echo URL_ADMIN.DIR_ROUTE.'invoice/add&appointment='.$value['id'];?>"><i class="ti-receipt pr-2"></i>Generate Invoice</a></li>
                                                 <?php } ?>

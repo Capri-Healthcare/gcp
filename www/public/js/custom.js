@@ -442,12 +442,7 @@ $(document).ready(function () {
                 $('#register-optician-practice-name').addClass('is-invalid');
                 clck_invld = 1;
                 $('#register-optician-practice-name').focus();
-            }
-            if ($('#register-goc-registration').val().trim().length < 2) {
-                $('#register-goc-registration').addClass('is-invalid');
-                clck_invld = 1;
-                $('#register-goc-registration').focus();
-            }
+            } 
             if ($('#register-user-name').val().trim().length < 2) {
                 $('#register-user-name').addClass('is-invalid');
                 clck_invld = 1;

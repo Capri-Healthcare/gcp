@@ -224,4 +224,13 @@ class Invoice extends Model
         $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "payments` WHERE id = ?", array((int)$id));
         return $query->row;
     }
+
+    public function isInvoiceCreatedWithThisAppointment($appointment_id){
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "appointments` WHERE id = ? AND invoice_id IS NOT NULL LIMIT 1", array((int)$appointment_id));
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

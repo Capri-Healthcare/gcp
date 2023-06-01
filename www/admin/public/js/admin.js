@@ -720,7 +720,7 @@
 
     var dataTable = $('.datatable-table').dataTable({
         aLengthMenu: [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
-        iDisplayLength: 10,
+        iDisplayLength: 25,
         pagingType: 'full_numbers',
         order: [],
         dom: "<'row align-items-center pb-3'<'col-sm-6 text-left'l><'col-sm-6 text-right'f>><'row'<'col-sm-12'tr>><'row align-items-center pt-3'<'col-sm-12 col-md-4'i><'col-sm-12 col-md-8 text-right dataTables_pager'p>>",

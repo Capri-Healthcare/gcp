@@ -143,6 +143,11 @@ class InvoiceController extends Controller
         $data['taxes'] = $this->model_invoice->getTaxes();
 
         if ($this->url->get('appointment')) {
+            //  Check if invoice exit 
+            if ($this->model_invoice->isInvoiceCreatedWithThisAppointment($this->url->get('appointment'))) {
+                $this->session->data['message'] = array('alert' => 'warning', 'value' => 'Invoice already created with this appointment!');
+            }
+
             $data['result'] = NULL;
             $data['result'] = $this->model_invoice->getAppointmentData($this->url->get('appointment'));
             $data['result']['duedate'] = NULL;
@@ -164,6 +169,7 @@ class InvoiceController extends Controller
             $data['result']['note'] = NULL;
             $data['result']['tc'] = NULL;
             $data['result']['id'] = NULL;
+
         } else {
             $data['result'] = NULL;
         }
