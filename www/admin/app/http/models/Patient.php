@@ -28,7 +28,7 @@ class Patient extends Model
 				$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE status = 1 ORDER BY `date_of_joining` DESC");
             return $query->rows;
         }*/
-		$query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients`  ORDER BY `date_of_joining` DESC");
+        $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients`  ORDER BY `date_of_joining` DESC");
         return $query->rows;
     }
 
@@ -47,8 +47,8 @@ class Patient extends Model
             $query = $this->database->query("SELECT *, TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age FROM `" . DB_PREFIX . "patients` WHERE `id` = ? ORDER BY `date_of_joining` DESC", array($id));
             return $query->row;
         }*/
-		$query = $this->database->query("SELECT *, TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age FROM `" . DB_PREFIX . "patients` WHERE `id` = ? ORDER BY `date_of_joining` DESC", array($id));
-            return $query->row;
+        $query = $this->database->query("SELECT *, TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age FROM `" . DB_PREFIX . "patients` WHERE `id` = ? ORDER BY `date_of_joining` DESC", array($id));
+        return $query->row;
     }
 
     public function getPatientDoctorIDs($doctor)
@@ -120,13 +120,13 @@ class Patient extends Model
     public function checkPatientForDuplicate($data, $id = NULL)
     {
         if (!empty($id)) {
-            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ? AND id != ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape(date("Y-m-d", strtotime($data['dob']))), (int)$id));
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ? AND id != ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $this->database->escape(date("Y-m-d", strtotime($data['dob']))), (int)$id));
         } else {
             //echo sprintf("SELECT * FROM `" . DB_PREFIX . "patients` p WHERE `firstname` = %s AND `lastname` = %s AND `dob` = %s", $this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape(date("Y-m-d", strtotime($data['dob']))));
-            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` p WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']),$this->database->escape(date("Y-m-d", strtotime($data['dob']))) ));
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` p WHERE `firstname` = ? AND `lastname` = ? AND `dob` = ?", array($this->database->escape($data['firstname']), $this->database->escape($data['lastname']), $this->database->escape(date("Y-m-d", strtotime($data['dob'])))));
         }
         if ($query->num_rows > 0) {
-            if(isset($data['return_type']) AND $data['return_type'] == 'record'){
+            if (isset($data['return_type']) and $data['return_type'] == 'record') {
                 return $query->row;
             } else {
                 return true;
@@ -153,13 +153,13 @@ class Patient extends Model
     public function createPatient($data)
     {
 
-        $required_kets = ['title', 'firstname', 'lastname', 'dob', 'gender', 'nhs_patient_number', 'mail', 'mobile', 'office_phone', 
-            'gp_name', 'gp_practice', 'gp_address', 'gp_postal_code', 'gp_email', 'optician_name', 'optician_email', 'optician_address', 
+        $required_kets = ['title', 'firstname', 'lastname', 'dob', 'gender', 'nhs_patient_number', 'mail', 'mobile', 'office_phone',
+            'gp_name', 'gp_practice', 'gp_address', 'gp_postal_code', 'gp_email', 'optician_name', 'optician_email', 'optician_address',
             'address', 'history', 'other', 'hash', 'user_id', 'hospital_code', 'office_number'];
-        foreach($required_kets as $key){
-            $data[$key] = isset($data[$key]) ? $data[$key] : '';    
+        foreach ($required_kets as $key) {
+            $data[$key] = isset($data[$key]) ? $data[$key] : '';
         }
-        
+
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (
             `title`, `firstname`, `lastname`, `dob`, 
             `gender`, `nhs_patient_number`, `email`, `mobile`,
@@ -177,16 +177,16 @@ class Patient extends Model
             ?, ?, ?,
             ?, 
             ?, ?,
-            ?, ?, ?, ?, ?)", 
-        array(
-            $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), date("Y-m-d", strtotime($data['dob'])), 
-            $data['gender'], $data['nhs_patient_number'], $data['mail'], $data['mobile'], 
-            $data['office_number'], 
-            $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['gp_postal_code'], $data['gp_email'], 
-            $data['optician_name'], $data['optician_email'], $data['optician_address'], 
-            $data['address'], 
-            $data['history'], $data['other'], 
-            $data['hash'], $data['user_id'],$data['hospital_code'], date('Y-m-d H:i:s'), 1)
+            ?, ?, ?, ?, ?)",
+            array(
+                $data['title'], ucfirst($data['firstname']), ucfirst($data['lastname']), date("Y-m-d", strtotime($data['dob'])),
+                $data['gender'], $data['nhs_patient_number'], $data['mail'], $data['mobile'],
+                $data['office_number'],
+                $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['gp_postal_code'], $data['gp_email'],
+                $data['optician_name'], $data['optician_email'], $data['optician_address'],
+                $data['address'],
+                $data['history'], $data['other'],
+                $data['hash'], $data['user_id'], $data['hospital_code'], date('Y-m-d H:i:s'), 1)
         );
 
         if ($this->database->error()) {
@@ -226,7 +226,7 @@ class Patient extends Model
                 $data['gp_name'],
                 $data['gp_practice'],
                 $data['gp_address'],
-                $data['gp_postal_code'],                
+                $data['gp_postal_code'],
                 $data['gp_email'],
                 $data['history'],
                 $data['other'],
@@ -237,9 +237,9 @@ class Patient extends Model
                 isset($data['membership_number']) ? $data['membership_number'] : '',
                 isset($data['scheme_name']) ? $data['scheme_name'] : '',
                 isset($data['authorisation_number']) ? $data['authorisation_number'] : '',
-                isset($data['authorisation_number']) ? $data['authorisation_number']:null,
-                isset($data['corporate_company_scheme']) ? $data['corporate_company_scheme']:null,
-                isset($data['employer']) ? $this->database->escape($data['employer']):null,
+                isset($data['authorisation_number']) ? $data['authorisation_number'] : null,
+                isset($data['corporate_company_scheme']) ? $data['corporate_company_scheme'] : null,
+                isset($data['employer']) ? $this->database->escape($data['employer']) : null,
                 isset($data['optician_name']) ? $data['optician_name'] : '',
                 isset($data['optician_email']) ? $data['optician_email'] : '',
                 isset($data['optician_address']) ? $data['optician_address'] : '',
@@ -263,7 +263,7 @@ class Patient extends Model
 
     public function updatePatientFromReferral($data)
     {
-        
+
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET
          `title` = ?, `firstname` = ?, `lastname` = ?, `email` = ?,
          `mobile` = ?,`office_number` = ?, `dob` = ?, `gender` = ?,
@@ -286,14 +286,15 @@ class Patient extends Model
                 isset($data['hospital_code']) ? $data['hospital_code'] : '',
                 (int)$data['id']));
 
-                if ($this->database->error()) {
-                    echo $this->database->error();
-                    print_r($data);exit;
-                    return false;
-                } else {
-                    return $this->database->last_id();
-                }
-                
+        if ($this->database->error()) {
+            echo $this->database->error();
+            print_r($data);
+            exit;
+            return false;
+        } else {
+            return $this->database->last_id();
+        }
+
 
     }
 
@@ -382,27 +383,69 @@ class Patient extends Model
 
     public function gpPractice($data)
     {
-        if(!empty($data['gp_practice'])){
-            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "gp_practice` WHERE `gp_practice_name` = ?",array($data['gp_practice']));
+        if (!empty($data['gp_practice'])) {
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "gp_practice` WHERE `gp_practice_name` = ?", array($data['gp_practice']));
 
             if ($query->num_rows > 0) {
                 return $query->row['id'];
             } else {
-                $this->database->query("INSERT INTO `" . DB_PREFIX . "gp_practice` (`gp_practice_name`, `gp_name`,`gp_email`,`address`,`gp_postcode`, `is_active`) VALUES(?,?,?,?,?)", array($data['gp_practice'], $data['gp_name'],$data['gp_email'],$data['gp_address'],$data['gp_postal_code'],'Y'));
+                $this->database->query("INSERT INTO `" . DB_PREFIX . "gp_practice` (`gp_practice_name`, `gp_name`,`gp_email`,`address`,`gp_postcode`, `is_active`) VALUES(?,?,?,?,?)", array($data['gp_practice'], $data['gp_name'], $data['gp_email'], $data['gp_address'], $data['gp_postal_code'], 'Y'));
                 return $this->database->last_id();
             }
         }
         return 0;
     }
 
-    public function isPatientReferredByOptician($id){
-        if(!empty($id)){
-            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "referral_list` WHERE `patient_id` = ?",array($id));
+    public function isPatientReferredByOptician($id)
+    {
+        if (!empty($id)) {
+            $query = $this->database->query("SELECT * FROM `" . DB_PREFIX . "referral_list` WHERE `patient_id` = ?", array($id));
 
             if ($query->num_rows > 0) {
                 return FALSE;
             }
         }
         return TRUE;
+    }
+
+    public function getDuplicatePatient()
+    {
+        $query = $this->database->query("SELECT `firstname`, `lastname`, `dob`, COUNT(*)
+ AS total_patient, GROUP_CONCAT(id)
+ AS ids  FROM `kk_patients` GROUP BY `firstname`, `lastname`, `dob` HAVING total_patient > 1");
+        return $query->rows;
+    }
+
+    public function checkDuplicatePatientByIds($patient_ids)
+    {
+        $query = $this->database->query("SELECT `firstname`, `lastname`, `dob`, COUNT(*)
+ AS total_patient, GROUP_CONCAT(id)
+ AS ids  FROM `kk_patients` WHERE `id` IN (" . $patient_ids . ") GROUP BY `firstname`, `lastname`, `dob` HAVING total_patient > 1");
+
+        if (count($query->rows) != 0) {
+            $update_patient_id = explode(',',$patient_ids);
+
+            $this->database->query("UPDATE `kk_appointments` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_appointment_notes` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_appointments` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_followup_appointment` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_invoice` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_medicine_bill` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_opt_invoice` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_patient_doctor` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_payments` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_prescription` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_referral_list` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_reports` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_request` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+            $this->database->query("UPDATE `kk_video_consultation_session` SET patient_id = ? WHERE `patient_id` IN (" . $patient_ids . ")",array($update_patient_id[0]));
+
+            array_shift($update_patient_id);
+
+            $this->database->query("DELETE FROM `kk_patients` WHERE id IN (" .implode(',',$update_patient_id) . ")");
+
+            return true;
+        }
+        return false;
     }
 }

@@ -49,12 +49,37 @@ class PatientController extends Controller
         $data['page_add'] = $this->user_agent->hasPermission('patient/add') ? true : false;
         $data['page_edit'] = $this->user_agent->hasPermission('patient/edit') ? true : false;
         $data['page_delete'] = $this->user_agent->hasPermission('patient/delete') ? true : false;
-
+        $data['duplicate_patients'] = $this->model_patient->getDuplicatePatient();
         $data['token'] = hash('sha512', TOKEN . TOKEN_SALT);
         $data['action_delete'] = URL_ADMIN . DIR_ROUTE . 'patient/delete';
 
         /*Render User list view*/
         $this->response->setOutput($this->load->view('patient/patient_list', $data));
+    }
+
+    public function duplicatePatient(){
+        $this->load->model('commons');
+        $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
+        $this->load->model('patient');
+        /* Set page title */
+        $data['page_title'] = 'Duplicate Patients';
+        $data['duplicate_patients'] = $this->model_patient->getDuplicatePatient();
+        /*Render User list view*/
+        $this->response->setOutput($this->load->view('patient/patient_duplicate', $data));
+    }
+    public function mergePatient(){
+        $ids = $this->url->get('id');
+
+        if(empty($ids)){
+            $this->url->redirect('patients');
+        }
+        $this->load->model('patient');
+        if($this->model_patient->checkDuplicatePatientByIds($ids)){
+            $this->session->data['message'] = array('alert' => 'success', 'value' => 'Duplicate Patient Merge  successfully.');
+        }else{
+            $this->session->data['message'] = array('alert' => 'error', 'value' => 'NO Duplicate Patient found.!');
+        }
+        $this->url->redirect('patients');
     }
 
     public function indexView()

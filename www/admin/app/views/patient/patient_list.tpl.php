@@ -27,6 +27,7 @@
 			</div-->
 			<?php if ($page_add) { ?>
 				<a href="<?php echo URL_ADMIN.DIR_ROUTE.'patient/add'; ?>" class="btn btn-primary btn-sm"><i class="ti-plus pr-2"></i> New Patient</a>
+                <a href="<?php echo (count($duplicate_patients) != 0) ? URL_ADMIN.DIR_ROUTE.'patient/duplicate':"#"; ?>" class="btn btn-primary btn-sm">(<?php echo count($duplicate_patients)?>) Duplicate Patient</a>
 			<?php } ?>
 		</div>
 	</div>

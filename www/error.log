@@ -61,3 +61,5 @@ Stack trace:
   thrown in D:\xampp_7_4_27\htdocs\gcp\www\builder\core\action.php on line 16
 [14-Jun-2022 14:00:16 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
 [14-Jun-2022 14:00:16 Europe/London] PHP Notice:  Trying to access array offset on value of type null in D:\xampp_7_4_27\htdocs\gcp\www\app\http\controllers\ErrorController.php on line 43
+[07-Oct-2022 15:33:37 Europe/Moscow] PHP Warning:  require_once(D:/OSPanel/domains/Capri/gcp/www/builder/core/controller.php): failed to open stream: No such file or directory in D:\OpenServer\domains\tiez\capripvt.tiez.net\www\builder\startup.php on line 56
+[07-Oct-2022 15:33:37 Europe/Moscow] PHP Fatal error:  require_once(): Failed opening required 'D:/OSPanel/domains/Capri/gcp/www/builder/core/controller.php' (include_path='.') in D:\OpenServer\domains\tiez\capripvt.tiez.net\www\builder\startup.php on line 56
