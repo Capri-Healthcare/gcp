@@ -649,7 +649,7 @@ $(document).ready(function () {
                         '<div class="report-delete" data-toggle="tooltip" title="" data-original-title="Delete"><a class="fas fa-times"></a></div>' +
                         '<input type="hidden" name="image_name" value="' + response.name + '">' +
                         '</div>');
-                    toastr.success('Uploaded Succefully', 'Image uploaded Succefully.');
+                    toastr.success('Uploaded successfully', 'Image uploaded successfully.');
                 } else {
                     toastr.error('Upload Error', response.message);
                 }
@@ -711,7 +711,7 @@ $(document).ready(function () {
                         '<input type="hidden" name="report_name" id="report_name" value="' + response.name + '">' +
                         '</div>');
 
-                    toastr.success('Uploaded Succefully', 'Document uploaded Succefully.');
+                    toastr.success('Uploaded successfully', 'Document uploaded successfully.');
                 } else {
                     toastr.error('Upload Error', response.message);
                 }
@@ -748,7 +748,7 @@ $(document).ready(function () {
                 toastr.error('Error', 'File could not be deleted. Please try again...');
             },
             success: function (data) {
-                toastr.success('Success', 'File Deleted Succefully.');
+                toastr.success('Success', 'File Deleted successfully.');
                 $('#report-delete-div-' + id).remove();
             }
         });
@@ -771,7 +771,7 @@ $(document).ready(function () {
                 toastr.error('Error', 'File could not be deleted. Please try again...');
             },
             success: function (data) {
-                toastr.success('Success', 'File Deleted Succefully.');
+                toastr.success('Success', 'File Deleted successfully.');
             }
         });
     }

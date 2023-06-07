@@ -29,7 +29,7 @@
             toastr.error('Error', 'Doctor address not save. Please try again...');
         },
         success: function(data) {
-            toastr.success('', 'Doctor address succefully saved.');
+            toastr.success('', 'Doctor address successfully saved.');
             $('#frmDoctorAddress')[0].reset();
             $('#list-of-address').html(data);
         }

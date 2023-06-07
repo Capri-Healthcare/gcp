@@ -2035,7 +2035,7 @@
             success: function(data) {
                 var jsonData = JSON.stringify(data);
                 console.log(jsonData.message);
-                toastr.success('', 'Appointment succefully saved.');
+                toastr.success('', 'Appointment successfully saved.');
             }
         });
         return false;

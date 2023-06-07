@@ -273,7 +273,7 @@ var tabtitle;
                 toastr.error('Error', 'Clinical note not save. Please try again...');
             },
             success: function(data) {
-                toastr.success('', 'Clinical note succefully saved.');
+                toastr.success('', 'Clinical note successfully saved.');
             }
         });
     } 
@@ -287,7 +287,7 @@ var tabtitle;
                 toastr.error('Error', 'Prescription not save. Please try again...');
             },
             success: function(data) {
-                toastr.success('', 'Prescription succefully saved.');
+                toastr.success('', 'Prescription successfully saved.');
             }
         });
     });
@@ -307,7 +307,7 @@ var tabtitle;
                 toastr.error('Error', 'Examination forms not save. Please try again...');
             },
             success: function(data) {
-                toastr.success('', 'Examination forms succefully saved.');
+                toastr.success('', 'Examination forms successfully saved.');
             }
         });
     });

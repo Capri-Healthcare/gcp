@@ -204,7 +204,7 @@
                 var response = JSON.parse(xhr);
                 if (response.error === false) {
                     $('.media-all').prepend(response.media);
-                    toastr.success('Uploaded Succefully', 'Report uploaded Succefully.');
+                    toastr.success('Uploaded successfully', 'Report uploaded successfully.');
                 } else {
                     toastr.error('Error', response.message);
                 }
@@ -245,7 +245,7 @@
                 response = JSON.parse(response);
                 if (response.error === false) {
                     ele.parents('.media-all-block').remove();
-                    toastr.success('Deleted', 'File deleted Succefully.');
+                    toastr.success('Deleted', 'File deleted successfully.');
                 } else {
                     toastr.success('Wanrning', 'File could not be deleted!.');
                 }
@@ -270,7 +270,7 @@
                 toastr.error('Error', 'File could not be deleted. Please try again...');
             },
             success: function(data) {
-                toastr.success('', 'File Deleted Succefully.');
+                toastr.success('', 'File Deleted successfully.');
 				$('#report-delete-div-'+report_id).remove();
             }
         });
@@ -286,7 +286,7 @@
                  toastr.error('Error', 'File could not be deleted. Please try again...');
              },
              success: function(data) {
-                 toastr.success('', 'File Deleted Succefully.');
+                 toastr.success('', 'File Deleted successfully.');
                  $('#report-delete-div-'+id).remove();
              }
          });
@@ -301,7 +301,7 @@
                  toastr.error('Error', 'File could not be deleted. Please try again...');
              },
              success: function(data) {
-                 toastr.success('', 'File Deleted Succefully.');
+                 toastr.success('', 'File Deleted successfully.');
                  $('#report-delete-div-'+id).remove();
              }
          });
@@ -317,7 +317,7 @@
                 toastr.error('Error', 'File could not be moved. Please try again...');
             },
             success: function(data) {
-                toastr.success('', 'File Moved Succefully.');
+                toastr.success('', 'File Moved successfully.');
 				
 				$('#move-image-to-report-div-'+image_id).remove();
             }
@@ -395,7 +395,7 @@
                                 '</div>');
                         }
                     }
-                    toastr.success('Uploaded Succefully', 'Report uploaded successfully.');
+                    toastr.success('Uploaded successfully', 'Report uploaded successfully.');
                 } else {
                     toastr.error('Upload Error', response.message);
                 }
@@ -472,7 +472,7 @@
                              '</div>');
                      }
                      location.reload()
-                     toastr.success('Uploaded Succefully', ' Document uploaded successfully');
+                     toastr.success('Uploaded successfully', ' Document uploaded successfully');
 
                  } else {
                      toastr.error('Upload Error', response.message);
@@ -547,7 +547,7 @@
                              '<input type="hidden" name="report_name" value="'+response.name+'">'+
                              '</div>');
                      }
-                     toastr.success('Uploaded Succefully', 'Document uploaded successfully');
+                     toastr.success('Uploaded successfully', 'Document uploaded successfully');
                  } else {
                      toastr.error('Upload Error', response.message);
                  }

@@ -15,7 +15,7 @@ class LoginController extends Controller
 
         if(isset($_GET['optician_register']))
         {
-            $this->session->data['success'] = 'Account created succefully, check your mail for more info.';
+            $this->session->data['success'] = 'Account created successfully, check your mail for more info.';
         }
 
 		if (isset($this->session->data['success'])) {

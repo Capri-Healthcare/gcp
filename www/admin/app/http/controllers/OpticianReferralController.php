@@ -314,12 +314,12 @@ class OpticianReferralController extends Controller
                 $this->url->redirect('optician-referral');
             }
 
-            $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
-            $patient_id = $patient['id'];
-            if (!empty($patient_id)) {
-                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Email  \'' . $data['referral']['email'] . '\'  already exist in database.');
-                $this->url->redirect('optician-referral');
-            }
+//            $patient = $this->model_patient->checkPatientEmail($data['referral']['email']);
+//            $patient_id = $patient['id'];
+//            if (!empty($patient_id)) {
+//                $this->session->data['message'] = array('alert' => 'error', 'value' => 'Email  \'' . $data['referral']['email'] . '\'  already exist in database.');
+//                $this->url->redirect('optician-referral');
+//            }
             
             $data['referral']['user_id'] = $this->session->data['user_id'];
             $opticianID = $this->model_opticianreferral->createOpticianReferral($data['referral']);
