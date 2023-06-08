@@ -72,43 +72,43 @@
                                         <td>Last Name</td>
                                         <td class="text-dark"><?php echo $result['last_name']; ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>Gender</td>
-                                        <td class="text-dark"><?php echo $result['gender']; ?></td>
-                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td>Gender</td>-->
+<!--                                        <td class="text-dark">--><?php //echo $result['gender']; ?><!--</td>-->
+<!--                                    </tr>-->
                                     <tr>
                                         <td>Preferred Contact Number</td>
                                         <td class="text-dark"><?php echo $result['mobile']; ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>Alternate Contact Number</td>
-                                        <td class="text-dark"><?php echo $result['office_phone']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Email</td>
-                                        <td class="text-dark"><?php echo $result['email']; ?></td>
-                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td>Alternate Contact Number</td>-->
+<!--                                        <td class="text-dark">--><?php //echo $result['office_phone']; ?><!--</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>Email</td>-->
+<!--                                        <td class="text-dark">--><?php //echo $result['email']; ?><!--</td>-->
+<!--                                    </tr>-->
                                     <tr>
                                         <td>Date of Birth</td>
                                         <td class="text-dark"><?php echo date_format(date_create($result['dob']), $common['info']['date_format']); ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>Address 1</td>
-                                        <td class="text-dark"><?php echo $result['address1']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Address 2</td>
-                                        <td class="text-dark"><?php echo $result['address2']; ?></td>
-                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td>Address 1</td>-->
+<!--                                        <td class="text-dark">--><?php //echo $result['address1']; ?><!--</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>Address 2</td>-->
+<!--                                        <td class="text-dark">--><?php //echo $result['address2']; ?><!--</td>-->
+<!--                                    </tr>-->
 
-                                    <tr>
-                                        <td>City</td>
-                                        <td class="text-dark"><?php echo $result['city'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Post Code</td>
-                                        <td><?php echo $result['zip_code']; ?></td>
-                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td>City</td>-->
+<!--                                        <td class="text-dark">--><?php //echo $result['city'];?><!--</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>Post Code</td>-->
+<!--                                        <td>--><?php //echo $result['zip_code']; ?><!--</td>-->
+<!--                                    </tr>-->
                                     <tr>
                                         <td>Status</td>
                                         <td><?php echo constant('STATUS')[$result['status']]; ?></td>
