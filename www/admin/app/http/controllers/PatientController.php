@@ -658,6 +658,7 @@ class PatientController extends Controller
             $error_flag = true;
             $error['email'] = 'Email Address';
         }
+        
         if (!empty($data['dob'])) {
             if ($this->controller_common->validateDate($data['dob'], $data['info']['date_format'])) {
                 $error_flag = true;

@@ -390,38 +390,70 @@
                         
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Optician / Third Party Name</label>
+                                    <label>Optician Name</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-user"></i></span>
                                         </div>
-                                        <input type="text" name="patient[optician_name]" class="form-control" value="<?php echo $result['optician_name']; ?>" placeholder="Optician Name" id="optician_name">
+                                        <input type="text" name="patient[optician_name]" class="form-control" value="<?php echo $result['optician_name'] ?? null; ?>" placeholder="Optician Name" id="optician_name">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Optician / Third Party Email</label>
+                                    <label>Optician Email</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-email"></i></span>
                                         </div>
-                                        <input type="email" name="patient[optician_email]" class="form-control" value="<?php echo $result['optician_email']; ?>" placeholder="Optician Email" id="optician_email">
+                                        <input type="email" name="patient[optician_email]" class="form-control" value="<?php echo $result['optician_email'] ?? null; ?>" placeholder="Optician Email" id="optician_email">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Optician / Third Party Address</label>
+                                    <label>Optician  Address</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-email"></i></span>
                                         </div>
-                                        <input type="text" name="patient[optician_address]" class="form-control" value="<?php echo $result['optician_address']; ?>" placeholder="Optician address" id="optician_address">
+                                        <input type="text" name="patient[optician_address]" class="form-control" value="<?php echo $result['optician_address'] ?? null; ?>" placeholder="Optician address" id="optician_address">
                                     </div>
                                 </div>
                             </div>
-
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Third Party Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-user"></i></span>
+                                    </div>
+                                    <input type="text" name="patient[third_party_name]" class="form-control" value="<?php echo $result['third_party_name'] ?? null; ?>" placeholder="Third Party Name" id="third_party_name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Third Party Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-email"></i></span>
+                                    </div>
+                                    <input type="email" name="patient[third_party_email]" class="form-control" value="<?php echo $result['third_party_email'] ?? null; ?>" placeholder="Third Party Email" id="third_party_email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Third Party Address</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-email"></i></span>
+                                    </div>
+                                    <input type="text" name="patient[third_party_address]" class="form-control" value="<?php echo $result['third_party_address'] ?? null; ?>" placeholder="Third Party Address" id="third_party_address">
+                                </div>
+                            </div>
+                        </div>
                         <!--                            <div class="col-md-6" style="--><?php //echo (in_array($common['user']['role'],[constant('USER_ROLE_MERC'),constant('USER_ROLE_DOCTOR')])) ?'display:block':'visibility:hidden'
                                                                                         ?>
                         <!--">-->

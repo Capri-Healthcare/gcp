@@ -24,10 +24,11 @@ class Appointment extends Model
 
     public function getAppointment($id, $doctor = NULL)
     {
+
         if ($doctor == NULL) {
-            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.gp_postal_code, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.gp_postal_code, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email,pt.third_party_name,pt.third_party_email,pt.third_party_address FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' LIMIT 1");
         } else {
-            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.gp_postal_code,pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.gp_postal_code,pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email,pt.third_party_name,pt.third_party_email,pt.third_party_address FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
         }
 
         if ($query->num_rows > 0) {
@@ -664,7 +665,7 @@ class Appointment extends Model
     }
 
     
-    public function generateToOptomOrThirdPartyDoc($appointment_id, $action)
+    public function generateToOptomOrThirdPartyDoc($doc_type="to_optom",$appointment_id, $action)
     {
 
         $appointment = $this->getAppointment($appointment_id);
@@ -701,11 +702,16 @@ class Appointment extends Model
 
         //$body .= "<br>". $appointment['referee_address'];
         $body .= "<br><br>";
-        $body .= ucfirst($appointment['referee_name']);
+        if($doc_type == 'third_party'){
+            $body .= ucfirst($appointment['third_party_name']);
+        }else{
+            $body .= ucfirst($appointment['referee_name']);
+        }
         if(strpos($appointment['referee_address'], ",") === false ){
 
         } else {
-            foreach(explode(",", $appointment['referee_address']) AS $key => $address) {
+
+            foreach(explode(",", $doc_type == 'third_party' ? $appointment['third_party_address']:$appointment['referee_address']) AS $key => $address) {
                 $body .= "<br>". $address;
             }
         }
