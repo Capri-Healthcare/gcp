@@ -664,7 +664,7 @@ class Appointment extends Model
         return $query->rows;
     }
 
-    
+     
     public function generateToOptomOrThirdPartyDoc($doc_type="to_optom",$appointment_id, $action)
     {
 
@@ -720,7 +720,13 @@ class Appointment extends Model
         " . constant('APPOINTMENT_SIDE_BAR') . " 
         </td></tr></table>";
         
-        $optician_first_name_arr = explode(" ", strtolower($appointment['referee_name']));
+        if($doc_type == 'third_party'){
+            $optician_first_name_arr = explode(" ", strtolower($appointment['third_party_name']));
+        }else{
+            $optician_first_name_arr = explode(" ", strtolower($appointment['referee_name']));
+        }
+        
+
         if(in_array($optician_first_name_arr[0], ['mr.', 'mrs.', 'ms.', 'miss.', 'mr', 'mrs', 'ms', 'miss'])){
             $optician_first_name = ucfirst(strtolower($optician_first_name_arr[1]));
         } else {
