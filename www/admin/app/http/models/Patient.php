@@ -197,7 +197,32 @@ class Patient extends Model
             return $this->database->last_id();
         }
     }
+    public function createPatientFromReferral($data)
+    {
 
+
+        $required_kets = ['firstname', 'lastname', 'dob', 'mobile', 'optician_address','user_id', 'hospital_code'];
+        foreach ($required_kets as $key) {
+            $data[$key] = isset($data[$key]) ? $data[$key] : '';
+        }
+
+        $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (
+            `firstname`, `lastname`, `dob`,  `mobile`, `optician_address`,
+            `user_id`, `hospital_code`) 
+        VALUES (
+            ?, ?, ?, ?,
+            ?, ?,?)",
+            array(
+               ucfirst($data['firstname']), ucfirst($data['lastname']), date("Y-m-d", strtotime($data['dob'])),
+                 $data['mobile'], $data['optician_address'], $data['user_id'], $data['hospital_code'])
+        );
+
+        if ($this->database->error()) {
+            return false;
+        } else {
+            return $this->database->last_id();
+        }
+    }
     public function createPatientDoctor($data)
     {
         $this->database->query("INSERT INTO `" . DB_PREFIX . "patient_doctor` (`patient_id`, `doctor_id`, `user_id`) VALUES (?, ?, ?)", array($data['id'], $data['user']['doctor'], $data['user']['user_id']));

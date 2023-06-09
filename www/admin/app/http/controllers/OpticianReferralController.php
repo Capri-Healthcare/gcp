@@ -254,24 +254,17 @@ class OpticianReferralController extends Controller
 
                     $patient_data['firstname'] = $data['referral']['first_name'];
                     $patient_data['lastname'] = $data['referral']['last_name'];
-                    $patient_data['mail'] = $data['referral']['email'];
                     $patient_data['mobile'] = $data['referral']['mobile'];
-                    $patient_data['office_number'] = $data['referral']['office_phone'];
-                    $patient_data['address'] = json_encode($address);
-                    $patient_data['gender'] = $data['referral']['gender'];
                     $patient_data['dob'] = $data['referral']['dob'];
                     $patient_data['user_id'] = $data['referral']['user_id'];
-                    $patient_data['title'] = "";
-                    $patient_data['hash'] = $data['referral']['user_id'];
-                    $patient_data['optician_name'] = $optician_user['firstname'] . ' ' . $optician_user['lastname'];
-                    $patient_data['optician_email'] = $optician_user['email'];
                     $patient_data['optician_address'] = $optician_user_address_for_save;
                     $patient_data['hospital_code'] = $data['referral']['hospital_code'] == null ? null : $data['referral']['hospital_code'];
                     $patient_data['datetime'] = date('Y-m-d H:s:a');
 
+
                     if (empty($patient_id)) {
 
-                        $patient_id = $this->model_patient->createPatient($patient_data);
+                        $patient_id = $this->model_patient->createPatientFromReferral($patient_data);
 
                         if (!empty($patient_id)) {
                             $data['patientid'] = $patient_id;
@@ -285,7 +278,6 @@ class OpticianReferralController extends Controller
                         $patient_data['id'] = $patient_id;
                         $this->model_patient->updatePatientFromReferral($patient_data);
                     }
-
 
                     //$this->notificationToPatientForAppointmentBooking($patient_id);
                     //$this->url->redirect('patient/edit&id=' . $patient_id . '&referralid=' . $data['referral']['id']);
