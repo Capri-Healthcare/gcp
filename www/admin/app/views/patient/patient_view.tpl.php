@@ -150,16 +150,28 @@
                                     <td><?php echo $result['gp_postal_code']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Optician / Third Party Name</td>
+                                    <td>Optician</td>
                                     <td><?php echo $result['optician_name']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Optician / Third Party Email</td>
+                                    <td>Optician</td>
                                     <td><?php echo $result['optician_email']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Optician / Third Party Address</td>
+                                    <td>Optician</td>
                                     <td><?php echo $result['optician_address']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Third Party Name</td>
+                                    <td><?php echo $result['third_party_name']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Third Party Email</td>
+                                    <td><?php echo $result['third_party_email']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Third Party Address</td>
+                                    <td><?php echo $result['third_party_address']; ?></td>
                                 </tr>
                                 <!--                                <tr>-->
                                 <!--                                    <td>First payment</td>-->
