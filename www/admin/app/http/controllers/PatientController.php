@@ -443,6 +443,8 @@ class PatientController extends Controller
 
             $this->session->data['message'] = array('alert' => 'success', 'value' => 'Patient Information updated successfully.');
         } else {
+
+
             $gp_data['gp_practice'] = $data['gp_practice'];
             $gp_data['gp_name'] = $data['gp_name'];
             $gp_data['gp_address'] = $data['gp_address'];
@@ -464,6 +466,8 @@ class PatientController extends Controller
             }
             $data['hash'] = md5(uniqid(mt_rand(), true));
             $data['id'] = $this->model_patient->createPatient($data);
+            // print_r($data['id']);exit;
+
             $result = $this->model_patient->updatePatient($data); // Call update patient for update other patient data
             if ($data['id']) {
                 //$this->patientMail($data['id']);

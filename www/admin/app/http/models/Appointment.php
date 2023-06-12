@@ -333,7 +333,6 @@ class Appointment extends Model
             return false;
         }
     }
-
     public function createAppointment($data)
     {
 
@@ -342,9 +341,12 @@ class Appointment extends Model
             $patient_detail_qry = $this->database->query("SELECT * FROM `" . DB_PREFIX . "patients` WHERE id = ?", array($data['patient_id']));
 
             $patient_detail = $patient_detail_qry->row;
-            $data['referee_name'] = $patient_detail['optician_name'];
-            $data['referee_email'] = $patient_detail['optician_email'];
-            $data['referee_address'] = $patient_detail['optician_address'];
+            $data['optician_name'] = $patient_detail['optician_name'];
+            $data['optician_email'] = $patient_detail['optician_email'];
+            $data['optician_address'] = $patient_detail['optician_address'];
+            $data['third_party_name'] = $patient_detail['third_party_name'];
+            $data['third_party_email'] = $patient_detail['third_party_email'];
+            $data['third_party_address'] = $patient_detail['third_party_address'];
         }
         
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "appointments`(
@@ -363,10 +365,13 @@ class Appointment extends Model
         `date_of_joining`, 
         `appointment_id`,
         `hospital_code`,
-        `referee_name`,
-        `referee_email`,
-        `referee_address`
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?) ", array(
+        `optician_name`,
+        `optician_email`,
+        `optician_address`,
+        `third_party_name`,
+        `third_party_email`,
+        `third_party_address`
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?) ", array(
             $data['optician_id'],
             $this->database->escape($data['name']),
             $this->database->escape($data['mail']),
@@ -382,9 +387,12 @@ class Appointment extends Model
             $data['datetime'],
             $data['appointment_id'],
             $data['hospital_code'],
-            $data['referee_name'],
-            $data['referee_email'],
-            $data['referee_address']
+            $data['optician_name'],
+            $data['optician_email'],
+            $data['optician_address'],
+            $data['third_party_name'],
+            $data['third_party_email'],
+            $data['third_party_address']
         ));
 
         if ($query->num_rows > 0) {
@@ -403,7 +411,7 @@ class Appointment extends Model
                 }
 
                 $referee_email = $optician_details['email'];
-                $query = $this->database->query("UPDATE " . DB_PREFIX . "appointments SET referee_name = ?, referee_address = ?, referee_email = ? WHERE id = ? ", array($referee_name, $referee_address, $referee_email, $appointment_id));
+                $query = $this->database->query("UPDATE " . DB_PREFIX . "appointments SET optician_name = ?, optician_address = ?, optician_email = ? WHERE id = ? ", array($referee_name, $referee_address, $referee_email, $appointment_id));
             }
 
 
