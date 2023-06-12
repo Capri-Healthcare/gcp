@@ -361,7 +361,7 @@ define('PATIENT_GP_EMAIL_GREETING',"Dear #PATIENT_FIRST_NAME,"."<br><br><br>");
 define('PATIENT_GP_EMAIL_FOOTER_GREETING','<br><br><br><br><br>Best wishes,<br><br>Admin Team<br>on Behalf of <br>Mr Tarun Sharma<br>Consultant Ophthalmologist');
 
 define('PATIENT_GP_EMAIL_BODY',"Dear #PATIENT_FIRST_NAME,"."<br><br><br>".
-"Please find the clinic letter attached. We have sent the email to your GP surgery as well."."<br><br>".
+"Please find the clinic letter attached. We have sent the email to your optometrist and GP surgery as well."."<br><br>".
 
 "If you have any query, please email secretaryoj@gmail.com.");
 define('THIRD_PARTY_EMAIL_BODY', "Dear #THIRD_PARTY_NAME,"."<br><br><br>".

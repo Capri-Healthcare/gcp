@@ -38,6 +38,9 @@
                     <a class="nav-link" href="#patient-additional-information" data-toggle="tab">Additional
                         Information</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#patient-note" data-toggle="tab">Note</a>
+                </li>
             </ul>
             <div class="tab-content pt-4">
                 <div class="tab-pane active" id="patient-info">
@@ -661,6 +664,21 @@
                                         <span class="input-group-text"><i class="ti-check-box"></i></span>
                                     </div>
                                     <input type="text" name="patient[authorisation_number]" <?php echo $insurance_field_readonly ?> class="form-control" id="authorisation_number" value="<?php echo $result['authorisation_number']; ?>" placeholder="Enter Authorisation Number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="patient-note">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Note:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-note"></i></span>
+                                    </div>
+                                    <textarea name="patient[note]" class="form-control" placeholder="Patient note . . ."></textarea>
                                 </div>
                             </div>
                         </div>

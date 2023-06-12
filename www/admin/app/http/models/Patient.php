@@ -166,7 +166,7 @@ class Patient extends Model
             `office_number`, 
             `gp_name`, `gp_practice`, `gp_address`, `gp_postal_code`, `gp_email`, 
             `optician_name`, `optician_email`, `optician_address`,
-            `third_party_name`, `third_party_email`, `third_party_address`,
+            `third_party_name`, `third_party_email`, `third_party_address`, `note`,
             `address`, 
             `history`, `other`,
             `temp_hash`, `user_id`, `hospital_code`, `date_of_joining`, `status` ) 
@@ -185,7 +185,7 @@ class Patient extends Model
                 $data['office_number'],
                 $data['gp_name'], $data['gp_practice'], $data['gp_address'], $data['gp_postal_code'], $data['gp_email'],
                 $data['optician_name'], $data['optician_email'], $data['optician_address'],
-                $data['third_party_name'], $data['third_party_email'], $data['third_party_address'],
+                $data['third_party_name'], $data['third_party_email'], $data['third_party_address'], $data['note'],
                 $data['address'],
                 $data['history'], $data['other'],
                 $data['hash'], $data['user_id'], $data['hospital_code'], date('Y-m-d H:i:s'), 1)
@@ -239,7 +239,7 @@ class Patient extends Model
 	    `membership_number` = ?, `scheme_name` = ?, `authorisation_number` = ?, `authorisation_number` = ?, 
 		`corporate_company_scheme` = ?, `employer` = ?, `optician_name` = ?,  `optician_email` = ?,
         `optician_address` = ?,`third_party_name` = ?,  `third_party_email` = ?,
-        `third_party_address` = ?, `status` = ? 
+        `third_party_address` = ?, `note` = ?, `status` = ? 
 		WHERE `id` = ?",
             array(
                 $this->database->escape($data['title']),
@@ -274,6 +274,7 @@ class Patient extends Model
                 isset($data['third_party_name']) ? $data['third_party_name'] : '',
                 isset($data['third_party_email']) ? $data['third_party_email'] : '',
                 isset($data['third_party_address']) ? $data['third_party_address'] : '',
+                isset($data['note']) ? $data['note'] : '',
                 isset($data['status']) ? $data['status'] : '1',
                 (int)$data['id']));
 

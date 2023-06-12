@@ -171,16 +171,28 @@
                                     <td><?php echo $result['gp_postal_code']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Optician / Third Party Name</td>
-                                    <td><?php echo $result['referee_name']; ?></td>
+                                    <td>Optician Name</td>
+                                    <td><?php echo $result['optician_name']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Optician / Third Party Address</td>
-                                    <td><?php echo $result['referee_address']; ?></td>
+                                    <td>Optician Address</td>
+                                    <td><?php echo $result['optician_address']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Optician / Third Party Email</td>
-                                    <td><?php echo $result['referee_email']; ?></td>
+                                    <td>Optician Email</td>
+                                    <td><?php echo $result['optician_email']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Third Party Name</td>
+                                    <td><?php echo $result['third_party_name']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Third Party Address</td>
+                                    <td><?php echo $result['third_party_address']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Third Party Email</td>
+                                    <td><?php echo $result['third_party_email']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Medical History</td>
@@ -929,11 +941,20 @@
                                            value=""
                                            placeholder="Enter CC . . .">
                                 </div>
-                                <?php if (isset($doc_type) and $doc_type == 'to_patient_or_gp') { ?>
+                                <?php if (isset($doc_type) and $doc_type == 'to_patient_or_gp') { 
+                                        $ref_gp_emails = [];
+                                        if(isset($doc_type) and !empty($result['gp_email'])){
+                                            $ref_gp_emails[] = $result['gp_email'];
+                                        }
+                                        if(isset($result['referee_email']) and !empty($result['referee_email'])){
+                                            $ref_gp_emails[] = $result['referee_email'];
+                                        }
+                                    
+                                    ?>
                                     <div class="form-group">
                                         <label>GP/Optician Email</label>
                                         <input type="text" name="mail[gp_email]" class="form-control"
-                                               value="<?php echo (isset($doc_type) and !empty($result['gp_email'])) ? $result['gp_email'] : ''; ?>, <?php echo (isset($result['referee_email']) and !empty($result['referee_email'])) ? $result['referee_email'] : ''; ?>"
+                                               value="<?php echo implode(",",$ref_gp_emails); ?>"
                                                placeholder="Enter GP Email . . .">
                                     </div>
                                 <?php } ?>

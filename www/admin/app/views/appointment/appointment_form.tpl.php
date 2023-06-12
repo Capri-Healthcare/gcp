@@ -151,32 +151,61 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Optician / Third Party Name </label>
+                                <label>Optician Name </label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ti-check-box"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" name="appointment[referee_name]" placeholder="Enter referrer name" value="<?php echo $result['referee_name']; ?>">
+                                    <input type="text" class="form-control" name="appointment[optician_name]" placeholder="Enter referrer name" value="<?php echo $result['optician_name']; ?>">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Optician / Third Party Address</label>
+                                <label>Optician Address</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ti-check-box"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" name="appointment[referee_address]" placeholder="Enter referrer address" value="<?php echo $result['referee_address']; ?>">
+                                    <input type="text" class="form-control" name="appointment[optician_address]" placeholder="Enter referrer address" value="<?php echo $result['optician_address']; ?>">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Optician / Third Party Email</label>
+                                <label>Optician Email</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ti-check-box"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" name="appointment[referee_email]" placeholder="Enter referrer email" value="<?php echo $result['referee_email']; ?>">
+                                    <input type="text" class="form-control" name="appointment[optician_email]" placeholder="Enter referrer email" value="<?php echo $result['optician_email']; ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Third Party Name </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="appointment[third_party_name]" placeholder="Enter referrer name" value="<?php echo $result['third_party_name']; ?>">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Third Party Address</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="appointment[third_party_address]" placeholder="Enter referrer address" value="<?php echo $result['third_party_address']; ?>">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Third Party Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ti-check-box"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="appointment[third_party_email]" placeholder="Enter referrer email" value="<?php echo $result['third_party_email']; ?>">
                                 </div>
                             </div>
 
