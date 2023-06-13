@@ -532,6 +532,7 @@ class AppointmentController extends Controller
         $data = $this->url->post;
 
         $data['appointment']['date'] = date_format(date_create($data['appointment']['date']), 'Y-m-d');
+        $data['appointment']['typed_date'] = date_format(date_create($data['appointment']['typed_date']), 'Y-m-d');
 
         //echo "<pre>"; print_r($data);exit;
 
