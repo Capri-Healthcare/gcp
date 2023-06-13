@@ -202,20 +202,24 @@ class Patient extends Model
     {
 
 
-        $required_kets = ['firstname', 'lastname', 'dob', 'mobile', 'optician_address','user_id', 'hospital_code'];
+        $required_kets = ['firstname', 'lastname', 'dob', 'mobile', 'optician_name', 'optician_email', 'optician_address','user_id', 'hospital_code'];
         foreach ($required_kets as $key) {
             $data[$key] = isset($data[$key]) ? $data[$key] : '';
         }
 
         $query = $this->database->query("INSERT INTO `" . DB_PREFIX . "patients` (
-            `firstname`, `lastname`, `dob`,  `mobile`, `optician_address`,
-            `user_id`, `hospital_code`) 
+            `firstname`, `lastname`, `dob`,  `mobile`, 
+            `optician_name`, `optician_email`, `optician_address`, `user_id`, 
+            `hospital_code`, date_of_joining) 
         VALUES (
-            ?, ?, ?, ?,
-            ?, ?,?)",
+            ?, ?, ?, ?, 
+            ?, ?, ?, ?, 
+            ?, ?)",
             array(
-               ucfirst($data['firstname']), ucfirst($data['lastname']), date("Y-m-d", strtotime($data['dob'])),
-                 $data['mobile'], $data['optician_address'], $data['user_id'], $data['hospital_code'])
+               ucfirst($data['firstname']), ucfirst($data['lastname']), date("Y-m-d", strtotime($data['dob'])), $data['mobile'], 
+                $data['optician_name'], $data['optician_email'], $data['optician_address'], $data['user_id'], 
+                $data['hospital_code'], date('Y-m-d H:i:s')
+            )
         );
 
         if ($this->database->error()) {

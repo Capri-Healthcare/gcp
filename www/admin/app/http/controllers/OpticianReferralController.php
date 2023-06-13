@@ -258,14 +258,15 @@ class OpticianReferralController extends Controller
                     $patient_data['dob'] = $data['referral']['dob'];
                     $patient_data['user_id'] = $data['referral']['user_id'];
                     $patient_data['optician_address'] = $optician_user_address_for_save;
+                    $patient_data['optician_name'] = $optician_user['firstname'] . ' '. $optician_user['lastname'];
+                    $patient_data['optician_email'] = $optician_user['email'];
                     $patient_data['hospital_code'] = $data['referral']['hospital_code'] == null ? null : $data['referral']['hospital_code'];
                     $patient_data['datetime'] = date('Y-m-d H:s:a');
-
 
                     if (empty($patient_id)) {
 
                         $patient_id = $this->model_patient->createPatientFromReferral($patient_data);
-
+             
                         if (!empty($patient_id)) {
                             $data['patientid'] = $patient_id;
                             $this->model_opticianreferral->updatePatientID($data);
