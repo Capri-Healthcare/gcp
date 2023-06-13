@@ -1243,14 +1243,29 @@
                                                                                 </tr>
                                                                                 <?php if(!empty($value['optician_name'])){ ?>
                                                                                 <tr>
-                                                                                <td>To Optom / Third Party</td>
+                                                                                <td>To Optician</td>
                                                                                 <td class="text-dark">
                                                                                  <span style="font-size: 16px; margin-right: 15px;">
-                                                    <a target="_blank"  href="index.php?route=appointment/letters&id=<?php echo $value['id']; ?>&doc_type=to_optom_or_third_party&action=download"><i
+                                                    <a target="_blank"  href="index.php?route=appointment/letters&id=<?php echo $value['id']; ?>&doc_type=to_optom&action=download"><i
                                                     class="ti-download"></i></a>
                                                 </span>
                                                                                     <span style="font-size: 16px; margin-right: 15px;">
-                                                    <a target="_blank" href="index.php?route=appointment/view&id=<?php echo $value['id']; ?>&doc_type=to_optom_or_third_party"><i
+                                                    <a target="_blank" href="index.php?route=appointment/view&id=<?php echo $value['id']; ?>&doc_type=to_optom"><i
+                                                                class="ti-email"></i></a>
+                                                </span>
+                                                                                </td>
+                                                                                </tr>
+                                                                                <?php } ?>
+                                                                                <?php if (!empty($value['third_party_name']) && !empty($value['third_party_email'])) { ?>
+                                                                                <tr>
+                                                                                <td>To Third Party</td>
+                                                                                <td class="text-dark">
+                                                                                 <span style="font-size: 16px; margin-right: 15px;">
+                                                    <a target="_blank"  href="index.php?route=appointment/letters&id=<?php echo $value['id']; ?>&doc_type=third_party&action=download"><i
+                                                    class="ti-download"></i></a>
+                                                </span>
+                                                                                    <span style="font-size: 16px; margin-right: 15px;">
+                                                    <a target="_blank" href="index.php?route=appointment/view&id=<?php echo $value['id']; ?>&doc_type=third_party"><i
                                                                 class="ti-email"></i></a>
                                                 </span>
                                                                                 </td>

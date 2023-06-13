@@ -1291,7 +1291,7 @@
                                 </tr>
                                 <?php if (!empty($result['optician_name'])) { ?>
                                     <tr>
-                                        <td>To Optom</td>
+                                        <td>To Optician</td>
                                         <td>
                                                 <span style="font-size: 16px; margin-right: 15px;">
                                                     <a target="_blank"
