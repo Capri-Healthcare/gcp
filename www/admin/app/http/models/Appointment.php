@@ -27,10 +27,10 @@ class Appointment extends Model
 
         if ($doctor == NULL) {
             // $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.gp_postal_code, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email,pt.third_party_name,pt.third_party_email,pt.third_party_address FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' LIMIT 1");
-            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.gp_postal_code, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email,a.third_party_name,a.third_party_email,a.third_party_address FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_practice, pt.gp_name,pt.gp_address, pt.gp_postal_code, pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email,a.third_party_name,a.third_party_email,a.third_party_address FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' LIMIT 1");
         } else {
             // $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.gp_postal_code,pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email,pt.third_party_name,pt.third_party_email,pt.third_party_address FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
-            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_name,pt.gp_address, pt.gp_postal_code,pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email,a.third_party_name,a.third_party_email,a.third_party_address FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department,dr.weekly,dr.national, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender,pt.title,pt.firstname,pt.lastname,pt.address,pt.dob, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.gp_practice, pt.gp_name,pt.gp_address, pt.gp_postal_code,pt.nhs_patient_number, pt.dob as patient_dob, pt.gp_email,a.third_party_name,a.third_party_email,a.third_party_address FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.id = a.patient_id WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
         }
 
         if ($query->num_rows > 0) {
@@ -44,9 +44,9 @@ class Appointment extends Model
     {
 
         if ($doctor == NULL) {
-            $query = $this->database->query("SELECT a.*,u.email AS opticianemail,u.user_name AS opticianname, a.status AS appointment_status, CONCAT(dr.title, ' ', dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id,pt.title,pt.hospital_code, pt.bloodgroup, pt.gender, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.nhs_patient_number, pt.nhs_hospital_number, pt.dob as patient_dob, pt.gp_name, pt.gp_address, pt.gp_postal_code, pt.gp_email, pt.special_requirements,pt.firstname,pt.lastname FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email LEFT JOIN `" . DB_PREFIX . "users` AS u ON u.user_id = a.optician_id WHERE a.id = '" . (int)$id . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*,u.email AS opticianemail,u.user_name AS opticianname, a.status AS appointment_status, CONCAT(dr.title, ' ', dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id,pt.title,pt.hospital_code, pt.bloodgroup, pt.gender, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.nhs_patient_number, pt.nhs_hospital_number, pt.dob as patient_dob, pt.gp_practice, pt.gp_name, pt.gp_address, pt.gp_postal_code, pt.gp_email, pt.special_requirements,pt.firstname,pt.lastname FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email LEFT JOIN `" . DB_PREFIX . "users` AS u ON u.user_id = a.optician_id WHERE a.id = '" . (int)$id . "' LIMIT 1");
         } else {
-            $query = $this->database->query("SELECT a.*,u.email AS opticianemail,u.user_name AS opticianname, a.status AS appointment_status, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id,pt.title,pt.hospital_code, pt.dob as patient_dob, pt.bloodgroup, pt.gender, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.nhs_patient_number, pt.nhs_hospital_number, pt.gp_name, pt.gp_address, pt.gp_postal_code, pt.gp_email, pt.special_requirements,pt.firstname,pt.lastname FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email LEFT JOIN `" . DB_PREFIX . "users` AS u ON u.user_id = a.optician_id WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*,u.email AS opticianemail,u.user_name AS opticianname, a.status AS appointment_status, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id,pt.title,pt.hospital_code, pt.dob as patient_dob, pt.bloodgroup, pt.gender, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.nhs_patient_number, pt.nhs_hospital_number, pt.gp_practice, pt.gp_name, pt.gp_address, pt.gp_postal_code, pt.gp_email, pt.special_requirements,pt.firstname,pt.lastname FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email LEFT JOIN `" . DB_PREFIX . "users` AS u ON u.user_id = a.optician_id WHERE a.id = '" . (int)$id . "' AND a.doctor_id = '" . (int)$doctor . "' LIMIT 1");
         }
 
         if ($query->num_rows > 0) {
@@ -101,7 +101,7 @@ class Appointment extends Model
 
     public function updateAppointment($data)
     {
-        // $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `typed_date` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ?, referee_name = ?, referee_address = ?, referee_email = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['slot'], (int)$data['department'], (int)$data['status'], $this->database->escape($data['typed_date']), (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], $data['referee_name'], $data['referee_address'], $data['referee_email'], (int)$data['id']));
+        // $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `typed_date` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ?, optician_name = ?, optician_address = ?, optician_email = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['slot'], (int)$data['department'], (int)$data['status'], $this->database->escape($data['typed_date']), (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], $data['optician_name'], $data['optician_address'], $data['optician_email'], (int)$data['id']));
 
 
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `message` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `typed_date` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, doctor_note = ?, optician_name = ?, optician_address = ?, optician_email = ?, third_party_name = ?, third_party_address = ?, third_party_email = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['message'], $data['slot'], (int)$data['department'], (int)$data['status'], $this->database->escape($data['typed_date']), (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['doctor_note'], $data['optician_name'], $data['optician_address'], $data['optician_email'], $data['third_party_name'], $data['third_party_address'], $data['third_party_email'], (int)$data['id']));
@@ -116,7 +116,7 @@ class Appointment extends Model
 
 	public function updateAppointmentNew($data)
     {
-        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, referee_name = ?, referee_address = ?, referee_email = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['referee_name'], $data['referee_address'], $data['referee_email'], (int)$data['id']));
+        $query = $this->database->query("UPDATE `" . DB_PREFIX . "appointments` SET `name` = ?, `email` = ?, `mobile` = ?,  `date` = ?, `time` = ?, `slot` = ?, `department_id` = ?, `status` = ?, `doctor_id` = ?, `patient_id` = ?, consultation_type = ?, `session_id` = ?, token = ?, video_consultation_token = ?, optician_name = ?, optician_address = ?, optician_email = ?  WHERE `id` = ? ", array($this->database->escape($data['name']), $this->database->escape($data['mail']), $this->database->escape($data['mobile']), $this->database->escape($data['date']), $this->database->escape($data['time']), $data['slot'], (int)$data['department'], (int)$data['status'], (int)$data['doctor'], (int)$data['patient_id'], $data['consultation_type'], $data['session_id'], $data['token'], $data['video_consultation_token'], $data['optician_name'], $data['optician_address'], $data['optician_email'], (int)$data['id']));
 
         $patient_letter = $this->generatePatientOrGpDocHtml($data['id'], 'HTML');
         $optom_letter = $this->generateOptomOrThirdPartyDocHtml($data['id'], 'HTML');
@@ -403,15 +403,15 @@ class Appointment extends Model
                 $optician_detail_qry = $this->database->query("SELECT * FROM `" . DB_PREFIX . "users` WHERE user_id = ?", array($data['optician_id']));
 
                 $optician_details = $optician_detail_qry->row;
-                $referee_name = $optician_details['firstname'] . ' ' . $optician_details['lastname'];
-                $referee_address = '';
+                $optician_name = $optician_details['firstname'] . ' ' . $optician_details['lastname'];
+                $optician_address = '';
                 if(!empty($optician_details['address'])){
-                    $referee_address_aar = json_decode($optician_details['address']);
-                    $referee_address = $referee_address_aar->address1 . ', ' . $referee_address_aar->address2 . ', ' . $referee_address_aar->city . ' - ' . $referee_address_aar->postal;
+                    $optician_address_aar = json_decode($optician_details['address']);
+                    $optician_address = $optician_address_aar->address1 . ', ' . $optician_address_aar->address2 . ', ' . $optician_address_aar->city . ' - ' . $optician_address_aar->postal;
                 }
 
-                $referee_email = $optician_details['email'];
-                $query = $this->database->query("UPDATE " . DB_PREFIX . "appointments SET optician_name = ?, optician_address = ?, optician_email = ? WHERE id = ? ", array($referee_name, $referee_address, $referee_email, $appointment_id));
+                $optician_email = $optician_details['email'];
+                $query = $this->database->query("UPDATE " . DB_PREFIX . "appointments SET optician_name = ?, optician_address = ?, optician_email = ? WHERE id = ? ", array($optician_name, $optician_address, $optician_email, $appointment_id));
             }
 
 
@@ -663,7 +663,7 @@ class Appointment extends Model
         if (empty($token)) {
             return false;
         } else {
-            $query = $this->database->query("SELECT a.*, a.status AS appointment_status, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.nhs_patient_number, pt.nhs_hospital_number, pt.gp_name, pt.gp_address, pt.gp_postal_code, pt.special_requirements FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email WHERE a.video_consultation_token = '" . $token . "' LIMIT 1");
+            $query = $this->database->query("SELECT a.*, a.status AS appointment_status, CONCAT(dr.firstname, ' ', dr.lastname) AS doctor_name, dr.email AS doctor_email, dr.mobile AS doctor_mobile, dr.picture AS doctor_picture, d.name AS department, p.id AS prescription_id, p.prescription AS prescription, pt.id AS patient_id, pt.bloodgroup, pt.gender, TIMESTAMPDIFF (YEAR, pt.dob, CURDATE()) AS age_year, TIMESTAMPDIFF(MONTH, pt.dob, now()) % 12 AS age_month, pt.history, pt.nhs_patient_number, pt.nhs_hospital_number, pt.gp_practice, pt.gp_name, pt.gp_address, pt.gp_postal_code, pt.special_requirements FROM `" . DB_PREFIX . "appointments` AS a LEFT JOIN `" . DB_PREFIX . "doctors` AS dr ON dr.id = a.doctor_id LEFT JOIN `" . DB_PREFIX . "departments` AS d ON d.id = a.department_id LEFT JOIN `" . DB_PREFIX . "prescription` AS p ON p.appointment_id = a.id LEFT JOIN `" . DB_PREFIX . "patients` AS pt ON pt.email = a.email WHERE a.video_consultation_token = '" . $token . "' LIMIT 1");
         }
         if ($query->num_rows > 0) {
             return $query->row;
@@ -714,18 +714,18 @@ class Appointment extends Model
         } 
         $body .= "Date typed: " .$date_typed . "<br>";
 
-        //$body .= "<br>". $appointment['referee_address'];
+        //$body .= "<br>". $appointment['optician_address'];
         $body .= "<br><br>";
         if($doc_type == 'third_party'){
             $body .= ucfirst($appointment['third_party_name']);
         }else{
-            $body .= ucfirst($appointment['referee_name']);
+            $body .= ucfirst($appointment['optician_name']);
         }
-        if(strpos($appointment['referee_address'], ",") === false ){
+        if(strpos($appointment['optician_address'], ",") === false ){
 
         } else {
 
-            foreach(explode(",", $doc_type == 'third_party' ? $appointment['third_party_address']:$appointment['referee_address']) AS $key => $address) {
+            foreach(explode(",", $doc_type == 'third_party' ? $appointment['third_party_address']:$appointment['optician_address']) AS $key => $address) {
                 $body .= "<br>". $address;
             }
         }
@@ -737,7 +737,7 @@ class Appointment extends Model
         if($doc_type == 'third_party'){
             $optician_first_name_arr = explode(" ", strtolower($appointment['third_party_name']));
         }else{
-            $optician_first_name_arr = explode(" ", strtolower($appointment['referee_name']));
+            $optician_first_name_arr = explode(" ", strtolower($appointment['optician_name']));
         }
         
 
@@ -1183,10 +1183,10 @@ class Appointment extends Model
         $body .= (!empty($about_doctor['position']) and !is_null($about_doctor['position'])) ? ("<br>" . $about_doctor['position']) : "";
         $body .= "</strong>";
 
-		$referee_name = (!empty($appointment['referee_name']) and !is_null($appointment['referee_name'])) ? $appointment['referee_name'] : "";
-        $referee_address = (!empty($appointment['referee_address']) and !is_null($appointment['referee_address'])) ? $appointment['referee_address'] : "";
+		$optician_name = (!empty($appointment['optician_name']) and !is_null($appointment['optician_name'])) ? $appointment['optician_name'] : "";
+        $optician_address = (!empty($appointment['optician_address']) and !is_null($appointment['optician_address'])) ? $appointment['optician_address'] : "";
         
-        if(!empty($gp_name) OR !empty($referee_name)){
+        if(!empty($gp_name) OR !empty($optician_name)){
 			$body .= "<br><br>";
             $body .= "<span style='font-size:12px'>";
             $body .= "CC:"."<br><br>";
@@ -1199,8 +1199,8 @@ class Appointment extends Model
 						$body .= "GP<br>";
 						$body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
 						if(!empty($gp_address)){
-						$referee_address_arr = explode(',', str_replace(', ', ',', $gp_address));
-							foreach($referee_address_arr as $address){
+						$optician_address_arr = explode(',', str_replace(', ', ',', $gp_address));
+							foreach($optician_address_arr as $address){
 								$body .= ucfirst(strtolower($address))."<br>";
 							}
 						}
@@ -1208,13 +1208,13 @@ class Appointment extends Model
 						$body .= "</td>";
 					}
 					
-					if(!empty($referee_name)){
+					if(!empty($optician_name)){
 						$body .= "<td width='50%' valign='top'>";
 						$body .= "Optician / Third Party<br>";
-						$body .= (!empty($referee_name)) ? ('<strong>'.$referee_name.'</strong><br>') : '';
-						if(!empty($referee_address)){
-							$referee_address_arr = explode(',', str_replace(', ', ',', $referee_address));
-							foreach($referee_address_arr as $address){
+						$body .= (!empty($optician_name)) ? ('<strong>'.$optician_name.'</strong><br>') : '';
+						if(!empty($optician_address)){
+							$optician_address_arr = explode(',', str_replace(', ', ',', $optician_address));
+							foreach($optician_address_arr as $address){
 								$body .= ucfirst(strtolower($address))."<br>";
 							}
 						}
@@ -1287,12 +1287,12 @@ class Appointment extends Model
         $body .= "Date of visit: " . date_format(date_create($appointment['date']), 'd-m-Y') . "<br>";
         $body .= "Date typed: " . date('d-m-Y');
 
-        //$body .= "<br>". $appointment['referee_address'];
+        //$body .= "<br>". $appointment['optician_address'];
         $body .= "<br><br>";
-        if(strpos($appointment['referee_address'], ",") === false ){
+        if(strpos($appointment['optician_address'], ",") === false ){
 
         } else {
-            foreach(explode(",", $appointment['referee_address']) AS $key => $address) {
+            foreach(explode(",", $appointment['optician_address']) AS $key => $address) {
                 $body .= "<br>". $address;
             }
         }
@@ -1302,7 +1302,7 @@ class Appointment extends Model
         </td></tr></table>";
         
 
-        $body .= "Dear " . ucfirst($appointment['referee_name']) . ",<br><br>";
+        $body .= "Dear " . ucfirst($appointment['optician_name']) . ",<br><br>";
 
         $body .= ucfirst($appointment['firstname']) . " " . ucfirst($appointment['lastname']) . "<br>";
         if (!empty($appointment['address'])) {
@@ -1502,8 +1502,8 @@ class Appointment extends Model
             $body .= $appointment['doctor_note'];
         }
         $body .= "<br>";
-        $gp_name = (!empty($appointment['referee_name']) and !is_null($appointment['referee_name'])) ? $appointment['referee_name'] : "Practice Manager";
-        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to " . $gp_name . ", " . $appointment['referee_address'] . ". so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
+        $gp_name = (!empty($appointment['optician_name']) and !is_null($appointment['optician_name'])) ? $appointment['optician_name'] : "Practice Manager";
+        $body .= "<p style='letter-spacing:0.6px; text-align: justify'>It was a pleasure to see you in my private clinic today. I am sending a copy of this letter to " . $gp_name . ", " . $appointment['optician_address'] . ". so that you can get glaucoma medications on the repeat prescription. Please watch the video on introduction to eye drops on https://www.worcesterglaucoma.co.uk/. This website will help you to get an up to date education material on glaucoma and use the eye drops with correct drop technique. I shall see you again on your next visit. I am happy for you to get OCT of optic disc and threshold visual fields done at optician if available. Please arrange these test with your optician  or at hospital  before your next visit and bring the results with you on the next visit.</p>";
 
         $body .= "<br><br>";
 
@@ -1517,9 +1517,9 @@ class Appointment extends Model
         $body .= "<br><br>";
         $body .= "CC:"."<br>";
         $body .= (!empty($gp_name)) ? ('<strong>'.$gp_name.'</strong><br>') : '';
-        if(!empty($appointment['referee_address'])){
-            $referee_address_arr = explode(',', str_replace(', ', ',', $appointment['referee_address']));
-            foreach($referee_address_arr as $address){
+        if(!empty($appointment['optician_address'])){
+            $optician_address_arr = explode(',', str_replace(', ', ',', $appointment['optician_address']));
+            foreach($optician_address_arr as $address){
                 $body .= $address."<br>";
             }
         }

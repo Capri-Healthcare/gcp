@@ -1241,7 +1241,7 @@
                                             </span>
                                                                                     </td>
                                                                                 </tr>
-                                                                                <?php if(!empty($value['referee_name'])){ ?>
+                                                                                <?php if(!empty($value['optician_name'])){ ?>
                                                                                 <tr>
                                                                                 <td>To Optom / Third Party</td>
                                                                                 <td class="text-dark">

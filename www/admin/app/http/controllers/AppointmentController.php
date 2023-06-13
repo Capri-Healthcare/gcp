@@ -94,6 +94,7 @@ class AppointmentController extends Controller
         //print_r($data);exit;
 
         $this->load->model('commons');
+        $this->load->model('patient');
         $data['common'] = $this->model_commons->getCommonData($this->session->data['user_id']);
         $this->load->model('appointment');
         if ($data['common']['user']['role_id'] == '3') {
@@ -169,7 +170,7 @@ class AppointmentController extends Controller
         //Get email content based on doc_type
         //echo "<pre>";print_r($data);exit;
         if (isset($data['doc_type']) && $data['doc_type'] == "to_optom") {
-            $third_party_name_arr = explode(' ', $data['result']['referee_name']);
+            $third_party_name_arr = explode(' ', $data['result']['optician_name']);
             $data['email']['body'] = str_replace("#THIRD_PARTY_NAME", $third_party_name_arr[1], constant('THIRD_PARTY_EMAIL_BODY'));
             $data['email']['body'] .= constant('PATIENT_GP_EMAIL_FOOTER_GREETING');
         }elseif (isset($data['doc_type']) && $data['doc_type'] == "third_party"){
@@ -256,6 +257,8 @@ class AppointmentController extends Controller
             $data['categories'] = $categories;
         }
 
+        $data['gp_practices'] = $this->model_patient->getALlGpPractice();
+        
         $data['summary'] = $summary;
         //echo "<pre>"; print_r($data);exit;
         /*Render Blog edit view*/

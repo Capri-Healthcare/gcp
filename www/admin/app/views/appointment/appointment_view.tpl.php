@@ -159,6 +159,10 @@
                                 <?php //echo $result['nhs_hospital_number']; ?><!--</td>-->
                                 <!--                                    </tr>-->
                                 <tr>
+                                    <td>GP Practice</td>
+                                    <td><?php echo $result['gp_practice'] != 0 ? $gp_practices[$result['gp_practice']] : ''; ?></td>
+                                </tr>
+                                <tr>
                                     <td>GP Name</td>
                                     <td><?php echo $result['gp_name']; ?></td>
                                 </tr>
@@ -167,7 +171,7 @@
                                     <td><?php echo $result['gp_address']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>GP Address</td>
+                                    <td>GP Postcode</td>
                                     <td><?php echo $result['gp_postal_code']; ?></td>
                                 </tr>
                                 <tr>
@@ -913,7 +917,7 @@
                                                class="form-control"
                                                readonly>
                                     <?php } elseif (isset($doc_type) && $doc_type == 'to_optom') { ?>
-                                        <input type="text" value="<?php echo $result['referee_name'] ?>"
+                                        <input type="text" value="<?php echo $result['optician_name'] ?>"
                                                class="form-control"
                                                readonly>
                                     <?php } else { ?>
@@ -930,7 +934,7 @@
                                     <?php } ?>
                                     <?php if (isset($doc_type) && $doc_type == 'to_optom') { ?>
                                         <input type="hidden" name="mail[email]"
-                                               value="<?php echo $result['referee_email']; ?>"
+                                               value="<?php echo $result['optician_email']; ?>"
                                                readonly>
                                     <?php } ?>
                                     <input type="hidden" name="_token" value="<?php echo $token; ?>" readonly>
@@ -946,8 +950,8 @@
                                         if(isset($doc_type) and !empty($result['gp_email'])){
                                             $ref_gp_emails[] = $result['gp_email'];
                                         }
-                                        if(isset($result['referee_email']) and !empty($result['referee_email'])){
-                                            $ref_gp_emails[] = $result['referee_email'];
+                                        if(isset($result['optician_email']) and !empty($result['optician_email'])){
+                                            $ref_gp_emails[] = $result['optician_email'];
                                         }
                                     
                                     ?>
