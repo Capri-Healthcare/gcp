@@ -1210,7 +1210,7 @@ class Appointment extends Model
 					
 					if(!empty($optician_name)){
 						$body .= "<td width='50%' valign='top'>";
-						$body .= "Optician / Third Party<br>";
+						$body .= "Optician<br>";
 						$body .= (!empty($optician_name)) ? ('<strong>'.$optician_name.'</strong><br>') : '';
 						if(!empty($optician_address)){
 							$optician_address_arr = explode(',', str_replace(', ', ',', $optician_address));
