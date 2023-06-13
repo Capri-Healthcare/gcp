@@ -1285,7 +1285,7 @@
                                             </span>
                                     </td>
                                 </tr>
-                                <?php if (!empty($result['referee_name'])) { ?>
+                                <?php if (!empty($result['optician_name'])) { ?>
                                     <tr>
                                         <td>To Optom</td>
                                         <td>
