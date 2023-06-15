@@ -302,21 +302,15 @@ class Patient extends Model
     {
 
         $query = $this->database->query("UPDATE `" . DB_PREFIX . "patients` SET
-         `title` = ?, `firstname` = ?, `lastname` = ?, `email` = ?,
-         `mobile` = ?,`office_number` = ?, `dob` = ?, `gender` = ?,
-		`address` = ?,  `optician_name` = ?,  `optician_email` = ?,
+        `firstname` = ?, `lastname` = ?, `mobile` = ?,
+         `dob` = ?, `optician_name` = ?,  `optician_email` = ?,
         `optician_address` = ?, `hospital_code` = ?
 		WHERE `id` = ?",
             array(
-                $this->database->escape($data['title']),
                 $this->database->escape(ucfirst($data['firstname'])),
                 $this->database->escape(ucfirst($data['lastname'])),
-                $data['mail'],
                 $data['mobile'],
-                $data['office_number'],
                 $this->database->escape($data['dob']),
-                $this->database->escape($data['gender']),
-                $data['address'],
                 isset($data['optician_name']) ? $data['optician_name'] : '',
                 isset($data['optician_email']) ? $data['optician_email'] : '',
                 isset($data['optician_address']) ? $data['optician_address'] : '',

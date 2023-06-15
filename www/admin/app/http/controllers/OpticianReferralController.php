@@ -252,6 +252,7 @@ class OpticianReferralController extends Controller
                     $optician_user_address_for_save .= isset($optician_user_address['city']) ? (',' . $optician_user_address['city']) : '';
                     $optician_user_address_for_save .= isset($optician_user_address['postal']) ? (' - ' . $optician_user_address['postal']) : '';
 
+                    $patient_data = [];
                     $patient_data['firstname'] = $data['referral']['first_name'];
                     $patient_data['lastname'] = $data['referral']['last_name'];
                     $patient_data['mobile'] = $data['referral']['mobile'];
