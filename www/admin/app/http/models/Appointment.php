@@ -417,8 +417,8 @@ class Appointment extends Model
 
             return $appointment_id;
         } else {
-            echo '<pre>' . print_r($data);
-            exit();
+            //echo '<pre>' . print_r($data);
+            //exit();
             return false;
         }
     }
